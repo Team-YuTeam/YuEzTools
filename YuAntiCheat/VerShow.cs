@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.Security.Cryptography;
 
-namespace YuAnitCheat;
+namespace YuAntiCheat;
 
 [HarmonyPatch(typeof(VersionShower), nameof(VersionShower.Start))]
 public static class VersionShower_Start
@@ -12,6 +12,6 @@ public static class VersionShower_Start
     // Postfix patch of VersionShower.Start to show MalumMenu version
     public static void Postfix(VersionShower __instance)
     {
-            __instance.text.text = $"\n<color={Main.ModColor}>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>(v{Application.version})";
+            __instance.text.text = $"<color={Main.ModColor}>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color> (v{Application.version})";
     }
 }

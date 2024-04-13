@@ -1,16 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuAnitCheat", "YuAnitCheat\YuAnitCheat.csproj", "{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuAntiCheat", "YuAntiCheat\YuAntiCheat.csproj", "{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Canary|Any CPU = Canary|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
+		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Canary|Any CPU.Build.0 = Canary|Any CPU
 	EndGlobalSection
 EndGlobal

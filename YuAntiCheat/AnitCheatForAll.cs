@@ -11,11 +11,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using InnerNet;
 using UnityEngine;
-using YuAnitCheat.Get;
-using YuAnitCheat;
-using YuAnitCheat.Key;
+using YuAntiCheat;
+using YuAntiCheat.Key;
+using YuAntiCheat.Get;
 
-namespace YuAnitCheat;
+namespace YuAntiCheat;
 
 //Change From Karped1em's TOHE/TONX's EAC,thanks very much
 internal class AnitCheatForAll

@@ -11,22 +11,23 @@ using System.Text;
 using System.Text.RegularExpressions;
 using InnerNet;
 using UnityEngine;
-using YuAnitCheat.Get;
-using YuAnitCheat;
+using YuAntiCheat.Get;
+using YuAntiCheat;
 
-namespace YuAnitCheat;
+namespace YuAntiCheat;
 
-public class SMCheat
+public class AUMCheat
 {
     public static bool ReceiveInvalidRpc(PlayerControl pc, byte callId)
     {
         switch (callId)
         {
-            case unchecked((byte)420):
-                Main.Logger.LogError($"有SickoMenu玩家，{"好友编号："+pc.FriendCode+"/名字："+pc.GetRealName()+"/实验性PUID获取："+pc.Puid}");
+            case 101:
+                Main.Logger.LogError($"有AmongUsMenu玩家，{"好友编号："+pc.FriendCode+"/名字："+pc.GetRealName+"/实验性PUID获取："+pc.Puid}");
                 return true;
-            case 168:
-                Main.Logger.LogError($"有SickoMenu玩家，{"好友编号："+pc.FriendCode+"/名字："+pc.GetRealName()+"/实验性PUID获取："+pc.Puid}");
+            
+            case unchecked((byte)42069):
+                Main.Logger.LogError($"有AmongUsMenu玩家，{"好友编号："+pc.FriendCode+"/名字："+pc.GetRealName+"/实验性PUID获取："+pc.Puid}");
                 return true;
         }
         return false;

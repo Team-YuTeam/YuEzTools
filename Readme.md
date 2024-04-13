@@ -1,21 +1,29 @@
-<h1>Yu Anit Cheat | Yu反作弊</h1>
+<h1>Yu Anti Cheat | Yu反作弊</h1>
 <details>
 <summary> 简体中文 | SChinese </summary>
-反作弊~不能作弊哦！
 
-你好啊~这里是YuAnitCheat！下面是一些有用的按钮，你可以点击看看！
+### 反作弊~不能作弊哦！
 
-<a href="https://github.com/Night-GUA/YuAnitCheat/releases" target="_blank"><img src="https://img.shields.io/badge/获取新版本%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
+### 你好啊~这里是YuAnitCheat！下面是一些有用的按钮，你可以点击看看！
 
+<a href="https://github.com/Night-GUA/YuAntiCheat/releases" target="_blank"><img src="https://img.shields.io/badge/获取新版本%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
+
+## 使用教程
+1. 打开后即启动
+2. 若不是房主 部分功能需打开`非安全模式`（按下 `F5` 切换模式）
 </details>
 <details>
 <summary> 英文 | English </summary>
-A anit cheat mod
 
-Welcome to YuAnitCheat! Here are some useful buttons you can click to see!
+### A anit cheat mod for Among Us
 
-<a href="https://github.com/Night-GUA/YuAnitCheat/releases" target="_blank"><img src="https://img.shields.io/badge/Releases%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
+### Welcome to YuAnitCheat! Here are some useful buttons you can click to see!
 
+<a href="https://github.com/Night-GUA/YuAntiCheat/releases" target="_blank"><img src="https://img.shields.io/badge/Releases%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
+
+## How to use
+1. Open is start!
+2. If you are not host,some must be `not self mode`（Press `F5` to change mode）
 </details>
 
 # 多语言样式声明 | Multilingual style declarations
@@ -37,5 +45,5 @@ Ce mod n'est pas affilié à Among Us ou à Innersloth LLC, et le contenu qu'il 
 
 </details>
 
-### 良好的游戏需要玩家们的遵守
+### 良好的游戏环境需要玩家们的遵守
 ### 一个反作弊并不能维护这种环境

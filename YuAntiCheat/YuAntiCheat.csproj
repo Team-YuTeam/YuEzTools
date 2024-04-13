@@ -7,7 +7,7 @@
 		<Description>YuAnitCheat</Description>
 		<Authors>Yu</Authors>
 		<langVersion>latest</langVersion>
-		<Configurations>Debug;Release;Cnaary</Configurations>
+		<Configurations>Debug;Release;Canary</Configurations>
 	</PropertyGroup>
 	<ItemGroup>
 		<EmbeddedResource Include="Resources\*" />

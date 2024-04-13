@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 using InnerNet;
 using UnityEngine;
 
-namespace YuAnitCheat.Get;
+namespace YuAntiCheat.Get;
 
 public class PlayerState
 {

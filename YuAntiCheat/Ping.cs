@@ -2,8 +2,8 @@ using HarmonyLib;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Diagnostics;
-using YuAnitCheat;
-using YuAnitCheat.Get;
+using YuAntiCheat;
+using YuAntiCheat.Get;
 
 namespace MCI.Patches
 {

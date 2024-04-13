@@ -14,21 +14,21 @@ using static CloudGenerator;
 using UnityEngine.Playables;
 using Il2CppSystem.IO;
 
-[assembly: AssemblyFileVersion(YuAnitCheat.Main.PluginVersion)]
-[assembly: AssemblyInformationalVersion(YuAnitCheat.Main.PluginVersion)]
-[assembly: AssemblyVersion(YuAnitCheat.Main.PluginVersion)]
-namespace YuAnitCheat;
+[assembly: AssemblyFileVersion(YuAntiCheat.Main.PluginVersion)]
+[assembly: AssemblyInformationalVersion(YuAntiCheat.Main.PluginVersion)]
+[assembly: AssemblyVersion(YuAntiCheat.Main.PluginVersion)]
+namespace YuAntiCheat;
 
-[BepInPlugin(PluginGuid, "YuAnitCheat", PluginVersion)]
+[BepInPlugin(PluginGuid, "YuAntiCheat", PluginVersion)]
 [BepInProcess("Among Us.exe")]
 public class Main : BasePlugin
 {
 
-    public static readonly string ModName = "YuAnitCheat"; // 咱们的模组名字
+    public static readonly string ModName = "YuAntiCheat"; // 咱们的模组名字
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
     public static readonly string MainMenuText = "邪恶存在不了一点~"; // 咱们模组的首页标语
-    public const string PluginGuid = "com.Yu.YuAnitCheat"; //咱们模组的Guid
-    public const string PluginVersion = "1.0.0"; //咱们模组的版本号
+    public const string PluginGuid = "com.Yu.YuAntiCheat"; //咱们模组的Guid
+    public const string PluginVersion = "1.0.1"; //咱们模组的版本号
     public const string CanUseInAmongUsVer = "2024.3.5"; //智齿的AU版本
 
     public Harmony Harmony { get; } = new Harmony(PluginGuid);
@@ -45,7 +45,7 @@ public class Main : BasePlugin
     {
         Instance = this; //Main实例
 
-        Logger = BepInEx.Logging.Logger.CreateLogSource("YuAnitCheat"); //输出前缀 设置！
+        Logger = BepInEx.Logging.Logger.CreateLogSource("YuAntiCheat"); //输出前缀 设置！
 
         if (Application.version == CanUseInAmongUsVer)
             Logger.LogInfo($"AmongUs Version: {Application.version}"); //牢底居然有智齿的版本？！
@@ -54,6 +54,6 @@ public class Main : BasePlugin
         //各组件初始化
         Harmony.PatchAll();
         //模组加载好了标语
-        Logger.LogInfo($"模组加载完成-YuAC is start now!");
+        Logger.LogInfo($"模组加载完成-YuAC is starting now!");
     }
 }

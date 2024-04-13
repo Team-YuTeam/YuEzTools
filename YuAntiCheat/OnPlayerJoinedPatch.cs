@@ -11,10 +11,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using InnerNet;
 using UnityEngine;
-using YuAnitCheat.Get;
-using YuAnitCheat;
+using YuAntiCheat.Get;
+using YuAntiCheat;
 
-namespace YuAnitCheat;
+namespace YuAntiCheat;
 
 [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnPlayerJoined))]
 class OnPlayerJoinedPatch
