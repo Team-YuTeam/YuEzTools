@@ -25,7 +25,6 @@ internal class AnitCheatForAll
     
     public static bool ReceiveRpc(PlayerControl pc, byte callId, MessageReader reader)
     {
-        if (!AmongUsClient.Instance.AmHost) return false;
         if (pc == null || reader == null || pc.AmOwner) return false;
         if (pc.GetClient()?.PlatformData?.Platform is Platforms.Android or Platforms.IPhone or Platforms.Switch or Platforms.Playstation or Platforms.Xbox or Platforms.StandaloneMac) return false;
         try
@@ -64,7 +63,11 @@ internal class AnitCheatForAll
                     var text = sr.ReadString();
                     if (text.StartsWith("/")) return false;
                     if (
-                        text.Contains("")
+                        text.Contains("░") ||
+                        text.Contains("▄") ||
+                        text.Contains("█") ||
+                        text.Contains("▌") ||
+                        text.Contains("▒")
                     )
                     {
                         Main.Logger.LogError($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】发送非法消息，已驳回");
@@ -83,12 +86,17 @@ internal class AnitCheatForAll
                     break;
                 case RpcCalls.ReportDeadBody:
                     var p1 = GetPlayer.GetPlayerById(sr.ReadByte());
-                    if (p1 != null) //&& !PlayerState.IsDead(p1))
+                    if (p1 != null && GetPlayer.IsLobby) //&& !PlayerState.IsDead(p1))
                     {
                         Main.Logger.LogError(
-                            $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】报告尸体：【{p1?.GetRealName() ?? "null"}】，无法判断 未驳回");
-                        //return true;
-                        return false;
+                            $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】在大厅报告尸体：【{p1?.GetRealName() ?? "null"}】，已驳回");
+                        return true;
+                    }
+                    if (p1 != null &&  p1.Data.IsDead)
+                    {
+                        Main.Logger.LogError(
+                            $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】报告活人尸体：【{p1?.GetRealName() ?? "null"}】，已驳回");
+                        return true;
                     }
 
                     break;

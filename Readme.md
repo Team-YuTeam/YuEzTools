@@ -23,7 +23,7 @@
 
 ## How to use
 1. Open is start!
-2. If you are not host,some must be `not self mode`（Press `F5` to change mode）
+2. If you are not host,some must be `UnSelf Mode`（Press `F5` to change mode）
 </details>
 
 # 多语言样式声明 | Multilingual style declarations

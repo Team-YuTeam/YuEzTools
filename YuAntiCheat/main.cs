@@ -40,11 +40,15 @@ public class Main : BasePlugin
     public static Main Instance; //设置Main实例
 
     public static bool safemode = true;//设置安全模式
+    //public static bool ShowMode = true;//设置揭示模式
     
+    public static ConfigEntry<string> BetaBuildURL { get; private set; }
     public override void Load()//加载 启动！
     {
         Instance = this; //Main实例
 
+        BetaBuildURL = Config.Bind("Other", "BetaBuildURL", "");
+        
         Logger = BepInEx.Logging.Logger.CreateLogSource("YuAntiCheat"); //输出前缀 设置！
 
         if (Application.version == CanUseInAmongUsVer)

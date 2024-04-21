@@ -27,15 +27,16 @@ internal class RPCHandlerPatch
             SMCheat.ReceiveInvalidRpc(__instance, callId))
         {
             Main.Logger.LogInfo("Hacker " + __instance.GetRealName());
+            SendChat.Prefix(__instance);
             if (Main.safemode && !AmongUsClient.Instance.AmHost)
             {
-                __instance.RpcSendChat($"<color={Main.ModColor}>{Main.ModName}</color>检测到我是<color=#191970>外挂</color>\n但无权力踢出我\n[来自<color=#4B0082>{AmongUsClient.Instance.PlayerPrefab.GetRealName()}</color>的<color={Main.ModColor}>{Main.ModName}</color>]");
+                //__instance.RpcSendChat($"{Main.ModName}检测到我是外挂 但无权力踢出我 [来自{AmongUsClient.Instance.PlayerPrefab.GetRealName()}的{Main.ModName}]");
                 return false;//In safe mode,if you are not host,you can't ban other player
             }
             else if(!Main.safemode && !AmongUsClient.Instance.AmHost)
             {
                 Main.Logger.LogInfo("Try kick " + __instance.GetRealName());
-                __instance.RpcSendChat($"<color={Main.ModColor}>{Main.ModName}</color>检测到我是<color=#191970>外挂</color>\n并且正在尝试踢出我\n[来自<color=#4B0082>{AmongUsClient.Instance.PlayerPrefab.GetRealName()}</color>的<color={Main.ModColor}>{Main.ModName}</color>]");
+                //__instance.RpcSendChat($"{Main.ModName}检测到我是外挂 并且正在尝试踢出我 [来自{AmongUsClient.Instance.PlayerPrefab.GetRealName()}的{Main.ModName}]");
                 AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), false);
                 return false;
             }
@@ -43,12 +44,12 @@ internal class RPCHandlerPatch
             else if (AmongUsClient.Instance.AmHost)
             {
                 Main.Logger.LogInfo("Host Try kick " + __instance.GetRealName());
-                __instance.RpcSendChat($"<color={Main.ModColor}>{Main.ModName}</color>检测到我是<color=#191970>外挂</color>\n并且正在尝试踢出我\n[来自房主<color=#4B0082>{AmongUsClient.Instance.PlayerPrefab.GetRealName()}</color>的<color={Main.ModColor}>{Main.ModName}</color>]");
+                //__instance.RpcSendChat($"{Main.ModName}检测到我是外挂 并且正在尝试踢出我 [来自房主{AmongUsClient.Instance.PlayerPrefab.GetRealName()}的{Main.ModName}]");
                 AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), true);
+                return false;
             }
             return false;
         }
-
         return true;
     }
 }
