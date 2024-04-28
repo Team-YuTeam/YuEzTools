@@ -23,10 +23,10 @@ public class SMCheat
         switch (callId)
         {
             case unchecked((byte)420):
-                Main.Logger.LogError($"有SickoMenu玩家，{"好友编号："+pc.FriendCode+"/名字："+pc.GetRealName()+"/实验性PUID获取："+pc.Puid}");
+                Main.Logger.LogError($"有SickoMenu玩家，{"好友编号："+pc.GetClient().FriendCode+"/名字："+pc.GetRealName()+"/实验性ProductUserId获取："+pc.GetClient().ProductUserId}");
                 return true;
             case 168:
-                Main.Logger.LogError($"有SickoMenu玩家，{"好友编号："+pc.FriendCode+"/名字："+pc.GetRealName()+"/实验性PUID获取："+pc.Puid}");
+                Main.Logger.LogError($"有SickoMenu玩家，{"好友编号："+pc.GetClient().FriendCode+"/名字："+pc.GetRealName()+"/实验性ProductUserId获取："+pc.GetClient().ProductUserId}");
                 return true;
         }
         return false;

@@ -28,7 +28,7 @@ public class Main : BasePlugin
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
     public static readonly string MainMenuText = "邪恶存在不了一点~"; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuAntiCheat"; //咱们模组的Guid
-    public const string PluginVersion = "1.0.1"; //咱们模组的版本号
+    public const string PluginVersion = "1.0.2"; //咱们模组的版本号
     public const string CanUseInAmongUsVer = "2024.3.5"; //智齿的AU版本
 
     public Harmony Harmony { get; } = new Harmony(PluginGuid);
@@ -38,6 +38,8 @@ public class Main : BasePlugin
     public static IEnumerable<PlayerControl> AllPlayerControls => PlayerControl.AllPlayerControls.ToArray().Where(p => p != null);
     
     public static Main Instance; //设置Main实例
+
+    public static bool VisibleTasksCount = false;
 
     public static bool safemode = true;//设置安全模式
     //public static bool ShowMode = true;//设置揭示模式

@@ -23,12 +23,12 @@ public class AUMCheat
         switch (callId)
         {
             case 101:
-                Main.Logger.LogError($"有AmongUsMenu玩家，{"好友编号："+pc.FriendCode+"/名字："+pc.GetRealName()+"/实验性PUID获取："+pc.GetClient().ProductUserId}");
+                Main.Logger.LogError($"有AmongUsMenu玩家，{"好友编号："+pc.GetClient().FriendCode+"/名字："+pc.GetRealName()+"/实验性ProductUserId获取："+pc.GetClient().ProductUserId}");
                 return true;
             
             
             case unchecked((byte)42069):
-                Main.Logger.LogError($"有AmongUsMenu玩家，{"好友编号："+pc.FriendCode+"/名字："+pc.GetRealName()+"/实验性PUID获取："+pc.GetClient().ProductUserId}");
+                Main.Logger.LogError($"有AmongUsMenu玩家，{"好友编号："+pc.GetClient().FriendCode+"/名字："+pc.GetRealName()+"/实验性ProductUserId获取："+pc.GetClient().ProductUserId}");
                 return true;
         }
         return false;

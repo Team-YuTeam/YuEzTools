@@ -22,23 +22,23 @@ public class SendChat
     {
         if (Main.safemode && !AmongUsClient.Instance.AmHost)
         {
-            Main.Logger.LogInfo("无法权力踢出 已揭示");
-            PlayerControl.LocalPlayer.RpcSendChat(
-                $"{Main.ModName} 检测到 {__instance.GetRealName()} 是外挂 但无权力踢出");
+            if(ChatUpdatePatch.TSLM > 3)
+                PlayerControl.LocalPlayer.RpcSendChat($"{Main.ModName} 检测到 {__instance.GetRealName()} 是外挂 但无权力踢出");
+            Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }
         else if(!Main.safemode && !AmongUsClient.Instance.AmHost)
         {
-            Main.Logger.LogInfo("尝试踢出 已揭示");
-            PlayerControl.LocalPlayer.RpcSendChat(
-                $"{Main.ModName} 检测到 {__instance.GetRealName()} 是外挂 并且正在尝试踢出");
+            if(ChatUpdatePatch.TSLM > 3)
+                PlayerControl.LocalPlayer.RpcSendChat($"{Main.ModName} 检测到 {__instance.GetRealName()} 是外挂 并且正在尝试踢出");
+            Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }
         else if (AmongUsClient.Instance.AmHost)
         {
-            Main.Logger.LogInfo("房主踢出 已揭示");
-            PlayerControl.LocalPlayer.RpcSendChat(
-                $"{Main.ModName} 检测到 {__instance.GetRealName()} 是外挂 并且正在尝试封禁");
+            if(ChatUpdatePatch.TSLM > 3)
+                PlayerControl.LocalPlayer.RpcSendChat($"{Main.ModName} 检测到 {__instance.GetRealName()} 是外挂 并且正在尝试封禁");
+            Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }
         return;

@@ -23,10 +23,10 @@ internal class RPCHandlerPatch
         [HarmonyArgument(1)] MessageReader reader)
     {
         Main.Logger.LogMessage("From " +__instance.GetRealName() + "'s RPC:" + callId);
-        if (AnitCheatForAll.ReceiveRpc(__instance, callId, reader) || AUMCheat.ReceiveInvalidRpc(__instance, callId) ||
+        if (AntiCheatForAll.ReceiveRpc(__instance, callId, reader) || AUMCheat.ReceiveInvalidRpc(__instance, callId) ||
             SMCheat.ReceiveInvalidRpc(__instance, callId))
         {
-            Main.Logger.LogInfo("Hacker " + __instance.GetRealName());
+            Main.Logger.LogInfo("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/实验性ProductUserId获取："+__instance.GetClient().ProductUserId}");
             SendChat.Prefix(__instance);
             if (Main.safemode && !AmongUsClient.Instance.AmHost)
             {

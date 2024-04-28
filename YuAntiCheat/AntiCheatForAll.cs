@@ -18,7 +18,7 @@ using YuAntiCheat.Get;
 namespace YuAntiCheat;
 
 //Change From Karped1em's TOHE/TONX's EAC,thanks very much
-internal class AnitCheatForAll
+internal class AntiCheatForAll
 {
     public static int MeetingTimes = 0;
     public static int DeNum = 0;
