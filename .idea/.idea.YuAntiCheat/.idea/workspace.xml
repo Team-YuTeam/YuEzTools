@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/ChatUpdatePatch.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/ModManagerLateUpdatePatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/AUMCheat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/AUMCheat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/AnitCheatForAll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/AntiCheatForAll.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Key.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Key.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/MalumMenuCheck.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/OnlyYuAntiCheat.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/SendInGamePatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/MainMenuMangerPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/MainMenuMangerPatch.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YuAntiCheat/OnPlayerJoinedPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/OnPlayerJoinedPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/RPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/RPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/SMCheat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/SMCheat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/SendChat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/SendChat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/main.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

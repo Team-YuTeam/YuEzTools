@@ -139,13 +139,13 @@ public class ModNewsHistory
         stream.Position = 0;
         using StreamReader reader = new(stream, Encoding.UTF8);
         string text = "";
-        uint langId = (uint)DataManager.Settings.Language.CurrentLanguage;
+        //uint langId = (uint)DataManager.Settings.Language.CurrentLanguage;
         //uint langId = (uint)SupportedLangs.SChinese;
         while (!reader.EndOfStream)
         {
             string line = reader.ReadLine();
             if (line.StartsWith("#Number:")) mn.Number = int.Parse(line.Replace("#Number:", string.Empty));
-            else if (line.StartsWith("#LangId:")) langId = uint.Parse(line.Replace("#LangId:", string.Empty));
+            //else if (line.StartsWith("#LangId:")) langId = uint.Parse(line.Replace("#LangId:", string.Empty));
             else if (line.StartsWith("#Title:")) mn.Title = line.Replace("#Title:", string.Empty);
             else if (line.StartsWith("#SubTitle:")) mn.SubTitle = line.Replace("#SubTitle:", string.Empty);
             else if (line.StartsWith("#ShortTitle:")) mn.ShortTitle = line.Replace("#ShortTitle:", string.Empty);
