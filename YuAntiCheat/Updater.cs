@@ -11,7 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using YuAntiCheat;
-using YuAntiCheat.UI;
 
 namespace YuAntiCheat.Updater;
 
@@ -118,7 +117,8 @@ public class ModUpdater
                     if (assets[i]["name"].ToString() == "YuAntiCheat.dll")
                         downloadUrl = assets[i]["browser_download_url"].ToString();
                 }
-                hasUpdate = latestVersion.CompareTo(Main.PluginVersion) > 0;
+
+                hasUpdate = latestVersion.CompareTo(Main.version) > 0 || Main.ModMode != 2;
             }
 
             Main.Logger.LogInfo("hasupdate: " + hasUpdate);

@@ -5,11 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/MalumMenuCheck.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/OnlyYuAntiCheat.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/SendInGamePatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/MainMenuMangerPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/MainMenuMangerPatch.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/MurderHacker.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/PlayerPhysics_LateUpdate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/AUMCheat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/AUMCheat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/AntiCheatForAll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/AntiCheatForAll.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/ChatUpdatePatch.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/DisconnectPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/DisconnectPatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/GetPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/GetPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/MainMenuMangerPatch.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/YuAntiCheat/OnPlayerJoinedPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/OnPlayerJoinedPatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/RPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/RPC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/SMCheat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/SMCheat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/SendChat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/SendChat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Updater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Updater.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/VerShow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/VerShow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/YuAntiCheat.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/YuAntiCheat.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/main.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +29,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/363b4e8555584df6acf86b7aa6712246a240b0/e0/24b0ee4e/Enum.cs" root0="SKIP_HIGHLIGHTING" />
@@ -32,8 +50,15 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60b5a5ff669f4eadab3f0c9385af9261691e00/5c/ed883ac2/GameStartManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60b5a5ff669f4eadab3f0c9385af9261691e00/6a/4b669c7e/AspectPosition.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60b5a5ff669f4eadab3f0c9385af9261691e00/8e/67f43c94/DisconnectReasons.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60b5a5ff669f4eadab3f0c9385af9261691e00/a3/02c6876d/GameData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60b5a5ff669f4eadab3f0c9385af9261691e00/c4/38cf051d/ImpostorRole.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60b5a5ff669f4eadab3f0c9385af9261691e00/e9/23988997/PlayerControl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60b5a5ff669f4eadab3f0c9385af9261691e00/f0/08b866ab/InnerNetClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/MalumMenuCheck.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/OnPlayerJoinedPatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/OnPlayerJoinedPatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/OnlyYuAntiCheat.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/SendInGamePatch.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -55,7 +80,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;c78075fb&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -119,6 +144,11 @@
       <workItem from="1713964021741" duration="1454000" />
       <workItem from="1714146310440" duration="1207000" />
       <workItem from="1714299982999" duration="1912000" />
+      <workItem from="1714922108835" duration="4023000" />
+      <workItem from="1715251514016" duration="7266000" />
+      <workItem from="1716127914091" duration="1133000" />
+      <workItem from="1716635378554" duration="6824000" />
+      <workItem from="1717834480477" duration="419000" />
     </task>
     <task id="LOCAL-00001" summary="Perfection of basic functions">
       <option name="closed" value="true" />
@@ -173,6 +203,31 @@
         <entry key="7c688acf-513d-4310-86ef-172aed29e681" value="TOOL_WINDOW" />
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/main" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="7c688acf-513d-4310-86ef-172aed29e681">
@@ -202,7 +257,19 @@
         </entry>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

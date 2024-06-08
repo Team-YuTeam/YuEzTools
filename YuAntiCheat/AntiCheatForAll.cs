@@ -38,7 +38,7 @@ internal class AntiCheatForAll
                     if (sr.BytesRemaining > 0 && sr.ReadBoolean()) return false;
                     if (
                         ((name.Contains("<size") || name.Contains("size>")) && name.Contains("?") &&
-                         !name.Contains("color")) ||
+                         (name.Contains("<color") || name.Contains("color>") )) ||
                         name.Length > 160 ||
                         name.Count(f => f.Equals("\"\\n\"")) > 3 ||
                         name.Count(f => f.Equals("\n")) > 3 ||
@@ -113,12 +113,20 @@ internal class AntiCheatForAll
 
                     break;
                 case RpcCalls.MurderPlayer:
-                    if (GetPlayer.IsLobby)
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter))
                     {
                         Main.Logger.LogError($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
                         return true;
                     }
-
+                    
+                    break;
+                case RpcCalls.SetLevel:
+                    if (GetPlayer.IsInGame)
+                    {
+                        Main.Logger.LogError($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置等级，已驳回");
+                        return true;
+                    }
+                    
                     break;
             }
 
@@ -151,7 +159,7 @@ internal class AntiCheatForAll
 
                     break;
                 case 47:
-                    if (GetPlayer.IsLobby)
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter))
                     {
                         Main.Logger.LogError($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
                         return true;
@@ -198,6 +206,13 @@ internal class AntiCheatForAll
                         return true;
                     }
 
+                    break;
+                case 38:
+                    if (GetPlayer.IsInGame)
+                    {
+                        Main.Logger.LogError($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置等级，已驳回");
+                        return true;
+                    }
                     break;
             }
         }

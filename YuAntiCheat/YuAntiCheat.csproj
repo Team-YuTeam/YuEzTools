@@ -6,7 +6,7 @@
 		<GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
 		<Description>YuAnitCheat</Description>
 		<Authors>Yu</Authors>
-		<langVersion>latest</langVersion>
+		<langVersion>preview</langVersion>
 		<Configurations>Debug;Release;Canary</Configurations>
 	</PropertyGroup>
 	<ItemGroup>
