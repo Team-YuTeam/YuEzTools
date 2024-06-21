@@ -30,7 +30,7 @@ public class Main : BasePlugin
     public static readonly string MainMenuText = "邪恶存在不了一点~"; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuAntiCheat"; //咱们模组的Guid
     public const string PluginVersion = "1.0.3"; //咱们模组的版本号
-    public const string CanUseInAmongUsVer = "2024.3.5"; //智齿的AU版本
+    public const string CanUseInAmongUsVer = "2024.6.18"; //智齿的AU版本
     
     public static System.Version version = System.Version.Parse(PluginVersion);
     
@@ -56,7 +56,7 @@ public class Main : BasePlugin
     public static bool safemode = true;//设置安全模式
     //public static bool ShowMode = true;//设置揭示模式
     
-    public static Dictionary<byte, PlayerState> PlayerStates = new Dictionary<byte, PlayerState>();
+    //public static Dictionary<int, PlayerState> PlayerStates = new Dictionary<int, PlayerState>();
     
     public static ConfigEntry<string> BetaBuildURL { get; private set; }
     public override void Load()//加载 启动！
