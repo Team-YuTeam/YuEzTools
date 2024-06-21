@@ -8,7 +8,7 @@ public static class MurderHacker
     public static void murderHacker(PlayerControl target, MurderResultFlags result)
     {
         var HostData = AmongUsClient.Instance.GetHost();
-        if (HostData != null && !HostData.Character.Data.Disconnected)
+        if (HostData != null)
         {
             foreach (var item in PlayerControl.AllPlayerControls)
             {
