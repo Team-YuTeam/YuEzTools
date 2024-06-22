@@ -23,12 +23,14 @@ public class AUMCheat
         switch (callId)
         {
             case 101:
-                Main.Logger.LogError($"有AmongUsMenu玩家，{"好友编号："+pc.GetClient().FriendCode+"/名字："+pc.GetRealName()+"/实验性ProductUserId获取："+pc.GetClient().ProductUserId}");
+                Main.Logger.LogWarning($"有AmongUsMenu玩家，{"好友编号："+pc.GetClient().FriendCode+"/名字："+pc.GetRealName()+"/ProductUserId："+pc.GetClient().ProductUserId}");
+                //Main.PlayerStates[pc.GetClient().Id].IsAUM = true;
                 return true;
             
             
             case unchecked((byte)42069):
-                Main.Logger.LogError($"有AmongUsMenu玩家，{"好友编号："+pc.GetClient().FriendCode+"/名字："+pc.GetRealName()+"/实验性ProductUserId获取："+pc.GetClient().ProductUserId}");
+                Main.Logger.LogWarning($"有AmongUsMenu玩家，{"好友编号："+pc.GetClient().FriendCode+"/名字："+pc.GetRealName()+"/ProductUserId："+pc.GetClient().ProductUserId}");
+                //Main.PlayerStates[pc.GetClient().Id].IsAUM = true;
                 return true;
         }
         return false;

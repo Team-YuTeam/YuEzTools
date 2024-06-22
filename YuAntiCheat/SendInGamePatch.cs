@@ -9,8 +9,9 @@ namespace YuAntiCheat;
 
 public class SendInGamePatch
 {
-    public static void SendInGame(string text, bool isAlways = false)
+    public static void SendInGame(string text)
     {
-        if (DestroyableSingleton<HudManager>._instance) DestroyableSingleton<HudManager>.Instance.Notifier.AddItem(text);
+        if (DestroyableSingleton<HudManager>._instance) 
+            HudManager.Instance.Notifier.AddDisconnectMessage(text);
     }
 }

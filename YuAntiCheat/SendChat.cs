@@ -22,22 +22,25 @@ public class SendChat
     {
         if (Main.safemode && !AmongUsClient.Instance.AmHost)
         {
-            if(ChatUpdatePatch.TSLM > 3)
-                PlayerControl.LocalPlayer.RpcSendChat($"{Main.ModName} 检测到 {__instance.GetRealName()} 是外挂 但无权力踢出");
+            SendInGamePatch.SendInGame($"<color=#1E90FF>{__instance.GetRealName()}</color> 是外挂 <color=#FFFF00>无权</color>惩罚");
             Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }
         else if(!Main.safemode && !AmongUsClient.Instance.AmHost)
         {
-            if(ChatUpdatePatch.TSLM > 3)
-                PlayerControl.LocalPlayer.RpcSendChat($"{Main.ModName} 检测到 {__instance.GetRealName()} 是外挂 并且正在尝试踢出");
+            SendInGamePatch.SendInGame($"<color=#1E90FF>{__instance.GetRealName()}</color> 是外挂 尝试<color=#FF4500>击杀</color>");
             Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }
         else if (AmongUsClient.Instance.AmHost)
         {
-            if(ChatUpdatePatch.TSLM > 3)
-                PlayerControl.LocalPlayer.RpcSendChat($"{Main.ModName} 检测到 {__instance.GetRealName()} 是外挂 并且正在尝试封禁");
+            SendInGamePatch.SendInGame($"<color=#1E90FF>{__instance.GetRealName()}</color> 是外挂 尝试<color=#FF0000>封禁</color>");
+            Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
+            return;
+        }
+        else
+        {
+            SendInGamePatch.SendInGame($"<color=#1E90FF>{__instance.GetRealName()}</color> 是外挂");
             Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }

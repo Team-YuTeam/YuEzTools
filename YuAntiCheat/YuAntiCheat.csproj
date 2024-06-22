@@ -6,7 +6,7 @@
 		<GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
 		<Description>YuAnitCheat</Description>
 		<Authors>Yu</Authors>
-		<langVersion>latest</langVersion>
+		<langVersion>preview</langVersion>
 		<Configurations>Debug;Release;Canary</Configurations>
 	</PropertyGroup>
 	<ItemGroup>
@@ -15,7 +15,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.688" Private="false" ExcludeAssets="runtime;native" />
-		<PackageReference Include="AmongUs.GameLibs.Steam" Version="2024.3.5" PrivateAssets="all" />
+		<PackageReference Include="AmongUs.GameLibs.Steam" Version="2024.6.18" PrivateAssets="all" />
 		<PackageReference Include="BepInEx.AutoPlugin" Version="1.1.0" PrivateAssets="all" />
 		<PackageReference Include="BepInEx.IL2CPP.MSBuild" Version="2.0.1" PrivateAssets="all" ExcludeAssets="runtime" />
 	</ItemGroup>

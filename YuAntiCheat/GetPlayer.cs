@@ -10,6 +10,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using InnerNet;
+using Sentry.Internal.Extensions;
 using UnityEngine;
 
 namespace YuAntiCheat.Get;
@@ -18,7 +19,7 @@ public class PlayerState
 {
     public bool IsDead { get; set; }
 
-    public PlayerState(byte playerId)
+    public PlayerState(int clientid)
     {
         IsDead = false;
     }
@@ -39,6 +40,7 @@ static class GetPlayer
             return null;
         }
     }
+    
     public static PlayerControl GetPlayerById(int PlayerId)
     {
         return Main.AllPlayerControls.Where(pc => pc.PlayerId == PlayerId).FirstOrDefault();
