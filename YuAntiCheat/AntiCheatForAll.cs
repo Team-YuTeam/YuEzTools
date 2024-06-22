@@ -92,7 +92,7 @@ internal class AntiCheatForAll
                             $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】在大厅报告尸体：【{p1?.GetRealName() ?? "null"}】，已驳回");
                         return true;
                     }
-                    if (p1 != null &&  p1.Data.IsDead)
+                    if (p1 != null && !p1.Data.IsDead)
                     {
                         Main.Logger.LogWarning(
                             $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】报告活人尸体：【{p1?.GetRealName() ?? "null"}】，已驳回");
