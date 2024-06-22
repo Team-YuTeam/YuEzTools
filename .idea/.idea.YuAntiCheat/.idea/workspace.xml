@@ -5,23 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/MurderHacker.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/PlayerPhysics_LateUpdate.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/AUMCheat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/AUMCheat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/AntiCheatForAll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/AntiCheatForAll.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/ChatUpdatePatch.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/DisconnectPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/DisconnectPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/GetPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/GetPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/MainMenuMangerPatch.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/OnPlayerJoinedPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/OnPlayerJoinedPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/RPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/RPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/SMCheat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/SMCheat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/SendChat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/SendChat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Ping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Ping.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YuAntiCheat/Updater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Updater.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/VerShow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/VerShow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/YuAntiCheat.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/YuAntiCheat.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/main.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,11 +40,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60b5a5ff669f4eadab3f0c9385af9261691e00/c4/38cf051d/ImpostorRole.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60b5a5ff669f4eadab3f0c9385af9261691e00/e9/23988997/PlayerControl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60b5a5ff669f4eadab3f0c9385af9261691e00/f0/08b866ab/InnerNetClient.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/MalumMenuCheck.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/OnPlayerJoinedPatch.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/OnPlayerJoinedPatch.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/OnlyYuAntiCheat.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/SendInGamePatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/2c/2d4f5ad7/RoleTypes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -80,7 +62,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;c78075fb&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;4bb0fe5c&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -148,7 +130,16 @@
       <workItem from="1715251514016" duration="7266000" />
       <workItem from="1716127914091" duration="1133000" />
       <workItem from="1716635378554" duration="6824000" />
-      <workItem from="1717834480477" duration="419000" />
+      <workItem from="1717834480477" duration="2158000" />
+      <workItem from="1717836814427" duration="671000" />
+      <workItem from="1717851467036" duration="4179000" />
+      <workItem from="1717857481088" duration="1273000" />
+      <workItem from="1717930866162" duration="100000" />
+      <workItem from="1717946468641" duration="1580000" />
+      <workItem from="1718979426835" duration="3805000" />
+      <workItem from="1718984549571" duration="934000" />
+      <workItem from="1718986044587" duration="2661000" />
+      <workItem from="1719030411156" duration="3152000" />
     </task>
     <task id="LOCAL-00001" summary="Perfection of basic functions">
       <option name="closed" value="true" />
@@ -190,7 +181,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713696990824</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="查看commit">
+      <option name="closed" value="true" />
+      <created>1717834937138</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1717834937138</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix Ping">
+      <option name="closed" value="true" />
+      <created>1718988717416</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1718988717416</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,17 +217,17 @@
             <list>
               <RecentGroup>
                 <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
                   <option value="main" />
                 </option>
               </RecentGroup>
               <RecentGroup>
                 <option name="FILTER_VALUES">
                   <option value="origin/main" />
-                </option>
-              </RecentGroup>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="HEAD" />
                 </option>
               </RecentGroup>
             </list>
@@ -263,7 +270,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="HEAD" />
                       </list>
                     </value>
                   </entry>
@@ -282,6 +289,8 @@
     <MESSAGE value="README" />
     <MESSAGE value="不知道" />
     <MESSAGE value="v1.0.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="v1.0.1" />
+    <MESSAGE value="查看commit" />
+    <MESSAGE value="fix Ping" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix Ping" />
   </component>
 </project>

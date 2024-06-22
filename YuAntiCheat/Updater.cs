@@ -18,6 +18,7 @@ namespace YuAntiCheat.Updater;
 public class ModUpdater
 {
     private static readonly string URL_Github = "https://api.github.com/repos/Night-GUA/YuAntiCheat";
+    private static readonly string URL_Gitee = "https://gitee.com/api/v5/repos/xigua_ya/YuAntiCheat/releases";
     public static bool hasUpdate = false;
     public static bool forceUpdate = true;
     public static bool isChecked = false;
@@ -39,14 +40,14 @@ public class ModUpdater
         if (!isChecked)
         {
             var done = false;
-            if (CultureInfo.CurrentCulture.Name == "zh-CN")
-            {
+            // if (CultureInfo.CurrentCulture.Name == "zh-CN")
+            // {
+                //done = CheckReleaseFromGitee(Main.BetaBuildURL.Value != "").GetAwaiter().GetResult();
+            // }
+            // else
+            // {
                 done = CheckReleaseFromGithub(Main.BetaBuildURL.Value != "").GetAwaiter().GetResult();
-            }
-            else
-            {
-                done = CheckReleaseFromGithub(Main.BetaBuildURL.Value != "").GetAwaiter().GetResult();
-            }
+            //}
             Main.Logger.LogMessage("检查更新结果: " + done);
             Main.Logger.LogInfo("hasupdate: " + hasUpdate);
             Main.Logger.LogInfo("forceupdate: " + forceUpdate);
@@ -82,10 +83,10 @@ public class ModUpdater
         return result;
     }
     
-    public static async Task<bool> CheckReleaseFromGithub(bool beta = false)
+        public static async Task<bool> CheckReleaseFromGitee(bool beta = false)
     {
-        Main.Logger.LogMessage("开始从Github检查更新");
-        string url = beta ? Main.BetaBuildURL.Value : URL_Github + "/releases/latest";
+        Main.Logger.LogMessage("开始从Gitee检查更新");
+        string url = URL_Gitee;
         try
         {
             string result;
@@ -139,6 +140,72 @@ public class ModUpdater
         {
             isBroken = true;
             Main.Logger.LogError($"发布检查失败\n{ex}");
+            return false;
+        }
+        return true;
+    }
+        
+    public static async Task<bool> CheckReleaseFromGithub(bool beta = false)
+    {
+        Main.Logger.LogMessage("开始从Github检查更新");
+        string url = URL_Github + "/releases/latest";
+        try
+        {
+            string result;
+            using (HttpClient client = new())
+            {
+                client.DefaultRequestHeaders.Add("User-Agent", "YuAC Updater");
+                using var response = await client.GetAsync(new Uri(url), HttpCompletionOption.ResponseContentRead);
+                if (!response.IsSuccessStatusCode || response.Content == null)
+                {
+                    Main.Logger.LogError($"状态码: {response.StatusCode}");
+                    return false;
+                    //return CheckReleaseFromGitee(beta).GetAwaiter().GetResult();
+                }
+                result = await response.Content.ReadAsStringAsync();
+            }
+            JObject data = JObject.Parse(result);
+            if (beta)
+            {
+                latestTitle = data["name"].ToString();
+                downloadUrl = data["url"].ToString();
+                hasUpdate = latestTitle != ThisAssembly.Git.Commit;
+            }
+            else
+            {
+                latestVersion = new(data["tag_name"]?.ToString().TrimStart('v'));
+                latestTitle = $"Ver. {latestVersion}";
+                JArray assets = data["assets"].Cast<JArray>();
+                for (int i = 0; i < assets.Count; i++)
+                {
+                    if (assets[i]["name"].ToString() == "YuAntiCheat.dll")
+                        downloadUrl = assets[i]["browser_download_url"].ToString();
+                }
+
+                hasUpdate = latestVersion.CompareTo(Main.version) > 0 || Main.ModMode != 2;
+            }
+
+            Main.Logger.LogInfo("hasupdate: " + hasUpdate);
+            Main.Logger.LogInfo("forceupdate: " + forceUpdate);
+            Main.Logger.LogInfo("downloadUrl: " + downloadUrl);
+            Main.Logger.LogInfo("latestVersionl: " + latestVersion);
+            Main.Logger.LogInfo("latestTitle: " + latestTitle);
+
+            if (downloadUrl == null || downloadUrl == "")
+            {
+                Main.Logger.LogError("获取下载地址失败");
+                //return CheckReleaseFromGitee(beta).GetAwaiter().GetResult();
+                return false;
+            }
+            isChecked = true;
+            isBroken = false;
+        }
+        catch (Exception ex)
+        {
+            isBroken = true;
+            //CheckReleaseFromGitee(beta);
+            Main.Logger.LogError($"发布检查失败\n{ex}");
+            //return CheckReleaseFromGitee(beta).GetAwaiter().GetResult();
             return false;
         }
         return true;
