@@ -29,7 +29,7 @@ public class Main : BasePlugin
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
     public static readonly string MainMenuText = "邪恶存在不了一点~"; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuAntiCheat"; //咱们模组的Guid
-    public const string PluginVersion = "1.0.3"; //咱们模组的版本号
+    public const string PluginVersion = "1.0.4"; //咱们模组的版本号
     public const string CanUseInAmongUsVer = "2024.6.18"; //智齿的AU版本
     
     public static System.Version version = System.Version.Parse(PluginVersion);

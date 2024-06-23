@@ -22,19 +22,25 @@ public class SendChat
     {
         if (Main.safemode && !AmongUsClient.Instance.AmHost)
         {
-            SendInGamePatch.SendInGame($"<color=#1E90FF>{__instance.GetRealName()}</color> 是外挂 <color=#FFFF00>无权</color>惩罚");
+            SendInGamePatch.SendInGame($"<color=#1E90FF>{__instance.GetRealName()}</color> 是外挂\n您不是房主且未开启<color=#1E90FF>[UnSafe]</color>模式 <color=#FFFF00>无权</color>惩罚");
             Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }
         else if(!Main.safemode && !AmongUsClient.Instance.AmHost)
         {
-            SendInGamePatch.SendInGame($"<color=#1E90FF>{__instance.GetRealName()}</color> 是外挂 尝试<color=#FF4500>击杀</color>");
+            SendInGamePatch.SendInGame($"<color=#1E90FF>{__instance.GetRealName()}</color> 是外挂\n您不是房主但已开启<color=#1E90FF>[UnSafe]</color>模式 <color=#FFFF00>尝试<color=#FF4500>击杀</color>");
+            Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
+            return;
+        }
+        else if(!Main.safemode && AmongUsClient.Instance.AmHost)
+        {
+            SendInGamePatch.SendInGame($"<color=#1E90FF>{__instance.GetRealName()}</color> 是外挂\n您是房主且已开启<color=#1E90FF>[UnSafe]</color>模式 尝试<color=#FF4500>击杀</color>和<color=#FF0000>封禁</color>");
             Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }
         else if (AmongUsClient.Instance.AmHost)
         {
-            SendInGamePatch.SendInGame($"<color=#1E90FF>{__instance.GetRealName()}</color> 是外挂 尝试<color=#FF0000>封禁</color>");
+            SendInGamePatch.SendInGame($"<color=#1E90FF>{__instance.GetRealName()}</color> 是外挂\n您是房主但未开启<color=#1E90FF>[UnSafe]</color>模式 <color=#FFFF00>尝试<color=#FF0000>封禁</color>");
             Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }

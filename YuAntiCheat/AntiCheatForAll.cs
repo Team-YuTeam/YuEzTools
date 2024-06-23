@@ -53,7 +53,9 @@ internal class AntiCheatForAll
                         name.Contains("周恩来") ||
                         name.Contains("邓小平") ||
                         name.Contains("江泽民") ||
-                        name.Contains("胡锦涛")
+                        name.Contains("胡锦涛") ||
+                        name.Contains("台湾独立") || 
+                        name.Contains("共产党下台") // 游戏名字屏蔽词
                         )
                     {
                         Main.Logger.LogWarning($"非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回");
@@ -152,6 +154,7 @@ internal class AntiCheatForAll
             {
                 case 101:
                 var AUMChat = sr.ReadString();
+                Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】AUMChat，内容：{AUMChat}");
                 return true;
 
                 case 7:
