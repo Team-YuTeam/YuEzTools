@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="Change Versuin to 1.0.4&#10;Add YuACRpc&#10;Add Sent AUMChat">
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Keys.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/BC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/BC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Key.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/RPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/RPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/SendChat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/SendChat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/SentYuacRpc.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/SentYuacRpc.cs" afterDir="false" />
+    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="新增导出日志快捷键">
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/GetPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/GetPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Keys.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Keys.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +44,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/75/4ee06908/NetworkedPlayerInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad7b63e9ee60461bb002bc8fb8f18583237c00/ce/9e5e62f1/KeyCode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d064324b32114398b094ea8bd854086828200/4e/985ade96/MessageReader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/AntiCheatForAll.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -151,7 +147,7 @@
       <workItem from="1719039704366" duration="123000" />
       <workItem from="1719056021149" duration="1786000" />
       <workItem from="1719066132981" duration="96000" />
-      <workItem from="1719144392736" duration="6733000" />
+      <workItem from="1719144392736" duration="7507000" />
     </task>
     <task id="LOCAL-00001" summary="Perfection of basic functions">
       <option name="closed" value="true" />
@@ -225,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719146397101</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="新增导出日志快捷键">
+      <option name="closed" value="true" />
+      <created>1719151459818</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1719151459819</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,6 +325,7 @@
     <MESSAGE value="fix Ping" />
     <MESSAGE value="v1.0.3" />
     <MESSAGE value="Change Versuin to 1.0.4&#10;Add YuACRpc&#10;Add Sent AUMChat" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change Versuin to 1.0.4&#10;Add YuACRpc&#10;Add Sent AUMChat" />
+    <MESSAGE value="新增导出日志快捷键" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增导出日志快捷键" />
   </component>
 </project>

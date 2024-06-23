@@ -49,7 +49,7 @@ internal class RPCHandlerPatch
                     Main.Logger.LogInfo("Host Try murder " + __instance.GetRealName());
                     MurderHacker.murderHacker(__instance,MurderResultFlags.Succeeded);
                 }
-                if(GetPlayer.IsInGame)
+                if(!GetPlayer.IsLobby)
                 {
                     GameManager.Instance.LogicFlow.CheckEndCriteria();
                     GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);

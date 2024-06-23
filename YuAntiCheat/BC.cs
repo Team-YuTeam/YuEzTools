@@ -21,7 +21,7 @@ public static class ChatBubblePatch
     public static void SetText_Prefix(ChatBubble __instance, ref string chatText)
     {
         var sr = __instance.transform.FindChild("Background").GetComponent<SpriteRenderer>();
-        sr.color = new Color(255, 255, 255,255);// : new Color(1, 1, 1);
+        sr.color = new Color(0, 0, 0,255);// : new Color(1, 1, 1);
         //if (modded)
         //{
             chatText = ColorString(Color.white, chatText.TrimEnd('\0'));

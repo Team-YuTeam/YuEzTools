@@ -48,6 +48,7 @@ static class GetPlayer
     public static bool IsInGame => InGame;
     public static bool IsMeeting => InGame && MeetingHud.Instance;
     public static bool IsLobby => AmongUsClient.Instance.GameState == AmongUsClient.GameStates.Joined;
+    public static bool IsCountDown => GameStartManager.InstanceExists && GameStartManager.Instance.startState == GameStartManager.StartingStates.Countdown;
     public static string GetRealName(this PlayerControl player, bool isMeeting = false)
     {
         return isMeeting ? player?.Data?.PlayerName : player?.name;

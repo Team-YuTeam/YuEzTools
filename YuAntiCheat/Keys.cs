@@ -43,7 +43,20 @@ internal class Keys
         
         //-- 下面是主机专用的命令--//
         if (!AmongUsClient.Instance.AmHost) return;
+        //立即开始
+        if (Input.GetKeyDown(KeyCode.LeftShift) && GetPlayer.IsCountDown)
+        {
+            Main.Logger.LogInfo("倒计时修改为0");
+            GameStartManager.Instance.countDownTimer = 0;
+        }
         
+        //倒计时取消
+        if (Input.GetKeyDown(KeyCode.C) && GetPlayer.IsCountDown)
+        {
+            Main.Logger.LogInfo("重置倒计时");
+            GameStartManager.Instance.ResetStartState();
+            SendInGamePatch.SendInGame("取消倒计时");
+        }
     }
     public static void DumpLog()
     {
