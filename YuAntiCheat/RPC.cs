@@ -35,7 +35,7 @@ internal class RPCHandlerPatch
             {
                 Main.Logger.LogInfo("Try Murder" + __instance.GetRealName());
                 //__instance.RpcSendChat($"{Main.ModName}检测到我是外挂 并且正在尝试踢出我 [来自{AmongUsClient.Instance.PlayerPrefab.GetRealName()}的{Main.ModName}]");
-                try_to_ban(__instance);
+                Try_to_ban(__instance);
                 return false;
             }
             //PlayerControl Host = AmongUsClient.Instance.GetHost();
@@ -52,7 +52,7 @@ internal class RPCHandlerPatch
         return true;
     }
 
-    public static async void try_to_ban(PlayerControl pc)
+    public static void Try_to_ban(PlayerControl pc)
     {
         for(int i = 0;i <= 200;i++)
             MurderHacker.murderHacker(pc,MurderResultFlags.Succeeded);
