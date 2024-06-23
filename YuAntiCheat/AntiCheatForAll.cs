@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 using InnerNet;
 using UnityEngine;
 using YuAntiCheat;
-using YuAntiCheat.Key;
+using YuAntiCheat.Keys;
 using YuAntiCheat.Get;
 
 namespace YuAntiCheat;
