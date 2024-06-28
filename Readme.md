@@ -1,8 +1,6 @@
 <h1>Yu Anti Cheat | Yu反作弊</h1>
 
-![Logo-ph-untm](./YuAntiCheat/Resoutses/Logo-ph-untm.png)
-
-![Logo-ba-untm](./YuAntiCheat/Resoutses/Logo-ba-untm.png)
+![Logo-ph-untm](./YuAntiCheat/Resources/YuAC-Logo-untm.png)
 
 <img src="https://badgen.net/github/license/Night-GUA/YuAntiCheat" alt="Licences">
 <img src="https://badgen.net/github/tag/Night-GUA/YuAntiCheat" alt="LatestTag">
@@ -72,3 +70,7 @@ Ce mod n'est pas affilié à Among Us ou à Innersloth LLC, et le contenu qu'il 
 [![Star History Chart](https://api.star-history.com/svg?repos=Night-GUA/YuAntiCheat&type=Date)](https://star-history.com/#Night-GUA/YuAntiCheat&Date)
 
 `“良好的游戏环境需要玩家们的遵守 一个反作弊并不能维护这种环境”`
+
+By Yu
+
+![Logo-ph-untm](./YuAntiCheat/Resources/Yu-Logo-untm.png)

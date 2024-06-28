@@ -13,6 +13,8 @@ namespace YuAntiCheat;
 [HarmonyPatch(typeof(PingTracker), nameof(PingTracker.Update))]
 public static class PingTracker_Update
 {
+    private static float deltaTime;
+    
     [HarmonyPostfix]
     public static void Postfix(PingTracker __instance)
     {
@@ -25,8 +27,11 @@ public static class PingTracker_Update
         __instance.text.text = __instance.ToString();
         __instance.text.alignment = TextAlignmentOptions.TopRight;
         __instance.text.text =
-            $"<color={Main.ModColor}>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>\n{Main.MainMenuText}";
+            $"<color={Main.ModColor}>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}({ThisAssembly.Git.Commit})</color>\n{Main.MainMenuText}";
 
+        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+        float fps = Mathf.Ceil(1.0f / deltaTime);
+        
         if (Main.safemode)
              __instance.text.text += "\n<color=#DC143C>[Safe]</color>\n<size=75%>按下 <color=#DC143C>F5</color> 以切换不安全<color=#1E90FF>(UnSafe)</color>模式(不推荐)</size>";
         else
@@ -40,5 +45,6 @@ __instance.text.text += "\n<color=#FFC0CB>Debug</color>";
         __instance.text.text += "\n<color=#6A5ACD>Canary</color>";
 #endif
         __instance.text.text += Utils.Utils.getColoredPingText(AmongUsClient.Instance.Ping); // 书写Ping
+        __instance.text.text += Utils.Utils.getColoredFPSText(fps); // 书写FPS
     }
 }

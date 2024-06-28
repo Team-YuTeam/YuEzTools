@@ -4,7 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="Update to 1.0.5" />
+    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/AMP.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/CustomPopup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/MMBHA.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/MMP.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/OH.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/Yu-Logo-tm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/Yu-Logo-untm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/YuAC-Logo-tm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/YuAC-Logo-untm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/SB.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/TMPT.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Ping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Ping.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resoutses/Logo-ba-tm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resoutses/Logo-ba-untm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resoutses/Logo-ph-tm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resoutses/Logo-ph-untm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/TitleLogoPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/TitleLogoPatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Utils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/VerShow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/YuAntiCheat.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/YuAntiCheat.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/main.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -151,7 +175,8 @@
       <workItem from="1719156816685" duration="3000" />
       <workItem from="1719161438164" duration="332000" />
       <workItem from="1719579040905" duration="2318000" />
-      <workItem from="1719582207418" duration="1393000" />
+      <workItem from="1719582207418" duration="2906000" />
+      <workItem from="1719586035765" duration="9077000" />
     </task>
     <task id="LOCAL-00001" summary="Perfection of basic functions">
       <option name="closed" value="true" />
@@ -257,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719583590296</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="change Readme.md">
+      <option name="closed" value="true" />
+      <created>1719583674544</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1719583674544</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,6 +390,7 @@
     <MESSAGE value="更改判定是否结束游戏逻辑&#10;新增两个快捷键" />
     <MESSAGE value="Lezai泥干嘛哎哟&#10;修复普通玩家被击杀报error的bug" />
     <MESSAGE value="Update to 1.0.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update to 1.0.5" />
+    <MESSAGE value="change Readme.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="change Readme.md" />
   </component>
 </project>

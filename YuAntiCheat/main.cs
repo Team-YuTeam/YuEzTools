@@ -27,13 +27,15 @@ public class Main : BasePlugin
 
     public static readonly string ModName = "YuAntiCheat"; // 咱们的模组名字
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
-    public static readonly string MainMenuText = "邪恶存在不了一点~"; // 咱们模组的首页标语
+    public static readonly string MainMenuText = "外挂根本就不可能存在好嘛~"; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuAntiCheat"; //咱们模组的Guid
     public const string PluginVersion = "1.0.5"; //咱们模组的版本号
     public const string CanUseInAmongUsVer = "2024.6.18"; //智齿的AU版本
     
     public static System.Version version = System.Version.Parse(PluginVersion);
-    
+
+    public static bool IfFirstStartGame = true;
+        
     public static int ModMode { get; private set; } =
 #if DEBUG
 0;
