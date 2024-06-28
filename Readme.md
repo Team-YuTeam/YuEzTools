@@ -1,8 +1,8 @@
 <h1>Yu Anti Cheat | Yu反作弊</h1>
 
-![Logo-ph-untm](./Resoutses/Logo-ph-untm.png)
+![Logo-ph-untm](./YuAntiCheat/Resoutses/Logo-ph-untm.png)
 
-![Logo-ba-untm](./Resoutses/Logo-ba-untm.png)
+![Logo-ba-untm](./YuAntiCheat/Resoutses/Logo-ba-untm.png)
 
 <img src="https://badgen.net/github/license/Night-GUA/YuAntiCheat" alt="Licences">
 <img src="https://badgen.net/github/tag/Night-GUA/YuAntiCheat" alt="LatestTag">
