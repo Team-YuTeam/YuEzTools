@@ -181,7 +181,6 @@ public class ModUpdater
                     if (assets[i]["name"].ToString() == "YuAntiCheat.dll")
                         downloadUrl = assets[i]["browser_download_url"].ToString();
                 }
-
                 hasUpdate = latestVersion.CompareTo(Main.version) > 0 || Main.ModMode != 2;
             }
 

@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Resoutses/Logo-ba-tm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Resoutses/Logo-ba-untm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Resoutses/Logo-ph-tm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Resoutses/Logo-ph-untm.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YuAntiCheat/AntiCheatForAll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/AntiCheatForAll.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Updater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Updater.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/VerShow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/VerShow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/main.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +53,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/75/4ee06908/NetworkedPlayerInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad7b63e9ee60461bb002bc8fb8f18583237c00/ce/9e5e62f1/KeyCode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d064324b32114398b094ea8bd854086828200/4e/985ade96/MessageReader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/AntiCheatForAll.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -148,7 +157,12 @@
       <workItem from="1719056021149" duration="1786000" />
       <workItem from="1719066132981" duration="96000" />
       <workItem from="1719144392736" duration="8231000" />
-      <workItem from="1719153844232" duration="2437000" />
+      <workItem from="1719153844232" duration="2460000" />
+      <workItem from="1719156368174" duration="28000" />
+      <workItem from="1719156816685" duration="3000" />
+      <workItem from="1719161438164" duration="332000" />
+      <workItem from="1719579040905" duration="2318000" />
+      <workItem from="1719582207418" duration="1088000" />
     </task>
     <task id="LOCAL-00001" summary="Perfection of basic functions">
       <option name="closed" value="true" />
@@ -238,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719152614346</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Lezai泥干嘛哎哟&#10;修复普通玩家被击杀报error的bug">
+      <option name="closed" value="true" />
+      <created>1719156313390</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1719156313390</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,6 +358,7 @@
     <MESSAGE value="Change Versuin to 1.0.4&#10;Add YuACRpc&#10;Add Sent AUMChat" />
     <MESSAGE value="新增导出日志快捷键" />
     <MESSAGE value="更改判定是否结束游戏逻辑&#10;新增两个快捷键" />
-    <option name="LAST_COMMIT_MESSAGE" value="更改判定是否结束游戏逻辑&#10;新增两个快捷键" />
+    <MESSAGE value="Lezai泥干嘛哎哟&#10;修复普通玩家被击杀报error的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lezai泥干嘛哎哟&#10;修复普通玩家被击杀报error的bug" />
   </component>
 </project>

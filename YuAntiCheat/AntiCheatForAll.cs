@@ -75,6 +75,11 @@ internal class AntiCheatForAll
                 case RpcCalls.SendChat:
                     var text = sr.ReadString();
                     if (text.StartsWith("/")) return false;
+                    if (GetPlayer.IsInGame && GetPlayer.IsMeeting && pc.Data.IsDead)
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法聊天，已驳回");
+                        return true;
+                    }
                     if (
                         text.Contains("░") ||
                         text.Contains("▄") ||
@@ -122,6 +127,7 @@ internal class AntiCheatForAll
                 
                 case RpcCalls.SetColor:
                 case RpcCalls.CheckColor:
+                    if (!AmongUsClient.Instance.AmHost) break;
                     var color = sr.ReadByte();
                     if (pc.Data.DefaultOutfit.ColorId != -1 &&
                         (Main.AllPlayerControls.Where(x => x.Data.DefaultOutfit.ColorId == color).Count() >= 5
@@ -133,12 +139,55 @@ internal class AntiCheatForAll
                     break;
                 
                 case RpcCalls.MurderPlayer:
-                    if (GetPlayer.IsLobby || pc.Data.IsDead )//|| (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
                         return true;
                     }
                     break;
+                case RpcCalls.CheckShapeshift:
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法变形请求，已驳回");
+                        return true;
+                    }
+                    break;
+                case RpcCalls.RejectShapeshift:
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法取消变形，已驳回");
+                        return true;
+                    }
+                    break;
+                case RpcCalls.CheckVanish:
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法隐身请求，已驳回");
+                        return true;
+                    }
+                    break;
+                case RpcCalls.StartVanish:
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法隐身，已驳回");
+                        return true;
+                    }
+                    break;
+                case RpcCalls.CheckAppear:
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法显形请求，已驳回");
+                        return true;
+                    }
+                    break;
+                case RpcCalls.StartAppear:
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法显形，已驳回");
+                        return true;
+                    }
+                    break;
+                
                 
                 case RpcCalls.SetLevel:
                     if (GetPlayer.IsInGame)
@@ -152,11 +201,20 @@ internal class AntiCheatForAll
             switch (callId)
             {
                 case 101:
-                var AUMChat = sr.ReadString();
-                Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】AUMChat，内容：{AUMChat}");
-                return true;
+                    var AUMChat = sr.ReadString();
+                    Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】AUMChat，内容：{AUMChat}");
+                    return true;
+                
+                case 13:
+                    if (GetPlayer.IsInGame && GetPlayer.IsMeeting && pc.Data.IsDead)
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法聊天，已驳回");
+                        return true;
+                    }
+                    break;
 
                 case 7:
+                    if (!AmongUsClient.Instance.AmHost) break;
                     if (!GetPlayer.IsLobby)
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置颜色，已驳回");
@@ -236,6 +294,48 @@ internal class AntiCheatForAll
                     if (GetPlayer.IsInGame)
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置等级，已驳回");
+                        return true;
+                    }
+                    break; 
+                case 55:
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法变形请求，已驳回");
+                        return true;
+                    }
+                    break;
+                case 56:
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法取消变形，已驳回");
+                        return true;
+                    }
+                    break;
+                case 62:
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法隐身请求，已驳回");
+                        return true;
+                    }
+                    break;
+                case 63:
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法隐身，已驳回");
+                        return true;
+                    }
+                    break;
+                case 64:
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法显形请求，已驳回");
+                        return true;
+                    }
+                    break;
+                case 65:
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法显形，已驳回");
                         return true;
                     }
                     break;
