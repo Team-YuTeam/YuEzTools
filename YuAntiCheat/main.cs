@@ -31,6 +31,9 @@ public class Main : BasePlugin
     public const string PluginGuid = "com.Yu.YuAntiCheat"; //咱们模组的Guid
     public const string PluginVersion = "1.0.5"; //咱们模组的版本号
     public const string CanUseInAmongUsVer = "2024.6.18"; //智齿的AU版本
+
+    public static string QQUrl = "https://qm.qq.com/q/aW5s4sDsHu";
+    public static string DcUrl = "https://discord.gg/9Jy7gzPq";
     
     public static System.Version version = System.Version.Parse(PluginVersion);
 

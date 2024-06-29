@@ -15,6 +15,8 @@ public class MainMenuManagerPatch
     public static GameObject InviteButton;
     public static GameObject GithubButton;
     public static GameObject WebsiteButton;
+    public static GameObject GiteeButton;
+    public static GameObject GitlabButton;
     //public static GameObject UpdateButton;
     //public static GameObject PlayButton;
 
@@ -100,18 +102,22 @@ public class MainMenuManagerPatch
         var extraLinkName = "";
         var extraLinkUrl = "";
         var extraLinkEnabled = false;
+        extraLinkName = TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? "QQ群" : "Discord";
+        extraLinkUrl = TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? Main.QQUrl : Main.DcUrl;
+        extraLinkEnabled = true;
 
         if (InviteButton == null) InviteButton = CreatButton(extraLinkName, () => { Application.OpenURL(extraLinkUrl); });
         InviteButton.gameObject.SetActive(extraLinkEnabled);
         InviteButton.name = "YuAC Extra Link Button";
 
-        if (WebsiteButton == null) WebsiteButton = CreatButton("网站", () => Application.OpenURL("https://night-gua.github.io/"));
+        if (WebsiteButton == null) WebsiteButton = CreatButton(TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? "网站" : "Website", () => Application.OpenURL("https://night-gua.github.io/"));
         WebsiteButton.gameObject.SetActive(true);
         WebsiteButton.name = "YuAC Website Button";
 
         if (GithubButton == null) GithubButton = CreatButton("Github", () => Application.OpenURL("https://www.github.com/Night-GUA/YuAntiCheat/"));
         GithubButton.gameObject.SetActive(true);
         GithubButton.name = "YuAC Github Button";
+        
         // if (UpdateButton == null)
         // {
         //     

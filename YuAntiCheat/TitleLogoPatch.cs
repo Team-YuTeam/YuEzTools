@@ -155,7 +155,7 @@ internal class TitleLogoPatch
         
         if (Main.IfFirstStartGame)
         {
-            showPopup(TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? $"欢迎使用YuAntiCheat v{Main.PluginVersion}！\n祝你不被外挂打扰！\n本模组可能被树懒的反作弊踢出\n本模组无任何外挂行为\n请勿装载该模组进入其他模组房间\n请勿装载另一个模组" : $"Welcome to use YuAntiCheat v{Main.PluginVersion}!\nHope you have a good game!");
+            showPopup(TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? $"欢迎使用YuAntiCheat v{Main.PluginVersion}！祝你不被外挂打扰！\n本模组可能被树懒的反作弊误判踢出 但模组保证无任何外挂行为\n请勿装载该模组进入其他模组房间 请勿同时装载其他模组" : $"Welcome to use YuAntiCheat v{Main.PluginVersion}!\nHope you have a good game!");
             Main.IfFirstStartGame = false;
         }
     }
