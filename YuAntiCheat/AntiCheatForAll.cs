@@ -53,8 +53,10 @@ internal class AntiCheatForAll
                         name.Contains("邓小平") ||
                         name.Contains("江泽民") ||
                         name.Contains("胡锦涛") ||
-                        name.Contains("台湾独立") || 
-                        name.Contains("共产党下台") // 游戏名字屏蔽词
+                        name.Contains("台湾") || 
+                        name.Contains("台独") || 
+                        name.Contains("温家宝") || 
+                        name.Contains("共产党") // 游戏名字屏蔽词
                         )
                     {
                         Main.Logger.LogWarning($"非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回");
@@ -92,7 +94,10 @@ internal class AntiCheatForAll
                         text.Contains("邓小平") ||
                         text.Contains("江泽民") ||
                         text.Contains("胡锦涛") ||
-                        text.Contains("温家宝")
+                        text.Contains("温家宝") ||
+                        text.Contains("台湾") || 
+                        text.Contains("台独") || 
+                        text.Contains("共产党") // 游戏名字屏蔽词
                     )
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】发送非法消息，已驳回");

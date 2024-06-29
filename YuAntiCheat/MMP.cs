@@ -114,9 +114,17 @@ public class MainMenuManagerPatch
         WebsiteButton.gameObject.SetActive(true);
         WebsiteButton.name = "YuAC Website Button";
 
-        if (GithubButton == null) GithubButton = CreatButton("Github", () => Application.OpenURL("https://www.github.com/Night-GUA/YuAntiCheat/"));
+        if (GithubButton == null) GithubButton = CreatButton("Github", () => Application.OpenURL("https://github.com/Night-GUA/YuAntiCheat/"));
         GithubButton.gameObject.SetActive(true);
         GithubButton.name = "YuAC Github Button";
+        
+        if (GiteeButton == null) GiteeButton = CreatButton("Gitee", () => Application.OpenURL("https://gitee.com/xigua_ya/YuAntiCheat/"));
+        GiteeButton.gameObject.SetActive(true);
+        GiteeButton.name = "YuAC Gitee Button";
+        
+        if (GitlabButton == null) GitlabButton = CreatButton("Gitlab", () => Application.OpenURL("https://gitlab.com/yu9522124/YuAntiCheat"));
+        GitlabButton.gameObject.SetActive(true);
+        GitlabButton.name = "YuAC Gitlab Button";
         
         // if (UpdateButton == null)
         // {

@@ -4,30 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/AMP.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/CustomPopup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/MMBHA.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/MMP.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/OH.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/Yu-Logo-tm.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/Yu-Logo-untm.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/YuAC-Logo-tm.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/YuAC-Logo-untm.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/SB.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/TMPT.cs" afterDir="false" />
+    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="Change UI and add some button">
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/BlackChatPatch.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Ping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Ping.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resoutses/Logo-ba-tm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resoutses/Logo-ba-untm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resoutses/Logo-ph-tm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resoutses/Logo-ph-untm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/AMP.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/UpdateFriendCodeUIPatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/AntiCheatForAll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/AntiCheatForAll.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/BC.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/MMP.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/MMP.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/OH.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/ObjectHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/SB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/SimpleButton.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YuAntiCheat/TitleLogoPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/TitleLogoPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Utils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/VerShow.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/YuAntiCheat.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/YuAntiCheat.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/main.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Main.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +163,8 @@
       <workItem from="1719161438164" duration="332000" />
       <workItem from="1719579040905" duration="2318000" />
       <workItem from="1719582207418" duration="2906000" />
-      <workItem from="1719586035765" duration="9077000" />
+      <workItem from="1719586035765" duration="9119000" />
+      <workItem from="1719635738488" duration="5149000" />
     </task>
     <task id="LOCAL-00001" summary="Perfection of basic functions">
       <option name="closed" value="true" />
@@ -290,7 +278,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719583674544</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Change UI">
+      <option name="closed" value="true" />
+      <created>1719595170306</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1719595170306</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Change UI and add some button">
+      <option name="closed" value="true" />
+      <created>1719637605776</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1719637605776</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,6 +395,8 @@
     <MESSAGE value="Lezai泥干嘛哎哟&#10;修复普通玩家被击杀报error的bug" />
     <MESSAGE value="Update to 1.0.5" />
     <MESSAGE value="change Readme.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="change Readme.md" />
+    <MESSAGE value="Change UI" />
+    <MESSAGE value="Change UI and add some button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change UI and add some button" />
   </component>
 </project>

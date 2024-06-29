@@ -1,0 +1,41 @@
+using AmongUs.QuickChat;
+using HarmonyLib;
+using UnityEngine;
+
+namespace YuAntiCheat.Patches;
+
+[HarmonyPatch(typeof(ChatBubble))]
+public static class ChatBubblePatch
+{
+    public static string ColorString(Color32 color, string str) => $"<color=#{color.r:x2}{color.g:x2}{color.b:x2}{color.a:x2}>{str}</color>";
+    
+    [HarmonyPatch(nameof(ChatBubble.SetText)), HarmonyPrefix]
+    public static void SetText_Prefix(ChatBubble __instance, ref string chatText)
+    {
+        var sr = __instance.transform.FindChild("Background").GetComponent<SpriteRenderer>();
+        sr.color = new Color(0, 0, 0,255);// : new Color(1, 1, 1);
+        //if (modded)
+        //{
+        if (chatText.Contains("░") ||
+            chatText.Contains("▄") ||
+            chatText.Contains("█") ||
+            chatText.Contains("▌") ||
+            chatText.Contains("▒") ||
+            chatText.Contains("习近平") ||
+            chatText.Contains("毛泽东") ||
+            chatText.Contains("周恩来") ||
+            chatText.Contains("邓小平") ||
+            chatText.Contains("江泽民") ||
+            chatText.Contains("胡锦涛") ||
+            chatText.Contains("温家宝") ||
+            chatText.Contains("台湾") ||
+            chatText.Contains("台独") ||
+            chatText.Contains("共产党")) // 游戏名字屏蔽词)
+        {
+            chatText = "<color=#FF0000>[疑似违规消息]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
+        }
+            chatText = ColorString(Color.white, chatText.TrimEnd('\0'));
+            //  __instance.SetLeft();  //如果需要靠左
+        //}
+    }
+}
