@@ -196,6 +196,13 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+                case RpcCalls.EnterVent:
+                    if (!(pc.Data.RoleType == RoleTypes.Engineer||pc.Data.RoleType == RoleTypes.Impostor||pc.Data.RoleType == RoleTypes.Shapeshifter||pc.Data.RoleType == RoleTypes.Phantom))
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法进入管道，已驳回");
+                        return true;
+                    }
+                    break;
             }
 
             switch (callId)
@@ -336,6 +343,13 @@ internal class AntiCheatForAll
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法显形，已驳回");
+                        return true;
+                    }
+                    break;
+                case 19:
+                    if (!(pc.Data.RoleType == RoleTypes.Engineer||pc.Data.RoleType == RoleTypes.Impostor||pc.Data.RoleType == RoleTypes.Shapeshifter||pc.Data.RoleType == RoleTypes.Phantom))
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法进入管道，已驳回");
                         return true;
                     }
                     break;
