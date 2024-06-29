@@ -154,6 +154,5 @@ public class MainMenuManagerPatch
         //     }));
         //     UpdateButton.transform.transform.FindChild("FontPlacer").GetChild(0).gameObject.DestroyTranslator();
         // }
-        Application.targetFrameRate = 165;
     }
 }

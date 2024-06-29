@@ -14,6 +14,7 @@ using static CloudGenerator;
 using UnityEngine.Playables;
 using Il2CppSystem.IO;
 using YuAntiCheat.Get;
+using YuAntiCheat.UI;
 
 [assembly: AssemblyFileVersion(YuAntiCheat.Main.PluginVersion)]
 [assembly: AssemblyInformationalVersion(YuAntiCheat.Main.PluginVersion)]
@@ -29,11 +30,15 @@ public class Main : BasePlugin
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
     public static readonly string MainMenuText = "外挂根本就不可能存在好嘛~"; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuAntiCheat"; //咱们模组的Guid
-    public const string PluginVersion = "1.0.5"; //咱们模组的版本号
+    public const string PluginVersion = "1.1.0"; //咱们模组的版本号
     public const string CanUseInAmongUsVer = "2024.6.18"; //智齿的AU版本
 
     public static string QQUrl = "https://qm.qq.com/q/aW5s4sDsHu";
     public static string DcUrl = "https://discord.gg/9Jy7gzPq";
+    
+    public static ConfigEntry<string> menuKeybind;
+    public static ConfigEntry<string> menuHtmlColor;
+    public static MenuUI menuUI;
     
     public static System.Version version = System.Version.Parse(PluginVersion);
 
@@ -58,7 +63,7 @@ public class Main : BasePlugin
 
     public static bool VisibleTasksCount = false;
     
-    public static bool safemode = true;//设置安全模式
+    //public static bool safemode = true;//设置安全模式
     //public static bool ShowMode = true;//设置揭示模式
     
     //public static Dictionary<int, PlayerState> PlayerStates = new Dictionary<int, PlayerState>();
@@ -68,6 +73,17 @@ public class Main : BasePlugin
     {
         Instance = this; //Main实例
 
+        menuKeybind = Config.Bind("YuAC.GUI",
+            "Keybind",
+            "Delete",
+            "The keyboard key used to toggle the GUI on and off. List of supported keycodes: https://docs.unity3d.com/Packages/com.unity.tiny@0.16/api/Unity.Tiny.Input.KeyCode.html");
+        menuHtmlColor = Config.Bind("MalumMenu.GUI",
+            "Color",
+            "",
+            "A custom color for your MalumMenu GUI. Supports html color codes");
+
+        menuUI = AddComponent<MenuUI>();
+        
         BetaBuildURL = Config.Bind("Other", "BetaBuildURL", "");
         
         Logger = BepInEx.Logging.Logger.CreateLogSource("YuAntiCheat"); //输出前缀 设置！

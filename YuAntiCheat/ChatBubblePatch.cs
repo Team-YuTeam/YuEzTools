@@ -1,6 +1,7 @@
 using AmongUs.QuickChat;
 using HarmonyLib;
 using UnityEngine;
+using YuAntiCheat.UI;
 
 namespace YuAntiCheat.Patches;
 
@@ -13,7 +14,7 @@ public static class ChatBubblePatch
     public static void SetText_Prefix(ChatBubble __instance, ref string chatText)
     {
         var sr = __instance.transform.FindChild("Background").GetComponent<SpriteRenderer>();
-        sr.color = new Color(0, 0, 0,255);// : new Color(1, 1, 1);
+        if(Toggles.DarkMode) sr.color = new Color(0, 0, 0,255);// : new Color(1, 1, 1);
         //if (modded)
         //{
         if (chatText.Contains("░") ||
@@ -32,10 +33,15 @@ public static class ChatBubblePatch
             chatText.Contains("台独") ||
             chatText.Contains("共产党")) // 游戏名字屏蔽词)
         {
-            chatText = "<color=#FF0000>[疑似违规消息]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
+            if(Toggles.DarkMode) chatText = "<color=#FF0000>[疑似违规消息]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
+            else chatText = "<color=#FF0000>[疑似违规消息]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
         }
-            chatText = ColorString(Color.white, chatText.TrimEnd('\0'));
-            //  __instance.SetLeft();  //如果需要靠左
+        else
+        {
+            if(Toggles.DarkMode) chatText = ColorString(Color.white, chatText.TrimEnd('\0'));
+            else chatText = ColorString(Color.black, chatText.TrimEnd('\0'));
+        }
+        //  __instance.SetLeft();  //如果需要靠左
         //}
     }
 }

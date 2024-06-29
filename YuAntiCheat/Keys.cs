@@ -2,24 +2,22 @@ using HarmonyLib;
 using Hazel;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using AmongUs.Data;
 using AmongUs.GameOptions;
 using Hazel;
 using Il2CppInterop.Runtime.InteropTypes;
 using InnerNet;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
 using YuAntiCheat.Get;
 using YuAntiCheat;
+using YuAntiCheat.UI;
 
 namespace YuAntiCheat.Keys;
 
@@ -29,16 +27,23 @@ internal class Keys
     public static void Postfix(ControllerManager __instance)
     {
         //日志文件转储
-        if (GetKeysDown(KeyCode.F1, KeyCode.LeftControl))
+        if (GetKeysDown(KeyCode.F1))
         {
             Main.Logger.LogInfo("输出日志");
             DumpLog();
         }
         
+        
         //开启非安全模式
         if (Input.GetKeyDown(KeyCode.F5))
         {
-            Main.safemode = !Main.safemode;
+            Toggles.SafeMode = !Toggles.SafeMode;
+        }
+        
+        //打开游戏目录
+        if (GetKeysDown(KeyCode.F10))
+        {
+            OpenDirectory(Environment.CurrentDirectory);
         }
         
         //-- 下面是主机专用的命令--//
@@ -67,9 +72,17 @@ internal class Keys
         FileInfo file = new(@$"{Environment.CurrentDirectory}/BepInEx/LogOutput.log");
         file.CopyTo(@filename);
         SendInGamePatch.SendInGame($"日志已保存 YuAC - v{Main.PluginVersion}-{t}.log");
-        System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo("Explorer.exe")
+        ProcessStartInfo psi = new ProcessStartInfo("Explorer.exe")
             { Arguments = "/e,/select," + @filename.Replace("/", "\\") };
-        System.Diagnostics.Process.Start(psi);
+        Process.Start(psi);
+    }
+    public static void OpenDirectory(string path)
+    {
+        var startInfo = new ProcessStartInfo(path)
+        {
+            UseShellExecute = true,
+        };
+        Process.Start(startInfo);
     }
     private static bool GetKeysDown(params KeyCode[] keys)
     {

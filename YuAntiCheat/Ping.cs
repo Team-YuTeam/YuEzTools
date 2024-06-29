@@ -2,6 +2,7 @@ using HarmonyLib;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Diagnostics;
+using Rewired.UI.ControlMapper;
 using TMPro;
 using YuAntiCheat;
 using YuAntiCheat.Get;
@@ -27,15 +28,38 @@ public static class PingTracker_Update
         __instance.text.text = __instance.ToString();
         __instance.text.alignment = TextAlignmentOptions.TopRight;
         __instance.text.text =
-            $"<color={Main.ModColor}>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}({ThisAssembly.Git.Commit})</color>\n{Main.MainMenuText}";
-
-        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-        float fps = Mathf.Ceil(1.0f / deltaTime);
+            $"<color={Main.ModColor}>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>";
+        if(Toggles.ShowCommit) __instance.text.text += $"<color=#00FFFF>({ThisAssembly.Git.Commit})</color>";
+        if(Toggles.ShowModText) __instance.text.text += $"\n{Main.MainMenuText}";
         
-        if (Main.safemode)
-             __instance.text.text += "\n<color=#DC143C>[Safe]</color>\n<size=75%>按下 <color=#DC143C>F5</color> 以切换不安全<color=#1E90FF>(UnSafe)</color>模式(不推荐)</size>";
-        else
-            __instance.text.text += "\n<color=#1E90FF>[UnSafe]</color>\n<size=75%>按下 <color=#1E90FF>F5</color> 以切换安全<color=#DC143C>(Safe)</color>模式(推荐)</size>";
+        if(Toggles.FPSPlus && Application.targetFrameRate != 240) Application.targetFrameRate = 240;
+        else if(!Toggles.FPSPlus && Application.targetFrameRate != 60) Application.targetFrameRate = 60;
+        
+        if(Toggles.ShowIsSafe)
+        {
+            if (Toggles.SafeMode)
+                __instance.text.text +=
+                    "\n<color=#DC143C>[Safe]</color>";
+            else
+                __instance.text.text +=
+                    "\n<color=#1E90FF>[UnSafe]</color>";
+        }
+        if(Toggles.ShowSafeText)
+        {
+            if (Toggles.SafeMode)
+                __instance.text.text +=
+                    "\n<size=75%>按下 <color=#DC143C>F5</color> 以切换不安全<color=#1E90FF>(UnSafe)</color>模式(不推荐)</size>";
+            else
+                __instance.text.text +=
+                    "\n<size=75%>按下 <color=#1E90FF>F5</color> 以切换安全<color=#DC143C>(Safe)</color>模式(推荐)</size>";
+        }
+        if(Toggles.ShowIsDark)
+        {
+            if (Toggles.DarkMode)
+                __instance.text.text += "\n<color=#00BFFF>[Dark]</color>";
+            else
+                __instance.text.text += "\n<color=#00FA9A>[Light]</color>";
+        }
         
      __instance.text.text += "\n<color=#FFFF00>By</color> <color=#FF0000>Yu</color>";
 #if DEBUG
@@ -44,7 +68,10 @@ __instance.text.text += "\n<color=#FFC0CB>Debug</color>";
 #if CANARY
         __instance.text.text += "\n<color=#6A5ACD>Canary</color>";
 #endif
-        __instance.text.text += Utils.Utils.getColoredPingText(AmongUsClient.Instance.Ping); // 书写Ping
-        __instance.text.text += Utils.Utils.getColoredFPSText(fps); // 书写FPS
+        
+        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+        float fps = Mathf.Ceil(1.0f / deltaTime);
+        if(Toggles.ShowPing) __instance.text.text += Utils.Utils.getColoredPingText(AmongUsClient.Instance.Ping); // 书写Ping
+        if(Toggles.ShowFPS) __instance.text.text += Utils.Utils.getColoredFPSText(fps); // 书写FPS
     }
 }

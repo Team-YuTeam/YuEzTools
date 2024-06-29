@@ -31,7 +31,7 @@ internal class RPCHandlerPatch
             Main.Logger.LogInfo("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/实验性ProductUserId获取："+__instance.GetClient().ProductUserId}");
             //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;
             SendChat.Prefix(__instance);
-            if(!Main.safemode && !AmongUsClient.Instance.AmHost)
+            if(!Toggles.SafeMode && !AmongUsClient.Instance.AmHost)
             {
                 Main.Logger.LogInfo("Try Murder" + __instance.GetRealName());
                 //__instance.RpcSendChat($"{Main.ModName}检测到我是外挂 并且正在尝试踢出我 [来自{AmongUsClient.Instance.PlayerPrefab.GetRealName()}的{Main.ModName}]");
@@ -44,7 +44,7 @@ internal class RPCHandlerPatch
             {
                 Main.Logger.LogInfo("Host Try ban " + __instance.GetRealName());
                 //__instance.RpcSendChat($"{Main.ModName}检测到我是外挂 并且正在尝试踢出我 [来自房主{AmongUsClient.Instance.PlayerPrefab.GetRealName()}的{Main.ModName}]");
-                if (!Main.safemode)
+                if (!Toggles.SafeMode)
                 {
                     Main.Logger.LogInfo("Host Try murder " + __instance.GetRealName());
                     MurderHacker.murderHacker(__instance,MurderResultFlags.Succeeded);
