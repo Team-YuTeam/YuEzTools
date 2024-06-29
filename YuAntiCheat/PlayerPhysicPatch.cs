@@ -37,7 +37,7 @@ public class PlayerPhysicPatch
         if (Toggles.ChangeDownTimerTo114514 && GetPlayer.IsCountDown)
         {
             YuACKeysOnMenu.ChangeDownTimerTo(114514);
-            Toggles.ChangeDownTimerToZero = !Toggles.ChangeDownTimerToZero;
+            Toggles.ChangeDownTimerTo114514 = !Toggles.ChangeDownTimerTo114514;
         }
         else if(Toggles.ChangeDownTimerTo114514) Toggles.ChangeDownTimerTo114514 = !Toggles.ChangeDownTimerTo114514;
         

@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="MMUI!">
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/PlayerPhysicPatch.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/YuACKeysOnMenu.cs" afterDir="false" />
+    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YuAntiCheat/AntiCheatForAll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/AntiCheatForAll.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Keys.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Keys.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/MenuUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/MenuUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Toggles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Toggles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/PlayerPhysicPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/PlayerPhysicPatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/TitleLogoPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/TitleLogoPatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/UIStructures.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/UIStructures.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +162,8 @@
       <workItem from="1719582207418" duration="2906000" />
       <workItem from="1719586035765" duration="9119000" />
       <workItem from="1719635738488" duration="6835000" />
-      <workItem from="1719643443144" duration="10933000" />
+      <workItem from="1719643443144" duration="10985000" />
+      <workItem from="1719659605555" duration="1940000" />
     </task>
     <task id="LOCAL-00001" summary="Perfection of basic functions">
       <option name="closed" value="true" />
@@ -311,7 +309,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719653465108</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="version 1.1.0">
+      <option name="closed" value="true" />
+      <created>1719656266014</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1719656266014</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,6 +422,7 @@
     <MESSAGE value="Change UI and add some button" />
     <MESSAGE value="ReSet name" />
     <MESSAGE value="MMUI!" />
-    <option name="LAST_COMMIT_MESSAGE" value="MMUI!" />
+    <MESSAGE value="version 1.1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 1.1.0" />
   </component>
 </project>
