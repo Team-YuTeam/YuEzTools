@@ -17,7 +17,6 @@ using YuAntiCheat.Get;
 
 namespace YuAntiCheat;
 
-//Change From Karped1em's TOHE/TONX's EAC,thanks very much
 internal class AntiCheatForAll
 {
     public static int MeetingTimes = 0;
@@ -67,9 +66,9 @@ internal class AntiCheatForAll
                 case RpcCalls.SetRole:
                     var role = (RoleTypes)sr.ReadUInt16();
                     var canOverrideRole = sr.ReadBoolean();
-                    if (GetPlayer.IsLobby && (role is RoleTypes.CrewmateGhost or RoleTypes.ImpostorGhost))
+                    if (GetPlayer.IsLobby || AmongUsClient.Instance.GetHost() != pc.GetClient())
                     {
-                        Main.Logger.LogWarning($"非法设置玩家【{pc.GetClientId()}:{pc.GetRealName()}】的状态为幽灵，已驳回");
+                        Main.Logger.LogWarning($"非法设置玩家【{pc.GetClientId()}:{pc.GetRealName()}】的职业，已驳回");
                         return true;
                     }
                     break;

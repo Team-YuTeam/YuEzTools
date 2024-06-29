@@ -29,8 +29,7 @@ internal class Keys
         //日志文件转储
         if (GetKeysDown(KeyCode.F1))
         {
-            Main.Logger.LogInfo("输出日志");
-            DumpLog();
+            YuACKeysOnMenu.DumpLogKey();
         }
         
         
@@ -43,7 +42,7 @@ internal class Keys
         //打开游戏目录
         if (GetKeysDown(KeyCode.F10))
         {
-            OpenDirectory(Environment.CurrentDirectory);
+            YuACKeysOnMenu.OpenGameDic();
         }
         
         //-- 下面是主机专用的命令--//
@@ -51,38 +50,14 @@ internal class Keys
         //立即开始
         if (Input.GetKeyDown(KeyCode.LeftShift) && GetPlayer.IsCountDown)
         {
-            Main.Logger.LogInfo("倒计时修改为0");
-            GameStartManager.Instance.countDownTimer = 0;
+            YuACKeysOnMenu.ChangeDownTimerTo(0);
         }
         
         //倒计时取消
         if (Input.GetKeyDown(KeyCode.C) && GetPlayer.IsCountDown)
         {
-            Main.Logger.LogInfo("重置倒计时");
-            GameStartManager.Instance.ResetStartState();
-            SendInGamePatch.SendInGame("取消倒计时");
+            YuACKeysOnMenu.AbolishDownTimer();
         }
-    }
-    public static void DumpLog()
-    {
-        string f = $"{Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)}/YuAC-logs/";
-        string t = DateTime.Now.ToString("yyyy-MM-dd_HH.mm.ss");
-        string filename = $"{f}YuAC-v{Main.PluginVersion}-{t}.log";
-        if (!Directory.Exists(f)) Directory.CreateDirectory(f);
-        FileInfo file = new(@$"{Environment.CurrentDirectory}/BepInEx/LogOutput.log");
-        file.CopyTo(@filename);
-        SendInGamePatch.SendInGame($"日志已保存 YuAC - v{Main.PluginVersion}-{t}.log");
-        ProcessStartInfo psi = new ProcessStartInfo("Explorer.exe")
-            { Arguments = "/e,/select," + @filename.Replace("/", "\\") };
-        Process.Start(psi);
-    }
-    public static void OpenDirectory(string path)
-    {
-        var startInfo = new ProcessStartInfo(path)
-        {
-            UseShellExecute = true,
-        };
-        Process.Start(startInfo);
     }
     private static bool GetKeysDown(params KeyCode[] keys)
     {

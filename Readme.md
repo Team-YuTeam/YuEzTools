@@ -1,6 +1,6 @@
 <h1>Yu Anti Cheat | Yu反作弊</h1>
 
-![Logo-ph-untm](./YuAntiCheat/Resources/YuAC-Logo-untm.png)
+![YuAC-Logo-tm](./YuAntiCheat/Resources/YuAC-Logo-tm.png)
 
 <img src="https://badgen.net/github/license/Night-GUA/YuAntiCheat" alt="Licences">
 <img src="https://badgen.net/github/tag/Night-GUA/YuAntiCheat" alt="LatestTag">
@@ -26,6 +26,18 @@
 
 ### 在`非安全模式`下 YuAC会做的操作
 若检测到外挂 则多进行击杀一次
+
+### 致谢
+- KARPED1EM - 技术帮助&代码支持
+- NikoCat233 - 技术帮助
+- Slok7675 - 技术帮助
+- Farewell - 技术帮助
+- LezaiYa - 技术帮助&翻译帮助&代码提供
+- Imp11 - 技术帮助&翻译帮助
+- 慕斯Mousse - 翻译帮助
+- 小白熊贝儿 - Logo设计
+- Among us - 想法提供&代码提供
+- 鱼竿 - 背景图画师
 </details>
 
 ## 英文 | English
@@ -41,10 +53,22 @@
 ### How to use
 1. Open is start!
 2. If you are not host,some must be `UnSelf Mode`（Press `F5` to change mode）
-</details>
 
 ### In `UnSelf Mode`, YuAC will do
 If the room has hacker,it will make an extra murder
+
+### Thanks
+- KARPED1EM - Technical assistance&Code Support
+- NikoCat233 - Technical assistance
+- Slok7675 - Technical assistance
+- Farewell - Technical assistance
+- LezaiYa - Technical assistance&Translation Help&Code provision
+- Imp11 - Technical assistance&Translation Help
+- 慕斯Mousse - Translation Help
+- 小白熊贝儿 - Logo Design
+- Among us - Idea provision&Code provision
+- 鱼竿 - Background Painter
+</details>
 
 ## 多语言样式声明 | Multilingual style declarations
 <details>
@@ -69,8 +93,8 @@ Ce mod n'est pas affilié à Among Us ou à Innersloth LLC, et le contenu qu'il 
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Night-GUA/YuAntiCheat&type=Date)](https://star-history.com/#Night-GUA/YuAntiCheat&Date)
 
-`“良好的游戏环境需要玩家们的遵守 一个反作弊并不能维护这种环境”`
+#### `“良好的游戏环境需要玩家们的遵守 一个反作弊并不能维护这种环境”`
 
-By Yu
+### By Yu
 
-![Logo-ph-untm](./YuAntiCheat/Resources/Yu-Logo-untm.png)
+![Yu-Logo-tm](./YuAntiCheat/Resources/Yu-Logo-tm.png)

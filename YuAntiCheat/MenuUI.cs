@@ -36,6 +36,17 @@ public class MenuUI : MonoBehaviour
                 
             }
         ));
+        groups.Add(new GroupInfo("快捷按钮", false, new List<ToggleInfo>() {
+                new ToggleInfo("输出日志", () => Toggles.DumpLog, x => Toggles.DumpLog = x),
+                new ToggleInfo("打开游戏运行目录", () => Toggles.OpenGameDic, x => Toggles.OpenGameDic = x),
+            }, new List<SubmenuInfo> {
+                new SubmenuInfo("仅房主", false, new List<ToggleInfo>() {
+                    new ToggleInfo("更改倒计时为0", () => Toggles.ChangeDownTimerToZero, x => Toggles.ChangeDownTimerToZero = x),
+                    new ToggleInfo("恶搞倒计时", () => Toggles.ChangeDownTimerTo114514, x => Toggles.ChangeDownTimerTo114514 = x),
+                    new ToggleInfo("取消倒计时", () => Toggles.AbolishDownTimer, x => Toggles.AbolishDownTimer = x),
+                }),
+            }
+        ));
         groups.Add(new GroupInfo("其他功能", false, new List<ToggleInfo>() {
                 new ToggleInfo("突破FPS上限", () => Toggles.FPSPlus, x => Toggles.FPSPlus = x),
             }, new List<SubmenuInfo> {
