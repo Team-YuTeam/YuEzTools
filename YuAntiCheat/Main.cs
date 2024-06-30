@@ -106,7 +106,6 @@ public class Main : BasePlugin
         Harmony.PatchAll();
         if(ModMode != 0) ConsoleManager.DetachConsole();
         //模组加载好了标语
-        Logger.LogInfo($"模组加载完成-YuAC is starting now!");
         YuAntiCheat.Logger.Msg("========= YuAC loaded! =========", "YuAC Plugin Load");
     }
 }

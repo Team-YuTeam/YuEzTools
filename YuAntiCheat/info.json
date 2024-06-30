@@ -1,5 +1,5 @@
 {
-  "version": "1.1.2.0",
+  "version": "1.1.1.0",
 
   "minVer": "latest",
   "creation": "1",
@@ -15,6 +15,6 @@
 
   "url": {
     "github": "https://github.com/Night-GUA/YuAntiCheat/releases/latest/download/YuAntiCheat.dll",
-    "gitee": "https://gitee.com/xigua_ya/YuAntiCheat/releases/download/v1.1.0.1/YuAntiCheat.dll"
+    "gitee": "https://gitee.com/xigua_ya/YuAntiCheat/releases/download/{{showVer}}/YuAntiCheat.dll"
   }
 }

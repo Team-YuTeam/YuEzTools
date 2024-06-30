@@ -19,6 +19,7 @@ public class MainMenuManagerPatch
     public static GameObject GiteeButton;
     public static GameObject GitlabButton;
     public static GameObject UpdateButton;
+    public static GameObject PlayButton;
 
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.OpenGameModeMenu))]
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.OpenAccountMenu))]
@@ -126,10 +127,21 @@ public class MainMenuManagerPatch
         GitlabButton.gameObject.SetActive(true);
         GitlabButton.name = "YuAC Gitlab Button";
         
+        PlayButton = __instance.playButton.gameObject;
         if (UpdateButton == null)
         {
-            UpdateButton = CreatButton("一键更新", () =>
+            
+            UpdateButton = Object.Instantiate(PlayButton, PlayButton.transform.parent);
+            UpdateButton.name = "YuAC Update Button";
+            UpdateButton.transform.localPosition = PlayButton.transform.localPosition - new Vector3(0f, 0f, 3f);
+            var passiveButton = UpdateButton.GetComponent<PassiveButton>();
+            passiveButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0.49f, 0.34f, 0.62f, 0.8f);
+            passiveButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(0.49f, 0.34f, 0.62f, 1f);
+            passiveButton.OnClick = new();
+            passiveButton.OnClick.AddListener((Action)(() =>
             {
+                PlayButton.SetActive(true);
+                UpdateButton.SetActive(false);
                 if (!Input.GetKey(KeyCode.LeftShift))
                 {
                     if (ModUpdater.CanUpdate)
@@ -138,14 +150,33 @@ public class MainMenuManagerPatch
                     }
                     else
                     {
-                        CustomPopup.Show(Translator.GetString("UpdateBySelfTitle"),
-                            Translator.GetString("UpdateBySelfText"),
-                            new() { (Translator.GetString(StringNames.Okay), null) });
+                        CustomPopup.Show(Translator.GetString("UpdateBySelfTitle"), Translator.GetString("UpdateBySelfText"), new() { (Translator.GetString(StringNames.Okay), null) });
                     }
                 }
-            });
-            UpdateButton.gameObject.SetActive(false);
-            UpdateButton.name = "YuAC Update Button";
+            }));
+            UpdateButton.transform.transform.FindChild("FontPlacer").GetChild(0).gameObject.DestroyTranslator();
         }
+        
+        // if (UpdateButton == null)
+        // {
+        //     UpdateButton = CreatButton("一键更新", () =>
+        //     {
+        //         if (!Input.GetKey(KeyCode.LeftShift))
+        //         {
+        //             if (ModUpdater.CanUpdate)
+        //             {
+        //                 ModUpdater.StartUpdate();
+        //             }
+        //             else
+        //             {
+        //                 CustomPopup.Show(Translator.GetString("UpdateBySelfTitle"),
+        //                     Translator.GetString("UpdateBySelfText"),
+        //                     new() { (Translator.GetString(StringNames.Okay), null) });
+        //             }
+        //         }
+        //     });
+        //     UpdateButton.gameObject.SetActive(false);
+        //     UpdateButton.name = "YuAC Update Button";
+        // }
     }
 }

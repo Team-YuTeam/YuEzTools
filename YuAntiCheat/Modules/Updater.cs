@@ -30,6 +30,7 @@ public class ModUpdater
 #else
         "https://raw.githubusercontent.com/Night-GUA/YuAntiCheat/main/YuAntiCheat/info.json",
         "https://gitee.com/xigua_ya/YuAntiCheat/raw/main/YuAntiCheat/info.json",
+        "https://gitlab.com/yu9522124/YuAntiCheat/-/raw/main/YuAntiCheat/info.json?ref_type=heads",
 #endif
     };
     private static IReadOnlyList<string> GetInfoFileUrlList()
@@ -75,11 +76,11 @@ public class ModUpdater
     }
     public static void SetUpdateButtonStatus()
     {
-        //MainMenuManagerPatch.UpdateButton.gameObject.SetActive(isChecked && hasUpdate);
-        MainMenuManagerPatch.UpdateButton.gameObject.SetActive(true);
+        MainMenuManagerPatch.UpdateButton.gameObject.SetActive(isChecked && hasUpdate);
+        MainMenuManagerPatch.UpdateButton.gameObject.SetActive(!MainMenuManagerPatch.UpdateButton.activeSelf);
         var buttonText = MainMenuManagerPatch.UpdateButton.transform.FindChild("FontPlacer").GetChild(0).GetComponent<TextMeshPro>();
         Logger.Info(showVer, "ver");
-        buttonText.text = $"{(CanUpdate ? "一键更新": Translator.GetString("updateNotice"))}\nv{showVer}";
+        buttonText.text = $"{(CanUpdate ? Translator.GetString("updateButton"): Translator.GetString("updateNotice"))}\nv{showVer}";
         Logger.Info(showVer, "ver");
     }
     public static void Retry()
