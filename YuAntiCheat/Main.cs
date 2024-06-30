@@ -87,11 +87,13 @@ public class Main : BasePlugin
             "A custom color for your MalumMenu GUI. Supports html color codes");
 
         menuUI = AddComponent<MenuUI>();
-        
+
+        //Translator.Init();
         
         BetaBuildURL = Config.Bind("Other", "BetaBuildURL", "");
         
         Logger = BepInEx.Logging.Logger.CreateLogSource("YuAntiCheat"); //输出前缀 设置！
+        YuAntiCheat.Logger.Enable();
 
         PluginModuleInitializerAttribute.InitializeAll();
         
@@ -105,5 +107,6 @@ public class Main : BasePlugin
         if(ModMode != 0) ConsoleManager.DetachConsole();
         //模组加载好了标语
         Logger.LogInfo($"模组加载完成-YuAC is starting now!");
+        YuAntiCheat.Logger.Msg("========= YuAC loaded! =========", "YuAC Plugin Load");
     }
 }

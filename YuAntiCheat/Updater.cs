@@ -28,8 +28,8 @@ public class ModUpdater
 #if DEBUG
         $"file:///{Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "info.json")}",
 #else
-        "https://raw.githubusercontent.com/Night-GUA/YuAntiCheat/main/Readme.md/info.json",
-        "https://gitee.com/xigua_ya/YuAntiCheat/raw/main/info.json",
+        "https://raw.githubusercontent.com/Night-GUA/YuAntiCheat/main/YuAntiCheat/info.json",
+        "https://gitee.com/xigua_ya/YuAntiCheat/raw/main/YuAntiCheat/info.json",
 #endif
     };
     private static IReadOnlyList<string> GetInfoFileUrlList()
@@ -75,11 +75,12 @@ public class ModUpdater
     }
     public static void SetUpdateButtonStatus()
     {
-        MainMenuManagerPatch.UpdateButton.gameObject.SetActive(isChecked && hasUpdate && (firstStart || forceUpdate));
+        //MainMenuManagerPatch.UpdateButton.gameObject.SetActive(isChecked && hasUpdate);
+        MainMenuManagerPatch.UpdateButton.gameObject.SetActive(true);
         var buttonText = MainMenuManagerPatch.UpdateButton.transform.FindChild("FontPlacer").GetChild(0).GetComponent<TextMeshPro>();
         Logger.Info(showVer, "ver");
-        buttonText.text = $"{(CanUpdate? Translator.GetString("updateButton"): Translator.GetString("updateNotice"))}\nv{showVer ?? " ???"}";
-        Logger.Info(showVer.ToString(), "ver");
+        buttonText.text = $"{(CanUpdate ? "一键更新": Translator.GetString("updateNotice"))}\nv{showVer}";
+        Logger.Info(showVer, "ver");
     }
     public static void Retry()
     {

@@ -30,6 +30,7 @@ public static class Translator
         var fileNames = assembly.GetManifestResourceNames().Where(x => x.StartsWith($"YuAntiCheat.Resources.Languages."));
         foreach (var fileName in fileNames)
         {
+            Logger.Msg("This fileName:"+fileName,"DebugTestYuAC");
             var yaml = new YamlStream();
             var stream = assembly.GetManifestResourceStream(fileName);
             yaml.Load(new StringReader(new StreamReader(stream).ReadToEnd()));
@@ -56,6 +57,7 @@ public static class Translator
             {
                 translateMaps.Remove(langId);
                 translateMaps.Add(langId, dic);
+                Logger.Msg($"翻译文件 [{fileName}] 提供语言ID{langId}", "Translator");
             }
             else
                 Logger.Error($"翻译文件 [{fileName}] 没有提供语言ID", "Translator");
@@ -114,8 +116,8 @@ public static class Translator
         }
         catch (Exception Ex)
         {
-            Logger.Fatal($"Error oucured at [{str}] in String.csv", "Translator");
-            Logger.Error("Here was the error:\n" + Ex.ToString(), "Translator");
+            Logger.Fatal($"Error oucured at [{str}] in String.yaml", "Translator");
+            Logger.Error("Here was the error:\n" + Ex, "Translator");
         }
         return res;
     }

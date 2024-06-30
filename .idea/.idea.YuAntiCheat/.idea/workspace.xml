@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
+    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="111">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/AntiCheatForAll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/AntiCheatForAll.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/PlayerPhysicPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/PlayerPhysicPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/TitleLogoPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/TitleLogoPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/UIStructures.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/UIStructures.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Main.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Translator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Translator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Updater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Updater.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/YuAntiCheat.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/YuAntiCheat.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/info.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +27,7 @@
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/363b4e8555584df6acf86b7aa6712246a240b0/ce/fb9040a4/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/363b4e8555584df6acf86b7aa6712246a240b0/e0/24b0ee4e/Enum.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/38e02459570a4e3fba60c69fceb1d5bf226e00/81/0ba42fa3/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/38e02459570a4e3fba60c69fceb1d5bf226e00/d8/0eb11bf7/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
@@ -43,14 +45,24 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60b5a5ff669f4eadab3f0c9385af9261691e00/e9/23988997/PlayerControl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60b5a5ff669f4eadab3f0c9385af9261691e00/f0/08b866ab/InnerNetClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/2c/2d4f5ad7/RoleTypes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/2c/302350ad/TaskSet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/3b/43a8501c/PingTracker.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/4d/103a4ec7/RpcCalls.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/68/0782517e/LogicGameFlow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/75/4ee06908/NetworkedPlayerInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/d2/5506c416/TranslationController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad7b63e9ee60461bb002bc8fb8f18583237c00/ce/9e5e62f1/KeyCode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d064324b32114398b094ea8bd854086828200/4e/985ade96/MessageReader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/AntiCheatForAll.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/AntiCheatForAll.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/GameModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/InitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/PluginModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/YuAntiCheat/Debugger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/YuAntiCheat/ILogHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/YuAntiCheat/LogHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/YuAntiCheat/SendChat.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/YuAntiCheat/SendInGamePatch.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/YuAntiCheat/Translator.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -164,6 +176,11 @@
       <workItem from="1719635738488" duration="6835000" />
       <workItem from="1719643443144" duration="10985000" />
       <workItem from="1719659605555" duration="1940000" />
+      <workItem from="1719661583805" duration="184000" />
+      <workItem from="1719670642160" duration="7246000" />
+      <workItem from="1719678330808" duration="257000" />
+      <workItem from="1719740770863" duration="1914000" />
+      <workItem from="1719743327734" duration="6201000" />
     </task>
     <task id="LOCAL-00001" summary="Perfection of basic functions">
       <option name="closed" value="true" />
@@ -317,7 +334,31 @@
       <option name="project" value="LOCAL" />
       <updated>1719656266014</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="v1.1.0.1">
+      <option name="closed" value="true" />
+      <created>1719661632209</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1719661632210</updated>
+    </task>
+    <task id="LOCAL-00021" summary="change version text">
+      <option name="closed" value="true" />
+      <created>1719661649904</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1719661649904</updated>
+    </task>
+    <task id="LOCAL-00022" summary="111">
+      <option name="closed" value="true" />
+      <created>1719746084253</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1719746084253</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,6 +464,9 @@
     <MESSAGE value="ReSet name" />
     <MESSAGE value="MMUI!" />
     <MESSAGE value="version 1.1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 1.1.0" />
+    <MESSAGE value="v1.1.0.1" />
+    <MESSAGE value="change version text" />
+    <MESSAGE value="111" />
+    <option name="LAST_COMMIT_MESSAGE" value="111" />
   </component>
 </project>
