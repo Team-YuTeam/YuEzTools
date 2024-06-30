@@ -15,6 +15,7 @@
 
   "url": {
     "github": "https://github.com/Night-GUA/YuAntiCheat/releases/latest/download/YuAntiCheat.dll",
-    "gitee": "https://gitee.com/xigua_ya/YuAntiCheat/releases/download/{{showVer}}/YuAntiCheat.dll"
+    "gitee": "https://gitee.com/xigua_ya/YuAntiCheat/releases/download/{{showVer}}/YuAntiCheat.dll",
+    "kkgithub": "https://kkgithub.com/Night-GUA/YuAntiCheat/releases/latest/download/YuAntiCheat.dll"
   }
 }

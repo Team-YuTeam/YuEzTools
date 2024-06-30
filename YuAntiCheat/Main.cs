@@ -18,6 +18,7 @@ using Il2CppSystem.IO;
 using YuAntiCheat.Get;
 using YuAntiCheat.Attributes;
 using YuAntiCheat.UI;
+using YuAntiCheat.Utils;
 
 [assembly: AssemblyFileVersion(YuAntiCheat.Main.PluginVersion)]
 [assembly: AssemblyInformationalVersion(YuAntiCheat.Main.PluginVersion)]
@@ -33,7 +34,7 @@ public class Main : BasePlugin
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
     public static readonly string MainMenuText = "外挂根本就不可能存在好嘛~"; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuAntiCheat"; //咱们模组的Guid
-    public const string PluginVersion = "1.1.1.0"; //咱们模组的版本号
+    public const string PluginVersion = "1.0.0.0"; //咱们模组的版本号
     public const string CanUseInAmongUsVer = "2024.6.18"; //智齿的AU版本
     public const int PluginCreation = 1;
 
@@ -88,6 +89,13 @@ public class Main : BasePlugin
 
         menuUI = AddComponent<MenuUI>();
 
+        ResourceUtils.WriteToFileFromResource(
+            "BepInEx/core/YamlDotNet.dll",
+            "YuAntiCheat.Resources.InDLL.Depends.YamlDotNet.dll");
+        ResourceUtils.WriteToFileFromResource(
+            "BepInEx/core/YamlDotNet.xml",
+            "YuAntiCheat.Resources.InDLL.Depends.YamlDotNet.xml");
+        
         //Translator.Init();
         
         BetaBuildURL = Config.Bind("Other", "BetaBuildURL", "");

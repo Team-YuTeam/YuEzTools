@@ -31,6 +31,7 @@ public class ModUpdater
         "https://raw.githubusercontent.com/Night-GUA/YuAntiCheat/main/YuAntiCheat/info.json",
         "https://gitee.com/xigua_ya/YuAntiCheat/raw/main/YuAntiCheat/info.json",
         "https://gitlab.com/yu9522124/YuAntiCheat/-/raw/main/YuAntiCheat/info.json?ref_type=heads",
+        "https://raw.kkgithub.com/Night-GUA/YuAntiCheat/main/YuAntiCheat/info.json",
 #endif
     };
     private static IReadOnlyList<string> GetInfoFileUrlList()
@@ -61,6 +62,7 @@ public class ModUpdater
     public static string announcement_zh = "";
     public static string announcement_en = "";
     public static string downloadUrl_github = "";
+    public static string downloadUrl_kkgithub = "";
     public static string downloadUrl_gitee = "";
     private static int retried = 0;
     private static bool firstLaunch = true;
@@ -115,6 +117,7 @@ public class ModUpdater
             Logger.Info("File MD5: " + md5, "CheckRelease");
             Logger.Info("Github Url: " + downloadUrl_github, "CheckRelease");
             Logger.Info("Gitee Url: " + downloadUrl_gitee, "CheckRelease");
+            Logger.Info("kkGithub Url: " + downloadUrl_kkgithub, "CheckRelease");
             Logger.Info("Announcement (English): " + announcement_en, "CheckRelease");
             Logger.Info("Announcement (SChinese): " + announcement_zh, "CheckRelease");
 
@@ -160,6 +163,7 @@ public class ModUpdater
             Logger.Info("File MD5: " + md5, "CheckRelease");
             Logger.Info("Github Url: " + downloadUrl_github, "CheckRelease");
             Logger.Info("Gitee Url: " + downloadUrl_gitee, "CheckRelease");
+            Logger.Info("kkGithub Url: " + downloadUrl_kkgithub, "CheckRelease");
             Logger.Info("Announcement (English): " + announcement_en, "CheckRelease");
             Logger.Info("Announcement (SChinese): " + announcement_zh, "CheckRelease");
         }
@@ -230,6 +234,7 @@ public class ModUpdater
             JObject downloadUrl = data["url"].Cast<JObject>();
             downloadUrl_github = downloadUrl["github"]?.ToString();
             downloadUrl_gitee = downloadUrl["gitee"]?.ToString().Replace("{{showVer}}", $"v{showVer}");
+            downloadUrl_kkgithub = downloadUrl["kkgithub"]?.ToString();
 
             hasUpdate = Main.version < latestVersion;
             forceUpdate = Main.version < minimumVersion || creation > Main.PluginCreation;
@@ -253,6 +258,7 @@ public class ModUpdater
             {
                 (Translator.GetString("updateSource.Github"), () => StartUpdate(downloadUrl_github)),
                 (Translator.GetString("updateSource.Gitee"), () => StartUpdate(downloadUrl_gitee)),
+                (Translator.GetString("updateSource.kkGithub"), () => StartUpdate(downloadUrl_kkgithub)),
                 (Translator.GetString(StringNames.Cancel), SetUpdateButtonStatus)
             });
             return;

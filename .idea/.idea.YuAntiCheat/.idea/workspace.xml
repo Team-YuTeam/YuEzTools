@@ -4,53 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="111忘记提交了">
+    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Utils/ResourceUtils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/AUMCheat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/CheatCheck/AUMCheat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/AntiCheatForAll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/ChatBubblePatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/ChatBubblePatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/CustomPopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/CustomPopup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Debugger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Modules/Debugger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/DisconnectPatch.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Downloader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Modules/Downloader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/EnumHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Helpers/EnumHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/GetPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Get/GetPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/ILogHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Keys.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Keys/Keys.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/LateTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/LateTask.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/LobbyStartPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/LobbyStartPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/LogHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Modules/LogHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Get/GetPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Utils/GetPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Get/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Utils/Utils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/ILogHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Modules/ILogHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YuAntiCheat/Main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Main.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/MainMenuButtonHoverAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/UI/MainMenuButtonHoverAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/MainMenuManagerPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/MainMenuManagerPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/MalumMenuCheck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/CheatCheck/MalumMenuCheck.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/MenuUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/UI/MenuUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/ModManagerLateUpdatePatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/ModManagerLateUpdatePatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/MurderHacker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/MurderHacker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/ObjectHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Helpers/ObjectHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/OnPlayerJoinedPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/OnPlayerJoinedPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/OnlyYuAntiCheat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/OnlyYuAntiCheat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Ping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/Ping.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/PlayerPhysicPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/PlayerPhysicPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/RPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/RPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/RegistryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Modules/RegistryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/Brazilian.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Modules/Updater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Modules/Updater.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/Chinese Simplified.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/Chinese Simplified.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/Russian.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/SMCheat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/CheatCheck/SMCheat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/SendChat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Send/SendChat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/SendInGamePatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/SendInGamePatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/SentYuacRpc.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Send/SentYuacRpc.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/SimpleButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/UI/SimpleButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/TMPTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/UI/TMPTemplate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/TitleLogoPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/UI/TitleLogoPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Toggles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/UI/Toggles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Translator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Modules/Translator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/UIStructures.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/UI/UIStructures.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/UpdateFriendCodeUIPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/UpdateFriendCodeUIPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Updater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Modules/Updater.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Get/Utils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/YuACKeysOnMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/UI/YuACKeysOnMenu.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YuAntiCheat/info.json" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/info.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -221,7 +183,7 @@
       <workItem from="1719670642160" duration="7246000" />
       <workItem from="1719678330808" duration="257000" />
       <workItem from="1719740770863" duration="1914000" />
-      <workItem from="1719743327734" duration="8971000" />
+      <workItem from="1719743327734" duration="11161000" />
     </task>
     <task id="LOCAL-00001" summary="Perfection of basic functions">
       <option name="closed" value="true" />
@@ -415,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719754217100</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="规范整理文件 移动文件进文件夹">
+      <option name="closed" value="true" />
+      <created>1719756911954</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1719756911954</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,6 +496,7 @@
     <MESSAGE value="111" />
     <MESSAGE value="Updater" />
     <MESSAGE value="111忘记提交了" />
-    <option name="LAST_COMMIT_MESSAGE" value="111忘记提交了" />
+    <MESSAGE value="规范整理文件 移动文件进文件夹" />
+    <option name="LAST_COMMIT_MESSAGE" value="规范整理文件 移动文件进文件夹" />
   </component>
 </project>
