@@ -7,6 +7,8 @@ using Hazel;
 using System.Reflection;
 using AmongUs.GameOptions;
 using Sentry.Internal.Extensions;
+using HarmonyLib;
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
 
 namespace YuAntiCheat.Utils;
 
@@ -27,6 +29,8 @@ public class Utils
             return $"<color=#ff0000ff>\nPing: {ping} ms</color>";
         }
     }
+    public static string GetString(StringNames stringName)
+        => DestroyableSingleton<TranslationController>.Instance.GetString(stringName, new Il2CppReferenceArray<Il2CppSystem.Object>(0));
     public static string getColoredFPSText(float fps)
     {
         string a = !Toggles.ShowPing ? "\n" : "";

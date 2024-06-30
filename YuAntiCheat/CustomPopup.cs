@@ -124,14 +124,14 @@ public static class CustomPopup
         {
             Fill = Object.Instantiate(DOBScreen.FindChild("Fill").gameObject);
             Fill.transform.SetLocalZ(-100f);
-           Fill.name = "TONEX Info Popup Fill";
+           Fill.name = "YuAC Info Popup Fill";
          //   Fill.transform.localPosition += Vector3.back * 150;
            Fill.SetActive(false);
 
             InfoScreen = Object.Instantiate(DOBScreen.FindChild("InfoPage").gameObject);
             InfoScreen.transform.SetLocalZ(-110f);
     //        InfoScreen.transform.localPosition += Vector3.back * 150;
-            InfoScreen.name = "TONEX Info Popup Page";
+            InfoScreen.name = "YuAC Info Popup Page";
             InfoScreen.SetActive(false);
 
             TitleTMP = InfoScreen.transform.FindChild("Title Text").GetComponent<TextMeshPro>();

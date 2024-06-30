@@ -63,6 +63,14 @@ internal class AntiCheatForAll
                     }
                     break;
 
+                
+                case RpcCalls.SetTasks:
+                    if (GetPlayer.IsMeeting || GetPlayer.IsLobby || GetPlayer.IsInGame || pc.GetClient() != AmongUsClient.Instance.GetHost())
+                    {
+                        Logger.Info($"【{pc.GetClientId()}:{pc.GetRealName()}】非法设置玩家的任务数量","AntiCheatForAll");
+                        return true;
+                    }
+                    break;
                 case RpcCalls.SetRole:
                     var role = (RoleTypes)sr.ReadUInt16();
                     var canOverrideRole = sr.ReadBoolean();
