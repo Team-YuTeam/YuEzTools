@@ -16,39 +16,39 @@ public class MenuUI : MonoBehaviour
     // Create all groups (buttons) and their toggles on start
     private void Start()
     {
-        groups.Add(new GroupInfo("界面", false, new List<ToggleInfo>() {
-            new ToggleInfo("深色界面", () => Toggles.DarkMode, x => Toggles.DarkMode = x),
+        groups.Add(new GroupInfo(Translator.GetString("Interface"), false, new List<ToggleInfo>() {
+            new ToggleInfo(Translator.GetString("DarkUI"), () => Toggles.DarkMode, x => Toggles.DarkMode = x),
             }, new List<SubmenuInfo> {
-            new SubmenuInfo("Ping部分", false, new List<ToggleInfo>() {
-                new ToggleInfo("显示commit号", () => Toggles.ShowCommit, x => Toggles.ShowCommit = x),
-                new ToggleInfo("显示模组标语", () => Toggles.ShowModText, x => Toggles.ShowModText = x),
-                new ToggleInfo("显示是否安全模式状态", () => Toggles.ShowIsSafe, x => Toggles.ShowIsSafe = x),
-                new ToggleInfo("显示安全模式提示语", () => Toggles.ShowSafeText, x => Toggles.ShowSafeText = x),
-                new ToggleInfo("显示是否深色模式状态", () => Toggles.ShowIsDark, x => Toggles.ShowIsDark = x),
-                new ToggleInfo("显示Ping", () => Toggles.ShowPing, x => Toggles.ShowPing = x),
-                new ToggleInfo("显示FPS", () => Toggles.ShowFPS, x => Toggles.ShowFPS = x),
+            new SubmenuInfo(Translator.GetString("PingPart"), false, new List<ToggleInfo>() {
+                new ToggleInfo(Translator.GetString("ShowCommit"), () => Toggles.ShowCommit, x => Toggles.ShowCommit = x),
+                new ToggleInfo(Translator.GetString("ShowModText"), () => Toggles.ShowModText, x => Toggles.ShowModText = x),
+                new ToggleInfo(Translator.GetString("ShowIsSafe"), () => Toggles.ShowIsSafe, x => Toggles.ShowIsSafe = x),
+                new ToggleInfo(Translator.GetString("ShowSafeText"), () => Toggles.ShowSafeText, x => Toggles.ShowSafeText = x),
+                new ToggleInfo(Translator.GetString("ShowIsDark"), () => Toggles.ShowIsDark, x => Toggles.ShowIsDark = x),
+                new ToggleInfo(Translator.GetString("ShowPing"), () => Toggles.ShowPing, x => Toggles.ShowPing = x),
+                new ToggleInfo(Translator.GetString("ShowFPS"), () => Toggles.ShowFPS, x => Toggles.ShowFPS = x),
             }),
             }
         ));
-        groups.Add(new GroupInfo("反作弊", false, new List<ToggleInfo>() {
-                new ToggleInfo("安全模式", () => Toggles.SafeMode, x => Toggles.SafeMode = x),
+        groups.Add(new GroupInfo(Translator.GetString("MenuUI.AntiCheat"), false, new List<ToggleInfo>() {
+                new ToggleInfo(Translator.GetString("MenuUI.SafeMode"), () => Toggles.SafeMode, x => Toggles.SafeMode = x),
             }, new List<SubmenuInfo> {
                 
             }
         ));
-        groups.Add(new GroupInfo("快捷按钮", false, new List<ToggleInfo>() {
-                new ToggleInfo("输出日志", () => Toggles.DumpLog, x => Toggles.DumpLog = x),
-                new ToggleInfo("打开游戏运行目录", () => Toggles.OpenGameDic, x => Toggles.OpenGameDic = x),
+        groups.Add(new GroupInfo(Translator.GetString("MenuUI.ShortcutButton"), false, new List<ToggleInfo>() {
+                new ToggleInfo(Translator.GetString("MenuUI.DumpLog"), () => Toggles.DumpLog, x => Toggles.DumpLog = x),
+                new ToggleInfo(Translator.GetString("MenuUI.OpenGameDic"), () => Toggles.OpenGameDic, x => Toggles.OpenGameDic = x),
             }, new List<SubmenuInfo> {
-                new SubmenuInfo("仅房主", false, new List<ToggleInfo>() {
-                    new ToggleInfo("更改倒计时为0", () => Toggles.ChangeDownTimerToZero, x => Toggles.ChangeDownTimerToZero = x),
-                    new ToggleInfo("恶搞倒计时", () => Toggles.ChangeDownTimerTo114514, x => Toggles.ChangeDownTimerTo114514 = x),
-                    new ToggleInfo("取消倒计时", () => Toggles.AbolishDownTimer, x => Toggles.AbolishDownTimer = x),
+                new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.OnlyHost"), false, new List<ToggleInfo>() {
+                    new ToggleInfo(Translator.GetString("MenuUI.ChangeDownTimerToZero"),() => Toggles.ChangeDownTimerToZero, x => Toggles.ChangeDownTimerToZero = x),
+                    new ToggleInfo(Translator.GetString("MenuUI.ChangeDownTimerTo114514"), () => Toggles.ChangeDownTimerTo114514, x => Toggles.ChangeDownTimerTo114514 = x),
+                    new ToggleInfo(Translator.GetString("MenuUI.AbolishDownTimer"), () => Toggles.AbolishDownTimer, x => Toggles.AbolishDownTimer = x),
                 }),
             }
         ));
-        groups.Add(new GroupInfo("其他功能", false, new List<ToggleInfo>() {
-                new ToggleInfo("突破FPS上限", () => Toggles.FPSPlus, x => Toggles.FPSPlus = x),
+        groups.Add(new GroupInfo(Translator.GetString("MenuUI.Other"), false, new List<ToggleInfo>() {
+                new ToggleInfo(Translator.GetString("MenuUI.FPSPlus"), () => Toggles.FPSPlus, x => Toggles.FPSPlus = x),
             }, new List<SubmenuInfo> {
                 
                 

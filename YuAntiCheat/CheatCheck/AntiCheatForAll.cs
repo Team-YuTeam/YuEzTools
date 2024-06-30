@@ -71,6 +71,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+                
                 case RpcCalls.SetRole:
                     var role = (RoleTypes)sr.ReadUInt16();
                     var canOverrideRole = sr.ReadBoolean();

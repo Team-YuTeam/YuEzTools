@@ -79,7 +79,7 @@ public class ModUpdater
     public static void SetUpdateButtonStatus()
     {
         MainMenuManagerPatch.UpdateButton.gameObject.SetActive(isChecked && hasUpdate);
-        MainMenuManagerPatch.UpdateButton.gameObject.SetActive(!MainMenuManagerPatch.UpdateButton.activeSelf);
+        MainMenuManagerPatch.PlayButton.gameObject.SetActive(!MainMenuManagerPatch.UpdateButton.activeSelf);
         var buttonText = MainMenuManagerPatch.UpdateButton.transform.FindChild("FontPlacer").GetChild(0).GetComponent<TextMeshPro>();
         Logger.Info(showVer, "ver");
         buttonText.text = $"{(CanUpdate ? Translator.GetString("updateButton"): Translator.GetString("updateNotice"))}\nv{showVer}";

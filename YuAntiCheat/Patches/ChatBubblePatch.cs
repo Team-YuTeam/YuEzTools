@@ -33,8 +33,8 @@ public static class ChatBubblePatch
             chatText.Contains("台独") ||
             chatText.Contains("共产党")) // 游戏名字屏蔽词)
         {
-            if(Toggles.DarkMode) chatText = "<color=#FF0000>[疑似违规消息]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
-            else chatText = "<color=#FF0000>[疑似违规消息]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
+            if(Toggles.DarkMode) chatText = $"<color=#FF0000>[{Translator.GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
+            else chatText = $"<color=#FF0000>[{Translator.GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
         }
         else
         {

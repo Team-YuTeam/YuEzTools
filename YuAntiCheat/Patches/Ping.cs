@@ -47,11 +47,9 @@ public static class PingTracker_Update
         if(Toggles.ShowSafeText)
         {
             if (Toggles.SafeMode)
-                __instance.text.text +=
-                    "\n<size=75%>按下 <color=#DC143C>F5</color> 以切换不安全<color=#1E90FF>(UnSafe)</color>模式(不推荐)</size>";
+                __instance.text.text += $"\n{Translator.GetString("SafeModeText")}";
             else
-                __instance.text.text +=
-                    "\n<size=75%>按下 <color=#1E90FF>F5</color> 以切换安全<color=#DC143C>(Safe)</color>模式(推荐)</size>";
+                __instance.text.text += $"\n{Translator.GetString("UnSafeModeText")}";
         }
         if(Toggles.ShowIsDark)
         {

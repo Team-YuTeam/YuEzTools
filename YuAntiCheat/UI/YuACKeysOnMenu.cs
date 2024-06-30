@@ -44,7 +44,7 @@ public class YuACKeysOnMenu
     {
         Main.Logger.LogInfo("重置倒计时");
         GameStartManager.Instance.ResetStartState();
-        SendInGamePatch.SendInGame("取消倒计时");
+        SendInGamePatch.SendInGame(Translator.GetString("YuACKeysOnMenu.AbolishDownTimer"));
     }
     
     public static void DumpLog()
@@ -55,7 +55,7 @@ public class YuACKeysOnMenu
         if (!Directory.Exists(f)) Directory.CreateDirectory(f);
         FileInfo file = new(@$"{Environment.CurrentDirectory}/BepInEx/LogOutput.log");
         file.CopyTo(@filename);
-        SendInGamePatch.SendInGame($"日志已保存 YuAC - v{Main.PluginVersion}-{t}.log");
+        SendInGamePatch.SendInGame($"{Translator.GetString("YuACKeysOnMenu.DumpLog")} YuAC - v{Main.PluginVersion}-{t}.log");
         ProcessStartInfo psi = new ProcessStartInfo("Explorer.exe")
             { Arguments = "/e,/select," + @filename.Replace("/", "\\") };
         Process.Start(psi);

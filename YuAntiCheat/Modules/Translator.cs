@@ -88,7 +88,7 @@ public static class Translator
     
     public static string GetString(string str, SupportedLangs langId)
     {
-        var res = $"<NOT FOUND:{str}>";
+        var res = $"<{GetString("NotFoundStringInYaml")}:{str}>";
         
         try
         {

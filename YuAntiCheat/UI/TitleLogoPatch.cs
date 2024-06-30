@@ -203,11 +203,12 @@ public static class VersionShower_Start
         __instance.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
         if(Main.ModMode == 1) __instance.text.text = TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#DC143C>您正在使用 v{Main.PluginVersion} Canary测试版！</color>)" : $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#DC143C>You are using  v{Main.PluginVersion} Canary Version</color>)";
         else if(Main.ModMode == 0)__instance.text.text = TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#DC143C>您正在使用 v{Main.PluginVersion} Debug开发者版！</color>)" : $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#DC143C>You are using  v{Main.PluginVersion} Debug Version</color>)";
-        else{ 
-            if(ModUpdater.hasUpdate)
-                __instance.text.text = TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#DC143C>YuAC有v{ModUpdater.latestVersion}更新!</color>)" : $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#DC143C>YuAC has v{ModUpdater.latestVersion} version update!</color>)";
+        else
+        {
+            if (ModUpdater.hasUpdate)
+                __instance.text.text = string.Format(Translator.GetString("VerShow.HasUpdate"),Main.ModColor,Main.ModName,ModUpdater.latestVersion);
             else
-                __instance.text.text = TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#00FF00>YuAC无更新</color>)" : $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#00FF00>Your YuAC version is up to date</color>)";
+                __instance.text.text = string.Format(Translator.GetString("VerShow.HasNotUpdate"),Main.ModColor,Main.ModName);
         } 
     }
 }

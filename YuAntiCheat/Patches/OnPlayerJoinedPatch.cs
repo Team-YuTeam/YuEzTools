@@ -25,10 +25,6 @@ class OnPlayerJoinedPatch
     {
         Main.Logger.LogInfo(
             $"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/ProductUserId:{client.ProductUserId}) 加入房间");
-        SendInGamePatch.SendInGame(
-            TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese ||
-            TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese
-                ? $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>加入房间</color>"
-                : $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>Join This Room</color>");
+        SendInGamePatch.SendInGame($"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
     }
 }
