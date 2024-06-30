@@ -98,6 +98,7 @@ public class ModUpdater
 
         foreach (var url in GetInfoFileUrlList())
         {
+            Logger.Msg("Using "+url,"Updater");
             if (GetVersionInfo(url).GetAwaiter().GetResult())
             {
                 isChecked = true;

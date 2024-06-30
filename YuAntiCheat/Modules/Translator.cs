@@ -88,7 +88,7 @@ public static class Translator
     
     public static string GetString(string str, SupportedLangs langId)
     {
-        var res = $"<{GetString("NotFoundStringInYaml")}:{str}>";
+        var res = $"<NOT FOUND:{str}>";
         
         try
         {
@@ -111,7 +111,7 @@ public static class Translator
                 if (stringNames != null && stringNames.Any())
                     res = GetString(stringNames.FirstOrDefault());
             }
-            if (res == $"<INVALID:{str}>")
+            if (res == $"<NOT FOUND:{str}>")
             Logger.Info(res, "test");
         }
         catch (Exception Ex)
