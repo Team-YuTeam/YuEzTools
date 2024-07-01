@@ -54,7 +54,7 @@ SeeHacker: "<color=#1E90FF>{0}</color> is a hacker"
 # MenuUI.Interface
 Interface: "Interface"
 DarkUI: "Dark Mode"
-PingPart: "Ping Display Place"
+PingPart: "Ping Display Section"
 ShowCommit: "Show Commit Id"
 ShowModText: "Show Mod Slogan"
 ShowIsSafe: "Show If Safe Mode Is Enabled"
@@ -82,8 +82,8 @@ MenuUI.FPSPlus: "Unlock FPS Upperlimit"
 
 # VerShow
 VerShow.HasUpdate: "<color={0}>{1}</color> (<color=#DC143C>YuAC has a new update：v{2}!</color>)"
-VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>Your YuAC is the latest</color>)"
+VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>Your YuAC is up to date</color>)"
 
-# YuACKeysOnMenu
-YuACKeysOnMenu.AbolishDownTimer: "Cancel Start Countdown"
-YuACKeysOnMenu.DumpLog: "Log Saved"
+# FunctionPatch
+FunctionPatch.AbolishDownTimer: "Cancel Start Countdown"
+FunctionPatch.DumpLog: "Log Saved"
