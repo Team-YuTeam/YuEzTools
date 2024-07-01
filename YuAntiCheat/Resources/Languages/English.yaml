@@ -1,10 +1,10 @@
-﻿# YuAntiCheat 的语言文件 / Translation file of YuAntiCheat
+# YuAntiCheat 的语言文件 / Translation file of YuAntiCheat
 
 # 当前翻译文件语言的ID / Language ID of current file
 LangID: "0"
 
 # 作者署名（不需要请留空）/ A sign of an author (Please leave blank when not needed)
-TextBelowVersionText: "Yu and Imp11"
+TextBelowVersionText: "Yu and Imp11 and 慕斯Mousse"
 
 # 更新检查
 Retry: "Try Again"
@@ -32,58 +32,58 @@ updateFileMd5Incorrect: "Failed: File MD5 check error\nThe file version of this 
 downloadFailed: "Failed: Download update file timeout or interrupt \nPlease change the network and retry or manually update"
 
 # 文本
-NotFoundStringInYaml: "Not found"
+NotFoundStringInYaml: "Not Found"
 
 # 聊天
-SuspectedViolationMessage: "Suspected Violation Message"
+SuspectedViolationMessage: "Suspected Inappropriate Chat"
 
 # 进入房间
-JoinRoom: "join this room"
+JoinRoom: "joined the lobby"
 
 # Ping
-SafeModeText: "<size=75%>按下 <color=#DC143C>F5</color> 以切换不安全<color=#1E90FF>(UnSafe)</color>模式(不推荐)</size>"
-UnSafeModeText: "<size=75%>按下 <color=#1E90FF>F5</color> 以切换安全<color=#DC143C>(Safe)</color>模式(推荐)</size>"
+SafeModeText: "<size=75%>Press <color=#DC143C>F5</color> to switch to<color=#1E90FF>(UnSafe)</color>mode(not recommended)</size>"
+UnSafeModeText: "<size=75%>Press <color=#1E90FF>F5</color> to switch to<color=#DC143C>(Safe)</color>mode(recommended)</size>"
 
 # 提示语
-AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您不是房主 <color=#FFFF00>无权</color>惩罚"
-AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您已开启<color=#1E90FF>[UnSafe]</color>模式 <color=#FFFF00>尝试<color=#FF4500>击杀</color>"
-AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 尝试<color=#FF4500>击杀</color>和<color=#FF0000>封禁</color>"
-AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 <color=#FFFF00>尝试<color=#FF0000>封禁</color>"
-SeeHacker: "<color=#1E90FF>{0}</color> 是外挂"
+AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are not the host - <color=#FFFF00>Cannot</color> punish the hacker"
+AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\n<color=#1E90FF>[UnSafe]</color> mode enabled - <color=#FFFF00>Trying to <color=#FF4500>kill</color> the hacker"
+AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are the host - Trying to <color=#FF4500>kill</color> and <color=#FF0000>ban</color> the hacker"
+AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are the host - <color=#FFFF00>Trying to <color=#FF0000>ban</color> the hacker"
+SeeHacker: "<color=#1E90FF>{0}</color> is a hacker"
 
 # MenuUI.Interface
-Interface: "界面"
-DarkUI: "深色界面"
-PingPart: "Ping部分"
-ShowCommit: "显示commit号"
-ShowModText: "显示模组标语"
-ShowIsSafe: "显示是否安全模式状态"
-ShowSafeText: "显示安全模式提示语"
-ShowIsDark: "显示是否深色模式状态"
-ShowPing: "显示Ping"
-ShowFPS: "显示FPS"
+Interface: "Interface"
+DarkUI: "Dark Mode"
+PingPart: "Ping Display Section"
+ShowCommit: "Show Commit Id"
+ShowModText: "Show Mod Slogan"
+ShowIsSafe: "Show If Safe Mode Is Enabled"
+ShowSafeText: "Show Safe Mode Text"
+ShowIsDark: "Show If Dark Mode Is Enabled"
+ShowPing: "Show Ping"
+ShowFPS: "Show FPS"
 
 # MenuUI.AntiCheat
-MenuUI.AntiCheat: "反作弊"
-MenuUI.SafeMode: "安全模式"
+MenuUI.AntiCheat: "Anti Cheat"
+MenuUI.SafeMode: "Safe Mode"
 
 # MenuUI.ShortcutButton
-MenuUI.ShortcutButton: "快捷按钮"
-MenuUI.DumpLog: "输出日志"
-MenuUI.OpenGameDic: "打开游戏运行目录"
-MenuUI.ShortcutButton.OnlyHost: "仅房主"
-MenuUI.ChangeDownTimerToZero: "倒计时更改成0"
-MenuUI.ChangeDownTimerTo114514: "恶搞倒计时"
-MenuUI.AbolishDownTimer: "取消倒计时"
+MenuUI.ShortcutButton: "Shortcuts"
+MenuUI.DumpLog: "Export Log"
+MenuUI.OpenGameDic: "Open Game Directory"
+MenuUI.ShortcutButton.OnlyHost: "Host Only"
+MenuUI.ChangeDownTimerToZero: "Set Start Countdown to 0"
+MenuUI.ChangeDownTimerTo114514: "Mischievous Start Countdown"
+MenuUI.AbolishDownTimer: "Cancel Start Countdown"
 
 # MenuUI.Other
-MenuUI.Other: "其他功能"
-MenuUI.FPSPlus: "突破FPS上限"
+MenuUI.Other: "Other"
+MenuUI.FPSPlus: "Unlock FPS Upperlimit"
 
 # VerShow
-VerShow.HasUpdate: "<color={0}>{1}</color> (<color=#DC143C>YuAC有v{2}更新!</color>)"
-VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>您的YuAC是最新的</color>)"
+VerShow.HasUpdate: "<color={0}>{1}</color> (<color=#DC143C>YuAC has a new update：v{2}!</color>)"
+VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>Your YuAC is up to date</color>)"
 
 # FunctionPatch
-FunctionPatch.AbolishDownTimer: "取消倒计时"
-FunctionPatch.DumpLog: "日志已保存"
+FunctionPatch.AbolishDownTimer: "Cancel Start Countdown"
+FunctionPatch.DumpLog: "Log Saved at"
