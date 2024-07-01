@@ -1,0 +1,90 @@
+﻿# YuAntiCheat 的语言文件 / Translation file of YuAntiCheat
+
+# 当前翻译文件语言的ID / Language ID of current file
+LangID: "11"
+
+# 作者署名（不需要请留空）/ A sign of an author (Please leave blank when not needed)
+TextBelowVersionText: "Yu / Miaoice"
+
+# 更新检查
+Retry: "リトライ"
+PleaseWait: "お待ちください..."
+updateCheckPopupTitle: "更新チェック"
+updateCheckFailedRetry: "更新の失敗をチェックします\nもう一度やり直しますか?"
+updateCheckFailedExit: "更新の失敗をチェックします\nネットワークを確認してください"
+UpdateBySelfTitle: "アップデートのヒント"
+updateNotice: "リマインダーの更新"
+UpdateBySelfText: "このバージョンはワンクリック更新をサポートしていないため、手動で更新してください"
+updatePopupTitle: "ワンクリック更新"
+updatePopupTitleFialed: "更新に失敗しました"
+updatePopupTitleDone: "これで更新は完了です"
+updateButton: "ワンクリック更新"
+updateChoseSource: "更新チャネルを選択してください\n中国本土の場合は、[Gitee]または[kkGithub]を選択してください\n香港、マカオ、台湾、その他の地域は、[Github]を選択してください。"
+updateSource.Github: "Github"
+updateSource.Gitee: "Gitee"
+updateSource.kkGithub: "kkGithub"
+updatePleaseWait: "お待ちください..."
+updateInProgress: "更新中..."
+downloadInProgress: "ダウンロード..."
+updateRestart: "ゲーム再起動後に有効になります o(*￣▽￣*)ブ"
+updatePingFialed: "原因：{0}\nこのメソッドは一時的に非アクティブ化されている可能性があります、チャンネルを変更してください"
+updateFileMd5Incorrect: "原因：MD5 検証エラー\nこのチャネルのファイルが最新でないか、破損している可能性があります、チャンネルを切り替えて、もう一度やり直してください"
+downloadFailed: "原因：更新ファイルのダウンロードがタイムアウトしたか、中断されました\nネットワークを確認するか、手動で更新してください"
+
+# 文本
+NotFoundStringInYaml: "見つかりませんでした"
+
+# 聊天
+SuspectedViolationMessage: "法律違反の疑いがあるメッセージ"
+
+# 进入房间
+JoinRoom: "加入房间"
+
+# Ping
+SafeModeText: "<size=75%><color=#DC143C>F5</color>を押して、安全でない<color=#1E90FF>(UnSafe)</color>モードに切り替えます（お勧めしません）</size>"
+UnSafeModeText: "<size=75%><color=#1E90FF>F5</color>を押して、安全な<color=#DC143C>(Safe)</color>モードに切り替えます（推奨）</size>"
+
+# 提示语
+AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> はハッカーです\nあなたはホストではないため、<color=#FFFF00>処罰権限がありません</color>"
+AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> はハッカーです\n<color=#1E90FF>[UnSafe]</color>モードがオンになっています <color=#FFFF00>試みています<color=#FF4500>撃殺することを</color>"殺そうとする
+
+AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> ハッカープレイヤーです\nあなたがホストです 尝试<color=#FF4500>してみる</color>和<color=#FF0000>禁止</color>"
+AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> ハッカープレイヤーです\nあなたがホストです <color=#FFFF00>してみる<color=#FF0000>禁止</color>"
+SeeHacker: "<color=#1E90FF>{0}</color> ハッカープレイヤーです"
+
+# MenuUI.Interface
+Interface: "インターフェイス"
+DarkUI: "ダークチャット"
+PingPart: "その他のセクション"
+ShowCommit: "commitが表示されます"
+ShowModText: "MODのスローガンを表示する"
+ShowIsSafe: "セーフモードの状態を表示するかどうかを表示します"
+ShowSafeText: "セーフモードのプロンプトが表示されます"
+ShowIsDark: "チャットのステータスがダークかどうかを表示します"
+ShowPing: "pingが表示されます"
+ShowFPS: "FPSが表示されます"
+
+# MenuUI.AntiCheat
+MenuUI.AntiCheat: "ハッカーの検出"
+MenuUI.SafeMode: "セーフモード"
+
+# MenuUI.ShortcutButton
+MenuUI.ShortcutButton: "クイック管理機能"
+MenuUI.DumpLog: "出力ログ"
+MenuUI.OpenGameDic: "ゲームルートを開く"
+MenuUI.ShortcutButton.OnlyHost: "ホストのみ"
+MenuUI.ChangeDownTimerToZero: "開始カウントダウンが0に変更されます"
+MenuUI.ChangeDownTimerTo114514: "ジョークのカウントダウン"
+MenuUI.AbolishDownTimer: "カウントダウンをキャンセルする"
+
+# MenuUI.Other
+MenuUI.Other: "その他の機能"
+MenuUI.FPSPlus: "FPSの上限を破る"
+
+# VerShow
+VerShow.HasUpdate: "<color={0}>{1}</color> (<color=#DC143C>新しいバージョンv{2}アップデートがあります</color>)"
+VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>modは現在最新です</color>)"
+
+# YuACKeysOnMenu
+YuACKeysOnMenu.AbolishDownTimer: "カウントダウンをキャンセルする"
+YuACKeysOnMenu.DumpLog: "ログが保存されます"
