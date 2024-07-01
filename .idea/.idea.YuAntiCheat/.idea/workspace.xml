@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Utils/ResourceUtils.cs" afterDir="false" />
+    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="123">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Get/GetPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Utils/GetPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Get/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Utils/Utils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/ILogHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Modules/ILogHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Main.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Modules/Updater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Modules/Updater.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/Chinese Simplified.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/Chinese Simplified.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/info.json" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/info.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,12 +52,59 @@
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/GameModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/InitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/PluginModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/YuAntiCheat/Debugger.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/YuAntiCheat/ILogHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/YuAntiCheat/LogHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/YuAntiCheat/SendChat.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/YuAntiCheat/SendInGamePatch.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/YuAntiCheat/Translator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/CheatCheck/MalumMenuCheck.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/CheatCheck/SMCheat.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Get/GetPlayer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Get/Utils.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Helpers/EnumHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Helpers/ObjectHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Keys/Keys.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Main.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Main.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Main.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Modules/Debugger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Modules/Downloader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Modules/LogHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Modules/RegistryManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Modules/Translator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Modules/Translator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Modules/Translator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Modules/Updater.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Modules/Updater.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Modules/Updater.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/ChatBubblePatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/ChatBubblePatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/ChatBubblePatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/CustomPopup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/LateTask.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/LobbyStartPatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/MainMenuManagerPatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/ModManagerLateUpdatePatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/MurderHacker.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/OnPlayerJoinedPatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/OnPlayerJoinedPatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/OnPlayerJoinedPatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/OnlyYuAntiCheat.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/Ping.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/PlayerPhysicPatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/RPC.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/SendInGamePatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/UpdateFriendCodeUIPatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Send/SendChat.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Send/SentYuacRpc.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/UI/MainMenuButtonHoverAnimation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/UI/MenuUI.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/UI/SimpleButton.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/UI/TMPTemplate.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/UI/TitleLogoPatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/UI/Toggles.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/UI/UIStructures.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/UI/YuACKeysOnMenu.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Utils/ResourceUtils.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -93,7 +132,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -184,6 +223,9 @@
       <workItem from="1719678330808" duration="257000" />
       <workItem from="1719740770863" duration="1914000" />
       <workItem from="1719743327734" duration="11161000" />
+      <workItem from="1719827337361" duration="308000" />
+      <workItem from="1719830232822" duration="87000" />
+      <workItem from="1719831329279" duration="2764000" />
     </task>
     <task id="LOCAL-00001" summary="Perfection of basic functions">
       <option name="closed" value="true" />
@@ -385,7 +427,63 @@
       <option name="project" value="LOCAL" />
       <updated>1719756911954</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Change All String to Yaml">
+      <option name="closed" value="true" />
+      <created>1719764581295</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1719764581295</updated>
+    </task>
+    <task id="LOCAL-00027" summary="v1.1.1.0">
+      <option name="closed" value="true" />
+      <created>1719765217875</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1719765217875</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Update some English and all TChinese trans">
+      <option name="closed" value="true" />
+      <created>1719835515027</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1719835515027</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Change a film name">
+      <option name="closed" value="true" />
+      <created>1719835577091</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1719835577091</updated>
+    </task>
+    <task id="LOCAL-00030" summary="change">
+      <option name="closed" value="true" />
+      <created>1719835631068</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1719835631068</updated>
+    </task>
+    <task id="LOCAL-00031" summary="111">
+      <option name="closed" value="true" />
+      <created>1719835853842</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1719835853842</updated>
+    </task>
+    <task id="LOCAL-00032" summary="123">
+      <option name="closed" value="true" />
+      <created>1719835999323</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1719835999323</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -472,12 +570,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Perfection of basic functions" />
-    <MESSAGE value="Ver 1.0.0" />
-    <MESSAGE value="README" />
-    <MESSAGE value="不知道" />
-    <MESSAGE value="v1.0.1" />
-    <MESSAGE value="查看commit" />
     <MESSAGE value="fix Ping" />
     <MESSAGE value="v1.0.3" />
     <MESSAGE value="Change Versuin to 1.0.4&#10;Add YuACRpc&#10;Add Sent AUMChat" />
@@ -493,10 +585,16 @@
     <MESSAGE value="version 1.1.0" />
     <MESSAGE value="v1.1.0.1" />
     <MESSAGE value="change version text" />
-    <MESSAGE value="111" />
     <MESSAGE value="Updater" />
     <MESSAGE value="111忘记提交了" />
     <MESSAGE value="规范整理文件 移动文件进文件夹" />
-    <option name="LAST_COMMIT_MESSAGE" value="规范整理文件 移动文件进文件夹" />
+    <MESSAGE value="Change All String to Yaml" />
+    <MESSAGE value="v1.1.1.0" />
+    <MESSAGE value="Update some English and all TChinese trans" />
+    <MESSAGE value="Change a film name" />
+    <MESSAGE value="change" />
+    <MESSAGE value="111" />
+    <MESSAGE value="123" />
+    <option name="LAST_COMMIT_MESSAGE" value="123" />
   </component>
 </project>
