@@ -29,7 +29,7 @@ internal class Keys
         //日志文件转储
         if (GetKeysDown(KeyCode.F1))
         {
-            YuACKeysOnMenu.DumpLogKey();
+            FunctionPatch.DumpLogKey();
         }
         
         
@@ -42,7 +42,7 @@ internal class Keys
         //打开游戏目录
         if (GetKeysDown(KeyCode.F10))
         {
-            YuACKeysOnMenu.OpenGameDic();
+            FunctionPatch.OpenGameDic();
         }
         
         //-- 下面是主机专用的命令--//
@@ -50,13 +50,13 @@ internal class Keys
         //立即开始
         if (Input.GetKeyDown(KeyCode.LeftShift) && GetPlayer.IsCountDown)
         {
-            YuACKeysOnMenu.ChangeDownTimerTo(0);
+            FunctionPatch.ChangeDownTimerTo(0);
         }
         
         //倒计时取消
         if (Input.GetKeyDown(KeyCode.C) && GetPlayer.IsCountDown)
         {
-            YuACKeysOnMenu.AbolishDownTimer();
+            FunctionPatch.AbolishDownTimer();
         }
     }
     private static bool GetKeysDown(params KeyCode[] keys)

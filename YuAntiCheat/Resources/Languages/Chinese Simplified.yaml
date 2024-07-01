@@ -19,7 +19,7 @@ updatePopupTitle: "一键更新"
 updatePopupTitleFialed: "更新失败"
 updatePopupTitleDone: "更新完成"
 updateButton: "一键更新"
-updateChoseSource: "请选择更新渠道\n如果您不知道选什么，请选择【Gitee】或【kkGithub】"
+updateChoseSource: "请选择更新渠道\n如果您不知道选什么，请优先选择【Gitee】或【kkGithub】"
 updateSource.Github: "Github"
 updateSource.Gitee: "Gitee"
 updateSource.kkGithub: "kkGithub"
@@ -84,6 +84,6 @@ MenuUI.FPSPlus: "突破FPS上限"
 VerShow.HasUpdate: "<color={0}>{1}</color> (<color=#DC143C>YuAC有v{2}更新!</color>)"
 VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>您的YuAC是最新的</color>)"
 
-# YuACKeysOnMenu
-YuACKeysOnMenu.AbolishDownTimer: "取消倒计时"
-YuACKeysOnMenu.DumpLog: "日志已保存"
+# FunctionPatch
+FunctionPatch.AbolishDownTimer: "取消倒计时"
+FunctionPatch.DumpLog: "日志已保存"

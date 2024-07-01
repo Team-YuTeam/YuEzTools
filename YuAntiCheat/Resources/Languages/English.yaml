@@ -1,35 +1,35 @@
-﻿# YuAntiCheat 的语言文件 / Translation file of YuAntiCheat
+# YuAntiCheat 的语言文件 / Translation file of YuAntiCheat
 
 # 当前翻译文件语言的ID / Language ID of current file
 LangID: "0"
 
 # 作者署名（不需要请留空）/ A sign of an author (Please leave blank when not needed)
-TextBelowVersionText: "Yu"
+TextBelowVersionText: "Yu and Imp11 and 慕斯Mousse"
 
 # 更新检查
 Retry: "Try Again"
-PleaseWait: "Please Wait..."
+PleaseWait: "Please Wait For A While"
 updateCheckPopupTitle: "Update Check"
-updateCheckFailedRetry: "Update Check Failed\nTry again?"
-updateCheckFailedExit: "Update Check Failed\nPlease check your network strength and try again"
-UpdateBySelfTitle: "Update Tips"
-updateNotice: "Update Notice"
-UpdateBySelfText: "This version does not support auto-update\nPlease try to update manually"
-updatePopupTitle: "Update"
+updateCheckFailedRetry: "Update Check Failed\nDo you want to try again?"
+updateCheckFailedExit: "Update Check Failed\nPlease check your Internet connection"
+UpdateBySelfTitle: "Update tips"
+updateNotice: "Update Alert"
+UpdateBySelfText: "This version does not support the auto-update\nPlease try to update manually"
+updatePopupTitle: "Auto update"
 updatePopupTitleFialed: "Update Failed"
-updatePopupTitleDone: "Update Finished"
-updateButton: "Update"
-updateChoseSource: "Please choose a channel to update\nIf you don't know what to choose, please choose [Github]."
+updatePopupTitleDone: "Update Done"
+updateButton: "Auto update"
+updateChoseSource: "Please choose the update function\n If you don't know what to choose, please choose [Github]."
 updateSource.Github: "Github"
 updateSource.Gitee: "Gitee"
 updateSource.kkGithub: "kkGithub"
-updatePleaseWait: "Please wait..."
-updateInProgress: "Updating..."
-downloadInProgress: "Downloading..."
-updateRestart: "Please restart the game to active the update o(*￣▽￣*)ブ"
-updatePingFialed: "Reason: {0}\nThis channel may be temporarily out of service\nPlease change a channel and try again!"
-updateFileMd5Incorrect: "Reason: File MD5 check error\nThe file version of this channel is not the latest or is damaged\nPlease switch a channel and try again"
-downloadFailed: "Reason: Downloading file timed out or interrupted\nPlease change your network and try again or update manually"
+updatePleaseWait: "Please wait for a while……"
+updateInProgress: "Updating……"
+downloadInProgress: "Downloading……"
+updateRestart: "Please restart the game"
+updatePingFialed: "Failed: {0}\nThis function may be temporarily suspended\nPlease change the download function and try again!"
+updateFileMd5Incorrect: "Failed: File MD5 check error\nThe file version of this function is not the latest or damaged\nPlease switch the download function and try again"
+downloadFailed: "Failed: Download update file timeout or interrupt \nPlease change the network and retry or manually update"
 
 # 文本
 NotFoundStringInYaml: "Not Found"
@@ -86,4 +86,4 @@ VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>Your YuAC is up to
 
 # FunctionPatch
 FunctionPatch.AbolishDownTimer: "Cancel Start Countdown"
-FunctionPatch.DumpLog: "Log Saved"
+FunctionPatch.DumpLog: "Log Saved at"
