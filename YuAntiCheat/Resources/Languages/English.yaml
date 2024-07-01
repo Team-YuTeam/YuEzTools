@@ -32,10 +32,10 @@ updateFileMd5Incorrect: "Reason: File MD5 check error\nThe file version of this 
 downloadFailed: "Reason: Downloading file timed out or interrupted\nPlease change your network and try again or update manually"
 
 # 文本
-NotFoundStringInYaml: "Not found"
+NotFoundStringInYaml: "Not Found"
 
 # 聊天
-SuspectedViolationMessage: "Suspected Violation Message"
+SuspectedViolationMessage: "Suspected Inappropriate Chat"
 
 # 进入房间
 JoinRoom: "joined the lobby"
@@ -54,12 +54,12 @@ SeeHacker: "<color=#1E90FF>{0}</color> is a hacker"
 # MenuUI.Interface
 Interface: "Interface"
 DarkUI: "Dark Mode"
-PingPart: "Ping"
-ShowCommit: "Show commit id"
-ShowModText: "Show mod slogan"
-ShowIsSafe: "Show if safe mode enabled"
-ShowSafeText: "Show safe mode text"
-ShowIsDark: "Show if dark mode enabled"
+PingPart: "Ping Display Place"
+ShowCommit: "Show Commit Id"
+ShowModText: "Show Mod Slogan"
+ShowIsSafe: "Show If Safe Mode Is Enabled"
+ShowSafeText: "Show Safe Mode Text"
+ShowIsDark: "Show If Dark Mode Is Enabled"
 ShowPing: "Show Ping"
 ShowFPS: "Show FPS"
 
@@ -69,21 +69,21 @@ MenuUI.SafeMode: "Safe Mode"
 
 # MenuUI.ShortcutButton
 MenuUI.ShortcutButton: "Shortcuts"
-MenuUI.DumpLog: "Export log"
-MenuUI.OpenGameDic: "打开游戏运行目录"
+MenuUI.DumpLog: "Export Log"
+MenuUI.OpenGameDic: "Open Game Directory"
 MenuUI.ShortcutButton.OnlyHost: "Host Only"
-MenuUI.ChangeDownTimerToZero: "倒计时更改成0"
-MenuUI.ChangeDownTimerTo114514: "恶搞倒计时"
-MenuUI.AbolishDownTimer: "Stop start countdown"
+MenuUI.ChangeDownTimerToZero: "Set Start Countdown to 0"
+MenuUI.ChangeDownTimerTo114514: "Mischievous Start Countdown"
+MenuUI.AbolishDownTimer: "Cancel Start Countdown"
 
 # MenuUI.Other
-MenuUI.Other: "Other Features"
-MenuUI.FPSPlus: "突破FPS上限"
+MenuUI.Other: "Other"
+MenuUI.FPSPlus: "Unlock FPS Upperlimit"
 
 # VerShow
 VerShow.HasUpdate: "<color={0}>{1}</color> (<color=#DC143C>YuAC has a new update：v{2}!</color>)"
 VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>Your YuAC is the latest</color>)"
 
 # YuACKeysOnMenu
-YuACKeysOnMenu.AbolishDownTimer: "Stop start countdown"
-YuACKeysOnMenu.DumpLog: "Log saved"
+YuACKeysOnMenu.AbolishDownTimer: "Cancel Start Countdown"
+YuACKeysOnMenu.DumpLog: "Log Saved"
