@@ -84,6 +84,6 @@ MenuUI.FPSPlus: "突破FPS上限"
 VerShow.HasUpdate: "<color={0}>{1}</color> (<color=#DC143C>YuAC有v{2}更新!</color>)"
 VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>您的YuAC是最新的</color>)"
 
-# YuACKeysOnMenu
-YuACKeysOnMenu.AbolishDownTimer: "取消倒计时"
-YuACKeysOnMenu.DumpLog: "日志已保存"
+# FunctionPatch
+FunctionPatch.AbolishDownTimer: "取消倒计时"
+FunctionPatch.DumpLog: "日志已保存"
