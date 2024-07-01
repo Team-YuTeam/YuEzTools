@@ -4,32 +4,32 @@
 LangID: "0"
 
 # 作者署名（不需要请留空）/ A sign of an author (Please leave blank when not needed)
-TextBelowVersionText: "Yu"
+TextBelowVersionText: "Yu and Imp11"
 
 # 更新检查
 Retry: "Try Again"
-PleaseWait: "Wait some minutes..."
+PleaseWait: "Please Wait For A While"
 updateCheckPopupTitle: "Update Check"
-updateCheckFailedRetry: "Update Check Fail\nDo you want to try again?"
-updateCheckFailedExit: "Update Check Fail\nPlease check your internet"
+updateCheckFailedRetry: "Update Check Failed\nDo you want to try again?"
+updateCheckFailedExit: "Update Check Failed\nPlease check your Internet connection"
 UpdateBySelfTitle: "Update tips"
-updateNotice: "Update tips"
-UpdateBySelfText: "This version cannot use One-click update\nPlease try to manual update"
-updatePopupTitle: "One-click update"
-updatePopupTitleFialed: "Update Fail"
+updateNotice: "Update Alert"
+UpdateBySelfText: "This version does not support the auto-update\nPlease try to update manually"
+updatePopupTitle: "Auto update"
+updatePopupTitleFialed: "Update Failed"
 updatePopupTitleDone: "Update Done"
-updateButton: "One-click update"
-updateChoseSource: "Please choose the update channel\n If you don't know what to choose, please choose [Github]."
+updateButton: "Auto update"
+updateChoseSource: "Please choose the update function\n If you don't know what to choose, please choose [Github]."
 updateSource.Github: "Github"
 updateSource.Gitee: "Gitee"
 updateSource.kkGithub: "kkGithub"
-updatePleaseWait: "Please wait some minutes……"
+updatePleaseWait: "Please wait for a while……"
 updateInProgress: "Updating……"
 downloadInProgress: "Downloading……"
-updateRestart: "Effective after restarting the game! o(*￣▽￣*)ブ"
-updatePingFialed: "Reason: {0}\nThis channel may be temporarily suspended\nPlease change the download channel and try again!"
-updateFileMd5Incorrect: "Reason: File MD5 check error\nThe file version of this channel is not the latest or damaged\nPlease switch the download channel and try again"
-downloadFailed: "Reason: Download update file timeout or interrupt \nPlease change the network and retry or manually update"
+updateRestart: "Please restart the game"
+updatePingFialed: "Failed: {0}\nThis function may be temporarily suspended\nPlease change the download function and try again!"
+updateFileMd5Incorrect: "Failed: File MD5 check error\nThe file version of this function is not the latest or damaged\nPlease switch the download function and try again"
+downloadFailed: "Failed: Download update file timeout or interrupt \nPlease change the network and retry or manually update"
 
 # 文本
 NotFoundStringInYaml: "Not found"
@@ -39,3 +39,51 @@ SuspectedViolationMessage: "Suspected Violation Message"
 
 # 进入房间
 JoinRoom: "join this room"
+
+# Ping
+SafeModeText: "<size=75%>按下 <color=#DC143C>F5</color> 以切换不安全<color=#1E90FF>(UnSafe)</color>模式(不推荐)</size>"
+UnSafeModeText: "<size=75%>按下 <color=#1E90FF>F5</color> 以切换安全<color=#DC143C>(Safe)</color>模式(推荐)</size>"
+
+# 提示语
+AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您不是房主 <color=#FFFF00>无权</color>惩罚"
+AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您已开启<color=#1E90FF>[UnSafe]</color>模式 <color=#FFFF00>尝试<color=#FF4500>击杀</color>"
+AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 尝试<color=#FF4500>击杀</color>和<color=#FF0000>封禁</color>"
+AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 <color=#FFFF00>尝试<color=#FF0000>封禁</color>"
+SeeHacker: "<color=#1E90FF>{0}</color> 是外挂"
+
+# MenuUI.Interface
+Interface: "界面"
+DarkUI: "深色界面"
+PingPart: "Ping部分"
+ShowCommit: "显示commit号"
+ShowModText: "显示模组标语"
+ShowIsSafe: "显示是否安全模式状态"
+ShowSafeText: "显示安全模式提示语"
+ShowIsDark: "显示是否深色模式状态"
+ShowPing: "显示Ping"
+ShowFPS: "显示FPS"
+
+# MenuUI.AntiCheat
+MenuUI.AntiCheat: "反作弊"
+MenuUI.SafeMode: "安全模式"
+
+# MenuUI.ShortcutButton
+MenuUI.ShortcutButton: "快捷按钮"
+MenuUI.DumpLog: "输出日志"
+MenuUI.OpenGameDic: "打开游戏运行目录"
+MenuUI.ShortcutButton.OnlyHost: "仅房主"
+MenuUI.ChangeDownTimerToZero: "倒计时更改成0"
+MenuUI.ChangeDownTimerTo114514: "恶搞倒计时"
+MenuUI.AbolishDownTimer: "取消倒计时"
+
+# MenuUI.Other
+MenuUI.Other: "其他功能"
+MenuUI.FPSPlus: "突破FPS上限"
+
+# VerShow
+VerShow.HasUpdate: "<color={0}>{1}</color> (<color=#DC143C>YuAC有v{2}更新!</color>)"
+VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>您的YuAC是最新的</color>)"
+
+# YuACKeysOnMenu
+YuACKeysOnMenu.AbolishDownTimer: "取消倒计时"
+YuACKeysOnMenu.DumpLog: "日志已保存"

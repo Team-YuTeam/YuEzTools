@@ -33,3 +33,57 @@ downloadFailed: "原因：下載文件超時或中斷\n請更換網絡后重試�
 
 # 文本
 NotFoundStringInYaml: "沒找到"
+
+# 聊天
+SuspectedViolationMessage: "疑似違規信息"
+
+# 进入房间
+JoinRoom: "加入房間"
+
+# Ping
+SafeModeText: "<size=75%>按下 <color=#DC143C>F5</color> 以切換不安全<color=#1E90FF>(UnSafe)</color>模式(不推薦)</size>"
+UnSafeModeText: "<size=75%>按下 <color=#1E90FF>F5</color> 以切換安全<color=#DC143C>(Safe)</color>模式(推薦)</size>"
+
+# 提示语
+AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您不是房主 <color=#FFFF00>無權</color>懲罰"
+AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您已開啓<color=#1E90FF>[UnSafe]</color>模式 <color=#FFFF00>嘗試<color=#FF4500>擊殺</color>"
+AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 <color=#FFFF00>嘗試<color=#FF4500>擊殺</color>和<color=#FF0000>封禁</color>"
+AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 <color=#FFFF00>嘗試<color=#FF0000>封禁</color>"
+SeeHacker: "<color=#1E90FF>{0}</color> 是外挂"
+
+# MenuUI.Interface
+Interface: "界面"
+DarkUI: "深色界面"
+PingPart: "Ping部分"
+ShowCommit: "顯示commit號"
+ShowModText: "顯示模組標語"
+ShowIsSafe: "顯示是否安全模式狀態"
+ShowSafeText: "顯示安全模式提示語"
+ShowIsDark: "顯示是否神色模式狀態"
+ShowPing: "顯示Ping"
+ShowFPS: "顯示FPS"
+
+# MenuUI.AntiCheat
+MenuUI.AntiCheat: "反作弊"
+MenuUI.SafeMode: "安全模式"
+
+# MenuUI.ShortcutButton
+MenuUI.ShortcutButton: "快捷按鈕"
+MenuUI.DumpLog: "輸出日志"
+MenuUI.OpenGameDic: "打開游戲運行目錄"
+MenuUI.ShortcutButton.OnlyHost: "僅房主"
+MenuUI.ChangeDownTimerToZero: "倒計時更改為0"
+MenuUI.ChangeDownTimerTo114514: "惡搞倒計時"
+MenuUI.AbolishDownTimer: "取消倒計時"
+
+# MenuUI.Other
+MenuUI.Other: "其他功能"
+MenuUI.FPSPlus: "突破FPS上限"
+
+# VerShow
+VerShow.HasUpdate: "<color={0}>{1}</color> (<color=#DC143C>YuAC有v{2}更新!</color>)"
+VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>您的YuAC是最新的</color>)"
+
+# YuACKeysOnMenu
+YuACKeysOnMenu.AbolishDownTimer: "取消倒計時"
+YuACKeysOnMenu.DumpLog: "日志已保存"
