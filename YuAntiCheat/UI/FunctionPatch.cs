@@ -21,7 +21,7 @@ using YuAntiCheat.Keys;
 
 namespace YuAntiCheat;
 
-public class YuACKeysOnMenu
+public class FunctionPatch
 {
     public static void DumpLogKey()
     {
@@ -44,7 +44,7 @@ public class YuACKeysOnMenu
     {
         Main.Logger.LogInfo("重置倒计时");
         GameStartManager.Instance.ResetStartState();
-        SendInGamePatch.SendInGame(Translator.GetString("YuACKeysOnMenu.AbolishDownTimer"));
+        SendInGamePatch.SendInGame(Translator.GetString("FunctionPatch.AbolishDownTimer"));
     }
     
     public static void DumpLog()
@@ -55,7 +55,7 @@ public class YuACKeysOnMenu
         if (!Directory.Exists(f)) Directory.CreateDirectory(f);
         FileInfo file = new(@$"{Environment.CurrentDirectory}/BepInEx/LogOutput.log");
         file.CopyTo(@filename);
-        SendInGamePatch.SendInGame($"{Translator.GetString("YuACKeysOnMenu.DumpLog")} YuAC - v{Main.PluginVersion}-{t}.log");
+        SendInGamePatch.SendInGame($"{Translator.GetString("FunctionPatch.DumpLog")} YuAC - v{Main.PluginVersion}-{t}.log");
         ProcessStartInfo psi = new ProcessStartInfo("Explorer.exe")
             { Arguments = "/e,/select," + @filename.Replace("/", "\\") };
         Process.Start(psi);
