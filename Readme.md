@@ -16,7 +16,7 @@
 
 ### 反作弊~不能作弊哦！
 
-### 你好啊~这里是YuAnitCheat！下面是一些有用的按钮，你可以点击看看！
+### 你好啊~这里是YuAntiCheat！下面是一些有用的按钮，你可以点击看看！
 
 <a href="https://github.com/Night-GUA/YuAntiCheat/releases" target="_blank"><img src="https://img.shields.io/badge/获取新版本%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
 
