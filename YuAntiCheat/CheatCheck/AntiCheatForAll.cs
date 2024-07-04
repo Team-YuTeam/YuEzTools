@@ -35,6 +35,11 @@ internal class AntiCheatForAll
                 case RpcCalls.SetName:
                     string name = sr.ReadString();
                     if (sr.BytesRemaining > 0 && sr.ReadBoolean()) return false;
+                    if (GetPlayer.IsInGame)
+                    {
+                        Main.Logger.LogWarning($"非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回");
+                        return true;
+                    }
                     if (
                         ((name.Contains("<size") || name.Contains("size>")) && name.Contains("?") && !name.Contains("color")) ||
                         name.Length > 160 ||
@@ -62,12 +67,20 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+                
+                case RpcCalls.SetNamePlateStr:
+                    if (GetPlayer.IsInGame)
+                    {
+                        Main.Logger.LogWarning($"非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回");
+                        return true;
+                    }
 
+                    break;
                 
                 case RpcCalls.SetTasks:
                     if (GetPlayer.IsMeeting || GetPlayer.IsLobby || GetPlayer.IsInGame || pc.GetClient() != AmongUsClient.Instance.GetHost())
                     {
-                        Logger.Info($"【{pc.GetClientId()}:{pc.GetRealName()}】非法设置玩家的任务数量","AntiCheatForAll");
+                        Logger.Info($"【{pc.GetClientId()}:{pc.GetRealName()}】非法设置玩家的任务","AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -152,6 +165,13 @@ internal class AntiCheatForAll
                     break;
                 
                 case RpcCalls.MurderPlayer:
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
+                        return true;
+                    }
+                    break;
+                case RpcCalls.CheckMurder:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
@@ -259,7 +279,14 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
-                    
+                
+                case 12:
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
+                    {
+                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
+                        return true;
+                    }
+                    break;
                 case 47:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter&& pc.Data.RoleType != RoleTypes.Phantom))
                     {

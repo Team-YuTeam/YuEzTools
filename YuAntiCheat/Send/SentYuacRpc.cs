@@ -1,4 +1,4 @@
-using InnerNet;
+/*using InnerNet;
 using Hazel;
 using HarmonyLib;
 
@@ -29,4 +29,4 @@ public static class SentYuacRpc
             }
         }
     }
-}
+}*/
