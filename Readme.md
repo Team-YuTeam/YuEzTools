@@ -16,7 +16,7 @@
 
 ### 反作弊~不能作弊哦！
 
-### 你好啊~这里是YuAnitCheat！下面是一些有用的按钮，你可以点击看看！
+### 你好啊~这里是YuAntiCheat！下面是一些有用的按钮，你可以点击看看！
 
 <a href="https://github.com/Night-GUA/YuAntiCheat/releases" target="_blank"><img src="https://img.shields.io/badge/获取新版本%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
 
@@ -44,18 +44,18 @@
 <details>
 <summary> Open </summary>
 
-### An anit cheat mod for Game `Among Us`
+### An anti cheat mod for Game `Among Us`
 
-### Welcome to YuAnitCheat! Here are some useful buttons you can click to see!
+### Welcome to YuAntiCheat! Here are some useful buttons you can click to see!
 
 <a href="https://github.com/Night-GUA/YuAntiCheat/releases" target="_blank"><img src="https://img.shields.io/badge/Releases%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
 
 ### How to use
-1. Open is start!
-2. If you are not host,some must be `UnSelf Mode`（Press `F5` to change mode）
+1. Open to start!
+2. If you are not the host, you may need to enable `UnSafe Mode` to use some of the features（Press `F5` to switch mode）
 
-### In `UnSelf Mode`, YuAC will do
-If the room has hacker,it will make an extra murder
+### In `UnSafe Mode`, YuAC will do
+If the room has hacker, it will make an extra kill
 
 ### Thanks
 - KARPED1EM - Technical assistance&Code Support
