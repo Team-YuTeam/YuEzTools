@@ -60,6 +60,12 @@ public static class PingTracker_Update
         }
         
      __instance.text.text += "\n<color=#FFFF00>By</color> <color=#FF0000>Yu</color>";
+        
+        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+        float fps = Mathf.Ceil(1.0f / deltaTime);
+        if(Toggles.ShowPing) __instance.text.text += Utils.Utils.getColoredPingText(AmongUsClient.Instance.Ping); // 书写Ping
+        if(Toggles.ShowFPS) __instance.text.text += Utils.Utils.getColoredFPSText(fps); // 书写FPS
+        
 #if DEBUG
 __instance.text.text += string.Format(Translator.GetString("Ping.UsingMode"), "<color=#FFC0CB>DEBUG</color>");
 #endif
@@ -70,10 +76,5 @@ __instance.text.text += string.Format(Translator.GetString("Ping.UsingMode"), "<
 #if RELEASE
         __instance.text.text += string.Format(Translator.GetString("Ping.UsingMode"), "<color=#00FFFF>RELEASE</color>");
 #endif
-        
-        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-        float fps = Mathf.Ceil(1.0f / deltaTime);
-        if(Toggles.ShowPing) __instance.text.text += Utils.Utils.getColoredPingText(AmongUsClient.Instance.Ping); // 书写Ping
-        if(Toggles.ShowFPS) __instance.text.text += Utils.Utils.getColoredFPSText(fps); // 书写FPS
     }
 }

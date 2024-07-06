@@ -74,7 +74,19 @@ public class ModUpdater
         // if (!isChecked && firstStart)
         CheckForUpdate();
         SetUpdateButtonStatus();
+                
         firstStart = false;
+    }
+
+    public static bool CheckNowFileMD5()
+    {
+        if (GetMD5HashFromFile("BepInEx/plugins/YuAntiCheat.dll") != md5)
+        {
+            Logger.Info("MD5 FAIL","CheckNowFileMD5");
+            return true;
+        }
+        Logger.Info("MD5 TRUE","CheckNowFileMD5");
+        return false;
     }
     public static void SetUpdateButtonStatus()
     {
@@ -115,14 +127,26 @@ public class ModUpdater
             Logger.Info("Minimum Version: " + minimumVersion.ToString(), "CheckRelease");
             Logger.Info("Creation: " + creation.ToString(), "CheckRelease");
             Logger.Info("Force Update: " + forceUpdate, "CheckRelease");
-            Logger.Info("File MD5: " + md5, "CheckRelease");
             Logger.Info("Github Url: " + downloadUrl_github, "CheckRelease");
             Logger.Info("Gitee Url: " + downloadUrl_gitee, "CheckRelease");
             Logger.Info("kkGithub Url: " + downloadUrl_kkgithub, "CheckRelease");
             Logger.Info("Announcement (English): " + announcement_en, "CheckRelease");
             Logger.Info("Announcement (SChinese): " + announcement_zh, "CheckRelease");
+            Logger.Info("File MD5: " + md5, "CheckRelease");
+            Logger.Info(GetMD5HashFromFile("BepInEx/plugins/YuAntiCheat.dll"), "CheckRelease");
 
-            if (firstLaunch || isBroken)
+            if (!hasUpdate && CheckNowFileMD5() && Main.ModMode == 2)
+            {
+                Logger.Info("MD5 FAIL","CheckRelease");
+                CustomPopup.Show(Translator.GetString(StringNames.AnnouncementLabel), Translator.GetString("Updater.NowFileMD5Fail"), new()
+                {
+                    (Translator.GetString("updateSource.Github"), () => StartUpdate(downloadUrl_github)),
+                    (Translator.GetString("updateSource.Gitee"), () => StartUpdate(downloadUrl_gitee)),
+                    (Translator.GetString("updateSource.kkGithub"), () => StartUpdate(downloadUrl_kkgithub)),
+                    (Translator.GetString(StringNames.ExitGame), Application.Quit)
+                });
+            }
+            else if (firstLaunch || isBroken)
             {
                 firstLaunch = false;
                 var annos = Translator.IsChineseUser ? announcement_zh : announcement_en;

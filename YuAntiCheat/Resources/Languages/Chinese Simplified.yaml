@@ -30,6 +30,7 @@ updateRestart: "重启游戏后生效o(*￣▽￣*)ブ"
 updatePingFialed: "原因：{0}\n该渠道可能暂时停用，请更换下载渠道重试"
 updateFileMd5Incorrect: "原因：文件MD5校验错误\n该渠道的文件版本并不是最新的或已损坏，请切换下载渠道重试"
 downloadFailed: "原因：下载更新文件超时或中断\n请更换网络后重试或手动更新"
+Updater.NowFileMD5Fail: "当前文件MD5校验错误！请重新下载！"
 
 # 文本
 NotFoundStringInYaml: "没找到"

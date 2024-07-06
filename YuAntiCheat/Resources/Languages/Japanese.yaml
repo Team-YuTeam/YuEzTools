@@ -30,6 +30,7 @@ updateRestart: "ゲーム再起動後に有効になります o(*￣▽￣*)ブ"
 updatePingFialed: "原因：{0}\nこのメソッドは一時的に非アクティブ化されている可能性があります、チャンネルを変更してください"
 updateFileMd5Incorrect: "原因：MD5 検証エラー\nこのチャネルのファイルが最新でないか、破損している可能性があります、チャンネルを切り替えて、もう一度やり直してください"
 downloadFailed: "原因：更新ファイルのダウンロードがタイムアウトしたか、中断されました\nネットワークを確認するか、手動で更新してください"
+Updater.NowFileMD5Fail: "当前文件MD5校验错误！请重新下载！"
 
 # 文本
 NotFoundStringInYaml: "見つかりませんでした"
@@ -43,6 +44,7 @@ JoinRoom: "加入房间"
 # Ping
 SafeModeText: "<size=75%><color=#DC143C>F5</color>を押して、安全でない<color=#1E90FF>(UnSafe)</color>モードに切り替えます（お勧めしません）</size>"
 UnSafeModeText: "<size=75%><color=#1E90FF>F5</color>を押して、安全な<color=#DC143C>(Safe)</color>モードに切り替えます（推奨）</size>"
+Ping.UsingMode: "\n您正在使用[{0}]"
 
 # 提示语
 AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> はハッカーです\nあなたはホストではないため、<color=#FFFF00>処罰権限がありません</color>"

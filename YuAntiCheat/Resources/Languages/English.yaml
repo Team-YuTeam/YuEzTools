@@ -30,6 +30,7 @@ updateRestart: "Please restart the game"
 updatePingFialed: "Failed: {0}\nThis function may be temporarily suspended\nPlease change the download function and try again!"
 updateFileMd5Incorrect: "Failed: File MD5 check error\nThe file version of this function is not the latest or damaged\nPlease switch the download function and try again"
 downloadFailed: "Failed: Download update file timeout or interrupt \nPlease change the network and retry or manually update"
+Updater.NowFileMD5Fail: "当前文件MD5校验错误！请重新下载！"
 
 # 文本
 NotFoundStringInYaml: "Not Found"
@@ -43,7 +44,7 @@ JoinRoom: "joined the lobby"
 # Ping
 SafeModeText: "<size=75%>Press <color=#DC143C>F5</color> to switch to<color=#1E90FF>(UnSafe)</color>mode(not recommended)</size>"
 UnSafeModeText: "<size=75%>Press <color=#1E90FF>F5</color> to switch to<color=#DC143C>(Safe)</color>mode(recommended)</size>"
-Ping.UsingMode: "\nYou are using [{0}]"
+Ping.UsingMode: "\n您正在使用[{0}]"
 
 # 提示语
 AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are not the host - <color=#FFFF00>Cannot</color> punish the hacker"
