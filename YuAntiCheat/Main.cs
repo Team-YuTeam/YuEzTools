@@ -34,7 +34,7 @@ public class Main : BasePlugin
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
     public static readonly string MainMenuText = "外挂根本就不可能存在好嘛~"; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuAntiCheat"; //咱们模组的Guid
-    public const string PluginVersion = "1.1.1.0"; //咱们模组的版本号
+    public const string PluginVersion = "1.1.1.1"; //咱们模组的版本号
     public const string CanUseInAmongUsVer = "2024.6.18"; //智齿的AU版本
     public const int PluginCreation = 1;
 

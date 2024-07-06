@@ -43,6 +43,7 @@ JoinRoom: "joined the lobby"
 # Ping
 SafeModeText: "<size=75%>Press <color=#DC143C>F5</color> to switch to<color=#1E90FF>(UnSafe)</color>mode(not recommended)</size>"
 UnSafeModeText: "<size=75%>Press <color=#1E90FF>F5</color> to switch to<color=#DC143C>(Safe)</color>mode(recommended)</size>"
+Ping.UsingMode: "\nYou are using [{0}]"
 
 # 提示语
 AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are not the host - <color=#FFFF00>Cannot</color> punish the hacker"

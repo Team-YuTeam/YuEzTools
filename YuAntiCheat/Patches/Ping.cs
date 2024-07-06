@@ -61,10 +61,14 @@ public static class PingTracker_Update
         
      __instance.text.text += "\n<color=#FFFF00>By</color> <color=#FF0000>Yu</color>";
 #if DEBUG
-__instance.text.text += "\n<color=#FFC0CB>Debug</color>";
+__instance.text.text += string.Format(Translator.GetString("Ping.UsingMode"), "<color=#FFC0CB>DEBUG</color>");
 #endif
+        
 #if CANARY
-        __instance.text.text += "\n<color=#6A5ACD>Canary</color>";
+        __instance.text.text += string.Format(Translator.GetString("Ping.UsingMode"), "<color=#6A5ACD>CANARY</color>");
+#endif
+#if RELEASE
+        __instance.text.text += string.Format(Translator.GetString("Ping.UsingMode"), "<color=#00FFFF>RELEASE</color>");
 #endif
         
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
