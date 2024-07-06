@@ -46,8 +46,7 @@ UnSafeModeText: "<size=75%><color=#1E90FF>F5</color>を押して、安全な<col
 
 # 提示语
 AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> はハッカーです\nあなたはホストではないため、<color=#FFFF00>処罰権限がありません</color>"
-AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> はハッカーです\n<color=#1E90FF>[UnSafe]</color>モードがオンになっています <color=#FFFF00>試みています<color=#FF4500>撃殺することを</color>"殺そうとする
-
+AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> はハッカーです\n<color=#1E90FF>[UnSafe]</color>モードがオンになっています <color=#FFFF00>試みています<color=#FF4500>撃殺することを</color>殺そうとする"
 AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> ハッカープレイヤーです\nあなたがホストです 尝试<color=#FF4500>してみる</color>和<color=#FF0000>禁止</color>"
 AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> ハッカープレイヤーです\nあなたがホストです <color=#FFFF00>してみる<color=#FF0000>禁止</color>"
 SeeHacker: "<color=#1E90FF>{0}</color> ハッカープレイヤーです"
