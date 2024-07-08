@@ -40,14 +40,12 @@ public class ModUpdater
     }
 
     public static bool firstStart = true;
-
     public static bool hasUpdate = false;
     public static bool forceUpdate = false;
     public static bool isBroken = false;
     public static bool isChecked = false;
     public static bool DebugUnused = false;
     public static string versionInfoRaw = "";
-
     public static Version latestVersion = null;
     public static string showVer = "";
     public static Version DebugVer = null;
@@ -56,7 +54,6 @@ public class ModUpdater
     public static int creation = 0;
     public static string md5 = "";
     public static int visit => isChecked ? 216822 : 0;
-    
     public static string announcement_zh = "";
     public static string announcement_en = "";
     public static string downloadUrl_github = "";
@@ -236,7 +233,6 @@ public class ModUpdater
             JObject data = JObject.Parse(result);
 
             DebugVer = new(data["DebugVer"]?.ToString());
-
             
             CanUpdate = bool.Parse(new(data["CanUpdate"]?.ToString()));
             

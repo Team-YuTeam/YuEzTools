@@ -1,7 +1,5 @@
-using AmongUs.QuickChat;
 using HarmonyLib;
 using UnityEngine;
-using YuAntiCheat.UI;
 
 namespace YuAntiCheat.Patches;
 
@@ -16,7 +14,6 @@ public static class ChatBubblePatch
         var sr = __instance.transform.FindChild("Background").GetComponent<SpriteRenderer>();
         if(Toggles.DarkMode) sr.color = new Color(0, 0, 0,255);// : new Color(1, 1, 1);
         //if (modded)
-        //{
         if (chatText.Contains("░") ||
             chatText.Contains("▄") ||
             chatText.Contains("█") ||

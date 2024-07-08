@@ -52,7 +52,6 @@ public static class ResourceUtils
         {
             return null;
         }
-
         return null;
     }
 

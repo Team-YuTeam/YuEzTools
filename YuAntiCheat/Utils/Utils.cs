@@ -5,18 +5,18 @@ namespace YuAntiCheat.Utils;
 
 public class Utils
 {
-    public static string getColoredPingText(int ping){
-
-        if (ping <= 100){ // Green for ping < 100
-
+    public static string getColoredPingText(int ping)
+    {
+        if (ping <= 100) // Green for ping < 100
+        {
             return $"<color=#00ff00ff>\nPing: {ping} ms</color>";
-
-        } else if (ping < 400){ // Yellow for 100 < ping < 400
-
+        }
+        else if (ping < 400) // Yellow for 100 < ping < 400
+        {
             return $"<color=#ffff00ff>\nPing: {ping} ms</color>";
-
-        } else{ // Red for ping > 400
-
+        }
+        else // Red for ping > 400
+        {
             return $"<color=#ff0000ff>\nPing: {ping} ms</color>";
         }
     }
@@ -25,34 +25,31 @@ public class Utils
     public static string getColoredFPSText(float fps)
     {
         string a = !Toggles.ShowPing ? "\n" : "";
-        if (fps >= 100){ // Green for fps > 100
-
+        if (fps >= 100) // Green for fps > 100
+        {
             return a + $"<color=#00ff00ff>  FPS: {fps}</color>";
-
-        } else if (fps < 100 & fps > 50){ // Yellow for 100 > fps > 50
-
+        }
+        else if (fps < 100 & fps >= 50) // Yellow for 100 > fps > 50
+        {
             return a + $"<color=#ffff00ff>  FPS: {fps}</color>";
-
-        } else{ // Red for fps < 50
-
+        }
+        else // Red for fps < 50
+        {
             return a + $"<color=#ff0000ff>  FPS: {fps}</color>";
         }
     }
-    public static KeyCode stringToKeycode(string keyCodeStr){
-
-        if(!string.IsNullOrEmpty(keyCodeStr)){ // Empty strings are automatically invalid
-
-            try{
-                
+    public static KeyCode stringToKeycode(string keyCodeStr)
+    {
+        if(!string.IsNullOrEmpty(keyCodeStr)) // Empty strings are automatically invalid
+        {
+            try
+            {
                 // Case-insensitive parse of UnityEngine.KeyCode to check if string is validssss
                 KeyCode keyCode = (KeyCode)System.Enum.Parse(typeof(KeyCode), keyCodeStr, true);
-                
                 return keyCode;
-
-            }catch{}
-        
+            }
+            catch { }
         }
-
         return KeyCode.Delete; // If string is invalid, return Delete as the default key
     }
 }

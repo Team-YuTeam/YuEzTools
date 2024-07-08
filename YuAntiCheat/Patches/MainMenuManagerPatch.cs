@@ -12,7 +12,6 @@ namespace YuAntiCheat.UI;
 public class MainMenuManagerPatch
 {
     public static MainMenuManager Instance { get; private set; }
-
     public static GameObject InviteButton;
     public static GameObject GithubButton;
     public static GameObject WebsiteButton;
@@ -98,7 +97,6 @@ public class MainMenuManagerPatch
             aspectPosition.anchorPoint = new Vector2(col == 1 ? 0.415f : 0.583f, 0.5f - 0.08f * row);
             return button;
         }
-
 
         var extraLinkName = "";
         var extraLinkUrl = "";

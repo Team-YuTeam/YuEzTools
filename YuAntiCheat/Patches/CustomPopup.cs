@@ -12,13 +12,10 @@ public static class CustomPopup
 {
     public static GameObject Fill;
     public static GameObject InfoScreen;
-
     public static TextMeshPro TitleTMP;
     public static TextMeshPro InfoTMP;
-
     public static PassiveButton ActionButtonPrefab;
     public static List<PassiveButton> ActionButtons;
-
     private static bool busy = false;
 
     /// <summary>
@@ -50,11 +47,11 @@ public static class CustomPopup
                 var button = Object.Instantiate(ActionButtonPrefab, InfoScreen.transform);
                 var tmp = button.transform.FindChild("Text_TMP").GetComponent<TextMeshPro>();
                 tmp.text = text;
-  //              if (tmp != null)
-    //                tmp.transform.localPosition += Vector3.back * 150;
+        //      if (tmp != null)
+        //          tmp.transform.localPosition += Vector3.back * 150;
                 button.OnClick = new();
-      //          if (button != null)
-        //            button.transform.localPosition += Vector3.back * 150;
+        //      if (button != null)
+        //          button.transform.localPosition += Vector3.back * 150;
                 //button.OnClick.AddListener((Action)(() =>
                 //{
                 //    InfoScreen.SetActive(false);
@@ -113,26 +110,26 @@ public static class CustomPopup
         {
             Fill = Object.Instantiate(DOBScreen.FindChild("Fill").gameObject);
             Fill.transform.SetLocalZ(-100f);
-           Fill.name = "YuAC Info Popup Fill";
-         //   Fill.transform.localPosition += Vector3.back * 150;
-           Fill.SetActive(false);
+            Fill.name = "YuAC Info Popup Fill";
+            //Fill.transform.localPosition += Vector3.back * 150;
+            Fill.SetActive(false);
 
             InfoScreen = Object.Instantiate(DOBScreen.FindChild("InfoPage").gameObject);
             InfoScreen.transform.SetLocalZ(-110f);
-    //        InfoScreen.transform.localPosition += Vector3.back * 150;
+            //InfoScreen.transform.localPosition += Vector3.back * 150;
             InfoScreen.name = "YuAC Info Popup Page";
             InfoScreen.SetActive(false);
 
             TitleTMP = InfoScreen.transform.FindChild("Title Text").GetComponent<TextMeshPro>();
             TitleTMP.transform.localPosition = new(0f, 2.3f, 3f);
-        //    TitleTMP.transform.localPosition += Vector3.back * 150;
+            //TitleTMP.transform.localPosition += Vector3.back * 150;
             TitleTMP.DestroyTranslatorL();
             TitleTMP.text = "";
 
             InfoTMP = InfoScreen.transform.FindChild("InfoText_TMP").GetComponent<TextMeshPro>();
             InfoTMP.GetComponent<RectTransform>().sizeDelta = new(7f, 1.3f);
             InfoTMP.transform.localScale = new(1f, 1f, 1f);
-  //          InfoTMP.transform.localPosition += Vector3.back * 150;
+            //InfoTMP.transform.localPosition += Vector3.back * 150;
             InfoTMP.DestroyTranslatorL();
             InfoTMP.text = "";
 
@@ -140,7 +137,7 @@ public static class CustomPopup
             ActionButtonPrefab.gameObject.name = "ActionButtonPrefab";
             ActionButtonPrefab.transform.localScale = new(0.66f, 0.66f, 0.66f);
             ActionButtonPrefab.transform.localPosition = new(0f, -0.65f, 3f);
-          //  ActionButtonPrefab.transform.localPosition += Vector3.back * 150;
+            //ActionButtonPrefab.transform.localPosition += Vector3.back * 150;
             ActionButtonPrefab.transform.FindChild("Text_TMP").GetComponent<TextMeshPro>().DestroyTranslatorL();
             ActionButtonPrefab.gameObject.SetActive(false);
         }
