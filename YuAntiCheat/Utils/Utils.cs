@@ -1,13 +1,4 @@
 using UnityEngine;
-using InnerNet;
-using System.Linq;
-using Il2CppSystem.Collections.Generic;
-using System.IO;
-using Hazel;
-using System.Reflection;
-using AmongUs.GameOptions;
-using Sentry.Internal.Extensions;
-using HarmonyLib;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 
 namespace YuAntiCheat.Utils;
