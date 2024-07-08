@@ -9,13 +9,9 @@ public class HttpClientDownloadWithProgress(string downloadUrl, string destinati
 {
     private readonly string _downloadUrl = downloadUrl;
     private readonly string _destinationFilePath = destinationFilePath;
-
     private HttpClient _httpClient;
-
     public delegate void ProgressChangedHandler(long? totalFileSize, long totalBytesDownloaded, double? progressPercentage);
-
     public event ProgressChangedHandler ProgressChanged;
-
     public async Task StartDownload()
     {
         _httpClient = new HttpClient { Timeout = TimeSpan.FromDays(1) };

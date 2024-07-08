@@ -2,8 +2,6 @@ using HarmonyLib;
 using TMPro;
 using UnityEngine;
 
-using YuAntiCheat;
-
 namespace YuAntiCheat;
 
 [HarmonyPatch(typeof(AccountTab), nameof(AccountTab.Awake))]

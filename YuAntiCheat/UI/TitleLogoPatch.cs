@@ -1,8 +1,5 @@
 using HarmonyLib;
 using System.Collections.Generic;
-using System.Text;
-using TMPro;
-using YuAntiCheat;
 using UnityEngine;
 using System.IO;
 using System.Reflection;
@@ -14,9 +11,9 @@ namespace YuAntiCheat.UI;
 internal class TitleLogoPatch
 {
     public static GameObject ModStamp;
-    public static GameObject YuAC_Background;
+    //public static GameObject YuAC_Background;
     public static GameObject Ambience;
-    public static GameObject Starfield;
+    //public static GameObject Starfield;
     public static GameObject Sizer;
     public static GameObject AULogo;
     public static GameObject BottomButtonBounds;

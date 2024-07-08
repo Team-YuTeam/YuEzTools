@@ -1,6 +1,5 @@
 using HarmonyLib;
 using Newtonsoft.Json.Linq;
-using Sentry.Unity.NativeUtils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,7 +14,6 @@ using TMPro;
 using UnityEngine;
 using YuAntiCheat.UI;
 using YuAntiCheat.Modules;
-using YuAntiCheat;
 
 namespace YuAntiCheat.Updater;
 
@@ -42,14 +40,12 @@ public class ModUpdater
     }
 
     public static bool firstStart = true;
-
     public static bool hasUpdate = false;
     public static bool forceUpdate = false;
     public static bool isBroken = false;
     public static bool isChecked = false;
     public static bool DebugUnused = false;
     public static string versionInfoRaw = "";
-
     public static Version latestVersion = null;
     public static string showVer = "";
     public static Version DebugVer = null;
@@ -58,7 +54,6 @@ public class ModUpdater
     public static int creation = 0;
     public static string md5 = "";
     public static int visit => isChecked ? 216822 : 0;
-    
     public static string announcement_zh = "";
     public static string announcement_en = "";
     public static string downloadUrl_github = "";
@@ -238,7 +233,6 @@ public class ModUpdater
             JObject data = JObject.Parse(result);
 
             DebugVer = new(data["DebugVer"]?.ToString());
-
             
             CanUpdate = bool.Parse(new(data["CanUpdate"]?.ToString()));
             
@@ -328,7 +322,7 @@ public class ModUpdater
     }
     public static async Task<(bool, string)> DownloadDLL(string url)
     {
-        Retry:
+        //Retry: //这个没有起到任何作用
         File.Delete(DownloadFileTempPath);
         File.Create(DownloadFileTempPath).Close();
 
@@ -360,6 +354,7 @@ public class ModUpdater
             File.Delete(DownloadFileTempPath);
             Logger.Error($"更新失败\n{ex.Message}", "DownloadDLL", false);
             return (false, Translator.GetString("downloadFailed"));
+            //要使Retry起作用需删除上面的return语句再添加 goto Retry; //才不会报错
         }
     }
     private static void OnDownloadProgressChanged(long? totalFileSize, long totalBytesDownloaded, double? progressPercentage)

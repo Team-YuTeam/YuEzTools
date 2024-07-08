@@ -1,12 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
-using YuAntiCheat.Utils;
-using HarmonyLib;
 
 namespace YuAntiCheat.UI;
 public class MenuUI : MonoBehaviour
 {
-
     public List<GroupInfo> groups = new List<GroupInfo>();
     private bool isDragging = false;
     private Rect windowRect = new Rect(10, 10, 300, 500);
@@ -16,10 +13,14 @@ public class MenuUI : MonoBehaviour
     // Create all groups (buttons) and their toggles on start
     private void Start()
     {
-        groups.Add(new GroupInfo(Translator.GetString("Interface"), false, new List<ToggleInfo>() {
+        groups.Add(new GroupInfo(Translator.GetString("Interface"), false, new List<ToggleInfo>() 
+        {
             new ToggleInfo(Translator.GetString("DarkUI"), () => Toggles.DarkMode, x => Toggles.DarkMode = x),
-            }, new List<SubmenuInfo> {
-            new SubmenuInfo(Translator.GetString("PingPart"), false, new List<ToggleInfo>() {
+        },
+        new List<SubmenuInfo> 
+        {
+            new SubmenuInfo(Translator.GetString("PingPart"), false, new List<ToggleInfo>()
+            {
                 new ToggleInfo(Translator.GetString("ShowCommit"), () => Toggles.ShowCommit, x => Toggles.ShowCommit = x),
                 new ToggleInfo(Translator.GetString("ShowModText"), () => Toggles.ShowModText, x => Toggles.ShowModText = x),
                 new ToggleInfo(Translator.GetString("ShowIsSafe"), () => Toggles.ShowIsSafe, x => Toggles.ShowIsSafe = x),
@@ -28,36 +29,35 @@ public class MenuUI : MonoBehaviour
                 new ToggleInfo(Translator.GetString("ShowPing"), () => Toggles.ShowPing, x => Toggles.ShowPing = x),
                 new ToggleInfo(Translator.GetString("ShowFPS"), () => Toggles.ShowFPS, x => Toggles.ShowFPS = x),
             }),
-            }
-        ));
-        groups.Add(new GroupInfo(Translator.GetString("MenuUI.AntiCheat"), false, new List<ToggleInfo>() {
-                new ToggleInfo(Translator.GetString("MenuUI.SafeMode"), () => Toggles.SafeMode, x => Toggles.SafeMode = x),
-            }, new List<SubmenuInfo> {
-                
-            }
-        ));
-        groups.Add(new GroupInfo(Translator.GetString("MenuUI.ShortcutButton"), false, new List<ToggleInfo>() {
-                new ToggleInfo(Translator.GetString("MenuUI.DumpLog"), () => Toggles.DumpLog, x => Toggles.DumpLog = x),
-                new ToggleInfo(Translator.GetString("MenuUI.OpenGameDic"), () => Toggles.OpenGameDic, x => Toggles.OpenGameDic = x),
-            }, new List<SubmenuInfo> {
-                new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.OnlyHost"), false, new List<ToggleInfo>() {
-                    new ToggleInfo(Translator.GetString("MenuUI.ChangeDownTimerToZero"),() => Toggles.ChangeDownTimerToZero, x => Toggles.ChangeDownTimerToZero = x),
-                    new ToggleInfo(Translator.GetString("MenuUI.ChangeDownTimerTo114514"), () => Toggles.ChangeDownTimerTo114514, x => Toggles.ChangeDownTimerTo114514 = x),
-                    new ToggleInfo(Translator.GetString("MenuUI.AbolishDownTimer"), () => Toggles.AbolishDownTimer, x => Toggles.AbolishDownTimer = x),
-                }),
-            }
-        ));
-        groups.Add(new GroupInfo(Translator.GetString("MenuUI.Other"), false, new List<ToggleInfo>() {
-                new ToggleInfo(Translator.GetString("MenuUI.FPSPlus"), () => Toggles.FPSPlus, x => Toggles.FPSPlus = x),
-            }, new List<SubmenuInfo> {
-                
-                
-            }
-        ));
+        }));
+        groups.Add(new GroupInfo(Translator.GetString("MenuUI.AntiCheat"), false, new List<ToggleInfo>() 
+        {
+            new ToggleInfo(Translator.GetString("MenuUI.SafeMode"), () => Toggles.SafeMode, x => Toggles.SafeMode = x),
+        },
+        new List<SubmenuInfo> { }));
+        groups.Add(new GroupInfo(Translator.GetString("MenuUI.ShortcutButton"), false, new List<ToggleInfo>() 
+        {
+            new ToggleInfo(Translator.GetString("MenuUI.DumpLog"), () => Toggles.DumpLog, x => Toggles.DumpLog = x),
+            new ToggleInfo(Translator.GetString("MenuUI.OpenGameDic"), () => Toggles.OpenGameDic, x => Toggles.OpenGameDic = x),
+        },
+        new List<SubmenuInfo> 
+        {
+            new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.OnlyHost"), false, new List<ToggleInfo>() 
+            {
+                new ToggleInfo(Translator.GetString("MenuUI.ChangeDownTimerToZero"),() => Toggles.ChangeDownTimerToZero, x => Toggles.ChangeDownTimerToZero = x),
+                new ToggleInfo(Translator.GetString("MenuUI.ChangeDownTimerTo114514"), () => Toggles.ChangeDownTimerTo114514, x => Toggles.ChangeDownTimerTo114514 = x),
+                new ToggleInfo(Translator.GetString("MenuUI.AbolishDownTimer"), () => Toggles.AbolishDownTimer, x => Toggles.AbolishDownTimer = x),
+            }),
+        }));
+        groups.Add(new GroupInfo(Translator.GetString("MenuUI.Other"), false, new List<ToggleInfo>()
+        {
+            new ToggleInfo(Translator.GetString("MenuUI.FPSPlus"), () => Toggles.FPSPlus, x => Toggles.FPSPlus = x),
+        },
+        new List<SubmenuInfo> { }));
     }
     
-    private void Update(){
-
+    private void Update()
+    {
         if (Input.GetKeyDown(Utils.Utils.stringToKeycode(Main.menuKeybind.Value)))
         {
             //Enable-disable GUI with DELETE key
@@ -71,7 +71,6 @@ public class MenuUI : MonoBehaviour
 
     public void OnGUI()
     {
-
         if (!isGUIActive) return;
 
         if (submenuButtonStyle == null)
@@ -197,7 +196,6 @@ public class MenuUI : MonoBehaviour
         GUI.DragWindow(); //Allows dragging the GUI window with mouse
     }
 
-
     // Dynamically calculate the window's height depending on
     // The number of toggles & group expansion
     private int CalculateWindowHeight()
@@ -226,7 +224,6 @@ public class MenuUI : MonoBehaviour
                 }
             }
         }
-
         return totalHeight;
     }
 
@@ -257,5 +254,4 @@ public class MenuUI : MonoBehaviour
             }
         }
     }
-
 }

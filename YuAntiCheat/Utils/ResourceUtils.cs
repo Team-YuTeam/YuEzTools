@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace YuAntiCheat.Utils;
 
+#nullable enable
 public static class ResourceUtils
 {
     private static readonly Dictionary<string, Sprite> CachedSprites = new();
@@ -51,7 +52,6 @@ public static class ResourceUtils
         {
             return null;
         }
-
         return null;
     }
 

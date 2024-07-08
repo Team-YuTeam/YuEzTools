@@ -1,18 +1,6 @@
 using AmongUs.GameOptions;
 using Hazel;
-using System;
 using System.Linq;
-using HarmonyLib;
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using InnerNet;
-using UnityEngine;
-using YuAntiCheat;
-using YuAntiCheat.Keys;
 using YuAntiCheat.Get;
 
 namespace YuAntiCheat;
@@ -21,7 +9,6 @@ internal class AntiCheatForAll
 {
     public static int MeetingTimes = 0;
     public static int DeNum = 0;
-    
     public static bool ReceiveRpc(PlayerControl pc, byte callId, MessageReader reader)
     {
         if (pc == null || reader == null || pc.AmOwner) return false;
@@ -74,7 +61,6 @@ internal class AntiCheatForAll
                         Main.Logger.LogWarning($"非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回");
                         return true;
                     }
-
                     break;
                 
                 case RpcCalls.SetTasks:
@@ -171,6 +157,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case RpcCalls.CheckMurder:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
                     {
@@ -178,6 +165,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case RpcCalls.CheckShapeshift:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
                     {
@@ -185,6 +173,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case RpcCalls.RejectShapeshift:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
                     {
@@ -199,6 +188,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case RpcCalls.StartVanish:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
@@ -213,6 +203,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case RpcCalls.StartAppear:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
@@ -220,7 +211,6 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
-                
                 
                 case RpcCalls.SetLevel:
                     if (GetPlayer.IsInGame)
@@ -237,7 +227,6 @@ internal class AntiCheatForAll
                     }
                     break;
             }
-
             switch (callId)
             {
                 case 101:
@@ -293,7 +282,6 @@ internal class AntiCheatForAll
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
                         return true;
                     }
-
                     break;
 
                 case 41:
@@ -344,6 +332,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break; 
+
                 case 55:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
                     {
@@ -351,6 +340,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case 56:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
                     {
@@ -358,6 +348,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case 62:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
@@ -365,6 +356,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case 63:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
@@ -372,6 +364,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case 64:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
@@ -379,6 +372,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case 65:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
@@ -386,6 +380,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case 19:
                     if (!(pc.Data.RoleType == RoleTypes.Engineer||pc.Data.RoleType == RoleTypes.Impostor||pc.Data.RoleType == RoleTypes.Shapeshifter||pc.Data.RoleType == RoleTypes.Phantom))
                     {
@@ -395,10 +390,7 @@ internal class AntiCheatForAll
                     break;
             }
         }
-        catch
-        {
-            //
-        }
+        catch { }
         return false;
     }
 }

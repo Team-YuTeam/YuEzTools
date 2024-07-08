@@ -1,18 +1,4 @@
-using AmongUs.GameOptions;
-using Hazel;
-using System;
-using System.Linq;
-using HarmonyLib;
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using InnerNet;
-using UnityEngine;
 using YuAntiCheat.Get;
-using YuAntiCheat;
 
 namespace YuAntiCheat;
 
@@ -26,7 +12,6 @@ public class AUMCheat
                 Main.Logger.LogWarning($"有AmongUsMenu玩家，{"好友编号："+pc.GetClient().FriendCode+"/名字："+pc.GetRealName()+"/ProductUserId："+pc.GetClient().ProductUserId}");
                 //Main.PlayerStates[pc.GetClient().Id].IsAUM = true;
                 return true;
-            
             
             case unchecked((byte)42069):
                 Main.Logger.LogWarning($"有AmongUsMenu玩家，{"好友编号："+pc.GetClient().FriendCode+"/名字："+pc.GetRealName()+"/ProductUserId："+pc.GetClient().ProductUserId}");
