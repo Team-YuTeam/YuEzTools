@@ -1,6 +1,5 @@
 using HarmonyLib;
 using Newtonsoft.Json.Linq;
-using Sentry.Unity.NativeUtils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,7 +14,6 @@ using TMPro;
 using UnityEngine;
 using YuAntiCheat.UI;
 using YuAntiCheat.Modules;
-using YuAntiCheat;
 
 namespace YuAntiCheat.Updater;
 
@@ -328,7 +326,7 @@ public class ModUpdater
     }
     public static async Task<(bool, string)> DownloadDLL(string url)
     {
-        Retry:
+        //Retry: //这个没有起到任何作用
         File.Delete(DownloadFileTempPath);
         File.Create(DownloadFileTempPath).Close();
 
@@ -360,6 +358,7 @@ public class ModUpdater
             File.Delete(DownloadFileTempPath);
             Logger.Error($"更新失败\n{ex.Message}", "DownloadDLL", false);
             return (false, Translator.GetString("downloadFailed"));
+            //要使Retry起作用需删除上面的return语句再添加 goto Retry; //才不会报错
         }
     }
     private static void OnDownloadProgressChanged(long? totalFileSize, long totalBytesDownloaded, double? progressPercentage)
