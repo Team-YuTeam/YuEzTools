@@ -17,7 +17,6 @@ internal class Keys
             FunctionPatch.DumpLogKey();
         }
         
-        
         //开启非安全模式
         if (Input.GetKeyDown(KeyCode.F5))
         {
