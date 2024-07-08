@@ -1,26 +1,23 @@
-using Epic.OnlineServices.Presence;
 using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using static UnityEngine.ProBuilder.AutoUnwrapSettings;
 using Object = UnityEngine.Object;
 
 namespace YuAntiCheat;
 
-#nullable enable
 public static class CustomPopup
 {
-    public static GameObject? Fill;
-    public static GameObject? InfoScreen;
+    public static GameObject Fill;
+    public static GameObject InfoScreen;
 
-    public static TextMeshPro? TitleTMP;
-    public static TextMeshPro? InfoTMP;
+    public static TextMeshPro TitleTMP;
+    public static TextMeshPro InfoTMP;
 
-    public static PassiveButton? ActionButtonPrefab;
-    public static List<PassiveButton>? ActionButtons;
+    public static PassiveButton ActionButtonPrefab;
+    public static List<PassiveButton> ActionButtons;
 
     private static bool busy = false;
 
@@ -30,25 +27,17 @@ public static class CustomPopup
     /// <param name="title">标题</param>
     /// <param name="info">内容</param>
     /// <param name="buttons">按钮（文字，点击事件）</param>
-    public static void Show(string title, string info, List<(string, Action)>? buttons)
+    public static void Show(string title, string info, List<(string, Action)> buttons)
     {
-        if (busy || Fill == null || InfoScreen == null || ActionButtonPrefab == null || TitleTMP == null || InfoTMP == null) Init();
+        if (busy || Fill == null || InfoScreen == null || ActionButtonPrefab == null || TitleTMP == null || InfoTMP == null)
+        {
+            Init();
+        }
 
         busy = true;
 
         TitleTMP.text = title;
         InfoTMP.text = info;
-//        if (TitleTMP != null)
-//            TitleTMP.transform.localPosition += Vector3.back * 100;
-//        if (InfoTMP != null)
-  //          InfoTMP.transform.localPosition += Vector3.back * 100;
-    //          if (Fill != null)
-      //            Fill.transform.localPosition += Vector3.back * 200;
- //       if (InfoScreen != null)
-   //        InfoScreen.transform.localPosition += Vector3.back * 200;
-     //         if (ActionButtonPrefab != null)
-       //           ActionButtonPrefab.transform.localPosition += Vector3.back * 100;
-        //
 
         ActionButtons?.Do(b => Object.Destroy(b.gameObject));
         ActionButtons = new();
@@ -66,11 +55,11 @@ public static class CustomPopup
                 button.OnClick = new();
       //          if (button != null)
         //            button.transform.localPosition += Vector3.back * 150;
-                button.OnClick.AddListener((Action)(() =>
-                {
-                    InfoScreen.SetActive(false);
-                    Fill.SetActive(false);
-                }));
+                //button.OnClick.AddListener((Action)(() =>
+                //{
+                //    InfoScreen.SetActive(false);
+                //    Fill.SetActive(false);
+                //}));
                 if (action != null)
                 {
                     button.OnClick.AddListener(action);
@@ -100,8 +89,8 @@ public static class CustomPopup
 
         busy = false;
     }
-    private static (string title, string info, List<(string, Action)>? buttons)? waitToShow = null;
-    public static void ShowLater(string title, string info, List<(string, Action)>? buttons) => waitToShow = (title, info, buttons);
+    private static (string title, string info, List<(string, Action)> buttons)? waitToShow = null;
+    public static void ShowLater(string title, string info, List<(string, Action)> buttons) => waitToShow = (title, info, buttons);
     private static string waitToUpdateText = string.Empty;
     public static void UpdateTextLater(string info) => waitToUpdateText = info;
     public static void Update()
@@ -157,4 +146,3 @@ public static class CustomPopup
         }
     }
 }
-#nullable disable
