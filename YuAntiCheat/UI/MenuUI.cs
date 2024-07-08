@@ -1,12 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
-using YuAntiCheat.Utils;
-using HarmonyLib;
 
 namespace YuAntiCheat.UI;
 public class MenuUI : MonoBehaviour
 {
-
     public List<GroupInfo> groups = new List<GroupInfo>();
     private bool isDragging = false;
     private Rect windowRect = new Rect(10, 10, 300, 500);
