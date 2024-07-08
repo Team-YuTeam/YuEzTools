@@ -42,6 +42,5 @@ public static class ChatBubblePatch
             else chatText = ColorString(Color.black, chatText.TrimEnd('\0'));
         }
         //  __instance.SetLeft();  //如果需要靠左
-        //}
     }
 }
