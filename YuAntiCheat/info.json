@@ -3,7 +3,7 @@
 
   "minVer": "latest",
   "creation": "1",
-  "allowStart": "false",
+  "allowStart": "true",
   "CanUpdate": "true",
   "DebugVer": "0.0.0",
 
