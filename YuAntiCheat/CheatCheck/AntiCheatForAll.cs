@@ -12,7 +12,7 @@ internal class AntiCheatForAll
     public static bool ReceiveRpc(PlayerControl pc, byte callId, MessageReader reader)
     {
         if (pc == null || reader == null || pc.AmOwner) return false;
-        if (pc.GetClient()?.PlatformData?.Platform is Platforms.Android or Platforms.IPhone or Platforms.Switch or Platforms.Playstation or Platforms.Xbox or Platforms.StandaloneMac) return false;
+        //if (pc.GetClient()?.PlatformData?.Platform is Platforms.Android or Platforms.IPhone or Platforms.Switch or Platforms.Playstation or Platforms.Xbox or Platforms.StandaloneMac) return false;
         try
         {
             MessageReader sr = MessageReader.Get(reader);
