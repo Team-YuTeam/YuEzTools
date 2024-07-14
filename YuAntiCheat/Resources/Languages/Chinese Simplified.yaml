@@ -52,6 +52,7 @@ AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您已开启<co
 AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 尝试<color=#FF4500>击杀</color>和<color=#FF0000>封禁</color>"
 AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 <color=#FFFF00>尝试<color=#FF0000>封禁</color>"
 SeeHacker: "<color=#1E90FF>{0}</color> 是外挂"
+ERROR.CHECKRPC: "[ERROR]可能有外挂或YuAC问题！"
 
 # MenuUI.Interface
 Interface: "界面"
@@ -77,6 +78,7 @@ MenuUI.ShortcutButton.OnlyHost: "仅房主"
 MenuUI.ChangeDownTimerToZero: "倒计时更改成0"
 MenuUI.ChangeDownTimerTo114514: "恶搞倒计时"
 MenuUI.AbolishDownTimer: "取消倒计时"
+MenuUI.ShortcutButton.Left: "退出游戏选项卡"
 
 # MenuUI.Other
 MenuUI.Other: "其他功能"

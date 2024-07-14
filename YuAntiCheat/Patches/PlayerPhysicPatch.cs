@@ -23,6 +23,13 @@ public class PlayerPhysicPatch
             Toggles.OpenGameDic = !Toggles.OpenGameDic;
         }
         
+        //退出游戏
+        if (Toggles.ExitGame)
+        {
+            FunctionPatch.ExitGame();
+            Toggles.ExitGame = !Toggles.ExitGame;
+        }
+        
         //-- 下面是主机专用的按钮--//
         
         //立即开始

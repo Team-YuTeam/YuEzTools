@@ -18,6 +18,7 @@ public class MainMenuManagerPatch
     public static GameObject WebsiteButton;
     public static GameObject GiteeButton;
     public static GameObject GitlabButton;
+    public static GameObject GitcodeButton;
     public static GameObject UpdateButton;
     public static GameObject PlayButton;
 
@@ -127,6 +128,10 @@ public class MainMenuManagerPatch
         GitlabButton.gameObject.SetActive(true);
         GitlabButton.name = "YuAC Gitlab Button";
         
+        if (GitcodeButton == null) GitcodeButton = CreatButton("Gitcode", () => Application.OpenURL("https://gitcode.com/YuQZ/YuAntiCheat"));
+        GitcodeButton.gameObject.SetActive(true);
+        GitcodeButton.name = "YuAC Gitcode Button";
+        
         PlayButton = __instance.playButton.gameObject;
         if (UpdateButton == null)
         {
@@ -156,27 +161,5 @@ public class MainMenuManagerPatch
             }));
             UpdateButton.transform.transform.FindChild("FontPlacer").GetChild(0).gameObject.DestroyTranslator();
         }
-        
-        // if (UpdateButton == null)
-        // {
-        //     UpdateButton = CreatButton("一键更新", () =>
-        //     {
-        //         if (!Input.GetKey(KeyCode.LeftShift))
-        //         {
-        //             if (ModUpdater.CanUpdate)
-        //             {
-        //                 ModUpdater.StartUpdate();
-        //             }
-        //             else
-        //             {
-        //                 CustomPopup.Show(Translator.GetString("UpdateBySelfTitle"),
-        //                     Translator.GetString("UpdateBySelfText"),
-        //                     new() { (Translator.GetString(StringNames.Okay), null) });
-        //             }
-        //         }
-        //     });
-        //     UpdateButton.gameObject.SetActive(false);
-        //     UpdateButton.name = "YuAC Update Button";
-        // }
     }
 }

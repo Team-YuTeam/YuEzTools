@@ -39,7 +39,12 @@ public class MenuUI : MonoBehaviour
         groups.Add(new GroupInfo(Translator.GetString("MenuUI.ShortcutButton"), false, new List<ToggleInfo>() {
                 new ToggleInfo(Translator.GetString("MenuUI.DumpLog"), () => Toggles.DumpLog, x => Toggles.DumpLog = x),
                 new ToggleInfo(Translator.GetString("MenuUI.OpenGameDic"), () => Toggles.OpenGameDic, x => Toggles.OpenGameDic = x),
+                new ToggleInfo(Translator.GetString("MenuUI.ExitGame"), () => Toggles.ExitGame, x => Toggles.ExitGame = x),
             }, new List<SubmenuInfo> {
+                new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.Left"), false, new List<ToggleInfo>())
+                {
+                    
+                },
                 new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.OnlyHost"), false, new List<ToggleInfo>() {
                     new ToggleInfo(Translator.GetString("MenuUI.ChangeDownTimerToZero"),() => Toggles.ChangeDownTimerToZero, x => Toggles.ChangeDownTimerToZero = x),
                     new ToggleInfo(Translator.GetString("MenuUI.ChangeDownTimerTo114514"), () => Toggles.ChangeDownTimerTo114514, x => Toggles.ChangeDownTimerTo114514 = x),

@@ -23,10 +23,17 @@ namespace YuAntiCheat;
 
 public class FunctionPatch
 {
+    public static bool kickGameActive;
     public static void DumpLogKey()
     {
         Main.Logger.LogInfo("输出日志");
         DumpLog();
+    }
+
+    public static void ExitGame()
+    {
+        //AmongUsClient.Instance.ExitGame(DisconnectReasons.ExitGame);
+        AmongUsClient.Instance.ExitGame(DisconnectReasons.ServerError);
     }
 
     public static void OpenGameDic()

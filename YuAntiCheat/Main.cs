@@ -34,7 +34,7 @@ public class Main : BasePlugin
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
     public static readonly string MainMenuText = "外挂根本就不可能存在好嘛~"; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuAntiCheat"; //咱们模组的Guid
-    public const string PluginVersion = "1.1.1.1"; //咱们模组的版本号
+    public const string PluginVersion = "1.1.13"; //咱们模组的版本号
     public const string CanUseInAmongUsVer = "2024.6.18"; //智齿的AU版本
     public const int PluginCreation = 1;
 
@@ -82,10 +82,10 @@ public class Main : BasePlugin
             "Keybind",
             "Delete",
             "The keyboard key used to toggle the GUI on and off. List of supported keycodes: https://docs.unity3d.com/Packages/com.unity.tiny@0.16/api/Unity.Tiny.Input.KeyCode.html");
-        menuHtmlColor = Config.Bind("MalumMenu.GUI",
+        menuHtmlColor = Config.Bind("YuAC.GUI",
             "Color",
             "",
-            "A custom color for your MalumMenu GUI. Supports html color codes");
+            "A custom color for your YuAC GUI. Supports html color codes");
 
         menuUI = AddComponent<MenuUI>();
 
@@ -95,6 +95,9 @@ public class Main : BasePlugin
         ResourceUtils.WriteToFileFromResource(
             "BepInEx/core/YamlDotNet.xml",
             "YuAntiCheat.Resources.InDLL.Depends.YamlDotNet.xml");
+        ResourceUtils.WriteToFileFromResource(
+            "BepInEx/patchers/NextPatcher.dll",
+            "YuAntiCheat.Resources.InDLL.Depends.NextPatcher.dll");
         
         //Translator.Init();
         

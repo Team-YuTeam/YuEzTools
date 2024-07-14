@@ -40,6 +40,9 @@ static class GetPlayer
             return null;
         }
     }
+    public static RoleBehaviour getBehaviourByRoleType(RoleTypes roleType) {
+        return RoleManager.Instance.AllRoles.First(r => r.Role == roleType);
+    }
     
     public static ReferenceDataManager referenceDataManager = DestroyableSingleton<ReferenceDataManager>.Instance;
     public static bool IsShip => ShipStatus.Instance != null;

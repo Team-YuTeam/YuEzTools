@@ -4,13 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="v1.1.1.1">
+    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/ShipStatus.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/InDLL/Depends/NextPatcher.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/CheatCheck/MalumMenuCheck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/CheatCheck/MMCheck.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YuAntiCheat/Main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Main.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Patches/Ping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/Ping.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Modules/Updater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Modules/Updater.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Patches/FunctionPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/FunctionPatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Patches/MainMenuManagerPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/MainMenuManagerPatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Patches/PlayerPhysicPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/PlayerPhysicPatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Patches/RPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/RPC.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/Chinese Simplified.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/Chinese Simplified.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/Chinese Traditional.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/Chinese Traditional.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/English.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/English.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/UI/MenuUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/UI/MenuUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/UI/Toggles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/UI/Toggles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Utils/GetPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Utils/GetPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/info.json" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/info.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,16 +58,17 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/2c/302350ad/TaskSet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/3b/43a8501c/PingTracker.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/4d/103a4ec7/RpcCalls.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/61/6db35f95/DisconnectReasons.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/68/0782517e/LogicGameFlow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/75/4ee06908/NetworkedPlayerInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/c5/e951e9cd/AmongUsClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/d2/5506c416/TranslationController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/e8/aadce2f4/RoleBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad7b63e9ee60461bb002bc8fb8f18583237c00/ce/9e5e62f1/KeyCode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d064324b32114398b094ea8bd854086828200/4e/985ade96/MessageReader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/GameModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/InitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/PluginModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Keys/Keys.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Keys/Keys.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -181,7 +192,11 @@
       <workItem from="1719831329279" duration="3028000" />
       <workItem from="1720080206235" duration="4921000" />
       <workItem from="1720098366521" duration="93000" />
-      <workItem from="1720242799431" duration="1585000" />
+      <workItem from="1720242799431" duration="6482000" />
+      <workItem from="1720287511204" duration="487000" />
+      <workItem from="1720324659197" duration="6726000" />
+      <workItem from="1720880045489" duration="2456000" />
+      <workItem from="1720960387224" duration="540000" />
     </task>
     <task id="LOCAL-00001" summary="Perfection of basic functions">
       <option name="closed" value="true" />
@@ -463,7 +478,31 @@
       <option name="project" value="LOCAL" />
       <updated>1720088913357</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="v1.1.1.1">
+      <option name="closed" value="true" />
+      <created>1720246428985</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1720246428986</updated>
+    </task>
+    <task id="LOCAL-00037" summary="MD5校验">
+      <option name="closed" value="true" />
+      <created>1720248388418</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1720248388418</updated>
+    </task>
+    <task id="LOCAL-00038" summary="lastet version and md5 change">
+      <option name="closed" value="true" />
+      <created>1720253054131</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1720253054131</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,8 +589,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="更改判定是否结束游戏逻辑&#10;新增两个快捷键" />
-    <MESSAGE value="Lezai泥干嘛哎哟&#10;修复普通玩家被击杀报error的bug" />
     <MESSAGE value="Update to 1.0.5" />
     <MESSAGE value="change Readme.md" />
     <MESSAGE value="Change UI" />
@@ -575,6 +612,8 @@
     <MESSAGE value="11111" />
     <MESSAGE value="Change MD5" />
     <MESSAGE value="v1.1.1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="v1.1.1.1" />
+    <MESSAGE value="MD5校验" />
+    <MESSAGE value="lastet version and md5 change" />
+    <option name="LAST_COMMIT_MESSAGE" value="lastet version and md5 change" />
   </component>
 </project>
