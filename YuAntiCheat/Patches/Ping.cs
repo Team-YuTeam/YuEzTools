@@ -2,11 +2,14 @@ using HarmonyLib;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Diagnostics;
+using Il2CppSystem;
 using Rewired.UI.ControlMapper;
 using TMPro;
 using YuAntiCheat;
 using YuAntiCheat.Get;
+using YuAntiCheat.Patches;
 using YuAntiCheat.Utils;
+using static YuAntiCheat.Translator;
 
 namespace YuAntiCheat;
 
@@ -15,6 +18,7 @@ namespace YuAntiCheat;
 public static class PingTracker_Update
 {
     private static float deltaTime;
+    public static float fps;
     
     [HarmonyPostfix]
     public static void Postfix(PingTracker __instance)
@@ -59,22 +63,28 @@ public static class PingTracker_Update
                 __instance.text.text += "\n<color=#00FA9A>[Light]</color>";
         }
         
-     __instance.text.text += "\n<color=#FFFF00>By</color> <color=#FF0000>Yu</color>";
-        
+        if (Toggles.ShowIsAutoExit) __instance.text.text += Toggles.AutoExit ? "\n<color=#DC143C>[AutoExit]</color>" : "\n<color=#1E90FF>[UnAutoExit]</color>";
+#if DEBUG
+__instance.text.text += "\n<color=#FFC0CB>[DEBUG]</color>";
+#endif
+#if CANARY
+        __instance.text.text += "\n<color=#6A5ACD>[CANARY]</color>";
+#endif
+#if RELEASE
+        __instance.text.text += "\n<color=#00FFFF>[RELEASE]</color>";
+#endif
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-        float fps = Mathf.Ceil(1.0f / deltaTime);
+        fps = Mathf.Ceil(1.0f / deltaTime);
         if(Toggles.ShowPing) __instance.text.text += Utils.Utils.getColoredPingText(AmongUsClient.Instance.Ping); // 书写Ping
         if(Toggles.ShowFPS) __instance.text.text += Utils.Utils.getColoredFPSText(fps); // 书写FPS
         
-#if DEBUG
-__instance.text.text += string.Format(Translator.GetString("Ping.UsingMode"), "<color=#FFC0CB>DEBUG</color>");
-#endif
+        DateTime dt = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now, TimeZoneInfo.Local);
+        DateTime dt1 = TimeZoneInfo.ConvertTimeFromUtc(dt, TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time"));//参数对应国家或者时区   ***对于有夏令时冬令时的区域，程序会自动调整***
+        if(Toggles.ShowLocalNowTime)__instance.text.text += GetString("Ping.NowTime") + DateTime.Now.ToString();
+        if (Toggles.ShowUTC) __instance.text.text += "\r\n" + "UTC :" + dt.ToString();
+
         
-#if CANARY
-        __instance.text.text += string.Format(Translator.GetString("Ping.UsingMode"), "<color=#6A5ACD>CANARY</color>");
-#endif
-#if RELEASE
-        __instance.text.text += string.Format(Translator.GetString("Ping.UsingMode"), "<color=#00FFFF>RELEASE</color>");
-#endif
+        if (Toggles.ShowRoomTime && GetPlayer.IsLobby && AmongUsClient.Instance.AmHost && GetPlayer.IsOnlineGame)__instance.text.text += "\n<color=#FFD700>"+GameStartManagerPatch.countDown+"</color>";
+        __instance.text.text += "\n<color=#FFFF00>By</color> <color=#FF0000>Yu</color>";
     }
 }

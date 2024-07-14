@@ -95,9 +95,6 @@ public class Main : BasePlugin
         ResourceUtils.WriteToFileFromResource(
             "BepInEx/core/YamlDotNet.xml",
             "YuAntiCheat.Resources.InDLL.Depends.YamlDotNet.xml");
-        ResourceUtils.WriteToFileFromResource(
-            "BepInEx/patchers/NextPatcher.dll",
-            "YuAntiCheat.Resources.InDLL.Depends.NextPatcher.dll");
         
         //Translator.Init();
         

@@ -30,7 +30,7 @@ class Logger
         if (!isEnable || disableList.Contains(tag)) return;
         var logger = Main.Logger;
         string t = DateTime.Now.ToString("HH:mm:ss");
-        if (sendToGameList.Contains(tag) || isAlsoInGame) SendInGamePatch.SendInGame($"[{tag}]{text}");
+        if(Main.ModMode == 0) SendInGamePatch.SendInGame($"[{tag}]{text}");
         if (escapeCRLF)
             text = text.Replace("\r", "\\r").Replace("\n", "\\n");
         string log_text = $"[{t}][{tag}]{text}";

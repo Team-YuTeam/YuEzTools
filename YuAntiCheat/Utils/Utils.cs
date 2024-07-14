@@ -29,22 +29,23 @@ public class Utils
             return $"<color=#ff0000ff>\nPing: {ping} ms</color>";
         }
     }
+    public static string ColorString(Color32 color, string str) => $"<color=#{color.r:x2}{color.g:x2}{color.b:x2}{color.a:x2}>{str}</color>";
     public static string GetString(StringNames stringName)
         => DestroyableSingleton<TranslationController>.Instance.GetString(stringName, new Il2CppReferenceArray<Il2CppSystem.Object>(0));
     public static string getColoredFPSText(float fps)
     {
-        string a = !Toggles.ShowPing ? "\n" : "";
+        string a = !Toggles.ShowPing ? "\n" : "  ";
         if (fps >= 100){ // Green for fps > 100
 
-            return a + $"<color=#00ff00ff>  FPS: {fps}</color>";
+            return a + $"<color=#00ff00ff>FPS: {fps}</color>";
 
         } else if (fps < 100 & fps > 50){ // Yellow for 100 > fps > 50
 
-            return a + $"<color=#ffff00ff>  FPS: {fps}</color>";
+            return a + $"<color=#ffff00ff>FPS: {fps}</color>";
 
         } else{ // Red for fps < 50
 
-            return a + $"<color=#ff0000ff>  FPS: {fps}</color>";
+            return a + $"<color=#ff0000ff>FPS: {fps}</color>";
         }
     }
     public static KeyCode stringToKeycode(string keyCodeStr){

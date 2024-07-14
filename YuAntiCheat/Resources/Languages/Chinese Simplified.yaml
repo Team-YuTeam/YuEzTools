@@ -45,6 +45,8 @@ JoinRoom: "加入房间"
 SafeModeText: "<size=75%>按下 <color=#DC143C>F5</color> 以切换不安全<color=#1E90FF>(UnSafe)</color>模式(不推荐)</size>"
 UnSafeModeText: "<size=75%>按下 <color=#1E90FF>F5</color> 以切换安全<color=#DC143C>(Safe)</color>模式(推荐)</size>"
 Ping.UsingMode: "\n您正在使用[{0}]"
+Ping.RoomTime: "\n距离炸房："
+Ping.NowTime: "\n本地时间："
 
 # 提示语
 AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您不是房主 <color=#FFFF00>无权</color>惩罚"
@@ -65,10 +67,15 @@ ShowSafeText: "显示安全模式提示语"
 ShowIsDark: "显示是否深色模式状态"
 ShowPing: "显示Ping"
 ShowFPS: "显示FPS"
+ShowRoomTime: "显示房间炸房倒计时"
+ShowIsAutoExit: "显示是否防炸端模式"
+ShowLocalNowTime: "显示现在时间"
+ShowUTC: "显示UTC"
 
 # MenuUI.AntiCheat
 MenuUI.AntiCheat: "反作弊"
 MenuUI.SafeMode: "安全模式"
+MenuUI.AutoExit: "防止炸端"
 
 # MenuUI.ShortcutButton
 MenuUI.ShortcutButton: "快捷按钮"
@@ -77,8 +84,13 @@ MenuUI.OpenGameDic: "打开游戏运行目录"
 MenuUI.ShortcutButton.OnlyHost: "仅房主"
 MenuUI.ChangeDownTimerToZero: "倒计时更改成0"
 MenuUI.ChangeDownTimerTo114514: "恶搞倒计时"
+MenuUI.AutoStartGame: "人满14自动开始游戏"
 MenuUI.AbolishDownTimer: "取消倒计时"
+
+# MenuUI.ShortcutButton.Left
 MenuUI.ShortcutButton.Left: "退出游戏选项卡"
+MenuUI.ExitGame: "退出游戏"
+MenuUI.RealBan: "封禁自己(真封禁！)"
 
 # MenuUI.Other
 MenuUI.Other: "其他功能"
@@ -91,3 +103,4 @@ VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>您的YuAC是最�
 # FunctionPatch
 FunctionPatch.AbolishDownTimer: "取消倒计时"
 FunctionPatch.DumpLog: "日志已保存"
+Warning.AutoExitAtMismatchedFPS: "FPS过低 要退出游戏了"

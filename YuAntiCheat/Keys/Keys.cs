@@ -48,7 +48,7 @@ internal class Keys
     {
         if (keys.Any(k => Input.GetKeyDown(k)) && keys.All(k => Input.GetKey(k)))
         {
-            Main.Logger.LogInfo($"快捷键：{keys.Where(k => Input.GetKeyDown(k)).First()} in [{string.Join(",", keys)}]");
+            Logger.Info($"快捷键：{keys.Where(k => Input.GetKeyDown(k)).First()} in [{string.Join(",", keys)}]","Keys");
             return true;
         }
         return false;

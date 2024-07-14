@@ -27,11 +27,16 @@ public class MenuUI : MonoBehaviour
                 new ToggleInfo(Translator.GetString("ShowIsDark"), () => Toggles.ShowIsDark, x => Toggles.ShowIsDark = x),
                 new ToggleInfo(Translator.GetString("ShowPing"), () => Toggles.ShowPing, x => Toggles.ShowPing = x),
                 new ToggleInfo(Translator.GetString("ShowFPS"), () => Toggles.ShowFPS, x => Toggles.ShowFPS = x),
+                new ToggleInfo(Translator.GetString("ShowRoomTime"), () => Toggles.ShowRoomTime, x => Toggles.ShowRoomTime = x),
+                new ToggleInfo(Translator.GetString("ShowIsAutoExit"), () => Toggles.ShowIsAutoExit, x => Toggles.ShowIsAutoExit = x),
+                new ToggleInfo(Translator.GetString("ShowLocalNowTime"), () => Toggles.ShowLocalNowTime, x => Toggles.ShowLocalNowTime = x),
+                new ToggleInfo(Translator.GetString("ShowUTC"), () => Toggles.ShowUTC, x => Toggles.ShowUTC = x),
             }),
             }
         ));
         groups.Add(new GroupInfo(Translator.GetString("MenuUI.AntiCheat"), false, new List<ToggleInfo>() {
                 new ToggleInfo(Translator.GetString("MenuUI.SafeMode"), () => Toggles.SafeMode, x => Toggles.SafeMode = x),
+                new ToggleInfo(Translator.GetString("MenuUI.AutoExit"), () => Toggles.AutoExit, x => Toggles.AutoExit = x),
             }, new List<SubmenuInfo> {
                 
             }
@@ -39,15 +44,16 @@ public class MenuUI : MonoBehaviour
         groups.Add(new GroupInfo(Translator.GetString("MenuUI.ShortcutButton"), false, new List<ToggleInfo>() {
                 new ToggleInfo(Translator.GetString("MenuUI.DumpLog"), () => Toggles.DumpLog, x => Toggles.DumpLog = x),
                 new ToggleInfo(Translator.GetString("MenuUI.OpenGameDic"), () => Toggles.OpenGameDic, x => Toggles.OpenGameDic = x),
-                new ToggleInfo(Translator.GetString("MenuUI.ExitGame"), () => Toggles.ExitGame, x => Toggles.ExitGame = x),
             }, new List<SubmenuInfo> {
-                new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.Left"), false, new List<ToggleInfo>())
+                new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.Left"), false, new List<ToggleInfo>()
                 {
-                    
-                },
+                    new ToggleInfo(Translator.GetString("MenuUI.ExitGame"), () => Toggles.ExitGame, x => Toggles.ExitGame = x),
+                    new ToggleInfo(Translator.GetString("MenuUI.RealBan"), () => Toggles.RealBan, x => Toggles.RealBan = x),
+                }),
                 new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.OnlyHost"), false, new List<ToggleInfo>() {
                     new ToggleInfo(Translator.GetString("MenuUI.ChangeDownTimerToZero"),() => Toggles.ChangeDownTimerToZero, x => Toggles.ChangeDownTimerToZero = x),
                     new ToggleInfo(Translator.GetString("MenuUI.ChangeDownTimerTo114514"), () => Toggles.ChangeDownTimerTo114514, x => Toggles.ChangeDownTimerTo114514 = x),
+                    new ToggleInfo(Translator.GetString("MenuUI.AutoStartGame"), () => Toggles.AutoStartGame, x => Toggles.AutoStartGame = x),
                     new ToggleInfo(Translator.GetString("MenuUI.AbolishDownTimer"), () => Toggles.AbolishDownTimer, x => Toggles.AbolishDownTimer = x),
                 }),
             }

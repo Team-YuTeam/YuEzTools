@@ -29,6 +29,14 @@ public class PlayerPhysicPatch
             FunctionPatch.ExitGame();
             Toggles.ExitGame = !Toggles.ExitGame;
         }
+        //真ban
+        if (Toggles.RealBan)
+        {
+            FunctionPatch.RealBan();
+            Toggles.RealBan = !Toggles.RealBan;
+        }
+        
+        
         
         //-- 下面是主机专用的按钮--//
         

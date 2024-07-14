@@ -22,7 +22,8 @@ using YuAntiCheat.Keys;
 namespace YuAntiCheat;
 
 public class FunctionPatch
-{
+{        
+    public static float exitTimer = -1f;
     public static bool kickGameActive;
     public static void DumpLogKey()
     {
@@ -32,9 +33,25 @@ public class FunctionPatch
 
     public static void ExitGame()
     {
-        //AmongUsClient.Instance.ExitGame(DisconnectReasons.ExitGame);
-        AmongUsClient.Instance.ExitGame(DisconnectReasons.ServerError);
+        AmongUsClient.Instance.ExitGame(DisconnectReasons.ExitGame);
     }
+    
+    public static void RealBan()
+    {
+        var HostData = AmongUsClient.Instance.GetHost();
+        if (HostData != null)
+        {
+            foreach (var item in PlayerControl.AllPlayerControls)
+            {
+                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)RpcCalls.CheckVanish, SendOption.None, AmongUsClient.Instance.GetClientIdFromCharacter(item));
+                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)RpcCalls.CheckShapeshift, SendOption.None, AmongUsClient.Instance.GetClientIdFromCharacter(item));
+                AmongUsClient.Instance.FinishRpcImmediately(writer);
+            }
+        }
+    }
+    
+    
 
     public static void OpenGameDic()
     {

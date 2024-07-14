@@ -50,17 +50,17 @@ internal class TitleLogoPatch
         if (!(ModStamp = GameObject.Find("ModStamp"))) return;
         ModStamp.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         
-        /*YuAC_Background = new GameObject("YuAC Background");
-        YuAC_Background.transform.position = new Vector3(2.1f, 0.2f, 520f);
+        YuAC_Background = new GameObject("YuAC Background");
+        YuAC_Background.transform.position = new Vector3(-0.0182f,0f, 520f);
         var bgRenderer = YuAC_Background.AddComponent<SpriteRenderer>();
-        bgRenderer.sprite = LoadSprite("YuAntiCheat.Resources.Yu-Logo-tm.png", 179f);//Bg*/
+        bgRenderer.sprite = LoadSprite("YuAntiCheat.Resources.YuAC-BG.jpg", 179f);//Bg
         
         if (!(Ambience = GameObject.Find("Ambience"))) return;
-        // if (!(Starfield = Ambience.transform.FindChild("starfield").gameObject)) return;
-        // StarGen starGen = Starfield.GetComponent<StarGen>();
-        // starGen.SetDirection(new Vector2(0, -2));
-        // //Starfield.transform.SetParent(YuAC_Background.transform);
-        // GameObject.Destroy(Ambience);
+        if (!(Starfield = Ambience.transform.FindChild("starfield").gameObject)) return;
+        StarGen starGen = Starfield.GetComponent<StarGen>();
+        starGen.SetDirection(new Vector2(0, -2));
+        Starfield.transform.SetParent(YuAC_Background.transform);
+        GameObject.Destroy(Ambience);
         Ambience.SetActive(false);
         
         if (!(LeftPanel = GameObject.Find("LeftPanel"))) return;
@@ -69,7 +69,7 @@ internal class TitleLogoPatch
         LeftPanel.ForEachChild((Il2CppSystem.Action<GameObject>)ResetParent);
         LeftPanel.SetActive(false);
         
-                Color shade = new(0f, 0f, 0f, 0f);
+        Color shade = new(0f, 0f, 0f, 0f);
         var standardActiveSprite = __instance.newsButton.activeSprites.GetComponent<SpriteRenderer>().sprite;
         var minorActiveSprite = __instance.quitButton.activeSprites.GetComponent<SpriteRenderer>().sprite;
 
