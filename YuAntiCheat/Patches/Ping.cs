@@ -80,7 +80,7 @@ __instance.text.text += "\n<color=#FFC0CB>[DEBUG]</color>";
         
         DateTime dt = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now, TimeZoneInfo.Local);
         DateTime dt1 = TimeZoneInfo.ConvertTimeFromUtc(dt, TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time"));//参数对应国家或者时区   ***对于有夏令时冬令时的区域，程序会自动调整***
-        if(Toggles.ShowLocalNowTime)__instance.text.text += DateTime.Now.ToString();
+        if(Toggles.ShowLocalNowTime)__instance.text.text += "\n" + DateTime.Now.ToString();
         if (Toggles.ShowUTC) __instance.text.text += "\r\n" + "UTC: " + dt.ToString();
 
         

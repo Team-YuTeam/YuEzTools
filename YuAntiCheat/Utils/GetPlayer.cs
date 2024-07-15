@@ -27,7 +27,18 @@ public class PlayerState
 
 static class GetPlayer
 {
-    public static bool InGame = false;
+    private static Dictionary<byte, PlayerState> allPlayerStates = new(15);
+    public static IReadOnlyDictionary<byte, PlayerState> AllPlayerStates => allPlayerStates;
+    public static RoleTeam GetPlayerRoleTeam(PlayerControl pc)
+    {
+        if (pc.Data.RoleType is RoleTypes.Crewmate or RoleTypes.Engineer or RoleTypes.CrewmateGhost
+            or RoleTypes.Noisemaker or RoleTypes.GuardianAngel or RoleTypes.Scientist)
+            return RoleTeam.Crewmate;
+        else if (pc.Data.RoleType is RoleTypes.Impostor or RoleTypes.Shapeshifter or RoleTypes.ImpostorGhost
+                 or RoleTypes.Tracker or RoleTypes.Phantom)
+            return RoleTeam.Impostor;
+        return RoleTeam.Error;
+    }
     public static ClientData GetClient(this PlayerControl player)
     {
         try
@@ -70,7 +81,7 @@ static class GetPlayer
     {
         return Main.AllPlayerControls.Where(pc => pc.PlayerId == PlayerId).FirstOrDefault();
     }
-    public static bool IsMeeting => InGame && MeetingHud.Instance;
+    public static bool IsMeeting => IsInGame && MeetingHud.Instance;
     public static bool IsCountDown => GameStartManager.InstanceExists && GameStartManager.Instance.startState == GameStartManager.StartingStates.Countdown;
     public static string GetRealName(this PlayerControl player, bool isMeeting = false)
     {

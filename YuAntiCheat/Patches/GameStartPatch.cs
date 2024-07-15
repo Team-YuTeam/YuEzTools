@@ -12,6 +12,7 @@ using YuAntiCheat.Get;
 using static YuAntiCheat.Translator;
 using Object = UnityEngine.Object;
 using AmongUs.GameOptions;
+using Epic.OnlineServices.Presence;
 
 namespace YuAntiCheat.Patches;
 
@@ -19,6 +20,7 @@ public class GameStartManagerPatch
 {
     private static float timer = 600f;
     private static TextMeshPro warningText;
+    private static TextMeshPro EndText;
     public static TextMeshPro GameCountdown;
     private static PassiveButton cancelButton;
     public static string countDown = "";
@@ -38,8 +40,15 @@ public class GameStartManagerPatch
             warningText.name = "WarningText";
             warningText.transform.localPosition = new(0f, 0f - __instance.transform.localPosition.y, -1f);
             warningText.gameObject.SetActive(false);
-
+            
             Logger.Info("WarningText instantiated and configured", "test");
+            
+            EndText = Object.Instantiate(__instance.GameStartText, __instance.transform);
+            EndText.name = "EndText";
+            EndText.transform.localPosition = new(0f, 0f - __instance.transform.localPosition.y, -1f);
+            EndText.gameObject.SetActive(false);
+            
+            Logger.Info("EndText instantiated and configured", "test");
 
             cancelButton = Object.Instantiate(__instance.StartButton, __instance.transform);
             var cancelLabel = cancelButton.GetComponentInChildren<TextMeshPro>();
@@ -52,6 +61,7 @@ public class GameStartManagerPatch
             cancelButton.gameObject.SetActive(false);
 
             Logger.Info("CancelButton instantiated and configured", "test");
+            
             if (!AmongUsClient.Instance.AmHost) return;
         }
     }
@@ -61,6 +71,7 @@ public class GameStartManagerPatch
     {
         private static int updateTimer = 0;
         public static float exitTimer = -1f;
+        public static float EndTimer = -1f;
         public static void Prefix(GameStartManager __instance)
         {
             if (Toggles.AutoStartGame)
@@ -76,11 +87,13 @@ public class GameStartManagerPatch
                     }
                 }
             }
+            
         }
         public static void Postfix(GameStartManager __instance)
         {
             string warningMessage = "";
-            if(Toggles.AutoExit && PingTracker_Update.fps <= 5)
+            string EndMessage = "";
+            if(Toggles.AutoExit && PingTracker_Update.fps <= 10)
             {
                 exitTimer += Time.deltaTime;
                 if (exitTimer >= 5)
@@ -93,7 +106,7 @@ public class GameStartManagerPatch
                 if (exitTimer != 0)
                     warningMessage = Utils.Utils.ColorString(Color.red,
                         string.Format(GetString("Warning.AutoExitAtMismatchedFPS"),
-                            $"<color={Main.ModColor}>{Main.ModName}</color>", Math.Round(5 - exitTimer).ToString()));
+                            PingTracker_Update.fps, Math.Round(5 - exitTimer).ToString()));
             }
             if (warningMessage == "")
             {
@@ -104,7 +117,37 @@ public class GameStartManagerPatch
                 warningText.text = warningMessage;
                 warningText.gameObject.SetActive(true);
             }
+            
+            if (StartPatch.s != "结算：")
+            {
+                EndTimer += Time.deltaTime;
+                // if (EndTimer >= 5)
+                // {
+                //     EndTimer = 0;
+                // }
 
+                if (EndTimer != 0 &&  EndTimer <= 5)
+                    EndMessage = StartPatch.s;
+            }
+            
+            if (EndMessage == "")
+            {
+                EndText.gameObject.SetActive(false);
+            }
+            else
+            {
+                EndText.text = EndMessage;
+                EndText.gameObject.SetActive(true);
+            }
+            
+            if (Main.isFirstSendEnd && StartPatch.s != "结算：" && GetPlayer.IsLobby && EndTimer >= 5)
+            {
+                Logger.Info("ISFIRSTSENDEND IS TRUE", "结算");
+                PlayerControl.LocalPlayer.RpcSendChat(StartPatch.s); // ToDo：此行不起作用
+                Main.isFirstSendEnd = false;
+                Logger.Info("ISFIRSTSENDEND IS "+Main.isFirstSendEnd, "结算");
+            }
+            
             // Lobby timer
             if (
                 !AmongUsClient.Instance.AmHost ||

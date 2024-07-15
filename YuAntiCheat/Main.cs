@@ -34,7 +34,7 @@ public class Main : BasePlugin
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
     public static readonly string MainMenuText = "外挂根本就不可能存在好嘛~"; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuAntiCheat"; //咱们模组的Guid
-    public const string PluginVersion = "1.1.13"; //咱们模组的版本号
+    public const string PluginVersion = "1.1.12"; //咱们模组的版本号
     public const string CanUseInAmongUsVer = "2024.6.18"; //智齿的AU版本
     public const int PluginCreation = 1;
 
@@ -62,7 +62,11 @@ public class Main : BasePlugin
     
     public static IEnumerable<PlayerControl> AllPlayerControls => PlayerControl.AllPlayerControls.ToArray().Where(p => p != null);
     
+    public static List<PlayerControl> ClonePlayerControlsOnStart => AllPlayerControls.ToList();
+    
     public static Main Instance; //设置Main实例
+
+    public static bool isFirstSendEnd = false;
     
     public static bool IsChineseUser => Translator.GetUserLangByRegion() == SupportedLangs.SChinese;
     
@@ -116,4 +120,11 @@ public class Main : BasePlugin
         //模组加载好了标语
         YuAntiCheat.Logger.Msg("========= YuAC loaded! =========", "YuAC Plugin Load");
     }
+}
+
+public enum RoleTeam
+{
+    Crewmate,
+    Impostor,
+    Error
 }
