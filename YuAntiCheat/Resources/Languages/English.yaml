@@ -68,14 +68,14 @@ ShowIsDark: "Show If Dark Mode Is Enabled"
 ShowPing: "Show Ping"
 ShowFPS: "Show FPS"
 ShowRoomTime: "Show Lobby Countdown"
-ShowIsAutoExit: "显示是否防炸端模式"
+ShowIsAutoExit: "Show If Auto Leave Game Is Enabled"
 ShowLocalNowTime: "Show Local Time"
 ShowUTC: "Show UTC"
 
 # MenuUI.AntiCheat
 MenuUI.AntiCheat: "Anti Cheat"
 MenuUI.SafeMode: "Safe Mode"
-MenuUI.AutoExit: "防止炸端"
+MenuUI.AutoExit: "Leave Game When FPS Is Too Low"
 
 # MenuUI.ShortcutButton
 MenuUI.ShortcutButton: "Shortcuts"
@@ -103,4 +103,4 @@ VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>Your YuAC is up to
 # FunctionPatch
 FunctionPatch.AbolishDownTimer: "Cancel Start Countdown"
 FunctionPatch.DumpLog: "Log Saved at"
-Warning.AutoExitAtMismatchedFPS: "FPS too low and you will leave the game"
+Warning.AutoExitAtMismatchedFPS: "FPS is too low and you will leave the game"
