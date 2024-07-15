@@ -143,7 +143,7 @@ public class GameStartManagerPatch
             if (Main.isFirstSendEnd && StartPatch.s != "结算：" && GetPlayer.IsLobby && EndTimer >= 5)
             {
                 Logger.Info("ISFIRSTSENDEND IS TRUE", "结算");
-                PlayerControl.LocalPlayer.RpcSendChat(StartPatch.s); // ToDo：此行不起作用
+                PlayerControl.LocalPlayer.RpcSendChat(StartPatch.s);
                 Main.isFirstSendEnd = false;
                 Logger.Info("ISFIRSTSENDEND IS "+Main.isFirstSendEnd, "结算");
             }
