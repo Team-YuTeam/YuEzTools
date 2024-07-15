@@ -1,6 +1,6 @@
 <h1>Yu Anti Cheat | Yu反作弊</h1>
 
-![YuAC-Logo-tm](./YuAntiCheat/Resources/YuAC-Logo-tm.png)
+![YuAC-BG](./YuAntiCheat/Resources/YuAC-BG.jpg)
 
 <img src="https://badgen.net/github/license/Night-GUA/YuAntiCheat" alt="Licences">
 <img src="https://badgen.net/github/tag/Night-GUA/YuAntiCheat" alt="LatestTag">
@@ -97,4 +97,5 @@ Ce mod n'est pas affilié à Among Us ou à Innersloth LLC, et le contenu qu'il 
 
 ### By Yu
 
+![YuAC-Logo-tm](./YuAntiCheat/Resources/YuAC-Logo-tm.png)
 ![Yu-Logo-tm](./YuAntiCheat/Resources/Yu-Logo-tm.png)
