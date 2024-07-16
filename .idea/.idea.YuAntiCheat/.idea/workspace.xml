@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -194,6 +192,7 @@
       <workItem from="1721063710837" duration="274000" />
       <workItem from="1721129252012" duration="11187000" />
       <workItem from="1721140917942" duration="37000" />
+      <workItem from="1721141798195" duration="237000" />
     </task>
     <task id="LOCAL-00001" summary="Perfection of basic functions">
       <option name="closed" value="true" />
@@ -547,7 +546,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721140836237</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="change readme">
+      <option name="closed" value="true" />
+      <created>1721142019676</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1721142019676</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,7 +641,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="version 1.1.0" />
     <MESSAGE value="v1.1.0.1" />
     <MESSAGE value="change version text" />
     <MESSAGE value="Updater" />
@@ -659,6 +665,7 @@
     <MESSAGE value="Change README" />
     <MESSAGE value="哇靠老子要疯了&#10;- 修复部分问题&#10;- 新增 破坏检测（From Moe's TOHE）" />
     <MESSAGE value="CHAT!!!END MESSAGE FINISH" />
-    <option name="LAST_COMMIT_MESSAGE" value="CHAT!!!END MESSAGE FINISH" />
+    <MESSAGE value="change readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="change readme" />
   </component>
 </project>

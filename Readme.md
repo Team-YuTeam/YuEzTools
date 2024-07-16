@@ -73,10 +73,10 @@ If the room has hacker, it will make an extra kill
 <br>
 
 ## :warning: 遇到问题/bug | Problem/bug encountered:warning:
-|                                你<br>You                                 |      如何解决<br>How to resolve       |
-|:-----------------------------------------------------------------------:|:---------------------------------:|
-|                      踢出弱智问题<br>Issue a IQ Quesion                       | 想都别想<br>Don't even think about it |
-| 礼貌且问题明确并给出日志<br>Attitude is polite and the clear problemis give the log | 尽全力帮助您<br>do our best to help you |
+|                                 你<br>You                                  |      如何解决<br>How to resolve       |
+|:-------------------------------------------------------------------------:|:---------------------------------:|
+|                       踢出弱智问题<br>Issue a IQ Quesion                        | 想都别想<br>Don't even think about it |
+| 礼貌且问题明确并给出日志<br>Attitude is polite and the clear problemis and give the log | 尽全力帮助您<br>do our best to help you |
 
 
 ## 多语言样式声明 | Multilingual style declarations
