@@ -240,7 +240,7 @@ internal class AntiCheatForAll
                     return true;
                 
                 case 13:
-                    if (GetPlayer.IsInGame && GetPlayer.IsMeeting && pc.Data.IsDead)
+                    if (GetPlayer.IsInGame && !GetPlayer.IsMeeting && !pc.Data.IsDead)
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法聊天，已驳回");
                         return true;
@@ -389,10 +389,7 @@ internal class AntiCheatForAll
                     break;
             }
         }
-        catch
-        {
-            //
-        }
+        catch {}
         return false;
     }
     public static Dictionary<byte, int> ReportTimes = [];

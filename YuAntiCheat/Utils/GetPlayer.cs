@@ -27,6 +27,18 @@ public class PlayerState
 
 static class GetPlayer
 {
+    public static string GetColorRole(PlayerControl player)
+    {
+        if (GetPlayerRoleTeam(player) == RoleTeam.Crewmate)
+        {
+            return $"<color=#00BFFF>{player.Data.Role.NiceName}</color>";
+        }
+        else if (GetPlayerRoleTeam(player) == RoleTeam.Crewmate)
+        {
+            return $"<color=#FF0000>{player.Data.Role.NiceName}</color>";
+        }
+        else return $"<color=#FFFFFF>{player.Data.Role.NiceName}</color>";
+    }
     public static string GetNameRole(PlayerControl player)
     {
         return player.GetRealName() + "(" + player.Data.Role.NiceName + ")";

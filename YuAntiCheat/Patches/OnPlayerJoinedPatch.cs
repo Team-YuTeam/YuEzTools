@@ -9,11 +9,14 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using Epic.OnlineServices.Presence;
 using InnerNet;
 using UnityEngine;
 using YuAntiCheat.Get;
 using YuAntiCheat;
+using YuAntiCheat.Patches;
 using Byte = Il2CppSystem.Byte;
+using static YuAntiCheat.Logger;
 
 namespace YuAntiCheat;
 

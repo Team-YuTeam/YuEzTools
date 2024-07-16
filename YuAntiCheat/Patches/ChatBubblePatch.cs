@@ -15,6 +15,7 @@ public static class ChatBubblePatch
     {
         var sr = __instance.transform.FindChild("Background").GetComponent<SpriteRenderer>();
         if(Toggles.DarkMode) sr.color = new Color(0, 0, 0,255);// : new Color(1, 1, 1);
+        if (Main.isChatCommand) sr.color = new Color(0,191,255);
         //if (modded)
         //{
         if (chatText.Contains("░") ||
@@ -36,6 +37,10 @@ public static class ChatBubblePatch
             if(Toggles.DarkMode) chatText = $"<color=#FF0000>[{Translator.GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
             else chatText = $"<color=#FF0000>[{Translator.GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
         }
+        else if (Main.isChatCommand)
+        {
+            chatText = $"<color=#008B8B>[{Translator.GetString("MessgaeFromYuAC")}]</color>\n" + ColorString(Color.gray, chatText.TrimEnd('\0'));
+        }
         else
         {
             if(Toggles.DarkMode) chatText = ColorString(Color.white, chatText.TrimEnd('\0'));
@@ -43,5 +48,13 @@ public static class ChatBubblePatch
         }
         //  __instance.SetLeft();  //如果需要靠左
         //}
+    }
+}
+[HarmonyPatch(typeof(ChatBubble), nameof(ChatBubble.SetRight))]
+class ChatBubbleSetRightPatch
+{
+    public static void Postfix(ChatBubble __instance)
+    {
+        if (Main.isChatCommand) __instance.SetLeft();
     }
 }

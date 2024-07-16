@@ -56,6 +56,8 @@ public class Main : BasePlugin
     2;
 #endif
     
+    public static bool isChatCommand = false;
+    
     public Harmony Harmony { get; } = new Harmony(PluginGuid);
 
     public static BepInEx.Logging.ManualLogSource Logger;

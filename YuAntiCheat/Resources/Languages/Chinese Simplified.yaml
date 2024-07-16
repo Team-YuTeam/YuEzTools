@@ -37,6 +37,9 @@ NotFoundStringInYaml: "没找到"
 
 # 聊天
 SuspectedViolationMessage: "疑似违规信息"
+MessgaeFromYuAC: "== 信息来自YuAC模组 =="
+EndMessage: "结算（消息来自YuAC）："
+EndMessageC: "结算："
 
 # 进入房间
 JoinRoom: "加入房间"

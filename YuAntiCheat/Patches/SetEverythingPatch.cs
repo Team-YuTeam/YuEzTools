@@ -18,10 +18,14 @@ namespace YuAntiCheat.Patches;
 [HarmonyPatch(typeof(IntroCutscene))]//    [HarmonyPatch(nameof(IntroCutscene.CoBegin)), HarmonyPrefix]
 class StartPatch
 {    
-    public static string s = "结算：";
+    public static string s = GetString("EndMessage");
+    public static string sc = GetString("EndMessageC");
+    private static string r, b, g;
     [HarmonyPatch(nameof(IntroCutscene.CoBegin)), HarmonyPrefix]
     public static void Prefix()
-    {
+    { 
+        s = GetString("EndMessage");
+        sc = GetString("EndMessageC");
         int c = 0;
         Logger.Info("== 游戏开始 ==","StartPatch");
         foreach (var pc1 in Main.AllPlayerControls)
@@ -33,12 +37,17 @@ class StartPatch
             else if(Main.ClonePlayerControlsOnStart == null)
                 Info("错误，CPCOS列表null！","CPCOS in StartPatch");
             else Logger.Info("成员检验"+Main.ClonePlayerControlsOnStart[c].GetRealName(),"StartPatch");
+            r = Convert.ToString((int)pc1.Data.Color.r,16);
+            b = Convert.ToString((int)pc1.Data.Color.b,16);
+            g = Convert.ToString((int)pc1.Data.Color.g,16);
+            
             s += "\n" + pc1.GetRealName() +" - "+ pc1.Data.Role.NiceName;
+            sc += "\n" +$"{pc1.GetRealName()}{pc1.Data.ColorName}" +" - "+ GetPlayer.GetColorRole(pc1);
             Info(s,"StartPatch");
             c++;
         }
         Main.isFirstSendEnd = true;
-        Info("设置isFirstSendEnd为"+Main.isFirstSendEnd.ToString(),"EndGamePatch");
+        Info("设置isFirstSendEnd为"+Main.isFirstSendEnd.ToString(),"StartPatch");
     }
 }
 
@@ -55,25 +64,27 @@ class EndGamePatch
         Info("设置isFirstSendEnd为"+Main.isFirstSendEnd.ToString(),"EndGamePatch");
     }
 }
-// [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.SetEverythingUp))]
-// class SetEverythingUpPatch
-// {
-//     private static TextMeshPro roleSummary;
-//     public static string s = "结算：";
-//     public static void Postfix(EndGameManager __instance)
-//     {
-//         
-//         StringBuilder sb = new($"结算：");
-//         try
-//         {
-//             foreach (var role in Main.ClonePlayerControlsOnStart)
-//             {
-//                 //sb.Append($"\n　 ").Append(role.Data.Role.name);
-//                 s += "\n" + role.Data.Role.name;
-//             }
-//         }
-//         catch{Error("错误：无法导入结算职业结果","ENDPATCH");}
-//
-//         Info(s,"ENDPATCH");
-//     }
-// }
+[HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.SetEverythingUp))]
+class SetEverythingUpPatch
+{
+    private static TextMeshPro roleSummary;
+    public static void Postfix(EndGameManager __instance)
+    {
+        var Pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 1f, Camera.main.nearClipPlane));
+        var RoleSummaryObject = UnityEngine.Object.Instantiate(__instance.WinText.gameObject);
+        RoleSummaryObject.transform.position = new Vector3(__instance.Navigation.ExitButton.transform.position.x + 0.1f, Pos.y - 0.1f, -15f);
+        RoleSummaryObject.transform.localScale = new Vector3(1f, 1f, 1f);
+        
+        var RoleSummary = RoleSummaryObject.GetComponent<TextMeshPro>();
+        RoleSummary.alignment = TextAlignmentOptions.TopLeft;
+        RoleSummary.color = Color.white;
+        RoleSummary.outlineWidth *= 1.2f;
+        RoleSummary.fontSizeMin = RoleSummary.fontSizeMax = RoleSummary.fontSize = 1.25f;
+
+        var RoleSummaryRectTransform = RoleSummary.GetComponent<RectTransform>();
+        RoleSummaryRectTransform.anchoredPosition = new Vector2(Pos.x + 3.5f, Pos.y - 0.1f);
+        RoleSummary.text = StartPatch.sc;
+        
+        Info(StartPatch.s,"ENDPATCH");
+    }
+}
