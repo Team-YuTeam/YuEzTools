@@ -15,6 +15,7 @@ using YuAntiCheat;
 using YuAntiCheat.Keys;
 using YuAntiCheat.Get;
 
+
 namespace YuAntiCheat;
 
 internal class AntiCheatForAll
@@ -32,6 +33,7 @@ internal class AntiCheatForAll
             switch (rpc)
             {
                 case RpcCalls.SetName:
+                case RpcCalls.CheckName:
                     string name = sr.ReadString();
                     if (sr.BytesRemaining > 0 && sr.ReadBoolean()) return false;
                     if (GetPlayer.IsInGame)
@@ -79,7 +81,7 @@ internal class AntiCheatForAll
                 case RpcCalls.SetTasks:
                     if (GetPlayer.IsMeeting || GetPlayer.IsLobby || GetPlayer.IsInGame || pc.GetClient() != AmongUsClient.Instance.GetHost())
                     {
-                        Logger.Info($"【{pc.GetClientId()}:{pc.GetRealName()}】非法设置玩家的任务","AntiCheatForAll");
+                        Logger.Warn($"【{pc.GetClientId()}:{pc.GetRealName()}】非法设置玩家的任务","AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -96,8 +98,7 @@ internal class AntiCheatForAll
                 
                 case RpcCalls.SendChat:
                     var text = sr.ReadString();
-                    if (text.StartsWith("/")) return false;
-                    if (GetPlayer.IsInGame && GetPlayer.IsMeeting && pc.Data.IsDead)
+                    if (GetPlayer.IsInGame && !GetPlayer.IsMeeting && !pc.Data.IsDead)
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法聊天，已驳回");
                         return true;
@@ -134,6 +135,7 @@ internal class AntiCheatForAll
                     }
                     break;
                     
+                
                 case RpcCalls.ReportDeadBody:
                     var p1 = GetPlayer.GetPlayerById(sr.ReadByte());
                     if (p1 != null && GetPlayer.IsLobby) //&& !PlayerState.IsDead(p1))
@@ -147,6 +149,17 @@ internal class AntiCheatForAll
                         Main.Logger.LogWarning(
                             $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】报告活人尸体：【{p1?.GetRealName() ?? "null"}】，已驳回");
                         return true;
+                    }
+
+                    RpcReportDeadBodyCheck(pc);
+                    if (ReportTimes.TryGetValue(pc.PlayerId, out int rtimes))
+                    {
+                        // 我们都知道，一局游戏最大只有15人，而就算内鬼为1人，那也不可能达到14次尸体报告（一个人）
+                        if (rtimes > 14)
+                        {
+                            Logger.Fatal($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】报告尸体满14次，已驳回", "AntiCheatForAll");
+                            return true;
+                        }
                     }
                     break;
                 
@@ -164,14 +177,8 @@ internal class AntiCheatForAll
                     break;
                 
                 case RpcCalls.MurderPlayer:
-                    if ( GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
-                    {
-                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
-                        return true;
-                    }
-                    break;
                 case RpcCalls.CheckMurder:
-                    if (GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
+                    if ( GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
                         return true;
@@ -191,28 +198,16 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
-                case RpcCalls.CheckVanish:
-                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
-                    {
-                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法隐身请求，已驳回");
-                        return true;
-                    }
-                    break;
                 case RpcCalls.StartVanish:
+                case RpcCalls.CheckVanish:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法隐身，已驳回");
                         return true;
                     }
                     break;
-                case RpcCalls.CheckAppear:
-                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
-                    {
-                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法显形请求，已驳回");
-                        return true;
-                    }
-                    break;
                 case RpcCalls.StartAppear:
+                case RpcCalls.CheckAppear:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法显形，已驳回");
@@ -399,5 +394,93 @@ internal class AntiCheatForAll
             //
         }
         return false;
+    }
+    public static Dictionary<byte, int> ReportTimes = [];
+
+    public static bool RpcReportDeadBodyCheck(PlayerControl player)
+    {
+        if (!ReportTimes.ContainsKey(player.PlayerId))
+        {
+            ReportTimes.Add(player.PlayerId, 0);
+        }
+        ReportTimes[player.PlayerId]++;
+        return false;
+    }
+    
+        public static bool RpcUpdateSystemCheck(PlayerControl player, SystemTypes systemType, byte amount)
+    {
+        // 更新系统 rpc 无法被 playercontrol.handlerpc 接收
+        var Mapid = GetPlayer.GetActiveMapId();
+        Logger.Info("Check sabotage RPC" + ", PlayerName: " + GetPlayer.GetNameRole(player) + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "AntiCheatForAll");
+        if (!AmongUsClient.Instance.AmHost) return false;
+        if (systemType == SystemTypes.Sabotage) //使用正常的破坏按钮
+        {
+            if (GetPlayer.GetPlayerRoleTeam(player) != RoleTeam.Impostor)
+            {
+                Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏A，已驳回", "EAntiCheatForAllAC");
+                return true;
+            }
+        } //外挂直接发送 128 个系统型 rpc
+        else if (systemType == SystemTypes.LifeSupp)
+        {
+            if (Mapid != 0 && Mapid != 1 && Mapid != 3) goto YesCheat;
+            else if (amount != 64 && amount != 65) goto YesCheat;
+        }
+        else if (systemType == SystemTypes.Comms)
+        {
+            if (amount == 0)
+            {
+                if (Mapid == 1 || Mapid == 5) goto YesCheat;
+            }
+            else if (amount == 64 || amount == 65 || amount == 32 || amount == 33 || amount == 16 || amount == 17)
+            {
+                if (!(Mapid == 1 || Mapid == 5)) goto YesCheat;
+            }
+            else goto YesCheat;
+        }
+        else if (systemType == SystemTypes.Electrical)
+        {
+            if (Mapid == 5) goto YesCheat;
+            if (amount >= 5) // 0 - 4个正常灯。其他的破坏，不应该由客户发送
+            {
+                goto YesCheat;
+            }
+        }
+        else if (systemType == SystemTypes.Laboratory)
+        {
+            if (Mapid != 2) goto YesCheat;
+            else if (!(amount == 64 || amount == 65 || amount == 32 || amount == 33)) goto YesCheat;
+        }
+        else if (systemType == SystemTypes.Reactor)
+        {
+            if (Mapid == 2 || Mapid == 4) goto YesCheat;
+            else if (!(amount == 64 || amount == 65 || amount == 32 || amount == 33)) goto YesCheat;
+            // 飞艇使用直升机破坏/其他用途64,65 | 32,33
+        }
+        else if (systemType == SystemTypes.HeliSabotage)
+        {
+            if (Mapid != 4) goto YesCheat;
+            else if (!(amount == 64 || amount == 65 || amount == 16 || amount == 17 || amount == 32 || amount == 33)) goto YesCheat;
+        }
+        else if (systemType == SystemTypes.MushroomMixupSabotage)
+        {
+            goto YesCheat;
+            // 普通客户永远不会直接发送MushroomMixupSabotage
+        }
+
+        if (GetPlayer.IsMeeting && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating || GetPlayer.IsExilling)
+        {
+            Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}非法破坏D，已驳回", "AntiCheatForAll");
+            return true;
+        }
+        // 可能会出现这样的情况：玩家正在修复反应堆，而会议开始了，从而触发会议中的 AntiCheatForAll 检查
+
+        return false;
+
+    YesCheat:
+        {
+            Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏C，已驳回", "AntiCheatForAll");
+            return true;
+        }
     }
 }

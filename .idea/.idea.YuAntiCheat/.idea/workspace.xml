@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/SetEverythingPatch.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Main.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Patches/GameStartPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/GameStartPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Patches/Ping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/Ping.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resources/InDLL/Depends/NextPatcher.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/Chinese Simplified.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/Chinese Simplified.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/UI/TMPTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/UI/TMPTemplate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Patches/ShipStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/ShipStatus.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YuAntiCheat/Utils/GetPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Utils/GetPlayer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +51,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/68/0782517e/LogicGameFlow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/69/f8b19e5a/IGameOptions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/75/4ee06908/NetworkedPlayerInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/8d/4e288ed2/GameData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/c5/e951e9cd/AmongUsClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/c9/f0554eca/EndGameResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/d2/5506c416/TranslationController.cs" root0="SKIP_HIGHLIGHTING" />
@@ -67,8 +62,6 @@
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/GameModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/InitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/PluginModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/Ping.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/Ping.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -198,6 +191,8 @@
       <workItem from="1720880045489" duration="2456000" />
       <workItem from="1720960387224" duration="540000" />
       <workItem from="1721044122893" duration="14178000" />
+      <workItem from="1721063710837" duration="274000" />
+      <workItem from="1721129252012" duration="5410000" />
     </task>
     <task id="LOCAL-00001" summary="Perfection of basic functions">
       <option name="closed" value="true" />
@@ -511,7 +506,31 @@
       <option name="project" value="LOCAL" />
       <updated>1720974502771</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="v1.1.12 By Yu">
+      <option name="closed" value="true" />
+      <created>1721063763191</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1721063763191</updated>
+    </task>
+    <task id="LOCAL-00041" summary="vvv">
+      <option name="closed" value="true" />
+      <created>1721063812763</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1721063812763</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Change README">
+      <option name="closed" value="true" />
+      <created>1721063960568</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1721063960568</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -598,9 +617,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="change Readme.md" />
-    <MESSAGE value="Change UI" />
-    <MESSAGE value="Change UI and add some button" />
     <MESSAGE value="ReSet name" />
     <MESSAGE value="MMUI!" />
     <MESSAGE value="version 1.1.0" />
@@ -623,6 +639,9 @@
     <MESSAGE value="MD5校验" />
     <MESSAGE value="lastet version and md5 change" />
     <MESSAGE value="1" />
-    <option name="LAST_COMMIT_MESSAGE" value="1" />
+    <MESSAGE value="v1.1.12 By Yu" />
+    <MESSAGE value="vvv" />
+    <MESSAGE value="Change README" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change README" />
   </component>
 </project>
