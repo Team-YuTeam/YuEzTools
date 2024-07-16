@@ -84,8 +84,8 @@ internal class AntiCheatForAll
                 
                 case RpcCalls.SendChat:
                     var text = sr.ReadString();
-                    if (text.StartsWith("/")) return false;
-                    if (GetPlayer.IsInGame && GetPlayer.IsMeeting && pc.Data.IsDead)
+                    //if (text.StartsWith("/")) return false;
+                    if !(GetPlayer.IsInGame && GetPlayer.IsMeeting && pc.Data.IsDead)
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法聊天，已驳回");
                         return true;
