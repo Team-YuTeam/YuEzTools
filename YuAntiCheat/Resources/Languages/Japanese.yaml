@@ -1,4 +1,4 @@
-﻿# YuAntiCheat 的语言文件 / Translation file of YuAntiCheat
+# YuAntiCheat 的语言文件 / Translation file of YuAntiCheat
 
 # 当前翻译文件语言的ID / Language ID of current file
 LangID: "11"
@@ -43,8 +43,10 @@ JoinRoom: "部屋に参加"
 
 # Ping
 SafeModeText: "<size=75%><color=#DC143C>F5</color>を押して、安全でない<color=#1E90FF>(UnSafe)</color>モードに切り替えます（お勧めしません）</size>"
-Ping.UsingMode: "\n使用しています[{0}]"
 UnSafeModeText: "<size=75%><color=#1E90FF>F5</color>を押して、安全な<color=#DC143C>(Safe)</color>モードに切り替えます（推奨）</size>"
+Ping.UsingMode: "\n使用しています[{0}]"
+Ping.RoomTime: "\n部屋のカウントダウンを自動的にオフにする："
+Ping.NowTime: "\n地域時刻："
 
 # 提示语
 AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> はハッカーです\nあなたはホストではないため、<color=#FFFF00>処罰権限がありません</color>"
@@ -52,6 +54,8 @@ AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> はハッカーです\n<co
 AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> ハッカープレイヤーです\nあなたがホストです 尝试<color=#FF4500>してみる</color>和<color=#FF0000>禁止</color>"
 AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> ハッカープレイヤーです\nあなたがホストです <color=#FFFF00>してみる<color=#FF0000>禁止</color>"
 SeeHacker: "<color=#1E90FF>{0}</color> ハッカープレイヤーです"
+ERROR.CHECKRPC: "[ERROR]ゲームにハックやMODの問題がある可能性があります！"
+
 
 # MenuUI.Interface
 Interface: "インターフェイス"
@@ -64,10 +68,15 @@ ShowSafeText: "セーフモードのプロンプトが表示されます"
 ShowIsDark: "チャットのステータスがダークかどうかを表示します"
 ShowPing: "pingが表示されます"
 ShowFPS: "FPSが表示されます"
+ShowRoomTime: "ディスプレイ部屋のカウントダウンを自動的にオフにする"
+ShowIsAutoExit: "[部屋を台無しにしないようにする] モードになっているかどうかを示します"
+ShowLocalNowTime: "現在の時刻を表示します"
+ShowUTC: "UTC が表示されます"
 
 # MenuUI.AntiCheat
 MenuUI.AntiCheat: "ハッカーの検出"
 MenuUI.SafeMode: "セーフモード"
+MenuUI.AutoExit: "ルームモードを台無しにしないようにする"
 
 # MenuUI.ShortcutButton
 MenuUI.ShortcutButton: "クイック管理機能"
@@ -77,6 +86,13 @@ MenuUI.ShortcutButton.OnlyHost: "ホストのみ"
 MenuUI.ChangeDownTimerToZero: "開始カウントダウンが0に変更されます"
 MenuUI.ChangeDownTimerTo114514: "ジョークのカウントダウン"
 MenuUI.AbolishDownTimer: "カウントダウンをキャンセルする"
+MenuUI.AutoStartGame: "人数が14人になると自動的にゲームがスタート"
+
+# MenuUI.ShortcutButton.Left
+MenuUI.ShortcutButton.Left: "オプトアウトの方法"
+MenuUI.ExitGame: "自分でゲームを終了する"
+MenuUI.RealBan: "自分を封印する(冗談じゃない!)"
+
 
 # MenuUI.Other
 MenuUI.Other: "その他の機能"
@@ -86,6 +102,7 @@ MenuUI.FPSPlus: "FPSの上限を破る"
 VerShow.HasUpdate: "<color={0}>{1}</color> (<color=#DC143C>新しいバージョンv{2}アップデートがあります</color>)"
 VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>modは現在最新です</color>)"
 
-# YuACKeysOnMenu
-YuACKeysOnMenu.AbolishDownTimer: "カウントダウンをキャンセルする"
-YuACKeysOnMenu.DumpLog: "ログが保存されます"
+# FunctionPatch
+FunctionPatch.AbolishDownTimer: "カウントダウンをキャンセルする"
+FunctionPatch.DumpLog: "ログが保存されます"
+Warning.AutoExitAtMismatchedFPS: "FPS:{0}\nFPSが低すぎて、{1}秒後に蹴られます！"
