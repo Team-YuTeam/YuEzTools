@@ -25,7 +25,7 @@ static class GetPlayer
             or RoleTypes.Noisemaker or RoleTypes.GuardianAngel or RoleTypes.Tracker or RoleTypes.Scientist)
             return RoleTeam.Crewmate;
         else if (pc.Data.RoleType is RoleTypes.Impostor or RoleTypes.Shapeshifter or RoleTypes.ImpostorGhost
-                 or  RoleTypes.Phantom)
+                 or RoleTypes.Phantom)
             return RoleTeam.Impostor;
         return RoleTeam.Error;
     }
