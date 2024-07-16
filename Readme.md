@@ -1,6 +1,6 @@
-<h1>Yu Anti Cheat | Yu反作弊</h1>
+# Yu Anti Cheat | Yu反作弊
 
-![YuAC-Logo-tm](./YuAntiCheat/Resources/YuAC-Logo-tm.png)
+![YuAC-BG](./YuAntiCheat/Resources/YuAC-BG.jpg)
 
 <img src="https://badgen.net/github/license/Night-GUA/YuAntiCheat" alt="Licences">
 <img src="https://badgen.net/github/tag/Night-GUA/YuAntiCheat" alt="LatestTag">
@@ -39,6 +39,7 @@
 - Among us - 想法提供&代码提供
 - 鱼竿 - 背景图画师
 </details>
+<br>
 
 ## 英文 | English
 <details>
@@ -69,6 +70,19 @@ If the room has hacker, it will make an extra kill
 - Among us - Idea provision&Code provision
 - 鱼竿 - Background Painter
 </details>
+<br>
+
+## :warning: 遇到问题/bug | Problem/bug encountered:warning:
+|你的态度<br>Your attitude|如何解决<br>How to resolve|
+|:---:|:---:|
+|不礼貌<br>Impolite|想都别想<br>Don't even think about it|
+|礼貌且问题的字数≤5<br>Attitude is polite and the question depicted ≤ 5 words|支付50元以解决<br>Spend 50$ to solve|
+|礼貌且问题的字数≤10<br>Attitude is polite and the question depicted ≤ 10 words|支付30元以解决<br>Spend 30$ to solve|
+|礼貌且问题的字数≤15<br>Attitude is polite and the question depicted ≤ 15 words|支付10元以解决<br>Spend 10$ to solve|
+|礼貌且问题的字数≤20<br>Attitude is polite and the question depicted ≤ 20 words|支付5元以解决<br>Spend 5$ to solve|
+|礼貌且问题的字数≤20 并给出日志<br>Attitude is polite and the question depicted ≤ 20 words and give the log|支付1元以解决<br>Spend 1$ to solve|
+|礼貌且问题的字数＞20 并给出日志<br>Attitude is polite and the question depicted ＞ 20 words and give the log|免费，并且我们会尽全力帮助您<br>It's Free,and we'll do our best to help you|
+
 
 ## 多语言样式声明 | Multilingual style declarations
 <details>
@@ -97,4 +111,5 @@ Ce mod n'est pas affilié à Among Us ou à Innersloth LLC, et le contenu qu'il 
 
 ### By Yu
 
+![YuAC-Logo-tm](./YuAntiCheat/Resources/YuAC-Logo-tm.png)
 ![Yu-Logo-tm](./YuAntiCheat/Resources/Yu-Logo-tm.png)
