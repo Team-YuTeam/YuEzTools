@@ -1,6 +1,5 @@
 using HarmonyLib;
 using Newtonsoft.Json.Linq;
-using Sentry.Unity.NativeUtils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,7 +14,6 @@ using TMPro;
 using UnityEngine;
 using YuAntiCheat.UI;
 using YuAntiCheat.Modules;
-using YuAntiCheat;
 
 namespace YuAntiCheat.Updater;
 
@@ -329,7 +327,6 @@ public class ModUpdater
     }
     public static async Task<(bool, string)> DownloadDLL(string url)
     {
-        Retry:
         File.Delete(DownloadFileTempPath);
         File.Create(DownloadFileTempPath).Close();
 

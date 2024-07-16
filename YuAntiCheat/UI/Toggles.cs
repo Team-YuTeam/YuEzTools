@@ -38,6 +38,6 @@ public class Toggles
     public static bool ChangeDownTimerTo114514;
 
     // 其他
-    public static bool FPSPlus = true;
+    public static bool FPSPlus;
     
 }

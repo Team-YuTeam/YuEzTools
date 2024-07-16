@@ -1,16 +1,7 @@
 using HarmonyLib;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using TMPro;
-using YuAntiCheat.Modules;
-using YuAntiCheat.Patches;
-using YuAntiCheat.UI;
 using YuAntiCheat.Get;
-using UnityEngine;
-using static YuAntiCheat.Translator;
-using YuAntiCheat.Templates;
 using static YuAntiCheat.Logger;
 
 namespace YuAntiCheat.Patches;

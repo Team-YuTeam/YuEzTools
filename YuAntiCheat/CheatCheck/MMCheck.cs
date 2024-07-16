@@ -1,16 +1,5 @@
-using System;
-using System.Collections.Generic;
 using HarmonyLib;
-using UnityEngine;
-using UnityEngine.UI;
-using static UnityEngine.UI.Button;
-using Object = UnityEngine.Object;
-using UnityEngine.SceneManagement;
-using AmongUs.Data;
-using Assets.InnerNet;
 using System.Linq;
-using System.Net;
-using BepInEx;
 using BepInEx.Unity.IL2CPP;
 using System.IO;
 using System.Reflection;

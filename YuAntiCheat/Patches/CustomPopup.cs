@@ -1,11 +1,9 @@
-using Epic.OnlineServices.Presence;
 using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using static UnityEngine.ProBuilder.AutoUnwrapSettings;
 using Object = UnityEngine.Object;
 
 namespace YuAntiCheat;

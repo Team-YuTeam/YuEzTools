@@ -1,15 +1,9 @@
 using HarmonyLib;
 using UnityEngine;
-using UnityEngine.UI;
-using System.Diagnostics;
 using Il2CppSystem;
-using Rewired.UI.ControlMapper;
 using TMPro;
-using YuAntiCheat;
 using YuAntiCheat.Get;
 using YuAntiCheat.Patches;
-using YuAntiCheat.Utils;
-using static YuAntiCheat.Translator;
 
 namespace YuAntiCheat;
 

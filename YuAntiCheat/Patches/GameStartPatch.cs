@@ -1,18 +1,11 @@
-using AmongUs.Data;
-using AmongUs.GameOptions;
 using HarmonyLib;
 using InnerNet;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using YuAntiCheat.Modules;
 using UnityEngine;
 using YuAntiCheat.Get;
 using static YuAntiCheat.Translator;
 using Object = UnityEngine.Object;
-using AmongUs.GameOptions;
-using Epic.OnlineServices.Presence;
 
 namespace YuAntiCheat.Patches;
 

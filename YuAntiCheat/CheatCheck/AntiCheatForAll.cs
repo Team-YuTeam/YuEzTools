@@ -1,18 +1,6 @@
 using AmongUs.GameOptions;
 using Hazel;
-using System;
 using System.Linq;
-using HarmonyLib;
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using InnerNet;
-using UnityEngine;
-using YuAntiCheat;
-using YuAntiCheat.Keys;
 using YuAntiCheat.Get;
 
 namespace YuAntiCheat;
@@ -79,7 +67,7 @@ internal class AntiCheatForAll
                 case RpcCalls.SetTasks:
                     if (GetPlayer.IsMeeting || GetPlayer.IsLobby || GetPlayer.IsInGame || pc.GetClient() != AmongUsClient.Instance.GetHost())
                     {
-                        Logger.Info($"【{pc.GetClientId()}:{pc.GetRealName()}】非法设置玩家的任务","AntiCheatForAll");
+                        Main.Logger.LogWarning($"【{pc.GetClientId()}:{pc.GetRealName()}】非法设置玩家的任务，已驳回");
                         return true;
                     }
                     break;
@@ -96,7 +84,7 @@ internal class AntiCheatForAll
                 
                 case RpcCalls.SendChat:
                     var text = sr.ReadString();
-                    if (text.StartsWith("/")) return false;
+                    //if (text.StartsWith("/")) return false;
                     if (GetPlayer.IsInGame && GetPlayer.IsMeeting && pc.Data.IsDead)
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法聊天，已驳回");
@@ -124,7 +112,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
-
+                
                 case RpcCalls.StartMeeting:
                     MeetingTimes++;
                     if ((GetPlayer.IsMeeting && MeetingTimes > 3) || GetPlayer.IsLobby)
@@ -133,7 +121,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
-                    
+                
                 case RpcCalls.ReportDeadBody:
                     var p1 = GetPlayer.GetPlayerById(sr.ReadByte());
                     if (p1 != null && GetPlayer.IsLobby) //&& !PlayerState.IsDead(p1))
@@ -163,20 +151,15 @@ internal class AntiCheatForAll
                     }
                     break;
                 
-                case RpcCalls.MurderPlayer:
-                    if ( GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
-                    {
-                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
-                        return true;
-                    }
-                    break;
                 case RpcCalls.CheckMurder:
+                case RpcCalls.MurderPlayer:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
                         return true;
                     }
                     break;
+
                 case RpcCalls.CheckShapeshift:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
                     {
@@ -184,6 +167,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case RpcCalls.RejectShapeshift:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
                     {
@@ -191,6 +175,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+                
                 case RpcCalls.CheckVanish:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
@@ -198,6 +183,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+                
                 case RpcCalls.StartVanish:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
@@ -205,6 +191,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case RpcCalls.CheckAppear:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
@@ -212,6 +199,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case RpcCalls.StartAppear:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
@@ -220,7 +208,6 @@ internal class AntiCheatForAll
                     }
                     break;
                 
-                
                 case RpcCalls.SetLevel:
                     if (GetPlayer.IsInGame)
                     {
@@ -228,6 +215,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case RpcCalls.EnterVent:
                     if (!(pc.Data.RoleType == RoleTypes.Engineer||pc.Data.RoleType == RoleTypes.Impostor||pc.Data.RoleType == RoleTypes.Shapeshifter||pc.Data.RoleType == RoleTypes.Phantom))
                     {
@@ -280,19 +268,12 @@ internal class AntiCheatForAll
                     break;
                 
                 case 12:
+                case 47:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
                         return true;
                     }
-                    break;
-                case 47:
-                    if (GetPlayer.IsLobby  || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter&& pc.Data.RoleType != RoleTypes.Phantom))
-                    {
-                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
-                        return true;
-                    }
-
                     break;
 
                 case 41:
@@ -343,6 +324,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break; 
+
                 case 55:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
                     {
@@ -350,6 +332,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case 56:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
                     {
@@ -357,6 +340,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case 62:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
@@ -364,6 +348,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case 63:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
@@ -371,6 +356,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case 64:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
@@ -378,6 +364,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case 65:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
@@ -385,6 +372,7 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
+
                 case 19:
                     if (!(pc.Data.RoleType == RoleTypes.Engineer||pc.Data.RoleType == RoleTypes.Impostor||pc.Data.RoleType == RoleTypes.Shapeshifter||pc.Data.RoleType == RoleTypes.Phantom))
                     {
@@ -399,5 +387,90 @@ internal class AntiCheatForAll
             //
         }
         return false;
+    }
+
+    //Thanks to https://github.com/0xDrMoe/TownofHost-Enhanced/blob/main/Modules/EAC.cs
+    public static bool RpcUpdateSystemCheck(PlayerControl pc, SystemTypes systemType, byte amount)
+    {
+        //Update system rpc can not get received by playercontrol.handlerpc
+        var Mapid = GetPlayer.GetActiveMapId();
+        Main.Logger.LogWarning("Check sabotage RPC" + ", PlayerName: " + pc.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString());
+        if (!AmongUsClient.Instance.AmHost) return false;
+
+        if (pc == null)
+        {
+            Main.Logger.LogWarning("PlayerControl is null");
+            return true;
+        }
+
+        if (systemType == SystemTypes.Sabotage) //Normal sabotage using buttons
+        {
+            if (!(pc.Data.RoleType is RoleTypes.Impostor or RoleTypes.Shapeshifter or RoleTypes.ImpostorGhost or RoleTypes.Phantom))
+            {
+                Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】以非伪装者身份破坏A，已驳回");
+                return true;
+            }
+        } //Cheater directly send 128 systemtype rpc
+        else if (systemType == SystemTypes.LifeSupp)
+        {
+            if (Mapid != 0 && Mapid != 1 && Mapid != 3) goto YesCheat;
+            else if (amount != 64 && amount != 65) goto YesCheat;
+        }
+        else if (systemType == SystemTypes.Comms)
+        {
+            if (amount == 0)
+            {
+                if (Mapid == 1 || Mapid == 5) goto YesCheat;
+            }
+            else if (amount == 64 || amount == 65 || amount == 32 || amount == 33 || amount == 16 || amount == 17)
+            {
+                if (!(Mapid == 1 || Mapid == 5)) goto YesCheat;
+            }
+            else goto YesCheat;
+        }
+        else if (systemType == SystemTypes.Electrical)
+        {
+            if (Mapid == 5) goto YesCheat;
+            if (amount >= 5) //0 - 4 normal lights. other sabotage, Should never be sent by client
+            {
+                goto YesCheat;
+            }
+        }
+        else if (systemType == SystemTypes.Laboratory)
+        {
+            if (Mapid != 2) goto YesCheat;
+            else if (!(amount == 64 || amount == 65 || amount == 32 || amount == 33)) goto YesCheat;
+        }
+        else if (systemType == SystemTypes.Reactor)
+        {
+            if (Mapid == 2 || Mapid == 4) goto YesCheat;
+            else if (!(amount == 64 || amount == 65 || amount == 32 || amount == 33)) goto YesCheat;
+            //Airship use heli sabotage /Other use 64,65 | 32,33
+        }
+        else if (systemType == SystemTypes.HeliSabotage)
+        {
+            if (Mapid != 4) goto YesCheat;
+            else if (!(amount == 64 || amount == 65 || amount == 16 || amount == 17 || amount == 32 || amount == 33)) goto YesCheat;
+        }
+        else if (systemType == SystemTypes.MushroomMixupSabotage)
+        {
+            goto YesCheat;
+            //Normal clients will never directly send MushroomMixupSabotage
+        }
+
+        if (GetPlayer.IsMeeting && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating || GetPlayer.isExiling)
+        {
+            Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】会议期间非法破坏D，已驳回");
+            return true;
+        }
+        //There may be cases where a player is fixing reactor and a meeting start, triggering EAC check in meeting
+
+        return false;
+
+    YesCheat:
+        {
+            Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】直接发包非法破坏C，已驳回");
+            return true;
+        }
     }
 }

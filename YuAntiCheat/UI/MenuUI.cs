@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using YuAntiCheat.Utils;
-using HarmonyLib;
 
 namespace YuAntiCheat.UI;
 public class MenuUI : MonoBehaviour

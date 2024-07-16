@@ -1,17 +1,7 @@
 using AmongUs.GameOptions;
-using Hazel;
-using System;
 using System.Linq;
-using HarmonyLib;
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using InnerNet;
-using Sentry.Internal.Extensions;
-using UnityEngine;
 
 namespace YuAntiCheat.Get;
 
@@ -32,10 +22,10 @@ static class GetPlayer
     public static RoleTeam GetPlayerRoleTeam(PlayerControl pc)
     {
         if (pc.Data.RoleType is RoleTypes.Crewmate or RoleTypes.Engineer or RoleTypes.CrewmateGhost
-            or RoleTypes.Noisemaker or RoleTypes.GuardianAngel or RoleTypes.Scientist)
+            or RoleTypes.Noisemaker or RoleTypes.GuardianAngel or RoleTypes.Tracker or RoleTypes.Scientist)
             return RoleTeam.Crewmate;
         else if (pc.Data.RoleType is RoleTypes.Impostor or RoleTypes.Shapeshifter or RoleTypes.ImpostorGhost
-                 or RoleTypes.Tracker or RoleTypes.Phantom)
+                 or  RoleTypes.Phantom)
             return RoleTeam.Impostor;
         return RoleTeam.Error;
     }
@@ -76,6 +66,7 @@ static class GetPlayer
     public static bool DleksIsActive => (MapNames)GameOptionsManager.Instance.CurrentGameOptions.MapId == MapNames.Dleks;
     public static bool AirshipIsActive => (MapNames)GameOptionsManager.Instance.CurrentGameOptions.MapId == MapNames.Airship;
     public static bool FungleIsActive => (MapNames)GameOptionsManager.Instance.CurrentGameOptions.MapId == MapNames.Fungle;
+    public static byte GetActiveMapId() => GameOptionsManager.Instance.CurrentGameOptions.MapId;
     //public static bool IsCountDown => GameStartManager.InstanceExists && GameStartManager.Instance.startState == GameStartManager.StartingStates.Countdown;
     public static PlayerControl GetPlayerById(int PlayerId)
     {

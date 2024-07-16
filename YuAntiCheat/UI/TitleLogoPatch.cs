@@ -1,8 +1,5 @@
 using HarmonyLib;
 using System.Collections.Generic;
-using System.Text;
-using TMPro;
-using YuAntiCheat;
 using UnityEngine;
 using System.IO;
 using System.Reflection;
