@@ -37,6 +37,9 @@ NotFoundStringInYaml: "見つかりませんでした"
 
 # 聊天
 SuspectedViolationMessage: "法律違反の疑いがあるメッセージ"
+MessgaeFromYuAC: "== このメッセージは YuAC モジュールからのものです =="
+EndMessage: "ゲーム決済（このメッセージは YuAC モジュールからのものです）："
+EndMessageC: "ゲーム決済："
 
 # 进入房间
 JoinRoom: "部屋に参加"
