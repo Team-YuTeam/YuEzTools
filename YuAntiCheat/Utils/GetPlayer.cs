@@ -33,7 +33,7 @@ static class GetPlayer
         {
             return $"<color=#00BFFF>{player.Data.Role.NiceName}</color>";
         }
-        else if (GetPlayerRoleTeam(player) == RoleTeam.Crewmate)
+        else if (GetPlayerRoleTeam(player) == RoleTeam.Impostor)
         {
             return $"<color=#FF0000>{player.Data.Role.NiceName}</color>";
         }
