@@ -106,4 +106,4 @@ VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>Your YuAC is up to
 # FunctionPatch
 FunctionPatch.AbolishDownTimer: "Cancel Start Countdown"
 FunctionPatch.DumpLog: "Log Saved at"
-Warning.AutoExitAtMismatchedFPS: "FPS: {0}\nFPS is too low and you will leave the game after {1} seconds!"
+Warning.AutoExitAtMismatchedFPS: "FPS: {0}\nFPS is too low and you will leave the game after {1} s!"

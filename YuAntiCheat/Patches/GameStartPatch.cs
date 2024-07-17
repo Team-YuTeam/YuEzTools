@@ -136,19 +136,20 @@ class CreatePlayerPatch
     public static void Postfix( AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
     {
         if (!AmongUsClient.Instance.AmHost) return;
-
+        
         Logger.Msg($"Create player data: ID {client.Id}: {client.PlayerName}", "CreatePlayer");
 
         if (GetPlayer.isNormalGame)
         {
             _ = new LateTask(() =>
             {
-                if (!AmongUsClient.Instance.IsGameStarted && client.Character != null && StartPatch.s != GetString("EndMessage"))
+                if (!AmongUsClient.Instance.IsGameStarted && client.Character != null && StartPatch.s != GetString("EndMessage") && Main.isFirstSendEnd)
                 {
                     Main.isChatCommand = true;
                     Info("发送：结算信息", "JoinPatch");
                     PlayerControl.LocalPlayer.RpcSendChat(StartPatch.s);
                     Main.isChatCommand = false;
+                    Main.isFirstSendEnd = false;
                 }
             }, 3.1f, "DisplayLastRoles");
         }

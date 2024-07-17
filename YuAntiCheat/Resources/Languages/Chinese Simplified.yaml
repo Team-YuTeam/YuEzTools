@@ -106,4 +106,4 @@ VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>您的YuAC是最�
 # FunctionPatch
 FunctionPatch.AbolishDownTimer: "取消倒计时"
 FunctionPatch.DumpLog: "日志已保存"
-Warning.AutoExitAtMismatchedFPS: "FPS:{0}\nFPS过低 您将在{1}秒后被踢出游戏！"
+Warning.AutoExitAtMismatchedFPS: "FPS: {0}\nFPS过低 您将在{1}秒后被踢出游戏！"
