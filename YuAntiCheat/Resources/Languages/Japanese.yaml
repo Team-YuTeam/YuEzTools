@@ -59,20 +59,28 @@ AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> ハッカープレイヤーで�
 SeeHacker: "<color=#1E90FF>{0}</color> ハッカープレイヤーです"
 ERROR.CHECKRPC: "[ERROR]ゲームにハックやMODの問題がある可能性があります！"
 
-
 # MenuUI.Interface
 Interface: "インターフェイス"
 DarkUI: "ダークチャット"
 PingPart: "その他のセクション"
+
+# MenuUI.ModInformation
+ModInformation: "Mod Information"
 ShowCommit: "commitが表示されます"
 ShowModText: "MODのスローガンを表示する"
 ShowIsSafe: "セーフモードの状態を表示するかどうかを表示します"
 ShowSafeText: "セーフモードのプロンプトが表示されます"
 ShowIsDark: "チャットのステータスがダークかどうかを表示します"
-ShowPing: "pingが表示されます"
-ShowFPS: "FPSが表示されます"
-ShowRoomTime: "ディスプレイ部屋のカウントダウンを自動的にオフにする"
 ShowIsAutoExit: "[部屋を台無しにしないようにする] モードになっているかどうかを示します"
+
+# MenuUI.Ping&FPS
+Ping&FPS: "Ping & FPS"
+ShowPing: "Pingが表示されます"
+ShowFPS: "FPSが表示されます"
+
+# MenuUI.Time
+Time: "Time"
+ShowRoomTime: "ディスプレイ部屋のカウントダウンを自動的にオフにする"
 ShowLocalNowTime: "現在の時刻を表示します"
 ShowUTC: "UTC が表示されます"
 
