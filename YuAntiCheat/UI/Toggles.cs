@@ -5,15 +5,19 @@ public class Toggles
     // 界面
     public static bool DarkMode = true;
 
-    // Ping部分
+    // 模组信息
     public static bool ShowCommit = true;
     public static bool ShowModText = true;
     public static bool ShowIsSafe = true;
     public static bool ShowSafeText = true;
     public static bool ShowIsDark = true;
+    public static bool ShowIsAutoExit = true;
+
+    // Ping & FPS
     public static bool ShowPing = true;
     public static bool ShowFPS = true;
-    public static bool ShowIsAutoExit = true;
+
+    // 时间
     public static bool ShowRoomTime = true;
     public static bool ShowUTC;
     public static bool ShowLocalNowTime = true;
@@ -34,7 +38,8 @@ public class Toggles
     public static bool ChangeDownTimerToZero;
     public static bool AbolishDownTimer;
     public static bool AutoStartGame;
-    //玩法性-房主
+    
+    // 玩法性-房主
     public static bool ChangeDownTimerTo114514;
 
     // 其他
