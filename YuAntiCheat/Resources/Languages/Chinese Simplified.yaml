@@ -63,15 +63,24 @@ ERROR.CHECKRPC: "[ERROR]可能有外挂或YuAC问题！"
 Interface: "界面"
 DarkUI: "深色界面"
 PingPart: "Ping部分"
+
+# MenuUI.ModInformation
+ModInformation: "模组信息"
 ShowCommit: "显示commit号"
 ShowModText: "显示模组标语"
 ShowIsSafe: "显示是否安全模式状态"
 ShowSafeText: "显示安全模式提示语"
 ShowIsDark: "显示是否深色模式状态"
+ShowIsAutoExit: "显示是否防炸端模式"
+
+# MenuUI.Ping&FPS
+Ping&FPS: "Ping & FPS"
 ShowPing: "显示Ping"
 ShowFPS: "显示FPS"
+
+# MenuUI.Time
+Time: "时间相关"
 ShowRoomTime: "显示房间炸房倒计时"
-ShowIsAutoExit: "显示是否防炸端模式"
 ShowLocalNowTime: "显示现在时间"
 ShowUTC: "显示UTC"
 
