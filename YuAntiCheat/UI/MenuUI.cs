@@ -19,7 +19,7 @@ public class MenuUI : MonoBehaviour
         groups.Add(new GroupInfo(Translator.GetString("Interface"), false, new List<ToggleInfo>() {
             new ToggleInfo(Translator.GetString("DarkUI"), () => Toggles.DarkMode, x => Toggles.DarkMode = x),
             }, new List<SubmenuInfo> {
-            new SubmenuInfo("Mod Information", false, new List<ToggleInfo>() {
+            new SubmenuInfo(Translator.GetString("ModInformation"), false, new List<ToggleInfo>() {
                 new ToggleInfo(Translator.GetString("ShowCommit"), () => Toggles.ShowCommit, x => Toggles.ShowCommit = x),
                 new ToggleInfo(Translator.GetString("ShowModText"), () => Toggles.ShowModText, x => Toggles.ShowModText = x),
                 new ToggleInfo(Translator.GetString("ShowIsSafe"), () => Toggles.ShowIsSafe, x => Toggles.ShowIsSafe = x),
@@ -27,11 +27,11 @@ public class MenuUI : MonoBehaviour
                 new ToggleInfo(Translator.GetString("ShowIsDark"), () => Toggles.ShowIsDark, x => Toggles.ShowIsDark = x),
                 new ToggleInfo(Translator.GetString("ShowIsAutoExit"), () => Toggles.ShowIsAutoExit, x => Toggles.ShowIsAutoExit = x),
             }),
-            new SubmenuInfo("Ping & FPS", false, new List<ToggleInfo>() {
+            new SubmenuInfo(Translator.GetString("Ping&FPS"), false, new List<ToggleInfo>() {
                 new ToggleInfo(Translator.GetString("ShowPing"), () => Toggles.ShowPing, x => Toggles.ShowPing = x),
                 new ToggleInfo(Translator.GetString("ShowFPS"), () => Toggles.ShowFPS, x => Toggles.ShowFPS = x),
             }),
-            new SubmenuInfo("Time", false, new List<ToggleInfo>() {
+            new SubmenuInfo(Translator.GetString("Time"), false, new List<ToggleInfo>() {
                 new ToggleInfo(Translator.GetString("ShowRoomTime"), () => Toggles.ShowRoomTime, x => Toggles.ShowRoomTime = x),
                 new ToggleInfo(Translator.GetString("ShowLocalNowTime"), () => Toggles.ShowLocalNowTime, x => Toggles.ShowLocalNowTime = x),
                 new ToggleInfo(Translator.GetString("ShowUTC"), () => Toggles.ShowUTC, x => Toggles.ShowUTC = x),
