@@ -37,6 +37,9 @@ NotFoundStringInYaml: "沒找到"
 
 # 聊天
 SuspectedViolationMessage: "疑似違規信息"
+MessgaeFromYuAC: "== 信息來自YuAC模組 =="
+EndMessage: "結算（消息來自YuAC）："
+EndMessageC: "結算："
 
 # 进入房间
 JoinRoom: "加入房間"
@@ -45,29 +48,46 @@ JoinRoom: "加入房間"
 SafeModeText: "<size=75%>按下 <color=#DC143C>F5</color> 以切換不安全<color=#1E90FF>(UnSafe)</color>模式(不推薦)</size>"
 UnSafeModeText: "<size=75%>按下 <color=#1E90FF>F5</color> 以切換安全<color=#DC143C>(Safe)</color>模式(推薦)</size>"
 Ping.UsingMode: "\n您正在使用[{0}]"
+Ping.RoomTime: "\n距離房間關閉："
+Ping.NowTime: "\n本地時間："
 
 # 提示语
-AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您不是房主 <color=#FFFF00>無權</color>懲罰"
-AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您已開啓<color=#1E90FF>[UnSafe]</color>模式 <color=#FFFF00>嘗試<color=#FF4500>擊殺</color>"
-AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 <color=#FFFF00>嘗試<color=#FF4500>擊殺</color>和<color=#FF0000>封禁</color>"
-AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 <color=#FFFF00>嘗試<color=#FF0000>封禁</color>"
-SeeHacker: "<color=#1E90FF>{0}</color> 是外挂"
+AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是作弊者\n您不是房主 <color=#FFFF00>無權</color>懲罰"
+AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是作弊者\n您已開啓<color=#1E90FF>[UnSafe]</color>模式 <color=#FFFF00>嘗試<color=#FF4500>擊殺</color>"
+AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是作弊者\n您是房主 <color=#FFFF00>嘗試<color=#FF4500>擊殺</color>和<color=#FF0000>封禁</color>"
+AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是作弊者\n您是房主 <color=#FFFF00>嘗試<color=#FF0000>封禁</color>"
+SeeHacker: "<color=#1E90FF>{0}</color> 是作弊者"
+ERROR.CHECKRPC: "[ERROR]可能有作弊者或YuAC問題！"
 
 # MenuUI.Interface
 Interface: "界面"
 DarkUI: "深色界面"
 PingPart: "Ping部分"
+
+# MenuUI.ModInformation
+ModInformation: "模组信息"
 ShowCommit: "顯示commit號"
 ShowModText: "顯示模組標語"
 ShowIsSafe: "顯示是否安全模式狀態"
 ShowSafeText: "顯示安全模式提示語"
-ShowIsDark: "顯示是否神色模式狀態"
+ShowIsDark: "顯示是否深色模式狀態"
+ShowIsAutoExit: "顯示是否防炸端模式"
+
+# MenuUI.Ping&FPS
+Ping&FPS: "Ping & FPS"
 ShowPing: "顯示Ping"
 ShowFPS: "顯示FPS"
+
+# MenuUI.Time
+Time: "時間相關"
+ShowRoomTime: "顯示房間關閉倒計時"
+ShowLocalNowTime: "顯示現在時間"
+ShowUTC: "顯示UTC"
 
 # MenuUI.AntiCheat
 MenuUI.AntiCheat: "反作弊"
 MenuUI.SafeMode: "安全模式"
+MenuUI.AutoExit: "防止炸端"
 
 # MenuUI.ShortcutButton
 MenuUI.ShortcutButton: "快捷按鈕"
@@ -76,7 +96,13 @@ MenuUI.OpenGameDic: "打開游戲運行目錄"
 MenuUI.ShortcutButton.OnlyHost: "僅房主"
 MenuUI.ChangeDownTimerToZero: "倒計時更改為0"
 MenuUI.ChangeDownTimerTo114514: "惡搞倒計時"
+MenuUI.AutoStartGame: "人滿14自動開始遊戲"
 MenuUI.AbolishDownTimer: "取消倒計時"
+
+# MenuUI.ShortcutButton.Left
+MenuUI.ShortcutButton.Left: "退出遊戲相關"
+MenuUI.ExitGame: "退出遊戲"
+MenuUI.RealBan: "封禁自己(真封禁！)"
 
 # MenuUI.Other
 MenuUI.Other: "其他功能"
@@ -89,3 +115,4 @@ VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>您的YuAC是最�
 # FunctionPatch
 FunctionPatch.AbolishDownTimer: "取消倒計時"
 FunctionPatch.DumpLog: "日志已保存"
+Warning.AutoExitAtMismatchedFPS: "FPS: {0}\nFPS過低 您將在{1}秒後被踢出遊戲！"
