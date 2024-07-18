@@ -63,15 +63,24 @@ ERROR.CHECKRPC: "[ERROR] There may be hackers or Yuac has a problem"
 Interface: "Interface"
 DarkUI: "Dark Mode"
 PingPart: "Ping Display Section"
+
+# MenuUI.ModInformation
+ModInformation: "Mod Information"
 ShowCommit: "Show Commit Id"
 ShowModText: "Show Mod Slogan"
 ShowIsSafe: "Show If Safe Mode Is Enabled"
 ShowSafeText: "Show Safe Mode Text"
 ShowIsDark: "Show If Dark Mode Is Enabled"
+ShowIsAutoExit: "Show If Auto Leave Game Is Enabled"
+
+# MenuUI.Ping&FPS
+Ping&FPS: "Ping & FPS"
 ShowPing: "Show Ping"
 ShowFPS: "Show FPS"
+
+# MenuUI.Time
+Time: "Time"
 ShowRoomTime: "Show Lobby Countdown"
-ShowIsAutoExit: "Show If Auto Leave Game Is Enabled"
 ShowLocalNowTime: "Show Local Time"
 ShowUTC: "Show UTC"
 
@@ -106,4 +115,4 @@ VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>Your YuAC is up to
 # FunctionPatch
 FunctionPatch.AbolishDownTimer: "Cancel Start Countdown"
 FunctionPatch.DumpLog: "Log Saved at"
-Warning.AutoExitAtMismatchedFPS: "FPS: {0}\nFPS is too low and you will leave the game after {1} s!"
+Warning.AutoExitAtMismatchedFPS: "FPS: {0}\nFPS is too low and you will leave the game after {1}s!"
