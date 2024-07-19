@@ -100,7 +100,7 @@ public static class ShipStatus_FixedUpdate
                 AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), true);
                 return false;
             }
-            return false;
+            // return false;
         }
 
         return RepairSystemPatch.Prefix(player, systemType, __instance, amount);
@@ -111,13 +111,13 @@ public static class ShipStatus_FixedUpdate
     typeof(byte))]
 class RepairSystemPatch
 {
-    public static bool Prefix(ShipStatus __instance,
+    public static bool Prefix(ShipStatus player,
         [HarmonyArgument(0)] SystemTypes systemType,
-        [HarmonyArgument(1)] PlayerControl player,
+        [HarmonyArgument(1)] PlayerControl __instance,
         [HarmonyArgument(2)] byte amount)
     {
         Logger.Msg(
-            "SystemType: " + systemType.ToString() + ", PlayerName: " + GetPlayer.GetNameRole(player) +
+            "SystemType: " + systemType.ToString() + ", PlayerName: " + __instance.GetRealName() + "(" + __instance.Data.RoleType + ")" +
             ", amount: " + amount, "RepairSystem");
         return true;
     }
