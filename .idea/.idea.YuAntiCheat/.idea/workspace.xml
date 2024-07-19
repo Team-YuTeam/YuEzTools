@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Patches/GameStartPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/GameStartPatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Main.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +62,12 @@
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/GameModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/InitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/PluginModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/GameStartPatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/GameStartPatch.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/UI/Toggles.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/UI/Toggles.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
