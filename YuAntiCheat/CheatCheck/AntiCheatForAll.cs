@@ -408,13 +408,14 @@ internal class AntiCheatForAll
     {
         // 更新系统 rpc 无法被 playercontrol.handlerpc 接收
         var Mapid = GetPlayer.GetActiveMapId();
-        Logger.Info("Check sabotage RPC" + ", PlayerName: " + GetPlayer.GetNameRole(player) + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "AntiCheatForAll");
+        Logger.Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "AntiCheatForAll");
         if (!AmongUsClient.Instance.AmHost) return false;
+        Logger.Info($"破坏的人是{GetPlayer.GetPlayerRoleTeam(player).ToString()}阵营！","ACFA");
         if (systemType == SystemTypes.Sabotage) //使用正常的破坏按钮
         {
             if (GetPlayer.GetPlayerRoleTeam(player) != RoleTeam.Impostor)
             {
-                Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏A，已驳回", "EAntiCheatForAllAC");
+                Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏A，已驳回", "AntiCheatForAll");
                 return true;
             }
         } //外挂直接发送 128 个系统型 rpc

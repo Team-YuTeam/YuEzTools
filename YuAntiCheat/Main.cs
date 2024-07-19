@@ -38,7 +38,7 @@ public class Main : BasePlugin
     public const string CanUseInAmongUsVer = "2024.6.18"; //智齿的AU版本
     public const int PluginCreation = 1;
 
-    public static string QQUrl = "https://qm.qq.com/q/aW5s4sDsHu";
+    public static string QQUrl = "https://qm.qq.com/q/fXY628r6JW";
     public static string DcUrl = "https://discord.gg/9Jy7gzPq";
     
     public static ConfigEntry<string> menuKeybind;
