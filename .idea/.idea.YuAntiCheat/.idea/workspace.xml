@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,12 +58,7 @@
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/GameModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/InitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/PluginModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/GameStartPatch.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Patches/GameStartPatch.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/UI/Toggles.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/UI/Toggles.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Modules/Updater.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -578,7 +571,23 @@
       <option name="project" value="LOCAL" />
       <updated>1721142485101</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="up">
+      <option name="closed" value="true" />
+      <created>1721392609987</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1721392609987</updated>
+    </task>
+    <task id="LOCAL-00049" summary="1">
+      <option name="closed" value="true" />
+      <created>1721392650709</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1721392650709</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -665,7 +674,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="v1.1.0.1" />
     <MESSAGE value="change version text" />
     <MESSAGE value="Updater" />
     <MESSAGE value="111忘记提交了" />
@@ -682,7 +690,6 @@
     <MESSAGE value="v1.1.1.1" />
     <MESSAGE value="MD5校验" />
     <MESSAGE value="lastet version and md5 change" />
-    <MESSAGE value="1" />
     <MESSAGE value="v1.1.12 By Yu" />
     <MESSAGE value="vvv" />
     <MESSAGE value="Change README" />
@@ -690,6 +697,8 @@
     <MESSAGE value="CHAT!!!END MESSAGE FINISH" />
     <MESSAGE value="change readme" />
     <MESSAGE value="123" />
-    <option name="LAST_COMMIT_MESSAGE" value="123" />
+    <MESSAGE value="up" />
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
 </project>
