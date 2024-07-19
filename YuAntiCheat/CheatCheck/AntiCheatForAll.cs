@@ -404,19 +404,23 @@ internal class AntiCheatForAll
         return false;
     }
     
-        public static bool RpcUpdateSystemCheck(PlayerControl player, SystemTypes systemType, byte amount)
+    public static bool RpcUpdateSystemCheck(PlayerControl player, SystemTypes systemType, byte amount)
     {
         // 更新系统 rpc 无法被 playercontrol.handlerpc 接收
         var Mapid = GetPlayer.GetActiveMapId();
-        Logger.Info("Check sabotage RPC" + ", PlayerName: " + GetPlayer.GetNameRole(player) + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "AntiCheatForAll");
+        Logger.Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + "(" + player.Data.RoleType + ")" + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "AntiCheatForAll");
         if (!AmongUsClient.Instance.AmHost) return false;
+        if (player == null) return false;
+        
         if (systemType == SystemTypes.Sabotage) //使用正常的破坏按钮
         {
-            if (GetPlayer.GetPlayerRoleTeam(player) != RoleTeam.Impostor)
-            {
-                Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏A，已驳回", "EAntiCheatForAllAC");
-                return true;
-            }
+            // if (GetPlayer.GetPlayerRoleTeam(player) != RoleTeam.Impostor)
+            // {
+                // Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏A，已驳回", "EAntiCheatForAllAC");
+                // return true;
+            // }
+            // 神金code，检测不到职业
+            
         } //外挂直接发送 128 个系统型 rpc
         else if (systemType == SystemTypes.LifeSupp)
         {
