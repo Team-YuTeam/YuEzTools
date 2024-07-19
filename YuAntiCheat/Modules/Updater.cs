@@ -30,9 +30,9 @@ public class ModUpdater
 #else
         "https://raw.githubusercontent.com/Night-GUA/YuAntiCheat/main/YuAntiCheat/info.json",
         "https://gitee.com/xigua_ya/YuAntiCheat/raw/main/YuAntiCheat/info.json",
-        "https://gitlab.com/yu9522124/YuAntiCheat/-/raw/main/YuAntiCheat/info.json?ref_type=heads",
+        //"https://gitlab.com/yu9522124/YuAntiCheat/-/raw/main/YuAntiCheat/info.json?ref_type=heads",
         "https://raw.kkgithub.com/Night-GUA/YuAntiCheat/main/YuAntiCheat/info.json",
-        "https://raw.gitcode.com/YuQZ/YuAntiCheat/raw/main/YuAntiCheat/info.json",
+        //"https://raw.gitcode.com/YuQZ/YuAntiCheat/raw/main/YuAntiCheat/info.json",
 #endif
     };
     private static IReadOnlyList<string> GetInfoFileUrlList()
