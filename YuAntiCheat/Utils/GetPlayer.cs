@@ -39,10 +39,11 @@ static class GetPlayer
         }
         else return $"<color=#FFFFFF>{player.Data.Role.NiceName}</color>";
     }
-    public static string GetNameRole(PlayerControl player)
-    {
-        return player.GetRealName() + "(" + player.Data.Role.NiceName + ")";
-    }
+    // public static string GetNameRole(PlayerControl player)
+    // {
+        // return player.GetRealName() + "(" + player.Data.Role.NiceName + ")";
+    // }
+    // 逆天
     public static bool IsHideNSeek => GameOptionsManager.Instance.CurrentGameOptions.GameMode is GameModes.HideNSeek or GameModes.SeekFools;
     public static byte GetActiveMapId() => GameOptionsManager.Instance.CurrentGameOptions.MapId;
     public static bool IsExilling => ExileController.Instance != null && !(AirshipIsActive && SpawnInMinigame.Instance.isActiveAndEnabled);
