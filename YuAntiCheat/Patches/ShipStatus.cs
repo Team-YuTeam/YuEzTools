@@ -64,10 +64,15 @@ public static class ShipStatus_FixedUpdate
 //     }
     public static bool Prefix(ShipStatus player, [HarmonyArgument(0)] SystemTypes systemType, [HarmonyArgument(1)] PlayerControl __instance, [HarmonyArgument(2)] MessageReader reader)
     {
-        if (systemType is SystemTypes.Ventilation) return true;
+        if (systemType is 
+            SystemTypes.Ventilation
+            or SystemTypes.Security
+            or SystemTypes.Decontamination
+            or SystemTypes.Decontamination2
+            or SystemTypes.Decontamination3) return true;
 
         var amount = MessageReader.Get(reader).ReadByte();
-        if (AntiCheatForAll.RpcUpdateSystemCheck(__instance, systemType, amount) || GetPlayer.IsHideNSeek)
+        if (AntiCheatForAll.RpcUpdateSystemCheck(__instance, systemType, amount))
         {
             Logger.Info("AC 破坏 RPC", "MessageReaderUpdateSystemPatch");
             Main.Logger.LogInfo("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/实验性ProductUserId获取："+__instance.GetClient().ProductUserId}");
