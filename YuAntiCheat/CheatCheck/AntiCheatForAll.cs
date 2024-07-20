@@ -417,7 +417,7 @@ internal class AntiCheatForAll
         {
             // if (GetPlayer.GetPlayerRoleTeam(player) != RoleTeam.Impostor)
             // {
-                // Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏A，已驳回", "EAntiCheatForAllAC");
+                // Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏A，已驳回", "AntiCheatForAll");
                 // return true;
             // }
         } //外挂直接发送 128 个系统型 rpc
