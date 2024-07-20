@@ -58,6 +58,10 @@ AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 尝�
 AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 <color=#FFFF00>尝试<color=#FF0000>封禁</color>"
 SeeHacker: "<color=#1E90FF>{0}</color> 是外挂"
 ERROR.CHECKRPC: "[ERROR]可能有外挂或YuAC问题！"
+OptImpMoreThanThree: "本房间设置最大内鬼数量大于3\n可能为外挂或其他模组房间！"
+OptHImpMoreThanThree: "本房间设置最大内鬼数量大于1\n可能为外挂或其他模组房间！"
+NowImpMoreThan: "本房间内鬼数量大于预设或3\n可能为外挂或其他模组房间！"
+NowHImpMoreThan: "本房间内鬼数量大于1\n可能为外挂或其他模组房间！"
 
 # MenuUI.Interface
 Interface: "界面"

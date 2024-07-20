@@ -23,7 +23,9 @@ class StartPatch
     private static string r, b, g;
     [HarmonyPatch(nameof(IntroCutscene.CoBegin)), HarmonyPrefix]
     public static void Prefix()
-    { 
+    {
+        GetPlayer.numImpostors = 0;
+        GetPlayer.numCrewmates = 0;
         s = GetString("EndMessage");
         sc = GetString("EndMessageC");
         int c = 0;
@@ -43,6 +45,16 @@ class StartPatch
             
             s += "\n" + pc1.GetRealName() +" - "+ pc1.Data.Role.NiceName;
             sc += "\n" +$"{pc1.GetRealName()}{pc1.Data.ColorName}" +" - "+ GetPlayer.GetColorRole(pc1);
+            
+            if (pc1.Data.Role.IsImpostor)
+            {
+                GetPlayer.numImpostors++;
+            }
+            else
+            {
+                GetPlayer.numCrewmates++;
+            }
+            
             Info(s,"StartPatch");
             c++;
         }

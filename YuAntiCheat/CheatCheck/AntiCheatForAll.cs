@@ -128,7 +128,7 @@ internal class AntiCheatForAll
 
                 case RpcCalls.StartMeeting:
                     MeetingTimes++;
-                    if ((GetPlayer.IsMeeting && MeetingTimes > 3) || GetPlayer.IsLobby)
+                    if ((GetPlayer.IsMeeting && MeetingTimes > 3) || GetPlayer.IsLobby || GetPlayer.isHideNSeek)
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法召集会议：【null】，已驳回");
                         return true;
@@ -138,10 +138,17 @@ internal class AntiCheatForAll
                 
                 case RpcCalls.ReportDeadBody:
                     var p1 = GetPlayer.GetPlayerById(sr.ReadByte());
-                    if (p1 != null && GetPlayer.IsLobby) //&& !PlayerState.IsDead(p1))
+                    if (p1 != null && GetPlayer.IsLobby)
                     {
                         Main.Logger.LogWarning(
                             $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】在大厅报告尸体：【{p1?.GetRealName() ?? "null"}】，已驳回");
+                        return true;
+                    }
+
+                    if (p1 != null && GetPlayer.isHideNSeek)
+                    {
+                        Main.Logger.LogWarning(
+                            $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】在躲猫猫报告尸体：【{p1?.GetRealName() ?? "null"}】，已驳回");
                         return true;
                     }
                     if (p1 != null && !p1.Data.IsDead)
@@ -258,7 +265,7 @@ internal class AntiCheatForAll
 
                 case 11:
                     MeetingTimes++;
-                    if ((GetPlayer.IsMeeting && MeetingTimes > 3) || GetPlayer.IsLobby)
+                    if ((GetPlayer.IsMeeting && MeetingTimes > 3) || GetPlayer.IsLobby  || GetPlayer.isHideNSeek)
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法召集会议：【null】，已驳回");
                         return true;
@@ -288,6 +295,10 @@ internal class AntiCheatForAll
                         return true;
                     }
 
+                    break;
+                
+                case 28:
+                    // 据说是以前的破坏rpc？还没想好怎么做！
                     break;
 
                 case 41:
@@ -410,7 +421,7 @@ internal class AntiCheatForAll
         var Mapid = GetPlayer.GetActiveMapId();
         Logger.Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "AntiCheatForAll");
         // if (!AmongUsClient.Instance.AmHost) return false;
-        Logger.Info(“破坏者”+player.GetRealName()+$"是{GetPlayer.GetPlayerRoleTeam(player).ToString()}阵营！","ACFA");
+        Logger.Info("破坏者"+player.GetRealName()+$"是{GetPlayer.GetPlayerRoleTeam(player).ToString()}阵营！","ACFA");
         if (player == null) return false;
         
         if (systemType == SystemTypes.Sabotage) //使用正常的破坏按钮
@@ -480,6 +491,35 @@ internal class AntiCheatForAll
     YesCheat:
         {
             Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏C，已驳回", "AntiCheatForAll");
+            return true;
+        }
+    }
+        public static bool RpcUpdateSystemCheckFHS(PlayerControl player, SystemTypes systemType, byte amount)
+    {
+        // 更新系统 rpc 无法被 playercontrol.handlerpc 接收
+        var Mapid = GetPlayer.GetActiveMapId();
+        Logger.Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "AntiCheatForAll");
+        // if (!AmongUsClient.Instance.AmHost) return false;
+        Logger.Info("破坏者"+player.GetRealName()+$"是{GetPlayer.GetPlayerRoleTeam(player).ToString()}阵营！","ACFA");
+        if (player == null) return false;
+        
+        if (systemType == SystemTypes.Sabotage || systemType == SystemTypes.LifeSupp || systemType == SystemTypes.Comms || systemType == SystemTypes.Electrical || systemType == SystemTypes.Laboratory || systemType == SystemTypes.Reactor || systemType == SystemTypes.HeliSabotage || systemType == SystemTypes.MushroomMixupSabotage) //使用破坏
+        {
+            goto YesCheat;
+        }
+
+        if (GetPlayer.IsMeeting && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating || GetPlayer.IsExilling)
+        {
+            Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}非法破坏D，已驳回", "AntiCheatForAll");
+            return true;
+        }
+        // 可能会出现这样的情况：玩家正在修复反应堆，而会议开始了，从而触发会议中的 AntiCheatForAll 检查
+
+        return false;
+
+    YesCheat:
+        {
+            Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】在躲猫猫非法破坏，已驳回", "AntiCheatForAll");
             return true;
         }
     }

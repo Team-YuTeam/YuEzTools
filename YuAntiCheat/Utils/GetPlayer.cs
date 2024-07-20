@@ -112,4 +112,7 @@ static class GetPlayer
         var client = player.GetClient();
         return client == null ? -1 : client.Id;
     }
+    public static int numImpostors = 0;
+    public static int numCrewmates = 0;
+    
 }
