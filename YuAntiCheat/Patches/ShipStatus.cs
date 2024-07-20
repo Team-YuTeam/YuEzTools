@@ -72,7 +72,7 @@ public static class ShipStatus_FixedUpdate
             or SystemTypes.Decontamination3) return true;
 
         var amount = MessageReader.Get(reader).ReadByte();
-        if (AntiCheatForAll.RpcUpdateSystemCheck(__instance, systemType, amount))
+        if (AntiCheatForAll.RpcUpdateSystemCheck(__instance, systemType, amount)  || GetPlayer.IsHideNSeek)
         {
             Logger.Info("AC 破坏 RPC", "MessageReaderUpdateSystemPatch");
             Main.Logger.LogInfo("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/实验性ProductUserId获取："+__instance.GetClient().ProductUserId}");
