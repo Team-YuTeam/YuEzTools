@@ -122,7 +122,7 @@ class RepairSystemPatch
         [HarmonyArgument(2)] byte amount)
     {
         Logger.Msg(
-            "SystemType: " + systemType.ToString() + ", PlayerName: " + __instance.GetRealName() + "(" + __instance.Data.RoleType + ")" +
+            "SystemType: " + systemType.ToString() + ", PlayerName: " + __instance.GetRealName() +
             ", amount: " + amount, "RepairSystem");
         return true;
     }
