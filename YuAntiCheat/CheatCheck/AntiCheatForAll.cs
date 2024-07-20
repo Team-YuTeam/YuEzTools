@@ -255,6 +255,7 @@ internal class AntiCheatForAll
                     break;
 
                 case 7:
+                case 8:
                     if (!AmongUsClient.Instance.AmHost) break;
                     if (!GetPlayer.IsLobby)
                     {
