@@ -100,7 +100,7 @@ public static class ShipStatus_FixedUpdate
                 AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), true);
                 return false;
             }
-            // return false;
+            return false;
         }
 
         return RepairSystemPatch.Prefix(player, systemType, __instance, amount);
