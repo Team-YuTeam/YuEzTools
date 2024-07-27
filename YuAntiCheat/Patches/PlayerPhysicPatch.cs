@@ -75,28 +75,28 @@ public class ImpNumCheckPatch
 {
     public static void Postfix(PlayerPhysics __instance)
     {
-        if (GameOptionsData.MaxImpostors.Count > 3)
+        if (GetPlayer.GetImpNums > 3)
         {
             SendInGamePatch.SendInGame(GetString("OptImpMoreThanThree"));
-            Error("最大内鬼数比3还大呢！" + AmongUsClient.Instance.GetHost().Character.GetRealName() + "是房主！", "ImpNumCheckPatch");
+            Error("最大内鬼数比3还大呢！" + AmongUsClient.Instance.GetHost().Character.GetRealName() + "是房主！" + $"{GameOptionsData.MaxImpostors.Count}个内鬼", "ImpNumCheckPatch");
         }
 
-        if (GetPlayer.numImpostors > GameOptionsData.MaxImpostors.Count || GetPlayer.numImpostors > 3)
+        if (GetPlayer.numImpostors > GetPlayer.GetImpNums || GetPlayer.numImpostors > 3)
         {
             SendInGamePatch.SendInGame(GetString("NowImpMoreThan"));
-            Error("最大内鬼数比预设/3还大呢！" + AmongUsClient.Instance.GetHost().Character.GetRealName() + "是房主！", "ImpNumCheckPatch");
+            Error("最大内鬼数比预设/3还大呢！" + AmongUsClient.Instance.GetHost().Character.GetRealName() + "是房主！"+ $"{GameOptionsData.MaxImpostors.Count}个内鬼", "ImpNumCheckPatch");
         }
         
-        if (GameOptionsData.MaxImpostors.Count > 1 && GetPlayer.isHideNSeek)
+        if (GetPlayer.GetImpNums > 1 && GetPlayer.isHideNSeek)
         {
             SendInGamePatch.SendInGame(GetString("OptHImpMoreThanThree"));
-            Error("最大内鬼数比1还大呢！" + AmongUsClient.Instance.GetHost().Character.GetRealName() + "是房主！", "ImpNumCheckPatch");
+            Error("最大内鬼数比1还大呢！" + AmongUsClient.Instance.GetHost().Character.GetRealName() + "是房主！"+ $"{GameOptionsData.MaxImpostors.Count}个内鬼", "ImpNumCheckPatch");
         }
 
         if (GetPlayer.numImpostors > 1 && GetPlayer.isHideNSeek)
         {
             SendInGamePatch.SendInGame(GetString("NowHImpMoreThan"));
-            Error("最大内鬼数比1还大呢！" + AmongUsClient.Instance.GetHost().Character.GetRealName() + "是房主！", "ImpNumCheckPatch");
+            Error("最大内鬼数比1还大呢！" + AmongUsClient.Instance.GetHost().Character.GetRealName() + "是房主！"+ $"{GameOptionsData.MaxImpostors.Count}个内鬼", "ImpNumCheckPatch");
         }
     }
 }
