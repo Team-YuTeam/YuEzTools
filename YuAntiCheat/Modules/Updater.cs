@@ -340,8 +340,8 @@ public class ModUpdater
             using var client = new HttpClientDownloadWithProgress(url, DownloadFileTempPath);
             client.ProgressChanged += OnDownloadProgressChanged;
             await client.StartDownload();
-            Logger.Info(GetMD5HashFromFile(DownloadFileTempPath), "md5");
-            Logger.Info(md5, "md5");
+            Logger.Info(GetMD5HashFromFile(DownloadFileTempPath), "LocalMD5");
+            Logger.Info(md5, "CloudMD5");
             Thread.Sleep(100);
             if (GetMD5HashFromFile(DownloadFileTempPath) != md5)
             {

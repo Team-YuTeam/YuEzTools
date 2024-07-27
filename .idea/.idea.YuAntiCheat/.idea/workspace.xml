@@ -6,12 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Patches/PlayerPhysicPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/PlayerPhysicPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Patches/SetEverythingPatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/SetEverythingPatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Patches/ShipStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Patches/ShipStatus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/Chinese Simplified.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Resources/Languages/Chinese Simplified.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Utils/GetPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Utils/GetPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Main.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Modules/Updater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Modules/Updater.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YuAntiCheat/info.json" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuget.config" beforeDir="false" afterPath="$PROJECT_DIR$/nuget.config" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +70,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/69/f8b19e5a/IGameOptions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/75/4ee06908/NetworkedPlayerInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/8d/4e288ed2/GameData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/b7/78c3b349/GameModes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/c5/e951e9cd/AmongUsClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/c9/f0554eca/EndGameResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7c4a2a92588d440181d600f9f7e7f4d66d7400/d2/5506c416/TranslationController.cs" root0="SKIP_HIGHLIGHTING" />
@@ -80,10 +79,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad7b63e9ee60461bb002bc8fb8f18583237c00/ce/9e5e62f1/KeyCode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b90d90e7bf074a1289bef5fff0a1c3e020400/fa/1ab8d72e/ConfigEntry`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d064324b32114398b094ea8bd854086828200/4e/985ade96/MessageReader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f3646355764143f6a4003d3ef872966a43200/48/98c36ef8/Il2CppArrayBase`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/GameModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/InitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/PluginModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/CheatCheck/AntiCheatForAll.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -111,7 +110,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;RiderNuGetOptionsPageId&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -222,23 +221,14 @@
       <workItem from="1721392731517" duration="51000" />
       <workItem from="1721394130020" duration="1833000" />
       <workItem from="1721402207954" duration="2213000" />
-      <workItem from="1721477864473" duration="2999000" />
-    </task>
-    <task id="LOCAL-00003" summary="README">
-      <option name="closed" value="true" />
-      <created>1712854273989</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1712854273989</updated>
-    </task>
-    <task id="LOCAL-00004" summary="不知道">
-      <option name="closed" value="true" />
-      <created>1713002213502</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1713002213502</updated>
+      <workItem from="1721477864473" duration="5945000" />
+      <workItem from="1721726521249" duration="250000" />
+      <workItem from="1721726821589" duration="873000" />
+      <workItem from="1721728091617" duration="1484000" />
+      <workItem from="1721731299009" duration="193000" />
+      <workItem from="1722075794614" duration="222000" />
+      <workItem from="1722076244804" duration="59000" />
+      <workItem from="1722080755756" duration="4466000" />
     </task>
     <task id="LOCAL-00005" summary="v1.0.1">
       <option name="closed" value="true" />
@@ -616,7 +606,23 @@
       <option name="project" value="LOCAL" />
       <updated>1721402333571</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="内鬼检测判断 修复并完善破坏反作弊">
+      <option name="closed" value="true" />
+      <created>1721480940154</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1721480940155</updated>
+    </task>
+    <task id="LOCAL-00053" summary="新增一个颜色检查rpc">
+      <option name="closed" value="true" />
+      <created>1721482463996</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1721482463996</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -703,8 +709,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="111忘记提交了" />
-    <MESSAGE value="规范整理文件 移动文件进文件夹" />
     <MESSAGE value="Change All String to Yaml" />
     <MESSAGE value="v1.1.1.0" />
     <MESSAGE value="Update some English and all TChinese trans" />
@@ -728,6 +732,8 @@
     <MESSAGE value="1" />
     <MESSAGE value="upup" />
     <MESSAGE value="change QQUrl" />
-    <option name="LAST_COMMIT_MESSAGE" value="change QQUrl" />
+    <MESSAGE value="内鬼检测判断 修复并完善破坏反作弊" />
+    <MESSAGE value="新增一个颜色检查rpc" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增一个颜色检查rpc" />
   </component>
 </project>
