@@ -51,13 +51,13 @@ internal class RPCHandlerPatch
                         Main.Logger.LogInfo("Host Try murder " + __instance.GetRealName());
                         MurderHacker.murderHacker(__instance,MurderResultFlags.Succeeded);
                     }
+                    AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), true);
                     if(!GetPlayer.IsLobby)
                     {
                         GameManager.Instance.LogicFlow.CheckEndCriteria();
                         GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
                         GameManager.Instance.EndGame();
                     }
-                    AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), true);
                     return false;
                 }
                 return false;
