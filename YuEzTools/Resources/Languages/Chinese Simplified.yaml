@@ -111,3 +111,15 @@ VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>您的YuET是最�
 FunctionPatch.AbolishDownTimer: "取消倒计时"
 FunctionPatch.DumpLog: "日志已保存"
 Warning.AutoExitAtMismatchedFPS: "FPS: {0}\nFPS过低 您将在{1}秒后被踢出游戏！"
+
+# Disconect Reasons
+DCNotify.ExitGame: "你自己退的"
+DCNotify.Hacking: "您被树懒的反作弊系统踢了\n这可能是模组问题(T_T)"
+DCNotify.Banned: "不是吧哥们？\n被封禁了？q(≧▽≦q)"
+DCNotify.Kicked: "姐妹！你甚至能被踢？！\n搞笑(*^_^*)"
+DCNotify.DCFromServer: "服务器日常发癫\n检查您的网络吧~/(ㄒoㄒ)/~~\n当然 可能是服务器问题(●'◡'●)"
+DCNotify.GameNotFound: "房间输入错了？服务器看错了？\n没找到房间，可能是已解散(* Ŏ∀Ŏ)"
+DCNotify.GameStarted: "啧！人家没等你就开咯~ოර⌄රო"
+DCNotify.GameFull: "这个家里可没你的位置呢~\n房间满了，是不是被小三占领了位置？嘻嘻(｡╹ω╹｡)"
+DCNotify.IncorrectVersion: "AU版本都不同，你认为你能进吗？傻瓜(◍´ಲ`◍)"
+DCNotify.Description: "姐妹！你甚至能被踢？！\n搞笑(*^_^*)\n理由：{0}"

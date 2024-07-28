@@ -41,12 +41,7 @@ public static class ShipStatus_FixedUpdate
                     MurderHacker.murderHacker(__instance,MurderResultFlags.Succeeded);
                 }
                 AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), true);
-                if(!GetPlayer.IsLobby)
-                {
-                    GameManager.Instance.LogicFlow.CheckEndCriteria();
                     GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
-                    GameManager.Instance.EndGame();
-                }
                 return false;
             }
             return false;
