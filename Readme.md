@@ -2,13 +2,7 @@
 
 ![YuET-BG](./YuEzTools/Resources/YuET-BG.jpg)
 
-<img src="https://badgen.net/github/license/Night-GUA/YuEzTools" alt="Licences">
-<img src="https://badgen.net/github/tag/Night-GUA/YuEzTools" alt="LatestTag">
-<img src="https://badgen.net/github/assets-dl/Night-GUA/YuEzTools" alt="Downloads">
-<img src="https://badgen.net/github/watchers/Night-GUA/YuEzTools" alt="Watchers">
-<img src="https://badgen.net/github/stars/Night-GUA/YuEzTools" alt="Stars">
-<img src="https://badgen.net/github/forks/Night-GUA/YuEzTools" alt="Forks">
-<img src="https://badgen.net/github/prs/Night-GUA/YuEzTools" alt="PRs">
+<img src="https://badgen.net/github/license/Night-GUA/YuEzTools" alt="Licences"><img src="https://badgen.net/github/tag/Night-GUA/YuEzTools" alt="LatestTag"><img src="https://badgen.net/github/assets-dl/Night-GUA/YuEzTools" alt="Downloads"><img src="https://badgen.net/github/watchers/Night-GUA/YuEzTools" alt="Watchers"><img src="https://badgen.net/github/stars/Night-GUA/YuEzTools" alt="Stars"><img src="https://badgen.net/github/forks/Night-GUA/YuEzTools" alt="Forks"><img src="https://badgen.net/github/prs/Night-GUA/YuEzTools" alt="PRs">
 
 ## 简体中文 | SChinese
 <details>
