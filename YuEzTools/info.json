@@ -1,0 +1,21 @@
+{
+  "version": "1.1.25",
+
+  "minVer": "latest",
+  "creation": "1",
+  "allowStart": "true",
+  "CanUpdate": "true",
+  "DebugVer": "0.0.0",
+
+  "md5": "75bf08980fb723bb87554077fa0a3d34",
+  "announcement": {
+    "SChinese": "欢迎使用YuEzTools!\n全新YuEzTools！\n功能增多，质量提升！",
+    "English": "Welcome to use YuEzTools!\nYuET is better than YuAC"
+  },
+
+  "url": {
+    "github": "https://github.com/Night-GUA/YuEzTools/releases/latest/download/YuEzTools.dll",
+    "gitee": "https://gitee.com/xigua_ya/YuEzTools/releases/download/{{showVer}}/YuEzTools.dll",
+    "kkgithub": "https://kkgithub.com/Night-GUA/YuEzTools/releases/latest/download/YuEzTools.dll"
+  }
+}

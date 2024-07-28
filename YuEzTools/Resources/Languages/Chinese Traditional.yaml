@@ -1,0 +1,91 @@
+# YuEzTools 的语言文件 / Translation file of YuEzTools
+
+# 当前翻译文件语言的ID / Language ID of current file
+LangID: "14"
+
+# 作者署名（不需要请留空）/ A sign of an author (Please leave blank when not needed)
+TextBelowVersionText: "Yu"
+
+# 更新检查
+Retry: "重試"
+PleaseWait: "請稍等..."
+updateCheckPopupTitle: "更新檢查"
+updateCheckFailedRetry: "更新檢查失敗\n要重試一次嗎？"
+updateCheckFailedExit: "檢查更新失敗\n請檢查你的網絡强度后重試"
+UpdateBySelfTitle: "更新提示"
+updateNotice: "更新提醒"
+UpdateBySelfText: "該版本不支持一鍵更新，請您手動更新"
+updatePopupTitle: "一键更新"
+updatePopupTitleFialed: "更新失敗"
+updatePopupTitleDone: "更新完成"
+updateButton: "一键更新"
+updateChoseSource: "請選擇更新渠道\n中國大陸請優先選擇【Gitee】或【kkGithub】\n除中國大陸外請優先選擇【Github】"
+updateSource.Github: "Github"
+updateSource.Gitee: "Gitee"
+updateSource.kkGithub: "kkGithub"
+updatePleaseWait: "請稍後……"
+updateInProgress: "更新中……"
+downloadInProgress: "下載中……"
+updateRestart: "重啓游戲后生效o(*￣▽￣*)ブ"
+updatePingFialed: "原因：{0}\n該渠道可能暫時停用，請嘗試切換下載渠道"
+updateFileMd5Incorrect: "原因：文件MD5校驗錯誤\n該渠道的文件不是最新的或已損壞，請更換渠道后重試"
+downloadFailed: "原因：下載文件超時或中斷\n請更換網絡后重試或手動更新"
+Updater.NowFileMD5Fail: "當前文件MD5校驗失敗！請重新下載！"
+
+# 文本
+NotFoundStringInYaml: "沒找到"
+
+# 聊天
+SuspectedViolationMessage: "疑似違規信息"
+
+# 进入房间
+JoinRoom: "加入房間"
+
+# Ping
+SafeModeText: "<size=75%>按下 <color=#DC143C>F5</color> 以切換不安全<color=#1E90FF>(UnSafe)</color>模式(不推薦)</size>"
+UnSafeModeText: "<size=75%>按下 <color=#1E90FF>F5</color> 以切換安全<color=#DC143C>(Safe)</color>模式(推薦)</size>"
+Ping.UsingMode: "\n您正在使用[{0}]"
+
+# 提示语
+AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您不是房主 <color=#FFFF00>無權</color>懲罰"
+AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您已開啓<color=#1E90FF>[UnSafe]</color>模式 <color=#FFFF00>嘗試<color=#FF4500>擊殺</color>"
+AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 <color=#FFFF00>嘗試<color=#FF4500>擊殺</color>和<color=#FF0000>封禁</color>"
+AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 <color=#FFFF00>嘗試<color=#FF0000>封禁</color>"
+SeeHacker: "<color=#1E90FF>{0}</color> 是外挂"
+
+# MenuUI.Interface
+Interface: "界面"
+DarkUI: "深色界面"
+PingPart: "Ping部分"
+ShowCommit: "顯示commit號"
+ShowModText: "顯示模組標語"
+ShowIsSafe: "顯示是否安全模式狀態"
+ShowSafeText: "顯示安全模式提示語"
+ShowIsDark: "顯示是否神色模式狀態"
+ShowPing: "顯示Ping"
+ShowFPS: "顯示FPS"
+
+# MenuUI.AntiCheat
+MenuUI.AntiCheat: "反作弊"
+MenuUI.SafeMode: "安全模式"
+
+# MenuUI.ShortcutButton
+MenuUI.ShortcutButton: "快捷按鈕"
+MenuUI.DumpLog: "輸出日志"
+MenuUI.OpenGameDic: "打開游戲運行目錄"
+MenuUI.ShortcutButton.OnlyHost: "僅房主"
+MenuUI.ChangeDownTimerToZero: "倒計時更改為0"
+MenuUI.ChangeDownTimerTo114514: "惡搞倒計時"
+MenuUI.AbolishDownTimer: "取消倒計時"
+
+# MenuUI.Other
+MenuUI.Other: "其他功能"
+MenuUI.FPSPlus: "突破FPS上限"
+
+# VerShow
+VerShow.HasUpdate: "<color={0}>{1}</color> (<color=#DC143C>YuET有v{2}更新!</color>)"
+VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>您的YuET是最新的</color>)"
+
+# FunctionPatch
+FunctionPatch.AbolishDownTimer: "取消倒計時"
+FunctionPatch.DumpLog: "日志已保存"
