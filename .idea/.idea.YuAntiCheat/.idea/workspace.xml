@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="">
+    <list default="true" id="17aa8501-1a5d-40ae-a9a9-b7c1845605c9" name="更改" comment="新标语">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.YuAntiCheat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Main.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuAntiCheat/Modules/Updater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/Modules/Updater.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YuAntiCheat/info.json" beforeDir="false" afterPath="$PROJECT_DIR$/YuAntiCheat/info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nuget.config" beforeDir="false" afterPath="$PROJECT_DIR$/nuget.config" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +80,7 @@
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/GameModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/InitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/YuAntiCheat/Attributes/PluginModuleInitializerAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/zhuomian/code/YuAntiCheat/YuAntiCheat/Modules/Updater.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -228,23 +226,8 @@
       <workItem from="1721731299009" duration="193000" />
       <workItem from="1722075794614" duration="222000" />
       <workItem from="1722076244804" duration="59000" />
-      <workItem from="1722080755756" duration="4466000" />
-    </task>
-    <task id="LOCAL-00005" summary="v1.0.1">
-      <option name="closed" value="true" />
-      <created>1713696990824</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1713696990824</updated>
-    </task>
-    <task id="LOCAL-00006" summary="查看commit">
-      <option name="closed" value="true" />
-      <created>1717834937138</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1717834937138</updated>
+      <workItem from="1722080755756" duration="5133000" />
+      <workItem from="1722142427592" duration="914000" />
     </task>
     <task id="LOCAL-00007" summary="fix Ping">
       <option name="closed" value="true" />
@@ -622,7 +605,23 @@
       <option name="project" value="LOCAL" />
       <updated>1721482463996</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="v1.1.25">
+      <option name="closed" value="true" />
+      <created>1722090880955</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1722090880958</updated>
+    </task>
+    <task id="LOCAL-00055" summary="新标语">
+      <option name="closed" value="true" />
+      <created>1722142557512</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1722142557512</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -709,8 +708,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Change All String to Yaml" />
-    <MESSAGE value="v1.1.1.0" />
     <MESSAGE value="Update some English and all TChinese trans" />
     <MESSAGE value="Change a film name" />
     <MESSAGE value="change" />
@@ -734,6 +731,8 @@
     <MESSAGE value="change QQUrl" />
     <MESSAGE value="内鬼检测判断 修复并完善破坏反作弊" />
     <MESSAGE value="新增一个颜色检查rpc" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增一个颜色检查rpc" />
+    <MESSAGE value="v1.1.25" />
+    <MESSAGE value="新标语" />
+    <option name="LAST_COMMIT_MESSAGE" value="新标语" />
   </component>
 </project>
