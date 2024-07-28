@@ -1,30 +1,30 @@
-# Yu Anti Cheat | Yu反作弊
+# Yu Ez Tools | Yu简单工具
 
-![YuAC-BG](./YuAntiCheat/Resources/YuAC-BG.jpg)
+![YuET-BG](./YuEzTools/Resources/YuET-BG.jpg)
 
-<img src="https://badgen.net/github/license/Night-GUA/YuAntiCheat" alt="Licences">
-<img src="https://badgen.net/github/tag/Night-GUA/YuAntiCheat" alt="LatestTag">
-<img src="https://badgen.net/github/assets-dl/Night-GUA/YuAntiCheat" alt="Downloads">
-<img src="https://badgen.net/github/watchers/Night-GUA/YuAntiCheat" alt="Watchers">
-<img src="https://badgen.net/github/stars/Night-GUA/YuAntiCheat" alt="Stars">
-<img src="https://badgen.net/github/forks/Night-GUA/YuAntiCheat" alt="Forks">
-<img src="https://badgen.net/github/prs/Night-GUA/YuAntiCheat" alt="PRs">
+<img src="https://badgen.net/github/license/Night-GUA/YuEzTools" alt="Licences">
+<img src="https://badgen.net/github/tag/Night-GUA/YuEzTools" alt="LatestTag">
+<img src="https://badgen.net/github/assets-dl/Night-GUA/YuEzTools" alt="Downloads">
+<img src="https://badgen.net/github/watchers/Night-GUA/YuEzTools" alt="Watchers">
+<img src="https://badgen.net/github/stars/Night-GUA/YuEzTools" alt="Stars">
+<img src="https://badgen.net/github/forks/Night-GUA/YuEzTools" alt="Forks">
+<img src="https://badgen.net/github/prs/Night-GUA/YuEzTools" alt="PRs">
 
 ## 简体中文 | SChinese
 <details>
 <summary> 展开 </summary>
 
-### 反作弊~不能作弊哦！
+### AU！好玩的AU！
 
-### 你好啊~这里是YuAntiCheat！下面是一些有用的按钮，你可以点击看看！
+### 你好啊~这里是YuEzTools！下面是一些有用的按钮，你可以点击看看！
 
-<a href="https://github.com/Night-GUA/YuAntiCheat/releases" target="_blank"><img src="https://img.shields.io/badge/获取新版本%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
+<a href="https://github.com/Night-GUA/YuEzTools/releases" target="_blank"><img src="https://img.shields.io/badge/获取新版本%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
 
 ### 使用教程
 1. 打开后即启动
 2. 若不是房主 部分功能需打开`非安全模式`（按下 `F5` 切换模式）
 
-### 在`非安全模式`下 YuAC会做的操作
+### 在`非安全模式`下 YuET会做的操作
 若检测到外挂 则多进行击杀一次
 
 ### 致谢
@@ -45,17 +45,17 @@
 <details>
 <summary> Open </summary>
 
-### An anti cheat mod for Game `Among Us`
+### An Ez Tools mod for Game `Among Us`
 
-### Welcome to YuAntiCheat! Here are some useful buttons you can click to see!
+### Welcome to YuEzTools! Here are some useful buttons you can click to see!
 
-<a href="https://github.com/Night-GUA/YuAntiCheat/releases" target="_blank"><img src="https://img.shields.io/badge/Releases%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
+<a href="https://github.com/Night-GUA/YuEzTools/releases" target="_blank"><img src="https://img.shields.io/badge/Releases%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
 
 ### How to use
 1. Open to start!
 2. If you are not the host, you may need to enable `UnSafe Mode` to use some of the features（Press `F5` to switch mode）
 
-### In `UnSafe Mode`, YuAC will do
+### In `UnSafe Mode`, YuET will do
 If the room has hacker, it will make an extra kill
 
 ### Thanks
@@ -65,10 +65,10 @@ If the room has hacker, it will make an extra kill
 - Farewell - Technical assistance
 - LezaiYa - Technical assistance&Translation Help&Code provision
 - Imp11 - Technical assistance&Translation Help
-- 慕斯Mousse - Translation Help
-- 小白熊贝儿 - Logo Design
+- Mousse - Translation Help
+- XiaoBaiXiongBeiEr - Logo Design
 - Among us - Idea provision&Code provision
-- 鱼竿 - Background Painter
+- YuGan - Background Painter
 </details>
 <br>
 
@@ -100,11 +100,10 @@ Ce mod n'est pas affilié à Among Us ou à Innersloth LLC, et le contenu qu'il 
 
 ## Github仓库Star
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Night-GUA/YuAntiCheat&type=Date)](https://star-history.com/#Night-GUA/YuAntiCheat&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=Night-GUA/YuEzTools&type=Date)](https://star-history.com/#Night-GUA/YuEzTools&Date)
 
-#### `“良好的游戏环境需要玩家们的遵守 一个反作弊并不能维护这种环境”`
+#### `“一个好的游戏需要游戏开发者制作 而不是让模组开发者帮忙”`
 
 ### By Yu
 
-![YuAC-Logo-tm](./YuAntiCheat/Resources/YuAC-Logo-tm.png)
-![Yu-Logo-tm](./YuAntiCheat/Resources/Yu-Logo-tm.png)
+![YuET-Logo-tm](./YuEzTools/Resources/YuET-Logo-untm.png)
