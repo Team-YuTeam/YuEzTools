@@ -26,6 +26,7 @@ public class Toggles
     // 快捷按钮
     public static bool DumpLog;
     public static bool OpenGameDic;
+    public static bool CloseMusicOfOr ;
     
     //玩法性-所有人
     public static bool ExitGame;

@@ -96,6 +96,7 @@ MenuUI.ChangeDownTimerTo114514: "恶搞倒计时"
 MenuUI.AutoStartGame: "人满14自动开始游戏"
 MenuUI.AbolishDownTimer: "取消倒计时"
 MenuUI.ServerAllHostOrNoHost: "+25(房主全权模式)"
+MenuUI.CloseMusicOfOr: "大厅音乐"
 
 # MenuUI.ShortcutButton.Left
 MenuUI.ShortcutButton.Left: "退出游戏选项卡"

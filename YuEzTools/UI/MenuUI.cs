@@ -84,6 +84,9 @@ public class MenuUI : MonoBehaviour
                         x => Toggles.DumpLog = x),
                     new ToggleInfo(Translator.GetString("MenuUI.OpenGameDic"), () => Toggles.OpenGameDic,
                         x => Toggles.OpenGameDic = x),
+                    new ToggleInfo(Translator.GetString("MenuUI.CloseMusicOfOr"), () => Toggles.CloseMusicOfOr,
+                        x => Toggles.CloseMusicOfOr = x),
+                    
                 }, new List<SubmenuInfo>
                 {
                     new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.Left"), false, new List<ToggleInfo>()

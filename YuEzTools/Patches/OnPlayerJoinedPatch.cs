@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Epic.OnlineServices.Presence;
 using InnerNet;
+using Steamworks;
 using UnityEngine;
 using YuEzTools.Get;
 using YuEzTools;
@@ -64,6 +65,8 @@ class InnerNetClientSpawnPatch
 {
     public static void Postfix([HarmonyArgument(1)] int ownerId, [HarmonyArgument(2)] SpawnFlags flags)
     {
+        if(ServerUpdatePatch.re == 50605450) return;
+        if(flags != SpawnFlags.IsClientCharacter) return;
         ClientData client = GetPlayer.GetClientById(ownerId);
         Logger.Msg($"Spawn player data: ID {ownerId}: {client.PlayerName}", "InnerNetClientSpawn");
         if (GetPlayer.IsOnlineGame)
@@ -89,6 +92,25 @@ class InnerNetClientSpawnPatch
                     }
                 }
             }, 3.1f, "Send RPC or Sync Lobby Timer");
+        }
+    }
+}[HarmonyPatch(typeof(LobbyBehaviour))]
+public class LobbyBehaviourPatch
+{
+    [HarmonyPatch(nameof(LobbyBehaviour.Update)), HarmonyPostfix]
+    public static void Update_Postfix(LobbyBehaviour __instance)
+    {
+        System.Func<ISoundPlayer, bool> lobbybgm = x => x.Name.Equals("MapTheme");
+        ISoundPlayer MapThemeSound = SoundManager.Instance.soundPlayers.Find(lobbybgm);
+        if (!Toggles.CloseMusicOfOr)
+        {
+            if (MapThemeSound == null) return;
+            SoundManager.Instance.StopNamedSound("MapTheme");
+        }
+        else
+        {
+            if (MapThemeSound != null) return;
+            SoundManager.Instance.CrossFadeSound("MapTheme", __instance.MapTheme, 0.5f);
         }
     }
 }
