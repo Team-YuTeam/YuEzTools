@@ -152,7 +152,12 @@ public class ModUpdater
                 firstLaunch = false;
                 var annos = Translator.IsChineseUser ? announcement_zh : announcement_en;
                 if (isBroken) CustomPopup.Show(Translator.GetString(StringNames.AnnouncementLabel), annos, new() { (Translator.GetString(StringNames.ExitGame), Application.Quit) });
-                else CustomPopup.Show(Translator.GetString(StringNames.AnnouncementLabel), annos, new() { (Translator.GetString(StringNames.Okay), null) });
+                else CustomPopup.Show(Translator.GetString(StringNames.AnnouncementLabel), annos, new()
+                {
+                    (Translator.GetString("updateSource.Afdian"), () => Application.OpenURL("https://afdian.com/a/yuqianzhi")),
+                    (Translator.GetString("updateSource.BiliBili"), () => Application.OpenURL("https://www.bilibili.com/opus/898712994671755300")),
+                    (Translator.GetString("updateSource.NextTime"), null)
+                });
             }
         }
         else

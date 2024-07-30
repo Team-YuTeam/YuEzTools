@@ -50,6 +50,7 @@ UnSafeModeText: "<size=75%><color=#1E90FF>F5</color>を押して、安全な<col
 Ping.UsingMode: "\n使用しています[{0}]"
 Ping.RoomTime: "\n部屋のカウントダウンを自動的にオフにする："
 Ping.NowTime: "\n地域時刻："
+Local: "ローカルゲーム"
 
 # 提示语
 AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> はハッカーです\nあなたはホストではないため、<color=#FFFF00>処罰権限がありません</color>"
@@ -58,7 +59,10 @@ AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> ハッカープレイヤー�
 AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> ハッカープレイヤーです\nあなたがホストです <color=#FFFF00>してみる<color=#FF0000>禁止</color>"
 SeeHacker: "<color=#1E90FF>{0}</color> ハッカープレイヤーです"
 ERROR.CHECKRPC: "[ERROR]ゲームにハックやMODの問題がある可能性があります！"
-
+OptImpMoreThanThree: "この部屋の偽者の定員は3より大きい\nこの部屋はハッカーの部屋かもしれません"
+OptHImpMoreThanThree: "この部屋の偽者の定員は1より大きい\nこの部屋はハッカーの部屋かもしれません"
+NowImpMoreThan: "この部屋の偽者の容量は最大値より大きい\nこの部屋はハッカーの部屋かもしれません"
+NowHImpMoreThan: "この部屋の偽者の定員は1より大きい\nこの部屋はハッカーの部屋かもしれません"
 
 # MenuUI.Interface
 Interface: "インターフェイス"
@@ -71,6 +75,7 @@ ShowSafeText: "セーフモードのプロンプトが表示されます"
 ShowIsDark: "チャットのステータスがダークかどうかを表示します"
 ShowPing: "pingが表示されます"
 ShowFPS: "FPSが表示されます"
+ShowServer: "サーバーの表示"
 ShowRoomTime: "ディスプレイ部屋のカウントダウンを自動的にオフにする"
 ShowIsAutoExit: "[部屋を台無しにしないようにする] モードになっているかどうかを示します"
 ShowLocalNowTime: "現在の時刻を表示します"
@@ -90,12 +95,13 @@ MenuUI.ChangeDownTimerToZero: "開始カウントダウンが0に変更されま
 MenuUI.ChangeDownTimerTo114514: "ジョークのカウントダウン"
 MenuUI.AbolishDownTimer: "カウントダウンをキャンセルする"
 MenuUI.AutoStartGame: "人数が14人になると自動的にゲームがスタート"
+MenuUI.ServerAllHostOrNoHost: "mod[+25]プロトコルの使用"
+MenuUI.CloseMusicOfOr: "ホールミュージックをオンにする"
 
 # MenuUI.ShortcutButton.Left
 MenuUI.ShortcutButton.Left: "オプトアウトの方法"
 MenuUI.ExitGame: "自分でゲームを終了する"
 MenuUI.RealBan: "自分を封印する(冗談じゃない!)"
-
 
 # MenuUI.Other
 MenuUI.Other: "その他の機能"
@@ -109,3 +115,14 @@ VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>modは現在最新
 FunctionPatch.AbolishDownTimer: "カウントダウンをキャンセルする"
 FunctionPatch.DumpLog: "ログが保存されます"
 Warning.AutoExitAtMismatchedFPS: "FPS:{0}\nFPSが低すぎて、{1}秒後に蹴られます！"
+
+# Disconect Reasons
+DCNotify.ExitGame: "これはあなた自身の脱退行為です。"
+DCNotify.Hacking: "あなたはAuACにゲームから追い出された。"
+DCNotify.Banned: "あなたはこのルームのホストによって禁止されました"
+DCNotify.Kicked: "あなたはこの部屋のホストに蹴られました"
+DCNotify.DC: "サーバー接続エラー"
+DCNotify.GameNotFound: "部屋番号が間違っているか、部屋が解散しています。"
+DCNotify.GameStarted: "ゲームが開始されました"
+DCNotify.GameFull: "部屋の人数は既にいっぱいです"
+DCNotify.IncorrectVersion: "バージョン番号が間違っています"

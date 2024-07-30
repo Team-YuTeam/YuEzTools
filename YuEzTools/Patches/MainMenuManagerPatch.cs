@@ -17,8 +17,10 @@ public class MainMenuManagerPatch
     public static GameObject GithubButton;
     public static GameObject WebsiteButton;
     public static GameObject GiteeButton;
-    public static GameObject GitlabButton;
-    public static GameObject GitcodeButton;
+    // public static GameObject GitlabButton;
+    // public static GameObject GitcodeButton;
+    public static GameObject AfdianButton;
+    public static GameObject BilibiliButton;
     public static GameObject UpdateButton;
     public static GameObject PlayButton;
 
@@ -102,6 +104,13 @@ public class MainMenuManagerPatch
             return button;
         }
 
+    void CreateButton(GameObject button,string text, Action action,bool active,string name)
+    {
+        if (button == null) button = CreatButton(text, action);
+        InviteButton.gameObject.SetActive(active);
+        button.name = name;
+    }
+
 
         var extraLinkName = "";
         var extraLinkUrl = "";
@@ -126,13 +135,21 @@ public class MainMenuManagerPatch
         GiteeButton.gameObject.SetActive(true);
         GiteeButton.name = "YuET Gitee Button";
         
-        if (GitlabButton == null) GitlabButton = CreatButton("Gitlab", () => Application.OpenURL("https://gitlab.com/yu9522124/YuEzTools"));
-        GitlabButton.gameObject.SetActive(true);
-        GitlabButton.name = "YuET Gitlab Button";
+        if (AfdianButton == null) AfdianButton = CreatButton("Afdian", () => Application.OpenURL("https://afdian.com/a/yuqianzhi"));
+        AfdianButton.gameObject.SetActive(true);
+        AfdianButton.name = "YuET Afdian Button";
         
-        if (GitcodeButton == null) GitcodeButton = CreatButton("Gitcode", () => Application.OpenURL("https://gitcode.com/YuQZ/YuEzTools"));
-        GitcodeButton.gameObject.SetActive(true);
-        GitcodeButton.name = "YuET Gitcode Button";
+        if (BilibiliButton == null) BilibiliButton = CreatButton("BiliBili", () => Application.OpenURL("https://space.bilibili.com/1638639993"));
+        BilibiliButton.gameObject.SetActive(true); 
+        BilibiliButton.name = "YuET BiliBili Button";
+        
+        // if (GitlabButton == null) GitlabButton = CreatButton("Gitlab", () => Application.OpenURL("https://gitlab.com/yu9522124/YuEzTools"));
+        // GitlabButton.gameObject.SetActive(true);
+        // GitlabButton.name = "YuET Gitlab Button";
+        //
+        // if (GitcodeButton == null) GitcodeButton = CreatButton("Gitcode", () => Application.OpenURL("https://gitcode.com/YuQZ/YuEzTools"));
+        // GitcodeButton.gameObject.SetActive(true);
+        // GitcodeButton.name = "YuET Gitcode Button";
         
         PlayButton = __instance.playButton.gameObject;
         if (UpdateButton == null)
