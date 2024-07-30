@@ -118,7 +118,7 @@ public class MainMenuManagerPatch
         WebsiteButton.gameObject.SetActive(true);
         WebsiteButton.name = "YuET Website Button";
 
-        if (GithubButton == null) GithubButton = CreatButton("Github", () => Application.OpenURL("https://github.com/Night-GUA/YuEzTools/"));
+        if (GithubButton == null) GithubButton = CreatButton("Github", () => Application.OpenURL("https://github.com/Team-YuTeam/YuEzTools/"));
         GithubButton.gameObject.SetActive(true);
         GithubButton.name = "YuET Github Button";
         

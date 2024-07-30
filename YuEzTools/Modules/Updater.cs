@@ -28,10 +28,10 @@ public class ModUpdater
 #if DEBUG
         $"file:///{Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "info.json")}",
 #else
-        "https://raw.githubusercontent.com/Night-GUA/YuEzTools/main/YuEzTools/info.json",
+        "https://raw.githubusercontent.com/Team-YuTeam/YuEzTools/main/YuEzTools/info.json",
         "https://gitee.com/xigua_ya/YuEzTools/raw/main/YuEzTools/info.json",
         //"https://gitlab.com/yu9522124/YuEzTools/-/raw/main/YuEzTools/info.json?ref_type=heads",
-        "https://raw.kkgithub.com/Night-GUA/YuEzTools/main/YuEzTools/info.json",
+        "https://raw.kkgithub.com/Team-YuTeam/YuEzTools/main/YuEzTools/info.json",
         //"https://raw.gitcode.com/YuQZ/YuEzTools/raw/main/YuEzTools/info.json",
 #endif
     };
