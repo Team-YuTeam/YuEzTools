@@ -18,7 +18,7 @@ public static class ServerAddManager
     {
         serverManager.AvailableRegions = ServerManager.DefaultRegions;
         List<IRegionInfo> regionInfos = new();
-        regionInfos.Add(CreateHttp("154.21.201.164", "XtremeWave[HongKong]", 22023, false));
+        //regionInfos.Add(CreateHttp("154.21.201.164", "XtremeWave[HongKong]", 22023, false));
         regionInfos.Add(CreateHttp("au-us.233466.xyz", "Nikocat233(US)", 443, true));
 
         if (Translator.IsChineseUser)
@@ -58,7 +58,7 @@ public static class ServerAddManager
             "方块服[北京]" => "方块[北京]",
             "Nikocat233(CN)" => "Niko(CN)",
             "Nikocat233(US)" => "Niko(US)",
-            "XtremeWave[HongKong]" =>  "XW[HK]",
+            //"XtremeWave[HongKong]" =>  "XW[HK]",
 
             _ => serverName,
         };
@@ -71,7 +71,7 @@ public static class ServerAddManager
                 "Europe" => "欧服",
                 "North America" => "北美服",
                 "NA" => "北美服",
-                "XW[HK]" => "XW[香港]",
+                //"XW[HK]" => "XW[香港]",
                 _ => name,
             };
         };
@@ -91,7 +91,7 @@ public static class ServerAddManager
             "方块服[北京]" => new(105, 105, 193, 255),
             "Nikocat233(CN)" => new(255, 255, 0, 255),
             "Nikocat233(US)" => new(255, 255, 0, 255),
-            "XtremeWave[HongKong]" => new(205, 255, 253, 255),
+            //"XtremeWave[HongKong]" => new(205, 255, 253, 255),
 
             _ => new(255, 255, 255, 255),
         };
