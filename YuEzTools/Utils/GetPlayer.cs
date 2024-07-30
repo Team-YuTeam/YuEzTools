@@ -27,6 +27,32 @@ public class PlayerState
 
 static class GetPlayer
 {
+    public static bool IsVanillaServer
+    {
+        get
+        {
+            if (!IsOnlineGame) return false;
+
+            const string Domain = "among.us";
+
+            // From Reactor.gg
+            return ServerManager.Instance.CurrentRegion?.TryCast<StaticHttpRegionInfo>() is { } regionInfo &&
+                   regionInfo.PingServer.EndsWith(Domain, StringComparison.Ordinal) &&
+                   regionInfo.Servers.All(serverInfo => serverInfo.Ip.EndsWith(Domain, StringComparison.Ordinal));
+        }
+    }
+    public static ClientData GetClientById(int id)
+    {
+        try
+        {
+            var client = AmongUsClient.Instance.allClients.ToArray().FirstOrDefault(cd => cd.Id == id);
+            return client;
+        }
+        catch
+        {
+            return null;
+        }
+    }
     public static string GetColorRole(PlayerControl player)
     {
         if (GetPlayerRoleTeam(player) == RoleTeam.Crewmate)

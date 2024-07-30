@@ -19,7 +19,7 @@ namespace YuEzTools.Patches;
 
 public class GameStartManagerPatch
 {
-    private static float timer = 600f;
+    public static float timer = 600f;
     private static TextMeshPro warningText;
     public static TextMeshPro GameCountdown;
     private static PassiveButton cancelButton;

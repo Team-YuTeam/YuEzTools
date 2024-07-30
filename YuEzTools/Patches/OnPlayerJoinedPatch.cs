@@ -58,3 +58,37 @@ class DisconnectInternalPatch
             GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
     }
 }
+
+[HarmonyPatch(typeof(InnerNetClient), nameof(InnerNetClient.Spawn))]
+class InnerNetClientSpawnPatch
+{
+    public static void Postfix([HarmonyArgument(1)] int ownerId, [HarmonyArgument(2)] SpawnFlags flags)
+    {
+        ClientData client = GetPlayer.GetClientById(ownerId);
+        Logger.Msg($"Spawn player data: ID {ownerId}: {client.PlayerName}", "InnerNetClientSpawn");
+        if (GetPlayer.IsOnlineGame)
+        {
+            _ = new LateTask(() =>
+                {
+                    if (GetPlayer.IsLobby && client.Character != null && LobbyBehaviour.Instance != null )//&& GetPlayer.IsVanillaServer)
+                {
+                     // Only for vanilla
+                     if (!client.Character.OwnedByHost())
+                     {
+                         MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(LobbyBehaviour.Instance.NetId, (byte)RpcCalls.LobbyTimeExpiring, SendOption.None, client.Id);
+                         writer.WritePacked((int)GameStartManagerPatch.timer);
+                         writer.Write(false);
+                         AmongUsClient.Instance.FinishRpcImmediately(writer);
+                     }
+                     // Non-host modded client
+                     else if (!client.Character.OwnedByHost())
+                     {
+                         MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SyncLobbyTimer, SendOption.Reliable, client.Id);
+                         writer.WritePacked((int)GameStartManagerPatch.timer);
+                         AmongUsClient.Instance.FinishRpcImmediately(writer);
+                    }
+                }
+            }, 3.1f, "Send RPC or Sync Lobby Timer");
+        }
+    }
+}
