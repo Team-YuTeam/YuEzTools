@@ -35,15 +35,15 @@ class OnPlayerJoinedPatch
     }
 }
 
-// [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnGameJoined))]
-// class OnGameJoined
-// {
-//     //private static int CID;
-//     public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
-//     {
-//         ShowDisconnectPopupPatch.ReasonByHost = string.Empty;
-//     }
-// }
+[HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnGameJoined))]
+class OnGameJoined
+{
+    //private static int CID;
+    public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
+    {
+        ShowDisconnectPopupPatch.ReasonByHost = string.Empty;
+    }
+}
 [HarmonyPatch(typeof(InnerNetClient), nameof(InnerNetClient.DisconnectInternal))]
 class DisconnectInternalPatch
 {

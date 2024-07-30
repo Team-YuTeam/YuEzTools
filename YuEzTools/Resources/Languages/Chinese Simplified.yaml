@@ -50,6 +50,7 @@ UnSafeModeText: "<size=75%>按下 <color=#1E90FF>F5</color> 以切换安全<colo
 Ping.UsingMode: "\n您正在使用[{0}]"
 Ping.RoomTime: "\n距离炸房："
 Ping.NowTime: "\n本地时间："
+Local: "本地"
 
 # 提示语
 AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您不是房主 <color=#FFFF00>无权</color>惩罚"
@@ -74,6 +75,7 @@ ShowSafeText: "显示安全模式提示语"
 ShowIsDark: "显示是否深色模式状态"
 ShowPing: "显示Ping"
 ShowFPS: "显示FPS"
+ShowServer: "显示服务器"
 ShowRoomTime: "显示房间炸房倒计时"
 ShowIsAutoExit: "显示是否防炸端模式"
 ShowLocalNowTime: "显示现在时间"
@@ -93,6 +95,7 @@ MenuUI.ChangeDownTimerToZero: "倒计时更改成0"
 MenuUI.ChangeDownTimerTo114514: "恶搞倒计时"
 MenuUI.AutoStartGame: "人满14自动开始游戏"
 MenuUI.AbolishDownTimer: "取消倒计时"
+MenuUI.ServerAllHostOrNoHost: "+25(房主全权模式)"
 
 # MenuUI.ShortcutButton.Left
 MenuUI.ShortcutButton.Left: "退出游戏选项卡"

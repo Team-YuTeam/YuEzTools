@@ -13,6 +13,7 @@ public class Toggles
     public static bool ShowIsDark = true;
     public static bool ShowPing = true;
     public static bool ShowFPS = true;
+    public static bool ShowServer = true;
     public static bool ShowIsAutoExit = true;
     public static bool ShowRoomTime = true;
     public static bool ShowUTC;
@@ -34,10 +35,11 @@ public class Toggles
     public static bool ChangeDownTimerToZero;
     public static bool AbolishDownTimer;
     public static bool AutoStartGame;
+    public static bool ServerAllHostOrNoHost;
     //玩法性-房主
     public static bool ChangeDownTimerTo114514;
 
     // 其他
-    public static bool FPSPlus = true;
+    public static bool FPSPlus;
     
 }

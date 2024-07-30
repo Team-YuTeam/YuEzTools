@@ -34,7 +34,7 @@ public class Main : BasePlugin
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
     public static readonly string MainMenuText = "Be Dream~"; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuEzTools"; //咱们模组的Guid
-    public const string PluginVersion = "1.1.25"; //咱们模组的版本号
+    public const string PluginVersion = "1.1.30"; //咱们模组的版本号
     public const string CanUseInAmongUsVer = "2024.6.18"; //智齿的AU版本
     public const int PluginCreation = 1;
 
@@ -84,6 +84,11 @@ public class Main : BasePlugin
     {
         Instance = this; //Main实例
 
+        PluginModuleInitializerAttribute.InitializeAll();
+        
+        Logger = BepInEx.Logging.Logger.CreateLogSource("YuEzTools"); //输出前缀 设置！
+        YuEzTools.Logger.Enable();
+        
         menuKeybind = Config.Bind("YuET.GUI",
             "Keybind",
             "Delete",
@@ -105,11 +110,6 @@ public class Main : BasePlugin
         //Translator.Init();
         
         BetaBuildURL = Config.Bind("Other", "BetaBuildURL", "");
-        
-        Logger = BepInEx.Logging.Logger.CreateLogSource("YuEzTools"); //输出前缀 设置！
-        YuEzTools.Logger.Enable();
-
-        PluginModuleInitializerAttribute.InitializeAll();
         
         if (Application.version == CanUseInAmongUsVer)
             Logger.LogInfo($"AmongUs Version: {Application.version}"); //牢底居然有智齿的版本？！

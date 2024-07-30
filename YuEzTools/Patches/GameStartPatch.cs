@@ -85,7 +85,7 @@ public class GameStartManagerPatch
         public static void Postfix(GameStartManager __instance)
         {
             string warningMessage = "";
-            if(Toggles.AutoExit && PingTracker_Update.fps <= 10)
+            if(Toggles.AutoExit && PingTrackerUpdatePatch.fps <= 10)
             {
                 exitTimer += Time.deltaTime;
                 if (exitTimer >= 5)
@@ -98,7 +98,7 @@ public class GameStartManagerPatch
                 if (exitTimer != 0)
                     warningMessage = Utils.Utils.ColorString(Color.red,
                         string.Format(GetString("Warning.AutoExitAtMismatchedFPS"),
-                            PingTracker_Update.fps, Math.Round(5 - exitTimer).ToString()));
+                            PingTrackerUpdatePatch.fps, Math.Round(5 - exitTimer).ToString()));
             }
             if (warningMessage == "")
             {
