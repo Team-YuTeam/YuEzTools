@@ -40,6 +40,7 @@ public static class ChatBubblePatch
         else if (Main.isChatCommand)
         {
             chatText = $"<color=#008B8B>[{Translator.GetString("MessgaeFromYuET")}]</color>\n" + ColorString(Color.gray, chatText.TrimEnd('\0'));
+            Main.isChatCommand = false;
         }
         else
         {

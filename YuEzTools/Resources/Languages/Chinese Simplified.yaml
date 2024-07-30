@@ -43,9 +43,12 @@ SuspectedViolationMessage: "疑似违规信息"
 MessgaeFromYuET: "== 信息来自YuET模组 =="
 EndMessage: "结算（消息来自YuET）："
 EndMessageC: "结算："
+DefaultSystemMessageTitle: "[YuET消息]"
+Message.Welcome: "我采用了YuEzTools模组\n本房间是在{0}服务器运行的\n这不是普通的AmongUs游戏\n祝你游玩愉快，[YuET]持续保护中"
 
-# 进入房间
+# 进入/退出房间
 JoinRoom: "加入房间"
+LeftRoom: "退出房间"
 
 # Ping
 SafeModeText: "<size=75%>按下 <color=#DC143C>F5</color> 以切换不安全<color=#1E90FF>(UnSafe)</color>模式(不推荐)</size>"

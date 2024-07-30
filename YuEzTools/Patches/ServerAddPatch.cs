@@ -63,7 +63,7 @@ public static class ServerAddManager
             _ => serverName,
         };
 
-        if ((TranslationController.Instance?.currentLanguage?.languageID ?? SupportedLangs.SChinese) is SupportedLangs.SChinese or SupportedLangs.TChinese)
+        if (TranslationController.Instance?.currentLanguage?.languageID is SupportedLangs.SChinese or SupportedLangs.TChinese)
         {
             name = name switch
             {
@@ -96,6 +96,7 @@ public static class ServerAddManager
             _ => new(255, 255, 255, 255),
         };
         PingTrackerUpdatePatch.ServerName = Utils.Utils.ColorString(color, name);
+        InnerNetClientSpawnPatch.serverName = name;
     }
 
     public static IRegionInfo CreateHttp(string ip, string name, ushort port, bool ishttps)

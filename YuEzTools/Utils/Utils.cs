@@ -12,12 +12,34 @@ using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using static YuEzTools.Translator;
 using System;
+using System.Text.RegularExpressions;
 
 namespace YuEzTools.Utils;
 
-public class Utils
+public static class Utils
 {
+    public static void SendMessage(string text, byte sendTo = byte.MaxValue, string title = "<Default>", bool removeTags = false)
+    {
+        if (!AmongUsClient.Instance.AmHost) return;
+        if (title == "<Default>") title = "<color=#aaaaff>" + GetString("DefaultSystemMessageTitle") + "</color>";
+        Main.isChatCommand = true;
+        Main.MessagesToSend.Add((removeTags ? text.RemoveHtmlTags() : text, sendTo, title + '\0'));
+    }
+    public static void SendMessageAsPlayerImmediately(PlayerControl player, string text, bool hostCanSee = true, bool sendToModded = true)
+    {
+        if (hostCanSee) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(player, text);
+        if (!sendToModded) text += "\0";
+
+        var writer = CustomRpcSender.Create("MessagesToSend", SendOption.None);
+        writer.StartMessage(-1);
+        writer.StartRpc(player.NetId, (byte)RpcCalls.SendChat)
+            .Write(text)
+            .EndRpc();
+        writer.EndMessage();
+        writer.SendMessage();
+    }
     //public static string ColorString(Color32 color, string str) => $"<color=#{color.r:x2}{color.g:x2}{color.b:x2}{color.a:x2}>{str}</color>";
+    public static string RemoveHtmlTags(this string str) => Regex.Replace(str, "<[^>]*?>", string.Empty);
     public static void KickPlayer(int playerId, bool ban, string reason)
     {
         if (!AmongUsClient.Instance.AmHost) return;

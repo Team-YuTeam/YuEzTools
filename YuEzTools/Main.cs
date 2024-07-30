@@ -77,6 +77,13 @@ public class Main : BasePlugin
     //public static bool safemode = true;//设置安全模式
     //public static bool ShowMode = true;//设置揭示模式
     
+    public static List<(string, byte, string)> MessagesToSend = new();
+
+    public static IEnumerable<PlayerControl> AllAlivePlayerControls =>
+        //(PlayerControl.AllPlayerControls == null || PlayerControl.AllPlayerControls.Count == 0) && LoadEnd
+        //? AllAlivePlayerControls :
+        PlayerControl.AllPlayerControls.ToArray().Where(p => p != null);
+    
     //public static Dictionary<int, PlayerState> PlayerStates = new Dictionary<int, PlayerState>();
     
     public static ConfigEntry<string> BetaBuildURL { get; private set; }
