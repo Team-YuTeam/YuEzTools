@@ -27,6 +27,7 @@ public class PlayerState
 
 static class GetPlayer
 {
+    //public static bool IsNotJoined => AmongUsClient.Instance.GameState == AmongUsClient.GameStates.NotJoined;
     public static bool IsVanillaServer
     {
         get

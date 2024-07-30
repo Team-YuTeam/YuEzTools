@@ -31,6 +31,8 @@ public class Toggles
     //玩法性-所有人
     public static bool ExitGame;
     public static bool RealBan;
+    public static bool HorseMode;
+    public static bool LongMode;
 
     // 仅房主
     public static bool ChangeDownTimerToZero;

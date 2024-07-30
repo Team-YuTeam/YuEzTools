@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using YuEzTools.Utils;
 using HarmonyLib;
+using YuEzTools.Get;
 
 namespace YuEzTools.UI;
 public class MenuUI : MonoBehaviour
@@ -30,6 +31,18 @@ public class MenuUI : MonoBehaviour
             Vector2 mousePosition = Input.mousePosition;
             windowRect.position = new Vector2(mousePosition.x, Screen.height - mousePosition.y);
         }
+
+        // if (Toggles.HorseMode)
+        // {
+        //     foreach (var pc in PlayerControl.AllPlayerControls)
+        //     {
+        //         pc.MyPhysics.SetBodyType(pc.BodyType);
+        //         if (pc.BodyType == PlayerBodyTypes.Normal)
+        //         {
+        //             pc.cosmetics.currentBodySprite.BodySprite.transform.localScale = new(0.5f, 0.5f, 1f);
+        //         }
+        //     }
+        // }
         if(!isGUIActive)
         {
             groups.Clear();
@@ -95,6 +108,13 @@ public class MenuUI : MonoBehaviour
                             x => Toggles.ExitGame = x),
                         new ToggleInfo(Translator.GetString("MenuUI.RealBan"), () => Toggles.RealBan,
                             x => Toggles.RealBan = x),
+                    }),
+                    new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.PeopleMode"), false, new List<ToggleInfo>()
+                    {
+                        new ToggleInfo(Translator.GetString("MenuUI.HorseMode"), () => Toggles.HorseMode,
+                            x => Toggles.HorseMode = x),
+                        new ToggleInfo(Translator.GetString("MenuUI.LongMode"), () => Toggles.LongMode,
+                            x => Toggles.LongMode = x),
                     }),
                     new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.OnlyHost"), false,
                         new List<ToggleInfo>()
