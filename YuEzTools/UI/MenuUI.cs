@@ -88,6 +88,8 @@ public class MenuUI : MonoBehaviour
                             x => Toggles.ShowLocalNowTime = x),
                         new ToggleInfo(Translator.GetString("ShowUTC"), () => Toggles.ShowUTC,
                             x => Toggles.ShowUTC = x),
+                        new ToggleInfo(Translator.GetString("ShowGM"), () => Toggles.ShowGM,
+                            x => Toggles.ShowGM = x),
                     }),
                 }
             ));

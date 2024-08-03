@@ -92,7 +92,7 @@ internal class PingTrackerUpdatePatch
                 : "<color=#DC143C>[UnAutoExit]</color>");
         }
         
-        if (Toggles.ShowGM && Toggles.AutoStartGame)
+        if (AmongUsClient.Instance.AmHost && Toggles.ShowGM && Toggles.AutoStartGame)
         {
             if (!Toggles.ShowIsSafe && !Toggles.ShowIsDark && !Toggles.ShowIsAutoExit) sb.Append($"\r\n");
             sb.Append("<color=#1E90FF>[GM]</color>");

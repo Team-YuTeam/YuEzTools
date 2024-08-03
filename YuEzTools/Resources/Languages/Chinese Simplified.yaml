@@ -88,6 +88,7 @@ ShowRoomTime: "显示房间炸房倒计时"
 ShowIsAutoExit: "显示是否防炸端模式"
 ShowLocalNowTime: "显示现在时间"
 ShowUTC: "显示UTC"
+ShowGM: "显示是否托管模式"
 
 # MenuUI.AntiCheat
 MenuUI.AntiCheat: "反作弊"
