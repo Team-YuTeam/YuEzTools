@@ -17,10 +17,12 @@ public class Toggles
     public static bool ShowRoomTime = true;
     public static bool ShowUTC;
     public static bool ShowLocalNowTime;
+    public static bool ShowGM = true;
 
     // 反作弊
     public static bool SafeMode = true;
     public static bool AutoExit = true;
+    public static bool KickNotLogin = true;
 
     // 快捷按钮
     public static bool DumpLog;

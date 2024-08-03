@@ -46,6 +46,19 @@ public class MenuUI : MonoBehaviour
         if(!isGUIActive)
         {
             groups.Clear();
+            groups.Add(new GroupInfo(Translator.GetString("MenuUI.AntiCheat"), false, new List<ToggleInfo>()
+                {
+                    new ToggleInfo(Translator.GetString("MenuUI.SafeMode"), () => Toggles.SafeMode,
+                        x => Toggles.SafeMode = x),
+                    new ToggleInfo(Translator.GetString("MenuUI.AutoExit"), () => Toggles.AutoExit,
+                        x => Toggles.AutoExit = x),
+                    new ToggleInfo(Translator.GetString("MenuUI.KickNotLogin"), () => Toggles.KickNotLogin,
+                        x => Toggles.KickNotLogin = x),
+                }, new List<SubmenuInfo>
+                {
+
+                }
+            ));
             groups.Add(new GroupInfo(Translator.GetString("Interface"), false, new List<ToggleInfo>()
                 {
                     new ToggleInfo(Translator.GetString("DarkUI"), () => Toggles.DarkMode, x => Toggles.DarkMode = x),
@@ -76,17 +89,6 @@ public class MenuUI : MonoBehaviour
                         new ToggleInfo(Translator.GetString("ShowUTC"), () => Toggles.ShowUTC,
                             x => Toggles.ShowUTC = x),
                     }),
-                }
-            ));
-            groups.Add(new GroupInfo(Translator.GetString("MenuUI.AntiCheat"), false, new List<ToggleInfo>()
-                {
-                    new ToggleInfo(Translator.GetString("MenuUI.SafeMode"), () => Toggles.SafeMode,
-                        x => Toggles.SafeMode = x),
-                    new ToggleInfo(Translator.GetString("MenuUI.AutoExit"), () => Toggles.AutoExit,
-                        x => Toggles.AutoExit = x),
-                }, new List<SubmenuInfo>
-                {
-
                 }
             ));
             groups.Add(new GroupInfo(Translator.GetString("MenuUI.ShortcutButton"), false, new List<ToggleInfo>()

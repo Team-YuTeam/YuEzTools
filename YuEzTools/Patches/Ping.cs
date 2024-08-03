@@ -54,6 +54,12 @@ internal class PingTrackerUpdatePatch
         StringBuilder sb = new();
         sb.Append($"<color={Main.ModColor}>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
         if (Toggles.ShowCommit) sb.Append($"<color=#00FFFF>({ThisAssembly.Git.Commit})</color>");
+#if DEBUG
+        sb.Append("<color=#FFC0CB>[DEBUG]</color>");
+#endif
+#if CANARY
+        sb.Append("<color=#6A5ACD>[CANARY]</color>");
+#endif
         if (Toggles.ShowModText) sb.Append($"\r\n").Append($"{Main.MainMenuText}");
 
         if (Toggles.FPSPlus && Application.targetFrameRate != 240) Application.targetFrameRate = 240;
@@ -85,12 +91,13 @@ internal class PingTrackerUpdatePatch
                 ? "<color=#1E90FF>[AutoExit]</color>"
                 : "<color=#DC143C>[UnAutoExit]</color>");
         }
-#if DEBUG
-        sb.Append($"\r\n").Append("<color=#FFC0CB>[DEBUG]</color>");
-#endif
-#if CANARY
-        sb.Append($"\r\n").Append("<color=#6A5ACD>[CANARY]</color>");
-#endif
+        
+        if (Toggles.ShowGM && Toggles.AutoStartGame)
+        {
+            if (!Toggles.ShowIsSafe && !Toggles.ShowIsDark && !Toggles.ShowIsAutoExit) sb.Append($"\r\n");
+            sb.Append("<color=#1E90FF>[GM]</color>");
+        }
+        
         sb.Append("</size>");
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
         fps = Mathf.Ceil(1.0f / deltaTime);

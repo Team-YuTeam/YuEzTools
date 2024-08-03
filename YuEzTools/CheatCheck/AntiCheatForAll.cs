@@ -422,7 +422,7 @@ internal class AntiCheatForAll
         var Mapid = GetPlayer.GetActiveMapId();
         Logger.Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "AntiCheatForAll");
         // if (!AmongUsClient.Instance.AmHost) return false;
-        Logger.Info("破坏者"+player.GetRealName()+$"是{GetPlayer.GetPlayerRoleTeam(player).ToString()}阵营！","ACFA");
+        Logger.Info("触发飞船事件！"+player.GetRealName()+$"是{GetPlayer.GetPlayerRoleTeam(player).ToString()}阵营！","ACFA");
         if (player == null) return false;
         
         if (systemType == SystemTypes.Sabotage) //使用正常的破坏按钮
@@ -501,7 +501,7 @@ internal class AntiCheatForAll
         var Mapid = GetPlayer.GetActiveMapId();
         Logger.Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "AntiCheatForAll");
         // if (!AmongUsClient.Instance.AmHost) return false;
-        Logger.Info("破坏者"+player.GetRealName()+$"是{GetPlayer.GetPlayerRoleTeam(player).ToString()}阵营！","ACFA");
+        Logger.Info("触发飞船事件！"+player.GetRealName()+$"是{GetPlayer.GetPlayerRoleTeam(player).ToString()}阵营！","ACFA");
         if (player == null) return false;
         
         if (systemType == SystemTypes.Sabotage || systemType == SystemTypes.LifeSupp || systemType == SystemTypes.Comms || systemType == SystemTypes.Electrical || systemType == SystemTypes.Laboratory || systemType == SystemTypes.Reactor || systemType == SystemTypes.HeliSabotage || systemType == SystemTypes.MushroomMixupSabotage) //使用破坏

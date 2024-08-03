@@ -15,7 +15,8 @@ public static class ChatBubblePatch
     {
         var sr = __instance.transform.FindChild("Background").GetComponent<SpriteRenderer>();
         if(Toggles.DarkMode) sr.color = new Color(0, 0, 0,255);// : new Color(1, 1, 1);
-        if (Main.isChatCommand) sr.color = new Color(0,191,255);
+        if (Main.isChatCommand && !Toggles.DarkMode) sr.color = new Color(0, 0, 0,255);
+        else if(Main.isChatCommand && Toggles.DarkMode)sr.color = new Color(255, 255, 255,255);
         //if (modded)
         //{
         if (chatText.Contains("░") ||
@@ -39,7 +40,8 @@ public static class ChatBubblePatch
         }
         else if (Main.isChatCommand)
         {
-            chatText = $"<color=#008B8B>[{Translator.GetString("MessgaeFromYuET")}]</color>\n" + ColorString(Color.gray, chatText.TrimEnd('\0'));
+            if(Toggles.DarkMode) chatText = $"<color=#1E90FF>[{Translator.GetString("MessgaeFromYuET")}]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
+            else chatText = $"<color=#008B8B>[{Translator.GetString("MessgaeFromYuET")}]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
             Main.isChatCommand = false;
         }
         else

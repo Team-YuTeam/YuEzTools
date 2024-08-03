@@ -69,7 +69,8 @@ OptImpMoreThanThree: "本房间设置最大内鬼数量大于3\n可能为外挂�
 OptHImpMoreThanThree: "本房间设置最大内鬼数量大于1\n可能为外挂或其他模组房间！"
 NowImpMoreThan: "本房间内鬼数量大于预设或3\n可能为外挂或其他模组房间！"
 NowHImpMoreThan: "本房间内鬼数量大于1\n可能为外挂或其他模组房间！"
-NotLogin: "未登录 已踢出\n由于AU已关闭游客入口，您看见的所有游客都是外挂"
+NotLogin: "未登录\n由于您打开了踢出未登录 YuET已尝试封禁"
+unKickNotLogin: "未登录\n请注意，几乎所有的外挂都是未登录！"
 
 # MenuUI.Interface
 Interface: "界面"
@@ -92,6 +93,7 @@ ShowUTC: "显示UTC"
 MenuUI.AntiCheat: "反作弊"
 MenuUI.SafeMode: "安全模式"
 MenuUI.AutoExit: "防止炸端"
+MenuUI.KickNotLogin: "封禁未登录"
 
 # MenuUI.ShortcutButton
 MenuUI.ShortcutButton: "快捷按钮"
@@ -100,7 +102,7 @@ MenuUI.OpenGameDic: "打开游戏运行目录"
 MenuUI.ShortcutButton.OnlyHost: "仅房主"
 MenuUI.ChangeDownTimerToZero: "倒计时更改成0"
 MenuUI.ChangeDownTimerTo114514: "恶搞倒计时"
-MenuUI.AutoStartGame: "人满14自动开始游戏"
+MenuUI.AutoStartGame: "托管模式"
 MenuUI.AbolishDownTimer: "取消倒计时"
 MenuUI.ServerAllHostOrNoHost: "+25(房主全权模式)"
 MenuUI.CloseMusicOfOr: "大厅音乐"

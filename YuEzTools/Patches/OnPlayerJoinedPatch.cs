@@ -1,23 +1,8 @@
-using AmongUs.GameOptions;
 using Hazel;
-using System;
-using System.Linq;
 using HarmonyLib;
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using Epic.OnlineServices.Presence;
 using InnerNet;
-using Steamworks;
-using UnityEngine;
 using YuEzTools.Get;
-using YuEzTools;
 using YuEzTools.Patches;
-using Byte = Il2CppSystem.Byte;
-using static YuEzTools.Logger;
 using static YuEzTools.Translator;
 
 namespace YuEzTools;
@@ -26,21 +11,32 @@ namespace YuEzTools;
 class OnPlayerJoinedPatch
 {
     //private static int CID;
-    public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
+    public static void Prefix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
     {
         Main.Logger.LogInfo(
             $"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/ProductUserId:{client.ProductUserId}) 加入房间");
-        if (AmongUsClient.Instance.AmHost && client.FriendCode == "")
-        {
-            AmongUsClient.Instance.KickPlayer(client.Id, true);
-            Logger.Info($"{client?.PlayerName}未登录 已踢出", "Kick");
-            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
-            SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
-        }
         GetPlayer.numImpostors = 0;
         GetPlayer.numCrewmates = 0;
         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
         SendInGamePatch.SendInGame($"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
+    }
+
+    public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
+    {
+        if (AmongUsClient.Instance.AmHost && client.FriendCode == "" && Toggles.KickNotLogin)
+        {
+            // 你知道的 Login是这样的
+            AmongUsClient.Instance.KickPlayer(client.Id, true);
+            Logger.Info($"{client?.PlayerName}未登录 已踢出", "Kick");
+            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
+            SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
+            return;
+        }
+        else if(client.FriendCode == "")
+        {
+            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("unKickNotLogin")}</color>");
+            SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("unKickNotLogin")}</color>");
+        }
     }
 }
 [HarmonyPatch(typeof(AmongUsClient),nameof(AmongUsClient.OnPlayerLeft))]
@@ -56,6 +52,11 @@ class OnPlayerLeftPatch{
 class OnGameJoined
 {
     //private static int CID;
+    public static void Prefix(AmongUsClient __instance)
+    {
+        if (AmongUsClient.Instance.AmHost && Toggles.AutoStartGame)
+            MurderHacker.murderHacker(PlayerControl.LocalPlayer, MurderResultFlags.Succeeded);
+    }
     public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
     {
         ShowDisconnectPopupPatch.ReasonByHost = string.Empty;
