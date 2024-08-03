@@ -82,8 +82,8 @@ internal class PingTrackerUpdatePatch
         {
             if (!Toggles.ShowIsSafe && !Toggles.ShowIsDark) sb.Append($"\r\n");
             sb.Append(Toggles.AutoExit
-                ? "<color=#DC143C>[AutoExit]</color>"
-                : "<color=#1E90FF>[UnAutoExit]</color>");
+                ? "<color=#1E90FF>[AutoExit]</color>"
+                : "<color=#DC143C>[UnAutoExit]</color>");
         }
 #if DEBUG
         sb.Append($"\r\n").Append("<color=#FFC0CB>[DEBUG]</color>");
@@ -107,9 +107,9 @@ internal class PingTrackerUpdatePatch
             __instance.text.text += " " + Utils.Utils.getColoredFPSText(fps) + "<size=60%>FPS</size></color>";
         
         if ((Toggles.ShowFPS||Toggles.ShowPing) && Toggles.ShowServer)
-            __instance.text.text += "  " + (GetPlayer.IsOnlineGame ? ServerName : GetString("Local"));
+            __instance.text.text += "  " + (GetPlayer.IsOnlineGame ? ServerName : "Local");
         else if(Toggles.ShowServer)
-            __instance.text.text = (GetPlayer.IsOnlineGame ? ServerName : GetString("Local"));
+            __instance.text.text = (GetPlayer.IsOnlineGame ? ServerName : "Local");
         
         
         if (!Toggles.ShowPing && !Toggles.ShowServer && !Toggles.ShowFPS) __instance.text.text = "";

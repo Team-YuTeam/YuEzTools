@@ -20,7 +20,7 @@ public class Toggles
 
     // 反作弊
     public static bool SafeMode = true;
-    public static bool AutoExit;
+    public static bool AutoExit = true;
 
     // 快捷按钮
     public static bool DumpLog;

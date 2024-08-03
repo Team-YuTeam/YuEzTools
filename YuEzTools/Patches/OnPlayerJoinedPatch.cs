@@ -28,11 +28,18 @@ class OnPlayerJoinedPatch
     //private static int CID;
     public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
     {
+        Main.Logger.LogInfo(
+            $"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/ProductUserId:{client.ProductUserId}) 加入房间");
+        if (AmongUsClient.Instance.AmHost && client.FriendCode == "")
+        {
+            AmongUsClient.Instance.KickPlayer(client.Id, true);
+            Logger.Info($"{client?.PlayerName}未登录 已踢出", "Kick");
+            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
+            SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
+        }
         GetPlayer.numImpostors = 0;
         GetPlayer.numCrewmates = 0;
         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
-        Main.Logger.LogInfo(
-            $"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/ProductUserId:{client.ProductUserId}) 加入房间");
         SendInGamePatch.SendInGame($"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
     }
 }
@@ -89,7 +96,7 @@ class InnerNetClientSpawnPatch
         {
             if (client.Character == null) return;
             //if (Main.OverrideWelcomeMsg != "")
-            Utils.Utils.SendMessage(string.Format(GetString("Message.Welcome"),(GetPlayer.IsOnlineGame ? serverName : GetString("Local"))), client.Character.PlayerId);
+            Utils.Utils.SendMessage(string.Format(GetString("Message.Welcome"),(GetPlayer.IsOnlineGame ? serverName : "Local") , GameStartManager.Instance.GameRoomNameCode.text), client.Character.PlayerId);
             // else TemplateManager.SendTemplate("welcome", client.Character.PlayerId, true);
         }, 3f, "Welcome Message");
         

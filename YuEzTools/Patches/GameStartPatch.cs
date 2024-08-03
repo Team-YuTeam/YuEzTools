@@ -137,7 +137,7 @@ class CreatePlayerPatch
     {
         //DestroyableSingleton<HudManager>.Instance.Chat.AddChat(client.Character, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
         
-        if (!AmongUsClient.Instance.AmHost) return;
+        //if (!AmongUsClient.Instance.AmHost) return;
         
         Logger.Msg($"Create player data: ID {client.Id}: {client.PlayerName}", "CreatePlayer");
 
@@ -149,7 +149,7 @@ class CreatePlayerPatch
                 {
                     Main.isChatCommand = true;
                     Info("发送：结算信息", "JoinPatch");
-                    PlayerControl.LocalPlayer.RpcSendChat(StartPatch.s);
+                    DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,StartPatch.sc);
                     Main.isChatCommand = false;
                     Main.isFirstSendEnd = false;
                 }

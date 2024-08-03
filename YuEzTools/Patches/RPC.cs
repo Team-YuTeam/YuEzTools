@@ -45,14 +45,9 @@ internal class RPCHandlerPatch
                 else if (AmongUsClient.Instance.AmHost)
                 {
                     Main.Logger.LogInfo("Host Try ban " + __instance.GetRealName());
-                    //__instance.RpcSendChat($"{Main.ModName}检测到我是外挂 并且正在尝试踢出我 [来自房主{AmongUsClient.Instance.PlayerPrefab.GetRealName()}的{Main.ModName}]");
-                    if (!Toggles.SafeMode)
-                    {
-                        Main.Logger.LogInfo("Host Try murder " + __instance.GetRealName());
-                        MurderHacker.murderHacker(__instance,MurderResultFlags.Succeeded);
-                    }
                     AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), true);
-                        GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+                    Main.Logger.LogInfo("Host Try end game with room " +　GameStartManager.Instance.GameRoomNameCode.text);
+                    GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
                     return false;
                 }
                 return false;

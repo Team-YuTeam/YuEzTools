@@ -44,7 +44,7 @@ MessgaeFromYuET: "== 信息来自YuET模组 =="
 EndMessage: "结算（消息来自YuET）："
 EndMessageC: "结算："
 DefaultSystemMessageTitle: "[YuET消息]"
-Message.Welcome: "我采用了YuEzTools模组\n本房间是在{0}服务器运行的\n这不是普通的AmongUs游戏\n祝你游玩愉快，[YuET]持续保护中"
+Message.Welcome: "我采用了YuEzTools模组\n本房间是在{0}服务器运行的，房间号为{1}\n这不是普通的AmongUs游戏\n祝你游玩愉快，[YuET]持续保护中"
 
 # 进入/退出房间
 JoinRoom: "加入房间"
@@ -69,6 +69,7 @@ OptImpMoreThanThree: "本房间设置最大内鬼数量大于3\n可能为外挂�
 OptHImpMoreThanThree: "本房间设置最大内鬼数量大于1\n可能为外挂或其他模组房间！"
 NowImpMoreThan: "本房间内鬼数量大于预设或3\n可能为外挂或其他模组房间！"
 NowHImpMoreThan: "本房间内鬼数量大于1\n可能为外挂或其他模组房间！"
+NotLogin: "未登录 已踢出\n由于AU已关闭游客入口，您看见的所有游客都是外挂"
 
 # MenuUI.Interface
 Interface: "界面"
