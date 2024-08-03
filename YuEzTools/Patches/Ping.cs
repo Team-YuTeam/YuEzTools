@@ -25,7 +25,7 @@ internal class PingTrackerUpdatePatch
 
     private static void Postfix(PingTracker __instance)
     {
-        __instance.text.text = "";
+        // __instance.text.text = "";
         if (pingTrackerCredential == null)
         {
             var uselessPingTracker = UnityEngine.Object.Instantiate(__instance, __instance.transform.parent);
@@ -47,7 +47,9 @@ internal class PingTrackerUpdatePatch
                     : new(1.8f, 0f, -800f);
         }
 
-        __instance.text.alignment = TextAlignmentOptions.TopRight;
+        __instance.text.alignment = TextAlignmentOptions.Top;
+        // __instance.transform.localPosition = new Vector3(__instance.transform.localPosition.x,
+        //     __instance.transform.localPosition.y + 10, __instance.transform.localPosition.z);
 
         StringBuilder sb = new();
         sb.Append($"<color={Main.ModColor}>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
@@ -57,6 +59,8 @@ internal class PingTrackerUpdatePatch
         if (Toggles.FPSPlus && Application.targetFrameRate != 240) Application.targetFrameRate = 240;
         else if (!Toggles.FPSPlus && Application.targetFrameRate != 60) Application.targetFrameRate = 60;
 
+        sb.Append("<size=60%>");
+        
         if (Toggles.ShowIsSafe)
         {
             if (Toggles.SafeMode)
@@ -65,41 +69,51 @@ internal class PingTrackerUpdatePatch
                 sb.Append($"\r\n").Append($"<color=#1E90FF>[UnSafe]</color>");
         }
 
-        if (Toggles.ShowSafeText)
-        {
-            if (Toggles.SafeMode)
-                sb.Append($"\r\n").Append($"{Translator.GetString("SafeModeText")}");
-            else
-                sb.Append($"\r\n").Append($"{Translator.GetString("UnSafeModeText")}");
-        }
-
         if (Toggles.ShowIsDark)
         {
+            if (!Toggles.ShowIsSafe) sb.Append($"\r\n");
             if (Toggles.DarkMode)
-                sb.Append($"\r\n").Append("<color=#00BFFF>[Dark]</color>");
+                sb.Append("<color=#00BFFF>[Dark]</color>");
             else
-                sb.Append($"\r\n").Append("<color=#00FA9A>[Light]</color>");
+                sb.Append("<color=#00FA9A>[Light]</color>");
         }
 
         if (Toggles.ShowIsAutoExit)
-            sb.Append($"\r\n").Append(Toggles.AutoExit
+        {
+            if (!Toggles.ShowIsSafe && !Toggles.ShowIsDark) sb.Append($"\r\n");
+            sb.Append(Toggles.AutoExit
                 ? "<color=#DC143C>[AutoExit]</color>"
                 : "<color=#1E90FF>[UnAutoExit]</color>");
+        }
 #if DEBUG
         sb.Append($"\r\n").Append("<color=#FFC0CB>[DEBUG]</color>");
 #endif
 #if CANARY
         sb.Append($"\r\n").Append("<color=#6A5ACD>[CANARY]</color>");
 #endif
-#if RELEASE
-        sb.Append($"\r\n").Append("<color=#00FFFF>[RELEASE]</color>");
-#endif
+        sb.Append("</size>");
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
         fps = Mathf.Ceil(1.0f / deltaTime);
         var ping = AmongUsClient.Instance.Ping;
-        if (Toggles.ShowPing) sb.Append($"\r\n").Append(Utils.Utils.getColoredPingText(AmongUsClient.Instance.Ping) + "<size=60%>Ping</size></color>"); // 书写Ping
-        if (Toggles.ShowFPS) sb.Append(!Toggles.ShowPing ? $"\r\n" : " ").Append(Utils.Utils.getColoredFPSText(fps) + "<size=60%>FPS</size></color>"); // 书写FPS
-        if(Toggles.ShowServer) sb.Append((!Toggles.ShowFPS && !Toggles.ShowPing) ? $"\r\n" : " ").Append("  " + (GetPlayer.IsOnlineGame ? ServerName : GetString("Local")));
+        // if (Toggles.ShowPing) sb.Append($"\r\n").Append(Utils.Utils.getColoredPingText(AmongUsClient.Instance.Ping) + "<size=60%>Ping</size></color>"); // 书写Ping
+        // if (Toggles.ShowFPS) sb.Append(!Toggles.ShowPing ? $"\r\n" : " ").Append(Utils.Utils.getColoredFPSText(fps) + "<size=60%>FPS</size></color>"); // 书写FPS
+        // if(Toggles.ShowServer) sb.Append((!Toggles.ShowFPS && !Toggles.ShowPing) ? $"\r\n" : " ").Append("  " + (GetPlayer.IsOnlineGame ? ServerName : GetString("Local")));
+        
+        if (Toggles.ShowPing) __instance.text.text = Utils.Utils.getColoredPingText(AmongUsClient.Instance.Ping) +
+                                                     "<size=60%>Ping</size></color>";
+        if (!Toggles.ShowPing&&Toggles.ShowFPS)
+            __instance.text.text = Utils.Utils.getColoredFPSText(fps) + "<size=60%>FPS</size></color>";
+        else if (Toggles.ShowFPS)
+            __instance.text.text += " " + Utils.Utils.getColoredFPSText(fps) + "<size=60%>FPS</size></color>";
+        
+        if ((Toggles.ShowFPS||Toggles.ShowPing) && Toggles.ShowServer)
+            __instance.text.text += "  " + (GetPlayer.IsOnlineGame ? ServerName : GetString("Local"));
+        else if(Toggles.ShowServer)
+            __instance.text.text = (GetPlayer.IsOnlineGame ? ServerName : GetString("Local"));
+        
+        
+        if (!Toggles.ShowPing && !Toggles.ShowServer && !Toggles.ShowFPS) __instance.text.text = "";
+        
         // sb.Append($"\r\n")
         //     .Append(
         //         $"{Utils.Utils.getColoredPingText(ping)} <size=60%>Ping</size></color>  {Utils.Utils.getColoredFPSText(fps)} <size=60%>FPS</size></color>{"  " + (GetPlayer.IsOnlineGame ? ServerName : GetString("Local"))}");

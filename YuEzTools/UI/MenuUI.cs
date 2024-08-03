@@ -59,8 +59,6 @@ public class MenuUI : MonoBehaviour
                             x => Toggles.ShowModText = x),
                         new ToggleInfo(Translator.GetString("ShowIsSafe"), () => Toggles.ShowIsSafe,
                             x => Toggles.ShowIsSafe = x),
-                        new ToggleInfo(Translator.GetString("ShowSafeText"), () => Toggles.ShowSafeText,
-                            x => Toggles.ShowSafeText = x),
                         new ToggleInfo(Translator.GetString("ShowIsDark"), () => Toggles.ShowIsDark,
                             x => Toggles.ShowIsDark = x),
                         new ToggleInfo(Translator.GetString("ShowPing"), () => Toggles.ShowPing,

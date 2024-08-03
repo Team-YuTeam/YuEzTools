@@ -133,7 +133,7 @@ public static class Translator
     public static SupportedLangs GetUserLangByRegion()
     {
 #if DEBUG
-        if (Environment.UserName == "Leever")
+        if (Environment.UserName == "Yu")
             return SupportedLangs.SChinese;
 #endif
         try

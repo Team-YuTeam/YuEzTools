@@ -6,10 +6,9 @@ public class Toggles
     public static bool DarkMode = true;
 
     // Ping部分
-    public static bool ShowCommit = true;
+    public static bool ShowCommit;
     public static bool ShowModText = true;
     public static bool ShowIsSafe = true;
-    public static bool ShowSafeText = true;
     public static bool ShowIsDark = true;
     public static bool ShowPing = true;
     public static bool ShowFPS = true;
@@ -17,7 +16,7 @@ public class Toggles
     public static bool ShowIsAutoExit = true;
     public static bool ShowRoomTime = true;
     public static bool ShowUTC;
-    public static bool ShowLocalNowTime = true;
+    public static bool ShowLocalNowTime;
 
     // 反作弊
     public static bool SafeMode = true;

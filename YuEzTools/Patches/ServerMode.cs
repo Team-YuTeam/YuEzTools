@@ -9,6 +9,7 @@ class ServerUpdatePatch
     public static int re = 50605450;
     static void Postfix(ref int __result)
     {
+        re = 50605450;
         if (GetPlayer.IsLocalGame)
         {
             Logger.Info($"IsLocalGame: {__result}", "VersionServer");
@@ -29,7 +30,8 @@ public static class IsVersionModdedPatch
 {
     public static bool Prefix(ref bool __result)
     {
-        __result = Toggles.ServerAllHostOrNoHost;
+        if (!Toggles.ServerAllHostOrNoHost) return true;
+        __result = true;
         return false;
     }
 }
