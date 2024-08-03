@@ -1,5 +1,5 @@
 {
-  "version": "1.1.30",
+  "version": "1.2.0.0",
 
   "minVer": "latest",
   "creation": "1",
@@ -7,7 +7,7 @@
   "CanUpdate": "true",
   "DebugVer": "0.0.0",
 
-  "md5": "39e08936a54bc9a8c7a758cf5e05c3cb",
+  "md5": "64eb6640a1675a7d01d3795ab2dab32b",
   "announcement": {
     "SChinese": "欢迎使用YuEzTools!\n全新YuEzTools！\n功能增多，质量提升！",
     "English": "Welcome to use YuEzTools!\nYuET is better than YuAC"
