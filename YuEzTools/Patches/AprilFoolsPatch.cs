@@ -136,7 +136,7 @@ public static class LongBoiPatches
     [HarmonyPrefix]
     public static bool LongBoyNeckSize_Patch(LongBoiPlayerBody __instance, ref float distance)
     {
-        //Remove the limit of neck size to prevent issues in TONEXE HnS
+        //Remove the limit of neck size to prevent issues in YuEzTools HnS
 
         __instance.targetHeight = distance / 10f + 0.5f;
         __instance.SetupNeckGrowth(true, true); //se quiser sim mano

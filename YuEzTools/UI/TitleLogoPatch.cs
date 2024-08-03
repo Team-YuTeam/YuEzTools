@@ -127,7 +127,7 @@ internal class TitleLogoPatch
         CloseRightButton.transform.localScale = new(1f, 1f, 1f);
         CloseRightButton.AddComponent<BoxCollider2D>().size = new(0.6f, 1.5f);
         var closeRightSpriteRenderer = CloseRightButton.AddComponent<SpriteRenderer>();
-        //closeRightSpriteRenderer.sprite = LoadSprite("TONEX.Resources.Images.RightPanelCloseButton.png", 100f);
+        //closeRightSpriteRenderer.sprite = LoadSprite("YuEzTools.Resources.Images.RightPanelCloseButton.png", 100f);
         closeRightSpriteRenderer.color = new(1f, 0.78f, 0.9f, 1f);
         var closeRightPassiveButton = CloseRightButton.AddComponent<PassiveButton>();
         closeRightPassiveButton.OnClick = new();
