@@ -1,7 +1,7 @@
 #Number:100013
-#Title:YuEzTools v1.1.4.0
-#SubTitle:★★★★这不算大版本？！★★★★
-#ShortTitle:★YuET v1.1.4.0
+#Title:YuEzTools v1.2.0.0
+#SubTitle:★★★★这就是大版本了？！★★★★
+#ShortTitle:★YuET v1.2.0.0
 #Date:2024-08-04T00:00:00Z
 #-----------------------------
 感谢您对YuTeam的支持！！！
