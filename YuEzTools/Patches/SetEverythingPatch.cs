@@ -32,7 +32,7 @@ class StartPatch
         Logger.Info("== 游戏开始 ==","StartPatch");
         foreach (var pc1 in Main.AllPlayerControls)
         {
-            Logger.Info("添加玩家进入CPCOS："+pc1.GetRealName(),"StartPatch");
+            //Logger.Info("添加玩家进入CPCOS："+pc1.GetRealName(),"StartPatch");
             if(!Main.ClonePlayerControlsOnStart.Contains(pc1)) Main.ClonePlayerControlsOnStart.AddItem(pc1);
             if(Main.ClonePlayerControlsOnStart.Count() == 0)
                 Info("错误，CPCOS列表空！","CPCOS in StartPatch");
@@ -55,7 +55,7 @@ class StartPatch
                 GetPlayer.numCrewmates++;
             }
             
-            Info(s,"StartPatch");
+            //Info(s,"StartPatch");
             c++;
         }
         Main.isFirstSendEnd = true;

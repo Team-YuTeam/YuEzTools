@@ -24,24 +24,19 @@ public static class ShipStatus_FixedUpdate
             SendChat.Prefix(__instance);
             if(!Toggles.SafeMode && !AmongUsClient.Instance.AmHost)
             {
-                Main.Logger.LogInfo("Try Murder" + __instance.GetRealName());
+                // Main.Logger.LogInfo("Try Murder" + __instance.GetRealName());
                 //__instance.RpcSendChat($"{Main.ModName}检测到我是外挂 并且正在尝试踢出我 [来自{AmongUsClient.Instance.PlayerPrefab.GetRealName()}的{Main.ModName}]");
                 //Try_to_ban(__instance);
-                MurderHacker.murderHacker(__instance,MurderResultFlags.Succeeded);
+                //MurderHacker.murderHacker(__instance,MurderResultFlags.Succeeded);
                 return false;
             }
             //PlayerControl Host = AmongUsClient.Instance.GetHost();
             else if (AmongUsClient.Instance.AmHost)
             {
-                Main.Logger.LogInfo("Host Try ban " + __instance.GetRealName());
+                //Main.Logger.LogInfo("Host Try ban " + __instance.GetRealName());
                 //__instance.RpcSendChat($"{Main.ModName}检测到我是外挂 并且正在尝试踢出我 [来自房主{AmongUsClient.Instance.PlayerPrefab.GetRealName()}的{Main.ModName}]");
-                if (!Toggles.SafeMode)
-                {
-                    Main.Logger.LogInfo("Host Try murder " + __instance.GetRealName());
-                    MurderHacker.murderHacker(__instance,MurderResultFlags.Succeeded);
-                }
-                AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), true);
-                    GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+                //AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), true);
+                GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
                 return false;
             }
             return false;
