@@ -13,6 +13,7 @@ using UnityEngine;
 using static YuEzTools.Translator;
 using System;
 using System.Text.RegularExpressions;
+using YuEzTools.Get;
 
 namespace YuEzTools.Utils;
 
@@ -24,6 +25,71 @@ public static class Utils
         if (title == "<Default>") title = "<color=#aaaaff>" + GetString("DefaultSystemMessageTitle") + "</color>";
         Main.isChatCommand = true;
         Main.MessagesToSend.Add((removeTags ? text.RemoveHtmlTags() : text, sendTo, title + '\0'));
+    }
+    public static Vector2 GetBlackRoomPS()
+    {
+        return GetPlayer.GetActiveMapId() switch
+        {
+            0 => new(-27f, 3.3f), // The Skeld
+            1 => new(-11.4f, 8.2f), // MIRA HQ
+            2 => new(42.6f, -19.9f), // Polus
+            4 => new(-16.8f, -6.2f), // Airship
+            5 => new(9.4f, 17.9f), // The Fungle
+            _ => throw new System.NotImplementedException(),
+        };
+    }
+    public static Vector2 LocalPlayerLastTp;
+    public static bool LocationLocked = false;
+    public static void RpcTeleport(this PlayerControl player, Vector2 location)
+    {
+        Logger.Info($" {GetPlayer.GetNameRole(player)} => {location}", "RpcTeleport");
+        Logger.Info($" Player Id: {player.PlayerId}", "RpcTeleport");
+        if (player.inVent
+            || player.MyPhysics.Animations.IsPlayingEnterVentAnimation())
+        {
+            Logger.Info($"Target: ({GetPlayer.GetNameRole(player)}) in vent", "RpcTeleport");
+            player.MyPhysics.RpcBootFromVent(0);
+        }
+        if (player.onLadder
+            || player.MyPhysics.Animations.IsPlayingAnyLadderAnimation())
+        {
+            Logger.Warn($"Teleporting canceled - Target: ({GetPlayer.GetNameRole(player)}) is in on Ladder", "RpcTeleport");
+            return;
+        }
+        var net = player.NetTransform;
+        var numHost = (ushort)(net.lastSequenceId + 2);
+        var numClient = (ushort)(net.lastSequenceId + 48);
+
+        // Host side
+        if (AmongUsClient.Instance.AmHost)
+        {
+            var playerlastSequenceId = (int)player.NetTransform.lastSequenceId;
+            playerlastSequenceId += 10;
+            player.NetTransform.SnapTo(location, (ushort)playerlastSequenceId);
+            player.NetTransform.SnapTo(location, numHost);
+        }
+        else
+        {
+            // Local Teleport For Client
+            MessageWriter localMessageWriter = AmongUsClient.Instance.StartRpcImmediately(net.NetId, (byte)RpcCalls.SnapTo, SendOption.None, player.GetClientId());
+            NetHelpers.WriteVector2(location, localMessageWriter);
+            localMessageWriter.Write(numClient);
+            AmongUsClient.Instance.FinishRpcImmediately(localMessageWriter);
+        }
+
+        // For Client side
+        MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(player.NetTransform.NetId, (byte)RpcCalls.SnapTo, SendOption.None);
+        NetHelpers.WriteVector2(location, messageWriter);
+        messageWriter.Write(player.NetTransform.lastSequenceId + 100U);
+        AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+        // Global Teleport
+        MessageWriter globalMessageWriter = AmongUsClient.Instance.StartRpcImmediately(net.NetId, (byte)RpcCalls.SnapTo, SendOption.None);
+        NetHelpers.WriteVector2(location, globalMessageWriter);
+        globalMessageWriter.Write(numClient);
+        AmongUsClient.Instance.FinishRpcImmediately(globalMessageWriter);
+
+        if (PlayerControl.LocalPlayer == player)
+            LocalPlayerLastTp = location;
     }
     public static void SendMessageAsPlayerImmediately(PlayerControl player, string text, bool hostCanSee = true, bool sendToModded = true)
     {

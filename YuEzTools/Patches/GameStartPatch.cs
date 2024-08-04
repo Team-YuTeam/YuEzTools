@@ -14,6 +14,7 @@ using AmongUs.GameOptions;
 using Epic.OnlineServices.Presence;
 using YuEzTools.Get;
 using static YuEzTools.Logger;
+using Log = UnityEngine.ProBuilder.Log;
 
 namespace YuEzTools.Patches;
 
@@ -40,9 +41,9 @@ public class GameStartManagerPatch
             warningText.name = "WarningText";
             warningText.transform.localPosition = new(0f, 0f - __instance.transform.localPosition.y, -1f);
             warningText.gameObject.SetActive(false);
-            
+
             Logger.Info("WarningText instantiated and configured", "test");
-            
+
 
             cancelButton = Object.Instantiate(__instance.StartButton, __instance.transform);
             var cancelLabel = cancelButton.GetComponentInChildren<TextMeshPro>();
@@ -55,7 +56,7 @@ public class GameStartManagerPatch
             cancelButton.gameObject.SetActive(false);
 
             Logger.Info("CancelButton instantiated and configured", "test");
-            
+
             if (!AmongUsClient.Instance.AmHost) return;
         }
     }
@@ -65,6 +66,7 @@ public class GameStartManagerPatch
     {
         private static int updateTimer = 0;
         public static float exitTimer = -1f;
+
         public static void Prefix(GameStartManager __instance)
         {
             if (Toggles.AutoStartGame)
@@ -80,80 +82,92 @@ public class GameStartManagerPatch
                     }
                 }
             }
-            
+
         }
+
         public static void Postfix(GameStartManager __instance)
         {
-            string warningMessage = "";
-            if(Toggles.AutoExit && PingTrackerUpdatePatch.fps <= 10)
+            try
             {
-                exitTimer += Time.deltaTime;
-                if (exitTimer >= 5)
+                string warningMessage = "";
+                if (Toggles.AutoExit && PingTrackerUpdatePatch.fps <= 10)
                 {
-                    exitTimer = 0;
-                    AmongUsClient.Instance.ExitGame(DisconnectReasons.ExitGame);
-                    SceneChanger.ChangeScene("MainMenu");
+                    exitTimer += Time.deltaTime;
+                    if (exitTimer >= 5)
+                    {
+                        exitTimer = 0;
+                        AmongUsClient.Instance.ExitGame(DisconnectReasons.ExitGame);
+                        SceneChanger.ChangeScene("MainMenu");
+                    }
+
+                    if (exitTimer != 0)
+                        warningMessage = Utils.Utils.ColorString(Color.red,
+                            string.Format(GetString("Warning.AutoExitAtMismatchedFPS"),
+                                PingTrackerUpdatePatch.fps, Math.Round(5 - exitTimer).ToString()));
                 }
 
-                if (exitTimer != 0)
-                    warningMessage = Utils.Utils.ColorString(Color.red,
-                        string.Format(GetString("Warning.AutoExitAtMismatchedFPS"),
-                            PingTrackerUpdatePatch.fps, Math.Round(5 - exitTimer).ToString()));
-            }
-            if (warningMessage == "")
-            {
-                warningText.gameObject.SetActive(false);
-            }
-            else
-            {
-                warningText.text = warningMessage;
-                warningText.gameObject.SetActive(true);
-            }
-            
-            
-            // Lobby timer
-            if (
-                !AmongUsClient.Instance.AmHost ||
-                !GameData.Instance ||
-                AmongUsClient.Instance.NetworkMode != NetworkModes.OnlineGame)
-            {
-                return;
-            }
+                if (warningMessage == "")
+                {
+                    warningText.gameObject.SetActive(false);
+                }
+                else
+                {
+                    warningText.text = warningMessage;
+                    warningText.gameObject.SetActive(true);
+                }
 
-            timer = Mathf.Max(0f, timer -= Time.deltaTime);
-            int minutes = (int)timer / 60;
-            int seconds = (int)timer % 60;
-            countDown = $"{minutes:00}:{seconds:00}";
-            if (timer <= 60) countDown = Utils.Utils.ColorString(Color.red, countDown);
-            //timerText.text = countDown;
+
+                // Lobby timer
+                if (
+                    !AmongUsClient.Instance.AmHost ||
+                    !GameData.Instance ||
+                    AmongUsClient.Instance.NetworkMode != NetworkModes.OnlineGame)
+                {
+                    return;
+                }
+
+                timer = Mathf.Max(0f, timer -= Time.deltaTime);
+                int minutes = (int)timer / 60;
+                int seconds = (int)timer % 60;
+                countDown = $"{minutes:00}:{seconds:00}";
+                if (timer <= 60) countDown = Utils.Utils.ColorString(Color.red, countDown);
+                //timerText.text = countDown;}
+            }
+            catch
+            {
+                Logger.Error("触发防黑屏措施", "GameStartPatch");
+                GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+            }
         }
     }
-}
 
-[HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.CreatePlayer))]
-class CreatePlayerPatch
-{
-    public static void Postfix( AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
+    [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.CreatePlayer))]
+    class CreatePlayerPatch
     {
-        //DestroyableSingleton<HudManager>.Instance.Chat.AddChat(client.Character, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
-        
-        //if (!AmongUsClient.Instance.AmHost) return;
-        
-        Logger.Msg($"Create player data: ID {client.Id}: {client.PlayerName}", "CreatePlayer");
-
-        if (GetPlayer.isNormalGame)
+        public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
         {
-            _ = new LateTask(() =>
+            //DestroyableSingleton<HudManager>.Instance.Chat.AddChat(client.Character, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
+
+            //if (!AmongUsClient.Instance.AmHost) return;
+
+            Logger.Msg($"Create player data: ID {client.Id}: {client.PlayerName}", "CreatePlayer");
+
+            if (GetPlayer.isNormalGame)
             {
-                if (!AmongUsClient.Instance.IsGameStarted && client.Character != null && StartPatch.s != GetString("EndMessage") && Main.isFirstSendEnd)
+                _ = new LateTask(() =>
                 {
-                    Main.isChatCommand = true;
-                    Info("发送：结算信息", "JoinPatch");
-                    DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,StartPatch.sc);
-                    Main.isChatCommand = false;
-                    Main.isFirstSendEnd = false;
-                }
-            }, 3.1f, "DisplayLastRoles");
+                    if (!AmongUsClient.Instance.IsGameStarted && client.Character != null &&
+                        StartPatch.s != GetString("EndMessage") && Main.isFirstSendEnd)
+                    {
+                        Main.isChatCommand = true;
+                        Info("发送：结算信息", "JoinPatch");
+                        DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
+                            StartPatch.sc);
+                        Main.isChatCommand = false;
+                        Main.isFirstSendEnd = false;
+                    }
+                }, 3.1f, "DisplayLastRoles");
+            }
         }
     }
 }

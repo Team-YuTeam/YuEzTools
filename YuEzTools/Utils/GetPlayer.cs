@@ -23,6 +23,13 @@ public class PlayerState
     {
         IsDead = false;
     }
+    public void SetDead()
+    {
+        IsDead = true;
+    }
+    private static Dictionary<byte, PlayerState> allPlayerStates = new(15);
+    public static IReadOnlyDictionary<byte, PlayerState> AllPlayerStates => allPlayerStates;
+    public static PlayerState GetByPlayerId(byte playerId) => AllPlayerStates.TryGetValue(playerId, out var state) ? state : null;
 }
 
 static class GetPlayer
@@ -42,6 +49,7 @@ static class GetPlayer
                    regionInfo.Servers.All(serverInfo => serverInfo.Ip.EndsWith(Domain, StringComparison.Ordinal));
         }
     }
+
     public static ClientData GetClientById(int id)
     {
         try

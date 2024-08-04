@@ -30,6 +30,13 @@ class StartPatch
         sc = GetString("EndMessageC");
         int c = 0;
         Logger.Info("== 游戏开始 ==","StartPatch");
+        if (AmongUsClient.Instance.AmHost && Main.HasHacker)
+        {
+            Main.Logger.LogInfo("Host Try end game with room " +
+                                GameStartManager.Instance.GameRoomNameCode.text);
+            GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+            Main.HasHacker = false;
+        }
         foreach (var pc1 in Main.AllPlayerControls)
         {
             //Logger.Info("添加玩家进入CPCOS："+pc1.GetRealName(),"StartPatch");

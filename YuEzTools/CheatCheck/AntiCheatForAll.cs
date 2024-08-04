@@ -61,6 +61,9 @@ internal class AntiCheatForAll
                         name.Contains("台湾") || 
                         name.Contains("台独") || 
                         name.Contains("温家宝") || 
+                        name.Contains("EzHacked") || 
+                        name.Contains("ez hacked") || 
+                        name.Contains("Hacked") || 
                         name.Contains("共产党") // 游戏名字屏蔽词
                         )
                     {
@@ -76,6 +79,23 @@ internal class AntiCheatForAll
                         return true;
                     }
 
+                    break;
+                
+                case RpcCalls.SendChatNote:
+                    if (GetPlayer.IsLobby)
+                    {
+                        Main.Logger.LogWarning($"【{pc.GetClientId()}:{pc.GetRealName()}】非法发送投票信息，已驳回");
+                        return true;
+                    }
+
+                    break;
+                
+                case RpcCalls.SetScanner:
+                    if (GetPlayer.IsLobby)
+                    {
+                        Main.Logger.LogWarning($"【{pc.GetClientId()}:{pc.GetRealName()}】非法扫描，已驳回");
+                        return true;
+                    }
                     break;
                 
                 case RpcCalls.SetTasks:

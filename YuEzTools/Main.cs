@@ -34,12 +34,14 @@ public class Main : BasePlugin
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
     public static readonly string MainMenuText = "Be Dream~"; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuEzTools"; //咱们模组的Guid
-    public const string PluginVersion = "1.2.0.0"; //咱们模组的版本号
+    public const string PluginVersion = "1.2.1.0"; //咱们模组的版本号
     public const string CanUseInAmongUsVer = "2024.6.18"; //智齿的AU版本
     public const int PluginCreation = 1;
 
     public static string QQUrl = "https://qm.qq.com/q/uGuWqBkYUi";
     public static string DcUrl = "https://discord.gg/9Jy7gzPq";
+
+    public static bool HasHacker = false;
     
     public static ConfigEntry<string> menuKeybind;
     public static ConfigEntry<string> menuHtmlColor;

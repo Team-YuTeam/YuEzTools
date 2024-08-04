@@ -3,6 +3,7 @@ using HarmonyLib;
 using InnerNet;
 using YuEzTools.Get;
 using YuEzTools.Patches;
+using YuEzTools.Utils;
 using static YuEzTools.Translator;
 
 namespace YuEzTools;
@@ -52,14 +53,32 @@ class OnPlayerLeftPatch{
 class OnGameJoined
 {
     //private static int CID;
-    public static void Prefix(AmongUsClient __instance)
-    {
-        if (AmongUsClient.Instance.AmHost && Toggles.AutoStartGame)
-            MurderHacker.murderHacker(PlayerControl.LocalPlayer, MurderResultFlags.Succeeded);
-    }
+    // public static void Prefix(AmongUsClient __instance)
+    // {
+    //     if (AmongUsClient.Instance.AmHost && Toggles.AutoStartGame)
+    //         MurderHacker.murderHacker(PlayerControl.LocalPlayer, MurderResultFlags.Succeeded);
+    // }
     public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
     {
         ShowDisconnectPopupPatch.ReasonByHost = string.Empty;
+    }
+}
+
+[HarmonyPatch(typeof(IntroCutscene))]
+class IntroCutscenePatch
+{
+    [HarmonyPatch(nameof(IntroCutscene.OnDestroy)), HarmonyPostfix]
+    public static void OnDestroy_Postfix(IntroCutscene __instance)
+    {
+        if (Toggles.AutoStartGame && AmongUsClient.Instance.AmHost)
+        {
+            PlayerControl.LocalPlayer.RpcTeleport(Utils.Utils.GetBlackRoomPS());
+            Logger.Info("尝试TP玩家","GM");
+            //PlayerControl.LocalPlayer.RpcExile();
+            MurderHacker.murderHacker(PlayerControl.LocalPlayer,MurderResultFlags.Succeeded);
+            Logger.Info("尝试击杀玩家","GM");
+            // PlayerState.GetByPlayerId(PlayerControl.LocalPlayer.PlayerId).SetDead();
+        }
     }
 }
 [HarmonyPatch(typeof(InnerNetClient), nameof(InnerNetClient.DisconnectInternal))]

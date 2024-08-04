@@ -30,6 +30,7 @@ internal class RPCHandlerPatch
             if (AntiCheatForAll.ReceiveRpc(__instance, callId, reader) || AUMCheat.ReceiveInvalidRpc(__instance, callId) ||
                 SMCheat.ReceiveInvalidRpc(__instance, callId))
             {
+                Main.HasHacker = true;
                 Main.Logger.LogInfo("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/实验性ProductUserId获取："+__instance.GetClient().ProductUserId}");
                 //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;
                 SendChat.Prefix(__instance);
@@ -46,8 +47,13 @@ internal class RPCHandlerPatch
                 {
                     Main.Logger.LogInfo("Host Try ban " + __instance.GetRealName());
                     AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), true);
-                    Main.Logger.LogInfo("Host Try end game with room " +　GameStartManager.Instance.GameRoomNameCode.text);
-                    GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+                    if(GetPlayer.IsInGame)
+                    {
+                        Main.Logger.LogInfo("Host Try end game with room " +
+                                            GameStartManager.Instance.GameRoomNameCode.text);
+                        GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+                        Main.HasHacker = false;
+                    }
                     return false;
                 }
                 return false;
