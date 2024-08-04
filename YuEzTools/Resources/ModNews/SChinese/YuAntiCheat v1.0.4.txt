@@ -9,10 +9,15 @@
 ## 对应官方版本
 - 基于 AmongUs v2024.6.18
 
+## 更新总结：
+- 新增 3条
+- 修复 2条
+
 ## 新增
 - 一些快捷键
 - 如果有外挂 自动结束游戏
 - 暗黑模式
+
 ## 修复
 - 一些bug
 - 正常的颜色切换报成外挂 <nobr><link=\"https://github.com/Night-GUA/YuAntiCheat/pull/3\">#3</nobr></link>
