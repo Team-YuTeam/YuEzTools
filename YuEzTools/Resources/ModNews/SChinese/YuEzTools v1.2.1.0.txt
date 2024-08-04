@@ -1,7 +1,7 @@
 #Number:100014
-#Title:YuEzTools v1.2.0.5
+#Title:YuEzTools v1.2.1.0
 #SubTitle:★★★★Bug真多 恶心！★★★★
-#ShortTitle:★YuET v1.2.0.5
+#ShortTitle:★YuET v1.2.1.0
 #Date:2024-08-04T01:00:00Z
 #-----------------------------
 感谢您对YuTeam的支持！！！
