@@ -4,7 +4,7 @@
 LangID: "0"
 
 # 作者署名（不需要请留空）/ A sign of an author (Please leave blank when not needed)
-TextBelowVersionText: "Yu and Mousse and Imp11"
+TextBelowVersionText: "Yu and Mousse and Imp11 and redphantom1000"
 
 # 更新检查
 Retry: "Try Again"
@@ -44,7 +44,7 @@ MessgaeFromYuET: "== YuET =="
 EndMessage: "Summary (YuET): "
 EndMessageC: "Summary: "
 DefaultSystemMessageTitle: "[YuET]"
-Message.Welcome: "YuEzTools is loaded in this lobby.\nServer: {0}  Lobby Code: {1}\nThis is not an ordinary Among Us game.\nWish you a happy game. [YuET] is continuously protecting the lobby."
+Message.Welcome: "YuEzTools is enabled.\nServer: {0}  Lobby Code: {1}\nThis is not an ordinary Among Us game.\nWish you a happy game. [YuET] is continuously protecting the lobby."
 
 # 进入房间
 JoinRoom: "joined the lobby"
@@ -70,7 +70,7 @@ OptHImpMoreThanThree: "Max impostors# is larger than 1\nThere may be hackers or 
 NowImpMoreThan: "The impostor number is larger than the game setting or 3\nThere may be hackers or you joined a modded lobby"
 NowHImpMoreThan: "The impostor number is larger than 1\nThere may be hackers or you joined a modded lobby"
 NotLogin: "is not logged in.\n[Ban logged out player] enabled - Trying to ban the player"
-unKickNotLogin: "is not logged in\nPlease notice that almost every hacker is logged out"
+unKickNotLogin: "is not logged in\n[Ban logged out player] is disabled"
 
 # MenuUI.Interface
 Interface: "Interface"
@@ -93,7 +93,7 @@ ShowGM: "Show If GM Mode Is Enabled"
 # MenuUI.AntiCheat
 MenuUI.AntiCheat: "Anti Cheat"
 MenuUI.SafeMode: "Safe Mode"
-MenuUI.AutoExit: "Leave Game When FPS Is Too Low"
+MenuUI.AutoExit: "Leave if low FPS"
 MenuUI.KickNotLogin: "Ban Logged Out Players"
 
 # MenuUI.ShortcutButton
@@ -105,7 +105,7 @@ MenuUI.ChangeDownTimerToZero: "Set Start Countdown to 0"
 MenuUI.ChangeDownTimerTo114514: "Mischievous Start Countdown"
 MenuUI.AutoStartGame: "GM Mode"
 MenuUI.AbolishDownTimer: "Cancel Start Countdown"
-MenuUI.ServerAllHostOrNoHost: "+25 Protocol (Host With Full Authority)"
+MenuUI.ServerAllHostOrNoHost: "+25 Protocol (Mod Protocol)"
 MenuUI.CloseMusicOfOr: "Enable Lobby Music"
 MenuUI.ShortcutButton.PeopleMode: "April Fools"
 MenuUI.HorseMode: "Horse Mode"
@@ -130,13 +130,13 @@ FunctionPatch.DumpLog: "Log Saved at"
 Warning.AutoExitAtMismatchedFPS: "FPS: {0}\nFPS is too low and you will leave the game after {1}s!"
 
 # Disconect Reasons
-DCNotify.ExitGame: "You left the game by yourself."
-DCNotify.Hacking: "You were kicked by the Innersloth anti-cheat.\nThis may be a problem of the mod."
-DCNotify.Banned: "You were banned from the lobby.\nYou may contact the host about it."
-DCNotify.Kicked: "You were kicked from the looby.\nYou may still rejoin the lobby."
-DCNotify.DCFromServer: "You disconnected from the server\nThis can be an issue with the server or your network"
-DCNotify.GameNotFound: "Lobby not found.\nPlease check with your lobby code or server and retry."
-DCNotify.GameStarted: "The game already started.\nWait until it is ended or find another lobby."
-DCNotify.GameFull: "This lobby is full.\nPlease contact the host or wait."
-DCNotify.IncorrectVersion: "This lobby does not support your Among Us version."
-DCNotify.Description: "You were kicked because of：{0}"
+DCNotify.ExitGame: "You left."
+DCNotify.Hacking: "You were kicked by the AmongUs anti-cheat system\nThis may be a mod problem (T_T)"
+DCNotify.Banned: "No way, bro? \nBanned? q(≧▽≦q)"
+DCNotify.Kicked: "Sister! You can even be kicked?! \nFunny (*^_^*)"
+DCNotify.DCFromServer: "The server is out of control\nCheck your network~/(ㄒoㄒ)/~~\nOf course, it may be a server problem (●'◡'●)"
+DCNotify.GameNotFound: "Did you enter the wrong room? Did the server see it wrong? \nThe room was not found, it may have been disbanded (* Ŏ∀Ŏ)"
+DCNotify.GameStarted: "Tsk! They opened it without waiting for you~ოර⌄රო"
+DCNotify.GameFull: "There is no place for you in this house~\nThe room is full, you are an outsider.\n Hehehe (｡╹ω╹｡)"
+DCNotify.IncorrectVersion: "The AmongUs versions are all different\ndo you think you can get in? Fool (◍´ಲ`◍)"
+DCNotify.Description: "Sister! You can even be kicked?! \nFunny (*^_^*)\nReason: {0}"
