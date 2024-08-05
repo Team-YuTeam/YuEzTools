@@ -4,7 +4,7 @@
 LangID: "0"
 
 # 作者署名（不需要请留空）/ A sign of an author (Please leave blank when not needed)
-TextBelowVersionText: "Yu and Imp11 and Mousse"
+TextBelowVersionText: "Yu and Mousse and Imp11"
 
 # 更新检查
 Retry: "Try Again"
@@ -31,6 +31,9 @@ updatePingFialed: "Failed: {0}\nThis function may be temporarily suspended\nPlea
 updateFileMd5Incorrect: "Failed: File MD5 check error\nThe file version of this function is not the latest or damaged\nPlease switch the download function and try again"
 downloadFailed: "Failed: Download update file timeout or interrupt \nPlease change the network and retry or update manually"
 Updater.NowFileMD5Fail: "File MD5 check error. Please download again."
+updateSource.Afdian: "Sponsor on Aifadian"
+updateSource.BiliBili: "Sponsor on Bilibili"
+updateSource.NextTime: "Cancel"
 
 # 文本
 NotFoundStringInYaml: "Not Found"
@@ -40,9 +43,12 @@ SuspectedViolationMessage: "Suspected Inappropriate Chat"
 MessgaeFromYuET: "== YuET =="
 EndMessage: "Summary (YuET): "
 EndMessageC: "Summary: "
+DefaultSystemMessageTitle: "[YuET]"
+Message.Welcome: "YuEzTools is loaded in this lobby.\nServer: {0}  Lobby Code: {1}\nThis is not an ordinary Among Us game.\nWish you a happy game. [YuET] is continuously protecting the lobby."
 
 # 进入房间
 JoinRoom: "joined the lobby"
+LeftRoom: "left the lobby"
 
 # Ping
 SafeModeText: "<size=75%>Press <color=#DC143C>F5</color> to switch to <color=#1E90FF>(UnSafe)</color> mode (not recommended)</size>"
@@ -50,6 +56,7 @@ UnSafeModeText: "<size=75%>Press <color=#1E90FF>F5</color> to switch to <color=#
 Ping.UsingMode: "\nYou are using [{0}]"
 Ping.RoomTime: "\nLobby Countdown: "
 Ping.NowTime: "\nLocal Time: "
+Local: "Local"
 
 # 提示语
 AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are not the host - <color=#FFFF00>Cannot</color> punish the hacker"
@@ -58,27 +65,36 @@ AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are the host
 AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are the host - <color=#FFFF00>Trying to <color=#FF0000>ban</color> the hacker"
 SeeHacker: "<color=#1E90FF>{0}</color> is a hacker"
 ERROR.CHECKRPC: "[ERROR] There may be hackers or YuET has a problem"
+OptImpMoreThanThree: "Max impostors# is larger than 3\nThere may be hackers or you joined a modded lobby"
+OptHImpMoreThanThree: "Max impostors# is larger than 1\nThere may be hackers or you joined a modded lobby"
+NowImpMoreThan: "The impostor number is larger than the game setting or 3\nThere may be hackers or you joined a modded lobby"
+NowHImpMoreThan: "The impostor number is larger than 1\nThere may be hackers or you joined a modded lobby"
+NotLogin: "is not logged in.\n[Ban logged out player] enabled - Trying to ban the player"
+unKickNotLogin: "is not logged in\nPlease notice that almost every hacker is logged out"
 
 # MenuUI.Interface
 Interface: "Interface"
-DarkUI: "Dark Mode"
+DarkUI: "Dark Theme"
 PingPart: "Ping Display Section"
 ShowCommit: "Show Commit Id"
 ShowModText: "Show Mod Slogan"
 ShowIsSafe: "Show If Safe Mode Is Enabled"
 ShowSafeText: "Show Safe Mode Text"
-ShowIsDark: "Show If Dark Mode Is Enabled"
+ShowIsDark: "Show If Dark Theme Is Enabled"
 ShowPing: "Show Ping"
 ShowFPS: "Show FPS"
+ShowServer: "Show Server"
 ShowRoomTime: "Show Lobby Countdown"
 ShowIsAutoExit: "Show If Auto Leave Game Is Enabled"
 ShowLocalNowTime: "Show Local Time"
 ShowUTC: "Show UTC"
+ShowGM: "Show If GM Mode Is Enabled"
 
 # MenuUI.AntiCheat
 MenuUI.AntiCheat: "Anti Cheat"
 MenuUI.SafeMode: "Safe Mode"
 MenuUI.AutoExit: "Leave Game When FPS Is Too Low"
+MenuUI.KickNotLogin: "Ban Logged Out Players"
 
 # MenuUI.ShortcutButton
 MenuUI.ShortcutButton: "Shortcuts"
@@ -87,8 +103,13 @@ MenuUI.OpenGameDic: "Open Game Directory"
 MenuUI.ShortcutButton.OnlyHost: "Host Only"
 MenuUI.ChangeDownTimerToZero: "Set Start Countdown to 0"
 MenuUI.ChangeDownTimerTo114514: "Mischievous Start Countdown"
-MenuUI.AutoStartGame: "Automatically Start When Player Counts Reach 14"
+MenuUI.AutoStartGame: "GM Mode"
 MenuUI.AbolishDownTimer: "Cancel Start Countdown"
+MenuUI.ServerAllHostOrNoHost: "+25 Protocol (Host With Full Authority)"
+MenuUI.CloseMusicOfOr: "Enable Lobby Music"
+MenuUI.ShortcutButton.PeopleMode: "April Fools"
+MenuUI.HorseMode: "Horse Mode"
+MenuUI.LongMode: "Long Mode"
 
 # MenuUI.ShortcutButton.Left
 MenuUI.ShortcutButton.Left: "Leave the Game"
@@ -106,4 +127,16 @@ VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>Your YuET is up to
 # FunctionPatch
 FunctionPatch.AbolishDownTimer: "Cancel Start Countdown"
 FunctionPatch.DumpLog: "Log Saved at"
-Warning.AutoExitAtMismatchedFPS: "FPS: {0}\nFPS is too low and you will leave the game after {1} s!"
+Warning.AutoExitAtMismatchedFPS: "FPS: {0}\nFPS is too low and you will leave the game after {1}s!"
+
+# Disconect Reasons
+DCNotify.ExitGame: "You left the game by yourself."
+DCNotify.Hacking: "You were kicked by the Innersloth anti-cheat.\nThis may be a problem of the mod."
+DCNotify.Banned: "You were banned from the lobby.\nYou may contact the host about it."
+DCNotify.Kicked: "You were kicked from the looby.\nYou may still rejoin the lobby."
+DCNotify.DCFromServer: "You disconnected from the server\nThis can be an issue with the server or your network"
+DCNotify.GameNotFound: "Lobby not found.\nPlease check with your lobby code or server and retry."
+DCNotify.GameStarted: "The game already started.\nWait until it is ended or find another lobby."
+DCNotify.GameFull: "This lobby is full.\nPlease contact the host or wait."
+DCNotify.IncorrectVersion: "This lobby does not support your Among Us version."
+DCNotify.Description: "You were kicked because of：{0}"
