@@ -38,7 +38,7 @@ internal class AntiCheatForAll
                     if (sr.BytesRemaining > 0 && sr.ReadBoolean()) return false;
                     if (GetPlayer.IsInGame)
                     {
-                        Main.Logger.LogWarning($"非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回");
+                        Logger.Warn($"在游戏内非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回","ACFA");
                         return true;
                     }
                     if (
@@ -61,13 +61,14 @@ internal class AntiCheatForAll
                         name.Contains("台湾") || 
                         name.Contains("台独") || 
                         name.Contains("温家宝") || 
-                        name.Contains("EzHacked") || 
-                        name.Contains("ez hacked") || 
-                        name.Contains("Hacked") || 
-                        name.Contains("共产党") // 游戏名字屏蔽词
+                        name.Contains("共产党")  ||
+                        name.IndexOf("Ez", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        name.IndexOf("Hacked", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        name.IndexOf("Cheat", StringComparison.OrdinalIgnoreCase) >= 0
+                        // 游戏名字屏蔽词
                         )
                     {
-                        Main.Logger.LogWarning($"非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回");
+                        Logger.Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称包含*屏蔽词*，已驳回","ACFA");
                         return true;
                     }
                     break;
@@ -75,7 +76,7 @@ internal class AntiCheatForAll
                 case RpcCalls.SetNamePlateStr:
                     if (GetPlayer.IsInGame)
                     {
-                        Main.Logger.LogWarning($"非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回");
+                        Logger.Warn($"非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回","ACFA");
                         return true;
                     }
 
