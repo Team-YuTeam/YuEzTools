@@ -69,7 +69,7 @@ public class GameStartManagerPatch
 
         public static void Prefix(GameStartManager __instance)
         {
-            if (Toggles.AutoStartGame)
+            if (Toggles.AutoStartGame && GetPlayer.IsHost)
             {
                 updateTimer++;
                 if (updateTimer >= 50)
@@ -78,7 +78,7 @@ public class GameStartManagerPatch
                     if (GameData.Instance.PlayerCount >= 14 && !GetPlayer.IsCountDown)
                     {
                         GameStartManager.Instance.startState = GameStartManager.StartingStates.Countdown;
-                        GameStartManager.Instance.countDownTimer = 10;
+                        GameStartManager.Instance.countDownTimer = 3;
                     }
                 }
             }
@@ -131,6 +131,12 @@ public class GameStartManagerPatch
                 int seconds = (int)timer % 60;
                 countDown = $"{minutes:00}:{seconds:00}";
                 if (timer <= 60) countDown = Utils.Utils.ColorString(Color.red, countDown);
+                
+                if (timer <= 120 && Toggles.AutoStartGame && GetPlayer.IsLobby && !GetPlayer.IsCountDown)
+                {
+                    GameStartManager.Instance.startState = GameStartManager.StartingStates.Countdown;
+                    GameStartManager.Instance.countDownTimer = 3;
+                }
                 //timerText.text = countDown;}
             }
             catch

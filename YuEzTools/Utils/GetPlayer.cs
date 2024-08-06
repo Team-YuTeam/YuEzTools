@@ -62,17 +62,13 @@ static class GetPlayer
             return null;
         }
     }
-    public static string GetColorRole(PlayerControl player)
+    public static string GetColorRole(PlayerControl pc)
     {
-        if (GetPlayerRoleTeam(player) == RoleTeam.Crewmate)
-        {
-            return $"<color=#00BFFF>{player.Data.Role.NiceName}</color>";
-        }
-        else if (GetPlayerRoleTeam(player) == RoleTeam.Impostor)
-        {
-            return $"<color=#FF0000>{player.Data.Role.NiceName}</color>";
-        }
-        else return $"<color=#FFFFFF>{player.Data.Role.NiceName}</color>";
+        return "<color=" + Utils.Utils.GetRoleHtmlColor(pc.Data.RoleType) + ">" + pc.Data.Role.NiceName + "</color>";
+    }
+    public static string GetRColorName(PlayerControl pc,string name)
+    {
+        return "<color=" + Utils.Utils.GetRoleHtmlColor(pc.Data.RoleType) + ">" + name + "</color>";
     }
     public static string GetNameRole(PlayerControl player)
     {

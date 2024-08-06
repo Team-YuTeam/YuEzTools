@@ -31,6 +31,12 @@ public class FunctionPatch
         DumpLog();
     }
 
+    public static void ShowRoleM()
+    {
+        HudManager.Instance.StartCoroutine(HudManager.Instance.CoFadeFullScreen(Color.clear, Color.black));
+        HudManager.Instance.StartCoroutine(HudManager.Instance.CoShowIntro());
+    }
+
     public static void ExitGame()
     {
         AmongUsClient.Instance.ExitGame(DisconnectReasons.ExitGame);

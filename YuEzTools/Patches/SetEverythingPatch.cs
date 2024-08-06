@@ -46,12 +46,9 @@ class StartPatch
             else if(Main.ClonePlayerControlsOnStart == null)
                 Info("错误，CPCOS列表null！","CPCOS in StartPatch");
             else Logger.Info("成员检验"+Main.ClonePlayerControlsOnStart[c].GetRealName(),"StartPatch");
-            r = Convert.ToString((int)pc1.Data.Color.r,16);
-            b = Convert.ToString((int)pc1.Data.Color.b,16);
-            g = Convert.ToString((int)pc1.Data.Color.g,16);
             
             s += "\n" + pc1.GetRealName() +" - "+ pc1.Data.Role.NiceName;
-            sc += "\n" +$"{pc1.GetRealName()}{pc1.Data.ColorName}" +" - "+ GetPlayer.GetColorRole(pc1);
+            sc += "\n" +$"{GetPlayer.GetRColorName(pc1,pc1.GetRealName())} - {pc1.Data.ColorName}" +" - "+ GetPlayer.GetColorRole(pc1);
             
             if (pc1.Data.Role.IsImpostor)
             {

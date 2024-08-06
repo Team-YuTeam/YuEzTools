@@ -19,6 +19,14 @@ public class PlayerPhysicPatch
             Toggles.DumpLog = !Toggles.DumpLog;
         }
         
+        //重展职业
+        if (Toggles.reShowRoleT  && GetPlayer.IsInGame)
+        {
+            FunctionPatch.ShowRoleM();
+            Toggles.reShowRoleT = !Toggles.reShowRoleT;
+        }
+        else if (Toggles.reShowRoleT  && !GetPlayer.IsInGame) Toggles.reShowRoleT = !Toggles.reShowRoleT;
+        
         //打开游戏目录
         if (Toggles.OpenGameDic)
         {

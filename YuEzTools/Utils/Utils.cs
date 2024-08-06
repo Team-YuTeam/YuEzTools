@@ -19,12 +19,197 @@ namespace YuEzTools.Utils;
 
 public static class Utils
 {
+    public static bool HasTasks(PlayerControl p)
+    {
+        if (GetPlayer.GetPlayerRoleTeam(p) != RoleTeam.Impostor) return true;
+        return false;
+    }
     public static void SendMessage(string text, byte sendTo = byte.MaxValue, string title = "<Default>", bool removeTags = false)
     {
         if (!AmongUsClient.Instance.AmHost) return;
         if (title == "<Default>") title = "<color=#aaaaff>" + GetString("DefaultSystemMessageTitle") + "</color>";
         Main.isChatCommand = true;
         Main.MessagesToSend.Add((removeTags ? text.RemoveHtmlTags() : text, sendTo, title + '\0'));
+    }
+    
+    public static Color ShadeColor(this Color color, float Darkness = 0)
+    {
+        bool IsDarker = Darkness >= 0; //黒と混ぜる
+        if (!IsDarker) Darkness = -Darkness;
+        float Weight = IsDarker ? 0 : Darkness; //黒/白の比率
+        float R = (color.r + Weight) / (Darkness + 1);
+        float G = (color.g + Weight) / (Darkness + 1);
+        float B = (color.b + Weight) / (Darkness + 1);
+        return new Color(R, G, B, color.a);
+    }
+
+    public static Color GetRoleColor(RoleTypes rt)
+    {
+        Color c = new Color();
+        switch (rt)
+        {
+            /*=== 船员 === */
+            case RoleTypes.Crewmate:
+                c = new Color(30,144,255); // 船员 => 道奇蓝
+                break;
+            
+            case RoleTypes.Noisemaker:
+                c = new Color(0,191,255); // 大嗓门 => 深天蓝
+                break;
+            
+            case RoleTypes.Scientist:
+                c = new Color(0,255,255); // 科学家 => 青色
+                break;
+            
+            case RoleTypes.Engineer:
+                c = new Color(127,255,170); // 工程师 => 绿玉
+                break;
+            
+            case RoleTypes.Tracker:
+                c = new Color(0,128,128); // 追踪 => 水鸭色
+                break;
+            
+            /*=== 内鬼 === */
+            case RoleTypes.Impostor:
+                c = new Color(255,0,0); // 内鬼 => 纯红
+                break;
+            
+            case RoleTypes.Shapeshifter:
+                c = new Color(255,69,0); // 变形 => 橙红
+                break;
+            
+            case RoleTypes.Phantom:
+                c = new Color(250,128,114); // 隐身 => 鲜肉
+                break;
+            
+            /*=== 灵魂 === */
+            case RoleTypes.CrewmateGhost:
+                c = new Color(220,220,220); // 船员灵魂 => 亮灰色
+                break;
+            
+            case RoleTypes.GuardianAngel:
+                c = new Color(240,128,128); // 天使 => 淡珊瑚
+                break;
+            
+            case RoleTypes.ImpostorGhost:
+                c = new Color(255,228,225); // 内鬼灵魂 => 薄雾玫瑰
+                break;
+            
+        }
+
+        return c;
+    }
+    public static Color32 GetRoleColor32(RoleTypes rt)
+    {
+        Color32 c = new Color32();
+        switch (rt)
+        {
+            /*=== 船员 === */
+            case RoleTypes.Crewmate:
+                c = new Color32(30,144,255,byte.MaxValue); // 船员 => 道奇蓝
+                break;
+            
+            case RoleTypes.Noisemaker:
+                c = new Color32(0,191,255,byte.MaxValue); // 大嗓门 => 深天蓝
+                break;
+            
+            case RoleTypes.Scientist:
+                c = new Color32(0,255,255,byte.MaxValue); // 科学家 => 青色
+                break;
+            
+            case RoleTypes.Engineer:
+                c = new Color32(127,255,170,byte.MaxValue); // 工程师 => 绿玉
+                break;
+            
+            case RoleTypes.Tracker:
+                c = new Color32(0,128,128,byte.MaxValue); // 追踪 => 水鸭色
+                break;
+            
+            /*=== 内鬼 === */
+            case RoleTypes.Impostor:
+                c = new Color32(255,0,0,byte.MaxValue); // 内鬼 => 纯红
+                break;
+            
+            case RoleTypes.Shapeshifter:
+                c = new Color32(255,69,0,byte.MaxValue); // 变形 => 橙红
+                break;
+            
+            case RoleTypes.Phantom:
+                c = new Color32(250,128,114,byte.MaxValue); // 隐身 => 鲜肉
+                break;
+            
+            /*=== 灵魂 === */
+            case RoleTypes.CrewmateGhost:
+                c = new Color32(220,220,220,byte.MaxValue); // 船员灵魂 => 亮灰色
+                break;
+            
+            case RoleTypes.GuardianAngel:
+                c = new Color32(240,128,128,byte.MaxValue); // 天使 => 淡珊瑚
+                break;
+            
+            case RoleTypes.ImpostorGhost:
+                c = new Color32(255,228,225,byte.MaxValue); // 内鬼灵魂 => 薄雾玫瑰
+                break;
+            
+        }
+
+        return c;
+    }
+    public static string GetRoleHtmlColor(RoleTypes rt)
+    {
+        string c = "";
+        switch (rt)
+        {
+            /*=== 船员 === */
+            case RoleTypes.Crewmate:
+                c = "#1E90FF"; // 船员 => 道奇蓝
+                break;
+            
+            case RoleTypes.Noisemaker:
+                c = "#00BFFF"; // 大嗓门 => 深天蓝
+                break;
+            
+            case RoleTypes.Scientist:
+                c = "#00FFFF"; // 科学家 => 青色
+                break;
+            
+            case RoleTypes.Engineer:
+                c = "#7FFFAA"; // 工程师 => 绿玉
+                break;
+            
+            case RoleTypes.Tracker:
+                c = "#008080"; // 追踪 => 水鸭色
+                break;
+            
+            /*=== 内鬼 === */
+            case RoleTypes.Impostor:
+                c = "#FF0000"; // 内鬼 => 纯红
+                break;
+            
+            case RoleTypes.Shapeshifter:
+                c = "#FF4500"; // 变形 => 橙红
+                break;
+            
+            case RoleTypes.Phantom:
+                c = "#FA8072"; // 隐身 => 鲜肉
+                break;
+            
+            /*=== 灵魂 === */
+            case RoleTypes.CrewmateGhost:
+                c = "#DCDCDC"; // 船员灵魂 => 亮灰色
+                break;
+            
+            case RoleTypes.GuardianAngel:
+                c = "#F08080"; // 天使 => 淡珊瑚
+                break;
+            
+            case RoleTypes.ImpostorGhost:
+                c = "#FFE4E1"; // 内鬼灵魂 => 薄雾玫瑰
+                break;
+            
+        }
+
+        return c;
     }
     public static Vector2 GetBlackRoomPS()
     {
@@ -91,8 +276,10 @@ public static class Utils
         if (PlayerControl.LocalPlayer == player)
             LocalPlayerLastTp = location;
     }
+    
     public static void SendMessageAsPlayerImmediately(PlayerControl player, string text, bool hostCanSee = true, bool sendToModded = true)
     {
+        Main.isChatCommand = true;
         if (hostCanSee) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(player, text);
         if (!sendToModded) text += "\0";
 

@@ -101,6 +101,8 @@ public class MenuUI : MonoBehaviour
                         x => Toggles.OpenGameDic = x),
                     new ToggleInfo(Translator.GetString("MenuUI.CloseMusicOfOr"), () => Toggles.CloseMusicOfOr,
                         x => Toggles.CloseMusicOfOr = x),
+                    new ToggleInfo(Translator.GetString("MenuUI.reShowRoleT"), () => Toggles.reShowRoleT,
+                            x => Toggles.reShowRoleT = x),
                     
                 }, new List<SubmenuInfo>
                 {

@@ -17,8 +17,10 @@ internal class ChatUpdatePatch
 {
     public static bool Active = false;
     public static bool DoBlockChat = false;
+    public static float chatStop = 3;
     public static void Postfix(ChatController __instance)
     {
+        chatStop = __instance.timeSinceLastMessage;
         Active = __instance.IsOpenOrOpening;
         __instance.freeChatField.textArea.AllowPaste = true;
         __instance.chatBubblePool.Prefab.Cast<ChatBubble>().TextArea.overrideColorTags = false;

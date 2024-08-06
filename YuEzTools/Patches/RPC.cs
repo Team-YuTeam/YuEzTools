@@ -61,7 +61,8 @@ internal class RPCHandlerPatch
         }
         catch
         {
-            SendInGamePatch.SendInGame(Translator.GetString("ERROR.CHECKRPC"));
+            // SendInGamePatch.SendInGame(Translator.GetString("ERROR.CHECKRPC"));
+            Logger.Error("[ERROR]可能有外挂或模组问题","RPC");
         }
         return true;
     }
