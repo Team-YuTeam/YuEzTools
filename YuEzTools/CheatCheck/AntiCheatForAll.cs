@@ -30,6 +30,11 @@ internal class AntiCheatForAll
         {
             MessageReader sr = MessageReader.Get(reader);
             var rpc = (RpcCalls)callId;
+            if (!Enum.IsDefined(typeof(RpcCalls), callId))
+            {
+                Logger.Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】RPC无效！！！，已驳回","ACFA");
+                return true;
+            }
             switch (rpc)
             {
                 case RpcCalls.SetName:
@@ -63,7 +68,7 @@ internal class AntiCheatForAll
                         name.Contains("温家宝") || 
                         name.Contains("共产党")  ||
                         name.IndexOf("Ez", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                        name.IndexOf("Hacked", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        name.IndexOf("Hack", StringComparison.OrdinalIgnoreCase) >= 0 ||
                         name.IndexOf("Cheat", StringComparison.OrdinalIgnoreCase) >= 0
                         // 游戏名字屏蔽词
                         )
@@ -262,11 +267,6 @@ internal class AntiCheatForAll
 
             switch (callId)
             {
-                case 101:
-                    var AUMChat = sr.ReadString();
-                    Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】AUMChat，内容：{AUMChat}");
-                    return true;
-                
                 case 13:
                     if (GetPlayer.IsInGame && !GetPlayer.IsMeeting && !pc.Data.IsDead)
                     {
