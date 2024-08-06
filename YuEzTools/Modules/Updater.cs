@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Il2CppSystem.Globalization;
 using TMPro;
 using UnityEngine;
 using YuEzTools;
@@ -58,7 +59,7 @@ public class ModUpdater
     public static Version minimumVersion = null;
     public static int creation = 0;
     public static string md5 = "";
-    public static int visit => isChecked ? 216822 : 0;
+    public static int visit = 0;
     
     public static string announcement_zh = "";
     public static string announcement_en = "";
@@ -75,10 +76,31 @@ public class ModUpdater
         // if (!isChecked && firstStart)
         CheckForUpdate();
         SetUpdateButtonStatus();
+        AddVisit();
                 
         firstStart = false;
     }
-
+    private static readonly string URL_2018k = "http://api.2018k.cn";
+    public static string UrlSetId(string url) => url + "?id=CAEFF4652FB44BAAA4F6E300404F528F";
+    public static string UrlSetInfo(string url) => url + "/getExample";
+    public static void AddVisit()
+    {
+        if(!firstStart) return;
+        Logger.Msg("开始从2018k检查visit", "AddVisit");
+        string url = UrlSetId(UrlSetInfo(URL_2018k)) + "&data=visit";
+        try
+        {
+            string[] data = Get(url).Split("|");
+            visit = int.TryParse(data[0], out int x) ? x : 0;
+            
+            Logger.Info("Visit: " + data[0], "2018k");
+        }
+        catch (Exception ex)
+        {
+            Logger.Error($"增加Visit时发生错误，已忽略\n{ex}", "AddVisit", false);
+            return;
+        }
+    }
     public static bool CheckNowFileMD5()
     {
         if (GetMD5HashFromFile("BepInEx/plugins/YuEzTools.dll") != md5)
