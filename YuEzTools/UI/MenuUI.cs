@@ -13,6 +13,7 @@ public class MenuUI : MonoBehaviour
     private Rect windowRect = new Rect(10, 10, 500, 500);
     private bool isGUIActive = false;
     private GUIStyle submenuButtonStyle;
+    public static bool firstoOpenMenuUI = true;
 
     // Create all groups (buttons) and their toggles on start
     private void Start()
@@ -43,6 +44,7 @@ public class MenuUI : MonoBehaviour
         //         }
         //     }
         // }
+        if (isGUIActive) firstoOpenMenuUI = false;
         if(!isGUIActive)
         {
             groups.Clear();

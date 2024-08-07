@@ -46,6 +46,10 @@ public class Main : BasePlugin
     public static ConfigEntry<string> menuKeybind;
     public static ConfigEntry<string> menuHtmlColor;
     public static MenuUI menuUI;
+    public static ConfigEntry<bool> PatchAccount;
+    public static ConfigEntry<bool> PatchChat;
+    public static ConfigEntry<bool> PatchCosmetics;
+
     
     public static System.Version version = System.Version.Parse(PluginVersion);
         
@@ -113,7 +117,10 @@ public class Main : BasePlugin
             "Color",
             "",
             "A custom color for your YuET GUI. Supports html color codes");
-
+        PatchAccount = Config.Bind("Patches", "AccountPatches", true, "Enable account-related patches");
+        PatchChat = Config.Bind("Patches", "ChatPatches", true, "Enable chat-related patches");
+        PatchCosmetics = Config.Bind("Patches", "CosmeticPatches", true, "Enable cosmetic-related patches");
+        
         menuUI = AddComponent<MenuUI>();
         
         //Translator.Init();

@@ -57,6 +57,7 @@ Ping.UsingMode: "\n您正在使用[{0}]"
 Ping.RoomTime: "\n距离炸房："
 Ping.NowTime: "\n本地时间："
 Local: "本地"
+Ping.MenuText: "按下 <color=#8B008B>Delete</color> 以打开设置"
 
 # 提示语
 AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您不是房主 <color=#FFFF00>无权</color>惩罚"

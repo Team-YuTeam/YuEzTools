@@ -10,6 +10,7 @@ using YuEzTools;
 using YuEzTools.Utils;
 using YuEzTools.Get;
 using YuEzTools.Patches;
+using YuEzTools.UI;
 using static YuEzTools.Translator;
 
 namespace YuEzTools;
@@ -97,11 +98,17 @@ internal class PingTrackerUpdatePatch
             if (!Toggles.ShowIsSafe && !Toggles.ShowIsDark && !Toggles.ShowIsAutoExit) sb.Append($"\r\n");
             sb.Append("<color=#1E90FF>[GM]</color>");
         }
+
+        if (MenuUI.firstoOpenMenuUI)
+        {
+            sb.Append($"\r\n").Append($"<color=#FF1493>{GetString("Ping.MenuText")}</color>");
+        }
         
         sb.Append("</size>");
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
         fps = Mathf.Ceil(1.0f / deltaTime);
         var ping = AmongUsClient.Instance.Ping;
+        
         // if (Toggles.ShowPing) sb.Append($"\r\n").Append(Utils.Utils.getColoredPingText(AmongUsClient.Instance.Ping) + "<size=60%>Ping</size></color>"); // 书写Ping
         // if (Toggles.ShowFPS) sb.Append(!Toggles.ShowPing ? $"\r\n" : " ").Append(Utils.Utils.getColoredFPSText(fps) + "<size=60%>FPS</size></color>"); // 书写FPS
         // if(Toggles.ShowServer) sb.Append((!Toggles.ShowFPS && !Toggles.ShowPing) ? $"\r\n" : " ").Append("  " + (GetPlayer.IsOnlineGame ? ServerName : GetString("Local")));
@@ -114,9 +121,9 @@ internal class PingTrackerUpdatePatch
             __instance.text.text += " " + Utils.Utils.getColoredFPSText(fps) + "<size=60%>FPS</size></color>";
         
         if ((Toggles.ShowFPS||Toggles.ShowPing) && Toggles.ShowServer)
-            __instance.text.text += "  " + (GetPlayer.IsOnlineGame ? ServerName : "Local");
+            __instance.text.text += "  " + (GetPlayer.IsOnlineGame ? ServerName : "<color=#D3D3D3>Local</color>");
         else if(Toggles.ShowServer)
-            __instance.text.text = (GetPlayer.IsOnlineGame ? ServerName : "Local");
+            __instance.text.text = (GetPlayer.IsOnlineGame ? ServerName : "<color=#D3D3D3>Local</color>");
         
         
         if (!Toggles.ShowPing && !Toggles.ShowServer && !Toggles.ShowFPS) __instance.text.text = "";

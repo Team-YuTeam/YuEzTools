@@ -22,7 +22,7 @@ internal class ChatUpdatePatch
     {
         chatStop = __instance.timeSinceLastMessage;
         Active = __instance.IsOpenOrOpening;
-        __instance.freeChatField.textArea.AllowPaste = true;
+        //__instance.freeChatField.textArea.AllowPaste = true;
         __instance.chatBubblePool.Prefab.Cast<ChatBubble>().TextArea.overrideColorTags = false;
 
         if (!AmongUsClient.Instance.AmHost || Main.MessagesToSend.Count < 1 || (Main.MessagesToSend[0].Item2 == byte.MaxValue && 3 <= __instance.timeSinceLastMessage)) return;
