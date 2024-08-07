@@ -30,13 +30,6 @@ class StartPatch
         sc = GetString("EndMessageC");
         int c = 0;
         Logger.Info("== 游戏开始 ==","StartPatch");
-        if (AmongUsClient.Instance.AmHost && Main.HasHacker)
-        {
-            Main.Logger.LogInfo("Host Try end game with room " +
-                                GameStartManager.Instance.GameRoomNameCode.text);
-            GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
-            Main.HasHacker = false;
-        }
         foreach (var pc1 in Main.AllPlayerControls)
         {
             //Logger.Info("添加玩家进入CPCOS："+pc1.GetRealName(),"StartPatch");
@@ -64,6 +57,17 @@ class StartPatch
         }
         Main.isFirstSendEnd = true;
         Info("设置isFirstSendEnd为"+Main.isFirstSendEnd.ToString(),"StartPatch");
+    }
+    [HarmonyPatch(nameof(IntroCutscene.CoBegin)), HarmonyPostfix]
+    public static void Postfix()
+    {
+        if (AmongUsClient.Instance.AmHost && Main.HasHacker)
+        {
+            Logger.Info("Host Try end game with room " +
+                                GameStartManager.Instance.GameRoomNameCode.text,"StartPatch");
+            GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+            Main.HasHacker = false;
+        }
     }
 }
 

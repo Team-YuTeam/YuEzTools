@@ -46,5 +46,15 @@ public static class UpdateFriendCodeUIPatch
             newRequest.transform.localPosition -= new Vector3(0f, 0f, 10f);
             newRequest.transform.localScale = new Vector3(0.8f, 1f, 1f);
         }
+
+        var BarSprite = GameObject.Find("BarSprite");
+        var SignInStatus = GameObject.Find("SignInStatus");
+        var Toggle_Friend_Code_Button = GameObject.Find("Toggle Friend Code Button");
+        BarSprite.SetActive(false);
+        friendCode.SetActive(false);
+        SignInStatus.SetActive(false);
+        GameObject.Destroy(Toggle_Friend_Code_Button);
+        Toggle_Friend_Code_Button.SetActive(false);
+        //Toggle_Friend_Code_Button.transform.localPosition = new Vector3(114514f, 1919810f, 1f);
     }
 }

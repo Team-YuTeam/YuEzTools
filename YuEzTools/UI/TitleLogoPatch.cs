@@ -76,12 +76,26 @@ internal class TitleLogoPatch
         Dictionary<List<PassiveButton>, (Sprite, Color, Color, Color, Color)> mainButtons = new()
         {
             {new List<PassiveButton>() {__instance.playButton, __instance.inventoryButton, __instance.shopButton},
-                (standardActiveSprite, new(1f, 0.524f, 0.549f, 0.8f), shade, Color.white, Color.white) },
+                (standardActiveSprite, new(0.57f, 0.99f, 1f, 0.8f), shade, Color.white, Color.white) },
             {new List<PassiveButton>() {__instance.newsButton, __instance.myAccountButton, __instance.settingsButton},
-                (minorActiveSprite, new(1f, 0.825f, 0.686f, 0.8f), shade, Color.white, Color.white) },
+                (minorActiveSprite, new(0.09f, 0.917f, 0.67f, 0.8f), shade, Color.white, Color.white) },
             {new List<PassiveButton>() {__instance.creditsButton, __instance.quitButton},
-                (minorActiveSprite, new(0.526f, 1f, 0.792f, 0.8f), shade, Color.white, Color.white) },
+                (minorActiveSprite, new(0.098f, 0.917f, 0.427f, 0.8f), shade, Color.white, Color.white) },
         };
+        __instance.playButton.buttonText.color = Color.white;
+        __instance.inventoryButton.buttonText.color = Color.white;
+        __instance.shopButton.buttonText.color = Color.white;
+        __instance.newsButton.buttonText.color = Color.white;
+        __instance.myAccountButton.buttonText.color = Color.white;
+        __instance.settingsButton.buttonText.color = Color.white;
+        
+        __instance.playButton.transform.localPosition += new Vector3(0, 0.7f, 0);
+        __instance.inventoryButton.transform.localPosition += new Vector3(0, 0.7f, 0);
+        __instance.shopButton.transform.localPosition += new Vector3(0, 0.7f, 0);
+        __instance.myAccountButton.transform.localPosition += new Vector3(0, 0.7f, 0);
+        __instance.newsButton.transform.localPosition += new Vector3(0, 0.7f, 0);
+        __instance.settingsButton.transform.localPosition += new Vector3(0, 0.7f, 0);
+        
 
         void FormatButtonColor(PassiveButton button, Sprite borderType, Color inActiveColor, Color activeColor, Color inActiveTextColor, Color activeTextColor)
         {
@@ -111,7 +125,7 @@ internal class TitleLogoPatch
         
         if (!(Sizer = GameObject.Find("Sizer"))) return;
         if (!(AULogo = GameObject.Find("LOGO-AU"))) return;
-        Sizer.transform.localPosition += new Vector3(0f, 0.12f, 0f);
+        Sizer.transform.localPosition += new Vector3(0f, 0.82f, 0f);
         AULogo.transform.localScale = new Vector3(0.66f, 0.67f, 1f);
         AULogo.transform.position += new Vector3(0f, 0.1f, 0f);
         var logoRenderer = AULogo.GetComponent<SpriteRenderer>();

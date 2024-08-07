@@ -174,7 +174,10 @@ public class MainMenuManagerPatch
                     }
                     else
                     {
-                        CustomPopup.Show(Translator.GetString("UpdateBySelfTitle"), Translator.GetString("UpdateBySelfText"), new() { (Translator.GetString(StringNames.Okay), null) });
+                        CustomPopup.Show(Translator.GetString("UpdateBySelfTitle"), Translator.GetString("UpdateBySelfText"), new()
+                        {
+                            (Translator.GetString(StringNames.Okay), null)
+                        });
                     }
                 }
             }));

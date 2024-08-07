@@ -12,6 +12,7 @@ using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using static YuEzTools.Translator;
 using System;
+using System.Text;
 using System.Text.RegularExpressions;
 using YuEzTools.Get;
 
@@ -370,15 +371,17 @@ public static class Utils
 
         try
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            using StreamReader sr =  new StreamReader(assembly.GetManifestResourceStream("YuEzTools.Properties.Resources.BlackList.txt"));
+            var stream = Assembly.GetExecutingAssembly()
+                .GetManifestResourceStream("YuEzTools.Resources.BlackList.txt");
+            stream.Position = 0;
+            using StreamReader sr = new(stream, Encoding.UTF8);
             string line;
             while ((line = sr.ReadLine()) != null)
             {
                 if (line == "") continue;
                 if (!OnlyCheckPuid)
                 {
-                    if (line.Contains(code)) return true;
+                    if (line.IndexOf(code) >= 0) return true;
                     if (!string.IsNullOrEmpty(noDiscrim) && !line.Contains('#') && line.Contains(noDiscrim)) return true;
                 }
                 if (line.Contains(puid)) return true;
@@ -403,13 +406,53 @@ public static class Utils
 
         try
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            using StreamReader sr =  new StreamReader(assembly.GetManifestResourceStream("YuEzTools.Properties.Resources.BlackFirstList.txt"));
+            var stream = Assembly.GetExecutingAssembly()
+                .GetManifestResourceStream("YuEzTools.Resources.BlackFirstList.txt");
+            stream.Position = 0;
+            using StreamReader sr = new(stream, Encoding.UTF8);
             string line;
             while ((line = sr.ReadLine()) != null)
             {
                 if (line == "") continue;
-                if (line.Contains(noDiscrim)) return true;
+                if (line.IndexOf(noDiscrim) >= 0) return true;
+                if (noDiscrim.IndexOf(line) >= 0) return true;
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Exception(ex, "CheckBanList");
+        }
+        return false;
+    }
+    private static readonly string BAN_LIST_PATH = @"./YuET_Data/BanList.txt";
+    public static bool CheckBanner(string code, string puid = "")
+    {
+        bool OnlyCheckPuid = false;
+        if (code == "" && puid != "") OnlyCheckPuid = true;
+        else if (code == "") return false;
+
+        string noDiscrim = "";
+        if (code.Contains('#'))
+        {
+            int index = code.IndexOf('#');
+            noDiscrim = code[..index];
+        }
+
+        try
+        {
+            Directory.CreateDirectory("YuET_Data");
+            if (!File.Exists(BAN_LIST_PATH)) File.Create(BAN_LIST_PATH).Close();
+            using StreamReader sr = new(BAN_LIST_PATH);
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (line == "") continue;
+                if (!OnlyCheckPuid)
+                {
+                    if (line.IndexOf(code) >= 0) return true;
+                    if (!string.IsNullOrEmpty(noDiscrim) && !line.Contains('#') && line.Contains(noDiscrim)) return true;
+                }
+                if (line.Contains(puid)) return true;
             }
         }
         catch (Exception ex)
