@@ -86,6 +86,7 @@ public class ModUpdater
     public static void AddVisit()
     {
         if(!firstStart) return;
+        if(!Translator.IsChineseLanguageUser) return;
         Logger.Msg("开始从2018k检查visit", "AddVisit");
         string url = UrlSetId(UrlSetInfo(URL_2018k)) + "&data=visit";
         try
