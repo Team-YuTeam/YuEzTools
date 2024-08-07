@@ -355,4 +355,67 @@ public static class Utils
 
         return KeyCode.Delete; // If string is invalid, return Delete as the default key
     }
+    public static bool CheckBanList(string code, string puid = "")
+    {
+        bool OnlyCheckPuid = false;
+        if (code == "" && puid != "") OnlyCheckPuid = true;
+        else if (code == "") return false;
+
+        string noDiscrim = "";
+        if (code.Contains('#'))
+        {
+            int index = code.IndexOf('#');
+            noDiscrim = code[..index];
+        }
+
+        try
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            using StreamReader sr =  new StreamReader(assembly.GetManifestResourceStream("YuEzTools.Properties.Resources.BlackList.txt"));
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (line == "") continue;
+                if (!OnlyCheckPuid)
+                {
+                    if (line.Contains(code)) return true;
+                    if (!string.IsNullOrEmpty(noDiscrim) && !line.Contains('#') && line.Contains(noDiscrim)) return true;
+                }
+                if (line.Contains(puid)) return true;
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Exception(ex, "CheckBanList");
+        }
+        return false;
+    }
+    public static bool CheckFirstBanList(string code)
+    {
+        if (code == "") return false;
+
+        string noDiscrim = "";
+        if (code.Contains('#'))
+        {
+            int index = code.IndexOf('#');
+            noDiscrim = code[..index];
+        }
+
+        try
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            using StreamReader sr =  new StreamReader(assembly.GetManifestResourceStream("YuEzTools.Properties.Resources.BlackFirstList.txt"));
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (line == "") continue;
+                if (line.Contains(noDiscrim)) return true;
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Exception(ex, "CheckBanList");
+        }
+        return false;
+    }
 }

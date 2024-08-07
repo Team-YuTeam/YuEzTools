@@ -31,7 +31,7 @@ internal class RPCHandlerPatch
                 SMCheat.ReceiveInvalidRpc(__instance, callId))
             {
                 Main.HasHacker = true;
-                Main.Logger.LogInfo("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/实验性ProductUserId获取："+__instance.GetClient().ProductUserId}");
+                Main.Logger.LogInfo("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/ProductUserId："+__instance.GetClient().ProductUserId}");
                 //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;
                 SendChat.Prefix(__instance);
                 if(!Toggles.SafeMode && !AmongUsClient.Instance.AmHost)

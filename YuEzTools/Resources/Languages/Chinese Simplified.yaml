@@ -72,6 +72,7 @@ NowImpMoreThan: "本房间内鬼数量大于预设或3\n可能为外挂或其他
 NowHImpMoreThan: "本房间内鬼数量大于1\n可能为外挂或其他模组房间！"
 NotLogin: "未登录\n由于您打开了踢出未登录 YuET已尝试封禁"
 unKickNotLogin: "未登录\n请注意，几乎所有的外挂都是未登录！"
+BlackList: "可能是黑名单成员！"
 
 # MenuUI.Interface
 Interface: "界面"

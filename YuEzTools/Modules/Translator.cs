@@ -132,14 +132,10 @@ public static class Translator
     }
     public static SupportedLangs GetUserLangByRegion()
     {
-#if DEBUG
-        if (Environment.UserName == "Yu")
-            return SupportedLangs.SChinese;
-#endif
         try
         {
             //var name = TranslationController.Instance?.currentLanguage?.languageID;
-            Logger.Info("the id is "+TranslationController.Instance?.currentLanguage?.languageID, "Translator");
+            //Logger.Info("the id is "+TranslationController.Instance?.currentLanguage?.languageID, "Translator");
             return TranslationController.Instance?.currentLanguage?.languageID ?? SupportedLangs.English;
         }
         catch

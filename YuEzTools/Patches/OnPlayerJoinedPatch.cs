@@ -1,5 +1,6 @@
 using Hazel;
 using HarmonyLib;
+using Il2CppSystem;
 using InnerNet;
 using YuEzTools.Get;
 using YuEzTools.Patches;
@@ -43,6 +44,14 @@ class OnPlayerJoinedPatch
         {
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("unKickNotLogin")}</color>");
             SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("unKickNotLogin")}</color>");
+        }
+
+        if (Utils.Utils.CheckBanList(client.FriendCode,client.ProductUserId))
+        {
+            if(AmongUsClient.Instance.AmHost) AmongUsClient.Instance.KickPlayer(client.Id, true);
+            Logger.Info($"{client?.PlayerName}黑名单 已踢出", "Kick");
+            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
+            SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
         }
         //Utils.Utils.SendMessageForEveryone("测试 看得到的请回复1");
         //Utils.Utils.SendMessageAsPlayerImmediately(__instance.PlayerPrefab, "测试，看得到的请回复1");
