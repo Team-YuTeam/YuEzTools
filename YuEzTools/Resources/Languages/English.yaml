@@ -110,6 +110,7 @@ MenuUI.CloseMusicOfOr: "Enable Lobby Music"
 MenuUI.ShortcutButton.PeopleMode: "April Fools"
 MenuUI.HorseMode: "Horse Mode"
 MenuUI.LongMode: "Long Mode"
+MenuUI.reShowRoleT: "Show your role again" # auto-generated translation was "Re-presentation of career"
 
 # MenuUI.ShortcutButton.Left
 MenuUI.ShortcutButton.Left: "Leave the Game"
@@ -140,3 +141,38 @@ DCNotify.GameStarted: "Tsk! They opened it without waiting for you~ოර⌄ර�
 DCNotify.GameFull: "There is no place for you in this house~\nThe room is full, you are an outsider.\n Hehehe (｡╹ω╹｡)"
 DCNotify.IncorrectVersion: "The AmongUs versions are all different\ndo you think you can get in? Fool (◍´ಲ`◍)"
 DCNotify.Description: "Sister! You can even be kicked?! \nFunny (*^_^*)\nReason: {0}"
+
+# RoleText (auto-generated translation added by redphantom1000)
+CrewmateShort: "You are an ordinary little~crew~ah~"
+CrewmateLong: "Mission! Go and do the mission!!!\nDo the mission or cast the inner ghost to win"
+NoisemakerShort: "Eh? Dare you kill me?"
+NoisemakerLong: "After being killed, the enemy will be punished~\nAfter being killed, everyone will get an arrow pointing to the location of your corpse"
+ScientistShort: "Beep~ Beep~"
+ScientistLong: "Where is my Death Note! Why is it out of power again\nCheck your tablet to get information about the dead"
+EngineerShort: "I...I'm really not an inner ghost! I have CD!"
+EngineerLong: "Use the skill of jumping pipes to move quickly\nRemember your pipe CD~"
+TrackerShort: "You pervert peeping Tom!"
+TrackerLong: "Track others...to find clues\nBut why can't I find anyone!"
+ImpostorShort: "Knife! Knife! Knife! Passion! Fight!"
+ImpostorLong: "Little crew members... so cute\n Kill the crew members or destroy the spacecraft to win!"
+ShapeshifterShort: "Whose suit should I wear today?"
+ShapeshifterLong: "Such a small suit. It's so uncomfortable!\n Transform into someone else to fake~"
+PhantomShort: "Ask me where I am? I don't know either~ Hehe"
+PhantomLong: "Can't see me, can't see me...\n Turn invisible to escape the scene"
+CrewmateGhostShort: "Poor! How did he die?"
+CrewmateGhostLong: "Tsk tsk~ Dead?\n Do the mission!"
+GuardianAngelShort: "Protect even after death~"
+GuardianAngelLong: "Stay at your post!\n Protect your companions!"
+ImpostorGhostShort: "You can be thrown out? You are amazing!"
+ImpostorGhostLong: "If you are voted out, you are a loser\nDestroy to assist your teammates"
+
+# RoleTeam
+TeamCrewmate: "Crewmate"
+TeamImpostor: "Impostor"
+ImpostorNumCrew: "<color=#8cffff>There is <color=#ffFF00>{0}</color> bad guy between <color=#FFFF00>us</color>!"
+ImpostorNumImp: "<color=#FF0000>There are <color=#ff1919>{0}</color> members in <color=#FFFF00>our</color> team!"
+CrewmateIntroText: "<color={0}>Complete your task and get rid of those bad guys!</color>"
+ImpostorIntroText: "<color={0}>Evil is coming...</color>"
+
+# TaskText
+FakeTask: "Fake task is as follows:"

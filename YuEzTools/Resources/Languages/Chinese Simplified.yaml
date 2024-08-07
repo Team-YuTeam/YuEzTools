@@ -170,6 +170,7 @@ ImpostorGhostLong: "被投出去了就是逊啦\n破坏以辅助队友"
 
 # RoleTeam
 TeamCrewmate: "待宰的羔羊"
+TeamImpostor: "内鬼"
 ImpostorNumCrew: "<color=#8cffff>在<color=#FFFF00>我们</color>之间，有<color=#ff1919>{0}</color>个坏蛋！</color>"
 ImpostorNumImp: "<color=#FF0000>在<color=#FFFF00>我们</color>团队，有<color=#ff1919>{0}</color>名成员！</color>"
 CrewmateIntroText: "<color={0}>完成你的任务，解决那群坏蛋！</color>"

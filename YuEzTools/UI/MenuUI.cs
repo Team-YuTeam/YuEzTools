@@ -10,7 +10,7 @@ public class MenuUI : MonoBehaviour
 
     public List<GroupInfo> groups = new List<GroupInfo>();
     private bool isDragging = false;
-    private Rect windowRect = new Rect(10, 10, 300, 500);
+    private Rect windowRect = new Rect(10, 10, 500, 500);
     private bool isGUIActive = false;
     private GUIStyle submenuButtonStyle;
 
@@ -208,7 +208,7 @@ public class MenuUI : MonoBehaviour
         {
             GroupInfo group = groups[groupId];
 
-            if (GUI.Button(new Rect(10, currentYPosition, 280, 40), group.name))
+            if (GUI.Button(new Rect(10, currentYPosition, 480, 40), group.name))
             {
                 group.isExpanded = !group.isExpanded;
                 groups[groupId] = group;
@@ -222,7 +222,7 @@ public class MenuUI : MonoBehaviour
                 foreach (var toggle in group.toggles)
                 {
                     bool currentState = toggle.getState();
-                    bool newState = GUI.Toggle(new Rect(20, currentYPosition, 260, 30), currentState, toggle.label);
+                    bool newState = GUI.Toggle(new Rect(20, currentYPosition, 460, 30), currentState, toggle.label);
                     if (newState != currentState)
                     {
                         toggle.setState(newState);
@@ -235,7 +235,7 @@ public class MenuUI : MonoBehaviour
                     var submenu = group.submenus[submenuId];
 
                     // Add a button for each submenu and toggle its expansion state when clicked
-                    if (GUI.Button(new Rect(20, currentYPosition, 260, 30), submenu.name, submenuButtonStyle))
+                    if (GUI.Button(new Rect(20, currentYPosition, 460, 30), submenu.name, submenuButtonStyle))
                     {
                         submenu.isExpanded = !submenu.isExpanded;
                         group.submenus[submenuId] = submenu;
@@ -252,7 +252,7 @@ public class MenuUI : MonoBehaviour
                         foreach (var toggle in submenu.toggles)
                         {
                             bool currentState = toggle.getState();
-                            bool newState = GUI.Toggle(new Rect(30, currentYPosition, 250, 30), currentState, toggle.label);
+                            bool newState = GUI.Toggle(new Rect(30, currentYPosition, 450, 30), currentState, toggle.label);
                             if (newState != currentState)
                             {
                                 toggle.setState(newState);

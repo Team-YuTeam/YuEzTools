@@ -92,7 +92,14 @@ public class Main : BasePlugin
     public override void Load()//加载 启动！
     {
         Instance = this; //Main实例
-
+        
+            ResourceUtils.WriteToFileFromResource(
+                "BepInEx/core/YamlDotNet.dll",
+                "YuEzTools.Resources.InDLL.Depends.YamlDotNet.dll");
+            ResourceUtils.WriteToFileFromResource(
+                "BepInEx/core/YamlDotNet.xml",
+                "YuEzTools.Resources.InDLL.Depends.YamlDotNet.xml");
+        
         PluginModuleInitializerAttribute.InitializeAll();
         
         Logger = BepInEx.Logging.Logger.CreateLogSource("YuEzTools"); //输出前缀 设置！
@@ -108,13 +115,6 @@ public class Main : BasePlugin
             "A custom color for your YuET GUI. Supports html color codes");
 
         menuUI = AddComponent<MenuUI>();
-
-        ResourceUtils.WriteToFileFromResource(
-            "BepInEx/core/YamlDotNet.dll",
-            "YuEzTools.Resources.InDLL.Depends.YamlDotNet.dll");
-        ResourceUtils.WriteToFileFromResource(
-            "BepInEx/core/YamlDotNet.xml",
-            "YuEzTools.Resources.InDLL.Depends.YamlDotNet.xml");
         
         //Translator.Init();
         
