@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0.5",
+  "version": "1.3.5.0",
 
   "minVer": "latest",
   "creation": "1",
@@ -7,7 +7,7 @@
   "CanUpdate": "true",
   "DebugVer": "0.0.0",
 
-  "md5": "543ff1ed93825cbe18a1a1d724b0f8d8",
+  "md5": "f7bb0cd9bb2da028d3555f396aa1819f",
   "announcement": {
     "SChinese": "欢迎使用YuEzTools!\n全新YuEzTools！\n功能增多，质量提升！\n赞助Yu请点击前两个按钮",
     "English": "Welcome to use YuEzTools!\nYuET is best\nSponsor Yu Please click the first two buttons"
