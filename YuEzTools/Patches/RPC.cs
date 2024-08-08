@@ -51,7 +51,15 @@ internal class RPCHandlerPatch
                     {
                         Main.Logger.LogInfo("Host Try end game with room " +
                                             GameStartManager.Instance.GameRoomNameCode.text);
-                        GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+                        try
+                        {
+                            GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+
+                        }
+                        catch (System.Exception e)
+                        {
+                            Logger.Error(e.ToString(), "Session");
+                        }
                         Main.HasHacker = false;
                     }
                     return false;
@@ -63,6 +71,7 @@ internal class RPCHandlerPatch
         {
             // SendInGamePatch.SendInGame(Translator.GetString("ERROR.CHECKRPC"));
             Logger.Error("[ERROR]可能有外挂或模组问题","RPC");
+            return false;
         }
         return true;
     }

@@ -116,8 +116,8 @@ public static class MatchMakerGameButtonSetGamePatch
                 $"{platforms}" +
                 $"</color>" +
                 $"</size>"
-                ;
-            game.HostName += $"<size=30%> ({Math.Max(0, 100 - game.Age / 100)}%)</size>";
+                ; 
+        game.HostName += $"<size=30%> ({Translator.GetString("ToCloseThisRoom")}{Math.Max(0, 100 - game.Age / 100)}%)</size>";
         End:
         Logger.Info("1", "test");
     }

@@ -5,7 +5,11 @@ using InnerNet;
 using YuEzTools.Get;
 using YuEzTools.Patches;
 using YuEzTools.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using static YuEzTools.Translator;
+using Exception = Il2CppSystem.Exception;
 
 namespace YuEzTools;
 
@@ -110,9 +114,18 @@ class DisconnectInternalPatch
         StartPatch.sc = GetString("EndMessageC");
         
         Logger.Info($"断开连接(理由:{reason}:{stringReason}，Ping:{__instance.Ping})", "Session");
-
         if (AmongUsClient.Instance.AmHost && GetPlayer.IsInGame)
-            GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+        {
+            try
+            {
+                GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+
+            }
+            catch (System.Exception e)
+            {
+                Logger.Error(e.ToString(), "Session");
+            }
+        }
     }
 }
 

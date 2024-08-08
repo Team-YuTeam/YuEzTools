@@ -49,6 +49,7 @@ public static class ChatBubblePatch
             if(Toggles.DarkMode) chatText = ColorString(Color.white, chatText.TrimEnd('\0'));
             else chatText = ColorString(Color.black, chatText.TrimEnd('\0'));
         }
+        Logger.Msg($"来自 {__instance.playerInfo.PlayerName} 的信息 {chatText}","ChatBubble");
         //  __instance.SetLeft();  //如果需要靠左
         //}
     }

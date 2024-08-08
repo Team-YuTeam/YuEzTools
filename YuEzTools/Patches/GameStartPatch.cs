@@ -142,7 +142,15 @@ public class GameStartManagerPatch
             catch
             {
                 Logger.Error("触发防黑屏措施", "GameStartPatch");
-                GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+                try
+                {
+                    GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+
+                }
+                catch (System.Exception e)
+                {
+                    Logger.Error(e.ToString(), "Session");
+                }
             }
         }
     }

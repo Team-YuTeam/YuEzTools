@@ -40,6 +40,8 @@ public class MainMenuManagerPatch
         AccountManager.Instance?.transform?.FindChild("AccountTab/AccountWindow")?.gameObject?.SetActive(false);
     }
 
+
+
     public static void ShowRightPanelImmediately()
     {
         ShowingPanel = true;

@@ -20,7 +20,6 @@ class StartPatch
 {    
     public static string s = GetString("EndMessage");
     public static string sc = GetString("EndMessageC");
-    private static string r, b, g;
     [HarmonyPatch(nameof(IntroCutscene.CoBegin)), HarmonyPrefix]
     public static void Prefix()
     {
@@ -65,7 +64,14 @@ class StartPatch
         {
             Logger.Info("Host Try end game with room " +
                                 GameStartManager.Instance.GameRoomNameCode.text,"StartPatch");
-            GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+            try
+            {
+                GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString(), "StartPatch");
+            }
             Main.HasHacker = false;
         }
     }

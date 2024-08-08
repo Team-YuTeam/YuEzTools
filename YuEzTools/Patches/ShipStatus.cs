@@ -41,7 +41,15 @@ public static class ShipStatus_FixedUpdate
                 {
                     Main.Logger.LogInfo("Host Try end game with room " +
                                         GameStartManager.Instance.GameRoomNameCode.text);
-                    GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+                    try
+                    {
+                        GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+
+                    }
+                    catch (System.Exception e)
+                    {
+                        Logger.Error(e.ToString(), "Session");
+                    }
                     Main.HasHacker = false;
                 }
                 return false;
