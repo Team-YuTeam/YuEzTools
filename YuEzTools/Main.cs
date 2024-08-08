@@ -39,7 +39,7 @@ public class Main : BasePlugin
     public const int PluginCreation = 1;
 
     public static string QQUrl = "https://qm.qq.com/q/uGuWqBkYUi";
-    public static string DcUrl = "https://discord.gg/9Jy7gzPq";
+    public static string DcUrl = "https://discord.gg/42tyx9FyD7";
 
     public static bool HasHacker = false;
     

@@ -34,6 +34,8 @@ Updater.NowFileMD5Fail: "当前文件MD5校验错误！请重新下载！"
 updateSource.Afdian: "爱发电赞助"
 updateSource.BiliBili: "B站赞助"
 updateSource.NextTime: "下次一定"
+updateSource.QQ: "QQ群"
+updateSource.github: "GitHub"
 
 # 文本
 NotFoundStringInYaml: "没找到"
