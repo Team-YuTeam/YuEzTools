@@ -230,10 +230,10 @@ public class MainMenuManagerPatch
         foreach (var kvp in customButtons)
             kvp.Key.Do(button => FormatButtonColor(button, kvp.Value.Item1, kvp.Value.Item2, kvp.Value.Item3, kvp.Value.Item4, kvp.Value.Item5));
         
-        GameObject.Destroy(__instance.creditsButton.gameObject);
-        GameObject.Destroy(__instance.quitButton.gameObject);
-        var BottomButtonBounds = GameObject.Find("BottomButtonBounds");
-        BottomButtonBounds.transform.localPosition += new Vector3(0, 0.8f, 0);
+        // GameObject.Destroy(__instance.creditsButton.gameObject);
+        // GameObject.Destroy(__instance.quitButton.gameObject);
+        // var BottomButtonBounds = GameObject.Find("BottomButtonBounds");
+        // BottomButtonBounds.transform.localPosition += new Vector3(0, 0.8f, 0);
         // __instance.quitButton.gameObject.SetActive(false);
         //__instance.quitButton.gameObject.transform.localPosition += new Vector3(0, 0.7f, 0);
 
