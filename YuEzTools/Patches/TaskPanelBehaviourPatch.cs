@@ -20,6 +20,8 @@ class TaskPanelBehaviourPatch
     // タスク表示の文章が更新・適用された後に実行される
     public static void Postfix(TaskPanelBehaviour __instance)
     {
+        if (!GetPlayer.IsInGame) return;
+        
         PlayerControl player = PlayerControl.LocalPlayer;
 
         var taskText = __instance.taskText.text;
@@ -28,7 +30,7 @@ class TaskPanelBehaviourPatch
         var RoleWithInfo = $"{player.Data.Role.NiceName}:\r\n";
         RoleWithInfo += player.Data.RoleType.GetRoleLInfoForVanilla();
         
-        var AllText = Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(PlayerControl.LocalPlayer.Data.RoleType), RoleWithInfo);
+        var AllText = Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(player.Data.RoleType), RoleWithInfo);
         
         var lines = taskText.Split("\r\n</color>\n")[0].Split("\r\n\n")[0].Split("\r\n");
         StringBuilder sb = new();
@@ -42,7 +44,7 @@ class TaskPanelBehaviourPatch
         {
             var text = sb.ToString().TrimEnd('\n').TrimEnd('\r');
             if (!Utils.Utils.HasTasks(player) && sb.ToString().Count(s => (s == '\n')) >= 2)
-                text = $"{Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(PlayerControl.LocalPlayer.Data.RoleType), GetString("FakeTask"))}\r\n{text}";
+                text = $"{Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(player.Data.RoleType), GetString("FakeTask"))}\r\n{text}";
             AllText += $"\r\n\r\n<size=85%>{text}</size>";
         }
         
