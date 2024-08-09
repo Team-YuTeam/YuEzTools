@@ -3,8 +3,10 @@ using System;
 using TMPro;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 using YuEzTools.Updater;
+using static YuEzTools.Translator;
 
 namespace YuEzTools.UI;
 
@@ -17,6 +19,7 @@ public class MainMenuManagerPatch
     public static GameObject GithubButton;
     public static GameObject WebsiteButton;
     public static GameObject GiteeButton;
+    public static GameObject DevsButton;
     // public static GameObject GitlabButton;
     // public static GameObject GitcodeButton;
     public static GameObject AfdianButton;
@@ -97,7 +100,7 @@ public class MainMenuManagerPatch
             var button = Object.Instantiate(template, template.transform.parent);
             button.transform.transform.FindChild("FontPlacer").GetChild(0).gameObject.DestroyTranslator();
             var buttonText = button.transform.FindChild("FontPlacer").GetChild(0).GetComponent<TextMeshPro>();
-            buttonText.text = text;
+            buttonText.text = GetString(text);
             PassiveButton passiveButton = button.GetComponent<PassiveButton>();
             passiveButton.OnClick = new();
             passiveButton.OnClick.AddListener(action);
@@ -117,7 +120,7 @@ public class MainMenuManagerPatch
         var extraLinkName = "";
         var extraLinkUrl = "";
         var extraLinkEnabled = false;
-        extraLinkName = TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? "QQ群" : "Discord";
+        extraLinkName = "InviteButton";
         extraLinkUrl = TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? Main.QQUrl : Main.DcUrl;
         extraLinkEnabled = true;
 
@@ -125,33 +128,46 @@ public class MainMenuManagerPatch
         InviteButton.gameObject.SetActive(extraLinkEnabled);
         InviteButton.name = "YuET Extra Link Button";
 
-        if (WebsiteButton == null) WebsiteButton = CreatButton(TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? "网站" : "Website", () => Application.OpenURL("https://night-gua.github.io/"));
+        if (WebsiteButton == null) WebsiteButton = CreatButton("WebsiteButton", () => Application.OpenURL("https://night-gua.github.io/"));
         WebsiteButton.gameObject.SetActive(true);
         WebsiteButton.name = "YuET Website Button";
 
-        if (GithubButton == null) GithubButton = CreatButton("Github", () => Application.OpenURL("https://github.com/Team-YuTeam/YuEzTools/"));
-        GithubButton.gameObject.SetActive(true);
-        GithubButton.name = "YuET Github Button";
+        if(!Translator.IsChineseLanguageUser)
+        {
+            if (GithubButton == null)
+                GithubButton = CreatButton("GithubButton",
+                    () => Application.OpenURL("https://github.com/Team-YuTeam/YuEzTools/"));
+            GithubButton.gameObject.SetActive(true);
+            GithubButton.name = "YuET Github Button";
+        }
+        else{
+            if (GiteeButton == null) GiteeButton = CreatButton("GiteeButton", () => Application.OpenURL("https://gitee.com/xigua_ya/YuEzTools/"));
+            GiteeButton.gameObject.SetActive(true);
+            GiteeButton.name = "YuET Gitee Button";
+        }
+
         
-        if (GiteeButton == null) GiteeButton = CreatButton("Gitee", () => Application.OpenURL("https://gitee.com/xigua_ya/YuEzTools/"));
-        GiteeButton.gameObject.SetActive(true);
-        GiteeButton.name = "YuET Gitee Button";
-        
-        if (AfdianButton == null) AfdianButton = CreatButton("Afdian", () => Application.OpenURL("https://afdian.com/a/yuqianzhi"));
+        if (AfdianButton == null) AfdianButton = CreatButton("AfdianButton", () => Application.OpenURL("https://afdian.com/a/yuqianzhi"));
         AfdianButton.gameObject.SetActive(true);
         AfdianButton.name = "YuET Afdian Button";
         
-        if (BilibiliButton == null) BilibiliButton = CreatButton("BiliBili", () => Application.OpenURL("https://space.bilibili.com/1638639993"));
+        if (BilibiliButton == null) BilibiliButton = CreatButton("BiliBiliButton", () => Application.OpenURL("https://space.bilibili.com/1638639993"));
         BilibiliButton.gameObject.SetActive(true); 
         BilibiliButton.name = "YuET BiliBili Button";
         
-        // if (GitlabButton == null) GitlabButton = CreatButton("Gitlab", () => Application.OpenURL("https://gitlab.com/yu9522124/YuEzTools"));
-        // GitlabButton.gameObject.SetActive(true);
-        // GitlabButton.name = "YuET Gitlab Button";
-        //
-        // if (GitcodeButton == null) GitcodeButton = CreatButton("Gitcode", () => Application.OpenURL("https://gitcode.com/YuQZ/YuEzTools"));
-        // GitcodeButton.gameObject.SetActive(true);
-        // GitcodeButton.name = "YuET Gitcode Button";
+        if (DevsButton == null) DevsButton = CreatButton("DevsButton", () =>
+        {
+            CustomPopup.Show(GetString("DevsTitle"),
+                $"<color=#fffcbe>Yu</color> → <size=60%>{GetString("MainDev")}</size>\n" +
+                $"<color=#F95C2A>Mousse</color> → <size=60%>{GetString("Dev")}</size>\n"
+                // 有待添加
+                , new()
+            {
+                (Translator.GetString(StringNames.Okay), null)
+            });
+        });
+        DevsButton.gameObject.SetActive(true); 
+        DevsButton.name = "YuET Devs Button";
         
         PlayButton = __instance.playButton.gameObject;
         if (UpdateButton == null)

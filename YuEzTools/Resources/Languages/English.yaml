@@ -72,7 +72,7 @@ NowImpMoreThan: "The impostor number is larger than the game setting or 3\nThere
 NowHImpMoreThan: "The impostor number is larger than 1\nThere may be hackers or you joined a modded lobby"
 NotLogin: "is not logged in.\n[Ban logged out player] enabled - Trying to ban the player"
 unKickNotLogin: "is not logged in\n[Ban logged out player] is disabled"
-BlackList: "is on your YuET's blacklist"
+BlackList: "is yours or YuET's Banner"
 
 # MenuUI.Interface
 Interface: "Interface"

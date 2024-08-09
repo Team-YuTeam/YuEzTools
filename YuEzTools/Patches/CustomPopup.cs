@@ -150,7 +150,7 @@ public static class CustomPopup
             ActionButtonPrefab = InfoScreen.transform.FindChild("BackButton").GetComponent<PassiveButton>();
             ActionButtonPrefab.gameObject.name = "ActionButtonPrefab";
             ActionButtonPrefab.transform.localScale = new(0.66f, 0.66f, 0.66f);
-            ActionButtonPrefab.transform.localPosition = new(0f, -0.65f, 3f);
+            ActionButtonPrefab.transform.localPosition = new(0f, -1.35f, 3f);
           //  ActionButtonPrefab.transform.localPosition += Vector3.back * 150;
             ActionButtonPrefab.transform.FindChild("Text_TMP").GetComponent<TextMeshPro>().DestroyTranslatorL();
             ActionButtonPrefab.gameObject.SetActive(false);

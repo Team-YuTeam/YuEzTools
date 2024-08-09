@@ -14,6 +14,7 @@ using UnityEngine;
 using YuEzTools;
 using YuEzTools.Keys;
 using YuEzTools.Get;
+using static YuEzTools.Translator;
 
 
 namespace YuEzTools;
@@ -32,6 +33,7 @@ internal class AntiCheatForAll
             var rpc = (RpcCalls)callId;
             if (!Enum.IsDefined(typeof(RpcCalls), callId))
             {
+                SendInGamePatch.SendInGame(string.Format(GetString("notFindRPC"),callId));
                 Logger.Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】RPC无效！！！，已驳回","ACFA");
                 return true;
             }
