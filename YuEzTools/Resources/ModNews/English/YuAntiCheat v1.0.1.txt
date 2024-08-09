@@ -1,0 +1,19 @@
+#Number:100003
+#Title:YuAntiCheat v1.0.1
+#SubTitle:★★★★The will end version★★★★
+#ShortTitle:★YuAC v1.0.1
+#Date:2024-04-21T00:00:00Z
+#-----------------------------
+Thank you very much
+
+## Based
+- On AmongUs v2024.3.5
+
+## Update Summary:
+- Added 1 items
+- Fixed 1
+
+## Fixed
+- Banning non-cheats and kicking out hosts
+## Added
+- Homeowners reveal cheats

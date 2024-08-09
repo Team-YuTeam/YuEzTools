@@ -198,8 +198,7 @@ Dev: "开发者"
 # 主界面按钮
 InviteButton: "QQ群" # If Not Chinese, write Discord
 WebsiteButton: "网站"
-GithubButton: "Github"
-GiteeButton: "Gitee"
 BiliBiliButton: "B站赞助"
 AfdianButton: "爱发电"
 DevsButton: "开发人员"
+ProjectButton: "Gitee" # If Not Chinese, write Github

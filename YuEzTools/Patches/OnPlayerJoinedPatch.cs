@@ -35,28 +35,6 @@ class OnPlayerJoinedPatch
 
     public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
     {
-        if (AmongUsClient.Instance.AmHost && client.FriendCode == "" && Toggles.KickNotLogin)
-        {
-            // 你知道的 Login是这样的
-            AmongUsClient.Instance.KickPlayer(client.Id, true);
-            Logger.Info($"{client?.PlayerName}未登录 已踢出", "Kick");
-            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
-            SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
-            return;
-        }
-        else if(client.FriendCode == "")
-        {
-            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("unKickNotLogin")}</color>");
-            SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("unKickNotLogin")}</color>");
-        }
-
-        if (Utils.Utils.CheckBanList(client.FriendCode,client?.ProductUserId) || Utils.Utils.CheckBanner(client.FriendCode,client?.ProductUserId) || Utils.Utils.CheckFirstBanList(client.FriendCode))
-        {
-            if(AmongUsClient.Instance.AmHost) AmongUsClient.Instance.KickPlayer(client.Id, true);
-            Logger.Info($"{client?.PlayerName}黑名单 已踢出", "Kick");
-            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
-            SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
-        }
         //Utils.Utils.SendMessageForEveryone("测试 看得到的请回复1");
         //Utils.Utils.SendMessageAsPlayerImmediately(__instance.PlayerPrefab, "测试，看得到的请回复1");
     }
@@ -193,6 +171,36 @@ public class LobbyBehaviourPatch
         {
             if (MapThemeSound != null) return;
             SoundManager.Instance.CrossFadeSound("MapTheme", __instance.MapTheme, 0.5f);
+        }
+    }
+}
+
+[HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.CreatePlayer))]
+class CreatePlayerPatch
+{
+    public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
+    {
+        if (AmongUsClient.Instance.AmHost && client.FriendCode == "" && Toggles.KickNotLogin)
+        {
+            // 你知道的 Login是这样的
+            AmongUsClient.Instance.KickPlayer(client.Id, true);
+            Logger.Info($"{client?.PlayerName}未登录 已踢出", "Kick");
+            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
+            SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
+            return;
+        }
+        else if(client.FriendCode == "")
+        {
+            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("unKickNotLogin")}</color>");
+            SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("unKickNotLogin")}</color>");
+        }
+
+        if (Utils.Utils.CheckBanList(client.FriendCode,client?.ProductUserId) || Utils.Utils.CheckBanner(client.FriendCode,client?.ProductUserId) || Utils.Utils.CheckFirstBanList(client.FriendCode))
+        {
+            if(AmongUsClient.Instance.AmHost) AmongUsClient.Instance.KickPlayer(client.Id, true);
+            Logger.Info($"{client?.PlayerName}黑名单 已踢出", "Kick");
+            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
+            SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
         }
     }
 }

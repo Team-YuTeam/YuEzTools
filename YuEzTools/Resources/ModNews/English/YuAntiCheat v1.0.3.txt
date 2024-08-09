@@ -1,0 +1,21 @@
+#Number:100005
+#Title:YuAntiCheat v1.0.3
+#SubTitle:★★★★REVIVE!★★★★
+#ShortTitle:★YuAC v1.0.3
+#Date:2024-06-22T00:00:00Z
+#-----------------------------
+Thanks!
+
+## Based
+- On AmongUs v2024.6.18
+
+## Update Summary:
+- Fixed 2
+- Change 1
+
+## 修复
+- 不能使用的bug
+- 错误报告的bug
+
+## 修改
+- Ping文字

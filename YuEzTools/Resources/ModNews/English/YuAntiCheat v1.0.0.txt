@@ -1,0 +1,17 @@
+#Number:100002
+#Title:YuAntiCheat v1.0.0
+#SubTitle:★★★★Dream is start★★★★
+#ShortTitle:★YuAC v1.0.0
+#Date:2024-04-12T00:00:00Z
+#-----------------------------
+Thanks!
+
+## Based
+- On AmongUs v2024.3.5
+
+## Update Summary:
+- Added 2 items
+
+## Added
+- Ban AUM, SM and all hackers
+- Safe Mode

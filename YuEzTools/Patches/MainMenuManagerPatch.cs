@@ -1,11 +1,19 @@
 using HarmonyLib;
 using System;
+using HarmonyLib;
+using System.Collections.Generic;
+using System.Text;
+using TMPro;
+using YuEzTools;
+using UnityEngine;
+using System.IO;
+using System.Reflection;
+using YuEzTools.Updater;
 using TMPro;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
-using YuEzTools.Updater;
 using static YuEzTools.Translator;
 
 namespace YuEzTools.UI;
@@ -16,12 +24,9 @@ public class MainMenuManagerPatch
     public static MainMenuManager Instance { get; private set; }
 
     public static GameObject InviteButton;
-    public static GameObject GithubButton;
     public static GameObject WebsiteButton;
-    public static GameObject GiteeButton;
+    public static GameObject ProjectButton;
     public static GameObject DevsButton;
-    // public static GameObject GitlabButton;
-    // public static GameObject GitcodeButton;
     public static GameObject AfdianButton;
     public static GameObject BilibiliButton;
     public static GameObject UpdateButton;
@@ -108,6 +113,9 @@ public class MainMenuManagerPatch
             aspectPosition.anchorPoint = new Vector2(col == 1 ? 0.415f : 0.583f, 0.5f - 0.08f * row);
             return button;
         }
+        
+        // __instance.creditsButton.transform.localPosition += new Vector3(0, 0.7f, 0);
+        // __instance.quitButton.transform.localPosition += new Vector3(0, 0.7f, 0);
 
     void CreateButton(GameObject button,string text, Action action,bool active,string name)
     {
@@ -115,6 +123,23 @@ public class MainMenuManagerPatch
         InviteButton.gameObject.SetActive(active);
         button.name = name;
     }
+    var minorActiveSprite = __instance.quitButton.activeSprites.GetComponent<SpriteRenderer>().sprite;
+    Color shade = new(0f, 0f, 0f, 0f);
+    
+    void FormatButtonColor(PassiveButton button, Sprite borderType, Color inActiveColor, Color activeColor, Color inActiveTextColor, Color activeTextColor)
+    {
+        button.activeSprites.transform.FindChild("Shine")?.gameObject?.SetActive(false);
+        button.inactiveSprites.transform.FindChild("Shine")?.gameObject?.SetActive(false);
+        var activeRenderer = button.activeSprites.GetComponent<SpriteRenderer>();
+        var inActiveRenderer = button.inactiveSprites.GetComponent<SpriteRenderer>();
+        activeRenderer.sprite = minorActiveSprite;
+        inActiveRenderer.sprite = minorActiveSprite;
+        activeRenderer.color = activeColor.a == 0f ? new Color(inActiveColor.r, inActiveColor.g, inActiveColor.b, 1f) : activeColor;
+        inActiveRenderer.color = inActiveColor;
+        button.activeTextColor = activeTextColor;
+        button.inactiveTextColor = inActiveTextColor;
+    }
+    
 
 
         var extraLinkName = "";
@@ -127,24 +152,32 @@ public class MainMenuManagerPatch
         if (InviteButton == null) InviteButton = CreatButton(extraLinkName, () => { Application.OpenURL(extraLinkUrl); });
         InviteButton.gameObject.SetActive(extraLinkEnabled);
         InviteButton.name = "YuET Extra Link Button";
+        
 
         if (WebsiteButton == null) WebsiteButton = CreatButton("WebsiteButton", () => Application.OpenURL("https://night-gua.github.io/"));
         WebsiteButton.gameObject.SetActive(true);
         WebsiteButton.name = "YuET Website Button";
 
-        if(!Translator.IsChineseLanguageUser)
+        var ProjectLink = IsChineseLanguageUser
+            ? "https://gitee.com/xigua_ya/YuEzTools/"
+            : "https://github.com/Team-YuTeam/YuEzTools/";
+        if (ProjectButton == null) ProjectButton = CreatButton("ProjectButton", () => Application.OpenURL(ProjectLink));
+        ProjectButton.gameObject.SetActive(true);
+        ProjectButton.name = "YuET Project Button";
+        
+        if (DevsButton == null) DevsButton = CreatButton("DevsButton", () =>
         {
-            if (GithubButton == null)
-                GithubButton = CreatButton("GithubButton",
-                    () => Application.OpenURL("https://github.com/Team-YuTeam/YuEzTools/"));
-            GithubButton.gameObject.SetActive(true);
-            GithubButton.name = "YuET Github Button";
-        }
-        else{
-            if (GiteeButton == null) GiteeButton = CreatButton("GiteeButton", () => Application.OpenURL("https://gitee.com/xigua_ya/YuEzTools/"));
-            GiteeButton.gameObject.SetActive(true);
-            GiteeButton.name = "YuET Gitee Button";
-        }
+            CustomPopup.Show(GetString("DevsTitle"),
+                $"<color=#fffcbe>Yu</color> → <size=60%>{GetString("MainDev")}</size>\n" +
+                $"<color=#0090f4>Mousse</color> → <size=60%>{GetString("Dev")}</size>\n"
+                // 有待添加
+                , new()
+                {
+                    (Translator.GetString(StringNames.Okay), null)
+                });
+        });
+        DevsButton.gameObject.SetActive(true); 
+        DevsButton.name = "YuET Devs Button";
 
         
         if (AfdianButton == null) AfdianButton = CreatButton("AfdianButton", () => Application.OpenURL("https://afdian.com/a/yuqianzhi"));
@@ -154,20 +187,6 @@ public class MainMenuManagerPatch
         if (BilibiliButton == null) BilibiliButton = CreatButton("BiliBiliButton", () => Application.OpenURL("https://space.bilibili.com/1638639993"));
         BilibiliButton.gameObject.SetActive(true); 
         BilibiliButton.name = "YuET BiliBili Button";
-        
-        if (DevsButton == null) DevsButton = CreatButton("DevsButton", () =>
-        {
-            CustomPopup.Show(GetString("DevsTitle"),
-                $"<color=#fffcbe>Yu</color> → <size=60%>{GetString("MainDev")}</size>\n" +
-                $"<color=#F95C2A>Mousse</color> → <size=60%>{GetString("Dev")}</size>\n"
-                // 有待添加
-                , new()
-            {
-                (Translator.GetString(StringNames.Okay), null)
-            });
-        });
-        DevsButton.gameObject.SetActive(true); 
-        DevsButton.name = "YuET Devs Button";
         
         PlayButton = __instance.playButton.gameObject;
         if (UpdateButton == null)
@@ -201,5 +220,22 @@ public class MainMenuManagerPatch
             }));
             UpdateButton.transform.transform.FindChild("FontPlacer").GetChild(0).gameObject.DestroyTranslator();
         }
+        
+        Dictionary<List<PassiveButton>, (Sprite, Color, Color, Color, Color)> customButtons = new()
+        {
+            {new List<PassiveButton>() {InviteButton.GetComponent<PassiveButton>(),WebsiteButton.GetComponent<PassiveButton>(),ProjectButton.GetComponent<PassiveButton>(),AfdianButton.GetComponent<PassiveButton>(),BilibiliButton.GetComponent<PassiveButton>(),DevsButton.GetComponent<PassiveButton>()},
+                (minorActiveSprite, new(0.65f, 1f, 0.247f, 0.8f), shade, Color.white, Color.white) },
+        };
+        
+        foreach (var kvp in customButtons)
+            kvp.Key.Do(button => FormatButtonColor(button, kvp.Value.Item1, kvp.Value.Item2, kvp.Value.Item3, kvp.Value.Item4, kvp.Value.Item5));
+        
+        GameObject.Destroy(__instance.creditsButton.gameObject);
+        GameObject.Destroy(__instance.quitButton.gameObject);
+        var BottomButtonBounds = GameObject.Find("BottomButtonBounds");
+        BottomButtonBounds.transform.localPosition += new Vector3(0, 0.8f, 0);
+        // __instance.quitButton.gameObject.SetActive(false);
+        //__instance.quitButton.gameObject.transform.localPosition += new Vector3(0, 0.7f, 0);
+
     }
 }

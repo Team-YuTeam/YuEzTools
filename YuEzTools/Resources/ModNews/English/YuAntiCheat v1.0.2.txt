@@ -1,0 +1,22 @@
+#Number:100004
+#Title:YuAntiCheat v1.0.2
+#SubTitle:★★★★Briefly stopped★★★★
+#ShortTitle:★YuAC v1.0.2
+#Date:2024-04-28T00:00:00Z
+#-----------------------------
+Thanks
+
+## Based
+- On AmongUs v2024.3.5
+
+## Update Summary:
+- Added 3 items
+- Fixed 1
+
+## Fixed
+- Pressing right Shift causes a crash
+
+## Added
+- Update Check
+- MM Check
+- Joined Room Tips

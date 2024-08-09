@@ -4,3 +4,4 @@ cheat
 hock
 bomber
 menu
+bluecode
