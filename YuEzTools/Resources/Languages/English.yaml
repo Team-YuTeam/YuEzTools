@@ -57,6 +57,7 @@ Ping.UsingMode: "\nYou are using [{0}]"
 Ping.RoomTime: "\nLobby Countdown: "
 Ping.NowTime: "\nLocal Time: "
 Local: "Local"
+Ping.MenuText: "Press <color=#8B008B>Delete</color> to open settings"
 
 # 提示语
 AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are not the host - <color=#FFFF00>Cannot</color> punish the hacker"
@@ -71,6 +72,7 @@ NowImpMoreThan: "The impostor number is larger than the game setting or 3\nThere
 NowHImpMoreThan: "The impostor number is larger than 1\nThere may be hackers or you joined a modded lobby"
 NotLogin: "is not logged in.\n[Ban logged out player] enabled - Trying to ban the player"
 unKickNotLogin: "is not logged in\n[Ban logged out player] is disabled"
+BlackList: "is on your YuET's blacklist"
 
 # MenuUI.Interface
 Interface: "Interface"
@@ -124,6 +126,8 @@ MenuUI.FPSPlus: "Unlock FPS Upperlimit"
 # VerShow
 VerShow.HasUpdate: "<color={0}>{1}</color> (<color=#DC143C>YuET has a new update：v{2}!</color>)"
 VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>Your YuET is up to date</color>)"
+VerShow.Visit: "<color=#483D8B>{1}</color> <color=#FF00FF> has been used <color=#191970>{2}</color> times~</color>"
+UsingVersion: "<color=#DC143C>[{2}]</color>"
 
 # FunctionPatch
 FunctionPatch.AbolishDownTimer: "Cancel Start Countdown"
@@ -176,3 +180,8 @@ ImpostorIntroText: "<color={0}>Evil is coming...</color>"
 
 # TaskText
 FakeTask: "Fake task is as follows:"
+
+# RoomList
+iPhone: "IOS"
+Android: "Android"
+Platforms.Unknown: "Unknown"
