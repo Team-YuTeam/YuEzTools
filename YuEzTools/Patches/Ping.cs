@@ -53,14 +53,10 @@ internal class PingTrackerUpdatePatch
         //     __instance.transform.localPosition.y + 10, __instance.transform.localPosition.z);
 
         StringBuilder sb = new();
-        sb.Append($"<color={Main.ModColor}>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
+        if(Main.ModMode == 0) sb.Append($"<color=#FFC0CB>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
+        else if(Main.ModMode == 1) sb.Append($"<color=#6A5ACD>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
+        else sb.Append($"<color={Main.ModColor}>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
         if (Toggles.ShowCommit) sb.Append($"<color=#00FFFF>({ThisAssembly.Git.Commit})</color>");
-#if DEBUG
-        sb.Append("<color=#FFC0CB>[DEBUG]</color>");
-#endif
-#if CANARY
-        sb.Append("<color=#6A5ACD>[CANARY]</color>");
-#endif
         if (Toggles.ShowModText) sb.Append($"\r\n").Append($"{Main.MainMenuText}");
 
         if (Toggles.FPSPlus && Application.targetFrameRate != 240) Application.targetFrameRate = 240;
