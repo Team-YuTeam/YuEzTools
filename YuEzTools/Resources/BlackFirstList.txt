@@ -5,3 +5,6 @@ hock
 bomber
 menu
 bluecode
+dhalardent
+peakedbye
+overarmcat

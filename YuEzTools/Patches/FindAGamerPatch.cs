@@ -71,54 +71,18 @@ public static class MatchMakerGameButtonSetGamePatch
         };
         string str = Math.Abs(game.GameId).ToString();
             int id = Math.Min(Math.Max(int.Parse(str.Substring(str.Length - 2, 2)), 1) * nameList.Count / 100, nameList.Count);
-        if (game.Platform == Platforms.Switch)
-        {
-            int halfLength = nameList[id].Length / 2;
-
-            string firstHalf = nameList[id].Substring(0, halfLength);
-            string secondHalf = nameList[id].Substring(halfLength);
-            game.HostName = $"" +
-                $"<size=80%>" +
-
-                $"<color=#00B2FF>" +
-                $"{firstHalf}" +
-                $"</color>" +
-
-                $"<color=#ff0000>" +
-                $"{secondHalf}" +
-                $"</color>" +
-                $"</size>" +
-
-                $"<size=40%>" +
-
-                "<color=#ffff00>----</color>" +
-                $"<color=#00B2FF>" +
-                $"Nintendo" +
-                $"</color>" +
-
-                $"<color=#ff0000>" +
-                $"Switch" +
-                $"</color>" +
-
-                $"</size>"
-                ;
-        }
-        else
             game.HostName = $"" +
                 $"<size=80%>" +
                 $"<color={color}>" +
                 $"{nameList[id]}" +
-                $"</color>" +
                 $"</size>"+
-                $"<size=40%>" +
-                "<color=#ffff00>----</color>" +
-                $"<color={color}>" +
-                $"{platforms}" +
+                $"<size=60%>" +
+                $"({platforms})" +
                 $"</color>" +
                 $"</size>"
                 ; 
-        game.HostName += $"<size=30%> ({Translator.GetString("ToCloseThisRoom")}{Math.Max(0, 100 - game.Age / 100)}%)</size>";
+        game.HostName += $"<size=40%> ({Translator.GetString("ToCloseThisRoom")}{Math.Max(0, 100 - game.Age / 100)}%)</size>";
         End:
-        Logger.Info("1", "test");
+        Logger.Info("--------", "FindAGamerPatch");
     }
 }

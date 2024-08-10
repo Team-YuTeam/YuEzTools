@@ -15,9 +15,20 @@ using Epic.OnlineServices.Presence;
 using YuEzTools.Get;
 using static YuEzTools.Logger;
 using Log = UnityEngine.ProBuilder.Log;
+using YuEzTools;
+using YuEzTools.Attributes;
 
 namespace YuEzTools.Patches;
 
+[HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.CoStartGame))]
+internal class CoStartGamePatch
+{
+    public static void Postfix()
+    {
+        GameModuleInitializerAttribute.InitializeAll();
+
+    }
+}
 public class GameStartManagerPatch
 {
     public static float timer = 600f;
@@ -171,7 +182,7 @@ public class GameStartManagerPatch
                 _ = new LateTask(() =>
                 {
                     if (!AmongUsClient.Instance.IsGameStarted && client.Character != null &&
-                        StartPatch.s != GetString("EndMessage") && Main.isFirstSendEnd)
+                        StartPatch.sc != GetString("EndMessageC") && Main.isFirstSendEnd)
                     {
                         Main.isChatCommand = true;
                         Info("发送：结算信息", "JoinPatch");

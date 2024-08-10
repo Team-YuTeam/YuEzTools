@@ -75,7 +75,7 @@ NowHImpMoreThan: "本房间内鬼数量大于1\n可能为外挂或其他模组�
 NotLogin: "未登录\n由于您打开了踢出未登录 YuET已尝试封禁"
 unKickNotLogin: "未登录\n请注意，几乎所有的外挂都是未登录！"
 BlackList: "存在于您或YuET的黑名单中"
-notFindRPC: "这是无效的RPC！\n数值：{0}"
+notFindRPC: "{1}发送了无效的RPC！\n数值：{0}"
 
 # MenuUI.Interface
 Interface: "界面"
@@ -188,7 +188,7 @@ FakeTask: "假任务如下："
 iPhone: "苹果"
 Android: "安卓"
 Platforms.Unknown: "未知"
-ToCloseThisRoom: "距离强制关闭这个房间还剩："
+ToCloseThisRoom: "距离打开这个房间已经："
 
 # 开发者展示
 DevsTitle: "本项目的开发者们"
@@ -202,3 +202,9 @@ BiliBiliButton: "B站赞助"
 AfdianButton: "爱发电"
 DevsButton: "开发人员"
 ProjectButton: "Gitee" # If Not Chinese, write Github
+
+# 死因 / Death Reason
+DeathReason.Kill: "被杀"
+DeathReason.Exile: "驱逐"
+DeathReason.Disconnect: "断连"
+DataDeathReason.None: "存活"

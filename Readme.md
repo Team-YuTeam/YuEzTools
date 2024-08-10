@@ -4,11 +4,11 @@
 
 <img src="https://badgen.net/github/license/Night-GUA/YuEzTools" alt="Licences"><img src="https://badgen.net/github/tag/Night-GUA/YuEzTools" alt="LatestTag"><img src="https://badgen.net/github/assets-dl/Night-GUA/YuEzTools" alt="Downloads"><img src="https://badgen.net/github/watchers/Night-GUA/YuEzTools" alt="Watchers"><img src="https://badgen.net/github/stars/Night-GUA/YuEzTools" alt="Stars"><img src="https://badgen.net/github/forks/Night-GUA/YuEzTools" alt="Forks"><img src="https://badgen.net/github/prs/Night-GUA/YuEzTools" alt="PRs">
 
-## 简体中文 | SChinese
+## 简体中文
 <details>
 <summary> 展开 </summary>
 
-### AU！好玩的AU！
+### 你好，再见
 
 ### 你好啊~这里是YuEzTools！下面是一些有用的按钮，你可以点击看看！
 
@@ -21,21 +21,31 @@
 ### 在`非安全模式`下 YuET会做的操作
 若检测到外挂 则多进行击杀一次
 
-### 致谢
-- KARPED1EM - 技术帮助&代码支持
-- NikoCat233 - 技术帮助
-- Slok7675 - 技术帮助
-- Farewell - 技术帮助
-- LezaiYa - 技术帮助&翻译帮助&代码提供
-- Imp11 - 技术帮助&翻译帮助
-- 慕斯Mousse - 翻译帮助
-- 小白熊贝儿 - Logo设计
-- Among us - 想法提供&代码提供
-- 鱼竿 - 背景图画师
+[//]: # (### 致谢)
+
+[//]: # (- KARPED1EM - 技术帮助&代码支持)
+
+[//]: # (- NikoCat233 - 技术帮助)
+
+[//]: # (- Slok7675 - 技术帮助)
+
+[//]: # (- Farewell - 技术帮助)
+
+[//]: # (- LezaiYa - 技术帮助&翻译帮助&代码提供)
+
+[//]: # (- Imp11 - 技术帮助&翻译帮助)
+
+[//]: # (- 慕斯Mousse - 翻译帮助)
+
+[//]: # (- 小白熊贝儿 - Logo设计)
+
+[//]: # (- Among us - 想法提供&代码提供)
+
+[//]: # (- 鱼竿 - 背景图画师)
 </details>
 <br>
 
-## 英文 | English
+## English
 <details>
 <summary> Open </summary>
 
@@ -52,17 +62,27 @@
 ### In `UnSafe Mode`, YuET will do
 If the room has hacker, it will make an extra kill
 
-### Thanks
-- KARPED1EM - Technical assistance&Code Support
-- NikoCat233 - Technical assistance
-- Slok7675 - Technical assistance
-- Farewell - Technical assistance
-- LezaiYa - Technical assistance&Translation Help&Code provision
-- Imp11 - Technical assistance&Translation Help
-- Mousse - Translation Help
-- XiaoBaiXiongBeiEr - Logo Design
-- Among us - Idea provision&Code provision
-- YuGan - Background Painter
+[//]: # (### Thanks)
+
+[//]: # (- KARPED1EM - Technical assistance&Code Support)
+
+[//]: # (- NikoCat233 - Technical assistance)
+
+[//]: # (- Slok7675 - Technical assistance)
+
+[//]: # (- Farewell - Technical assistance)
+
+[//]: # (- LezaiYa - Technical assistance&Translation Help&Code provision)
+
+[//]: # (- Imp11 - Technical assistance&Translation Help)
+
+[//]: # (- Mousse - Translation Help)
+
+[//]: # (- XiaoBaiXiongBeiEr - Logo Design)
+
+[//]: # (- Among us - Idea provision&Code provision)
+
+[//]: # (- YuGan - Background Painter)
 </details>
 <br>
 

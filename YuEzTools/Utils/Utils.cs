@@ -20,6 +20,81 @@ namespace YuEzTools.Utils;
 
 public static class Utils
 {
+    public static string GetVoteName(byte num)
+    {
+        string name = "invalid";
+        var player = GetPlayer.GetPlayerById(num);
+        if (num < 15 && player != null) name = player?.GetNameWithRole();
+        if (num == 253) name = "Skip";
+        if (num == 254) name = "None";
+        if (num == 255) name = "Dead";
+        return name;
+    }
+    public static string GetVitalText(byte playerId,  bool summary = false)
+    {
+        var data = GamePlayerData.GetPlayerDataById(playerId);
+
+        string deathReason = data.IsDead ? GetString("DeathReason." + data.MyDeathReason) : "";
+
+
+        Color color = Palette.CrewmateBlue;
+        switch (data.MyDeathReason)
+        {
+            case DataDeathReason.Disconnect:
+                color = Palette.DisabledGrey;
+                break;
+            case DataDeathReason.Kill:
+                color = Palette.ImpostorRed;
+                deathReason += "<=" ;
+                break;
+            case DataDeathReason.Exile:
+                color = Palette.Purple;
+                break;
+        }
+        if (!summary && data.IsDead) deathReason = "(" + deathReason;
+
+        if (data.MyDeathReason is DataDeathReason.Kill)
+        {
+            var killercolor = Palette.PlayerColors[data.RealKiller.PlayerColor];
+            deathReason += "<size=80%>";
+            deathReason += ColorString(killercolor, data.RealKiller.PlayerName);
+            deathReason += "</size>";
+        }
+        if (!summary && data.IsDead) deathReason += ")";
+        deathReason = ColorString(color, deathReason);
+
+        return deathReason;
+    }
+    public static bool IsImpostor(byte id) => IsImpostor(GetPlayer.GetPlayerById(id));
+    public static bool IsImpostor(this PlayerControl pc)
+    {
+        switch (pc.GetRoleType())
+        {
+            case RoleTypes.Impostor:
+            case RoleTypes.Shapeshifter:
+            case RoleTypes.Phantom:
+            case RoleTypes.ImpostorGhost:
+                return true;
+        }
+        return false;
+    }
+    public static bool IsImpostor(RoleTypes role)
+    {
+        switch (role)
+        {
+            case RoleTypes.Impostor:
+            case RoleTypes.Shapeshifter:
+            case RoleTypes.Phantom:
+            case RoleTypes.ImpostorGhost:
+                return true;
+            default:
+                return false;
+        }
+    }
+    public static string GetRoleName(RoleTypes role, bool forUser = true)
+    {
+        return GetRoleString(Enum.GetName(typeof(RoleTypes), role), forUser);
+    }
     public static bool HasTasks(PlayerControl p)
     {
         if (GetPlayer.GetPlayerRoleTeam(p) != RoleTeam.Impostor) return true;
@@ -42,6 +117,21 @@ public static class Utils
         float G = (color.g + Weight) / (Darkness + 1);
         float B = (color.b + Weight) / (Darkness + 1);
         return new Color(R, G, B, color.a);
+    }
+    public static void RpcSetNamePrivate(this PlayerControl TargetPlayer, string NewName, PlayerControl SeePlayer = null)
+    {
+        if (TargetPlayer == null || NewName == null || !AmongUsClient.Instance.AmHost) return;
+        if (SeePlayer == null) SeePlayer = TargetPlayer;
+        if (SeePlayer.PlayerId == PlayerControl.LocalPlayer.PlayerId)
+        {
+            TargetPlayer.SetName(NewName);
+            return;
+        }
+        var clientId = SeePlayer.GetClientId();
+        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(TargetPlayer.NetId, (byte)RpcCalls.SetName, SendOption.Reliable, clientId);
+        writer.Write(TargetPlayer.Data.NetId);
+        writer.Write(NewName);
+        AmongUsClient.Instance.FinishRpcImmediately(writer);
     }
 
     public static Color GetRoleColor(RoleTypes rt)

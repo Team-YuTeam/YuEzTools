@@ -70,7 +70,7 @@ internal class RPCHandlerPatch
         catch
         {
             // SendInGamePatch.SendInGame(Translator.GetString("ERROR.CHECKRPC"));
-            Logger.Error("[ERROR]可能有外挂或模组问题","RPC");
+            //Logger.Error("[ERROR]可能是模组问题","RPC");
             return true;
         }
         return true;

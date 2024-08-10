@@ -18,14 +18,14 @@ namespace YuEzTools.Patches;
 [HarmonyPatch(typeof(IntroCutscene))]//    [HarmonyPatch(nameof(IntroCutscene.CoBegin)), HarmonyPrefix]
 class StartPatch
 {    
-    public static string s = GetString("EndMessage");
+    //public static string s = GetString("EndMessage");
     public static string sc = GetString("EndMessageC");
     [HarmonyPatch(nameof(IntroCutscene.CoBegin)), HarmonyPrefix]
     public static void Prefix()
     {
         GetPlayer.numImpostors = 0;
         GetPlayer.numCrewmates = 0;
-        s = GetString("EndMessage");
+        //s = GetString("EndMessage");
         sc = GetString("EndMessageC");
         int c = 0;
         Logger.Info("== 游戏开始 ==","StartPatch");
@@ -39,8 +39,8 @@ class StartPatch
                 Info("错误，CPCOS列表null！","CPCOS in StartPatch");
             else Logger.Info("成员检验"+Main.ClonePlayerControlsOnStart[c].GetRealName(),"StartPatch");
             
-            s += "\n" + pc1.GetRealName() +" - "+ pc1.Data.Role.NiceName;
-            sc += "\n" +$"{GetPlayer.GetRColorName(pc1,pc1.GetRealName())} - {pc1.Data.ColorName}" +" - "+ GetPlayer.GetColorRole(pc1);
+            //s += "\n" + pc1.GetRealName() +" - "+ pc1.Data.Role.NiceName;
+            sc += "\n" +$"{Utils.Utils.ColorString(pc1.Data.Color,pc1.GetRealName())}" +" - "+ GetPlayer.GetColorRole(pc1);
             
             if (pc1.Data.Role.IsImpostor)
             {
@@ -111,6 +111,6 @@ class SetEverythingUpPatch
         RoleSummaryRectTransform.anchoredPosition = new Vector2(Pos.x + 3.5f, Pos.y - 0.1f);
         RoleSummary.text = StartPatch.sc;
         
-        Info(StartPatch.s,"ENDPATCH");
+        //Info(StartPatch.s,"ENDPATCH");
     }
 }

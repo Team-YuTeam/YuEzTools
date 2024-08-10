@@ -11,15 +11,15 @@ public class Chat
     [HarmonyPatch(typeof(ChatController), nameof(ChatController.Update))]
     public static class ChatControllerUpdatePatch
     {
-        public static void Prefix(ChatController __instance)
-        {
-            if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) &&
-                Input.GetKeyDown(KeyCode.Tab))
-            {
-                __instance.freeChatField.textArea.SetText(__instance.freeChatField.textArea.text + "\n");
-                return;
-            }
-        }
+        // public static void Prefix(ChatController __instance)
+        // {
+        //     if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) &&
+        //         Input.GetKeyDown(KeyCode.Tab))
+        //     {
+        //         __instance.freeChatField.textArea.SetText(__instance.freeChatField.textArea.text + "\n");
+        //         return;
+        //     }
+        // }
         public static void Postfix(ChatController __instance)
         {
             if (!__instance.freeChatField.textArea.hasFocus) return;

@@ -33,8 +33,8 @@ internal class AntiCheatForAll
             var rpc = (RpcCalls)callId;
             if (!Enum.IsDefined(typeof(RpcCalls), callId))
             {
-                SendInGamePatch.SendInGame(string.Format(GetString("notFindRPC"),callId));
-                Logger.Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】RPC无效！！！，已驳回","ACFA");
+                SendInGamePatch.SendInGame(string.Format(GetString("notFindRPC"),callId,pc.GetRealName()));
+                Logger.Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】RPC{callId}无效！！！，已驳回","ACFA");
                 return true;
             }
             switch (rpc)
@@ -148,7 +148,8 @@ internal class AntiCheatForAll
                         text.Contains("台独") || 
                         text.Contains("共产党") || // 游戏名字屏蔽词
                         text.IndexOf("EzHacked", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                        text.IndexOf("Ez Hacked", StringComparison.OrdinalIgnoreCase) >= 0
+                        text.IndexOf("Ez Hacked", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        (text.IndexOf(GameStartManager.Instance.GameRoomNameCode.text, StringComparison.OrdinalIgnoreCase) >= 0 && text.IndexOf(Main.AllPlayerControls.Count().ToString(), StringComparison.OrdinalIgnoreCase) >= 0 )
                     )
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】发送非法消息，已驳回");
@@ -215,7 +216,7 @@ internal class AntiCheatForAll
                 
                 case RpcCalls.MurderPlayer:
                 case RpcCalls.CheckMurder:
-                    if ( GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
+                    if ( GetPlayer.IsLobby || GetPlayer.IsMeeting || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
                         return true;

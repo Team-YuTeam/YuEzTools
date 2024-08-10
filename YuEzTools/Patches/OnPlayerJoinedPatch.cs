@@ -110,7 +110,7 @@ class DisconnectInternalPatch
         ShowDisconnectPopupPatch.Reason = reason;
         ShowDisconnectPopupPatch.StringReason = stringReason;
 
-        StartPatch.s = GetString("EndMessage");
+        //StartPatch.s = GetString("EndMessage");
         StartPatch.sc = GetString("EndMessageC");
         
         Logger.Info($"断开连接(理由:{reason}:{stringReason}，Ping:{__instance.Ping})", "Session");

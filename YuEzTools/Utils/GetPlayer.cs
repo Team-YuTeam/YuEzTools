@@ -34,6 +34,7 @@ public class PlayerState
 
 static class GetPlayer
 {
+    public static bool IsInTask => IsInGame && !MeetingHud.Instance;
     //public static bool IsNotJoined => AmongUsClient.Instance.GameState == AmongUsClient.GameStates.NotJoined;
     public static bool IsVanillaServer
     {
