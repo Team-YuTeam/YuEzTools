@@ -34,6 +34,9 @@ Updater.NowFileMD5Fail: "File MD5 check error. Please download again."
 updateSource.Afdian: "Sponsor on Aifadian"
 updateSource.BiliBili: "Sponsor on Bilibili"
 updateSource.NextTime: "Cancel"
+updateSource.QQ: "QQ"
+updateSource.github: "GitHub"
+updateSource.discord: "Discord?" # chinese simplified doesnt even have this. Clicking this on title screen redirects to the report page
 
 # 文本
 NotFoundStringInYaml: "Not Found"
@@ -185,3 +188,17 @@ FakeTask: "Fake task is as follows:"
 iPhone: "IOS"
 Android: "Android"
 Platforms.Unknown: "Unknown"
+ToCloseThisRoom: "Timer：" 
+
+# Developer display (translated once again)
+DevsTitle: "Developers of this project"
+MainDev: "Main developer"
+Dev: "Developer"
+
+# Main interface button (and again)
+InviteButton: "Discord" # If Not Chinese, write Discord
+WebsiteButton: "Website"
+BiliBiliButton: "BiliBili"
+AfdianButton: "Afdian"
+DevsButton: "Developer"
+ProjectButton: "Github" # If Not Chinese, write Github
