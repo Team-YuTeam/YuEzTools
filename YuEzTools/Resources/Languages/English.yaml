@@ -71,7 +71,7 @@ OptHImpMoreThanThree: "Max impostors# is larger than 1\nThere may be hackers or 
 NowImpMoreThan: "The impostor number is larger than the game setting or 3\nThere may be hackers or you joined a modded lobby"
 NowHImpMoreThan: "The impostor number is larger than 1\nThere may be hackers or you joined a modded lobby"
 NotLogin: "is not logged in.\n[Ban logged out player] enabled - Trying to ban the player"
-unKickNotLogin: "is not logged in\n[Ban logged out player] is disabled"
+unKickNotLogin: "is not logged in\nPlease play with caution"
 BlackList: "is yours or YuET's Banner"
 
 # MenuUI.Interface

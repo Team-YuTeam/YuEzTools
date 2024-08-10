@@ -179,7 +179,7 @@ public class ModUpdater
                 {
                     (Translator.GetString("updateSource.Afdian"), () => Application.OpenURL("https://afdian.com/a/yuqianzhi")),
                     (Translator.GetString("updateSource.BiliBili"), () => Application.OpenURL("https://www.bilibili.com/opus/898712994671755300")),
-                    (Translator.GetString(Translator.IsChineseLanguageUser ? "updateSource.QQ" : "updateSource.discord"), () => Application.OpenURL(Translator.IsChineseLanguageUser ? Main.QQUrl : "https://github.com/Team-YuTeam/YuEzTools/issues/new/choose")),
+                    (Translator.GetString(Translator.IsChineseLanguageUser ? "updateSource.QQ" : "updateSource.github"), () => Application.OpenURL(Translator.IsChineseLanguageUser ? Main.QQUrl : "https://github.com/Team-YuTeam/YuEzTools/issues/new/choose")),
                     (Translator.GetString("updateSource.NextTime"), null)
                 });
             }

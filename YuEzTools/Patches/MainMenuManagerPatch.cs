@@ -234,8 +234,6 @@ public class MainMenuManagerPatch
         // GameObject.Destroy(__instance.quitButton.gameObject);
         // var BottomButtonBounds = GameObject.Find("BottomButtonBounds");
         // BottomButtonBounds.transform.localPosition += new Vector3(0, 0.8f, 0);
-        // __instance.quitButton.gameObject.SetActive(false);
-        //__instance.quitButton.gameObject.transform.localPosition += new Vector3(0, 0.7f, 0);
 
     }
 }
