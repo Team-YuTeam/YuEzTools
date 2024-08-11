@@ -1,16 +1,28 @@
 #Number:100018
 #Title:YuEzTools v1.3.5.1
-#SubTitle:★★★★有Bug就好好说啊:(★★★★
+#SubTitle:★★★★Plz talk friendly if there is a bug:(★★★★
 #ShortTitle:★YuET v1.3.5.1
 #Date:2024-08-08T00:00:00Z
 #-----------------------------
-啊啊啊啊啊啊啊啊啊啊
+ahhhhhhhhhhhhh
 
-## 对应官方版本
-- 基于 AmongUs v2024.6.18
+## Corresponding Among Us Version
+- Based on AmongUs v2024.6.18
 
-## 更新总结
-- 新增 1条
+## Update Summary
+- 2 Fixed
+- 2 Added
+- 3 Optimized
 
-## 新增
-- 【欢迎语】新增反馈bug按钮
+## Fix
+- Fixed bug that the joining RPCs of players were intercepted which caused them to load incorrectly when they join a lobby normally
+- Fixed bug that some hackers made the game send 【SetTaskText】 in advance which caused errors
+
+## New Feature
+- 【Announcement】Bug feedback button
+- 【Main Menu】Developer button
+
+## Optimize
+- 【All】Buttons on the pop-up windows became lower
+- 【Black List】The logic of it
+- 【Main Menu】Creating Buttons
