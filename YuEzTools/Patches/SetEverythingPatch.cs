@@ -108,7 +108,7 @@ class CoSetRolePatch
 class SetEverythingUpPatch
 {
     private static TextMeshPro roleSummary;
-    public static string s = ""; //ToDo 结算
+    public static string s = "";
     public static void Postfix(EndGameManager __instance)
     {
         var Pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 1f, Camera.main.nearClipPlane));
