@@ -9,7 +9,7 @@ Thank you for your support !!!
 ## Corresponding to Among Us Version
 - Based on AmongUs v2024.6.18
 
-## Update Summary:
+## Update Summary
 - 2 Fixed
 - 1 Changed
 
