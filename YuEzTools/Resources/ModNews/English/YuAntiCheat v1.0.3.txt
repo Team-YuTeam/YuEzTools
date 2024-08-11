@@ -4,18 +4,18 @@
 #ShortTitle:★YuAC v1.0.3
 #Date:2024-06-22T00:00:00Z
 #-----------------------------
-Thanks!
+Thank you for your support !!!
 
-## Based
-- On AmongUs v2024.6.18
+## Corresponding to Among Us Version
+- Based on AmongUs v2024.6.18
 
 ## Update Summary:
-- Fixed 2
-- Change 1
+- 2 Fixed
+- 1 Changed
 
-## 修复
-- 不能使用的bug
-- 错误报告的bug
+## Fixed
+- Fix bug that YuAC cannot be used
+- Fix bug of wrong detection
 
-## 修改
-- Ping文字
+## Changed
+- Text on ping display section
