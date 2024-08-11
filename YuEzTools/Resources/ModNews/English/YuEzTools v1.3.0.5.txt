@@ -1,26 +1,26 @@
 #Number:100016
 #Title:YuEzTools v1.3.0.5
-#SubTitle:★★★★啊啊啊啊啊啊啊啊啊啊★★★★
+#SubTitle:★★★★Ahhhhhhhhhhhhh★★★★
 #ShortTitle:★YuET v1.3.0.5
 #Date:2024-08-07T01:00:00Z
 #-----------------------------
-欢迎加入YuTeam以一起制作！
+Welcome to join YuTeam to develop together!
 
-## 对应官方版本
-- 基于 AmongUs v2024.6.18
+## Corresponding to Among Us Version
+- Based on AmongUs v2024.6.18
 
-## 更新总结：
-- 修复 2条
-- 新增 1条
-- 优化 2条
+## Update Summary
+- 2 Fixed
+- 1 Added
+- 2 Optimized
 
-## 修复
-- 【YamlDotNet】依赖比【Translator】晚加载导致的【ERROR】
-- 第一次进入时的【首页提示语】只显示简体中文
+## Fix
+- Fix bug that 【YamlDotNet】 dependencies loaded after 【Translator】 which caused 【ERROR】
+- Fix bug that 【Announcement】 only show SChinese the first time opening the game
 
-## 新增
-- 首界面【VersionShower】新增访问人数
+## New Feature
+-【VersionShower】 Number of players using YuET on the main menu
 
-## 优化
-- 首界面【VersionShower】的显示
-- 【首页提示语】文本
+## Optimize
+- 【VersionShower】The display of it on the main menu
+- 【Announcement】Text
