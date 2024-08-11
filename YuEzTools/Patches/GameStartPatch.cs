@@ -165,18 +165,17 @@ public class GameStartManagerPatch
             //if (!AmongUsClient.Instance.AmHost) return;
 
             Logger.Msg($"Create player data: ID {client.Id}: {client.PlayerName}", "CreatePlayer");
-
+            
             if (GetPlayer.isNormalGame)
             {
                 _ = new LateTask(() =>
                 {
-                    if (!AmongUsClient.Instance.IsGameStarted && client.Character != null &&
-                        StartPatch.s != GetString("EndMessage") && Main.isFirstSendEnd)
+                    if (!AmongUsClient.Instance.IsGameStarted && client.Character != null &&  Main.isFirstSendEnd)
                     {
                         Main.isChatCommand = true;
                         Info("发送：结算信息", "JoinPatch");
-                        DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
-                            StartPatch.sc);
+                        DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, 
+                            GetString("EndMessage") + SetEverythingUpPatch.s);
                         Main.isChatCommand = false;
                         Main.isFirstSendEnd = false;
                     }

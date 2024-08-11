@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using YuEzTools.Get;
+using YuEzTools.Modules;
 using static YuEzTools.Translator;
 
 namespace YuEzTools.Patches;
@@ -18,6 +19,7 @@ public static class ShipStatus_FixedUpdate
         var amount = MessageReader.Get(reader).ReadByte();
         if (AntiCheatForAll.RpcUpdateSystemCheck(__instance, systemType, amount)  || (GetPlayer.IsHideNSeek && AntiCheatForAll.RpcUpdateSystemCheckFHS(__instance, systemType, amount)))
         {
+            if(!Main.HackerList.Contains(__instance)) Main.HackerList.Add(__instance);
             Logger.Info("AC 破坏 RPC", "MessageReaderUpdateSystemPatch");
             Main.Logger.LogInfo("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/ProductUserId："+__instance.GetClient().ProductUserId}");
             //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;

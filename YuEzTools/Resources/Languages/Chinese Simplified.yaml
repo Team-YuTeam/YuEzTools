@@ -43,8 +43,7 @@ NotFoundStringInYaml: "没找到"
 # 聊天
 SuspectedViolationMessage: "疑似违规信息"
 MessgaeFromYuET: "== 信息来自YuET模组 =="
-EndMessage: "结算（消息来自YuET）："
-EndMessageC: "结算："
+EndMessage: "结算："
 DefaultSystemMessageTitle: "[YuET消息]"
 Message.Welcome: "我采用了YuEzTools模组\n本房间是在{0}服务器运行的，房间号为{1}\n这不是普通的AmongUs游戏\n祝你游玩愉快，[YuET]持续保护中"
 
@@ -76,6 +75,7 @@ NotLogin: "未登录\n由于您打开了踢出未登录 YuET已尝试封禁"
 unKickNotLogin: "未登录\n请注意，几乎所有的外挂都是未登录！"
 BlackList: "存在于您或YuET的黑名单中"
 notFindRPC: "这是无效的RPC！\n数值：{0}"
+Warning.BombRoomByHacker: "您的房间可能遭到了炸房攻击\n我们已尝试拦截"
 
 # MenuUI.Interface
 Interface: "界面"
@@ -150,26 +150,37 @@ DCNotify.IncorrectVersion: "AU版本都不同，你认为你能进吗？傻瓜(�
 DCNotify.Description: "姐妹！你甚至能被踢？！\n搞笑(*^_^*)\n理由：{0}"
 
 # RoleText
+Crewmate: "船员"
 CrewmateShort: "你是一个普通的小~船员~啊~"
 CrewmateLong: "任务！快去做任务啊！！！\n做任务或投出内鬼以获得胜利"
+Noisemaker: "大嗓门"
 NoisemakerShort: "诶？你敢杀我吗？"
 NoisemakerLong: "被击杀后，敌人会被惩罚哦~\n被击杀后，所有人将获得指向您尸体位置的箭头"
+Scientist: "科学家"
 ScientistShort: "滴嘟~滴嘟~"
 ScientistLong: "我的死亡笔记呢！怎么又没电了\n查看您的平板以获得死人信息"
+Engineer: "工程师"
 EngineerShort: "我...我真的不是内鬼！我有CD！"
 EngineerLong: "使用跳管道的技能以快速移动\n要记住你的管道cd哦~"
+Tracker: "侦察员"
 TrackerShort: "你个色批偷窥狂！"
 TrackerLong: "追踪别人...以发现线索\n但是我怎么找不到人啊！"
+Impostor: "伪装者"
 ImpostorShort: "刀！刀！刀！热血！奋斗！"
 ImpostorLong: "小船员...好可爱\n击杀船员或破坏飞船以获得胜利！"
+Shapeshifter: "变形者"
 ShapeshifterShort: "今天要套上谁的皮套呢？"
 ShapeshifterLong: "好小的皮套 真不舒服！\n变形成其他人以伪造~"
+Phantom: "幻影"
 PhantomShort: "问我在哪？我也不知道呢~嘻嘻"
 PhantomLong: "看不见我 看不见我...\n隐身以逃离现场"
+CrewmateGhost: "船员灵魂"
 CrewmateGhostShort: "惨！怎么死了啊"
 CrewmateGhostLong: "啧啧~死了？\n做任务吧！"
+GuardianAngel: "守护天使"
 GuardianAngelShort: "死后也要保护哦~"
 GuardianAngelLong: "坚守岗位！\n保护你的同伴！"
+ImpostorGhost: "伪装者灵魂"
 ImpostorGhostShort: "能被投出去？真有你的！"
 ImpostorGhostLong: "被投出去了就是逊啦\n破坏以辅助队友"
 
@@ -202,3 +213,12 @@ BiliBiliButton: "B站赞助"
 AfdianButton: "爱发电"
 DevsButton: "开发人员"
 ProjectButton: "Gitee" # If Not Chinese, write Github
+
+# Name
+Hacker: "外挂"
+
+# 死因
+ByKilled: "被 {0} 击杀"
+Exile: "驱逐"
+Disconnect: "掉线"
+Alive: "存活"

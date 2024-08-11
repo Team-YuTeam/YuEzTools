@@ -24,7 +24,7 @@ public class IntroPatch
             var roleType = PlayerControl.LocalPlayer.Data.Role.Role;
             __instance.YouAreText.color = Utils.Utils.GetRoleColor(roleType);
             //__instance.RoleText.text = Utils.Utils.GetRoleName(roleType);
-            __instance.RoleText.color = Utils.Utils.GetRoleColor(roleType);
+            __instance.RoleText.color = Utils.Utils.GetRoleColor32(roleType);
             __instance.RoleText.fontWeight = TMPro.FontWeight.Thin;
             __instance.RoleText.SetOutlineColor(Utils.Utils.ShadeColor(Utils.Utils.GetRoleColor(roleType), 0.1f).SetAlpha(0.38f));
             __instance.RoleText.SetOutlineThickness(0.17f);

@@ -86,6 +86,7 @@ public class Main : BasePlugin
     //public static bool ShowMode = true;//设置揭示模式
     
     public static List<(string, byte, string)> MessagesToSend = new();
+    public static List<PlayerControl> HackerList = new();
 
     public static IEnumerable<PlayerControl> AllAlivePlayerControls =>
         //(PlayerControl.AllPlayerControls == null || PlayerControl.AllPlayerControls.Count == 0) && LoadEnd

@@ -8,6 +8,7 @@ using YuEzTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using YuEzTools.Modules;
 using static YuEzTools.Translator;
 using Exception = Il2CppSystem.Exception;
 
@@ -64,6 +65,10 @@ class OnPlayerJoinedPatch
 [HarmonyPatch(typeof(AmongUsClient),nameof(AmongUsClient.OnPlayerLeft))]
 class OnPlayerLeftPatch{
     public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client){
+        if (GetPlayer.IsInGame)
+        {
+            client.Character.SetDisconnected();
+        }
         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("LeftRoom")}</color>");
         Main.Logger.LogInfo(
             $"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/ProductUserId:{client.ProductUserId}) 退出房间");
@@ -109,9 +114,6 @@ class DisconnectInternalPatch
     {
         ShowDisconnectPopupPatch.Reason = reason;
         ShowDisconnectPopupPatch.StringReason = stringReason;
-
-        StartPatch.s = GetString("EndMessage");
-        StartPatch.sc = GetString("EndMessageC");
         
         Logger.Info($"断开连接(理由:{reason}:{stringReason}，Ping:{__instance.Ping})", "Session");
         if (AmongUsClient.Instance.AmHost && GetPlayer.IsInGame)

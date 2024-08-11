@@ -15,11 +15,71 @@ using System;
 using System.Text;
 using System.Text.RegularExpressions;
 using YuEzTools.Get;
+using YuEzTools.Modules;
 
 namespace YuEzTools.Utils;
 
 public static class Utils
 {
+    public static string GetDeadText(PlayerControl pc)
+    {
+        string color = "#ffffff";
+        string text = "";
+        string alltext = "";
+        switch (pc.GetPlayerData().DeadReason)
+        {
+            case DeadReasonData.Kill:
+                text = string.Format(GetString("ByKilled"),pc.GetPlayerData().Killer.Name);
+                color = "#FF4949";
+                break;
+            case DeadReasonData.Exile:
+                text = GetString("Exile");
+                color = "#49FF85";
+                break;
+            case DeadReasonData.Disconnect:
+                text = GetString("Disconnect");
+                color = "#888888";
+                break;
+            case DeadReasonData.Alive:
+                text = GetString("Alive");
+                color = "#F3FF49";
+                break;
+        }
+
+        alltext = $"<color={color}>{text}</color>";
+        return alltext;
+    }
+    //感谢FSX
+    public static string SummaryTexts(byte id)
+    {
+
+        var thisdata = ModPlayerData.GetModPlayerDataById(id);
+
+        var builder = new StringBuilder();
+        var longestNameByteCount = ModPlayerData.GetLongestNameByteCount();
+
+
+        var pos = Math.Min(((float)longestNameByteCount / 2) + 1.5f, 11.5f);
+        
+        builder.Append(ColorString(thisdata.Color, thisdata.Name));
+
+        builder.AppendFormat("<pos={0}em>", pos).Append(GetDeadText(thisdata.pc)).Append("</pos>");
+        pos += DestroyableSingleton<TranslationController>.Instance.currentLanguage.languageID == SupportedLangs.English ? 14f : 10.5f;
+
+        builder.AppendFormat("<pos={0}em>", pos);
+
+        var oldrole = thisdata.role;
+        var newrole = thisdata.RoleAfterDeath ?? (thisdata.pc.Data.Role.IsImpostor ? RoleTypes.ImpostorGhost : RoleTypes.CrewmateGhost);
+        builder.Append(ColorString(GetRoleColor32(oldrole), GetString($"{oldrole}")));
+
+        if (thisdata.IsDead && newrole != oldrole)
+        {
+            builder.Append($"=> {ColorString(GetRoleColor32(newrole), GetRoleString($"{newrole}"))}");
+        }
+        builder.Append("</pos>");
+
+        return builder.ToString();
+    }
     public static bool HasTasks(PlayerControl p)
     {
         if (GetPlayer.GetPlayerRoleTeam(p) != RoleTeam.Impostor) return true;

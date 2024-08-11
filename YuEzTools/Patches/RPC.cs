@@ -15,6 +15,7 @@ using YuEzTools;
 using System.Net.Http;  
 using System.Threading.Tasks;
 using YuEzTools.Get;
+using YuEzTools.Modules;
 
 namespace YuEzTools;
 
@@ -30,6 +31,7 @@ internal class RPCHandlerPatch
             if (AntiCheatForAll.ReceiveRpc(__instance, callId, reader) || AUMCheat.ReceiveInvalidRpc(__instance, callId,reader) ||
                 SMCheat.ReceiveInvalidRpc(__instance, callId))
             {
+                if(!Main.HackerList.Contains(__instance)) Main.HackerList.Add(__instance);
                 Main.HasHacker = true;
                 Main.Logger.LogInfo("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/ProductUserId："+__instance.GetClient().ProductUserId}");
                 //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;
