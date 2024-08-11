@@ -6,7 +6,7 @@
 #-----------------------------
 ahhhhhhhhhhhhh
 
-## Corresponding Among Us Version
+## Corresponding to Among Us Version
 - Based on AmongUs v2024.6.18
 
 ## Update Summary
