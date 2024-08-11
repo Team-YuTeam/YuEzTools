@@ -1,40 +1,40 @@
 #Number:100017
 #Title:YuEzTools v1.3.5.0
-#SubTitle:★★★★不是哥们★★★★
+#SubTitle:★★★★What???★★★★
 #ShortTitle:★YuET v1.3.5.0
 #Date:2024-08-07T02:00:00Z
 #-----------------------------
-啊啊啊啊啊啊啊啊啊啊
+ahhhhhhhhhhhhh
 
-## 对应官方版本
-- 基于 AmongUs v2024.6.18
+## Corresponding Among Us Version
+- Based on AmongUs v2024.6.18
 
-## 更新总结
-- 修复 2条
-- 新增 11条
-- 优化 6条
+## Update Summary
+- 2 Fixed
+- 11 Added
+- 6 Optimized
 
-## 修复
-- 在非【中国大陆】地区访问2018k导致报错
-- 游戏开始时因为在游戏未正式开始就结束导致的报错
+## Fix
+- Fix bug that caused errors when visiting 2018k at non-【Chinese mainland】 regions
+- Fix bug that the game ended before starting officially which casued errors
 
-## 新增
-- 解锁【所有装扮】
-- 在【游客账户】解锁【自定义名称】
-- 在【游客账户】解锁【好友列表】
-- 在【游客账户】解锁【在线游戏】
-- 解除【未成年人】状态
-- 允许【聊天】发送【邮箱地址】
-- [实验性]【聊天】允许【换行】（`Shift` + `Tab`）
-- 【Ping部分】提示唤出MenuUI
-- 【封禁】和【踢出】按钮
-- 【黑名单】系统
-- 搜索【房间列表】显示房主的【平台】和把【HostName】改成好吃的（有彩蛋哦）
+## New Feature
+- Unlock 【All Cosmetics】
+- Unlock 【Custom Name】 while using a 【Guest Account】
+- Unlock 【Friend List】 while using a 【Guest Account】
+- Unlock 【Online Game】 while using a 【Guest Account】
+- Unlock 【Nonage】 status
+- Allow players to send 【E-mail Address】 while 【Chatting】
+- [Experiment] Allow 【Line Feed】 while 【Chatting】（`Shift` + `Tab`）
+- 【Ping Display Section】Reminder of opening the Menu UI
+- 【Ban】 and 【Kick】 buttons during a game
+- 【Black List】system
+- Show 【Platform】 of the hosts and change 【HostName】 to food (there are surprises) while searching for a 【Public Game】
 
-## 优化
-- 【Ping部分】排版
-- 【首页】按钮颜色
-- 【首页】按钮位置
-- 【首页】按钮文本颜色
-- 【首页】Logo颜色
-- 【首页】隐藏【BarSprite】【SignInStatus】【Toggle_Friend_Code_Button】【friendCode】
+## Optimize
+- 【Ping Display Section】 Composition
+- 【Main Menu】 Button color 
+- 【Main Menu】 Button position
+- 【Main Menu】 Button text color
+- 【Main Menu】 Logo color
+- 【Main Menu】 Hide 【BarSprite】【SignInStatus】【Toggle_Friend_Code_Button】【friendCode】
