@@ -75,7 +75,7 @@ NowImpMoreThan: "The impostor number is larger than the game setting or 3\nThere
 NowHImpMoreThan: "The impostor number is larger than 1\nThere may be hackers or you joined a modded lobby"
 NotLogin: "is not logged in.\n[Ban logged out player] enabled - Trying to ban the player"
 unKickNotLogin: "is not logged in\nPlease play with caution"
-BlackList: "is yours or YuET's Banner"
+BlackList: "is in your or YuET Blacklist"
 
 # MenuUI.Interface
 Interface: "Interface"
@@ -202,3 +202,9 @@ BiliBiliButton: "BiliBili"
 AfdianButton: "Afdian"
 DevsButton: "Developer"
 ProjectButton: "Github" # If Not Chinese, write Github
+
+# 死因 / Death Reason
+DeathReason.Kill: "Killed"
+DeathReason.Exile: "Exiled"
+DeathReason.Disconnect: "Disconnected"
+DataDeathReason.None: "Alive"
