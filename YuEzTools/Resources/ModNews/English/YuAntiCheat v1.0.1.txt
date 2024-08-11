@@ -1,19 +1,20 @@
 #Number:100003
 #Title:YuAntiCheat v1.0.1
-#SubTitle:★★★★The will end version★★★★
+#SubTitle:★★★★The Dawn Before Collapse★★★★
 #ShortTitle:★YuAC v1.0.1
 #Date:2024-04-21T00:00:00Z
 #-----------------------------
-Thank you very much
+Thank you for your support !!!
 
-## Based
-- On AmongUs v2024.3.5
+## Corresponding to Among Us Version
+- Based on AmongUs v2024.3.5
 
-## Update Summary:
-- Added 1 items
-- Fixed 1
+## Update Summary
+- 1 Added
+- 1 Fixed
 
 ## Fixed
-- Banning non-cheats and kicking out hosts
-## Added
-- Homeowners reveal cheats
+- Banning non-cheaters and kicking out hosts
+
+## New Feature
+- Hosts reveal cheaters
