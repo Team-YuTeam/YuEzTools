@@ -57,6 +57,12 @@ class OnPlayerJoinedPatch
             Logger.Info($"{client?.PlayerName}黑名单 已踢出", "Kick");
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
             SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
+            return;
+        }
+        if (AmongUsClient.Instance.AmHost)
+        {
+            Main.JoinedPlayer.Add(client.Character);
+            return;
         }
         //Utils.Utils.SendMessageForEveryone("测试 看得到的请回复1");
         //Utils.Utils.SendMessageAsPlayerImmediately(__instance.PlayerPrefab, "测试，看得到的请回复1");
@@ -68,6 +74,10 @@ class OnPlayerLeftPatch{
         if (GetPlayer.IsInGame)
         {
             client.Character.SetDisconnected();
+        }
+        if (AmongUsClient.Instance.AmHost)
+        {
+            Main.JoinedPlayer.Remove(client.Character);
         }
         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("LeftRoom")}</color>");
         Main.Logger.LogInfo(

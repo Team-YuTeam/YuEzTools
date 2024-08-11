@@ -31,6 +31,16 @@ internal class AntiCheatForAll
         {
             MessageReader sr = MessageReader.Get(reader);
             var rpc = (RpcCalls)callId;
+            if (callId is 7 or 5 or 41 or 39 or 40 or 42 or 43 or 38)
+            {
+                
+            }
+            else
+            {
+                SendInGamePatch.SendInGame(string.Format(GetString("notJoinedSendRPC"),callId,pc.GetRealName()));
+                Logger.Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】未进入但发送RPC，无效！！！，已驳回","ACFA");
+                return true;
+            }
             if (!Enum.IsDefined(typeof(RpcCalls), callId))
             {
                 SendInGamePatch.SendInGame(string.Format(GetString("notFindRPC"),callId));

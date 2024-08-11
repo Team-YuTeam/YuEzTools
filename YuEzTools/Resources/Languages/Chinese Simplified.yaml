@@ -75,7 +75,7 @@ NotLogin: "未登录\n由于您打开了踢出未登录 YuET已尝试封禁"
 unKickNotLogin: "未登录\n请注意，几乎所有的外挂都是未登录！"
 BlackList: "存在于您或YuET的黑名单中"
 notFindRPC: "这是无效的RPC！\n数值：{0}"
-Warning.BombRoomByHacker: "您的房间可能遭到了炸房攻击\n我们已尝试拦截"
+notJoinedSendRPC: "{1}未进入却发送了RPC\n数值：{0}"
 
 # MenuUI.Interface
 Interface: "界面"
