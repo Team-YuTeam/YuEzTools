@@ -76,8 +76,6 @@ class OnPlayerJoinedPatch
             Main.JoinedPlayer.Add(client.Character);
             return;
         }
-        //Utils.Utils.SendMessageForEveryone("测试 看得到的请回复1");
-        //Utils.Utils.SendMessageAsPlayerImmediately(__instance.PlayerPrefab, "测试，看得到的请回复1");
     }
 }
 [HarmonyPatch(typeof(AmongUsClient),nameof(AmongUsClient.OnPlayerLeft))]
