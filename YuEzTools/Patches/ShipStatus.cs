@@ -16,6 +16,7 @@ public static class ShipStatus_FixedUpdate
 {
     public static bool Prefix(ShipStatus player, [HarmonyArgument(0)] SystemTypes systemType, [HarmonyArgument(1)] PlayerControl __instance, [HarmonyArgument(2)] MessageReader reader)
     {
+        if (!Toggles.EnableAntiCheat) return true;
         var amount = MessageReader.Get(reader).ReadByte();
         if (AntiCheatForAll.RpcUpdateSystemCheck(__instance, systemType, amount)  || (GetPlayer.IsHideNSeek && AntiCheatForAll.RpcUpdateSystemCheckFHS(__instance, systemType, amount)))
         {

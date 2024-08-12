@@ -23,7 +23,7 @@ public class SendChat
         if (Toggles.SafeMode && !AmongUsClient.Instance.AmHost)
         {
             SendInGamePatch.SendInGame(string.Format(Translator.GetString("AmnotHostSafeSeeHacker"), __instance.GetRealName()));
-            Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
+            Main.Logger.LogInfo($"已尝试封禁 {__instance.GetRealName()}");
             return;
         }
         else if(!Toggles.SafeMode && !AmongUsClient.Instance.AmHost)

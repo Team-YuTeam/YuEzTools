@@ -1,32 +1,32 @@
 #Number:100013
 #Title:YuEzTools v1.2.0.0
-#SubTitle:★★★★这就是大版本了？！★★★★
+#SubTitle:★★★★So This is a Large Update?!★★★★
 #ShortTitle:★YuET v1.2.0.0
 #Date:2024-08-04T00:00:00Z
 #-----------------------------
-感谢您对YuTeam的支持！！！
+Thank you for your support !!!
 
-## 对应官方版本
-- 基于 AmongUs v2024.6.18
+## Corresponding to Among Us Version
+- Based on AmongUs v2024.6.18
 
-## 更新总结：
-- 优化 4条
-- 删除 1条
-- 新增 6条
+## Update Summary
+- 4 Optimized
+- 1 Deleted
+- 6 Added
 
-## 优化
-- Ping显示内容
-- 房主YuET抓捕外挂后判定逻辑
-- 终局信息发送系统
-- YuET系统消息的颜色
+## Optimize
+- Ping display section
+- The judging logic after a host detects a hacker
+- Role summary sending system
+- Color of YuET system messages
 
-## 删除
-- 满14人自动开始游戏
+## Delete
+- Automatically start game when the amount of players in the lobby reaches 14
 
-## 新增
-- 托管(GM)模式
-- +25模式下的进入提示语
-- 愚人节模式（长颈鹿和马）
-- 首页赞助按钮
-- 公告赞助按钮
-- 更新日志显示在AmongUs公告里
+## New Feature
+- GM Mode
+- Reminder while using +25 Mode and entering a lobby
+- April Fools (Horse Mode and Long Mode)
+- Sponsor button on the main menu
+- Sponsor button in the announcement
+- Show mod news in Among Us announcement

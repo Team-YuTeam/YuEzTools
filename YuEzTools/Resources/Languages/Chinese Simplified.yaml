@@ -100,6 +100,8 @@ MenuUI.AntiCheat: "反作弊"
 MenuUI.SafeMode: "安全模式"
 MenuUI.AutoExit: "防止炸端"
 MenuUI.KickNotLogin: "封禁未登录"
+MenuUI.EnableAntiCheat: "启用反作弊"
+MenuUI.AntiCheat.ModMode: "+25（模组模式）"
 
 # MenuUI.ShortcutButton
 MenuUI.ShortcutButton: "快捷按钮"
@@ -222,3 +224,7 @@ ByKilled: "被 {0} 击杀"
 Exile: "驱逐"
 Disconnect: "掉线"
 Alive: "存活"
+
+# 反作弊&+25的乱斗
+CanNotHostGame: "您当前选择了+25模式，无法创建房间\n若您已更改，清点击左下角返回首页后重新进入"
+CanNotJoinGame: "您当前选择了+25模式且启用了反作弊，无法通过房间号加入房间\n若您已更改，清点击左下角返回首页后重新进入"

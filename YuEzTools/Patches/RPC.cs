@@ -26,6 +26,7 @@ internal class RPCHandlerPatch
         [HarmonyArgument(1)] MessageReader reader)
     {
         Main.Logger.LogMessage("From " +__instance.GetRealName() + "'s RPC:" + callId);
+        if (!Toggles.EnableAntiCheat) return true;
         try
         {
             if (AntiCheatForAll.ReceiveRpc(__instance, callId, reader) || AUMCheat.ReceiveInvalidRpc(__instance, callId,reader) ||
@@ -76,11 +77,5 @@ internal class RPCHandlerPatch
             return true;
         }
         return true;
-    }
-
-    public static void Try_to_ban(PlayerControl pc)
-    {
-        for(int i = 0;i <= 200;i++)
-            MurderHacker.murderHacker(pc,MurderResultFlags.Succeeded);
     }
 }

@@ -1,29 +1,29 @@
 #Number:100012
 #Title:YuEzTools v1.1.3.0
-#SubTitle:★★★★YuET来咯~！★★★★
+#SubTitle:★★★★YuET Coming~!★★★★
 #ShortTitle:★YuET v1.1.3.0
 #Date:2024-07-30T00:00:00Z
 #-----------------------------
-感谢您对YuTeam的支持！！！
+Thank you for your support !!!
 
-## 对应官方版本
-- 基于 AmongUs v2024.6.18
+## Corresponding to Among Us Version
+- Based on AmongUs v2024.6.18
 
-## 更新总结：
-- 新增 5条
-- 修复 2条
-- 重写 1条
+## Update Summary
+- 5 Added
+- 2 Fixed
+- 1 Rewrote
 
-## 新增
-- 关闭/启用大厅音乐
-- +25模式下向别的玩家发送倒计时
-- 私服
-- 服务器选择界面滑动
-- 被踢出/ban等的提示
+## New Feature
+- Disable/Enable lobby music
+- Send countdown to other players under +25 Mode
+- Custom servers
+- Rolling up and down in the server list
+- Reminder after being kicked, banned, etc
 
-## 修复
-- MenuUI只能用中文的Bug
-- 一些bug
+## Fixed
+- Fixed bug that Menu UI is always SChinese
+- Some other bugs
 
-## 重写
-- Ping部分
+## Rewrote
+- Ping display section

@@ -20,6 +20,7 @@ public class Toggles
     public static bool ShowGM = true;
 
     // 反作弊
+    public static bool EnableAntiCheat = true;
     public static bool SafeMode = true;
     public static bool AutoExit = true;
     public static bool KickNotLogin = true;

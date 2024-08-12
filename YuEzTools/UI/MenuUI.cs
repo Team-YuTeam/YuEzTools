@@ -50,6 +50,8 @@ public class MenuUI : MonoBehaviour
             groups.Clear();
             groups.Add(new GroupInfo(Translator.GetString("MenuUI.AntiCheat"), false, new List<ToggleInfo>()
                 {
+                    new ToggleInfo(Translator.GetString("MenuUI.EnableAntiCheat"), () => Toggles.EnableAntiCheat,
+                        x => Toggles.EnableAntiCheat = x),
                     new ToggleInfo(Translator.GetString("MenuUI.AutoExit"), () => Toggles.AutoExit,
                         x => Toggles.AutoExit = x),
                     new ToggleInfo(Translator.GetString("MenuUI.KickNotLogin"), () => Toggles.KickNotLogin,
