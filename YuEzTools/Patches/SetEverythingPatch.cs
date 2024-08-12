@@ -23,7 +23,20 @@ internal class CoStartGamePatch
     public static void Postfix()
     {
         GameModuleInitializerAttribute.InitializeAll();
-
+        if (AmongUsClient.Instance.AmHost && Main.HasHacker)
+        {
+            Logger.Info("Host Try end game with room " +
+                        GameStartManager.Instance.GameRoomNameCode.text,"StartPatch");
+            try
+            {
+                GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.ToString(), "StartPatch");
+            }
+            Main.HasHacker = false;
+        }
     }
 }
 
@@ -65,20 +78,7 @@ class StartPatch
     [HarmonyPatch(nameof(IntroCutscene.CoBegin)), HarmonyPostfix]
     public static void Postfix()
     {
-        if (AmongUsClient.Instance.AmHost && Main.HasHacker)
-        {
-            Logger.Info("Host Try end game with room " +
-                                GameStartManager.Instance.GameRoomNameCode.text,"StartPatch");
-            try
-            {
-                GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e.ToString(), "StartPatch");
-            }
-            Main.HasHacker = false;
-        }
+        
     }
 }
 
