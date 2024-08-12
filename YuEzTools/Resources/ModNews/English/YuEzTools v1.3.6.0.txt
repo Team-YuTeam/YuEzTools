@@ -1,0 +1,37 @@
+#Number:100019
+#Title:YuEzTools v1.3.6.0
+#SubTitle:★★★★I hate some Chinese players★★★★★
+#ShortTitle:★YuET v1.3.5.2
+#Date:2024-08-09T00:00:00Z
+#-----------------------------
+Thanks!
+
+## Corresponding to Among Us Version
+- Based on AmongUs v2024.6.18
+
+## Update Summary
+- 3 Fixed
+- 11 Added
+- 2 Optimized
+
+## Fixed
+- [The Main Button] Wrong position
+- Not [Chinese] [Welcome Text] Button Wrong link
+- Wrong Cheat Report on meeting
+
+## Added
+- If you died, you can see other players' role
+- If you died, you can see other players' death reason
+- Your role will show on your head
+- The End Summary show players' death reason
+- The End Summary show players' role change
+- The End Summary show players' color with their name
+- [Test] Check NotJoinedPlayer Send RPCs
+- Enable/Disable the Anti-Cheat
+- In the +25 Mode, you won't create the room
+- In the +25 Mode and the Anti-Cheat is Enable, you won't to joined the room with search
+- The [Hacker] will show near the Hacker's name
+
+## Optimized
+- [UnSafe] in the +25 mode try to kick hackers
+- [+25] Mode in the room won't change

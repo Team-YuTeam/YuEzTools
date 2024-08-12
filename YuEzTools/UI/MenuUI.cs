@@ -37,6 +37,7 @@ public class MenuUI : MonoBehaviour
         if (GetPlayer.isPlayer)
         {
             Toggles.ServerAllHostOrNoHost = GameStartManagerPatch.roomMode == RoomMode.Normal ? false : true;
+            Toggles.EnableAntiCheat = GameStartManagerPatch.EnableAC;
         }
         
         if (isGUIActive) firstoOpenMenuUI = false;

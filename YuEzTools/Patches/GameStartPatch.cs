@@ -156,6 +156,7 @@ public class GameStartManagerPatch
     }
 
     public static RoomMode roomMode = RoomMode.Normal;
+    public static bool EnableAC = true;
     [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.CreatePlayer))]
     class CreatePlayerPatch
     {
@@ -166,6 +167,7 @@ public class GameStartManagerPatch
             if (client.Id == AmongUsClient.Instance.ClientId)
             {
                 roomMode = Toggles.ServerAllHostOrNoHost ? RoomMode.Plus25 : RoomMode.Normal;
+                EnableAC = Toggles.EnableAntiCheat;
                 Info($"玩家被创建了，当前房间模式 {roomMode.ToString()}","CreatePlayer");
             }
             
