@@ -16,6 +16,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using YuEzTools.Get;
 using YuEzTools.Modules;
+using YuEzTools.Patches;
 
 namespace YuEzTools;
 
@@ -37,12 +38,11 @@ internal class RPCHandlerPatch
                 Main.Logger.LogInfo("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/ProductUserId："+__instance.GetClient().ProductUserId}");
                 //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;
                 SendChat.Prefix(__instance);
-                if(!Toggles.SafeMode && !AmongUsClient.Instance.AmHost)
+                if(!Toggles.SafeMode && !AmongUsClient.Instance.AmHost && GameStartManagerPatch.roomMode == RoomMode.Plus25)
                 {
-                    Main.Logger.LogInfo("Try Murder" + __instance.GetRealName());
-                    //__instance.RpcSendChat($"{Main.ModName}检测到我是外挂 并且正在尝试踢出我 [来自{AmongUsClient.Instance.PlayerPrefab.GetRealName()}的{Main.ModName}]");
-                    //Try_to_ban(__instance);
-                    MurderHacker.murderHacker(__instance,MurderResultFlags.Succeeded);
+                    Main.Logger.LogInfo("Try Kick" + __instance.GetRealName());
+                    KickHackerPatch.KickPlayer(__instance);
+     
                     return false;
                 }
                 //PlayerControl Host = AmongUsClient.Instance.GetHost();

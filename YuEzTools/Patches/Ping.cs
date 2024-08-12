@@ -74,7 +74,7 @@ internal class PingTrackerUpdatePatch
 
         if (Toggles.ShowIsDark)
         {
-            if (!Toggles.ShowIsSafe) sb.Append($"\r\n");
+            if (!Toggles.ShowIsSafe || !Toggles.ServerAllHostOrNoHost) sb.Append($"\r\n");
             if (Toggles.DarkMode)
                 sb.Append("<color=#00BFFF>[Dark]</color>");
             else
@@ -83,7 +83,7 @@ internal class PingTrackerUpdatePatch
 
         if (Toggles.ShowIsAutoExit)
         {
-            if (!Toggles.ShowIsSafe && !Toggles.ShowIsDark) sb.Append($"\r\n");
+            if ((!Toggles.ShowIsSafe && !Toggles.ShowIsDark )|| !Toggles.ServerAllHostOrNoHost) sb.Append($"\r\n");
             sb.Append(Toggles.AutoExit
                 ? "<color=#1E90FF>[AutoExit]</color>"
                 : "<color=#DC143C>[UnAutoExit]</color>");
@@ -146,10 +146,3 @@ internal class PingTrackerUpdatePatch
             pingTrackerCredential.text = "";
     }
 }
-
-/*
-ToDo：
-1.启用/关闭反作弊（默认启用）
-2.UnSafe改为+25模式下尝试kick人
-3.若打开+25模式且启用反作弊 则禁用搜索房间号
-*/

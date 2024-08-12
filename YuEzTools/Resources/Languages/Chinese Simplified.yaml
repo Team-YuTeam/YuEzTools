@@ -43,7 +43,6 @@ NotFoundStringInYaml: "没找到"
 # 聊天
 SuspectedViolationMessage: "疑似违规信息"
 MessgaeFromYuET: "== 信息来自YuET模组 =="
-EndMessage: "结算："
 DefaultSystemMessageTitle: "[YuET消息]"
 Message.Welcome: "我采用了YuEzTools模组\n本房间是在{0}服务器运行的，房间号为{1}\n这不是普通的AmongUs游戏\n祝你游玩愉快，[YuET]持续保护中"
 
@@ -151,7 +150,7 @@ DCNotify.GameFull: "这个家里可没你的位置呢~\n房间满了，是不是
 DCNotify.IncorrectVersion: "AU版本都不同，你认为你能进吗？傻瓜(◍´ಲ`◍)"
 DCNotify.Description: "姐妹！你甚至能被踢？！\n搞笑(*^_^*)\n理由：{0}"
 
-# RoleText
+# Role
 Crewmate: "船员"
 CrewmateShort: "你是一个普通的小~船员~啊~"
 CrewmateLong: "任务！快去做任务啊！！！\n做任务或投出内鬼以获得胜利"
@@ -228,3 +227,6 @@ Alive: "存活"
 # 反作弊&+25的乱斗
 CanNotHostGame: "您当前选择了+25模式，无法创建房间\n若您已更改，清点击左下角返回首页后重新进入"
 CanNotJoinGame: "您当前选择了+25模式且启用了反作弊，无法通过房间号加入房间\n若您已更改，清点击左下角返回首页后重新进入"
+
+# 结算
+EndMessage: "结算："

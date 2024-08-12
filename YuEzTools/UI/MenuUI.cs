@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using YuEzTools.Utils;
 using HarmonyLib;
 using YuEzTools.Get;
+using YuEzTools.Patches;
 
 namespace YuEzTools.UI;
 public class MenuUI : MonoBehaviour
@@ -33,17 +34,11 @@ public class MenuUI : MonoBehaviour
             windowRect.position = new Vector2(mousePosition.x, Screen.height - mousePosition.y);
         }
 
-        // if (Toggles.HorseMode)
-        // {
-        //     foreach (var pc in PlayerControl.AllPlayerControls)
-        //     {
-        //         pc.MyPhysics.SetBodyType(pc.BodyType);
-        //         if (pc.BodyType == PlayerBodyTypes.Normal)
-        //         {
-        //             pc.cosmetics.currentBodySprite.BodySprite.transform.localScale = new(0.5f, 0.5f, 1f);
-        //         }
-        //     }
-        // }
+        if (GetPlayer.isPlayer)
+        {
+            Toggles.ServerAllHostOrNoHost = GameStartManagerPatch.roomMode == RoomMode.Normal ? false : true;
+        }
+        
         if (isGUIActive) firstoOpenMenuUI = false;
         if(!isGUIActive)
         {

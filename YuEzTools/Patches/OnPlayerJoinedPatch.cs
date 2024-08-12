@@ -65,7 +65,6 @@ class OnPlayerJoinedPatch
             Logger.Info($"{client?.PlayerName}黑名单 已揭示/踢出", "OnPlayerJoined");
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
             SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
-            return;
         }
     }
 
@@ -216,13 +215,5 @@ public class LobbyBehaviourPatch
             if (MapThemeSound != null) return;
             SoundManager.Instance.CrossFadeSound("MapTheme", __instance.MapTheme, 0.5f);
         }
-    }
-}
-
-[HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.CreatePlayer))]
-class CreatePlayerPatch
-{
-    public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
-    {
     }
 }

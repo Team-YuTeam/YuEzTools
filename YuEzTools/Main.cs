@@ -151,3 +151,10 @@ public enum RoleTeam
     Impostor,
     Error
 }
+
+public enum RoomMode
+{
+    Normal,
+    Plus25,
+    Error
+}

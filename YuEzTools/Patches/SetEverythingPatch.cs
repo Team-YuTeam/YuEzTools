@@ -11,7 +11,6 @@ using YuEzTools.UI;
 using UnityEngine;
 using YuEzTools.Attributes;
 using static YuEzTools.Translator;
-using YuEzTools.Templates;
 using YuEzTools.Get;
 using static YuEzTools.Logger;
 
