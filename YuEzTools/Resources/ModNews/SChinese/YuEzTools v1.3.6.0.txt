@@ -1,7 +1,7 @@
 #Number:100019
 #Title:YuEzTools v1.3.6.0
 #SubTitle:★★★★我讨厌做模组★★★★★
-#ShortTitle:★YuET v1.3.5.2
+#ShortTitle:★YuET v1.3.6.0
 #Date:2024-08-09T00:00:00Z
 #-----------------------------
 多么好的版本
