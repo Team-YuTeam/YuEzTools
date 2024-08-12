@@ -169,7 +169,7 @@ internal class AntiCheatForAll
 
                 case RpcCalls.StartMeeting:
                     MeetingTimes++;
-                    if ((GetPlayer.IsMeeting && MeetingTimes > 3) || GetPlayer.IsLobby || GetPlayer.isHideNSeek)
+                    if (GetPlayer.IsLobby || GetPlayer.isHideNSeek)
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法召集会议：【null】，已驳回");
                         return true;
@@ -302,7 +302,7 @@ internal class AntiCheatForAll
 
                 case 11:
                     MeetingTimes++;
-                    if ((GetPlayer.IsMeeting && MeetingTimes > 3) || GetPlayer.IsLobby  || GetPlayer.isHideNSeek)
+                    if (GetPlayer.IsLobby  || GetPlayer.isHideNSeek)
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法召集会议：【null】，已驳回");
                         return true;

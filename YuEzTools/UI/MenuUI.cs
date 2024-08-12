@@ -50,14 +50,19 @@ public class MenuUI : MonoBehaviour
             groups.Clear();
             groups.Add(new GroupInfo(Translator.GetString("MenuUI.AntiCheat"), false, new List<ToggleInfo>()
                 {
-                    new ToggleInfo(Translator.GetString("MenuUI.SafeMode"), () => Toggles.SafeMode,
-                        x => Toggles.SafeMode = x),
                     new ToggleInfo(Translator.GetString("MenuUI.AutoExit"), () => Toggles.AutoExit,
                         x => Toggles.AutoExit = x),
                     new ToggleInfo(Translator.GetString("MenuUI.KickNotLogin"), () => Toggles.KickNotLogin,
                         x => Toggles.KickNotLogin = x),
                 }, new List<SubmenuInfo>
                 {
+                    new SubmenuInfo(Translator.GetString("MenuUI.AntiCheat.ModMode"), false, new List<ToggleInfo>()
+                        {
+                            new ToggleInfo(Translator.GetString("MenuUI.ServerAllHostOrNoHost"),
+                                () => Toggles.ServerAllHostOrNoHost, x => Toggles.ServerAllHostOrNoHost = x),
+                            new ToggleInfo(Translator.GetString("MenuUI.SafeMode"), () => Toggles.SafeMode,
+                                x => Toggles.SafeMode = x),
+                        }),
 
                 }
             ));
@@ -133,8 +138,6 @@ public class MenuUI : MonoBehaviour
                                 x => Toggles.AutoStartGame = x),
                             new ToggleInfo(Translator.GetString("MenuUI.AbolishDownTimer"),
                                 () => Toggles.AbolishDownTimer, x => Toggles.AbolishDownTimer = x),
-                            new ToggleInfo(Translator.GetString("MenuUI.ServerAllHostOrNoHost"),
-                                () => Toggles.ServerAllHostOrNoHost, x => Toggles.ServerAllHostOrNoHost = x),
                         }),
                 }
             ));

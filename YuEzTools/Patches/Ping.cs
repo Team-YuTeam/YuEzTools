@@ -64,7 +64,7 @@ internal class PingTrackerUpdatePatch
 
         sb.Append("<size=60%>");
         
-        if (Toggles.ShowIsSafe)
+        if (Toggles.ShowIsSafe && Toggles.ServerAllHostOrNoHost)
         {
             if (Toggles.SafeMode)
                 sb.Append($"\r\n").Append($"<color=#DC143C>[Safe]</color>");
