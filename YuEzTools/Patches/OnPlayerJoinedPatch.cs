@@ -20,6 +20,18 @@ class OnPlayerJoinedPatch
     //private static int CID;
     public static void Prefix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
     {
+        if (client == null)
+        {
+            Logger.Info(
+                $"空加入,Client == null","OnPlayerJoined");
+            if (AmongUsClient.Instance.AmHost)
+            {
+                AmongUsClient.Instance.KickPlayer(client.Id,true);
+                Logger.Info(
+                    $"空加入,Client == null,已尝试ban","OnPlayerJoined");
+            }
+            return;
+        }
         Main.Logger.LogInfo(
             $"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/ProductUserId:{client.ProductUserId}) 加入房间");
         GetPlayer.numImpostors = 0;
@@ -50,7 +62,7 @@ class OnPlayerJoinedPatch
         if (Utils.Utils.CheckBanList(client.FriendCode,client?.ProductUserId) || Utils.Utils.CheckBanner(client.FriendCode,client?.ProductUserId) || Utils.Utils.CheckFirstBanList(client.FriendCode))
         {
             if(AmongUsClient.Instance.AmHost) AmongUsClient.Instance.KickPlayer(client.Id, true);
-            Logger.Info($"{client?.PlayerName}黑名单 已踢出", "Kick");
+            Logger.Info($"{client?.PlayerName}黑名单 已揭示/踢出", "OnPlayerJoined");
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
             SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
             return;
