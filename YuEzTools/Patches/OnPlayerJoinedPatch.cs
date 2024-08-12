@@ -32,10 +32,6 @@ class OnPlayerJoinedPatch
         }
         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
         SendInGamePatch.SendInGame($"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
-    }
-
-    public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
-    {
         if (AmongUsClient.Instance.AmHost && client.FriendCode == "" && Toggles.KickNotLogin)
         {
             // 你知道的 Login是这样的
@@ -59,6 +55,10 @@ class OnPlayerJoinedPatch
             SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
             return;
         }
+    }
+
+    public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
+    {
         if (AmongUsClient.Instance.AmHost)
         {
             Main.JoinedPlayer.Add(client.Character);
