@@ -1,0 +1,16 @@
+#Number:100020
+#Title:YuEzTools v1.3.6.1
+#SubTitle:★★★★Very Bug★★★★★
+#ShortTitle:★YuET v1.3.6.1
+#Date:2024-08-09T00:00:00Z
+#-----------------------------
+多么无语的版本
+
+## Corresponding to Among Us Version
+- Based on AmongUs v2024.6.18
+
+## Update Summary
+- 1 Fixed
+
+## Fixed
+- [NotJoined] Check
