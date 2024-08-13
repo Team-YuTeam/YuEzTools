@@ -35,7 +35,7 @@ internal class RPCHandlerPatch
             {
                 if(!Main.HackerList.Contains(__instance)) Main.HackerList.Add(__instance);
                 Main.HasHacker = true;
-                Main.Logger.LogInfo("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/ProductUserId："+__instance.GetClient().ProductUserId}");
+                Logger.Fatal("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/ProductUserId："+__instance.GetClient().ProductUserId}","RPCHandle");
                 //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;
                 SendChat.Prefix(__instance);
                 if(!Toggles.SafeMode && !AmongUsClient.Instance.AmHost && GameStartManagerPatch.roomMode == RoomMode.Plus25)
@@ -73,7 +73,7 @@ internal class RPCHandlerPatch
         catch
         {
             // SendInGamePatch.SendInGame(Translator.GetString("ERROR.CHECKRPC"));
-            Logger.Error("[ERROR]可能有外挂或模组问题","RPC");
+            Logger.Warn("[Info or ERROR]可能是模组问题或者正常的RPC","RPC");
             return true;
         }
         return true;

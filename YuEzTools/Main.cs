@@ -146,6 +146,8 @@ public class Main : BasePlugin
         Harmony.PatchAll();
         if (ModMode != 0) ConsoleManager.DetachConsole();
         else ConsoleManager.CreateConsole();
+        
+        DevManager.Init();
         //模组加载好了标语
         YuEzTools.Logger.Msg("========= YuET loaded! =========", "YuET Plugin Load");
     }

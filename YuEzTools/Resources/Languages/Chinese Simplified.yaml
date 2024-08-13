@@ -202,10 +202,11 @@ Android: "安卓"
 Platforms.Unknown: "未知"
 ToCloseThisRoom: "距离强制关闭这个房间还剩："
 
-# 开发者展示
+# Devs
 DevsTitle: "本项目的开发者们"
 MainDev: "主要开发者"
-Dev: "开发者"
+Developer: "开发者"
+NotJob: "无职业"
 
 # 主界面按钮
 InviteButton: "QQ群" # If Not Chinese, write Discord

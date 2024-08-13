@@ -205,7 +205,7 @@ ToCloseThisRoom: "Timer to close this room："
 # Developer display (translated once again)
 DevsTitle: "Developers of this project"
 MainDev: "Main developer"
-Dev: "Developer"
+Developer: "Developer"
 
 # 主界面按钮
 InviteButton: "Discord" # If Not Chinese, write Discord

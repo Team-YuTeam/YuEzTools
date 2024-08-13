@@ -2,7 +2,7 @@
 #Title:YuEzTools v1.3.6.0
 #SubTitle:★★★★I hate some Chinese players★★★★★
 #ShortTitle:★YuET v1.3.6.0
-#Date:2024-08-09T00:00:00Z
+#Date:2024-08-13T00:00:00Z
 #-----------------------------
 Thanks!
 

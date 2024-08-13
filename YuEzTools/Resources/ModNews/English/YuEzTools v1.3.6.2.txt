@@ -1,0 +1,21 @@
+#Number:100021
+#Title:YuEzTools v1.3.6.2
+#SubTitle:★★★★Among Us likes money★★★★★
+#ShortTitle:★YuET v1.3.6.2
+#Date:2024-08-14T00:00:00Z
+#-----------------------------
+What a bad update
+
+## Corresponding to Among Us Version
+- Based on AmongUs v2024.8.13
+
+## Update Summary
+- 2 Fixed
+- 1 Added
+
+## Fixed
+- On AmongUs v[2024.8.13], Create room will make the host kicked by amongus's AntiCheat
+- Fixed a exiled about new version
+
+## Added
+- Server add XiaoLu server

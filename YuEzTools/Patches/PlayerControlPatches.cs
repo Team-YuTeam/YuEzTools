@@ -1,4 +1,5 @@
 using HarmonyLib;
+using TMPro;
 using YuEzTools.Get;
 using YuEzTools.Modules;
 using static YuEzTools.Translator;
@@ -28,6 +29,12 @@ class FixedUpdatePatch
         var color ="#ffffff";
         var name = __instance.GetRealName();
 
+        if (GetPlayer.IsLobby)
+        {
+            if (__instance.FriendCode.IsDevUser())
+                name = __instance.FriendCode.GetDevUser().GetTag() + name;
+        }
+
         if (GetPlayer.IsInGame)
         {
             color = Utils.Utils.GetRoleHtmlColor(__instance.Data.RoleType);
@@ -43,5 +50,6 @@ class FixedUpdatePatch
         }
         
         __instance.cosmetics.nameText.text = name;
+        __instance.cosmetics.nameText.alignment = TextAlignmentOptions.Center;
     }
 }

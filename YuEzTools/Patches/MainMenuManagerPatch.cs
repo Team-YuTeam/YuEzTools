@@ -164,13 +164,17 @@ public class MainMenuManagerPatch
         if (ProjectButton == null) ProjectButton = CreatButton("ProjectButton", () => Application.OpenURL(ProjectLink));
         ProjectButton.gameObject.SetActive(true);
         ProjectButton.name = "YuET Project Button";
-        
+
+        var s = "";
         if (DevsButton == null) DevsButton = CreatButton("DevsButton", () =>
         {
+            foreach (var dev in DevManager.DevUserList)
+            {
+                if (dev.Jobs != "NotJob")
+                    s += $"<color={dev.Color}>{dev.Name}</color> => <size=60%>{GetString(dev.Jobs)}</size>\n";
+            }
             CustomPopup.Show(GetString("DevsTitle"),
-                $"<color=#fffcbe>Yu</color> → <size=60%>{GetString("MainDev")}</size>\n" +
-                $"<color=#0090f4>Mousse</color> → <size=60%>{GetString("Dev")}</size>\n"
-                // 有待添加
+                s
                 , new()
                 {
                     (Translator.GetString(StringNames.Okay), null)
