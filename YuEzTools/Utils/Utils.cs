@@ -21,6 +21,41 @@ namespace YuEzTools.Utils;
 
 public static class Utils
 {
+    public static Dictionary<string, Sprite> CachedSprites = new Dictionary<string, Sprite>();
+    public static Sprite LoadSprite(string path, float pixelsPerUnit = 1f)
+    {
+        try
+        {
+            if (CachedSprites.TryGetValue(path + pixelsPerUnit, out var sprite)) return sprite;
+            Texture2D texture = LoadTextureFromResources(path);
+            sprite = Sprite.Create(texture, new(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f), pixelsPerUnit);
+            sprite.hideFlags |= HideFlags.HideAndDontSave | HideFlags.DontSaveInEditor;
+            return CachedSprites[path + pixelsPerUnit] = sprite;
+        }
+        catch
+        {
+            Logger.Error($"Failed to read Texture： {path}", "LoadSprite");
+        }
+        return null;
+    }
+    public static Texture2D LoadTextureFromResources(string path)
+    {
+        try
+        {
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path);
+            var texture = new Texture2D(1, 1, TextureFormat.ARGB32, false);
+            using MemoryStream ms = new();
+            stream.CopyTo(ms);
+            ImageConversion.LoadImage(texture, ms.ToArray(), false);
+            return texture;
+        }
+        catch
+        {
+            Logger.Error($"Failed to read Texture： {path}", "LoadTextureFromResources");
+        }
+        return null;
+    }
+    
     public static string GetDeadText(PlayerControl pc)
     {
         string color = "#ffffff";
@@ -279,6 +314,7 @@ public static class Utils
             0 => new(-27f, 3.3f), // The Skeld
             1 => new(-11.4f, 8.2f), // MIRA HQ
             2 => new(42.6f, -19.9f), // Polus
+            3 => new Vector2(27f, 3.3f), // dlekS ehT
             4 => new(-16.8f, -6.2f), // Airship
             5 => new(9.4f, 17.9f), // The Fungle
             _ => throw new System.NotImplementedException(),

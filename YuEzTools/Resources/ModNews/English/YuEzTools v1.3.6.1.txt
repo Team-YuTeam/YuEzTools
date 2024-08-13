@@ -11,7 +11,11 @@
 
 ## Update Summary
 - 2 Fixed
+- 1 Added
 
 ## Fixed
 - [NotJoined] Check
 - [Summary]Not rewrite
+
+## Added
+- New Map！Dleks Eht

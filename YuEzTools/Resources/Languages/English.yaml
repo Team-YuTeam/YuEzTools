@@ -34,9 +34,8 @@ Updater.NowFileMD5Fail: "File MD5 check error. Please download again."
 updateSource.Afdian: "Sponsor on Aifadian"
 updateSource.BiliBili: "Sponsor on Bilibili"
 updateSource.NextTime: "Cancel"
-updateSource.QQ: "QQ"
 updateSource.github: "GitHub"
-updateSource.discord: "Discord?" # chinese simplified doesnt even have this. Clicking this on title screen redirects to the report page
+updateSource.discord: "Discord" # chinese simplified doesnt even have this. Clicking this on title screen redirects to the report page
 
 # 文本
 NotFoundStringInYaml: "Not Found"
@@ -44,8 +43,6 @@ NotFoundStringInYaml: "Not Found"
 # 聊天
 SuspectedViolationMessage: "Suspected Inappropriate Chat"
 MessgaeFromYuET: "== YuET =="
-EndMessage: "Summary (YuET): "
-EndMessageC: "Summary: "
 DefaultSystemMessageTitle: "[YuET]"
 Message.Welcome: "YuEzTools is enabled.\nServer: {0}  Lobby Code: {1}\nThis is not an ordinary Among Us game.\nWish you a happy game. [YuET] is continuously protecting the lobby."
 
@@ -76,6 +73,8 @@ NowHImpMoreThan: "The impostor number is larger than 1\nThere may be hackers or 
 NotLogin: "is not logged in.\n[Ban logged out player] enabled - Trying to ban the player"
 unKickNotLogin: "is not logged in\nPlease play with caution"
 BlackList: "is yours or YuET's Banner"
+notFindRPC: "This is not effective RPC！\nRPC Number：{0}"
+notJoinedSendRPC: "{1} is not join, but send RPC to you\nRPC Number：{0}"
 
 # MenuUI.Interface
 Interface: "Interface"
@@ -100,6 +99,9 @@ MenuUI.AntiCheat: "Anti Cheat"
 MenuUI.SafeMode: "Safe Mode"
 MenuUI.AutoExit: "Leave if low FPS"
 MenuUI.KickNotLogin: "Ban Logged Out Players"
+MenuUI.EnableAntiCheat: "Enable Anti-Cheat"
+MenuUI.AntiCheat.ModMode: "+25 Protocol(Mod Protocol）"
+MenuUI.ServerAllHostOrNoHost: "+25 Protocol (Mod Protocol)"
 
 # MenuUI.ShortcutButton
 MenuUI.ShortcutButton: "Shortcuts"
@@ -110,7 +112,6 @@ MenuUI.ChangeDownTimerToZero: "Set Start Countdown to 0"
 MenuUI.ChangeDownTimerTo114514: "Mischievous Start Countdown"
 MenuUI.AutoStartGame: "GM Mode"
 MenuUI.AbolishDownTimer: "Cancel Start Countdown"
-MenuUI.ServerAllHostOrNoHost: "+25 Protocol (Mod Protocol)"
 MenuUI.CloseMusicOfOr: "Enable Lobby Music"
 MenuUI.ShortcutButton.PeopleMode: "April Fools"
 MenuUI.HorseMode: "Horse Mode"
@@ -120,7 +121,7 @@ MenuUI.reShowRoleT: "Show your role again" # auto-generated translation was "Re-
 # MenuUI.ShortcutButton.Left
 MenuUI.ShortcutButton.Left: "Leave the Game"
 MenuUI.ExitGame: "Leave the Game"
-MenuUI.RealBan: "Ban Myself (Seriously)"
+MenuUI.RealBan: "Ban Myself"
 
 # MenuUI.Other
 MenuUI.Other: "Other"
@@ -150,26 +151,37 @@ DCNotify.IncorrectVersion: "The AmongUs versions are all different\ndo you think
 DCNotify.Description: "Sister! You can even be kicked?! \nFunny (*^_^*)\nReason: {0}"
 
 # RoleText (auto-generated translation added by redphantom1000)
+Crewmate: "Crewmate"
 CrewmateShort: "You are an ordinary little~crew~ah~"
 CrewmateLong: "Mission! Go and do the mission!!!\nDo the mission or cast the inner ghost to win"
+Noisemaker: "Noisemaker"
 NoisemakerShort: "Eh? Dare you kill me?"
 NoisemakerLong: "After being killed, the enemy will be punished~\nAfter being killed, everyone will get an arrow pointing to the location of your corpse"
+Scientist: "Scientist"
 ScientistShort: "Beep~ Beep~"
 ScientistLong: "Where is my Death Note! Why is it out of power again\nCheck your tablet to get information about the dead"
+Engineer: "Engineer"
 EngineerShort: "I...I'm really not an inner ghost! I have CD!"
 EngineerLong: "Use the skill of jumping pipes to move quickly\nRemember your pipe CD~"
+Tracker: "Tracker"
 TrackerShort: "You pervert peeping Tom!"
 TrackerLong: "Track others...to find clues\nBut why can't I find anyone!"
+Impostor: "Impostor"
 ImpostorShort: "Knife! Knife! Knife! Passion! Fight!"
 ImpostorLong: "Little crew members... so cute\n Kill the crew members or destroy the spacecraft to win!"
+Shapeshifter: "Shapeshifter"
 ShapeshifterShort: "Whose suit should I wear today?"
 ShapeshifterLong: "Such a small suit. It's so uncomfortable!\n Transform into someone else to fake~"
+Phantom: "Phantom"
 PhantomShort: "Ask me where I am? I don't know either~ Hehe"
 PhantomLong: "Can't see me, can't see me...\n Turn invisible to escape the scene"
+CrewmateGhost: "Crewmate Ghost"
 CrewmateGhostShort: "Poor! How did he die?"
 CrewmateGhostLong: "Tsk tsk~ Dead?\n Do the mission!"
+GuardianAngel: "Guardian Angel"
 GuardianAngelShort: "Protect even after death~"
 GuardianAngelLong: "Stay at your post!\n Protect your companions!"
+ImpostorGhost: "Impostor Ghost"
 ImpostorGhostShort: "You can be thrown out? You are amazing!"
 ImpostorGhostLong: "If you are voted out, you are a loser\nDestroy to assist your teammates"
 
@@ -188,17 +200,33 @@ FakeTask: "Fake task is as follows:"
 iPhone: "IOS"
 Android: "Android"
 Platforms.Unknown: "Unknown"
-ToCloseThisRoom: "Timer：" 
+ToCloseThisRoom: "Timer to close this room："
 
 # Developer display (translated once again)
 DevsTitle: "Developers of this project"
 MainDev: "Main developer"
 Dev: "Developer"
 
-# Main interface button (and again)
+# 主界面按钮
 InviteButton: "Discord" # If Not Chinese, write Discord
 WebsiteButton: "Website"
-BiliBiliButton: "BiliBili"
-AfdianButton: "Afdian"
-DevsButton: "Developer"
+BiliBiliButton: "Bilibili sponsor"
+AfdianButton: "Afdian sponsor"
+DevsButton: "Devs"
 ProjectButton: "Github" # If Not Chinese, write Github
+
+# Name
+Hacker: "Hacker"
+
+# 死因
+ByKilled: "Killed by {0}"
+Exile: "Exiled"
+Disconnect: "Disconnect"
+Alive: "Alive"
+
+# 反作弊&+25的乱斗
+CanNotHostGame: "You choose +25, can not create room\nIf you changed, please reopen this menu"
+CanNotJoinGame: "You choose +25 and enable anti-cheat, cannot join room with search\nIf you changed, please reopen this menu"
+
+# 结算
+EndMessage: "Summary"
