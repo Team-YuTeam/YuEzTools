@@ -168,16 +168,16 @@ public class MainMenuManagerPatch
         var s = "";
         if (DevsButton == null) DevsButton = CreatButton("DevsButton", () =>
         {
+            s = "";
             foreach (var dev in DevManager.DevUserList)
             {
                 if (dev.Jobs != "NotJob")
                     s += $"<color={dev.Color}>{dev.Name}</color> => <size=60%>{GetString(dev.Jobs)}</size>\n";
             }
-            CustomPopup.Show(GetString("DevsTitle"),
-                s
+            CustomPopup.Show(GetString("DevsTitle"), s
                 , new()
                 {
-                    (Translator.GetString(StringNames.Okay), null)
+                    (GetString(StringNames.Okay), null)
                 });
         });
         DevsButton.gameObject.SetActive(true); 
