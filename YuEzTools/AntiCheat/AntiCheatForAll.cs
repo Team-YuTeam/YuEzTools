@@ -35,7 +35,7 @@ internal class AntiCheatForAll
             {
                 
             }
-            else if(!Main.JoinedPlayer.Contains(pc))
+            else if(!Main.JoinedPlayer.Contains(pc) && AmongUsClient.Instance.AmHost)
             {
                 SendInGamePatch.SendInGame(string.Format(GetString("notJoinedSendRPC"), callId, pc.GetRealName()));
                 Logger.Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】未进入但发送RPC，无效！！！，已驳回", "ACFA");
