@@ -20,6 +20,7 @@ internal class ChatUpdatePatch
     public static float chatStop = 3;
     public static void Postfix(ChatController __instance)
     {
+        if (GameStartManagerPatch.roomMode != RoomMode.Plus25) return;
         chatStop = __instance.timeSinceLastMessage;
         Active = __instance.IsOpenOrOpening;
         //__instance.freeChatField.textArea.AllowPaste = true;

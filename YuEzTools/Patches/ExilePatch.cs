@@ -19,10 +19,10 @@ internal class ExilePatch
         {
             try
             {
-                if (__instance.exiled != null)
+                if (__instance.initData.networkedPlayer != null)
                 {
-                    __instance.exiled.PlayerId.GetPlayerDataById().SetExiled();
-                    ModPlayerData.GetModPlayerDataById(__instance.exiled.PlayerId).SetDeadReason(DeadReasonData.Exile);
+                    __instance.initData.networkedPlayer.PlayerId.GetPlayerDataById().SetExiled();
+                    ModPlayerData.GetModPlayerDataById(__instance.initData.networkedPlayer.PlayerId).SetDeadReason(DeadReasonData.Exile);
                 }
             }
             catch { }
