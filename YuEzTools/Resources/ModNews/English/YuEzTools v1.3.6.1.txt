@@ -10,7 +10,8 @@
 - Based on AmongUs v2024.6.18
 
 ## Update Summary
-- 1 Fixed
+- 2 Fixed
 
 ## Fixed
 - [NotJoined] Check
+- [Summary]Not rewrite

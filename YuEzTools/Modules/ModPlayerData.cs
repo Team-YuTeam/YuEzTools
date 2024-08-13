@@ -55,7 +55,6 @@ public class ModPlayerData
             var colorId = player.Data.DefaultOutfit.ColorId;
             var id = player.PlayerId;
             var color = player.Data.Color;
-            var role = player.Data.RoleType;
             var data = new ModPlayerData(
                 player,
                 player.GetRealName(),

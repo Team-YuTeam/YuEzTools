@@ -110,6 +110,7 @@ class SetEverythingUpPatch
     public static string s = "";
     public static void Postfix(EndGameManager __instance)
     {
+        s = "";
         var Pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 1f, Camera.main.nearClipPlane));
         var RoleSummaryObject = UnityEngine.Object.Instantiate(__instance.WinText.gameObject);
         RoleSummaryObject.transform.position = new Vector3(__instance.Navigation.ExitButton.transform.position.x + 0.1f, Pos.y - 0.1f, -15f);
@@ -132,5 +133,6 @@ class SetEverythingUpPatch
         RoleSummaryRectTransform.anchoredPosition = new Vector2(Pos.x + 3.5f, Pos.y - 0.1f);
         RoleSummary.text = GetString("EndMessage");
         RoleSummary.text += s;
+        Info(s,"EndSummary");
     }
 }
