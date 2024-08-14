@@ -36,10 +36,10 @@ class OnPlayerJoinedPatch
             $"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/ProductUserId:{client.ProductUserId}) 加入房间");
         GetPlayer.numImpostors = 0;
         GetPlayer.numCrewmates = 0;
-        if (client.FriendCode == "strorwroan#0331")
+        if (client.FriendCode.IsDevUser())
         {
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"[Mod Dev] <color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
-            SendInGamePatch.SendInGame($"[Mod Dev] <color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
+            SendInGamePatch.SendInGame($"[{GetString(client.FriendCode.GetDevJob())}] <color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
             return;
         }
         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
@@ -197,7 +197,8 @@ class InnerNetClientSpawnPatch
             }, 3.1f, "Send RPC or Sync Lobby Timer");
         }
     }
-}[HarmonyPatch(typeof(LobbyBehaviour))]
+}
+[HarmonyPatch(typeof(LobbyBehaviour))]
 public class LobbyBehaviourPatch
 {
     [HarmonyPatch(nameof(LobbyBehaviour.Update)), HarmonyPostfix]
@@ -215,5 +216,10 @@ public class LobbyBehaviourPatch
             if (MapThemeSound != null) return;
             SoundManager.Instance.CrossFadeSound("MapTheme", __instance.MapTheme, 0.5f);
         }
+    }
+    [HarmonyPatch(nameof(LobbyBehaviour.Start)),HarmonyPostfix]
+    public static void Start_Postfix(LobbyBehaviour __instance)
+    {
+        
     }
 }

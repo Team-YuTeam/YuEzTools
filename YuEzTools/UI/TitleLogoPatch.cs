@@ -36,7 +36,6 @@ internal class TitleLogoPatch
         size.x *= 2.5f;
         size.y *= 2f;
         background.size = size;
-
         //button.GetComponent<AspectPosition>().anchorPoint = new(0.2f, 0.38f);
 
         popup.TextAreaTMP.fontSizeMin = 2;

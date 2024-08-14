@@ -47,8 +47,8 @@ public class MainMenuButtonHoverAnimation
             var targetPos = kvp.Value.Item1 + new Vector3(kvp.Value.Item2 ? 0.35f : 0f, 0f, 0f);
             if (kvp.Value.Item2 && pos.x > (kvp.Value.Item1.x + 0.2f)) continue;
             button.transform.position = kvp.Value.Item2
-                ? Vector3.Lerp(pos, targetPos, Time.deltaTime * 2f)
-                : Vector3.MoveTowards(pos, targetPos, Time.deltaTime * 2f);
+                ? Vector3.Lerp(pos, targetPos, Time.deltaTime * 2f) // 鼠标放上去
+                : Vector3.MoveTowards(pos, targetPos, Time.deltaTime * 2f); // 鼠标拿开
         }
     }
 }

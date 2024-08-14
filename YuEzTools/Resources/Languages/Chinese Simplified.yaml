@@ -207,6 +207,8 @@ DevsTitle: "本项目的开发者们"
 MainDev: "主要开发者"
 Developer: "开发者"
 NotJob: "无职业"
+EnTranslator: "英语翻译者"
+JpTranslator: "日语翻译者"
 
 # 主界面按钮
 InviteButton: "QQ群" # If Not Chinese, write Discord
