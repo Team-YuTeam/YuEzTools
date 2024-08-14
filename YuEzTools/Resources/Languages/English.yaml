@@ -206,6 +206,7 @@ ToCloseThisRoom: "Timer to close this room："
 DevsTitle: "Developers of this project"
 MainDev: "Main developer"
 Developer: "Developer"
+NotJob: "NotJob in YuTeam"
 
 # 主界面按钮
 InviteButton: "Discord" # If Not Chinese, write Discord
