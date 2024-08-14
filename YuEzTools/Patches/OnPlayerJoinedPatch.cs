@@ -161,7 +161,7 @@ class InnerNetClientSpawnPatch
         
         if(flags != SpawnFlags.IsClientCharacter) return;
         
-        if(ServerUpdatePatch.re == 50605450) return;
+        if(ServerUpdatePatch.re == 50605450 || GameStartManagerPatch.roomMode != RoomMode.Plus25) return;
         
         _ = new LateTask(() =>
         {
