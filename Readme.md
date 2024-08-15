@@ -65,7 +65,7 @@ Try to ban
 - XiaoBaiXiongBeiEr - Logo Design
 - Among us - Idea provision&Code provision
 - YuGan - Background Painter
-- redphantom1000 - 英文翻译
+- redphantom1000 - English Translation Help
 - Mods: TONEX FSX TOHE TOHEN
 </details>
 <br>
