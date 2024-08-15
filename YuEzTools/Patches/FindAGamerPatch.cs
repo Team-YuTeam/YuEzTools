@@ -1,3 +1,4 @@
+using System.Net;
 using HarmonyLib;
 using Il2CppSystem;
 using Il2CppSystem.Collections.Generic;
@@ -69,7 +70,9 @@ public static class MatchMakerGameButtonSetGamePatch
             Platforms.Unknown or
             _ => Translator.GetString("Platforms.Unknown")
         };
+        Logger.Info(game.IPString+":"+game.Port, "FAG");
         string str = Math.Abs(game.GameId).ToString();
+        
             int id = Math.Min(Math.Max(int.Parse(str.Substring(str.Length - 2, 2)), 1) * nameList.Count / 100, nameList.Count);
             game.HostName = $"" +
                 $"<size=80%>" +
@@ -83,6 +86,6 @@ public static class MatchMakerGameButtonSetGamePatch
                 ; 
         game.HostName += $"<size=40%> ({Translator.GetString("ToCloseThisRoom")}{Math.Max(0, 100 - game.Age / 100)}%)</size>";
         End:
-        Logger.Info("--------", "FindAGamerPatch");
+        Logger.Info("--------This room end.--------", "FindAGamerPatch");
     }
 }

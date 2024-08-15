@@ -2,7 +2,7 @@
 
 ![YuET-BG](./YuEzTools/Resources/YuET-BG.jpg)
 
-<img src="https://badgen.net/github/license/Night-GUA/YuEzTools" alt="Licences"><img src="https://badgen.net/github/tag/Night-GUA/YuEzTools" alt="LatestTag"><img src="https://badgen.net/github/assets-dl/Night-GUA/YuEzTools" alt="Downloads"><img src="https://badgen.net/github/watchers/Night-GUA/YuEzTools" alt="Watchers"><img src="https://badgen.net/github/stars/Night-GUA/YuEzTools" alt="Stars"><img src="https://badgen.net/github/forks/Night-GUA/YuEzTools" alt="Forks"><img src="https://badgen.net/github/prs/Night-GUA/YuEzTools" alt="PRs">
+<img src="https://badgen.net/github/license/Team-YuTeam/YuEzTools" alt="Licences"><img src="https://badgen.net/github/tag/Team-YuTeam/YuEzTools" alt="LatestTag"><img src="https://badgen.net/github/assets-dl/Team-YuTeam/YuEzTools" alt="Downloads"><img src="https://badgen.net/github/watchers/Team-YuTeam/YuEzTools" alt="Watchers"><img src="https://badgen.net/github/stars/Team-YuTeam/YuEzTools" alt="Stars"><img src="https://badgen.net/github/forks/Team-YuTeam/YuEzTools" alt="Forks"><img src="https://badgen.net/github/prs/Team-YuTeam/YuEzTools" alt="PRs">
 
 ## 简体中文 | SChinese
 <details>
@@ -12,26 +12,27 @@
 
 ### 你好啊~这里是YuEzTools！下面是一些有用的按钮，你可以点击看看！
 
-<a href="https://github.com/Night-GUA/YuEzTools/releases" target="_blank"><img src="https://img.shields.io/badge/获取新版本%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
+<a href="https://github.com/Team-YuTeam/YuEzTools/releases" target="_blank"><img src="https://img.shields.io/badge/获取新版本%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
 
 ### 使用教程
 1. 打开后即启动
 2. 若不是房主 部分功能需打开`非安全模式`（按下 `F5` 切换模式）
 
 ### 在`非安全模式`下 YuET会做的操作
-若检测到外挂 则多进行击杀一次
+尝试封禁
 
 ### 致谢
-- KARPED1EM - 技术帮助&代码支持
-- NikoCat233 - 技术帮助
-- Slok7675 - 技术帮助
+- KARPED1EM - 技术帮助&代码提供
+- NikoCat233 - 技术帮助&代码提供
+- Slok7675 - 技术帮助&代码提供
 - Farewell - 技术帮助
 - LezaiYa - 技术帮助&翻译帮助&代码提供
-- Imp11 - 技术帮助&翻译帮助
-- 慕斯Mousse - 翻译帮助
+- Imp11 - 技术帮助&翻译帮助&代码提供
+- 慕斯Mousse - 翻译帮助&代码提供
 - 小白熊贝儿 - Logo设计
 - Among us - 想法提供&代码提供
 - 鱼竿 - 背景图画师
+- redphantom1000 - 英文翻译
 </details>
 <br>
 
@@ -43,14 +44,14 @@
 
 ### Welcome to YuEzTools! Here are some useful buttons you can click to see!
 
-<a href="https://github.com/Night-GUA/YuEzTools/releases" target="_blank"><img src="https://img.shields.io/badge/Releases%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
+<a href="https://github.com/Team-YuTeam/YuEzTools/releases" target="_blank"><img src="https://img.shields.io/badge/Releases%20-%231DA1F2.svg?&style=for-the-badge&logo=GitHub&logoColor=white&color=000000"/></a>
 
 ### How to use
 1. Open to start!
 2. If you are not the host, you may need to enable `UnSafe Mode` to use some of the features（Press `F5` to switch mode）
 
 ### In `UnSafe Mode`, YuET will do
-If the room has hacker, it will make an extra kill
+Try to ban
 
 ### Thanks
 - KARPED1EM - Technical assistance&Code Support

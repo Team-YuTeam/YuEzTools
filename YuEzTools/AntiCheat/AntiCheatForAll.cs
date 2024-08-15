@@ -31,7 +31,7 @@ internal class AntiCheatForAll
         {
             MessageReader sr = MessageReader.Get(reader);
             var rpc = (RpcCalls)callId;
-            if (callId is 7 or 5 or 41 or 39 or 40 or 42 or 43 or 38 or 18)
+            if (callId is 7 or 5 or 41 or 39 or 40 or 42 or 43 or 38 or 18 or 13)
             {
                 
             }

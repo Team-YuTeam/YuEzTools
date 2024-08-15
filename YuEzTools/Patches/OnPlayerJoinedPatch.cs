@@ -123,6 +123,20 @@ class IntroCutscenePatch
             MurderHacker.murderHacker(PlayerControl.LocalPlayer,MurderResultFlags.Succeeded);
             Logger.Info("尝试击杀玩家","GM");
             // PlayerState.GetByPlayerId(PlayerControl.LocalPlayer.PlayerId).SetDead();
+            if (AmongUsClient.Instance.AmHost && Main.HasHacker)
+            {
+                Logger.Info("Host Try end game with room " +
+                            GameStartManager.Instance.GameRoomNameCode.text,"StartPatch");
+                try
+                {
+                    GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+                }
+                catch (System.Exception e)
+                {
+                    Logger.Error(e.ToString(), "StartPatch");
+                }
+                Main.HasHacker = false;
+            }
         }
     }
 }

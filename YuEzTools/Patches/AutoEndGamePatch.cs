@@ -10,5 +10,6 @@ public class EngGamePatch
     {
         if (!Toggles.AutoStartGame) return;
         new LateTask(__instance.NextGame, 2f, "Auto End Game");
+        __instance.CoJoinGame();
     }
 }
