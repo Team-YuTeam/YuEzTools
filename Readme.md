@@ -33,6 +33,7 @@
 - Among us - 想法提供&代码提供
 - 鱼竿 - 背景图画师
 - redphantom1000 - 英文翻译
+- Mods: TONEX FSX TOHE TOHEN
 </details>
 <br>
 
@@ -54,16 +55,18 @@
 Try to ban
 
 ### Thanks
-- KARPED1EM - Technical assistance&Code Support
-- NikoCat233 - Technical assistance
-- Slok7675 - Technical assistance
+- KARPED1EM - Technical assistance & Code provided
+- NikoCat233 - Technical assistance & Code provided
+- Slok7675 - Technical assistance & Code provided
 - Farewell - Technical assistance
 - LezaiYa - Technical assistance&Translation Help&Code provision
 - Imp11 - Technical assistance&Translation Help
-- Mousse - Translation Help
+- Mousse - Translation Help & Code provided
 - XiaoBaiXiongBeiEr - Logo Design
 - Among us - Idea provision&Code provision
 - YuGan - Background Painter
+- redphantom1000 - 英文翻译
+- Mods: TONEX FSX TOHE TOHEN
 </details>
 <br>
 
