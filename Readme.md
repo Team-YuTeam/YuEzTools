@@ -98,7 +98,7 @@ Ce mod n'est pas affilié à Among Us ou à Innersloth LLC, et le contenu qu'il 
 
 ## Github仓库Star
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Night-GUA/YuEzTools&type=Date)](https://star-history.com/#Night-GUA/YuEzTools&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=Team-YuTeam/YuEzTools&type=Date)](https://star-history.com/#Team-YuTeam/YuEzTools&Date)
 
 #### `“一个好的游戏需要游戏开发者制作 而不是让模组开发者帮忙”`
 
