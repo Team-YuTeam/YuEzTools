@@ -251,3 +251,6 @@ CrewmateWin: "船员获胜"
 ImpostorWin: "伪装者获胜"
 NobodyWin: "无人获胜"
 ErrorWin: "异常获胜"
+
+# 任务栏
+EnterF3ToShowYourRoleInfo: "按下F3以显示职业介绍和设置"

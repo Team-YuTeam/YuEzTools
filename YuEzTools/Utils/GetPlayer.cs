@@ -34,6 +34,7 @@ public class PlayerState
 
 static class GetPlayer
 {
+    public static bool IsCanMove => (bool)PlayerControl.LocalPlayer?.CanMove;
     //public static bool IsNotJoined => AmongUsClient.Instance.GameState == AmongUsClient.GameStates.NotJoined;
     public static bool IsVanillaServer
     {
@@ -79,7 +80,7 @@ static class GetPlayer
     public static bool IsExilling => ExileController.Instance != null && !(AirshipIsActive && SpawnInMinigame.Instance.isActiveAndEnabled);
     private static Dictionary<byte, PlayerState> allPlayerStates = new(15);
     public static IReadOnlyDictionary<byte, PlayerState> AllPlayerStates => allPlayerStates;
-    public static RoleTeam GetPlayerRoleTeam(PlayerControl pc)
+    public static RoleTeam GetPlayerRoleTeam(this PlayerControl pc)
     {
         if (pc.Data.RoleType is RoleTypes.Crewmate or RoleTypes.Engineer or RoleTypes.CrewmateGhost
             or RoleTypes.Noisemaker or RoleTypes.GuardianAngel or RoleTypes.Scientist or RoleTypes.Tracker)

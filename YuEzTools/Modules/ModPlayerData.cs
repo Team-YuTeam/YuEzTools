@@ -113,6 +113,7 @@ static class PlayerControlData
     public static string GetRoleName(this PlayerControl pc) => pc.Data.Role.NiceName;
     public static void SetDisconnected(this PlayerControl pc) => pc.GetPlayerData().SetDisconnected();
     public static void SetRole(this PlayerControl pc, RoleTypes role) => pc.GetPlayerData().SetRole(role);
+    public static bool IsImpostor(this PlayerControl pc) => pc.GetPlayerRoleTeam() == RoleTeam.Impostor;
 }
 
 // 死亡原因

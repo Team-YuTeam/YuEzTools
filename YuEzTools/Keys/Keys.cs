@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using UnityEngine;
 using YuEzTools.Get;
+using YuEzTools.UI;
 
 namespace YuEzTools.Keys;
 
@@ -21,6 +22,18 @@ internal class Keys
         {
             FunctionPatch.ShowRoleM();
         }
+        // 显示职业介绍&预设
+        if (GetPlayer.IsInGame && (GetPlayer.IsCanMove || GetPlayer.IsMeeting))
+        {
+            if (Input.GetKey(KeyCode.F3))
+            {
+                if (!InGameRoleInfoMenu.Showing)
+                    InGameRoleInfoMenu.SetRoleInfoRef(PlayerControl.LocalPlayer);
+                InGameRoleInfoMenu.Show();
+            }
+            else InGameRoleInfoMenu.Hide();
+        }
+        else InGameRoleInfoMenu.Hide();
         
         //开启非安全模式
         if (Input.GetKeyDown(KeyCode.F5))

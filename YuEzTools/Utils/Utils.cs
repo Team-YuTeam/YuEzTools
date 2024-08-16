@@ -116,9 +116,9 @@ public static class Utils
 
         return builder.ToString();
     }
-    public static bool HasTasks(PlayerControl p)
+    public static bool HasTasks(this PlayerControl p)
     {
-        if (GetPlayer.GetPlayerRoleTeam(p) != RoleTeam.Impostor) return true;
+        if (p.GetPlayerRoleTeam() != RoleTeam.Impostor) return true;
         return false;
     }
     public static void SendMessage(string text, byte sendTo = byte.MaxValue, string title = "<Default>", bool removeTags = false)

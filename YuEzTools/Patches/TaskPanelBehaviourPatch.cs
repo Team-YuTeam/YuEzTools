@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using YuEzTools.Get;
 using static YuEzTools.Translator;
 using YuEzTools.Modules;
+using YuEzTools.Utils;
 
 namespace YuEzTools;
 
@@ -43,10 +44,12 @@ class TaskPanelBehaviourPatch
         if (sb.Length > 1)
         {
             var text = sb.ToString().TrimEnd('\n').TrimEnd('\r');
-            if (!Utils.Utils.HasTasks(player) && sb.ToString().Count(s => (s == '\n')) >= 2)
+            if (!player.HasTasks() && sb.ToString().Count(s => (s == '\n')) >= 2)
                 text = $"{Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(player.Data.RoleType), GetString("FakeTask"))}\r\n{text}";
             AllText += $"\r\n\r\n<size=85%>{text}</size>";
         }
+
+        AllText += "\n" + GetString("EnterF3ToShowYourRoleInfo");
         
         __instance.taskText.text = AllText;
         
