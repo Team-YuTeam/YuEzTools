@@ -173,7 +173,7 @@ ImpostorLong: "小船员...好可爱\n击杀船员或破坏飞船以获得胜利
 Shapeshifter: "变形者"
 ShapeshifterShort: "今天要套上谁的皮套呢？"
 ShapeshifterLong: "好小的皮套 真不舒服！\n变形成其他人以伪造~"
-Phantom: "幻影"
+Phantom: "幻象师"
 PhantomShort: "问我在哪？我也不知道呢~嘻嘻"
 PhantomLong: "看不见我 看不见我...\n隐身以逃离现场"
 CrewmateGhost: "船员灵魂"
@@ -238,7 +238,7 @@ game.endScreen.detail: "打开结算界面"
 game.endScreen.close: "关闭界面"
 
 # 获胜原因
-HumansByVote: "伪装者被投出"
+HumansByVote: "伪装者被驱逐"
 HumansByTask: "完成全部任务"
 ImpostorByVote: "伪装者人数优势"
 ImpostorByKill: "伪装者人数优势"
