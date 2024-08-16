@@ -6,7 +6,7 @@ LangID: "0"
 # 作者署名（不需要请留空）/ A sign of an author (Please leave blank when not needed)
 TextBelowVersionText: "Yu and Mousse and Imp11 and redphantom1000"
 
-# 更新检查
+# Updates
 Retry: "Try Again"
 PleaseWait: "Please Wait For A While"
 updateCheckPopupTitle: "Update Check"
@@ -19,7 +19,7 @@ updatePopupTitle: "Auto update"
 updatePopupTitleFialed: "Update Failed"
 updatePopupTitleDone: "Update Done"
 updateButton: "Auto update"
-updateChoseSource: "Please choose the update function\n If you don't know what to choose, please choose [Github]."
+updateChoseSource: "Please choose the update function \nIf you don't know what to choose, please choose [Github]."
 updateSource.Github: "Github"
 updateSource.Gitee: "Gitee"
 updateSource.kkGithub: "kkGithub"
@@ -34,19 +34,19 @@ Updater.NowFileMD5Fail: "File MD5 check error. Please download again."
 updateSource.Afdian: "Sponsor on Aifadian"
 updateSource.BiliBili: "Sponsor on Bilibili"
 updateSource.NextTime: "Cancel"
+updateSource.QQ: "QQ Group"
 updateSource.github: "GitHub"
-updateSource.discord: "Discord" # chinese simplified doesnt even have this. Clicking this on title screen redirects to the report page
 
-# 文本
+# Text
 NotFoundStringInYaml: "Not Found"
 
-# 聊天
+# Chat
 SuspectedViolationMessage: "Suspected Inappropriate Chat"
 MessgaeFromYuET: "== YuET =="
 DefaultSystemMessageTitle: "[YuET]"
 Message.Welcome: "YuEzTools is enabled.\nServer: {0}  Lobby Code: {1}\nThis is not an ordinary Among Us game.\nWish you a happy game. [YuET] is continuously protecting the lobby."
 
-# 进入房间
+# Join/Leave
 JoinRoom: "joined the lobby"
 LeftRoom: "left the lobby"
 
@@ -59,7 +59,7 @@ Ping.NowTime: "\nLocal Time: "
 Local: "Local"
 Ping.MenuText: "Press <color=#8B008B>Delete</color> to open settings"
 
-# 提示语
+# Alerts
 AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are not the host - <color=#FFFF00>Cannot</color> punish the hacker"
 AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\n<color=#1E90FF>[UnSafe]</color> mode enabled - <color=#FFFF00>Trying to <color=#FF4500>kill</color> the hacker"
 AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are the host - Trying to <color=#FF4500>kill</color> and <color=#FF0000>ban</color> the hacker"
@@ -146,11 +146,11 @@ DCNotify.Kicked: "Sister! You can even be kicked?! \nFunny (*^_^*)"
 DCNotify.DCFromServer: "The server is out of control\nCheck your network~/(ㄒoㄒ)/~~\nOf course, it may be a server problem (●'◡'●)"
 DCNotify.GameNotFound: "Did you enter the wrong room? Did the server see it wrong? \nThe room was not found, it may have been disbanded (* Ŏ∀Ŏ)"
 DCNotify.GameStarted: "Tsk! They opened it without waiting for you~ოර⌄රო"
-DCNotify.GameFull: "There is no place for you in this house~\nThe room is full, you are an outsider.\n Hehehe (｡╹ω╹｡)"
+DCNotify.GameFull: "There is no place for you in this house~\nThe room is full, you are an outsider. \nHehehe (｡╹ω╹｡)"
 DCNotify.IncorrectVersion: "The AmongUs versions are all different\ndo you think you can get in? Fool (◍´ಲ`◍)"
 DCNotify.Description: "Sister! You can even be kicked?! \nFunny (*^_^*)\nReason: {0}"
 
-# RoleText (auto-generated translation added by redphantom1000)
+# Role
 Crewmate: "Crewmate"
 CrewmateShort: "You are an ordinary little~crew~ah~"
 CrewmateLong: "Mission! Go and do the mission!!!\nDo the mission or cast the inner ghost to win"
@@ -168,19 +168,19 @@ TrackerShort: "You pervert peeping Tom!"
 TrackerLong: "Track others...to find clues\nBut why can't I find anyone!"
 Impostor: "Impostor"
 ImpostorShort: "Knife! Knife! Knife! Passion! Fight!"
-ImpostorLong: "Little crew members... so cute\n Kill the crew members or destroy the spacecraft to win!"
+ImpostorLong: "Little crew members... so cute \nKill the crew members or destroy the spacecraft to win!"
 Shapeshifter: "Shapeshifter"
 ShapeshifterShort: "Whose suit should I wear today?"
-ShapeshifterLong: "Such a small suit. It's so uncomfortable!\n Transform into someone else to fake~"
+ShapeshifterLong: "Such a small suit. It's so uncomfortable! \nTransform into someone else to fake~"
 Phantom: "Phantom"
 PhantomShort: "Ask me where I am? I don't know either~ Hehe"
-PhantomLong: "Can't see me, can't see me...\n Turn invisible to escape the scene"
+PhantomLong: "Can't see me, can't see me... \nTurn invisible to escape the scene"
 CrewmateGhost: "Crewmate Ghost"
 CrewmateGhostShort: "Poor! How did he die?"
-CrewmateGhostLong: "Tsk tsk~ Dead?\n Do the mission!"
+CrewmateGhostLong: "Tsk tsk~ Dead? \nDo the mission!"
 GuardianAngel: "Guardian Angel"
 GuardianAngelShort: "Protect even after death~"
-GuardianAngelLong: "Stay at your post!\n Protect your companions!"
+GuardianAngelLong: "Stay at your post! \nProtect your companions!"
 ImpostorGhost: "Impostor Ghost"
 ImpostorGhostShort: "You can be thrown out? You are amazing!"
 ImpostorGhostLong: "If you are voted out, you are a loser\nDestroy to assist your teammates"
@@ -202,13 +202,15 @@ Android: "Android"
 Platforms.Unknown: "Unknown"
 ToCloseThisRoom: "Timer to close this room："
 
-# Developer display (translated once again)
+# Devs
 DevsTitle: "Developers of this project"
 MainDev: "Main developer"
 Developer: "Developer"
 NotJob: "NotJob in YuTeam"
+EnTranslator: "English Translator"
+JpTranslator: "Japanese Translator"
 
-# 主界面按钮
+# Interface
 InviteButton: "Discord" # If Not Chinese, write Discord
 WebsiteButton: "Website"
 BiliBiliButton: "Bilibili sponsor"
@@ -219,15 +221,15 @@ ProjectButton: "Github" # If Not Chinese, write Github
 # Name
 Hacker: "Hacker"
 
-# 死因
+# Reason for death
 ByKilled: "Killed by {0}"
 Exile: "Exiled"
 Disconnect: "Disconnect"
 Alive: "Alive"
 
-# 反作弊&+25的乱斗
+# Anti-Cheat & +25 notices
 CanNotHostGame: "You choose +25, can not create room\nIf you changed, please reopen this menu"
 CanNotJoinGame: "You choose +25 and enable anti-cheat, cannot join room with search\nIf you changed, please reopen this menu"
 
-# 结算
+# End screen
 EndMessage: "Summary"
