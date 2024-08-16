@@ -1,9 +1,13 @@
 using HarmonyLib;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AmongUs.GameOptions;
+using BepInEx.Unity.IL2CPP.Utils.Collections;
+// using Il2CppSystem.Collections;
+using Il2CppSystem.Web.Util;
 using TMPro;
 using YuEzTools.Modules;
 using YuEzTools.Patches;
@@ -12,6 +16,7 @@ using UnityEngine;
 using YuEzTools.Attributes;
 using static YuEzTools.Translator;
 using YuEzTools.Get;
+using YuEzTools.Utils;
 using static YuEzTools.Logger;
 
 namespace YuEzTools.Patches;
@@ -86,6 +91,8 @@ class StartPatch
 class EndGamePatch
 {
     public static Dictionary<byte, string> SummaryText = new();
+    public static string WinReason = "";
+    public static string WinTeam = "";
     public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ref EndGameResult endGameResult)
     {
         Logger.Info("== 游戏结束 ==","EndGamePatch");
@@ -93,6 +100,8 @@ class EndGamePatch
         SummaryText = new();
         foreach (var id in ModPlayerData.AllPlayerDataForMod.Keys)
             SummaryText[id] = Utils.Utils.SummaryTexts(id);
+        WinReason = endGameResult.GameOverReason.ToString();
+        WinTeam = endGameResult.GameOverReason.GetWinTeam();
         Main.isFirstSendEnd = true;
     }
 }
@@ -104,6 +113,108 @@ class CoSetRolePatch
         __instance.SetRole(roleTypes);
     }
 }
+// Thanks Nebula on the Ship
+public static class DetailDialog
+{
+    static EndGameManager endGameManager;
+    static GameObject dialog;
+    static TMPro.TMP_Text saveText;
+    static TMPro.TMP_Text[] text;
+    static PassiveButton button;
+    static PassiveButton saveButton;
+    static SpriteRenderer renderer;
+
+    static Sprite saveButtonSprite;
+
+    static public void Initialize(EndGameManager endGameManager, ControllerDisconnectHandler handler, TMPro.TMP_Text textTemplate, string[] detail)
+    {
+        DetailDialog.endGameManager = endGameManager;
+
+        handler.enabled = false;
+        handler.name = "DetailDialog";
+        handler.gameObject.SetActive(false);
+        handler.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+
+        dialog = handler.gameObject;
+        renderer = dialog.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+        button = dialog.transform.GetChild(2).gameObject.GetComponent<PassiveButton>();
+        saveText = dialog.transform.GetChild(1).gameObject.GetComponent<TMPro.TMP_Text>();
+
+        renderer.transform.localScale = new Vector3(1.6f, 0.85f, 1.0f);
+
+        button.transform.localPosition = new Vector3(0f, -1.95f, 0f);
+        button.transform.GetChild(1).GetComponent<TMPro.TextMeshPro>().text = GetString("game.endScreen.close");
+        button.OnClick = new UnityEngine.UI.Button.ButtonClickedEvent();
+        button.OnClick.AddListener((System.Action)Close);
+
+        saveText.transform.localPosition = new Vector3(3.45f, -2.3f, 5f);
+        saveText.alignment = TMPro.TextAlignmentOptions.TopLeft;
+        saveText.color = Color.white;
+        saveText.fontSizeMin = 1.25f;
+        saveText.fontSizeMax = 1.25f;
+        saveText.fontSize = 1.25f;
+        saveText.text = "";
+        
+
+        text = new TMPro.TMP_Text[detail.Length];
+        float width = 0.0f;
+        for (int i = 0; i < detail.Length; i++)
+        {
+            text[i] = UnityEngine.Object.Instantiate(textTemplate);
+            text[i].transform.SetParent(dialog.transform);
+            text[i].transform.localScale = new Vector3(1f, 1f, 1f);
+            text[i].transform.localPosition = new Vector3(width, 2.1f, 0f);
+            text[i].alignment = TMPro.TextAlignmentOptions.TopLeft;
+            text[i].color = Color.white;
+            text[i].fontSizeMin = 1.5f;
+            text[i].fontSizeMax = 1.5f;
+            text[i].fontSize = 1.5f;
+            text[i].text = detail[i];
+
+            text[i].gameObject.SetActive(true);
+
+            RectTransform rectTransform = text[i].gameObject.GetComponent<RectTransform>();
+            rectTransform.sizeDelta = new Vector2(0f, 0f);
+
+            width += text[i].preferredWidth - 0.05f;
+        }
+
+        //中央に移動させる
+        for (int i = 0; i < detail.Length; i++)
+        {
+            text[i].transform.localPosition -= new Vector3(width / 2.0f, 0f, 0f);
+        }
+
+        renderer.gameObject.SetActive(true);
+        button.gameObject.SetActive(true);
+        saveButton.gameObject.SetActive(true);
+        saveText.gameObject.SetActive(true);
+    }
+
+    static public void Open()
+    {
+        dialog.SetActive(true);
+        dialog.transform.localScale = new Vector3(0.0f, 0.0f, 1.0f);
+        endGameManager.StartCoroutine(Effects.Lerp(0.12f,
+            new Action<float>((p) =>
+            {
+                dialog.transform.localScale = new Vector3(p, p, 1.0f);
+            })
+            ));
+    }
+
+    static public void Close()
+    {
+        endGameManager.StartCoroutine(Effects.Lerp(0.12f, 
+            new Action<float>((p) =>
+            {
+                dialog.transform.localScale = new Vector3(1.0f - p, 1.0f - p, 1.0f);
+                if (p == 1f) dialog.SetActive(false);
+            }
+            )));
+    }
+    
+}
 [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.SetEverythingUp))]
 class SetEverythingUpPatch
 {
@@ -111,29 +222,62 @@ class SetEverythingUpPatch
     public static string s = "";
     public static void Postfix(EndGameManager __instance)
     {
-        s = "";
-        var Pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 1f, Camera.main.nearClipPlane));
-        var RoleSummaryObject = UnityEngine.Object.Instantiate(__instance.WinText.gameObject);
-        RoleSummaryObject.transform.position = new Vector3(__instance.Navigation.ExitButton.transform.position.x + 0.1f, Pos.y - 0.1f, -15f);
-        RoleSummaryObject.transform.localScale = new Vector3(1f, 1f, 1f);
-        
-        var RoleSummary = RoleSummaryObject.GetComponent<TextMeshPro>();
-        RoleSummary.alignment = TextAlignmentOptions.TopLeft;
-        RoleSummary.color = Color.white;
-        RoleSummary.outlineWidth *= 1.2f;
-        RoleSummary.fontSizeMin = RoleSummary.fontSizeMax = RoleSummary.fontSize = 1.25f;
-        
+        var BackgroundLayer = GameObject.Find("PoolablePlayer(Clone)");
+        __instance.WinText.text = Toggles.WinTextSize ? 
+            $"<size=50%>{GetString(EndGamePatch.WinTeam)}\n<size=30%>{GetString(EndGamePatch.WinReason)}</size>" : 
+            $"<size=50%>{GetString(EndGamePatch.WinReason)}\n<size=30%>{GetString(EndGamePatch.WinTeam)}</size>";
+        if (EndGamePatch.WinTeam == "NobodyWin")
+        {
+            Logger.Info("进入NobodyWin","SetEverythingUpPatch");
+            BackgroundLayer.SetActive(false);
+        }
+        var ModDisplay = new GameObject("ModDisplay");
+        var position = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height));
+        TMPro.TMP_Text[] roleSummaryText = new TMPro.TMP_Text[5];
+        for (int i = 0; i < roleSummaryText.Length; i++)
+        {
+            GameObject obj = UnityEngine.Object.Instantiate(__instance.WinText.gameObject);
+            obj.transform.SetParent(ModDisplay.transform);
+
+            RectTransform roleSummaryTextMeshRectTransform = obj.GetComponent<RectTransform>();
+            roleSummaryTextMeshRectTransform.pivot = new Vector2(0f, 1f);
+            roleSummaryTextMeshRectTransform.anchoredPosition = new Vector3(position.x, position.y - 0.1f, -14f);
+            obj.transform.localScale = new Vector3(1f, 1f, 1f);
+
+            roleSummaryText[i] = obj.GetComponent<TMPro.TMP_Text>();
+            roleSummaryText[i].alignment = TMPro.TextAlignmentOptions.TopLeft;
+            roleSummaryText[i].color = Color.white;
+            roleSummaryText[i].fontSizeMin = 1.25f;
+            roleSummaryText[i].fontSizeMax = 1.25f;
+            roleSummaryText[i].fontSize = 1.25f;
+        }
+                
         foreach (var kvp in ModPlayerData.AllPlayerDataForMod)
         {
             var id = kvp.Key;
             var data = kvp.Value;
             s += $"\n" + EndGamePatch.SummaryText[id];
         }
+        //唤出结算按钮
+        var detailButton = GameObject.Instantiate(__instance.Navigation.ContinueButton.transform.GetChild(0));
+        detailButton.transform.SetParent(ModDisplay.transform);
+        detailButton.transform.localScale = new Vector3(0.6f, 0.6f, 1f);
+        detailButton.localPosition = roleSummaryText[0].transform.localPosition + new Vector3(1.0f, -roleSummaryText[0].preferredHeight - 0.5f);
+        PassiveButton detailPassiveButton = detailButton.GetComponent<PassiveButton>();
+        detailPassiveButton.OnClick = new UnityEngine.UI.Button.ButtonClickedEvent();
+        detailPassiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => DetailDialog.Open()));
+        TMPro.TMP_Text detailButtonText = detailButton.transform.GetChild(0).gameObject.GetComponent<TMPro.TMP_Text>();
+        detailButtonText.text = GetString("game.endScreen.detail");
+        detailButtonText.gameObject.GetComponent<TextTranslatorTMP>().enabled = false;
         
-        var RoleSummaryRectTransform = RoleSummary.GetComponent<RectTransform>();
-        RoleSummaryRectTransform.anchoredPosition = new Vector2(Pos.x + 3.5f, Pos.y - 0.1f);
-        RoleSummary.text = GetString("EndMessage");
-        RoleSummary.text += s;
+        //结算界面
+        var detailDialog = GameObject.Instantiate(GameObject.FindObjectOfType<ControllerDisconnectHandler>(), null);
+        DetailDialog.Initialize(__instance, detailDialog, __instance.WinText, new string[] {
+            GetString("EndMessage")+
+            s
+        });
+        
+        s = "";
         Info(s,"EndSummary");
     }
 }

@@ -140,7 +140,7 @@ internal class PingTrackerUpdatePatch
             sb.Append($"\r\n").Append($"<color=#FFD700>" + GameStartManagerPatch.countDown + "</color>");
         sb.Append($"\r\n").Append($"<color=#FFFF00>By</color> <color=#FF0000>Yu</color>");
         
-        pingTrackerCredential.gameObject.SetActive(true);
+        pingTrackerCredential.gameObject.SetActive(__instance.gameObject.active);
         pingTrackerCredential.text = sb.ToString();
         if (GameSettingMenu.Instance?.gameObject?.active ?? false)
             pingTrackerCredential.text = "";

@@ -12,6 +12,7 @@ using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using static YuEzTools.Translator;
 using System;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using YuEzTools.Get;
@@ -319,6 +320,83 @@ public static class Utils
             5 => new(9.4f, 17.9f), // The Fungle
             _ => throw new System.NotImplementedException(),
         };
+    }
+    
+    // Thanks TOHEN
+    public static string GetHashedPuid(this ClientData player)
+    {
+        if (player == null) return "";
+        string puid = player.ProductUserId;
+        using SHA256 sha256 = SHA256.Create();
+        
+        // get sha-256 hash
+        byte[] sha256Bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(puid));
+        string sha256Hash = BitConverter.ToString(sha256Bytes).Replace("-", "").ToLower();
+
+        // pick front 5 and last 4
+        return string.Concat(sha256Hash.AsSpan(0, 5), sha256Hash.AsSpan(sha256Hash.Length - 4));
+    }
+
+    public static string GetPlatformText(this Platforms platform)
+    {
+        var color = platform switch
+        {
+            Platforms.StandaloneItch => "#FF4300",
+            Platforms.StandaloneWin10 => "#FF7E32",
+            Platforms.StandaloneEpicPC => "#FFD432",
+            Platforms.StandaloneSteamPC => "#B8FF32",
+
+            Platforms.Xbox => "#60FF32",
+            Platforms.Switch => "#32FF69",
+            Platforms.Playstation => "#32FFC6",
+
+            Platforms.StandaloneMac => "#32E9FF",
+            Platforms.IPhone => "#32AEFF",
+            Platforms.Android => "#325AFF",
+
+            Platforms.Unknown or
+                _ => "#ffffff"
+        };
+        var platforms = platform switch
+        {
+            Platforms.StandaloneItch => "Itch",
+            Platforms.StandaloneWin10 => "Windows",
+            Platforms.StandaloneEpicPC => "Epic",
+            Platforms.StandaloneSteamPC => "Steam",
+            
+            Platforms.Xbox => "Xbox",
+            Platforms.Switch => "Switch",
+            Platforms.Playstation => "PS",
+
+            Platforms.StandaloneMac => "Mac",
+            Platforms.IPhone => Translator.GetString("iPhone"),
+            Platforms.Android => Translator.GetString("Android"),
+
+            Platforms.Unknown or
+                _ => Translator.GetString("Platforms.Unknown")
+        };
+        return $"<color={color}>{platforms}</color>";
+    }
+
+    public static string GetWinTeam(this GameOverReason gameOverReason)
+    {
+        switch (gameOverReason)
+        {
+            case GameOverReason.HumansByTask:
+            case GameOverReason.HumansByVote:
+            case GameOverReason.HideAndSeek_ByTimer:
+                return "CrewmateWin";
+            case GameOverReason.ImpostorByKill:
+            case GameOverReason.ImpostorBySabotage:
+            case GameOverReason.HideAndSeek_ByKills:
+            case GameOverReason.ImpostorByVote:
+                return "ImpostorsWin";
+            case GameOverReason.HumansDisconnect:
+            case GameOverReason.ImpostorDisconnect:
+                return "NobodyWin";
+        }
+
+        return "ErrorWin";
     }
     public static Vector2 LocalPlayerLastTp;
     public static bool LocationLocked = false;

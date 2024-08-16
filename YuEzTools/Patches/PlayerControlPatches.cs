@@ -4,6 +4,7 @@ using YuEzTools.Get;
 using YuEzTools.Modules;
 using static YuEzTools.Translator;
 using YuEzTools.Get;
+using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;
 
@@ -33,6 +34,12 @@ class FixedUpdatePatch
         {
             if (__instance.FriendCode.IsDevUser())
                 name = __instance.FriendCode.GetDevUser().GetTag() + name;
+            if (Toggles.ShowInfoInLobby)
+            {
+                name = $"<size=70%><color=#33EEFF>Lv.{__instance.GetClient().PlayerLevel} {__instance.GetClient().PlatformData.Platform.GetPlatformText()} {__instance.GetClient().Id}</color></size>\n" +
+                        $"{name}\n" +
+                        $"<size=65%><color=#33FF91>{__instance.PlayerId} {__instance.GetClient().FriendCode} {__instance.GetClient().GetHashedPuid()}</color></size>";
+            }
         }
 
         if (GetPlayer.IsInGame)
@@ -49,7 +56,7 @@ class FixedUpdatePatch
             name += $"<color=#3FBAFF>[{GetString("Hacker")}]</color>";
         }
         
-        __instance.cosmetics.nameText.text = name;
-        __instance.cosmetics.nameText.alignment = TextAlignmentOptions.Center;
+        __instance.cosmetics.nameText.text = name + "\n";
+        __instance.cosmetics.nameText.alignment = TextAlignmentOptions.Top;
     }
 }
