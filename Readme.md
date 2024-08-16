@@ -33,7 +33,7 @@
 - Among us - 想法提供&代码提供
 - 鱼竿 - 背景图画师
 - redphantom1000 - 英文翻译
-- Mods: TONEX FSX TOHE TOHEN
+- Mods: TONEX FSX TOHE TOHEN NoS
 </details>
 <br>
 
@@ -66,7 +66,7 @@ Try to ban
 - Among us - Idea provision&Code provision
 - YuGan - Background Painter
 - redphantom1000 - English Translation Help
-- Mods: TONEX FSX TOHE TOHEN
+- Mods: TONEX FSX TOHE TOHEN NoS
 </details>
 <br>
 

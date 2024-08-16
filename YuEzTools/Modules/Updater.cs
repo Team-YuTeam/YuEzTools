@@ -23,7 +23,7 @@ namespace YuEzTools.Updater;
 [HarmonyPatch]
 public class ModUpdater
 {
-    public static string DownloadFileTempPath = "BepInEx/plugins/YuEzTools.dll.temp";
+    public static string DownloadFileTempPath = Assembly.GetExecutingAssembly().Location + ".temp";
     private static IReadOnlyList<string> URLs => new List<string>
     {
 #if DEBUG
@@ -104,7 +104,7 @@ public class ModUpdater
     }
     public static bool CheckNowFileMD5()
     {
-        if (GetMD5HashFromFile("BepInEx/plugins/YuEzTools.dll") != md5)
+        if (GetMD5HashFromFile(Assembly.GetExecutingAssembly().Location) != md5)
         {
             Logger.Info("MD5 FAIL","CheckNowFileMD5");
             return true;
@@ -157,7 +157,7 @@ public class ModUpdater
             Logger.Info("Announcement (English): " + announcement_en, "CheckRelease");
             Logger.Info("Announcement (SChinese): " + announcement_zh, "CheckRelease");
             Logger.Info("File MD5: " + md5, "CheckRelease");
-            Logger.Info(GetMD5HashFromFile("BepInEx/plugins/YuEzTools.dll"), "CheckRelease");
+            Logger.Info(GetMD5HashFromFile(Assembly.GetExecutingAssembly().Location), "CheckRelease");
 
             if (!hasUpdate && CheckNowFileMD5() && Main.ModMode == 2)
             {

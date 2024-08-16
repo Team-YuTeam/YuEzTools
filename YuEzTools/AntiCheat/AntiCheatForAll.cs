@@ -14,6 +14,7 @@ using UnityEngine;
 using YuEzTools;
 using YuEzTools.Keys;
 using YuEzTools.Get;
+using YuEzTools.Modules;
 using static YuEzTools.Translator;
 
 
@@ -226,8 +227,15 @@ internal class AntiCheatForAll
                 
                 case RpcCalls.MurderPlayer:
                 case RpcCalls.CheckMurder:
+                    var id = sr.ReadByte();
                     if ( GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
                     {
+                        if (AmongUsClient.Instance.AmHost && !Toggles.SafeMode)
+                        {
+                            id.GetPlayerDataById().pc.Revive();
+                            if(GetPlayer.IsLobby) id.GetPlayerDataById().pc.RpcSetRole(RoleTypes.Crewmate,true);
+                            Main.Logger.LogWarning($"尝试复活{id.GetPlayerDataById().pc.GetRealName()}");
+                        }
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
                         return true;
                     }
@@ -319,19 +327,19 @@ internal class AntiCheatForAll
                     break;
                 
                 case 12:
+                case 47:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
                     {
+                        var id = sr.ReadByte();
+                        if (AmongUsClient.Instance.AmHost && !Toggles.SafeMode)
+                        {
+                            id.GetPlayerDataById().pc.Revive();
+                            if(GetPlayer.IsLobby) id.GetPlayerDataById().pc.RpcSetRole(RoleTypes.Crewmate,true);
+                            Main.Logger.LogWarning($"尝试复活{id.GetPlayerDataById().pc.GetRealName()}");
+                        }
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
                         return true;
                     }
-                    break;
-                case 47:
-                    if (GetPlayer.IsLobby  || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter&& pc.Data.RoleType != RoleTypes.Phantom))
-                    {
-                        Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
-                        return true;
-                    }
-
                     break;
                 
                 case 28:
