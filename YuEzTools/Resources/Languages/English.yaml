@@ -36,9 +36,7 @@ updateSource.BiliBili: "Sponsor on Bilibili"
 updateSource.NextTime: "Cancel"
 updateSource.QQ: "QQ Group"
 updateSource.github: "GitHub"
-
-# Text
-NotFoundStringInYaml: "Not Found"
+updateSource.discord: "Discord"
 
 # Chat
 SuspectedViolationMessage: "Suspected Inappropriate Chat"
@@ -93,6 +91,7 @@ ShowIsAutoExit: "Show If Auto Leave Game Is Enabled"
 ShowLocalNowTime: "Show Local Time"
 ShowUTC: "Show UTC"
 ShowGM: "Show If GM Mode Is Enabled"
+WinTextSize: "Winner Team Text's size bigger"
 
 # MenuUI.AntiCheat
 MenuUI.AntiCheat: "Anti Cheat"
@@ -117,6 +116,7 @@ MenuUI.ShortcutButton.PeopleMode: "April Fools"
 MenuUI.HorseMode: "Horse Mode"
 MenuUI.LongMode: "Long Mode"
 MenuUI.reShowRoleT: "Show your role again" # auto-generated translation was "Re-presentation of career"
+MenuUI.ShowInfoInLobby: "Show Player's Info in Lobby"
 
 # MenuUI.ShortcutButton.Left
 MenuUI.ShortcutButton.Left: "Leave the Game"
@@ -231,5 +231,22 @@ Alive: "Alive"
 CanNotHostGame: "You choose +25, can not create room\nIf you changed, please reopen this menu"
 CanNotJoinGame: "You choose +25 and enable anti-cheat, cannot join room with search\nIf you changed, please reopen this menu"
 
-# End screen
+# Summary
 EndMessage: "Summary"
+game.endScreen.detail: "Open Summary Interface"
+game.endScreen.close: "Close Interface"
+
+# Win Reason
+HumansByVote: "Impostors is died by vote"
+HumansByTask: "Crewmate finished all tasks"
+ImpostorByVote: "The number of Impostors is larger"
+ImpostorByKill: "The number of Impostors is larger"
+ImpostorBySabotage: "Impostor Sabotaged Ship"
+ImpostorDisconnect: "Impostor Disconnect..."
+HumansDisconnect: "Crewmates Disconnect..."
+HideAndSeek_ByTimer: "The countdown ends"
+HideAndSeek_ByKills: "All those in hiding were caught"
+CrewmateWin: "Crewmates Win"
+ImpostorWin: "Impostors Win"
+NobodyWin: "Nobody Win"
+ErrorWin: "Error Win"

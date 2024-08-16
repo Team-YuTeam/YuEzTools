@@ -39,6 +39,8 @@ public class MenuUI : MonoBehaviour
             Toggles.ServerAllHostOrNoHost = GameStartManagerPatch.roomMode == RoomMode.Normal ? false : true;
             Toggles.EnableAntiCheat = GameStartManagerPatch.EnableAC;
         }
+
+        Main.WinTextSize.Value = Toggles.WinTextSize;
         
         if (isGUIActive) firstoOpenMenuUI = false;
         if(!isGUIActive)
@@ -96,6 +98,11 @@ public class MenuUI : MonoBehaviour
                         new ToggleInfo(Translator.GetString("ShowGM"), () => Toggles.ShowGM,
                             x => Toggles.ShowGM = x),
                     }),
+                    new SubmenuInfo(Translator.GetString("EndPart"), false, new List<ToggleInfo>()
+                        {
+                            new ToggleInfo(Translator.GetString("WinTextSize"), () => Toggles.WinTextSize,
+                                x => Toggles.WinTextSize = x),
+                        }),
                 }
             ));
             groups.Add(new GroupInfo(Translator.GetString("MenuUI.ShortcutButton"), false, new List<ToggleInfo>()
@@ -108,6 +115,8 @@ public class MenuUI : MonoBehaviour
                         x => Toggles.CloseMusicOfOr = x),
                     new ToggleInfo(Translator.GetString("MenuUI.reShowRoleT"), () => Toggles.reShowRoleT,
                             x => Toggles.reShowRoleT = x),
+                    new ToggleInfo(Translator.GetString("MenuUI.ShowInfoInLobby"), () => Toggles.ShowInfoInLobby,
+                            x => Toggles.ShowInfoInLobby = x),
                     
                 }, new List<SubmenuInfo>
                 {

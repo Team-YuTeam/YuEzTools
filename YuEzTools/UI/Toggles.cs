@@ -18,6 +18,9 @@ public class Toggles
     public static bool ShowUTC;
     public static bool ShowLocalNowTime;
     public static bool ShowGM = true;
+    
+    // 结算部分
+    public static bool WinTextSize;
 
     // 反作弊
     public static bool EnableAntiCheat = true;
@@ -30,6 +33,7 @@ public class Toggles
     public static bool OpenGameDic;
     public static bool CloseMusicOfOr;
     public static bool reShowRoleT;
+    public static bool ShowInfoInLobby;
     
     //玩法性-所有人
     public static bool ExitGame;

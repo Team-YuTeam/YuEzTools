@@ -36,9 +36,7 @@ updateSource.BiliBili: "B站赞助"
 updateSource.NextTime: "下次一定"
 updateSource.QQ: "QQ群"
 updateSource.github: "GitHub"
-
-# 文本
-NotFoundStringInYaml: "没找到"
+updateSource.discord: "Discord"
 
 # 聊天
 SuspectedViolationMessage: "疑似违规信息"
@@ -93,6 +91,8 @@ ShowIsAutoExit: "显示是否防炸端模式"
 ShowLocalNowTime: "显示现在时间"
 ShowUTC: "显示UTC"
 ShowGM: "显示是否托管模式"
+EndPart: "结算部分"
+WinTextSize: "获胜阵营显示的字体更大"
 
 # MenuUI.AntiCheat
 MenuUI.AntiCheat: "反作弊"
@@ -117,6 +117,7 @@ MenuUI.ShortcutButton.PeopleMode: "太空人模式"
 MenuUI.HorseMode: "马模式"
 MenuUI.LongMode: "长颈鹿模式"
 MenuUI.reShowRoleT: "重新展示职业"
+MenuUI.ShowInfoInLobby: "在大厅显示玩家的基本信息"
 
 # MenuUI.ShortcutButton.Left
 MenuUI.ShortcutButton.Left: "退出游戏选项卡"
@@ -233,3 +234,20 @@ CanNotJoinGame: "您当前选择了+25模式且启用了反作弊，无法通过
 
 # 结算
 EndMessage: "结算："
+game.endScreen.detail: "打开结算界面"
+game.endScreen.close: "关闭界面"
+
+# 获胜原因
+HumansByVote: "伪装者被投出"
+HumansByTask: "完成全部任务"
+ImpostorByVote: "伪装者人数优势"
+ImpostorByKill: "伪装者人数优势"
+ImpostorBySabotage: "伪装者破坏了飞船"
+ImpostorDisconnect: "伪装者掉线了..."
+HumansDisconnect: "船员掉线了..."
+HideAndSeek_ByTimer: "倒计时结束"
+HideAndSeek_ByKills: "所有躲藏者被抓"
+CrewmateWin: "船员获胜"
+ImpostorWin: "伪装者获胜"
+NobodyWin: "无人获胜"
+ErrorWin: "异常获胜"

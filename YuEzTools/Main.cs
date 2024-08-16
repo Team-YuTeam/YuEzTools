@@ -52,6 +52,7 @@ public class Main : BasePlugin
     public static ConfigEntry<bool> PatchAccount;
     public static ConfigEntry<bool> PatchChat;
     public static ConfigEntry<bool> PatchCosmetics;
+    public static ConfigEntry<bool> WinTextSize;
     
     // ToDo: 自由选择是否开启游玩次数
     
@@ -130,6 +131,7 @@ public class Main : BasePlugin
         PatchAccount = Config.Bind("Patches", "AccountPatches", true, "Enable account-related patches");
         PatchChat = Config.Bind("Patches", "ChatPatches", true, "Enable chat-related patches");
         PatchCosmetics = Config.Bind("Patches", "CosmeticPatches", true, "Enable cosmetic-related patches");
+        WinTextSize = Config.Bind("WinText", "WinTextSize", false, "The Winner big(true) or the reason big(false)");
         
         menuUI = AddComponent<MenuUI>();
         
@@ -148,6 +150,7 @@ public class Main : BasePlugin
         else ConsoleManager.CreateConsole();
         
         DevManager.Init();
+        Toggles.WinTextSize = WinTextSize.Value;
         //模组加载好了标语
         YuEzTools.Logger.Msg("========= YuET loaded! =========", "YuET Plugin Load");
     }
