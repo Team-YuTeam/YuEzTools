@@ -17,7 +17,7 @@ using System.Reflection;
 
 namespace YuEzTools;
 
-public class OnlyYuEzToolsCheat
+public class OnlyYuEzTools
 {
     public static void DeleteOther()
     {

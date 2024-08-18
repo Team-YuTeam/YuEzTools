@@ -14,17 +14,17 @@ namespace YuEzTools.Patches;
 [HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.UpdateSystem), typeof(SystemTypes), typeof(PlayerControl), typeof(MessageReader))]
 public static class ShipStatus_FixedUpdate
 {
-    public static bool Prefix(ShipStatus player, [HarmonyArgument(0)] SystemTypes systemType, [HarmonyArgument(1)] PlayerControl __instance, [HarmonyArgument(2)] MessageReader reader)
+    public static bool Prefix(ShipStatus __instance, [HarmonyArgument(0)] SystemTypes systemType, [HarmonyArgument(1)] PlayerControl player, [HarmonyArgument(2)] MessageReader reader)
     {
         if (!Toggles.EnableAntiCheat) return true;
         var amount = MessageReader.Get(reader).ReadByte();
-        if (AntiCheatForAll.RpcUpdateSystemCheck(__instance, systemType, amount)  || (GetPlayer.IsHideNSeek && AntiCheatForAll.RpcUpdateSystemCheckFHS(__instance, systemType, amount)))
+        if (AntiCheatForAll.RpcUpdateSystemCheck(player, systemType, amount)  || (GetPlayer.IsHideNSeek && AntiCheatForAll.RpcUpdateSystemCheckFHS(player, systemType, amount)))
         {
-            if(!Main.HackerList.Contains(__instance)) Main.HackerList.Add(__instance);
+            if(!Main.HackerList.Contains(player)) Main.HackerList.Add(player);
             Logger.Info("AC 破坏 RPC", "MessageReaderUpdateSystemPatch");
-            Main.Logger.LogInfo("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/ProductUserId："+__instance.GetClient().ProductUserId}");
+            Main.Logger.LogInfo("Hacker " + player.GetRealName() + $"{"好友编号："+player.GetClient().FriendCode+"/名字："+player.GetRealName()+"/ProductUserId："+player.GetClient().ProductUserId}");
             //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;
-            SendChat.Prefix(__instance); 
+            SendChat.Prefix(player); 
             if (AmongUsClient.Instance.AmHost)
             {
                 //Main.Logger.LogInfo("Host Try ban " + __instance.GetRealName());
@@ -50,8 +50,8 @@ public static class ShipStatus_FixedUpdate
             }
             return false;
         }
-
-        return RepairSystemPatch.Prefix(player, systemType, __instance, amount);
+        __instance.RpcUpdateSystem(systemType, 16);
+        return RepairSystemPatch.Prefix(__instance, systemType, player, amount);
     }
 }
 

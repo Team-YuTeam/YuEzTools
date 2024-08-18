@@ -27,7 +27,7 @@ internal class AntiCheatForAll
     
     public static bool ReceiveRpc(PlayerControl pc, byte callId, MessageReader reader)
     {
-        if (pc == null || reader == null || pc.AmOwner) return false;
+        if (pc == null || reader == null) return false;
         try
         {
             MessageReader sr = MessageReader.Get(reader);
@@ -233,7 +233,8 @@ internal class AntiCheatForAll
                         if (AmongUsClient.Instance.AmHost && !Toggles.SafeMode)
                         {
                             id.GetPlayerDataById().pc.Revive();
-                            if(GetPlayer.IsLobby) id.GetPlayerDataById().pc.RpcSetRole(RoleTypes.Crewmate,true);
+                            if(GetPlayer.IsLobby) GetPlayer.GetPlayerById(id).RpcSetRole(RoleTypes.Crewmate,true);
+                            
                             Main.Logger.LogWarning($"尝试复活{id.GetPlayerDataById().pc.GetRealName()}");
                         }
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");
@@ -334,7 +335,7 @@ internal class AntiCheatForAll
                         if (AmongUsClient.Instance.AmHost && !Toggles.SafeMode)
                         {
                             id.GetPlayerDataById().pc.Revive();
-                            if(GetPlayer.IsLobby) id.GetPlayerDataById().pc.RpcSetRole(RoleTypes.Crewmate,true);
+                            if(GetPlayer.IsLobby) GetPlayer.GetPlayerById(id).RpcSetRole(RoleTypes.Crewmate,true);
                             Main.Logger.LogWarning($"尝试复活{id.GetPlayerDataById().pc.GetRealName()}");
                         }
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回");

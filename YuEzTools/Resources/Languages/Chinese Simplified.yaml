@@ -59,8 +59,7 @@ Ping.MenuText: "按下 <color=#8B008B>Delete</color> 以打开设置"
 
 # 提示语
 AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您不是房主 <color=#FFFF00>无权</color>惩罚"
-AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您已开启<color=#1E90FF>[UnSafe]</color>模式 <color=#FFFF00>尝试<color=#FF4500>击杀</color>"
-AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 尝试<color=#FF4500>击杀</color>和<color=#FF0000>封禁</color>"
+AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您已开启<color=#1E90FF>[UnSafe]</color>模式 <color=#FFFF00>尝试<color=#FF4500>封禁</color>"
 AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> 是外挂\n您是房主 <color=#FFFF00>尝试<color=#FF0000>封禁</color>"
 SeeHacker: "<color=#1E90FF>{0}</color> 是外挂"
 ERROR.CHECKRPC: "[ERROR]可能有外挂或YuET问题！"
@@ -253,4 +252,4 @@ NobodyWin: "无人获胜"
 ErrorWin: "异常获胜"
 
 # 任务栏
-EnterF3ToShowYourRoleInfo: "按下F3以显示职业介绍和设置"
+PressF3ToShowYourRoleInfo: "按下F3以显示职业介绍和设置"
