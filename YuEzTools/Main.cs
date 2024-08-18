@@ -72,7 +72,7 @@ public class Main : BasePlugin
     
     public static bool isChatCommand = false;
 
-    public static List<PlayerControl> JoinedPlayer = new();
+    // public static List<PlayerControl> JoinedPlayer = new();
     
     public Harmony Harmony { get; } = new Harmony(PluginGuid);
 

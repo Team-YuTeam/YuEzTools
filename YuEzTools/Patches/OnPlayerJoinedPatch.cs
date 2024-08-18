@@ -39,7 +39,7 @@ class OnPlayerJoinedPatch
         if (client.FriendCode.IsDevUser())
         {
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"[Mod Dev] <color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
-            SendInGamePatch.SendInGame($"[{GetString(client.FriendCode.GetDevJob())}] <color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
+            SendInGamePatch.SendInGame($"[{client.FriendCode.GetDevJob()}] <color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
             return;
         }
         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
@@ -72,7 +72,7 @@ class OnPlayerJoinedPatch
     {
         if (AmongUsClient.Instance.AmHost)
         {
-            Main.JoinedPlayer.Add(client.Character);
+            // Main.JoinedPlayer.Add(client.Character);
             return;
         }
     }
@@ -86,7 +86,7 @@ class OnPlayerLeftPatch{
         }
         if (AmongUsClient.Instance.AmHost)
         {
-            Main.JoinedPlayer.Remove(client.Character);
+            // Main.JoinedPlayer.Remove(client.Character);
         }
         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("LeftRoom")}</color>");
         Main.Logger.LogInfo(

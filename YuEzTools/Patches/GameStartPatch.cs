@@ -105,6 +105,10 @@ public class GameStartManagerPatch
                             string.Format(GetString("Warning.AutoExitAtMismatchedFPS"),
                                 PingTrackerUpdatePatch.fps, Math.Round(5 - exitTimer).ToString()));
                 }
+                else
+                {
+                    exitTimer = 0;
+                }
 
                 if (warningMessage == "")
                 {

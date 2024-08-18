@@ -22,13 +22,13 @@ public class IntroPatch
         _ = new LateTask(() =>
         {
             var roleType = PlayerControl.LocalPlayer.Data.Role.Role;
-            __instance.YouAreText.color = Utils.Utils.GetRoleColor(roleType);
+            __instance.YouAreText.color = Utils.Utils.GetRoleColor32(roleType);
             //__instance.RoleText.text = Utils.Utils.GetRoleName(roleType);
             __instance.RoleText.color = Utils.Utils.GetRoleColor32(roleType);
             __instance.RoleText.fontWeight = TMPro.FontWeight.Thin;
-            __instance.RoleText.SetOutlineColor(Utils.Utils.ShadeColor(Utils.Utils.GetRoleColor(roleType), 0.1f).SetAlpha(0.38f));
+            __instance.RoleText.SetOutlineColor(Utils.Utils.ShadeColor(Utils.Utils.GetRoleColor32(roleType), 0.1f).SetAlpha(0.38f));
             __instance.RoleText.SetOutlineThickness(0.17f);
-            __instance.RoleBlurbText.color = Utils.Utils.GetRoleColor(roleType);
+            __instance.RoleBlurbText.color = Utils.Utils.GetRoleColor32(roleType);
             __instance.RoleBlurbText.text = roleType.GetRoleInfoForVanilla();
             
         }, 0.0001f, "Override Role Text");
@@ -40,7 +40,6 @@ public class IntroPatch
         ref Il2CppSystem.Collections.Generic.List<PlayerControl> teamToDisplay)
     {
         __instance.TeamTitle.text = $"{GetString("TeamCrewmate")}";
-
         __instance.ImpostorText.text = $"{string.Format(GetString("ImpostorNumCrew"), GameOptionsManager.Instance.currentNormalGameOptions.NumImpostors)}";
         __instance.ImpostorText.text += "\n" + string.Format(GetString("CrewmateIntroText"),Utils.Utils.GetRoleHtmlColor(PlayerControl.LocalPlayer.Data.RoleType));
         __instance.TeamTitle.color = Utils.Utils.GetRoleColor32(PlayerControl.LocalPlayer.Data.RoleType);
@@ -52,7 +51,7 @@ public class IntroPatch
 
         __instance.TeamTitle.text = GetString("TeamImpostor");
         __instance.ImpostorText.text = $"{string.Format(GetString("ImpostorNumImp"), GameOptionsManager.Instance.currentNormalGameOptions.NumImpostors)}";
-
+        
         __instance.ImpostorText.text += "\n" + string.Format(GetString("ImpostorIntroText"),Utils.Utils.GetRoleHtmlColor(PlayerControl.LocalPlayer.Data.RoleType));
         __instance.TeamTitle.color = __instance.BackgroundBar.material.color = Utils.Utils.GetRoleColor32(PlayerControl.LocalPlayer.Data.RoleType);
     }
