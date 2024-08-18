@@ -27,10 +27,10 @@ public static class ShipStatus_FixedUpdate
             SendChat.Prefix(player); 
             if (AmongUsClient.Instance.AmHost)
             {
-                //Main.Logger.LogInfo("Host Try ban " + __instance.GetRealName());
-                //__instance.RpcSendChat($"{Main.ModName}检测到我是外挂 并且正在尝试踢出我 [来自房主{AmongUsClient.Instance.PlayerPrefab.GetRealName()}的{Main.ModName}]");
-                //AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), true);
-                // GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+                Main.Logger.LogInfo("Host Try ban " + player.GetRealName());
+                // __instance.RpcSendChat($"{Main.ModName}检测到我是外挂 并且正在尝试踢出我 [来自房主{AmongUsClient.Instance.PlayerPrefab.GetRealName()}的{Main.ModName}]");
+                AmongUsClient.Instance.KickPlayer(player.GetClientId(), true);
+                 GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
                 if(GetPlayer.IsInGame)
                 {
                     Main.Logger.LogInfo("Host Try end game with room " +
