@@ -60,7 +60,6 @@ Ping.MenuText: "Press <color=#8B008B>Delete</color> to open settings"
 # Alerts
 AmnotHostSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are not the host - <color=#FFFF00>Cannot</color> punish the hacker"
 AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\n<color=#1E90FF>[UnSafe]</color> mode enabled - <color=#FFFF00>Trying to <color=#FF4500>kill</color> the hacker"
-AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are the host - Trying to <color=#FF4500>kill</color> and <color=#FF0000>ban</color> the hacker"
 AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are the host - <color=#FFFF00>Trying to <color=#FF0000>ban</color> the hacker"
 SeeHacker: "<color=#1E90FF>{0}</color> is a hacker"
 SeeCloseDoorHacker: "<color=#1E90FF>{0}</color> doors are closed by a hacker"
@@ -196,7 +195,7 @@ CrewmateIntroText: "<color={0}>Complete your tasks and get rid of those bad guys
 ImpostorIntroText: "<color={0}>Evil is coming...</color>"
 
 # TaskText
-FakeTask: "Fake tasks are as follows:"
+FakeTask: "Fake tasks: "
 
 # RoomList
 iPhone: "IOS"
@@ -237,6 +236,7 @@ CanNotJoinGame: "You enabled +25 and enable anti-cheat, cannot join room with se
 EndMessage: "Summary"
 game.endScreen.detail: "Open Summary Interface"
 game.endScreen.close: "Close Interface"
+KillCount: "Kill Count:"
 
 # Win Reason
 HumansByVote: "Impostors are All Exiled"
@@ -249,7 +249,7 @@ HumansDisconnect: "Crewmates Disconnect..."
 HideAndSeek_ByTimer: "The Countdown Ends"
 HideAndSeek_ByKills: "All Those hiders were caught"
 CrewmateWin: "Crewmates Win"
-ImpostorWin: "Impostors Win"
+ImpostorsWin: "Impostors Win"
 NobodyWin: "Nobody Win"
 ErrorWin: "Error Win"
 
