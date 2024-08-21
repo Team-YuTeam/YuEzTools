@@ -175,41 +175,9 @@ class InnerNetClientSpawnPatch
         
         if(flags != SpawnFlags.IsClientCharacter) return;
         
-        if(ServerUpdatePatch.re == 50605450 || GameStartManagerPatch.roomMode != RoomMode.Plus25) return;
-        
-        _ = new LateTask(() =>
-        {
-            if (client.Character == null) return;
-            //if (Main.OverrideWelcomeMsg != "")
-            Utils.Utils.SendMessage(string.Format(GetString("Message.Welcome"),(GetPlayer.IsOnlineGame ? serverName : "Local") , GameStartManager.Instance.GameRoomNameCode.text), client.Character.PlayerId);
-            // else TemplateManager.SendTemplate("welcome", client.Character.PlayerId, true);
-        }, 3f, "Welcome Message");
+        if(GameStartManagerPatch.roomMode != RoomMode.Plus25) return;
         
         Logger.Msg($"Spawn player data: ID {ownerId}: {client.PlayerName}", "InnerNetClientSpawn");
-        if (GetPlayer.IsOnlineGame)
-        {
-            _ = new LateTask(() =>
-            {
-                if (GetPlayer.IsLobby && client.Character != null && LobbyBehaviour.Instance != null )//&& GetPlayer.IsVanillaServer)
-                {
-                    // Only for vanilla
-                    if (!client.Character.OwnedByHost())
-                    {
-                        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(LobbyBehaviour.Instance.NetId, (byte)RpcCalls.LobbyTimeExpiring, SendOption.None, client.Id);
-                        writer.WritePacked((int)GameStartManagerPatch.timer);
-                        writer.Write(false);
-                        AmongUsClient.Instance.FinishRpcImmediately(writer);
-                    }
-                    // Non-host modded client
-                    else if (!client.Character.OwnedByHost())
-                    {
-                        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SyncLobbyTimer, SendOption.Reliable, client.Id);
-                        writer.WritePacked((int)GameStartManagerPatch.timer);
-                        AmongUsClient.Instance.FinishRpcImmediately(writer);
-                    }
-                }
-            }, 3.1f, "Send RPC or Sync Lobby Timer");
-        }
     }
 }
 [HarmonyPatch(typeof(LobbyBehaviour))]

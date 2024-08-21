@@ -6,10 +6,10 @@ namespace YuEzTools.Patches;
 [HarmonyPatch(typeof(Constants), nameof(Constants.GetBroadcastVersion))]
 class ServerUpdatePatch
 {
-    public static int re = 50605450;
+    // public static int re = 50605450;
     static void Postfix(ref int __result)
     {
-        re = 50605450;
+        // re = 50605450;
         if (GetPlayer.IsLocalGame)
         {
             Logger.Info($"IsLocalGame: {__result}", "VersionServer");
@@ -19,7 +19,7 @@ class ServerUpdatePatch
             // Changing server version for AU mods
             if (Toggles.ServerAllHostOrNoHost)
                 __result += 25;
-            re = __result;
+            // re = __result;
             Logger.Info($"IsOnlineGame: {__result}", "VersionServer");
         }
     }
