@@ -63,6 +63,7 @@ AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\n<color=#1E90F
 AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are the host - Trying to <color=#FF4500>kill</color> and <color=#FF0000>ban</color> the hacker"
 AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are the host - <color=#FFFF00>Trying to <color=#FF0000>ban</color> the hacker"
 SeeHacker: "<color=#1E90FF>{0}</color> is a hacker"
+SeeCloseDoorHacker: "<color=#1E90FF>{0}</color> doors are closed by a hacker"
 ERROR.CHECKRPC: "[ERROR] There may be hackers or YuET has a problem"
 OptImpMoreThanThree: "Max impostors# is larger than 3\nThere may be hackers or you joined a modded lobby"
 OptHImpMoreThanThree: "Max impostors# is larger than 1\nThere may be hackers or you joined a modded lobby"
