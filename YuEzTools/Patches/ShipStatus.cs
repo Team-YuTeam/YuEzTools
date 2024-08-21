@@ -81,7 +81,7 @@ class ShipStatus_CloseDoors
         {
             Main.HasHacker = true;
             Logger.Info($"Trying to close the door in the room: {room}", "CloseDoorsOfType");
-            // SendInGamePatch.SendInGame(string.Format(Translator.GetString("SeeCDHacker")));
+            SendChatCloseDoor.Prefix(room);
             if (AmongUsClient.Instance.AmHost)
             {
                 // Main.Logger.LogInfo("Host Try ban " + player.GetRealName());
