@@ -236,6 +236,7 @@ CanNotJoinGame: "您当前选择了+25模式且启用了反作弊，无法通过
 EndMessage: "结算："
 game.endScreen.detail: "打开结算界面"
 game.endScreen.close: "关闭界面"
+KillCount: "击杀数："
 
 # 获胜原因
 HumansByVote: "伪装者被驱逐"
@@ -248,7 +249,7 @@ HumansDisconnect: "船员掉线了..."
 HideAndSeek_ByTimer: "倒计时结束"
 HideAndSeek_ByKills: "所有躲藏者被抓"
 CrewmateWin: "船员获胜"
-ImpostorWin: "伪装者获胜"
+ImpostorsWin: "伪装者获胜"
 NobodyWin: "无人获胜"
 ErrorWin: "异常获胜"
 

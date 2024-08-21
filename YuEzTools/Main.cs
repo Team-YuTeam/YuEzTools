@@ -103,7 +103,7 @@ public class Main : BasePlugin
         PlayerControl.AllPlayerControls.ToArray().Where(p => p != null);
     
     //public static Dictionary<int, PlayerState> PlayerStates = new Dictionary<int, PlayerState>();
-    
+    public static Dictionary<byte, string> DevNames = new Dictionary<byte, string>();
     public static ConfigEntry<string> BetaBuildURL { get; private set; }
     public override void Load()//加载 启动！
     {

@@ -90,6 +90,16 @@ static class GetPlayer
             return RoleTeam.Impostor;
         return RoleTeam.Error;
     }
+    public static RoleTeam GetRoleTeam(this RoleTypes roleType)
+    {
+        if (roleType is RoleTypes.Crewmate or RoleTypes.Engineer or RoleTypes.CrewmateGhost
+            or RoleTypes.Noisemaker or RoleTypes.GuardianAngel or RoleTypes.Scientist or RoleTypes.Tracker)
+            return RoleTeam.Crewmate;
+        else if (roleType is RoleTypes.Impostor or RoleTypes.Shapeshifter or RoleTypes.ImpostorGhost
+                 or RoleTypes.Phantom)
+            return RoleTeam.Impostor;
+        return RoleTeam.Error;
+    }
     public static ClientData GetClient(this PlayerControl player)
     {
         try

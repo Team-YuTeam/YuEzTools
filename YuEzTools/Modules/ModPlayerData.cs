@@ -33,6 +33,9 @@ public class ModPlayerData
     public bool IsDisconnected { get; private set; }
     public bool IsExiled { get; private set; }
     public bool IsByKilled { get; private set; }
+    public bool IsImpostor { get; private set; }
+    public int KillCount { get; private set; }
+    public int TaskCount { get; private set; }
 
     public ModPlayerData(PlayerControl Player, string name, int colorid,Color color)
     {
@@ -44,6 +47,9 @@ public class ModPlayerData
         IsExiled = false;
         IsByKilled = false;
         DeadReason = DeadReasonData.Alive;
+        KillCount = 0;
+        TaskCount = 0;
+        IsImpostor = false;
     }
     
     [GameModuleInitializer]
@@ -98,6 +104,16 @@ public class ModPlayerData
         Killer = killer.GetPlayerData();
         SetDeadReason(DeadReasonData.Kill);
     }
+
+    public void SetImp() => IsImpostor = true;
+    public void AddKillCount()
+    {
+        KillCount++;
+    }
+    public void AddTaskCount()
+    {
+        TaskCount++;
+    }
     public static int GetLongestNameByteCount() => AllPlayerDataForMod.Values.Select(data => data.Name.GetByteCount()).OrderByDescending(byteCount => byteCount).FirstOrDefault();
 }
 
@@ -114,6 +130,9 @@ static class PlayerControlData
     public static void SetDisconnected(this PlayerControl pc) => pc.GetPlayerData().SetDisconnected();
     public static void SetRole(this PlayerControl pc, RoleTypes role) => pc.GetPlayerData().SetRole(role);
     public static bool IsImpostor(this PlayerControl pc) => pc.GetPlayerRoleTeam() == RoleTeam.Impostor;
+    public static void AddKillCount(this PlayerControl pc) => GetPlayerData(pc).AddKillCount();
+    public static void AddTaskCount(this PlayerControl pc) => GetPlayerData(pc).AddTaskCount();
+    public static void SetImpostor(this PlayerControl pc) => GetPlayerData(pc).SetImp();
 }
 
 // 死亡原因

@@ -111,6 +111,7 @@ class CoSetRolePatch
     public static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] RoleTypes roleTypes)
     {
         __instance.SetRole(roleTypes);
+        if(roleTypes.GetRoleTeam() == RoleTeam.Impostor) __instance.SetImpostor();
     }
 }
 // Thanks Nebula on the Ship

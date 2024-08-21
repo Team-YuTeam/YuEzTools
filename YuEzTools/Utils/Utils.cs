@@ -17,6 +17,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using YuEzTools.Get;
 using YuEzTools.Modules;
+using YuEzTools.Patches;
 
 namespace YuEzTools.Utils;
 
@@ -85,6 +86,13 @@ public static class Utils
         alltext = $"<color={color}>{text}</color>";
         return alltext;
     }
+
+    public static string GetKillOrTaskCountText(this byte id)
+    {
+        var thisdata = ModPlayerData.GetModPlayerDataById(id);
+        
+        return thisdata.pc.Data.Role.IsImpostor ? GetString("KillCount") + thisdata.KillCount.ToString() : $"{thisdata.TaskCount}/{PlayerControlSetTasksPatch.TaskCount}";
+    }
     //感谢FSX
     public static string SummaryTexts(byte id)
     {
@@ -98,6 +106,9 @@ public static class Utils
         var pos = Math.Min(((float)longestNameByteCount / 2) + 1.5f, 11.5f);
         
         builder.Append(ColorString(thisdata.Color, thisdata.Name));
+        
+        builder.AppendFormat("<pos={0}em>", pos).Append(GetKillOrTaskCountText(id)).Append("</pos>");
+        pos += 7f;
 
         builder.AppendFormat("<pos={0}em>", pos).Append(GetDeadText(thisdata.pc)).Append("</pos>");
         pos += DestroyableSingleton<TranslationController>.Instance.currentLanguage.languageID == SupportedLangs.English ? 14f : 10.5f;

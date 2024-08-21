@@ -1,6 +1,8 @@
 using AmongUs.QuickChat;
 using HarmonyLib;
 using UnityEngine;
+using YuEzTools.Get;
+using YuEzTools.Modules;
 using YuEzTools.UI;
 
 namespace YuEzTools.Patches;
@@ -14,9 +16,16 @@ public static class ChatBubblePatch
     public static void SetText_Prefix(ChatBubble __instance, ref string chatText)
     {
         var sr = __instance.transform.FindChild("Background").GetComponent<SpriteRenderer>();
-        if(Toggles.DarkMode) sr.color = new Color(0, 0, 0,255);// : new Color(1, 1, 1);
-        if (Main.isChatCommand && !Toggles.DarkMode) sr.color = new Color(0, 0, 0,255);
-        else if(Main.isChatCommand && Toggles.DarkMode)sr.color = new Color(255, 255, 255,255);
+        if(Toggles.DarkMode) sr.color = new Color32(0, 0, 0,255);// : new Color(1, 1, 1);
+        
+        if (Main.isChatCommand && !Toggles.DarkMode) sr.color = new Color32(0, 0, 0,255);
+        else if(Main.isChatCommand && Toggles.DarkMode)sr.color = new Color32(255, 255, 255,255);
+
+        if (GetPlayer.IsInGame && __instance.playerInfo.PlayerId.GetPlayerDataById().IsDead)
+        {
+            if (!Toggles.DarkMode) sr.color = new Color32(61, 255, 141,255);
+            else if(Toggles.DarkMode)sr.color = new Color32(70, 61, 255,255);
+        }
         //if (modded)
         //{
         if (chatText.Contains("░") ||

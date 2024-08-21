@@ -17,6 +17,7 @@ class MurderPlayerPatch
         target.GetPlayerData().SetDeadReason(DeadReasonData.Kill);
         target.GetPlayerData().SetKiller(__instance);
         target.GetPlayerData().SetDead();
+        __instance.AddKillCount();
     }
 }
 
@@ -34,6 +35,7 @@ class FixedUpdatePatch
         {
             if (__instance.FriendCode.IsDevUser())
                 name = __instance.FriendCode.GetDevUser().GetTag() + name;
+               
             if (Toggles.ShowInfoInLobby)
             {
                 name = $"<size=70%><color=#33EEFF>Lv.{__instance.GetClient().PlayerLevel} {__instance.GetClient().PlatformData.Platform.GetPlatformText()} {__instance.GetClient().Id}</color></size>\n" +
@@ -45,8 +47,11 @@ class FixedUpdatePatch
         if (GetPlayer.IsInGame)
         {
             color = Utils.Utils.GetRoleHtmlColor(__instance.Data.RoleType);
-            if(__instance == PlayerControl.LocalPlayer || (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead))
+            if (__instance == PlayerControl.LocalPlayer || PlayerControl.LocalPlayer.Data.IsDead)
+            {
                 name = Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(__instance.Data.RoleType), __instance.GetRoleName()  + "\n" + name);
+                name += "(" + __instance.PlayerId.GetKillOrTaskCountText() + ")";
+            }
             if (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead)
                 name += $"({Utils.Utils.GetDeadText(__instance)})";
         }
@@ -57,6 +62,23 @@ class FixedUpdatePatch
         }
         
         __instance.cosmetics.nameText.text = name + "\n";
-        __instance.cosmetics.nameText.alignment = TextAlignmentOptions.Top;
+        __instance.cosmetics.nameText.alignment = TextAlignmentOptions.Center;
+    }
+}
+[HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CompleteTask))]
+class CompleteTaskPatch
+{
+    public static void Postfix(PlayerControl __instance)
+    {
+        __instance.AddTaskCount();
+    }
+}
+[HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.SetTasks))]
+class PlayerControlSetTasksPatch
+{
+    public static int TaskCount = 0;
+    public static void Postfix([HarmonyArgument(0)] Il2CppSystem.Collections.Generic.List<NetworkedPlayerInfo.TaskInfo> Tasks)
+    {
+        TaskCount = Tasks.Count;
     }
 }

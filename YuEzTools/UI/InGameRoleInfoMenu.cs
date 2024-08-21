@@ -2,6 +2,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using YuEzTools.Modules;
+using static YuEzTools.Translator;
 
 namespace YuEzTools.UI;
 
@@ -60,6 +61,12 @@ public static class InGameRoleInfoMenu
         var roleTeam = player.IsImpostor()? "Impostor":"Crewmate";
         builder.AppendFormat("<size={0}> ({1})\n\n", BodySize, Translator.GetString($"Team{roleTeam}"));
         builder.AppendFormat("<size={0}>{1}\n", BodySize, player.Data.RoleType.GetRoleLInfoForVanilla()); 
+        // builder.AppendFormat("<size={0}>{1}\n", BodySize, GetString("RoleCount") + GameOptionsManager.Instance.CurrentGameOptions.RoleOptions.GetNumPerGame(role)); 
+        // builder.AppendFormat("<size={0}>{1}\n", BodySize, GetString("RoleCount") + GameOptionsManager.Instance.CurrentGameOptions.RoleOptions.GetChancePerGame(role)); 
+        // builder.AppendFormat("<size={0}>{1}\n", BodySize, GetString("RoleCount") + GameOptionsManager.Instance.CurrentGameOptions.RoleOptions.GetType()); 
+        // builder.AppendFormat("<size={0}>{1}\n", BodySize, GetString("RoleCount") + GameOptionsManager.Instance.CurrentGameOptions.RoleOptions.GetHashCode()); 
+        // builder.AppendFormat("<size={0}>{1}\n", BodySize, GetString("RoleCount") + GameOptionsManager.Instance.CurrentGameOptions.RoleOptions); 
+        
         MainInfoTMP.text = builder.ToString();
     }
 
