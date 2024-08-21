@@ -47,3 +47,13 @@ public class SendChat
         return;
     }
 }
+
+public class SendChatCloseDoor
+{
+    public static void Prefix(SystemTypes room)
+    {
+        SendInGamePatch.SendInGame(string.Format(Translator.GetString("SeeCloseDoorHacker"),room.ToString()));
+        Main.Logger.LogInfo($"已揭示 {room.ToString()} 被非法关门");
+        return;
+    }
+}
