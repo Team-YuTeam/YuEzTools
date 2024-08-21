@@ -60,13 +60,7 @@ internal class AntiCheatForAll
                         Logger.Warn($"在游戏内非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回","ACFA");
                         return true;
                     }
-                    if (
-                        ((name.Contains("<size") || name.Contains("size>")) && name.Contains("?") && !name.Contains("color")) ||
-                        name.Length > 160 ||
-                        name.Count(f => f.Equals("\"\\n\"")) > 3 ||
-                        name.Count(f => f.Equals("\n")) > 3 ||
-                        name.Count(f => f.Equals("\r")) > 3 ||
-                        name.Contains("░") ||
+                    if (name.Contains("░") ||
                         name.Contains("▄") ||
                         name.Contains("█") ||
                         name.Contains("▌") ||
