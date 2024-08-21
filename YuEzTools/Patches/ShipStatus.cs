@@ -59,13 +59,13 @@ public static class ShipStatus_FixedUpdate
     typeof(byte))]
 class RepairSystemPatch
 {
-    public static bool Prefix(ShipStatus player,
+    public static bool Prefix(ShipStatus __instance,
         [HarmonyArgument(0)] SystemTypes systemType,
-        [HarmonyArgument(1)] PlayerControl __instance,
+        [HarmonyArgument(1)] PlayerControl player,
         [HarmonyArgument(2)] byte amount)
     {
         Logger.Msg(
-            "SystemType: " + systemType.ToString() + ", PlayerName: " + __instance.GetRealName() +
+            "SystemType: " + systemType.ToString() + ", PlayerName: " + player.GetRealName() +
             ", amount: " + amount, "RepairSystem");
         return true;
     }
