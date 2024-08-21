@@ -63,6 +63,7 @@ AmnotHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\n<color=#1E90F
 AmHostUnSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are the host - Trying to <color=#FF4500>kill</color> and <color=#FF0000>ban</color> the hacker"
 AmHostSafeSeeHacker: "<color=#1E90FF>{0}</color> is a hacker\nYou are the host - <color=#FFFF00>Trying to <color=#FF0000>ban</color> the hacker"
 SeeHacker: "<color=#1E90FF>{0}</color> is a hacker"
+SeeCloseDoorHacker: "<color=#1E90FF>{0}</color> doors are closed by a hacker"
 ERROR.CHECKRPC: "[ERROR] There may be hackers or YuET has a problem"
 OptImpMoreThanThree: "Max impostors# is larger than 3\nThere may be hackers or you joined a modded lobby"
 OptHImpMoreThanThree: "Max impostors# is larger than 1\nThere may be hackers or you joined a modded lobby"
@@ -71,8 +72,8 @@ NowHImpMoreThan: "The impostor number is larger than 1\nThere may be hackers or 
 NotLogin: "is not logged in.\n[Ban logged out player] enabled - Trying to ban the player"
 unKickNotLogin: "is not logged in\nPlease play with caution"
 BlackList: "is yours or YuET's Banner"
-notFindRPC: "This is not effective RPC！\nRPC Number：{0}"
-notJoinedSendRPC: "{1} is not join, but send RPC to you\nRPC Number：{0}"
+notFindRPC: "Invalid RPC!\nRPC: {0}"
+notJoinedSendRPC: "{1} does not join but sends RPC to you\nRPC: {0}"
 
 # MenuUI.Interface
 Interface: "Interface"
@@ -91,7 +92,8 @@ ShowIsAutoExit: "Show If Auto Leave Game Is Enabled"
 ShowLocalNowTime: "Show Local Time"
 ShowUTC: "Show UTC"
 ShowGM: "Show If GM Mode Is Enabled"
-WinTextSize: "Winner Team Text's size bigger"
+EndPart: "Game Summary"
+WinTextSize: "Enlarge the Texts of the Winning Team"
 
 # MenuUI.AntiCheat
 MenuUI.AntiCheat: "Anti Cheat"
@@ -188,25 +190,25 @@ ImpostorGhostLong: "If you are voted out, you are a loser\nDestroy to assist you
 # RoleTeam
 TeamCrewmate: "Crewmate"
 TeamImpostor: "Impostor"
-ImpostorNumCrew: "<color=#8cffff>There is <color=#ffFF00>{0}</color> bad guy between <color=#FFFF00>us</color>!"
+ImpostorNumCrew: "<color=#8cffff>There are <color=#ffFF00>{0}</color> bad guys among <color=#FFFF00>us</color>!"
 ImpostorNumImp: "<color=#FF0000>There are <color=#ff1919>{0}</color> members in <color=#FFFF00>our</color> team!"
-CrewmateIntroText: "<color={0}>Complete your task and get rid of those bad guys!</color>"
+CrewmateIntroText: "<color={0}>Complete your tasks and get rid of those bad guys!</color>"
 ImpostorIntroText: "<color={0}>Evil is coming...</color>"
 
 # TaskText
-FakeTask: "Fake task is as follows:"
+FakeTask: "Fake tasks are as follows:"
 
 # RoomList
 iPhone: "IOS"
 Android: "Android"
 Platforms.Unknown: "Unknown"
-ToCloseThisRoom: "Timer to close this room："
+ToCloseThisRoom: "Lobby will close after: "
 
 # Devs
 DevsTitle: "Developers of this project"
 MainDev: "Main developer"
 Developer: "Developer"
-NotJob: "NotJob in YuTeam"
+NotJob: "No Job in YuTeam"
 EnTranslator: "English Translator"
 JpTranslator: "Japanese Translator"
 
@@ -215,7 +217,7 @@ InviteButton: "Discord" # If Not Chinese, write Discord
 WebsiteButton: "Website"
 BiliBiliButton: "Bilibili sponsor"
 AfdianButton: "Afdian sponsor"
-DevsButton: "Devs"
+DevsButton: "Developers"
 ProjectButton: "Github" # If Not Chinese, write Github
 
 # Name
@@ -224,12 +226,12 @@ Hacker: "Hacker"
 # Reason for death
 ByKilled: "Killed by {0}"
 Exile: "Exiled"
-Disconnect: "Disconnect"
+Disconnect: "Disconnected"
 Alive: "Alive"
 
 # Anti-Cheat & +25 notices
-CanNotHostGame: "You choose +25, can not create room\nIf you changed, please reopen this menu"
-CanNotJoinGame: "You choose +25 and enable anti-cheat, cannot join room with search\nIf you changed, please reopen this menu"
+CanNotHostGame: "You enabled +25, can not create room\nIf you change, please reopen this menu"
+CanNotJoinGame: "You enabled +25 and enable anti-cheat, cannot join room with search\nIf you change please reopen this menu"
 
 # Summary
 EndMessage: "Summary"
@@ -237,16 +239,19 @@ game.endScreen.detail: "Open Summary Interface"
 game.endScreen.close: "Close Interface"
 
 # Win Reason
-HumansByVote: "Impostors is died by vote"
-HumansByTask: "Crewmate finished all tasks"
-ImpostorByVote: "The number of Impostors is larger"
-ImpostorByKill: "The number of Impostors is larger"
-ImpostorBySabotage: "Impostor Sabotaged Ship"
+HumansByVote: "Impostors are All Exiled"
+HumansByTask: "Crewmates Finished All the Tasks"
+ImpostorByVote: "The Number of Impostors is Larger"
+ImpostorByKill: "The Number of Impostors is Larger"
+ImpostorBySabotage: "Impostors Sabotaged the Ship"
 ImpostorDisconnect: "Impostor Disconnect..."
 HumansDisconnect: "Crewmates Disconnect..."
-HideAndSeek_ByTimer: "The countdown ends"
-HideAndSeek_ByKills: "All those in hiding were caught"
+HideAndSeek_ByTimer: "The Countdown Ends"
+HideAndSeek_ByKills: "All Those hiders were caught"
 CrewmateWin: "Crewmates Win"
 ImpostorWin: "Impostors Win"
 NobodyWin: "Nobody Win"
 ErrorWin: "Error Win"
+
+# 任务栏
+PressF3ToShowYourRoleInfo: "Press F3 to show role information and settings"
