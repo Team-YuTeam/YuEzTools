@@ -467,16 +467,16 @@ internal class AntiCheatForAll
         var Mapid = GetPlayer.GetActiveMapId();
         Logger.Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "AntiCheatForAll");
         // if (!AmongUsClient.Instance.AmHost) return false;
-        Logger.Info("触发飞船事件！"+player.GetRealName()+$"是{player.GetPlayerRoleTeam().ToString()}阵营！","ACFA");
+        Logger.Info("触发飞船事件！"+player.GetRealName()+$"是{player.GetPlayerRoleTeam().ToString()}阵营的{player.Data.RoleType}！","ACFA");
         if (player == null) return false;
         
         if (systemType == SystemTypes.Sabotage) //使用正常的破坏按钮
         {
-            // if (GetPlayer.GetPlayerRoleTeam(player) != RoleTeam.Impostor)
-            // {
-                // Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏A，已驳回", "AntiCheatForAll");
-                // return true;
-            // }
+            if (GetPlayer.GetPlayerRoleTeam(player) != RoleTeam.Impostor)
+            {
+                Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏A，已驳回", "AntiCheatForAll");
+                return true;
+            }
         } //外挂直接发送 128 个系统型 rpc
         else if (systemType == SystemTypes.LifeSupp)
         {
@@ -540,13 +540,14 @@ internal class AntiCheatForAll
             return true;
         }
     }
-        public static bool RpcUpdateSystemCheckFHS(PlayerControl player, SystemTypes systemType, byte amount)
+    
+    public static bool RpcUpdateSystemCheckFHS(PlayerControl player, SystemTypes systemType, byte amount)
     {
         // 更新系统 rpc 无法被 playercontrol.handlerpc 接收
         var Mapid = GetPlayer.GetActiveMapId();
         Logger.Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "AntiCheatForAll");
         // if (!AmongUsClient.Instance.AmHost) return false;
-        Logger.Info("触发飞船事件！"+player.GetRealName()+$"是{player.GetPlayerRoleTeam().ToString()}阵营！","ACFA");
+        Logger.Info("触发飞船事件！"+player.GetRealName()+$"是{player.GetPlayerRoleTeam().ToString()}阵营的{player.Data.RoleType}！","ACFA");
         if (player == null) return false;
         
         if (systemType == SystemTypes.Sabotage || systemType == SystemTypes.LifeSupp || systemType == SystemTypes.Comms || systemType == SystemTypes.Electrical || systemType == SystemTypes.Laboratory || systemType == SystemTypes.Reactor || systemType == SystemTypes.HeliSabotage || systemType == SystemTypes.MushroomMixupSabotage) //使用破坏
@@ -568,5 +569,17 @@ internal class AntiCheatForAll
             Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】在躲猫猫非法破坏，已驳回", "AntiCheatForAll");
             return true;
         }
+    }
+    
+    public static bool CloseDoorsOfTypeCheck (SystemTypes room)
+    {
+        Logger.Info("Check close door RPC" + ", Room: " + room.ToString(), "ACFA");
+        Logger.Info("触发飞船事件！","ACFA");
+        if (GetPlayer.IsHideNSeek) 
+        {
+            Logger.Fatal($"有玩家在躲猫猫非法关门，已驳回", "ACFA");
+            return true;
+        }
+        return false;
     }
 }
