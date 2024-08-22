@@ -11,12 +11,57 @@ using System.Reflection;
 using YuEzTools.Updater;
 using TMPro;
 using System.IO;
+using BepInEx.Unity.IL2CPP.Utils.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 using static YuEzTools.Translator;
+using System.Collections;
 
 namespace YuEzTools.UI;
+
+[HarmonyPatch(typeof(SplashManager), nameof(SplashManager.Start))]
+public class SplashManagerPatch
+{
+    static SpriteLoader logoSprite = SpriteLoader.FromResource("YuEzTools.Resources.YuET-Logo-tm.png", 200f);
+    // static SpriteLoader logoGlowSprite = SpriteLoader.FromResource("YuEzTools.Resources.Yu-Logo-tm.png", 200f);
+    static TextMeshPro loadText = null!;
+    public static bool Prefix(SplashManager __instance)
+    {
+        // var logo = UnityHelper.CreateObject<SpriteRenderer>("YuETLogo", null, new Vector3(0, 0.2f, -5f));
+        // // var logoGlow = UnityHelper.CreateObject<SpriteRenderer>("YuETLogoGlow", null, new Vector3(0, 0.2f, -5f));
+        // logo.sprite = logoSprite.GetSprite();
+        // // logoGlow.sprite = logoGlowSprite.GetSprite();
+        // float p = 1f;
+        // while (p > 0f)
+        // {
+        //     p -= Time.deltaTime * 2.8f;
+        //     float alpha = 1 - p;
+        //     logo.color = Color.white.AlphaMultiplied(alpha);
+        //     // logoGlow.color = Color.white.AlphaMultiplied(Mathf.Min(1f, alpha * (p * 2)));
+        //     logo.transform.localScale = Vector3.one * (p * p * 0.012f + 1f);
+        //     // logoGlow.transform.localScale = Vector3.one * (p * p * 0.012f + 1f);
+        //     // return null;
+        // }
+        // logo.color = Color.white;
+        // // logoGlow.gameObject.SetActive(false);
+        // logo.transform.localScale = Vector3.one;
+        __instance.logoAnimFinish.transform.FindChild("LogoRoot").FindChild("ISLogo").GetComponent<SpriteRenderer>().sprite = logoSprite.GetSprite();
+        
+        
+        loadText = GameObject.Instantiate(__instance.errorPopup.InfoText,  __instance.logoAnimFinish.transform.FindChild("LogoRoot").FindChild("ISLogo"));
+        loadText.transform.localPosition = new(0, __instance.logoAnimFinish.transform.FindChild("LogoRoot").FindChild("ISLogo").position.y -1.18f, 0);
+        loadText.fontStyle = TMPro.FontStyles.Bold;
+        loadText.text = Translator.GetString("WelcomeToUseYuET");
+        loadText.color = Color.white.AlphaMultiplied(0.3f);
+        loadText.SetActive(__instance.logoAnimFinish.enabled);
+        
+        // __instance.logoAnimFinish.transform.localPosition = new Vector3(-7.5f,3.8f,0);
+        // __instance.logoAnimFinish.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
+        // return false;
+        return false;
+    }
+}
 
 [HarmonyPatch]
 public class MainMenuManagerPatch

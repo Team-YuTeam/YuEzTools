@@ -1,4 +1,5 @@
 using HarmonyLib;
+using TMPro;
 using UnityEngine;
 
 namespace YuEzTools;
@@ -19,4 +20,7 @@ public static class ObjectHelper
     /// オブジェクトの<see cref="TextTranslatorTMP"/>コンポーネントを破棄します
     /// </summary>
     public static void DestroyTranslatorL(this MonoBehaviour obj) => obj?.gameObject?.DestroyTranslator();
+
+    public static void SetActive(this Transform tf, bool b) => tf.gameObject.SetActive(b);
+    public static void SetActive(this TextMeshPro tf, bool b) => tf.gameObject.SetActive(b);
 }

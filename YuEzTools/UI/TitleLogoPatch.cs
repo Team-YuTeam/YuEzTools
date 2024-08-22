@@ -6,9 +6,11 @@ using YuEzTools;
 using UnityEngine;
 using System.IO;
 using System.Reflection;
+using UnityEngine.PlayerLoop;
 using YuEzTools.Updater;
 
 namespace YuEzTools.UI;
+
 
 [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.Start)), HarmonyPriority(Priority.First)]
 internal class TitleLogoPatch
@@ -95,6 +97,16 @@ internal class TitleLogoPatch
         __instance.newsButton.transform.localPosition += new Vector3(0, 0.7f, 0);
         __instance.settingsButton.transform.localPosition += new Vector3(0, 0.7f, 0);
         
+        __instance.freePlayButton.gameObject.SetActive(false);
+        __instance.freePlayButton.gameObject.DestroyTranslator();
+        __instance.howToPlayButton.gameObject.SetActive(false);
+        __instance.howToPlayButton.gameObject.DestroyTranslator();
+        __instance.creditsScreen.SetActive(false);
+        // __instance.creditsScreen.DestroyTranslator();
+        __instance.creditsButton.gameObject.SetActive(false);
+        // __instance.creditsButton.gameObject.DestroyTranslator();
+        // GameObject.Destroy(__instance.creditsScreen);
+        // GameObject.Destroy(__instance.creditsButton.gameObject);
 
         void FormatButtonColor(PassiveButton button, Sprite borderType, Color inActiveColor, Color activeColor, Color inActiveTextColor, Color activeTextColor)
         {
