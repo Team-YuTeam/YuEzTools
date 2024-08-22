@@ -236,7 +236,7 @@ CanNotJoinGame: "You enabled +25 and enable anti-cheat, cannot join room with se
 EndMessage: "Summary"
 game.endScreen.detail: "Summary"
 game.endScreen.close: "Close"
-KillCount: "Killed Count: "
+KillCount: "Kill Count: "
 
 # Win Reason
 HumansByVote: "Impostors are All Exiled"
