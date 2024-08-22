@@ -260,3 +260,6 @@ PressF3ToShowYourRoleInfo: "按下F3以显示职业介绍和设置"
 YuETOptions: "YuET设置"
 Options.Back: "返回设置"
 SwitchVanilla: "切换为原版"
+
+# 加载界面
+WelcomeToUseYuET: "欢迎使用YuET！"

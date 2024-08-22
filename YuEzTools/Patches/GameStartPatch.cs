@@ -174,22 +174,6 @@ public class GameStartManagerPatch
                 EnableAC = Toggles.EnableAntiCheat;
                 Info($"玩家被创建了，当前房间模式 {roomMode.ToString()}","CreatePlayer");
             }
-            
-            if (GetPlayer.isNormalGame)
-            {
-                _ = new LateTask(() =>
-                {
-                    if (!AmongUsClient.Instance.IsGameStarted && client.Character != null &&  Main.isFirstSendEnd)
-                    {
-                        Main.isChatCommand = true;
-                        Info("发送：结算信息", "JoinPatch");
-                        DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, 
-                            GetString("EndMessage") + SetEverythingUpPatch.s);
-                        Main.isChatCommand = false;
-                        Main.isFirstSendEnd = false;
-                    }
-                }, 3.1f, "DisplayLastRoles");
-            }
         }
     }
 }

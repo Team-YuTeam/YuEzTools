@@ -65,7 +65,7 @@ class StartPatch
             //结算格式："\n" +$"{Utils.Utils.ColorString(pc1.Data.Color,pc1.GetRealName())}" +" - "+ GetPlayer.GetColorRole(pc1);
             
             
-            if (pc1.Data.Role.IsImpostor)
+            if (pc1.IsImpostor())
             {
                 GetPlayer.numImpostors++;
             }
