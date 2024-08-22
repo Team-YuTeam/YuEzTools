@@ -255,3 +255,8 @@ ErrorWin: "异常获胜"
 
 # 任务栏
 PressF3ToShowYourRoleInfo: "按下F3以显示职业介绍和设置"
+
+# Options
+YuETOptions: "YuET设置"
+Options.Back: "返回设置"
+SwitchVanilla: "切换为原版"

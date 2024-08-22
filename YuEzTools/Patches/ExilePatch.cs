@@ -22,7 +22,8 @@ internal class ExilePatch
                 if (__instance.initData.networkedPlayer != null)
                 {
                     __instance.initData.networkedPlayer.PlayerId.GetPlayerDataById().SetExiled();
-                    ModPlayerData.GetModPlayerDataById(__instance.initData.networkedPlayer.PlayerId).SetDeadReason(DeadReasonData.Exile);
+                    __instance.initData.networkedPlayer.PlayerId.GetPlayerDataById().SetDeadReason(DeadReasonData.Exile);
+                    __instance.initData.networkedPlayer.PlayerId.GetPlayerDataById().SetDead();
                 }
             }
             catch { }

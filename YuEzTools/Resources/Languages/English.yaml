@@ -233,8 +233,8 @@ CanNotHostGame: "You enabled +25, can not create room\nIf you change, please reo
 CanNotJoinGame: "You enabled +25 and enable anti-cheat, cannot join room with search\nIf you change please reopen this menu"
 
 # Summary
-EndMessage: "Summary"
-game.endScreen.detail: "Open Summary Interface"
+EndMessage: "Summary:"
+game.endScreen.detail: "Show Summary"
 game.endScreen.close: "Close Interface"
 KillCount: "Kill Count:"
 

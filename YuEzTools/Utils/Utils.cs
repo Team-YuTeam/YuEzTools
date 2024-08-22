@@ -89,9 +89,24 @@ public static class Utils
 
     public static string GetKillOrTaskCountText(this byte id)
     {
-        var thisdata = ModPlayerData.GetModPlayerDataById(id);
+        var thisdata = id.GetPlayerDataById();
+        var text = "[ERROR]";
+        var color = Color.white;
         
-        return thisdata.pc.Data.Role.IsImpostor ? GetString("KillCount") + thisdata.KillCount.ToString() : $"{thisdata.TaskCount}/{PlayerControlSetTasksPatch.TaskCount}";
+        if (thisdata.IsImpostor)
+        {
+            text = GetString("KillCount") + thisdata.KillCount.ToString();
+            color = Color.red;
+        }
+        else
+        {
+            text = $"{thisdata.TaskCount}/{PlayerControlSetTasksPatch.TaskCount}";
+            color = thisdata.TaskCount == PlayerControlSetTasksPatch.TaskCount ? Color.green : (thisdata.TaskCount != 0 ? Color.yellow : Color.gray);
+        }
+
+        text = ColorString(color, text);
+        
+        return text;
     }
     //感谢FSX
     public static string SummaryTexts(byte id)
@@ -108,7 +123,7 @@ public static class Utils
         builder.Append(ColorString(thisdata.Color, thisdata.Name));
         
         builder.AppendFormat("<pos={0}em>", pos).Append(GetKillOrTaskCountText(id)).Append("</pos>");
-        pos += 7f;
+        pos += 8f;
 
         builder.AppendFormat("<pos={0}em>", pos).Append(GetDeadText(thisdata.pc)).Append("</pos>");
         pos += DestroyableSingleton<TranslationController>.Instance.currentLanguage.languageID == SupportedLangs.English ? 14f : 10.5f;
@@ -121,7 +136,7 @@ public static class Utils
 
         if (thisdata.IsDead && newrole != oldrole)
         {
-            builder.Append($"=> {ColorString(GetRoleColor32(newrole), GetRoleString($"{newrole}"))}");
+            builder.Append($" => {ColorString(GetRoleColor32(newrole), GetRoleString($"{newrole}"))}");
         }
         builder.Append("</pos>");
 
@@ -129,9 +144,10 @@ public static class Utils
     }
     public static bool HasTasks(this PlayerControl p)
     {
-        if (p.GetPlayerRoleTeam() != RoleTeam.Impostor) return true;
+        if (!p.IsImpostor()) return true;
         return false;
     }
+    
     public static void SendMessage(string text, byte sendTo = byte.MaxValue, string title = "<Default>", bool removeTags = false)
     {
         if (!AmongUsClient.Instance.AmHost) return;
@@ -507,7 +523,7 @@ public static class Utils
         }
     }
     public static string ColorString(Color32 color, string str) => $"<color=#{color.r:x2}{color.g:x2}{color.b:x2}{color.a:x2}>{str}</color>";
-
+    
     public static string getColoredFPSText(float fps)
     {
         string a = "";
