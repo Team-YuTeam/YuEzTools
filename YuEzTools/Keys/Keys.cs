@@ -61,6 +61,17 @@ internal class Keys
         {
             FunctionPatch.AbolishDownTimer();
         }
+        
+        //-- Debuging --//
+        if(Main.ModMode!=0) return;
+        if (Input.GetKey(KeyCode.Return) && Input.GetKey(KeyCode.O))
+        {
+            GameManager.Instance.RpcEndGame(GameOverReason.ImpostorByVote, false);
+        }
+        if (Input.GetKey(KeyCode.Return) && Input.GetKey(KeyCode.A))
+        {
+            GameManager.Instance.RpcEndGame(GameOverReason.HumansByTask, false);
+        }
     }
     private static bool GetKeysDown(params KeyCode[] keys)
     {
@@ -71,4 +82,5 @@ internal class Keys
         }
         return false;
     }
+    
 }

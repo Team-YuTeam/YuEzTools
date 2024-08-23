@@ -65,7 +65,7 @@ class FixedUpdatePatch
             if (GetPlayer.IsInGame)
             {
                 // color = Utils.Utils.GetRoleHtmlColor(__instance.Data.RoleType);
-                if (__instance == PlayerControl.LocalPlayer || PlayerControl.LocalPlayer.Data.IsDead)
+                if (__instance == PlayerControl.LocalPlayer || PlayerControl.LocalPlayer.Data.IsDead || (__instance.IsImpostor() && PlayerControl.LocalPlayer.IsImpostor()))
                 {
                     name = Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(__instance.Data.RoleType),
                         __instance.GetRoleName());
