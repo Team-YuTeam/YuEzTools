@@ -95,6 +95,11 @@ internal class TitleLogoPatch
         __instance.newsButton.transform.localPosition += new Vector3(0, 0.7f, 0);
         __instance.settingsButton.transform.localPosition += new Vector3(0, 0.7f, 0);
         
+        __instance.freePlayButton.gameObject.SetActive(false);
+        __instance.howToPlayButton.gameObject.SetActive(false);
+        __instance.creditsScreen.SetActive(false);
+        __instance.creditsButton.gameObject.SetActive(false);
+        
 
         void FormatButtonColor(PassiveButton button, Sprite borderType, Color inActiveColor, Color activeColor, Color inActiveTextColor, Color activeTextColor)
         {

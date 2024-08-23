@@ -21,7 +21,6 @@ class MurderPlayerPatch
         __instance.AddKillCount();
     }
 }
-
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.Start))]
 class PlayerStartPatch
 {
@@ -29,7 +28,7 @@ class PlayerStartPatch
     {
         var AddText = Object.Instantiate(__instance.cosmetics.nameText);
         AddText.transform.SetParent(__instance.cosmetics.nameText.transform);
-        AddText.transform.localPosition = new Vector3(0f, 0.2f, 0f);
+        AddText.transform.localPosition = new Vector3(0f, -1.7f, 0f);
         AddText.text = "AddText";
         AddText.fontSize = 1.5f;
         AddText.gameObject.name = "AddText";
@@ -44,44 +43,55 @@ class FixedUpdatePatch
     {
         if (__instance == null) return;
 
-        var color ="#ffffff";
-        var name = "";
-        var addText = __instance.cosmetics.nameText.transform.Find("AddText").GetComponent<TextMeshPro>();
-
-        if (GetPlayer.IsLobby)
+        try
         {
-            if (__instance.FriendCode.IsDevUser())
-                name = __instance.FriendCode.GetDevUser().GetTag();
-               
-            if (Toggles.ShowInfoInLobby)
+            // var color ="#ffffff";
+            var name = "";
+            var addText = __instance.cosmetics.nameText.transform.Find("AddText").GetComponent<TextMeshPro>();
+
+            if (GetPlayer.IsLobby)
             {
-                name = $"<size=70%><color=#33EEFF>Lv.{__instance.GetClient().PlayerLevel} {__instance.GetClient().PlatformData.Platform.GetPlatformText()} {__instance.GetClient().Id}</color></size>\n" +
+                if (__instance.FriendCode.IsDevUser())
+                    name = __instance.FriendCode.GetDevUser().GetTag();
+
+                if (Toggles.ShowInfoInLobby)
+                {
+                    name =
+                        $"<size=70%><color=#33EEFF>Lv.{__instance.GetClient().PlayerLevel} {__instance.GetClient().PlatformData.Platform.GetPlatformText()} {__instance.GetClient().Id}</color></size>\n" +
                         $"<size=65%><color=#33FF91>{__instance.PlayerId} {__instance.GetClient().FriendCode} {__instance.GetClient().GetHashedPuid()}</color></size>";
+                }
             }
-        }
 
-        if (GetPlayer.IsInGame)
-        {
-            color = Utils.Utils.GetRoleHtmlColor(__instance.Data.RoleType);
-            if (__instance == PlayerControl.LocalPlayer || PlayerControl.LocalPlayer.Data.IsDead)
+            if (GetPlayer.IsInGame)
             {
-                name = Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(__instance.Data.RoleType), __instance.GetRoleName()  + "\n" + name);
-                name += "\n" + __instance.PlayerId.GetKillOrTaskCountText();
+                // color = Utils.Utils.GetRoleHtmlColor(__instance.Data.RoleType);
+                if (__instance == PlayerControl.LocalPlayer || PlayerControl.LocalPlayer.Data.IsDead)
+                {
+                    name = Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(__instance.Data.RoleType),
+                        __instance.GetRoleName());
+                    name += "\n" + __instance.PlayerId.GetKillOrTaskCountText();
+                }
+
+                if (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead)
+                    name += $"\n{Utils.Utils.GetDeadText(__instance)}";
             }
-            
-            if (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead)
-                name += $"({Utils.Utils.GetDeadText(__instance)})";
-        }
 
-        if (Main.HackerList.Contains(__instance))
-        {
-            __instance.cosmetics.nameText.text += $"<color=#3FBAFF>[{GetString("Hacker")}]</color>";
-        }
+            if (Main.HackerList.Contains(__instance) &&
+                !__instance.cosmetics.nameText.text.Has($"<color=#3FBAFF>[{GetString("Hacker")}]</color>"))
+            {
+                __instance.cosmetics.nameText.text += $"<color=#3FBAFF>[{GetString("Hacker")}]</color>";
+            }
 
-        if(name != "")
-        {
             addText.text = name;
-            addText.gameObject.SetActive(true);
+
+            if (name != "")
+            {
+                addText.gameObject.SetActive(true);
+            }
+        }
+        catch
+        {
+            Logger.Warn("被抛出来了...","PlayerControlPatches.FixedUpdate");
         }
         
 

@@ -152,9 +152,7 @@ internal class AntiCheatForAll
                         text.Contains("温家宝") ||
                         text.Contains("台湾") || 
                         text.Contains("台独") || 
-                        text.Contains("共产党") || // 游戏名字屏蔽词
-                        text.IndexOf("EzHacked", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                        text.IndexOf("Ez Hacked", StringComparison.OrdinalIgnoreCase) >= 0
+                        text.Contains("共产党")
                     )
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】发送非法消息，已驳回");

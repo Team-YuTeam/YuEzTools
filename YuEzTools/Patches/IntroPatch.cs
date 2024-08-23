@@ -8,6 +8,7 @@ using Hazel;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using YuEzTools.Get;
 using static YuEzTools.Translator;
 using YuEzTools.Modules;
 
@@ -40,7 +41,7 @@ public class IntroPatch
         ref Il2CppSystem.Collections.Generic.List<PlayerControl> teamToDisplay)
     {
         __instance.TeamTitle.text = $"{GetString("TeamCrewmate")}";
-        __instance.ImpostorText.text = $"{string.Format(GetString("ImpostorNumCrew"), GameOptionsManager.Instance.currentNormalGameOptions.NumImpostors)}";
+        __instance.ImpostorText.text = $"{string.Format(GetString("ImpostorNumCrew"), GetPlayer.numImpostors)}";
         __instance.ImpostorText.text += "\n" + string.Format(GetString("CrewmateIntroText"),Utils.Utils.GetRoleHtmlColor(PlayerControl.LocalPlayer.Data.RoleType));
         __instance.TeamTitle.color = Utils.Utils.GetRoleColor32(PlayerControl.LocalPlayer.Data.RoleType);
     }
@@ -50,7 +51,7 @@ public class IntroPatch
         __instance.ImpostorText.gameObject.SetActive(true);
 
         __instance.TeamTitle.text = GetString("TeamImpostor");
-        __instance.ImpostorText.text = $"{string.Format(GetString("ImpostorNumImp"), GameOptionsManager.Instance.currentNormalGameOptions.NumImpostors)}";
+        __instance.ImpostorText.text = $"{string.Format(GetString("ImpostorNumImp"), GetPlayer.numImpostors)}";
         
         __instance.ImpostorText.text += "\n" + string.Format(GetString("ImpostorIntroText"),Utils.Utils.GetRoleHtmlColor(PlayerControl.LocalPlayer.Data.RoleType));
         __instance.TeamTitle.color = __instance.BackgroundBar.material.color = Utils.Utils.GetRoleColor32(PlayerControl.LocalPlayer.Data.RoleType);
