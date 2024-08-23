@@ -221,15 +221,11 @@ class SetEverythingUpPatch
     public static void Postfix(EndGameManager __instance)
     {
         s = "";
-        var BackgroundLayer = GameObject.Find("PoolablePlayer(Clone)");
+        // var BackgroundLayer = GameObject.Find("PoolablePlayer(Clone)");
         __instance.WinText.text = Toggles.WinTextSize ? 
             $"<size=50%>{GetString(EndGamePatch.WinTeam)}\n<size=30%>{GetString(EndGamePatch.WinReason)}</size>" : 
             $"<size=50%>{GetString(EndGamePatch.WinReason)}\n<size=30%>{GetString(EndGamePatch.WinTeam)}</size>";
-        if (EndGamePatch.WinTeam == "NobodyWin")
-        {
-            Logger.Info("进入NobodyWin","SetEverythingUpPatch");
-            BackgroundLayer.SetActive(false);
-        }
+        var isImpWin = EndGamePatch.WinTeam != "CrewmateWin";
         var ModDisplay = new GameObject("ModDisplay");
         var position = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height));
         TMPro.TMP_Text[] roleSummaryText = new TMPro.TMP_Text[5];
@@ -250,12 +246,17 @@ class SetEverythingUpPatch
             roleSummaryText[i].fontSizeMax = 1.25f;
             roleSummaryText[i].fontSize = 1.25f;
         }
-                
-        foreach (var kvp in ModPlayerData.AllPlayerDataForMod)
+        foreach (var kvp in ModPlayerData.AllPlayerDataForMod.Where(x => x.Value.IsImpostor == isImpWin))
         {
             var id = kvp.Key;
             var data = kvp.Value;
-            s += $"\n" + EndGamePatch.SummaryText[id];
+            s += $"\n<color=#E83DFF>♥</color> " + EndGamePatch.SummaryText[id];
+        }
+        foreach (var kvp in ModPlayerData.AllPlayerDataForMod.Where(x => x.Value.IsImpostor != isImpWin))
+        {
+            var id = kvp.Key;
+            var data = kvp.Value;
+            s += $"\n　 " + EndGamePatch.SummaryText[id];
         }
         //唤出结算按钮
         var detailButton = GameObject.Instantiate(__instance.Navigation.ContinueButton.transform.GetChild(0));

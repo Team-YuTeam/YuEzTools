@@ -118,7 +118,7 @@ public static class Utils
         var longestNameByteCount = ModPlayerData.GetLongestNameByteCount();
 
 
-        var pos = Math.Min(((float)longestNameByteCount / 2) + 1.5f, 11.5f);
+        var pos = Math.Min(((float)longestNameByteCount / 2) + 3f, 11.5f);
         
         builder.Append(ColorString(thisdata.Color, thisdata.Name));
         
@@ -412,15 +412,14 @@ public static class Utils
             case GameOverReason.HumansByTask:
             case GameOverReason.HumansByVote:
             case GameOverReason.HideAndSeek_ByTimer:
+            case GameOverReason.ImpostorDisconnect:
                 return "CrewmateWin";
             case GameOverReason.ImpostorByKill:
             case GameOverReason.ImpostorBySabotage:
             case GameOverReason.HideAndSeek_ByKills:
             case GameOverReason.ImpostorByVote:
-                return "ImpostorsWin";
             case GameOverReason.HumansDisconnect:
-            case GameOverReason.ImpostorDisconnect:
-                return "NobodyWin";
+                return "ImpostorsWin";
         }
 
         return "ErrorWin";

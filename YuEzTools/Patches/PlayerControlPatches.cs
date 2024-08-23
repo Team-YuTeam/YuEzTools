@@ -69,6 +69,8 @@ class FixedUpdatePatch
                 {
                     name = Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(__instance.Data.RoleType),
                         __instance.GetRoleName());
+                    __instance.cosmetics.nameText.text = Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(__instance.Data.RoleType)
+                        , __instance.cosmetics.nameText.text);
                     name += "\n" + __instance.PlayerId.GetKillOrTaskCountText();
                 }
 
