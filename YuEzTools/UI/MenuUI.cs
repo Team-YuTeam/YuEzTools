@@ -6,7 +6,7 @@ using YuEzTools.Get;
 using YuEzTools.Patches;
 
 namespace YuEzTools.UI;
-public class MenuUI : MonoBehaviour
+public  class MenuUI : MonoBehaviour
 {
 
     public List<GroupInfo> groups = new List<GroupInfo>();
@@ -43,7 +43,7 @@ public class MenuUI : MonoBehaviour
         Main.WinTextSize.Value = Toggles.WinTextSize;
         
         if (isGUIActive) firstoOpenMenuUI = false;
-        if(!isGUIActive)
+        if(!isGUIActive && SplashManagerPatch.LanguageLoaded)
         {
             groups.Clear();
             groups.Add(new GroupInfo(Translator.GetString("MenuUI.AntiCheat"), false, new List<ToggleInfo>()
