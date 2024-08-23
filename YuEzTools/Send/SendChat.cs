@@ -18,8 +18,15 @@ namespace YuEzTools;
 
 public class SendChat
 {
+    public static PlayerControl lastHacker;
     public static void Prefix(PlayerControl __instance)
     {
+        if (lastHacker != null)
+        {
+            if (lastHacker == __instance) return;
+        }
+
+        lastHacker = __instance;
         if (Toggles.SafeMode && !AmongUsClient.Instance.AmHost)
         {
             SendInGamePatch.SendInGame(string.Format(Translator.GetString("AmnotHostSafeSeeHacker"), __instance.GetRealName()));
