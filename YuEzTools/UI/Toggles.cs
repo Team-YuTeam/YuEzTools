@@ -34,6 +34,7 @@ public class Toggles
     public static bool CloseMusicOfOr;
     public static bool reShowRoleT;
     public static bool ShowInfoInLobby;
+    public static bool shieldForbiddenWords;
     
     //玩法性-所有人
     public static bool ExitGame;

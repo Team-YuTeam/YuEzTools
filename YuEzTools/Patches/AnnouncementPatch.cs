@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using UnityEngine;
 
 namespace YuEzTools;
 
@@ -84,6 +85,7 @@ public class ModNewsHistory
     [HarmonyPatch(typeof(PlayerAnnouncementData), nameof(PlayerAnnouncementData.SetAnnouncements)), HarmonyPrefix]
     public static bool SetModAnnouncements(PlayerAnnouncementData __instance, [HarmonyArgument(0)] ref Il2CppReferenceArray<Announcement> aRange)
     {
+        
         if (AllModNews.Count < 1)
         {
             var lang = DataManager.Settings.Language.CurrentLanguage.ToString();
@@ -112,4 +114,28 @@ public class ModNewsHistory
 
         return true;
     }
+    static SpriteLoader ModLabel = SpriteLoader.FromResource("YuEzTools.Resources.Yu-Logo-tm.png", 1000f);
+    static SpriteLoader logoGlowSprite = SpriteLoader.FromResource("YuEzTools.Resources.YuET-Logo-tm.png", 3000f);
+
+    
+    [HarmonyPatch(typeof(AnnouncementPanel), nameof(AnnouncementPanel.SetUp)), HarmonyPostfix]
+    public static void SetUpPanel(AnnouncementPanel __instance, [HarmonyArgument(0)] Announcement announcement)
+    {
+        // __instance.Background.gameObject.transform.FindChild("WhiteColor").GetComponent<SpriteRenderer>().color = new Color(61, 255, 215, 185);
+        if (announcement.Number < 100000) return;
+        var obj = new GameObject("ModLabel");
+        obj.layer = LayerExpansion.GetUILayer();
+        obj.transform.SetParent(__instance.transform);
+        obj.transform.localPosition = new Vector3(-0.81f, 0.16f, 0.5f);
+        obj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+        var renderer = obj.AddComponent<SpriteRenderer>();
+        renderer.sprite = ModLabel.GetSprite();
+        renderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+        GameObject.Find("Announcement").transform.FindChild("Sizer").transform.FindChild("Background").transform
+            .FindChild("WhiteColor").GetComponent<SpriteRenderer>().sprite = logoGlowSprite.GetSprite();
+        GameObject.Find("Announcement").transform.FindChild("Sizer").transform.FindChild("Background").transform
+            .FindChild("WhiteColor").transform.localScale = new Vector3(8.7912f, 6.6321f, 1f);
+    }
+    // [HarmonyPatch(typeof(AnnouncementPanel), nameof(AnnouncementPanel.)), HarmonyPostfix]
+
 }

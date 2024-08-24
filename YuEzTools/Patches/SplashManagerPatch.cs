@@ -19,8 +19,8 @@ public static class SplashManagerPatch
 {
     public static bool isLoaded = false;
     public static bool LanguageLoaded = false;
-    static SpriteLoader logoSprite = SpriteLoader.FromResource("YuEzTools.Resources.YuET-Logo-tm.png", 200f);
-    static SpriteLoader logoGlowSprite = SpriteLoader.FromResource("YuEzTools.Resources.YuET-Logo-tm-mh.png", 200f);
+    static SpriteLoader logoSprite = SpriteLoader.FromResource("YuEzTools.Resources.YuET-Logo-tm.png", 300f);
+    static SpriteLoader logoGlowSprite = SpriteLoader.FromResource("YuEzTools.Resources.YuET-Logo-tm-mh.png", 300f);
     static TextMeshPro startText = null!;
     static TextMeshPro loadText = null!;
     static TextMeshPro tipText = null!;
@@ -45,9 +45,12 @@ public static class SplashManagerPatch
         logo.sprite = logoSprite.GetSprite();
         logoGlow.sprite = logoGlowSprite.GetSprite();
         
+        logoGlow.color = Color.white;
+        logoGlow.transform.localScale = Vector3.one;
         logo.color = Color.white;
         logoGlow.gameObject.SetActive(false);
         logo.transform.localScale = Vector3.one;
+        
 
         loadText = GameObject.Instantiate(__instance.errorPopup.InfoText, null);
         loadText.transform.localPosition = new(0f, -2f, -10f);
@@ -67,7 +70,7 @@ public static class SplashManagerPatch
             p -= Time.deltaTime * 2.8f;
             float alpha = 1 - p;
             logo.color = Color.white.AlphaMultiplied(alpha);
-            logoGlow.color = Color.white.AlphaMultiplied(Mathf.Min(1f, alpha * (p * 2)));
+            logoGlow.color = Color.white.AlphaMultiplied(alpha);
             logo.transform.localScale = Vector3.one * (p * p * 0.012f + 1f);
             logoGlow.transform.localScale = Vector3.one * (p * p * 0.012f + 1f);
             yield return null;
@@ -127,38 +130,61 @@ public static class SplashManagerPatch
         
         tipText.text = "加载完成...\n<size=65%>Loaded</size>";
         loadText.text = "完成...\n<size=65%>Finished</size>";
-        for (int i = 0; i < 10; i++)
-        {
-            loadText.gameObject.SetActive(false);
-            tipText.gameObject.SetActive(false);
-            yield return new WaitForSeconds(0.03f);
-            loadText.gameObject.SetActive(true);
-            tipText.gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.03f);
-        }
-        GameObject.Destroy(loadText.gameObject);
-        GameObject.Destroy(tipText.gameObject);
+        logo.gameObject.SetActive(false);
+        logoGlow.gameObject.SetActive(true);
+
+        // for (int i = 0; i < 10; i++)
+        // {
+        //     // logo.gameObject.SetActive(true);
+        //     // logoGlow.gameObject.SetActive(false);
+        //     loadText.gameObject.SetActive(true);
+        //     tipText.gameObject.SetActive(true);
+        //     yield return new WaitForSeconds(0.03f);
+        //     // logo.gameObject.SetActive(false);
+        //     // logoGlow.gameObject.SetActive(false);
+        //     loadText.gameObject.SetActive(false);
+        //     tipText.gameObject.SetActive(false);
+        //     yield return new WaitForSeconds(0.03f);
+        // }
+        logo.gameObject.SetActive(false);
+        logoGlow.gameObject.SetActive(true);
+        // GameObject.Destroy(loadText.gameObject);
+        // GameObject.Destroy(tipText.gameObject);
         p = 1f;
         while (p > 0f)
         {
             p -= Time.deltaTime * 1.2f;
             logo.color = Color.white.AlphaMultiplied(p);
+            logoGlow.color = Color.white.AlphaMultiplied(p);
+            loadText.color = Color.white.AlphaMultiplied(p);
+            tipText.color = Color.white.AlphaMultiplied(p);
             yield return null;
         }
         logo.color = Color.clear;
+        logoGlow.color = Color.clear;
+        loadText.color = Color.clear;
+        tipText.color = Color.clear;
         __instance.sceneChanger.AllowFinishLoadingScene();
         __instance.startedSceneLoad = true;
     }
+
+    private static bool first = true;
     public static bool Prefix(SplashManager __instance)
     {
         __instance.logoAnimFinish.transform.FindChild("LogoRoot").FindChild("ISLogo").GetComponent<SpriteRenderer>().sprite = logoSprite.GetSprite();
 
-        startText = GameObject.Instantiate(__instance.errorPopup.InfoText,  __instance.logoAnimFinish.transform.FindChild("LogoRoot").FindChild("ISLogo"));
-        startText.transform.localPosition = new(0, __instance.logoAnimFinish.transform.FindChild("LogoRoot").FindChild("ISLogo").position.y -1.18f, 0);
-        startText.fontStyle = TMPro.FontStyles.Bold;
-        startText.text = "欢迎使用YuET!\n<size=65%>Welcome to use YuET!</size>";
-        startText.color = Color.white.AlphaMultiplied(0.3f);
-        startText.SetActive(__instance.logoAnimFinish.enabled);
+        if(first)
+        {
+            startText = GameObject.Instantiate(__instance.errorPopup.InfoText,
+                __instance.logoAnimFinish.transform.FindChild("LogoRoot").FindChild("ISLogo"));
+            startText.transform.localPosition = new(0,
+                __instance.logoAnimFinish.transform.FindChild("LogoRoot").FindChild("ISLogo").position.y - 1.18f, 0);
+            startText.fontStyle = TMPro.FontStyles.Bold;
+            startText.text = "欢迎使用YuET!\n<size=65%>Welcome to use YuET!</size>";
+            startText.color = Color.white.AlphaMultiplied(0.3f);
+            startText.SetActive(__instance.logoAnimFinish.enabled);
+            first = false;
+        }
         
         if (__instance.doneLoadingRefdata && !__instance.startedSceneLoad && Time.time - __instance.startTime > __instance.minimumSecondsBeforeSceneChange && !isLoaded)
         {

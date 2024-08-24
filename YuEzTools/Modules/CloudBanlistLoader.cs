@@ -23,6 +23,7 @@ using TMPro;
 using UnityEngine;
 using YuEzTools;
 using YuEzTools.Modules;
+using YuEzTools.Patches;
 using YuEzTools.UI;
 
 namespace YuEzTools.Modules;
@@ -31,14 +32,14 @@ public class CloudBanlistLoader : MonoBehaviour
 {
     public static bool isLoading = false;
     public static bool isBrocked;
-    private static int nowNumber = 0;
+    // private static int nowNumber = 0;
 
     private static IReadOnlyList<string> URLs => new List<string>
     {
         "https://raw.githubusercontent.com/Team-YuTeam/YuEzTools/main/YuEzTools/Resources/BlackList.txt",
         "https://gitee.com/xigua_ya/YuEzTools/raw/main/YuEzTools/Resources/BlackList.txt",
         //"https://gitlab.com/yu9522124/YuEzTools/-/raw/main/YuEzTools/info.json?ref_type=heads",
-        "https://raw.kkgithub.com/Team-YuTeam/YuEzTools/main/YuEzTools/Resources/BlackList.txt",
+        // "https://raw.kkgithub.com/Team-YuTeam/YuEzTools/main/YuEzTools/Resources/BlackList.txt",
         //"https://raw.gitcode.com/YuQZ/YuEzTools/raw/main/YuEzTools/info.json",
     };
     
@@ -49,7 +50,7 @@ public class CloudBanlistLoader : MonoBehaviour
         if (url == "NowSet")
         {
             Logger.Info("Set Url","DownloadBanlist");
-            url = URLs[nowNumber];
+            url = !Translator.IsChineseUser ? URLs[0] : URLs[1];
         }
         
         Regex r = new Regex(@"^(http|https|ftp)\://([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&%\$\-]+)*@)?((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.[a-zA-Z]{2,4})(\:[0-9]+)?(/[^/][a-zA-Z0-9\.\,\?\'\\/\+&%\$#\=~_\-@]*)*$");
@@ -74,25 +75,17 @@ public class CloudBanlistLoader : MonoBehaviour
             Logger.Info("ContinueWith", "DownloadBanlist");
             
             var (done, reason) = t.Result;
-            if (!done && nowNumber != URLs.Count-1)
+            if (!done)
             {
-                Logger.Info($"下载失败！\nReason: {reason} \nNow Url is {url}, the url number is: {nowNumber}", "DownloadBanlist");
-                nowNumber++;
-                DownloadBanlistD(URLs[nowNumber]);
-                return;
-            }
-
-            if (done)
-            {
-                Logger.Info("下载完成", "DownloadBanlist");
+                Logger.Info($"下载失败！\nReason: {reason} \nNow Url is {url}", "DownloadBanlist");
+                // nowNumber++;
+                // DownloadBanlist();
                 isLoading = false;
                 return;
             }
-            string title = Translator.GetString("DownloadBanlistFailedTitle");
-            string desc = reason;
-            CustomPopup.ShowLater(title, desc, new() { (Translator.GetString(StringNames.Okay),null) });
+            Logger.Info("下载完成", "DownloadBanlist");
             isLoading = false;
-            isBrocked = true;
+            return;
         });
         
     }
