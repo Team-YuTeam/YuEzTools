@@ -44,8 +44,9 @@ class OnPlayerJoinedPatch
         }
         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
         SendInGamePatch.SendInGame($"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
-        
-        if (AmongUsClient.Instance.AmHost && client.FriendCode == "" && Toggles.KickNotLogin && GetPlayer.IsOnlineGame)
+
+        if (GetPlayer.IsLocalGame) return;
+        if (AmongUsClient.Instance.AmHost && client.FriendCode == "" && Toggles.KickNotLogin)
         {
             // 你知道的 Login是这样的
             AmongUsClient.Instance.KickPlayer(client.Id, true);
@@ -54,7 +55,7 @@ class OnPlayerJoinedPatch
             SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
             return;
         }
-        else if(client.FriendCode == "" && GetPlayer.IsOnlineGame)
+        else if(client.FriendCode == "")
         {
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("unKickNotLogin")}</color>");
             SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("unKickNotLogin")}</color>");
