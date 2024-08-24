@@ -44,6 +44,8 @@ internal class TitleLogoPatch
     
     private static void Postfix(MainMenuManager __instance)
     {
+        ModNewsHistory.first = true;
+
         GameObject.Find("BackgroundTexture")?.SetActive(!MainMenuManagerPatch.ShowedBak);
         
         if (!(ModStamp = GameObject.Find("ModStamp"))) return;

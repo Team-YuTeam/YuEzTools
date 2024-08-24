@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using TMPro;
 using UnityEngine;
 
 namespace YuEzTools;
@@ -115,9 +116,11 @@ public class ModNewsHistory
         return true;
     }
     static SpriteLoader ModLabel = SpriteLoader.FromResource("YuEzTools.Resources.Yu-Logo-tm.png", 1000f);
+    // static SpriteLoader logoGlowSprite = SpriteLoader.FromResource("YuEzTools.Resources.YuET-BG-A.png", 3000f);
     static SpriteLoader logoGlowSprite = SpriteLoader.FromResource("YuEzTools.Resources.YuET-Logo-tm.png", 3000f);
 
-    
+
+    public static bool first = true;
     [HarmonyPatch(typeof(AnnouncementPanel), nameof(AnnouncementPanel.SetUp)), HarmonyPostfix]
     public static void SetUpPanel(AnnouncementPanel __instance, [HarmonyArgument(0)] Announcement announcement)
     {
@@ -131,11 +134,37 @@ public class ModNewsHistory
         var renderer = obj.AddComponent<SpriteRenderer>();
         renderer.sprite = ModLabel.GetSprite();
         renderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
-        GameObject.Find("Announcement").transform.FindChild("Sizer").transform.FindChild("Background").transform
-            .FindChild("WhiteColor").GetComponent<SpriteRenderer>().sprite = logoGlowSprite.GetSprite();
-        GameObject.Find("Announcement").transform.FindChild("Sizer").transform.FindChild("Background").transform
-            .FindChild("WhiteColor").transform.localScale = new Vector3(8.7912f, 6.6321f, 1f);
+        
+        var Announcement = GameObject.Find("Announcement");
+        var Sizer = Announcement.transform.FindChild("Sizer");
+        var Background_old = Sizer.FindChild("Background");
+        var WhiteColor_Old = Background_old.FindChild("WhiteColor");
+        // var AnnouncementList = Sizer.FindChild("AnnouncementList");
+        // var List_Scroller = AnnouncementList.FindChild("Scroller");
+        // var Scroller_Inner = List_Scroller.FindChild("Inner");
+        // var AnnouncementPanel = Scroller_Inner.FindChild("AnnouncementPanel");
+        // var AnnouncementPanel_Title = AnnouncementPanel.FindChild("Title");
+        // var title = AnnouncementPanel_Title.GetComponent<TextMeshPro>();
+        // title.color = Color.white;
+        if (!first)
+        {
+            return;
+        }
+        
+        var newBackground = GameObject.Instantiate(WhiteColor_Old, Sizer);
+        // Background_old.SetActive(false);
+        // newBackground.GetComponent<SpriteRenderer>().sprite = logoGlowSprite.GetSprite();
+        // WhiteColor_Old.SetActive(false);
+        // newBackground.transform.localPosition = new Vector3(0, 0, 0);
+        // newBackground.transform.localScale = new Vector3(16.6294f, 16.7267f, 3.0309f);
+        // newBackground.GetComponent<SpriteRenderer>().color = Color.white.AlphaMultiplied(0.35f);
+        newBackground.GetComponent<SpriteRenderer>().sprite = logoGlowSprite.GetSprite();
+        newBackground.transform.localPosition = new Vector3(0.8315f, -0.2503f, -1);
+        newBackground.transform.localScale = new Vector3(7, 7, 1f);
+        first = false;
     }
     // [HarmonyPatch(typeof(AnnouncementPanel), nameof(AnnouncementPanel.)), HarmonyPostfix]
+
+    // [HarmonyPatch(typeof(AnnouncementPanel), nameof(AnnouncementPanel.close)), HarmonyPostfix]
 
 }
