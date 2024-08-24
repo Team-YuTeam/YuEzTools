@@ -685,6 +685,21 @@ public static class Utils
         }
         return false;
     }
+    public static void AddHacker(ClientData client)
+    {
+        if (client == null) return;
+        if (!CheckBanner(client.FriendCode,client?.ProductUserId))
+        {
+            if (client?.ProductUserId != "" && client?.ProductUserId != null)
+            {
+                var additionalInfo = "";
+                additionalInfo = $" //added by {Main.ModName}-YuAntiCheat";
+                File.AppendAllText(BAN_LIST_PATH, $"{client?.FriendCode},{client?.ProductUserId},{client.PlayerName.RemoveHtmlTags()}{additionalInfo}\n");
+                SendInGamePatch.SendInGame(string.Format(GetString("Message.AddedPlayerToBanList"), $"{client.PlayerName}"));
+            }
+            else Logger.Info($"Failed to add player {client?.PlayerName.RemoveHtmlTags()}/{client?.FriendCode}/{client?.ProductUserId} to ban list!", "AddBanPlayer");
+        }
+    }
     public static bool CheckDllBanWord(this string s)
     {
         // string noDiscrim = "";

@@ -29,7 +29,7 @@ internal class RPCHandlerPatch
             if (AntiCheatForAll.ReceiveRpc(__instance, callId, reader) || AUMCheat.ReceiveInvalidRpc(__instance, callId,reader) ||
                 SMCheat.ReceiveInvalidRpc(__instance, callId))
             {
-                if(!Main.HackerList.Contains(__instance)) Main.HackerList.Add(__instance);
+                if(!Main.HackerList.Contains(__instance.GetClientId())) Main.HackerList.Add(__instance.GetClientId());
                 Main.HasHacker = true;
                 Logger.Fatal("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/ProductUserId："+__instance.GetClient().ProductUserId}","RPCHandle");
                 //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;
@@ -38,7 +38,6 @@ internal class RPCHandlerPatch
                 {
                     Main.Logger.LogInfo("Try Kick" + __instance.GetRealName());
                     KickHackerPatch.KickPlayer(__instance);
-     
                     return false;
                 }
                 //PlayerControl Host = AmongUsClient.Instance.GetHost();

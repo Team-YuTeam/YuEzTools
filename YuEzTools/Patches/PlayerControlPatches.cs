@@ -78,7 +78,7 @@ class FixedUpdatePatch
                     name += $"\n{Utils.Utils.GetDeadText(__instance)}";
             }
 
-            if (Main.HackerList.Contains(__instance) &&
+            if (Main.HackerList.Contains(__instance.GetClientId()) &&
                 !__instance.cosmetics.nameText.text.Has($"<color=#3FBAFF>[{GetString("Hacker")}]</color>"))
             {
                 __instance.cosmetics.nameText.text += $"<color=#3FBAFF>[{GetString("Hacker")}]</color>";

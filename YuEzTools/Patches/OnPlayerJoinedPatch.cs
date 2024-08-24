@@ -45,7 +45,7 @@ class OnPlayerJoinedPatch
         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
         SendInGamePatch.SendInGame($"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
 
-        if (GetPlayer.IsLocalGame) return;
+        if (GetPlayer.IsLocalGame || client.FriendCode.IsDevUsers()) return;
         if (AmongUsClient.Instance.AmHost && client.FriendCode == "" && Toggles.KickNotLogin)
         {
             // 你知道的 Login是这样的

@@ -20,7 +20,7 @@ public static class ShipStatus_FixedUpdate
         var amount = MessageReader.Get(reader).ReadByte();
         if (AntiCheatForAll.RpcUpdateSystemCheck(player, systemType, amount)  || (GetPlayer.IsHideNSeek && AntiCheatForAll.RpcUpdateSystemCheckFHS(player, systemType, amount)))
         {
-            if(!Main.HackerList.Contains(player)) Main.HackerList.Add(player);
+            if(!Main.HackerList.Contains(player.GetClientId())) Main.HackerList.Add(player.GetClientId());
             Logger.Info("AC 破坏 RPC", "MessageReaderUpdateSystemPatch");
             Main.Logger.LogInfo("Hacker " + player.GetRealName() + $"{"好友编号："+player.GetClient().FriendCode+"/名字："+player.GetRealName()+"/ProductUserId："+player.GetClient().ProductUserId}");
             //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;

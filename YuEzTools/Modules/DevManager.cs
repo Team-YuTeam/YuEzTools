@@ -51,4 +51,5 @@ public static class DevManager
     public static DevUser GetDevUser(this string code) => code.IsDevUser() ? DevUserList.Find(x => x.Code == code) : DefaultDevUser;
     public static string GetDevJob(this string code) => Translator.GetString(code.GetDevUser().Jobs);
     public static bool IsSpoUser(this string code) => code.IsDevUser() ? code.GetDevUser().IsSpo : false;
+    public static bool IsDevUsers(this string code) => code.IsDevUser() ? Translator.GetString(code.GetDevUser().Jobs) is "MainDev" or "Developer" : false;
 }
