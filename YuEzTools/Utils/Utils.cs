@@ -625,6 +625,7 @@ public static class Utils
         return false;
     }
     private static readonly string BAN_LIST_PATH = @"./YuET_Data/BanList.txt";
+    private static readonly string BANWord_LIST_PATH = @"./YuET_Data/Banword.txt";
     public static bool CheckBanner(string code, string puid = "")
     {
         bool OnlyCheckPuid = false;
@@ -658,6 +659,52 @@ public static class Utils
         catch (Exception ex)
         {
             Logger.Exception(ex, "CheckBanList");
+        }
+        return false;
+    }
+
+    public static bool CheckBanWord(this string s)
+    {
+        string noDiscrim = "";
+
+        try
+        {
+            Directory.CreateDirectory("YuET_Data");
+            if (!File.Exists(BANWord_LIST_PATH)) File.Create(BANWord_LIST_PATH).Close();
+            using StreamReader sr = new(BANWord_LIST_PATH);
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (line == "") continue;
+                if (s.Has(line)) return true;
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Exception(ex, "CheckBanWordList");
+        }
+        return false;
+    }
+    public static bool CheckDllBanWord(this string s)
+    {
+        // string noDiscrim = "";
+
+        try
+        {
+            var stream = Assembly.GetExecutingAssembly()
+                .GetManifestResourceStream("YuEzTools.Resources.Banword.txt");
+            stream.Position = 0;
+            using StreamReader sr = new(stream, Encoding.UTF8);
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (line == "") continue;
+                if (s.Has(line)) return true;
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Exception(ex, "CheckBanWordList");
         }
         return false;
     }

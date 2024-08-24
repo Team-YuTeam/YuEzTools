@@ -39,10 +39,11 @@ updateSource.github: "GitHub"
 updateSource.discord: "Discord"
 
 # 聊天
-SuspectedViolationMessage: "疑似违规信息"
+SuspectedViolationMessage: "疑似敏感信息"
 MessgaeFromYuET: "== 信息来自YuET模组 =="
 DefaultSystemMessageTitle: "[YuET消息]"
 Message.Welcome: "我采用了YuEzTools模组\n本房间是在{0}服务器运行的，房间号为{1}\n这不是普通的AmongUs游戏\n祝你游玩愉快，[YuET]持续保护中"
+ShieldSuspectedViolationMessage: "该信息触发了敏感词汇，为保证您的游戏体验，我们以将其屏蔽\n<size=60%>如需查看可前往日志进行查看内容</size>"
 
 # 进入/退出房间
 JoinRoom: "加入房间"
@@ -73,6 +74,7 @@ unKickNotLogin: "未登录\n请注意，几乎所有的外挂都是未登录！"
 BlackList: "存在于您或YuET的黑名单中"
 notFindRPC: "这是无效的RPC！\n数值：{0}"
 notJoinedSendRPC: "{1}未进入却发送了RPC\n数值：{0}"
+SendBadChat: "{0} 发送了违规信息\n已尝试屏蔽..."
 
 # MenuUI.Interface
 Interface: "界面"

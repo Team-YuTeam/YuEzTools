@@ -122,6 +122,8 @@ public  class MenuUI : MonoBehaviour
                             x => Toggles.reShowRoleT = x),
                     new ToggleInfo(Translator.GetString("MenuUI.ShowInfoInLobby"), () => Toggles.ShowInfoInLobby,
                             x => Toggles.ShowInfoInLobby = x),
+                    new ToggleInfo(Translator.GetString("MenuUI.shieldForbiddenWords"), () => Toggles.shieldForbiddenWords,
+                            x => Toggles.shieldForbiddenWords = x),
                     
                 }, new List<SubmenuInfo>
                 {

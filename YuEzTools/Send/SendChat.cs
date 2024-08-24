@@ -64,3 +64,12 @@ public class SendChatCloseDoor
         return;
     }
 }
+public class SendBadChat
+{
+    public static void Prefix(PlayerControl pc)
+    {
+        SendInGamePatch.SendInGame(string.Format(Translator.GetString("SendBadChat"),pc.GetRealName()));
+        Main.Logger.LogInfo($"已揭示 {pc.GetRealName()} 发送违规信息");
+        return;
+    }
+}

@@ -4,6 +4,7 @@ using UnityEngine;
 using YuEzTools.Get;
 using YuEzTools.Modules;
 using YuEzTools.UI;
+using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;
 
@@ -28,24 +29,20 @@ public static class ChatBubblePatch
         }
         //if (modded)
         //{
-        if (chatText.Contains("░") ||
-            chatText.Contains("▄") ||
-            chatText.Contains("█") ||
-            chatText.Contains("▌") ||
-            chatText.Contains("▒") ||
-            chatText.Contains("习近平") ||
-            chatText.Contains("毛泽东") ||
-            chatText.Contains("周恩来") ||
-            chatText.Contains("邓小平") ||
-            chatText.Contains("江泽民") ||
-            chatText.Contains("胡锦涛") ||
-            chatText.Contains("温家宝") ||
-            chatText.Contains("台湾") ||
-            chatText.Contains("台独") ||
-            chatText.Contains("共产党")) // 游戏名字屏蔽词)
+        if (chatText.CheckBanWord() || chatText.CheckDllBanWord()) // 游戏名字屏蔽词)
         {
-            if(Toggles.DarkMode) chatText = $"<color=#FF0000>[{Translator.GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
-            else chatText = $"<color=#FF0000>[{Translator.GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
+            if (Toggles.shieldForbiddenWords)
+            { 
+                Logger.Msg($"来自 {__instance.playerInfo.PlayerName} 的敏感信息 {chatText}","ChatBubble");
+                chatText = $"<color=#FF0000>{Translator.GetString("ShieldSuspectedViolationMessage")}</color>";
+                //else chatText = $"<color=#FF0000>[{Translator.GetString("ShieldSuspectedViolationMessage")}]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
+            }
+            else
+            {
+                if(Toggles.DarkMode) chatText = $"<color=#FF0000>[{Translator.GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
+                else chatText = $"<color=#FF0000>[{Translator.GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
+            }
+
         }
         else if (Main.isChatCommand)
         {
