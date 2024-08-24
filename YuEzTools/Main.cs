@@ -20,6 +20,7 @@ using YuEzTools.Attributes;
 using YuEzTools.Patches;
 using YuEzTools.UI;
 using YuEzTools.Utils;
+using Environment = System.Environment;
 
 [assembly: AssemblyFileVersion(YuEzTools.Main.PluginVersion)]
 [assembly: AssemblyInformationalVersion(YuEzTools.Main.PluginVersion)]
@@ -38,6 +39,9 @@ public class Main : BasePlugin
     public const string PluginVersion = "1.3.6.2"; //咱们模组的版本号
     public const string CanUseInAmongUsVer = "2024.8.13"; //智齿的AU版本
     public const int PluginCreation = 1;
+    
+    
+    public static string userProfile = Environment.GetEnvironmentVariable("USERPROFILE") + "\\";
 
     public static string QQUrl = "https://qm.qq.com/q/uGuWqBkYUi";
     public static string DcUrl = "https://discord.gg/42tyx9FyD7";
@@ -134,6 +138,8 @@ public class Main : BasePlugin
         SwitchVanilla = Config.Bind("Client Options", "SwitchVanilla", false);
         BetaBuildURL = Config.Bind("Other", "BetaBuildURL", "");
         menuUI = AddComponent<MenuUI>();
+        
+        // Logger.LogInfo("TEST: "+userProfile);
 
     }
 

@@ -262,3 +262,7 @@ SwitchVanilla: "切换为原版"
 
 # 加载界面
 WelcomeToUseYuET: "欢迎使用YuET！"
+
+# 下载Banlist
+DownloadBanlistFailedTitle: "错误！"
+DownloadBanlistFailed: "下载banlist时错误了，您的游戏安全等级下降\n原因：{0}\n请检查您的网络并尽快反馈给开发者"

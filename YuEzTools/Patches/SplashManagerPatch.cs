@@ -7,6 +7,7 @@ using Il2CppInterop.Runtime.Attributes;
 using TMPro;
 using UnityEngine;
 using YuEzTools.Attributes;
+using YuEzTools.Modules;
 using YuEzTools.UI;
 using YuEzTools.Utils;
 
@@ -81,16 +82,27 @@ public static class SplashManagerPatch
         ResourceUtils.WriteToFileFromResource(
             "BepInEx/core/YamlDotNet.xml",
             "YuEzTools.Resources.InDLL.Depends.YamlDotNet.xml");
-        yield return new WaitForSeconds(0.5f);
         
         loadText.text = "加载多语言\n<size=65%>Loading Language</size>";
         PluginModuleInitializerAttribute.InitializeAll();
         LanguageLoaded = true;
-        yield return new WaitForSeconds(0.45f);
+
+        loadText.text = "准备下载Banlist名单\n<size=65%>Wait for Downloading Banlist</size>";
+        CloudBanlistLoader.DownloadBanlist();
+        yield return new WaitForSeconds(0.03f);
+        while (CloudBanlistLoader.isLoading)
+        {
+            // Logger.Info("下载Banlist","CoLoadYuET");
+            loadText.text = "下载Banlist名单\n<size=65%>Downloading Banlist</size>";
+            tipText.text =
+                $"{CloudBanlistLoader.TotalFileSize / 1000}KB / {CloudBanlistLoader.TotalBytesDownloaded / 1000}KB  -  {(int)CloudBanlistLoader.ProgressPercentage}%";
+            yield return false;
+        }
+        tipText.text = "加载中...\nLoading...";
+
         
         loadText.text = "加载配置\n<size=65%>Loading Config</size>";
         Toggles.WinTextSize = Main.WinTextSize.Value;
-        yield return new WaitForSeconds(0.35f);
         
         //Translator.Init();
         
@@ -99,25 +111,22 @@ public static class SplashManagerPatch
             Logger.Info($"AmongUs Version: {Application.version}","AmongUsVersionCheck"); //牢底居然有智齿的版本？！
         else
             Logger.Info($"游戏本体版本过低或过高,AmongUs Version: {Application.version}","AmongUsVersionCheck"); //牢底你的版本也不行啊
-        yield return new WaitForSeconds(0.2f);
         
         loadText.text = "启用/禁用控制台\n<size=65%>Enable Console or Disable</size>";
-        yield return new WaitForSeconds(0.2f);
         if (Main.ModMode != 0) ConsoleManager.DetachConsole();
         else ConsoleManager.CreateConsole();
         
         loadText.text = "加载开发组名单\n<size=65%>Loading Devs List</size>";
         DevManager.Init();
-        yield return new WaitForSeconds(0.3f);
+        
         //模组加载好了标语
         loadText.text = "完成...\n<size=65%>Finished</size>";
-        yield return new WaitForSeconds(0.3f);
         Logger.Msg("========= YuET loaded! =========", "YuET Plugin Load");
         IsLoadingAll = true;
         #endregion
         
-        tipText.text = "加载完成...\nLoaded";
-        loadText.text = "完成...\nFinished";
+        tipText.text = "加载完成...\n<size=65%>Loaded</size>";
+        loadText.text = "完成...\n<size=65%>Finished</size>";
         for (int i = 0; i < 10; i++)
         {
             loadText.gameObject.SetActive(false);
