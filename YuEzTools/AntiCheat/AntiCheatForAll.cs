@@ -198,12 +198,13 @@ internal class AntiCheatForAll
                 
                 case RpcCalls.MurderPlayer:
                 case RpcCalls.CheckMurder:
+                    // if (Toggles.AutoStartGame && pc == PlayerControl.LocalPlayer) return false;
                     var id = sr.ReadByte();
                     if ( GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
                     {
                         if (AmongUsClient.Instance.AmHost && !Toggles.SafeMode)
                         {
-                            id.GetPlayerDataById().pc.Revive();
+                            GetPlayer.GetPlayerById(id).Revive();
                             if(GetPlayer.IsLobby) GetPlayer.GetPlayerById(id).RpcSetRole(RoleTypes.Crewmate,true);
                             
                             Main.Logger.LogWarning($"尝试复活{id.GetPlayerDataById().pc.GetRealName()}");
@@ -263,6 +264,7 @@ internal class AntiCheatForAll
             switch (callId)
             {
                 case 13:
+                    // if (Toggles.AutoStartGame && pc == PlayerControl.LocalPlayer) return false;
                     if (GetPlayer.IsInGame && !GetPlayer.IsMeeting && !pc.Data.IsDead)
                     {
                         Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法聊天，已驳回");

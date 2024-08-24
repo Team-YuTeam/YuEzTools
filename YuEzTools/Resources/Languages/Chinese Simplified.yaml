@@ -121,6 +121,7 @@ MenuUI.HorseMode: "马模式"
 MenuUI.LongMode: "长颈鹿模式"
 MenuUI.reShowRoleT: "重新展示职业"
 MenuUI.ShowInfoInLobby: "在大厅显示玩家的基本信息"
+MenuUI.shieldForbiddenWords: "屏蔽违规聊天"
 
 # MenuUI.ShortcutButton.Left
 MenuUI.ShortcutButton.Left: "退出游戏选项卡"

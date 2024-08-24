@@ -22,26 +22,12 @@ using static YuEzTools.Logger;
 namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.CoStartGame))]
-internal class CoStartGamePatch
+internal class ChangeRoleSettings
 {
-    public static void Postfix()
+    public static void Postfix(AmongUsClient __instance)
     {
+        
         GameModuleInitializerAttribute.InitializeAll();
-        // if (AmongUsClient.Instance.AmHost && Main.HasHacker)
-        // {
-        //     Logger.Info("Host Try end game with room " +
-        //                 GameStartManager.Instance.GameRoomNameCode.text,"StartPatch");
-        //     try
-        //     {
-        //         GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
-        //     }
-        //     catch (Exception e)
-        //     {
-        //         Logger.Error(e.ToString(), "StartPatch");
-        //     }
-        //     Main.HasHacker = false;
-        // }
-        // Main.HasHacker = false;
     }
 }
 
@@ -55,6 +41,10 @@ class StartPatch
         GetPlayer.numCrewmates = 0;
         int c = 0;
         Logger.Info("== 游戏开始 ==","StartPatch");
+        if (Toggles.AutoStartGame && AmongUsClient.Instance.AmHost)
+        {
+            PlayerControl.LocalPlayer.RpcSetRole(RoleTypes.CrewmateGhost,true);
+        }
         foreach (var pc1 in Main.AllPlayerControls)
         {
             //Logger.Info("添加玩家进入CPCOS："+pc1.GetRealName(),"StartPatch");

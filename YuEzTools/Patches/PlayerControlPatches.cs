@@ -1,3 +1,4 @@
+using AmongUs.GameOptions;
 using HarmonyLib;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,67 @@ namespace YuEzTools.Patches;
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.MurderPlayer))]
 class MurderPlayerPatch
 {
+    public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl tg)
+    {
+        // if (Toggles.AutoStartGame && __instance == tg && __instance == PlayerControl.LocalPlayer) return true;
+        if (GetPlayer.IsLobby || tg.Data.IsDead || __instance.Data.IsDead || __instance.GetPlayerRoleTeam() != RoleTeam.Impostor)
+        {
+            if (!Main.HackerList.Contains(__instance.GetClientId())) Main.HackerList.Add(__instance.GetClientId());
+            Main.HasHacker = true;
+            Logger.Fatal(
+                "Hacker Murder " + __instance.GetRealName() +
+                $"{"好友编号：" + __instance.GetClient().FriendCode + "/名字：" + __instance.GetRealName() + "/ProductUserId：" + __instance.GetClient().ProductUserId}",
+                "RPCHandle");
+            //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;
+            SendChat.Prefix(__instance);
+            Utils.Utils.AddHacker(__instance.GetClient());
+            if (!Toggles.SafeMode && !AmongUsClient.Instance.AmHost &&
+                GameStartManagerPatch.roomMode == RoomMode.Plus25)
+            {
+                Main.Logger.LogInfo("Try Kick" + __instance.GetRealName());
+                KickHackerPatch.KickPlayer(__instance);
+                return false;
+            }
+            //PlayerControl Host = AmongUsClient.Instance.GetHost();
+            else if (AmongUsClient.Instance.AmHost)
+            {
+                Main.Logger.LogInfo("Host Try ban " + __instance.GetRealName());
+                AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), true);
+                if (AmongUsClient.Instance.AmHost && !Toggles.SafeMode)
+                {
+                    tg.Revive();
+                    if(GetPlayer.IsLobby) tg.RpcSetRole(RoleTypes.Crewmate,true);
+                            
+                    Main.Logger.LogWarning($"尝试复活{tg.GetRealName()}");
+                }
+                Main.Logger.LogWarning($"玩家【{__instance.GetClientId()}:{__instance.GetRealName()}】非法击杀，已驳回");
+                
+                if (GetPlayer.IsInGame)
+                {
+                    Main.Logger.LogInfo("Host Try end game with room " +
+                                        GameStartManager.Instance.GameRoomNameCode.text);
+                    try
+                    {
+                        GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+
+                    }
+                    catch (System.Exception e)
+                    {
+                        Logger.Error(e.ToString(), "Session");
+                    }
+
+                    Main.HasHacker = false;
+                }
+
+                return false;
+            }
+
+            return false;
+        }
+
+        return true;
+    }
+
     public static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
     {
         if (target.GetPlayerData().Killer != null) return;

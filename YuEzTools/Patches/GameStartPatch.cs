@@ -139,7 +139,7 @@ public class GameStartManagerPatch
                 if (timer <= 120 && Toggles.AutoStartGame && GetPlayer.IsLobby && !GetPlayer.IsCountDown)
                 {
                     GameStartManager.Instance.startState = GameStartManager.StartingStates.Countdown;
-                    GameStartManager.Instance.countDownTimer = 3;
+                    GameStartManager.Instance.countDownTimer = 1.5f;
                 }
                 //timerText.text = countDown;}
             }
@@ -149,7 +149,6 @@ public class GameStartManagerPatch
                 try
                 {
                     GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
-
                 }
                 catch (System.Exception e)
                 {

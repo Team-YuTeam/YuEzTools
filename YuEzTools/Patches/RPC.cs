@@ -18,7 +18,7 @@ internal class RPCHandlerPatch
         if (!Toggles.EnableAntiCheat) return true;
         try
         {
-            if(callId == 13 || (RpcCalls)callId == RpcCalls.SendChat)
+            if((callId == 13 || (RpcCalls)callId == RpcCalls.SendChat) && Toggles.shieldForbiddenWords)
             {
                 MessageReader sr = MessageReader.Get(reader);
                 var text = sr.ReadString();

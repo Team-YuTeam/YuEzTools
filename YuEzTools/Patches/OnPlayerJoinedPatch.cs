@@ -8,6 +8,7 @@ using YuEzTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AmongUs.GameOptions;
 using YuEzTools.Modules;
 using static YuEzTools.Translator;
 using Exception = Il2CppSystem.Exception;
@@ -117,29 +118,7 @@ class IntroCutscenePatch
     [HarmonyPatch(nameof(IntroCutscene.OnDestroy)), HarmonyPostfix]
     public static void OnDestroy_Postfix(IntroCutscene __instance)
     {
-        if (Toggles.AutoStartGame && AmongUsClient.Instance.AmHost)
-        {
-            PlayerControl.LocalPlayer.RpcTeleport(Utils.Utils.GetBlackRoomPS());
-            Logger.Info("尝试TP玩家","GM");
-            //PlayerControl.LocalPlayer.RpcExile();
-            MurderHacker.murderHacker(PlayerControl.LocalPlayer,MurderResultFlags.Succeeded);
-            Logger.Info("尝试击杀玩家","GM");
-            // PlayerState.GetByPlayerId(PlayerControl.LocalPlayer.PlayerId).SetDead();
-            if (AmongUsClient.Instance.AmHost && Main.HasHacker)
-            {
-                Logger.Info("Host Try end game with room " +
-                            GameStartManager.Instance.GameRoomNameCode.text,"StartPatch");
-                try
-                {
-                    GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
-                }
-                catch (System.Exception e)
-                {
-                    Logger.Error(e.ToString(), "StartPatch");
-                }
-                Main.HasHacker = false;
-            }
-        }
+
     }
 }
 [HarmonyPatch(typeof(InnerNetClient), nameof(InnerNetClient.DisconnectInternal))]
