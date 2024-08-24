@@ -18,7 +18,7 @@ public static class ShipStatus_FixedUpdate
     {
         if (!Toggles.EnableAntiCheat) return true;
         var amount = MessageReader.Get(reader).ReadByte();
-        if (AntiCheatForAll.RpcUpdateSystemCheck(player, systemType, amount)  || (GetPlayer.IsHideNSeek && AntiCheatForAll.RpcUpdateSystemCheckFHS(player, systemType, amount)))
+        if (AntiCheatForAll.RpcUpdateSystemCheck(player, systemType, amount)  || (GetPlayer.IsHideNSeek && AntiCheatForAll.RpcUpdateSystemCheckFHS(player, systemType, amount)) || !GetPlayer.isMeeting)
         {
             __instance.RpcUpdateSystem(systemType, 16);
             if(!Main.HackerList.Contains(player.GetClientId())) Main.HackerList.Add(player.GetClientId());

@@ -26,7 +26,6 @@ internal class ChangeRoleSettings
 {
     public static void Postfix(AmongUsClient __instance)
     {
-        
         GameModuleInitializerAttribute.InitializeAll();
     }
 }
@@ -40,11 +39,7 @@ class StartPatch
         GetPlayer.numImpostors = 0;
         GetPlayer.numCrewmates = 0;
         int c = 0;
-        Logger.Info("== 游戏开始 ==","StartPatch");
-        if (Toggles.AutoStartGame && AmongUsClient.Instance.AmHost)
-        {
-            PlayerControl.LocalPlayer.RpcSetRole(RoleTypes.CrewmateGhost,true);
-        }
+        Logger.Info("== 游戏开始 ==", "StartPatch");
         foreach (var pc1 in Main.AllPlayerControls)
         {
             //Logger.Info("添加玩家进入CPCOS："+pc1.GetRealName(),"StartPatch");

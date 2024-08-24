@@ -15,6 +15,10 @@ namespace YuEzTools.Modules;
 
 static class ExtendedPlayerControl
 {
+    public static void SetRole(this PlayerControl player, RoleTypes role, bool canOverride = false)
+    {
+        player.StartCoroutine(player.CoSetRole(role, canOverride));
+    }
     public static string GetRoleInfoForVanilla(this RoleTypes role)
     {
 

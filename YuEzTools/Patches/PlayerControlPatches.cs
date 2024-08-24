@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using AmongUs.GameOptions;
 using HarmonyLib;
 using TMPro;
@@ -7,6 +10,7 @@ using YuEzTools.Modules;
 using static YuEzTools.Translator;
 using YuEzTools.Get;
 using YuEzTools.Utils;
+using Object = UnityEngine.Object;
 
 namespace YuEzTools.Patches;
 
@@ -180,3 +184,142 @@ class PlayerControlSetTasksPatch
         TaskCount = Tasks.Count;
     }
 }
+
+// // [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.SetRoleInvisibility))]
+// // class SetRoleInvisibility
+// // {
+// //     public static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] bool isActive, [HarmonyArgument(1)] bool animate)
+// //     {
+// //         if (isActive)
+// //         {
+// //             DefaultInterpolatedStringHandler defaultInterpolatedStringHandler = new DefaultInterpolatedStringHandler(39, 2);
+// //             defaultInterpolatedStringHandler.AppendFormatted(__instance.Data.PlayerName);
+// //             defaultInterpolatedStringHandler.AppendLiteral(" Has Vanished as Phantom, did animate: ");
+// //             defaultInterpolatedStringHandler.AppendFormatted<bool>(animate);
+// //             Logger.Info(defaultInterpolatedStringHandler.ToStringAndClear(), "EventLog");
+// //         }
+// //         else
+// //         {
+// //             DefaultInterpolatedStringHandler defaultInterpolatedStringHandler = new DefaultInterpolatedStringHandler(39, 2);
+// //             defaultInterpolatedStringHandler.AppendFormatted(__instance.Data.PlayerName);
+// //             defaultInterpolatedStringHandler.AppendLiteral(" Has Appeared as Phantom, did animate: ");
+// //             defaultInterpolatedStringHandler.AppendFormatted<bool>(animate);
+// //             Logger.Info(defaultInterpolatedStringHandler.ToStringAndClear(), "EventLog");
+// //         }
+// //     }
+// // }
+// // [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.RpcSetRole))]
+// [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.RpcSetRole))]
+// public static class RpcSetRoleReplacer
+// {
+//     public static bool doReplace = false;
+//     public static Dictionary<byte, CustomRpcSender> senders;
+//     public static Dictionary<PlayerControl, RoleTypes> StoragedData = [];
+//     // List of Senders that do not require additional writing because SetRoleRpc has already been written by another process such as Position Desync
+//     public static List<CustomRpcSender> OverriddenSenderList;
+//     public static bool Prefix()
+//     {
+//         return !doReplace;
+//     }
+//     public static void Release()
+//     {
+//         foreach (var sender in senders)
+//         {
+//             if (OverriddenSenderList.Contains(sender.Value)) continue;
+//             if (sender.Value.CurrentState != CustomRpcSender.State.InRootMessage)
+//                 throw new InvalidOperationException("A CustomRpcSender had Invalid State.");
+//
+//             foreach (var (seer, roleType) in StoragedData)
+//             {
+//                 try
+//                 {
+//                     seer.SetRole(roleType, false);
+//                     sender.Value.AutoStartRpc(seer.NetId, (byte)RpcCalls.SetRole, GetPlayer.GetPlayerById(sender.Key).GetClientId())
+//                         .Write((ushort)roleType)
+//                         .Write(false)
+//                         .EndRpc();
+//                 }
+//                 catch
+//                 { }
+//             }
+//             sender.Value.EndMessage();
+//         }
+//         doReplace = false;
+//     }
+//     public static void Initialize()
+//     {
+//         StoragedData = [];
+//         OverriddenSenderList = [];
+//         doReplace = true;
+//     }
+//     public static void StartReplace(Dictionary<byte, CustomRpcSender> senders)
+//     {
+//         RpcSetRoleReplacer.senders = senders;
+//         doReplace = true;
+//     }
+// }
+//
+// [HarmonyPatch(typeof(RoleManager), nameof(RoleManager.SelectRoles))]
+// internal class SelectRolesPatch
+// {
+//     public static void Prefix()
+//     {
+//         if (!AmongUsClient.Instance.AmHost) return;
+//         
+//         RpcSetRoleReplacer.Initialize();
+//         
+//
+//         if (Toggles.AutoStartGame)
+//         {
+//             PlayerControl.LocalPlayer.SetRole(RoleTypes.CrewmateGhost,false);
+//         }
+//         // foreach (var pc in Main.AllPlayerControls)
+//         // {
+//         //     pc.SetRole(RoleTypes.Scientist,false);
+//         //     if (Toggles.AutoStartGame && AmongUsClient.Instance.AmHost && pc.AmOwner)
+//         //     {
+//         //         PlayerControl.LocalPlayer.SetRole(RoleTypes.CrewmateGhost,false);
+//         //     }
+//         //     else
+//         //     {
+//         //         // RpcSetRoleReplacer.StoragedData[pc] = role;
+//         //         pc.SetRole(RoleTypes.Impostor, false);
+//         //     }
+//         // }
+//         
+//     }
+//     public static void Postfix()
+//     {
+//         if (!AmongUsClient.Instance.AmHost) return;
+//
+//         // Override RoleType for others players
+//         foreach (var (pc, role) in RoleAssign.RoleResult)
+//         {
+//             if (pc == null || role.IsDesyncRole()) continue;
+//
+//             RpcSetRoleReplacer.StoragedData.Add(pc, role.GetRoleTypes());
+//
+//             Logger.Warn($"Set original role type => {pc.GetRealName()}: {role} => {role.GetRoleTypes()}", "Override Role Select");
+//         }
+//         //There is a delay of 0.8 seconds because after the player exits during the assign of desync roles, either a black screen will occur or the Scientist role will be set
+//         _ = new LateTask(() => {
+//
+//             try
+//             {
+//                 
+//                 // Set roles
+//                 // SetRolesAfterSelect();
+//                 RpcSetRoleReplacer.Release(); //Write RpcSetRole for all players
+//                 RpcSetRoleReplacer.senders.Do(kvp => kvp.Value.SendMessage());
+//
+//                 // Assign tasks again
+//                 ShipStatus.Instance.Begin();
+//             }
+//             catch (Exception ex)
+//             { 
+//                 YuEzTools.Logger.Error("Set Roles After Select In LateTask","fpzy");
+//                 YuEzTools.Logger.Error(ex.ToString(),"fpzy");
+//             }
+//         }, 1f, "Set Role Types After Select");
+//     }
+// }
