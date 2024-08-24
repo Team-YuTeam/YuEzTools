@@ -34,6 +34,7 @@ internal class RPCHandlerPatch
                 Logger.Fatal("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/ProductUserId："+__instance.GetClient().ProductUserId}","RPCHandle");
                 //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;
                 SendChat.Prefix(__instance);
+                Utils.Utils.AddHacker(__instance.GetClient());
                 if(!Toggles.SafeMode && !AmongUsClient.Instance.AmHost && GameStartManagerPatch.roomMode == RoomMode.Plus25)
                 {
                     Main.Logger.LogInfo("Try Kick" + __instance.GetRealName());
