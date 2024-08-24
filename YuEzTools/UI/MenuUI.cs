@@ -24,7 +24,12 @@ public  class MenuUI : MonoBehaviour
     
     private void Update(){
 
-        if (Input.GetKeyDown(Utils.Utils.stringToKeycode(Main.menuKeybind.Value)))
+        if (OptionsMenuBehaviourStartPatch.isVanilla || !SplashManagerPatch.LanguageLoaded)
+        {
+            isGUIActive = false;
+            return;
+        }
+        if (Input.GetKeyDown(Utils.Utils.stringToKeycode(Main.menuKeybind.Value)) )
         {
             //Enable-disable GUI with DELETE key
             isGUIActive = !isGUIActive;
@@ -43,7 +48,7 @@ public  class MenuUI : MonoBehaviour
         Main.WinTextSize.Value = Toggles.WinTextSize;
         
         if (isGUIActive) firstoOpenMenuUI = false;
-        if(!isGUIActive && SplashManagerPatch.LanguageLoaded)
+        if(!isGUIActive)
         {
             groups.Clear();
             groups.Add(new GroupInfo(Translator.GetString("MenuUI.AntiCheat"), false, new List<ToggleInfo>()

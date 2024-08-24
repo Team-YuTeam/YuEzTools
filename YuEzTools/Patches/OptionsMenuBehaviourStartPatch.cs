@@ -1,7 +1,9 @@
 using HarmonyLib;
 using InnerNet;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using YuEzTools.Get;
+using YuEzTools.UI;
 using static YuEzTools.Translator;
 
 namespace YuEzTools;
@@ -11,8 +13,8 @@ namespace YuEzTools;
 public static class OptionsMenuBehaviourStartPatch
 {
     private static ClientOptionItem SwitchVanilla;
-    
 
+    public static bool isVanilla = false;
     public static void Postfix(OptionsMenuBehaviour __instance)
     {
         if (__instance.DisableMouseMovement == null) return;
@@ -27,6 +29,10 @@ public static class OptionsMenuBehaviourStartPatch
                 {
                     AmongUsClient.Instance.ExitGame(DisconnectReasons.ExitGame);
                 }
+
+                // MainMenuManager.Start();
+                SceneManager.LoadScene(0);
+                isVanilla = true;
                 Harmony.UnpatchAll();
                 Main.Instance.Unload();
             }
