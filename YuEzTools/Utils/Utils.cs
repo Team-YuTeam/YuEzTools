@@ -661,4 +661,40 @@ public static class Utils
         }
         return false;
     }
+    public static bool CheckCloudBanner(string code, string puid = "")
+    {
+        bool OnlyCheckPuid = false;
+        if (code == "" && puid != "") OnlyCheckPuid = true;
+        else if (code == "") return false;
+
+        string noDiscrim = "";
+        if (code.Contains('#'))
+        {
+            int index = code.IndexOf('#');
+            noDiscrim = code[..index];
+        }
+
+        try
+        {
+            // Directory.CreateDirectory("YuET_Data");
+            if (!File.Exists(Main.userProfile + "Banlist.txt")) File.Create(Main.userProfile + "Banlist.txt").Close();
+            using StreamReader sr = new(Main.userProfile + "Banlist.txt");
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (line == "") continue;
+                if (!OnlyCheckPuid)
+                {
+                    if (line.IndexOf(code) >= 0) return true;
+                    if (!string.IsNullOrEmpty(noDiscrim) && !line.Contains('#') && line.Contains(noDiscrim)) return true;
+                }
+                if (line.Contains(puid)) return true;
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Exception(ex, "CheckBanList");
+        }
+        return false;
+    }
 }
