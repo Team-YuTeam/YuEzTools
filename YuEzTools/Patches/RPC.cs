@@ -18,14 +18,18 @@ internal class RPCHandlerPatch
         if (!Toggles.EnableAntiCheat) return true;
         try
         {
-            MessageReader sr = MessageReader.Get(reader);
-            var text = sr.ReadString();
+            if(callId == 13 || (RpcCalls)callId == RpcCalls.SendChat)
+            {
+                MessageReader sr = MessageReader.Get(reader);
+                var text = sr.ReadString();
                 if (text.CheckBanWord() || text.CheckDllBanWord())
                 {
                     Main.Logger.LogWarning($"玩家【{__instance.GetClientId()}:{__instance.GetRealName()}】发送非法消息，已驳回");
                     SendBadChat.Prefix(__instance);
                     return false;
                 }
+            }
+            
             if (AntiCheatForAll.ReceiveRpc(__instance, callId, reader) || AUMCheat.ReceiveInvalidRpc(__instance, callId,reader) ||
                 SMCheat.ReceiveInvalidRpc(__instance, callId))
             {
