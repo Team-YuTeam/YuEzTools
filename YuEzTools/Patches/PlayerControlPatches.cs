@@ -190,6 +190,7 @@ class SnapToPatch
 {
     public static bool Prefix(Vector2 position)
     {
+        if (!GetPlayer.IsLobby) return true;
         Logger.Warn($"违规！进行了违规的传送...","SnapToPatch");
         // Logger.Warn($"违规！{__instance.GetRealName()} 进行了违规的传送...","SnapToPatch");
         // if(!Main.HackerList.Contains(__instance.GetClientId())) Main.HackerList.Add(__instance.GetClientId());
@@ -305,13 +306,7 @@ class SnapToPatch
 //     }
 // }
 //
-// [HarmonyPatch(typeof(RoleManager), nameof(RoleManager.SelectRoles))]
-// internal class SelectRolesPatch
-// {
-//     public static void Prefix()
-//     {
-//         if (!AmongUsClient.Instance.AmHost) return;
-//         
+ 
 //         RpcSetRoleReplacer.Initialize();
 //         
 //

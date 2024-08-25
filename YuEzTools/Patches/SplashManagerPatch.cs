@@ -108,7 +108,9 @@ public static class SplashManagerPatch
         }
         tipText.text = "加载中...\nLoading...";
 
-        
+        loadText.text = "初始化随机数\n<size=65%>Loading Random</size>";
+        IRandom.SetInstance(new NetRandomWrapper());
+
         loadText.text = "加载配置\n<size=65%>Loading Config</size>";
         Toggles.WinTextSize = Main.WinTextSize.Value;
         

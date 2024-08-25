@@ -50,6 +50,7 @@ class OnPlayerJoinedPatch
         if (AmongUsClient.Instance.AmHost && client.FriendCode == "" && Toggles.KickNotLogin)
         {
             // 你知道的 Login是这样的
+            // client.Character.RpcSetName($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
             AmongUsClient.Instance.KickPlayer(client.Id, true);
             Logger.Info($"{client?.PlayerName}未登录 已踢出", "Kick");
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
@@ -64,7 +65,11 @@ class OnPlayerJoinedPatch
 
         if (Utils.Utils.CheckBanList(client.FriendCode,client?.ProductUserId) || Utils.Utils.CheckBanner(client.FriendCode,client?.ProductUserId)|| Utils.Utils.CheckCloudBanner(client.FriendCode,client?.ProductUserId) || Utils.Utils.CheckFirstBanList(client.FriendCode))
         {
-            if(AmongUsClient.Instance.AmHost) AmongUsClient.Instance.KickPlayer(client.Id, true);
+            if (AmongUsClient.Instance.AmHost)
+            {
+                // client.Character.RpcSetName($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
+                AmongUsClient.Instance.KickPlayer(client.Id, true);
+            }
             Logger.Info($"{client?.PlayerName}黑名单 已揭示/踢出", "OnPlayerJoined");
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
             SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
@@ -92,8 +97,6 @@ class OnPlayerLeftPatch{
             // Main.JoinedPlayer.Remove(client.Character);
         }
         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("LeftRoom")}</color>");
-        Utils.Utils.NotificationPop(
-            $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("LeftRoom")}</color>");
         Main.Logger.LogInfo(
             $"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/ProductUserId:{client.ProductUserId}) 退出房间");
     }
@@ -102,12 +105,7 @@ class OnPlayerLeftPatch{
 [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnGameJoined))]
 class OnGameJoined
 {
-    //private static int CID;
-    // public static void Prefix(AmongUsClient __instance)
-    // {
-    //     if (AmongUsClient.Instance.AmHost && Toggles.AutoStartGame)
-    //         MurderHacker.murderHacker(PlayerControl.LocalPlayer, MurderResultFlags.Succeeded);
-    // }
+    private static int CID;
     public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
     {
         ShowDisconnectPopupPatch.ReasonByHost = string.Empty;

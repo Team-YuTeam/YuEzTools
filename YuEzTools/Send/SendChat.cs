@@ -29,24 +29,31 @@ public class SendChat
         lastHacker = __instance;
         if (Toggles.SafeMode && !AmongUsClient.Instance.AmHost)
         {
+            // __instance.RpcSetName(string.Format(Translator.GetString("AmnotHostSafeSeeHacker"), __instance.GetRealName()));
             SendInGamePatch.SendInGame(string.Format(Translator.GetString("AmnotHostSafeSeeHacker"), __instance.GetRealName()));
             Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }
         else if(!Toggles.SafeMode && !AmongUsClient.Instance.AmHost)
         {
+            // __instance.RpcSetName(string.Format(Translator.GetString("AmnotHostUnSafeSeeHacker"), __instance.GetRealName()));
+
             SendInGamePatch.SendInGame(string.Format(Translator.GetString("AmnotHostUnSafeSeeHacker"),__instance.GetRealName()));
             Main.Logger.LogInfo($"已尝试封禁 {__instance.GetRealName()}");
             return;
         }
         else if (AmongUsClient.Instance.AmHost)
         {
+            // __instance.RpcSetName(string.Format(Translator.GetString("AmHostSafeSeeHacker"), __instance.GetRealName()));
+
             SendInGamePatch.SendInGame(string.Format(Translator.GetString("AmHostSafeSeeHacker"),__instance.GetRealName()));
             Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }
         else
         {
+            // __instance.RpcSetName(string.Format(Translator.GetString("AmHostSafeSeeHacker"), __instance.GetRealName()));
+
             SendInGamePatch.SendInGame(string.Format(Translator.GetString("SeeHacker"),__instance.GetRealName()));
             Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;

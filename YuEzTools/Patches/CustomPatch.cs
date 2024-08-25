@@ -10,6 +10,6 @@ namespace YuEzTools;
 public enum CustomRPC
 {
     SetKickReason,
-    NotificationPop,
+    // NotificationPop,
     SyncLobbyTimer,
 }

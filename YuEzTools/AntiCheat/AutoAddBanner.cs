@@ -13,7 +13,7 @@ internal class KickPlayerPatch
     public static bool Prefix(InnerNetClient __instance, int clientId, bool ban)
     {
         if (!AmongUsClient.Instance.AmHost) return true;
-        if (AmongUsClient.Instance.ClientId == clientId)
+        if (AmongUsClient.Instance.ClientId == clientId && !ban) 
         {
             SendInGamePatch.SendInGame(string.Format(GetString("KickHostByAUSystem"), ban ? GetString("BanText") : GetString("KickText")));
             Logger.Info("我靠 房主居然能封禁/踢自己！", "KickPlayerPatch");

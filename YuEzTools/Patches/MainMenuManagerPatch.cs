@@ -27,10 +27,12 @@ public class MainMenuManagerPatch
     public static GameObject WebsiteButton;
     public static GameObject ProjectButton;
     public static GameObject DevsButton;
-    public static GameObject AfdianButton;
-    public static GameObject BilibiliButton;
+    // public static GameObject AfdianButton;
+    // public static GameObject BilibiliButton;
     public static GameObject UpdateButton;
+    public static GameObject SponsorButton;
     public static GameObject PlayButton;
+    public static GameObject EightBallButton;
 
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.OpenGameModeMenu))]
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.OpenAccountMenu))]
@@ -183,14 +185,94 @@ public class MainMenuManagerPatch
         DevsButton.gameObject.SetActive(true); 
         DevsButton.name = "YuET Devs Button";
 
+        var rando = IRandom.Instance;
+        int result = rando.Next(0, 1);
+
+        if (result == 0)
+        {
+            if (SponsorButton == null) SponsorButton = CreatButton("AfdianButton", () => Application.OpenURL("https://afdian.com/a/yuqianzhi"));
+            SponsorButton.gameObject.SetActive(true);
+            SponsorButton.name = "YuET Afdian Button";
+        }
+        else
+        {
+            if (SponsorButton == null) SponsorButton = CreatButton("BiliBiliButton", () => Application.OpenURL("https://space.bilibili.com/1638639993"));
+            SponsorButton.gameObject.SetActive(true); 
+            SponsorButton.name = "YuET BiliBili Button";
+        }
         
-        if (AfdianButton == null) AfdianButton = CreatButton("AfdianButton", () => Application.OpenURL("https://afdian.com/a/yuqianzhi"));
-        AfdianButton.gameObject.SetActive(true);
-        AfdianButton.name = "YuET Afdian Button";
+        if (EightBallButton == null) EightBallButton = CreatButton("EightBallButton", () =>
+        {
+            CustomPopup.Show(GetString("EightBallTitle"), GetString("EightBallText")
+                , new()
+                {
+                    (GetString(StringNames.Okay), () =>
+                    {
+                                    var rando = IRandom.Instance;
+            int result = rando.Next(0, 16);
+            string str = "";
+                    switch (result)
+                    {
+                        case 0:
+                            str = GetString("8BallYes");
+                            break;
+                        case 1:
+                            str = GetString("8BallNo");
+                            break;
+                        case 2:
+                            str = GetString("8BallMaybe");
+                            break;
+                        case 3:
+                            str = GetString("8BallTryAgainLater");
+                            break;
+                        case 4:
+                            str = GetString("8BallCertain");
+                            break;
+                        case 5:
+                            str = GetString("8BallNotLikely");
+                            break;
+                        case 6:
+                            str = GetString("8BallLikely");
+                            break;
+                        case 7:
+                            str = GetString("8BallDontCount");
+                            break;
+                        case 8:
+                            str = GetString("8BallStop");
+                            break;
+                        case 9:
+                            str = GetString("8BallPossibly");
+                            break;
+                        case 10:
+                            str = GetString("8BallProbably");
+                            break;
+                        case 11:
+                            str = GetString("8BallProbablyNot");
+                            break;
+                        case 12:
+                            str = GetString("8BallBetterNotTell");
+                            break;
+                        case 13:
+                            str = GetString("8BallCantPredict");
+                            break;
+                        case 14:
+                            str = GetString("8BallWithoutDoubt");
+                            break;
+                        case 15:
+                            str = GetString("8BallWithDoubt");
+                            break;
+                    }
+                    CustomPopup.Show(GetString("8BallTitle"), $"<size=8.5><color=#FF443D>{str}</color></size>"
+                        , new()
+                        {
+                            (GetString(StringNames.Okay), null)
+                        });
+                    })
+                });
+        });
+        EightBallButton.gameObject.SetActive(true);
+        EightBallButton.name = "YuET Eight Ball Button";
         
-        if (BilibiliButton == null) BilibiliButton = CreatButton("BiliBiliButton", () => Application.OpenURL("https://space.bilibili.com/1638639993"));
-        BilibiliButton.gameObject.SetActive(true); 
-        BilibiliButton.name = "YuET BiliBili Button";
         
         PlayButton = __instance.playButton.gameObject;
         if (UpdateButton == null)
@@ -227,7 +309,7 @@ public class MainMenuManagerPatch
         
         Dictionary<List<PassiveButton>, (Sprite, Color, Color, Color, Color)> customButtons = new()
         {
-            {new List<PassiveButton>() {InviteButton.GetComponent<PassiveButton>(),WebsiteButton.GetComponent<PassiveButton>(),ProjectButton.GetComponent<PassiveButton>(),AfdianButton.GetComponent<PassiveButton>(),BilibiliButton.GetComponent<PassiveButton>(),DevsButton.GetComponent<PassiveButton>()},
+            {new List<PassiveButton>() {InviteButton.GetComponent<PassiveButton>(),WebsiteButton.GetComponent<PassiveButton>(),ProjectButton.GetComponent<PassiveButton>(),SponsorButton.GetComponent<PassiveButton>(),EightBallButton.GetComponent<PassiveButton>(),DevsButton.GetComponent<PassiveButton>()},
                 (minorActiveSprite, new(0.65f, 1f, 0.247f, 0.8f), shade, Color.white, Color.white) },
         };
         

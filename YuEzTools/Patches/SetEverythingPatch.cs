@@ -40,6 +40,13 @@ class StartPatch
         GetPlayer.numCrewmates = 0;
         int c = 0;
         Logger.Info("== 游戏开始 ==", "StartPatch");
+        if (Toggles.AutoStartGame && AmongUsClient.Instance.AmHost)
+        {
+            PlayerControl.LocalPlayer.SetRole(RoleTypes.CrewmateGhost, false);
+            PlayerControl.LocalPlayer.GetPlayerData().SetDead();
+            PlayerControl.LocalPlayer.GetPlayerData().SetKiller(PlayerControl.LocalPlayer);
+            // PlayerControl.LocalPlayer.GetPlayerData().SetRole(RoleTypes.CrewmateGhost);
+        }
         foreach (var pc1 in Main.AllPlayerControls)
         {
             //Logger.Info("添加玩家进入CPCOS："+pc1.GetRealName(),"StartPatch");
@@ -262,5 +269,20 @@ class SetEverythingUpPatch
             s
         });
         Info(s,"EndSummary");
+    }
+}
+[HarmonyPatch(typeof(PlayerControl),nameof(PlayerControl.RpcSetRole))]
+[HarmonyPatch(typeof(PlayerControl),nameof(PlayerControl.CoSetRole))]
+class RpcSetRolePatch
+{
+    public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] RoleTypes roleTypes)
+    {
+        if (__instance.AmOwner && AmongUsClient.Instance.AmHost && Toggles.AutoStartGame &&
+            roleTypes != RoleTypes.CrewmateGhost)
+        {
+            return false;
+        }
+
+        return true;
     }
 }
