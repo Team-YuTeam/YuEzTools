@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using AmongUs.GameOptions;
 using BepInEx.Unity.IL2CPP.Utils.Collections;
+using Hazel;
 // using Il2CppSystem.Collections;
 using Il2CppSystem.Web.Util;
 using TMPro;
@@ -45,6 +46,19 @@ class StartPatch
             PlayerControl.LocalPlayer.SetRole(RoleTypes.CrewmateGhost, false);
             PlayerControl.LocalPlayer.GetPlayerData().SetDead();
             PlayerControl.LocalPlayer.GetPlayerData().SetKiller(PlayerControl.LocalPlayer);
+            foreach (PlayerTask task in PlayerControl.LocalPlayer.myTasks)
+            {
+                if (!task.IsComplete){
+
+                    foreach (var item in PlayerControl.AllPlayerControls)
+                    {
+                        MessageWriter messageWriter = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)RpcCalls.CompleteTask, SendOption.None, AmongUsClient.Instance.GetClientIdFromCharacter(item));
+                        messageWriter.WritePacked(task.Id);
+                        AmongUsClient.Instance.FinishRpcImmediately(messageWriter);
+                    }
+
+                }
+            }
             // PlayerControl.LocalPlayer.GetPlayerData().SetRole(RoleTypes.CrewmateGhost);
         }
         foreach (var pc1 in Main.AllPlayerControls)
@@ -68,6 +82,16 @@ class StartPatch
             
             //Info(s,"StartPatch");
             c++;
+        }
+
+        if (GetPlayer.numImpostors == 0 && AmongUsClient.Instance.AmHost)
+        {
+            var rando = IRandom.Instance;
+            int result = rando.Next(0,Main.AllPlayerControls.Count() - 1);
+            // GetPlayer.GetPlayerById(result).RpcSetRoleV3(RoleTypes.Impostor,true);
+            GetPlayer.GetPlayerById(result).RpcSetRoleV3(RoleTypes.Impostor,true);
+            GetPlayer.numImpostors++;
+            GetPlayer.numCrewmates--;
         }
         Main.isFirstSendEnd = true;
         Info("设置isFirstSendEnd为"+Main.isFirstSendEnd.ToString(),"StartPatch");
@@ -275,14 +299,12 @@ class SetEverythingUpPatch
 [HarmonyPatch(typeof(PlayerControl),nameof(PlayerControl.CoSetRole))]
 class RpcSetRolePatch
 {
-    public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] RoleTypes roleTypes)
+    public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] RoleTypes roleTypes,[HarmonyArgument(1)] bool canOver)
     {
-        if (__instance.AmOwner && AmongUsClient.Instance.AmHost && Toggles.AutoStartGame &&
-            roleTypes != RoleTypes.CrewmateGhost)
-        {
-            return false;
-        }
+        if (__instance == null || roleTypes == null || canOver == null) return true;
+        if (AmongUsClient.Instance.AmHost) return true;
+        if(!canOver) __instance.RpcSetRole(roleTypes,true);
 
-        return true;
+        return canOver;
     }
 }
