@@ -75,7 +75,10 @@ BlackList: "存在于您或YuET的黑名单中"
 notFindRPC: "这是无效的RPC！\n数值：{0}"
 notJoinedSendRPC: "{1}未进入却发送了RPC\n数值：{0}"
 SendBadChat: "{0} 发送了违规信息\n已尝试屏蔽..."
-Message.AddedPlayerToBanList: "已将玩家 {0} 添加至您的本地Banlist"
+Message.AddedPlayerToBanList: "已将玩家 {0} 添加至您的本地封禁名单"
+KickHostByAUSystem: "AmongUs尝试对房主进行 {0} 操作\n我们尝试拦截..."
+BanText: "封禁"
+KickText: "踢出"
 
 # MenuUI.Interface
 Interface: "界面"
@@ -269,4 +272,4 @@ WelcomeToUseYuET: "欢迎使用YuET！"
 
 # 下载Banlist
 DownloadBanlistFailedTitle: "错误！"
-DownloadBanlistFailed: "下载banlist时错误了，您的游戏安全等级下降\n原因：{0}\n请检查您的网络并尽快反馈给开发者"
+DownloadBanlistFailed: "下载封禁名单时错误了，您的游戏安全等级下降\n原因：{0}\n请检查您的网络并尽快反馈给开发者"

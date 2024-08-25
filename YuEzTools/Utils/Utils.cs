@@ -427,15 +427,15 @@ public static class Utils
     public static void NotificationPop(string text)
     {
         // if (!AmongUsClient.Instance.AmHost) return;
-        foreach (var item in PlayerControl.AllPlayerControls)
-        {
+        // foreach (var item in PlayerControl.AllPlayerControls)
+        // {
             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
-                (byte)CustomRPC.NotificationPop, SendOption.Reliable, AmongUsClient.Instance.GetClientIdFromCharacter(item));
+                (byte)CustomRPC.NotificationPop, SendOption.Reliable,-1);
             writer.Write(text);
-            writer.WriteNetObject(item);
+            // writer.WriteNetObject(item);
             AmongUsClient.Instance.FinishRpcImmediately(writer);
             NotificationPopperPatch.AddItem(text);
-        }
+        // }
     }
     public static Vector2 LocalPlayerLastTp;
     public static bool LocationLocked = false;

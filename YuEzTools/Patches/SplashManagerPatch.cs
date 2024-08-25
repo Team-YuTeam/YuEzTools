@@ -90,14 +90,14 @@ public static class SplashManagerPatch
         PluginModuleInitializerAttribute.InitializeAll();
         LanguageLoaded = true;
 
-        loadText.text = "准备下载Banlist名单\n<size=65%>Wait for Downloading Banlist</size>";
+        loadText.text = "准备下载封禁名单\n<size=65%>Wait for Downloading Banlist</size>";
         CloudBanlistLoader.DownloadBanlist();
         yield return new WaitForSeconds(0.03f);
         while (CloudBanlistLoader.isLoading)
         {
             if (CloudBanlistLoader.isBrocked) yield break;
             // Logger.Info("下载Banlist","CoLoadYuET");
-            loadText.text = "下载Banlist名单\n<size=65%>Downloading Banlist</size>";
+            loadText.text = "下载封禁名单\n<size=65%>Downloading Banlist</size>";
             if (CloudBanlistLoader.TotalFileSize != null && CloudBanlistLoader.TotalBytesDownloaded != null) 
             {
                 tipText.text =
