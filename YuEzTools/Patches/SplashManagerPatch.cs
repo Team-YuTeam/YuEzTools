@@ -95,10 +95,15 @@ public static class SplashManagerPatch
         yield return new WaitForSeconds(0.03f);
         while (CloudBanlistLoader.isLoading)
         {
+            if (CloudBanlistLoader.isBrocked) yield break;
             // Logger.Info("下载Banlist","CoLoadYuET");
             loadText.text = "下载Banlist名单\n<size=65%>Downloading Banlist</size>";
-            tipText.text =
-                $"{CloudBanlistLoader.TotalFileSize / 1000}KB / {CloudBanlistLoader.TotalBytesDownloaded / 1000}KB  -  {(int)CloudBanlistLoader.ProgressPercentage}%";
+            if (CloudBanlistLoader.TotalFileSize != null && CloudBanlistLoader.TotalBytesDownloaded != null) 
+            {
+                tipText.text =
+                    $"{CloudBanlistLoader.TotalFileSize / 1000}KB / {CloudBanlistLoader.TotalBytesDownloaded / 1000}KB  -  {(int)CloudBanlistLoader.ProgressPercentage}%";
+                
+            }
             yield return false;
         }
         tipText.text = "加载中...\nLoading...";

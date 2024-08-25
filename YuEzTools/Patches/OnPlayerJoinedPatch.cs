@@ -83,6 +83,7 @@ class OnPlayerJoinedPatch
 [HarmonyPatch(typeof(AmongUsClient),nameof(AmongUsClient.OnPlayerLeft))]
 class OnPlayerLeftPatch{
     public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client){
+        Utils.Utils.NotificationPop("有人跑路了");
         if (GetPlayer.IsInGame)
         {
             client.Character.SetDisconnected();

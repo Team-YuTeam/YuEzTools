@@ -424,6 +424,19 @@ public static class Utils
 
         return "ErrorWin";
     }
+    public static void NotificationPop(string text)
+    {
+        // if (!AmongUsClient.Instance.AmHost) return;
+        foreach (var item in PlayerControl.AllPlayerControls)
+        {
+            MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
+                (byte)CustomRPC.NotificationPop, SendOption.Reliable, AmongUsClient.Instance.GetClientIdFromCharacter(item));
+            writer.Write(text);
+            writer.WriteNetObject(item);
+            AmongUsClient.Instance.FinishRpcImmediately(writer);
+            NotificationPopperPatch.AddItem(text);
+        }
+    }
     public static Vector2 LocalPlayerLastTp;
     public static bool LocationLocked = false;
     public static void RpcTeleport(this PlayerControl player, Vector2 location)
