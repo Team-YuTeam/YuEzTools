@@ -175,7 +175,7 @@ class CompleteTaskPatch
         __instance.AddTaskCount();
     }
 }
-[HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.SetTasks))]
+[HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.SetTasks))] 
 class PlayerControlSetTasksPatch
 {
     public static int TaskCount = 0;
@@ -184,6 +184,52 @@ class PlayerControlSetTasksPatch
         TaskCount = Tasks.Count;
     }
 }
+[HarmonyPatch(typeof(CustomNetworkTransform), nameof(CustomNetworkTransform.SnapTo))]
+[HarmonyPatch(typeof(CustomNetworkTransform), nameof(CustomNetworkTransform.RpcSnapTo))]
+class SnapToPatch
+{
+    public static bool Prefix(Vector2 position)
+    {
+        Logger.Warn($"违规！进行了违规的传送...","SnapToPatch");
+        // Logger.Warn($"违规！{__instance.GetRealName()} 进行了违规的传送...","SnapToPatch");
+        // if(!Main.HackerList.Contains(__instance.GetClientId())) Main.HackerList.Add(__instance.GetClientId());
+        // Main.HasHacker = true;
+        // Logger.Fatal("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/ProductUserId："+__instance.GetClient().ProductUserId}","SnapToPatch");
+        // //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;
+        // SendChat.Prefix(__instance);
+        // Utils.Utils.AddHacker(__instance.GetClient());
+        // if(!Toggles.SafeMode && !AmongUsClient.Instance.AmHost && GameStartManagerPatch.roomMode == RoomMode.Plus25)
+        // {
+        //     Main.Logger.LogInfo("Try Kick" + __instance.GetRealName());
+        //     KickHackerPatch.KickPlayer(__instance);
+        //     return false;
+        // }
+        // //PlayerControl Host = AmongUsClient.Instance.GetHost();
+        // else if (AmongUsClient.Instance.AmHost)
+        // {
+        //     Main.Logger.LogInfo("Host Try ban " + __instance.GetRealName());
+        //     AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), true);
+        //     if(GetPlayer.IsInGame)
+        //     {
+        //         Main.Logger.LogInfo("Host Try end game with room " +
+        //                             GameStartManager.Instance.GameRoomNameCode.text);
+        //         try
+        //         {
+        //             GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
+        //
+        //         }
+        //         catch (System.Exception e)
+        //         {
+        //             Logger.Error(e.ToString(), "SnapToPatch");
+        //         }
+        //         Main.HasHacker = false;
+        //     }
+        //     return false;
+        // }
+        return false;
+    }
+}
+
 
 // // [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.SetRoleInvisibility))]
 // // class SetRoleInvisibility

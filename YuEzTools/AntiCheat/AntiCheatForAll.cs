@@ -119,7 +119,10 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
-                
+                case RpcCalls.SnapTo:
+                    Logger.Warn($"违规！{pc.GetRealName()} 进行了违规的传送...","AntiCheatForAll");
+                    return true;
+                    break;
                 case RpcCalls.SetRole:
                     var role = (RoleTypes)sr.ReadUInt16();
                     var canOverrideRole = sr.ReadBoolean();
@@ -281,7 +284,10 @@ internal class AntiCheatForAll
                         return true;
                     }
                     break;
-
+                case 21:
+                    Logger.Warn($"违规！{pc.GetRealName()} 进行了违规的传送...","AntiCheatForAll");
+                    return true;
+                    break;
                 case 11:
                     MeetingTimes++;
                     if (GetPlayer.IsLobby  || GetPlayer.isHideNSeek)

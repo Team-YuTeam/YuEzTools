@@ -119,8 +119,6 @@ public class Main : BasePlugin
         
         RegistryManager.Init(); // 这是优先级最高的模块初始化方法，不能使用模块初始化属性
         
-        Harmony.PatchAll();
-        
         // YuEzTools.Logger.Msg("========= YuET first Loaded! =========", "YuET Plugin Load");
         
         menuKeybind = Config.Bind("YuET.GUI",
@@ -137,6 +135,7 @@ public class Main : BasePlugin
         WinTextSize = Config.Bind("WinText", "WinTextSize", false, "The Winner big(true) or the reason big(false)");
         SwitchVanilla = Config.Bind("Client Options", "SwitchVanilla", false);
         BetaBuildURL = Config.Bind("Other", "BetaBuildURL", "");
+        Harmony.PatchAll();
         menuUI = AddComponent<MenuUI>();
         
         // Logger.LogInfo("TEST: "+userProfile);
