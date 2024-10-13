@@ -87,7 +87,7 @@ class StartPatch
         if (GetPlayer.numImpostors == 0 && AmongUsClient.Instance.AmHost)
         {
             var rando = IRandom.Instance;
-            int result = rando.Next(0,Main.AllPlayerControls.Count() - 1);
+            int result = rando.Next(0,Main.AllPlayerControls.Count());
             // GetPlayer.GetPlayerById(result).RpcSetRoleV3(RoleTypes.Impostor,true);
             GetPlayer.GetPlayerById(result).RpcSetRoleV3(RoleTypes.Impostor,true);
             GetPlayer.numImpostors++;
@@ -295,16 +295,16 @@ class SetEverythingUpPatch
         Info(s,"EndSummary");
     }
 }
-[HarmonyPatch(typeof(PlayerControl),nameof(PlayerControl.RpcSetRole))]
-[HarmonyPatch(typeof(PlayerControl),nameof(PlayerControl.CoSetRole))]
-class RpcSetRolePatch
-{
-    public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] RoleTypes roleTypes,[HarmonyArgument(1)] bool canOver)
-    {
-        if (__instance == null || roleTypes == null || canOver == null) return true;
-        if (AmongUsClient.Instance.AmHost) return true;
-        if(!canOver) __instance.RpcSetRole(roleTypes,true);
-
-        return canOver;
-    }
-}
+// [HarmonyPatch(typeof(PlayerControl),nameof(PlayerControl.RpcSetRole))]
+// [HarmonyPatch(typeof(PlayerControl),nameof(PlayerControl.CoSetRole))]
+// class RpcSetRolePatch
+// {
+//     public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] RoleTypes roleTypes,[HarmonyArgument(1)] bool canOver)
+//     {
+//         if (__instance == null || roleTypes == null || canOver == null) return true;
+//         if (AmongUsClient.Instance.AmHost) return true;
+//         if(!canOver) __instance.RpcSetRole(roleTypes,true);
+//
+//         return canOver;
+//     }
+// }

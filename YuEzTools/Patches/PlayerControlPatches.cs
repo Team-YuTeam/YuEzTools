@@ -108,7 +108,7 @@ class FixedUpdatePatch
     public static void Postfix(PlayerControl __instance)
     {
         if (__instance == null) return;
-
+        if (GetPlayer.isMeeting) return;
         try
         {
             // var color ="#ffffff";
