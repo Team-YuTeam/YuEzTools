@@ -193,21 +193,3 @@ public class GameStartManagerPatch
         }
     }
 }
-
-[HarmonyPatch(typeof(GameStartManager), nameof(GameStartManager.BeginGame))]
-public class GameStartRandomMap
-{
-    public static bool Prefix(GameStartManager __instance)
-    {
-        if (CreateOptionsPickerPatch.SetDleks)
-        {
-            if (GetPlayer.isNormalGame)
-                Main.NormalOptions.MapId = 3;
-
-            else if (GetPlayer.IsHideNSeek)
-                Main.HideNSeekOptions.MapId = 3;
-        }
-
-        return true;
-    }
-}
