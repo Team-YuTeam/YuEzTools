@@ -1,3 +1,4 @@
+using AmongUs.GameOptions;
 using HarmonyLib;
 using TMPro;
 using YuEzTools.Get;
@@ -48,6 +49,8 @@ class FixedUpdatePatch
             if(__instance == PlayerControl.LocalPlayer || (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead))
                 name = Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(__instance.Data.RoleType), __instance.GetRoleName()  + "\n" + name);
             if (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead)
+                name += $"({Utils.Utils.GetDeadText(__instance)})";
+            if (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.RoleType == RoleTypes.Impostor)
                 name += $"({Utils.Utils.GetDeadText(__instance)})";
         }
 

@@ -6,10 +6,10 @@ using YuEzTools.Get;
 namespace YuEzTools.Patches;
 
 // Thanks Galster (https://github.com/Galster-dev)
-[HarmonyPatch(typeof(AmongUsClient._CoStartGameHost_d__32), nameof(AmongUsClient._CoStartGameHost_d__32.MoveNext))]
+[HarmonyPatch(typeof(AmongUsClient._CoStartGameHost_d__28), nameof(AmongUsClient._CoStartGameHost_d__28.MoveNext))]
 public static class DleksPatch
 {
-    private static bool Prefix(AmongUsClient._CoStartGameHost_d__32 __instance, ref bool __result)
+    private static bool Prefix(AmongUsClient._CoStartGameHost_d__28 __instance, ref bool __result)
     {
         if (__instance.__1__state != 0)
         {

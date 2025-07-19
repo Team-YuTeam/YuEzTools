@@ -128,12 +128,12 @@ internal class PingTrackerUpdatePatch
         //     .Append(
         //         $"{Utils.Utils.getColoredPingText(ping)} <size=60%>Ping</size></color>  {Utils.Utils.getColoredFPSText(fps)} <size=60%>FPS</size></color>{"  " + (GetPlayer.IsOnlineGame ? ServerName : GetString("Local"))}");
 
-        DateTime dt = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now, TimeZoneInfo.Local);
-        DateTime dt1 =
-            TimeZoneInfo.ConvertTimeFromUtc(dt,
-                TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time")); //参数对应国家或者时区   ***对于有夏令时冬令时的区域，程序会自动调整***
-        if (Toggles.ShowLocalNowTime) sb.Append($"\r\n").Append(DateTime.Now.ToString());
-        if (Toggles.ShowUTC) sb.Append($"\r\n").Append("UTC: " + dt.ToString());
+        // DateTime dt = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now, TimeZoneInfoOptions.None);
+        // DateTime dt1 =
+        //     TimeZoneInfo.ConvertTimeFromUtc(dt,
+        //         TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time")); //参数对应国家或者时区   ***对于有夏令时冬令时的区域，程序会自动调整***
+        // if (Toggles.ShowLocalNowTime) sb.Append($"\r\n").Append(DateTime.Now.ToString());
+        // if (Toggles.ShowUTC) sb.Append($"\r\n").Append("UTC: " + dt.ToString());
 
 
         if (Toggles.ShowRoomTime && GetPlayer.IsLobby && AmongUsClient.Instance.AmHost && GetPlayer.IsOnlineGame)

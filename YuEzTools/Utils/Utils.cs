@@ -382,16 +382,16 @@ public static class Utils
     {
         switch (gameOverReason)
         {
-            case GameOverReason.HumansByTask:
-            case GameOverReason.HumansByVote:
-            case GameOverReason.HideAndSeek_ByTimer:
+            case GameOverReason.CrewmatesByTask:
+            case GameOverReason.CrewmatesByVote:
+            case GameOverReason.HideAndSeek_CrewmatesByTimer:
                 return "CrewmateWin";
-            case GameOverReason.ImpostorByKill:
-            case GameOverReason.ImpostorBySabotage:
-            case GameOverReason.HideAndSeek_ByKills:
-            case GameOverReason.ImpostorByVote:
+            case GameOverReason.ImpostorsByKill:
+            case GameOverReason.ImpostorsBySabotage:
+            case GameOverReason.HideAndSeek_ImpostorsByKills:
+            case GameOverReason.ImpostorsByVote:
                 return "ImpostorsWin";
-            case GameOverReason.HumansDisconnect:
+            case GameOverReason.CrewmateDisconnect:
             case GameOverReason.ImpostorDisconnect:
                 return "NobodyWin";
         }
