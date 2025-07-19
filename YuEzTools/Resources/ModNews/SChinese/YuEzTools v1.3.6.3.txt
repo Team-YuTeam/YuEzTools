@@ -1,10 +1,10 @@
 #Number:100021
-#Title:YuEzTools v1.3.6.2
-#SubTitle:★★★★Among Us泥别太赚钱★★★★★
-#ShortTitle:★YuET v1.3.6.2
-#Date:2024-08-14T00:00:00Z
+#Title:YuEzTools v1.3.6.3
+#SubTitle:★★★★回归更新★★★★★
+#ShortTitle:★YuET v1.3.6.3
+#Date:2025-07-20T00:00:00Z
 #-----------------------------
-AU更新了啥啊。。
+AU啥都没更新。
 
 ## 对应官方版本
 - 基于 AmongUs v2025.4.15及至发布日起以上版本！
