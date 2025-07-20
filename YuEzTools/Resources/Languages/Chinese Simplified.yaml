@@ -195,6 +195,9 @@ ImpostorIntroText: "<color={0}>邪恶将至...</color>"
 
 # TaskText
 FakeTask: "假任务如下："
+TasksProgress: "已完成任务进度:"
+TaskBarMode.Invisible: "始终不显示任务进度"
+TaskBarMode.Default: "预设错误"
 
 # RoomList
 iPhone: "苹果"

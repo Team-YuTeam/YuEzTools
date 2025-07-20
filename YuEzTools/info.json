@@ -7,6 +7,7 @@
   "CanUpdate": "true",
   "DebugVer": "0.0.0",
 
+  "md5c": "在md5输入「DEBUGVERSION」可跳过MD5 CHECK",
   "md5": "927addb4306d7912f1feca64ccc5a8fa",
   "announcement": {
     "SChinese": "欢迎使用YuEzTools!\n宇宙最强反作弊重磅回归\n<size=30%>不接受反驳</size>\n赞助Yu请点击前两个按钮\n反馈Bug请进QQ群（即第三个按钮）",

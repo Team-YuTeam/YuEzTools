@@ -104,7 +104,12 @@ public class ModUpdater
     }
     public static bool CheckNowFileMD5()
     {
-        if (GetMD5HashFromFile(Assembly.GetExecutingAssembly().Location) != md5)
+        if (md5 == "DEBUGVERSION")
+        {
+            Logger.Info("MD5 Debug version, didn't check","CheckNowFileMD5");
+            return false;
+        }
+        else if (GetMD5HashFromFile(Assembly.GetExecutingAssembly().Location) != md5)
         {
             Logger.Info("MD5 FAIL","CheckNowFileMD5");
             return true;
