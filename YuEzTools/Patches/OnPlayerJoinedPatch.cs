@@ -112,14 +112,17 @@ class OnGameJoined
 [HarmonyPatch(typeof(IntroCutscene))]
 class IntroCutscenePatch
 {
+    public static bool Ifkill = false;
     [HarmonyPatch(nameof(IntroCutscene.OnDestroy)), HarmonyPostfix]
     public static void OnDestroy_Postfix(IntroCutscene __instance)
     {
         if (Toggles.AutoStartGame && AmongUsClient.Instance.AmHost)
         {
+            
             PlayerControl.LocalPlayer.RpcTeleport(Utils.Utils.GetBlackRoomPS());
             Logger.Info("尝试TP玩家","GM");
             //PlayerControl.LocalPlayer.RpcExile();
+            Ifkill = true;
             MurderHacker.murderHacker(PlayerControl.LocalPlayer,MurderResultFlags.Succeeded);
             Logger.Info("尝试击杀玩家","GM");
             // PlayerState.GetByPlayerId(PlayerControl.LocalPlayer.PlayerId).SetDead();

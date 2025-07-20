@@ -20,6 +20,15 @@ internal class RPCHandlerPatch
             if (AntiCheatForAll.ReceiveRpc(__instance, callId, reader) || AUMCheat.ReceiveInvalidRpc(__instance, callId,reader) ||
                 SMCheat.ReceiveInvalidRpc(__instance, callId))
             {
+                if (Toggles.AutoStartGame && AmongUsClient.Instance.AmHost &&
+                    __instance.GetPlayerData().PUID == AmongUsClient.Instance
+                        .GetClient(AmongUsClient.Instance.ClientId).ProductUserId
+                    && IntroCutscenePatch.Ifkill && (callId == (int)RpcCalls.MurderPlayer || callId == (int)RpcCalls.CheckMurder))
+                {
+                    IntroCutscenePatch.Ifkill = false;
+                    Main.Logger.LogInfo("Just host automode, normal");
+                    return true;
+                }
                 if(!Main.HackerList.Contains(__instance)) Main.HackerList.Add(__instance);
                 Main.HasHacker = true;
                 Logger.Fatal("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/ProductUserId："+__instance.GetClient().ProductUserId}","RPCHandle");
