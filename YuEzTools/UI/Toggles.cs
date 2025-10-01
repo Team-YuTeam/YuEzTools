@@ -52,4 +52,7 @@ public class Toggles
     // 其他
     public static bool FPSPlus;
     
+    //db
+    public static bool debug;
+
 }

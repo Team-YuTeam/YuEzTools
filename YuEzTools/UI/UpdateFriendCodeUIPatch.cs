@@ -13,7 +13,7 @@ public static class UpdateFriendCodeUIPatch
     public static void Prefix(AccountTab __instance)
     {
 
-        string credentialsText = "<color=#FFB6C1>YuTeam \u00a9 2024</color>";
+        string credentialsText = "<color=#FFB6C1>YuTeam \u00a9 2025</color>";
         credentialsText += "\t\t\t";
         string versionText = $"<color={Main.ModColor}>{Main.ModName}</color> - <color=#ffff00>v{Main.PluginVersion}</color>";
 

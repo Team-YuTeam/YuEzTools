@@ -22,6 +22,14 @@ namespace YuEzTools.Utils;
 
 public static class Utils
 {
+    public static void ForEach<T>(this System.Collections.Generic.IList<T> self, Action<T> todo)
+    {
+        for (int i = 0; i < self.Count; i++)
+        {
+            todo(self[i]);
+        }
+    }
+
     public static Dictionary<string, Sprite> CachedSprites = new Dictionary<string, Sprite>();
     public static Sprite LoadSprite(string path, float pixelsPerUnit = 1f)
     {

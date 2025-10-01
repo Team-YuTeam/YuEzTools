@@ -152,6 +152,8 @@ public class MenuUI : MonoBehaviour
                 {
                     new ToggleInfo(Translator.GetString("MenuUI.FPSPlus"), () => Toggles.FPSPlus,
                         x => Toggles.FPSPlus = x),
+                    new ToggleInfo("dbg", () => Toggles.debug,
+                        x => Toggles.debug = x),
                 }, new List<SubmenuInfo>
                 {
 
