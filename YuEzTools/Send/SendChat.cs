@@ -1,4 +1,3 @@
-using YuEzTools.Modules;
 using YuEzTools.Patches;
 using YuEzTools.UI;
 using YuEzTools.Utils;

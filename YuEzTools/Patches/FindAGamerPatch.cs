@@ -1,7 +1,6 @@
 using Il2CppSystem;
 using InnerNet;
 using UnityEngine;
-using YuEzTools.Modules;
 
 namespace YuEzTools.Patches;
 

@@ -1,5 +1,4 @@
 using UnityEngine;
-using YuEzTools.Modules;
 using YuEzTools.UI;
 
 namespace YuEzTools.Patches;
