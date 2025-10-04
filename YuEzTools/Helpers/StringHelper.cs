@@ -22,11 +22,10 @@ public class ColorGradient
 {
     // thanks tonx & tonex
     public List<Color> Colors { get; private set; }
-    private float Spacing;
+    private readonly float Spacing;
     public ColorGradient(params Color[] colors)
     {
-        Colors = new();
-        Colors.AddRange(colors);
+        Colors = [.. colors];
         Spacing = 1f / (Colors.Count - 1);
     }
     public bool IsValid => Colors.Count >= 2;

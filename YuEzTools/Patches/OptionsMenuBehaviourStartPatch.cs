@@ -9,7 +9,6 @@ public static class OptionsMenuBehaviourStartPatch
 {
     private static ClientOptionItem SwitchVanilla;
 
-
     public static void Postfix(OptionsMenuBehaviour __instance)
     {
         if (__instance.DisableMouseMovement == null) return;
@@ -20,7 +19,7 @@ public static class OptionsMenuBehaviourStartPatch
             SwitchVanilla = ClientOptionItem.Create(GetString("SwitchVanilla"), Main.SwitchVanilla, __instance, SwitchVanillaButtonToggle);
             static void SwitchVanillaButtonToggle()
             {
-                if (GetPlayer.isPlayer)
+                if (GetPlayer.IsPlayer)
                 {
                     AmongUsClient.Instance.ExitGame(DisconnectReasons.ExitGame);
                 }

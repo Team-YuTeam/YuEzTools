@@ -30,7 +30,7 @@ public class IntroPatch
     {
         __instance.TeamTitle.text = $"{GetString("TeamCrewmate")}";
         __instance.ImpostorText.text = $"{string.Format(GetString("ImpostorNumCrew"), GameOptionsManager.Instance.currentNormalGameOptions.NumImpostors)}";
-        __instance.ImpostorText.text += "\n" + string.Format(GetString("CrewmateIntroText"),Utils.Utils.GetRoleHtmlColor(PlayerControl.LocalPlayer.Data.RoleType));
+        __instance.ImpostorText.text += "\n" + string.Format(GetString("CrewmateIntroText"), Utils.Utils.GetRoleHtmlColor(PlayerControl.LocalPlayer.Data.RoleType));
         __instance.TeamTitle.color = Utils.Utils.GetRoleColor32(PlayerControl.LocalPlayer.Data.RoleType);
     }
     [HarmonyPatch(nameof(IntroCutscene.BeginImpostor)), HarmonyPostfix]
@@ -41,7 +41,7 @@ public class IntroPatch
         __instance.TeamTitle.text = GetString("TeamImpostor");
         __instance.ImpostorText.text = $"{string.Format(GetString("ImpostorNumImp"), GameOptionsManager.Instance.currentNormalGameOptions.NumImpostors)}";
 
-        __instance.ImpostorText.text += "\n" + string.Format(GetString("ImpostorIntroText"),Utils.Utils.GetRoleHtmlColor(PlayerControl.LocalPlayer.Data.RoleType));
+        __instance.ImpostorText.text += "\n" + string.Format(GetString("ImpostorIntroText"), Utils.Utils.GetRoleHtmlColor(PlayerControl.LocalPlayer.Data.RoleType));
         __instance.TeamTitle.color = __instance.BackgroundBar.material.color = Utils.Utils.GetRoleColor32(PlayerControl.LocalPlayer.Data.RoleType);
     }
 }

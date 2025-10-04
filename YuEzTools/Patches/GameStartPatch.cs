@@ -34,7 +34,6 @@ public class GameStartManagerPatch
 
             Info("WarningText instantiated and configured", "test");
 
-
             cancelButton = Object.Instantiate(__instance.StartButton, __instance.transform);
             var cancelLabel = cancelButton.GetComponentInChildren<TextMeshPro>();
             cancelLabel.text = GetString("Cancel");
@@ -163,7 +162,7 @@ public class GameStartManagerPatch
                 Info($"玩家被创建了，当前房间模式 {roomMode.ToString()}", "CreatePlayer");
             }
 
-            if (GetPlayer.isNormalGame)
+            if (GetPlayer.IsNormalGame)
             {
                 _ = new LateTask(() =>
                 {

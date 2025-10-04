@@ -15,12 +15,12 @@ public static class RegistryManager
     {
         if (Keys == null)
         {
-            Logger.Info("Create YuET Registry Key", "Registry Manager");
+            Info("Create YuET Registry Key", "Registry Manager");
             Keys = SoftwareKeys.CreateSubKey("AU-YuET", true);
         }
         if (Keys == null)
         {
-            Logger.Error("Create Registry Failed", "Registry Manager");
+            Error("Create Registry Failed", "Registry Manager");
             return;
         }
 

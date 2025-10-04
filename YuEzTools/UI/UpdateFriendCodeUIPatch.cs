@@ -49,7 +49,7 @@ public static class UpdateFriendCodeUIPatch
         BarSprite.SetActive(false);
         friendCode.SetActive(false);
         SignInStatus.SetActive(false);
-        GameObject.Destroy(Toggle_Friend_Code_Button);
+        Object.Destroy(Toggle_Friend_Code_Button);
         Toggle_Friend_Code_Button.SetActive(false);
         //Toggle_Friend_Code_Button.transform.localPosition = new Vector3(114514f, 1919810f, 1f);
     }

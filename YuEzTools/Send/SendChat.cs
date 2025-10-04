@@ -32,6 +32,5 @@ public class SendChat
             Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }
-        return;
     }
 }

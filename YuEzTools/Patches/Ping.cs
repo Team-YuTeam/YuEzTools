@@ -20,9 +20,9 @@ internal class PingTrackerUpdatePatch
         // __instance.text.text = "";
         if (pingTrackerCredential == null)
         {
-            var uselessPingTracker = UnityEngine.Object.Instantiate(__instance, __instance.transform.parent);
+            var uselessPingTracker = Object.Instantiate(__instance, __instance.transform.parent);
             pingTrackerCredential = uselessPingTracker.GetComponent<TextMeshPro>();
-            UnityEngine.Object.Destroy(uselessPingTracker);
+            Object.Destroy(uselessPingTracker);
             pingTrackerCredential.alignment = TextAlignmentOptions.TopRight;
             pingTrackerCredential.color = new(1f, 1f, 1f, 0.7f);
             pingTrackerCredential.rectTransform.pivot = new(1f, 1f); // 中心を右上角に設定

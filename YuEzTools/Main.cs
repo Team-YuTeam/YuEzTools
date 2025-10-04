@@ -69,21 +69,21 @@ public class Main : BasePlugin
 
     public static IEnumerable<PlayerControl> AllPlayerControls => PlayerControl.AllPlayerControls.ToArray().Where(p => p != null);
 
-    public static List<PlayerControl> ClonePlayerControlsOnStart => AllPlayerControls.ToList();
+    public static List<PlayerControl> ClonePlayerControlsOnStart => [.. AllPlayerControls];
 
     public static Main Instance; //设置Main实例
 
     public static bool isFirstSendEnd = false;
 
-    public static bool IsChineseUser => Translator.GetUserLangByRegion() == SupportedLangs.SChinese;
+    public static bool IsChineseUser => GetUserLangByRegion() == SupportedLangs.SChinese;
 
     public static bool VisibleTasksCount = false;
 
     //public static bool safemode = true;//设置安全模式
     //public static bool ShowMode = true;//设置揭示模式
 
-    public static List<(string, byte, string)> MessagesToSend = new();
-    public static List<PlayerControl> HackerList = new();
+    public static List<(string, byte, string)> MessagesToSend = [];
+    public static List<PlayerControl> HackerList = [];
 
     public static IEnumerable<PlayerControl> AllAlivePlayerControls =>
         //(PlayerControl.AllPlayerControls == null || PlayerControl.AllPlayerControls.Count == 0) && LoadEnd

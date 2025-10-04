@@ -33,9 +33,8 @@ public static class TaskLevel
                 if (player.Disconnected)
                     disconnectedCount++;
             }
-            num -= disconnectedCount;
 
-            double num2 = (float)instance.CompletedTasks / (float)instance.TotalTasks * 100;
+            double num2 = instance.CompletedTasks / (float)instance.TotalTasks * 100;
 
             switch (GameManager.Instance.LogicOptions.GetTaskBarMode())
             {

@@ -43,9 +43,6 @@ public class PlayerPhysicPatch
             FunctionPatch.RealBan();
             Toggles.RealBan = !Toggles.RealBan;
         }
-
-
-
         //-- 下面是主机专用的按钮--//
 
         //立即开始
@@ -92,13 +89,13 @@ public class ImpNumCheckPatch
             Error("最大内鬼数比预设/3还大呢！" + AmongUsClient.Instance.GetHost().Character.GetRealName() + "是房主！" + $"{NormalGameOptionsV10.MaxImpostors.Count}个内鬼", "ImpNumCheckPatch");
         }
 
-        if (GetPlayer.GetImpNums > 1 && GetPlayer.isHideNSeek)
+        if (GetPlayer.GetImpNums > 1 && GetPlayer.IsHideNSeek)
         {
             SendInGamePatch.SendInGame(GetString("OptHImpMoreThanThree"));
             Error("最大内鬼数比1还大呢！" + AmongUsClient.Instance.GetHost().Character.GetRealName() + "是房主！" + $"{NormalGameOptionsV10.MaxImpostors.Count}个内鬼", "ImpNumCheckPatch");
         }
 
-        if (GetPlayer.numImpostors > 1 && GetPlayer.isHideNSeek)
+        if (GetPlayer.numImpostors > 1 && GetPlayer.IsHideNSeek)
         {
             SendInGamePatch.SendInGame(GetString("NowHImpMoreThan"));
             Error("最大内鬼数比1还大呢！" + AmongUsClient.Instance.GetHost().Character.GetRealName() + "是房主！" + $"{NormalGameOptionsV10.MaxImpostors.Count}个内鬼", "ImpNumCheckPatch");

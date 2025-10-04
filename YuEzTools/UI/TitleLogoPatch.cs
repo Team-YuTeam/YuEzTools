@@ -22,7 +22,7 @@ internal class TitleLogoPatch
 
     public static Vector3 RightPanelOp;
 
-    public static void showPopup(string text)
+    public static void ShowPopup(string text)
     {
         var popup = Object.Instantiate(DiscordManager.Instance.discordPopup, Camera.main!.transform);
 
@@ -90,7 +90,6 @@ internal class TitleLogoPatch
         __instance.myAccountButton.transform.localPosition += new Vector3(0, 0.7f, 0);
         __instance.newsButton.transform.localPosition += new Vector3(0, 0.7f, 0);
         __instance.settingsButton.transform.localPosition += new Vector3(0, 0.7f, 0);
-
 
         void FormatButtonColor(PassiveButton button, Sprite borderType, Color inActiveColor, Color activeColor, Color inActiveTextColor, Color activeTextColor)
         {

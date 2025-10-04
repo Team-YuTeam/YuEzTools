@@ -1,6 +1,5 @@
 using System;
 using AmongUs.GameOptions;
-// using Il2CppSystem.Collections;
 using TMPro;
 using YuEzTools.Modules;
 using UnityEngine;
@@ -107,15 +106,15 @@ public static class DetailDialog
 {
     static EndGameManager endGameManager;
     static GameObject dialog;
-    static TMPro.TMP_Text saveText;
-    static TMPro.TMP_Text[] text;
+    static TMP_Text saveText;
+    static TMP_Text[] text;
     static PassiveButton button;
     static PassiveButton saveButton;
     static SpriteRenderer renderer;
 
     static Sprite saveButtonSprite;
 
-    static public void Initialize(EndGameManager endGameManager, ControllerDisconnectHandler handler, TMPro.TMP_Text textTemplate, string[] detail)
+    static public void Initialize(EndGameManager endGameManager, ControllerDisconnectHandler handler, TMP_Text textTemplate, string[] detail)
     {
         DetailDialog.endGameManager = endGameManager;
 
@@ -127,17 +126,17 @@ public static class DetailDialog
         dialog = handler.gameObject;
         renderer = dialog.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         button = dialog.transform.GetChild(2).gameObject.GetComponent<PassiveButton>();
-        saveText = dialog.transform.GetChild(1).gameObject.GetComponent<TMPro.TMP_Text>();
+        saveText = dialog.transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
 
         renderer.transform.localScale = new Vector3(1.6f, 0.85f, 1.0f);
 
         button.transform.localPosition = new Vector3(0f, -1.95f, 0f);
-        button.transform.GetChild(1).GetComponent<TMPro.TextMeshPro>().text = GetString("game.endScreen.close");
+        button.transform.GetChild(1).GetComponent<TextMeshPro>().text = GetString("game.endScreen.close");
         button.OnClick = new UnityEngine.UI.Button.ButtonClickedEvent();
-        button.OnClick.AddListener((System.Action)Close);
+        button.OnClick.AddListener((Action)Close);
 
         saveText.transform.localPosition = new Vector3(3.45f, -2.3f, 5f);
-        saveText.alignment = TMPro.TextAlignmentOptions.TopLeft;
+        saveText.alignment = TextAlignmentOptions.TopLeft;
         saveText.color = Color.white;
         saveText.fontSizeMin = 1.25f;
         saveText.fontSizeMax = 1.25f;
@@ -145,7 +144,7 @@ public static class DetailDialog
         saveText.text = "";
 
 
-        text = new TMPro.TMP_Text[detail.Length];
+        text = new TMP_Text[detail.Length];
         float width = 0.0f;
         for (int i = 0; i < detail.Length; i++)
         {
@@ -153,7 +152,7 @@ public static class DetailDialog
             text[i].transform.SetParent(dialog.transform);
             text[i].transform.localScale = new Vector3(1f, 1f, 1f);
             text[i].transform.localPosition = new Vector3(width, 2.1f, 0f);
-            text[i].alignment = TMPro.TextAlignmentOptions.TopLeft;
+            text[i].alignment = TextAlignmentOptions.TopLeft;
             text[i].color = Color.white;
             text[i].fontSizeMin = 1.5f;
             text[i].fontSizeMax = 1.5f;
@@ -223,7 +222,7 @@ class SetEverythingUpPatch
         }
         var ModDisplay = new GameObject("ModDisplay");
         var position = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height));
-        TMPro.TMP_Text[] roleSummaryText = new TMPro.TMP_Text[5];
+        TMP_Text[] roleSummaryText = new TMP_Text[5];
         for (int i = 0; i < roleSummaryText.Length; i++)
         {
             GameObject obj = UnityEngine.Object.Instantiate(__instance.WinText.gameObject);
@@ -234,8 +233,8 @@ class SetEverythingUpPatch
             roleSummaryTextMeshRectTransform.anchoredPosition = new Vector3(position.x, position.y - 0.1f, -14f);
             obj.transform.localScale = new Vector3(1f, 1f, 1f);
 
-            roleSummaryText[i] = obj.GetComponent<TMPro.TMP_Text>();
-            roleSummaryText[i].alignment = TMPro.TextAlignmentOptions.TopLeft;
+            roleSummaryText[i] = obj.GetComponent<TMP_Text>();
+            roleSummaryText[i].alignment = TextAlignmentOptions.TopLeft;
             roleSummaryText[i].color = Color.white;
             roleSummaryText[i].fontSizeMin = 1.25f;
             roleSummaryText[i].fontSizeMax = 1.25f;
@@ -249,19 +248,19 @@ class SetEverythingUpPatch
             s += $"\n" + EndGamePatch.SummaryText[id];
         }
         //唤出结算按钮
-        var detailButton = GameObject.Instantiate(__instance.Navigation.ContinueButton.transform.GetChild(0));
+        var detailButton = UnityEngine.Object.Instantiate(__instance.Navigation.ContinueButton.transform.GetChild(0));
         detailButton.transform.SetParent(ModDisplay.transform);
         detailButton.transform.localScale = new Vector3(0.6f, 0.6f, 1f);
         detailButton.localPosition = roleSummaryText[0].transform.localPosition + new Vector3(1.0f, -roleSummaryText[0].preferredHeight - 0.5f);
         PassiveButton detailPassiveButton = detailButton.GetComponent<PassiveButton>();
         detailPassiveButton.OnClick = new UnityEngine.UI.Button.ButtonClickedEvent();
         detailPassiveButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => DetailDialog.Open()));
-        TMPro.TMP_Text detailButtonText = detailButton.transform.GetChild(0).gameObject.GetComponent<TMPro.TMP_Text>();
+        TMP_Text detailButtonText = detailButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>();
         detailButtonText.text = GetString("game.endScreen.detail");
         detailButtonText.gameObject.GetComponent<TextTranslatorTMP>().enabled = false;
 
         //结算界面
-        var detailDialog = GameObject.Instantiate(GameObject.FindObjectOfType<ControllerDisconnectHandler>(), null);
+        var detailDialog = UnityEngine.Object.Instantiate(UnityEngine.Object.FindObjectOfType<ControllerDisconnectHandler>(), null);
         DetailDialog.Initialize(__instance, detailDialog, __instance.WinText, new string[] {
             GetString("EndMessage")+
             s

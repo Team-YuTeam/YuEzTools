@@ -8,7 +8,7 @@ public abstract class InitializerAttribute<T> : Attribute
 {
     /// <summary>全初期化メソッド</summary>
     private static MethodInfo[] allInitializers = null;
-    private static LogHandler logger = Logger.Handler(nameof(InitializerAttribute<T>));
+    private static readonly LogHandler logger = Handler(nameof(InitializerAttribute<T>));
 
     public InitializerAttribute() : this(InitializePriority.Normal) { }
     public InitializerAttribute(InitializePriority priority)
@@ -45,7 +45,7 @@ public abstract class InitializerAttribute<T> : Attribute
             }
         }
         // 見つかった初期化メソッドをpriority順に並べ替えて配列に変換
-        allInitializers = initializers.OrderBy(initializer => initializer.priority).Select(initializer => initializer.targetMethod).ToArray();
+        allInitializers = [.. initializers.OrderBy(initializer => initializer.priority).Select(initializer => initializer.targetMethod)];
     }
     public static void InitializeAll()
     {

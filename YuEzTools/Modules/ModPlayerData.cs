@@ -46,7 +46,7 @@ public class ModPlayerData
     [GameModuleInitializer]
     public static void Init()
     {
-        AllPlayerDataForMod = new();
+        AllPlayerDataForMod = [];
         foreach (var player in PlayerControl.AllPlayerControls)
         {
             var colorId = player.Data.DefaultOutfit.ColorId;

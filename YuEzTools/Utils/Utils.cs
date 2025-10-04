@@ -14,7 +14,7 @@ namespace YuEzTools.Utils;
 
 public static class Utils
 {
-    public static void ForEach<T>(this System.Collections.Generic.IList<T> self, Action<T> todo)
+    public static void ForEach<T>(this IList<T> self, Action<T> todo)
     {
         for (int i = 0; i < self.Count; i++)
         {
@@ -22,7 +22,7 @@ public static class Utils
         }
     }
 
-    public static Il2CppSystem.Collections.Generic.Dictionary<string, Sprite> CachedSprites = new Il2CppSystem.Collections.Generic.Dictionary<string, Sprite>();
+    public static Il2CppSystem.Collections.Generic.Dictionary<string, Sprite> CachedSprites = new();
     public static Sprite LoadSprite(string path, float pixelsPerUnit = 1f)
     {
         try
@@ -142,7 +142,7 @@ public static class Utils
 
     public static Color GetRoleColor(RoleTypes rt)
     {
-        Color c = new Color();
+        Color c = new();
         switch (rt)
         {
             /*=== 船员 === */
@@ -198,7 +198,7 @@ public static class Utils
     }
     public static Color32 GetRoleColor32(RoleTypes rt)
     {
-        Color32 c = new Color32();
+        Color32 c = new();
         switch (rt)
         {
             /*=== 船员 === */
@@ -317,7 +317,7 @@ public static class Utils
             2 => new(42.6f, -19.9f), // Polus
             4 => new(-16.8f, -6.2f), // Airship
             5 => new(9.4f, 17.9f), // The Fungle
-            _ => throw new System.NotImplementedException(),
+            _ => throw new NotImplementedException(),
         };
     }
 
@@ -368,11 +368,11 @@ public static class Utils
             Platforms.Playstation => "PS",
 
             Platforms.StandaloneMac => "Mac",
-            Platforms.IPhone => Translator.GetString("iPhone"),
-            Platforms.Android => Translator.GetString("Android"),
+            Platforms.IPhone => GetString("iPhone"),
+            Platforms.Android => GetString("Android"),
 
             Platforms.Unknown or
-                _ => Translator.GetString("Platforms.Unknown")
+                _ => GetString("Platforms.Unknown")
         };
         return $"<color={color}>{platforms}</color>";
     }
@@ -533,10 +533,8 @@ public static class Utils
             {
 
                 // Case-insensitive parse of UnityEngine.KeyCode to check if string is validssss
-                KeyCode keyCode = (KeyCode)System.Enum.Parse(typeof(KeyCode), keyCodeStr, true);
-
+                KeyCode keyCode = (KeyCode)Enum.Parse(typeof(KeyCode), keyCodeStr, true);
                 return keyCode;
-
             }
             catch { }
 
@@ -602,8 +600,8 @@ public static class Utils
             while ((line = sr.ReadLine()) != null)
             {
                 if (line == "") continue;
-                if (line.IndexOf(noDiscrim) >= 0) return true;
-                if (noDiscrim.IndexOf(line) >= 0) return true;
+                if (line.Contains(noDiscrim, StringComparison.CurrentCulture)) return true;
+                if (noDiscrim.Contains(line, StringComparison.CurrentCulture)) return true;
             }
         }
         catch (Exception ex)

@@ -1,3 +1,6 @@
+using YuEzTools.UI;
+using YuEzTools.Utils;
+
 namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(Constants), nameof(Constants.GetBroadcastVersion))]
@@ -9,7 +12,7 @@ class ServerUpdatePatch
         re = 50605450;
         if (GetPlayer.IsLocalGame)
         {
-            Logger.Info($"IsLocalGame: {__result}", "VersionServer");
+            Info($"IsLocalGame: {__result}", "VersionServer");
         }
         if (GetPlayer.IsOnlineGame)
         {
@@ -17,7 +20,7 @@ class ServerUpdatePatch
             if (Toggles.ServerAllHostOrNoHost)
                 __result += 25;
             re = __result;
-            Logger.Info($"IsOnlineGame: {__result}", "VersionServer");
+            Info($"IsOnlineGame: {__result}", "VersionServer");
         }
     }
 }

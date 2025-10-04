@@ -62,9 +62,9 @@ internal class AntiCheatForAll
                         name.Contains("台独") ||
                         name.Contains("温家宝") ||
                         name.Contains("共产党") ||
-                        name.IndexOf("Ez", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                        name.IndexOf("Hack", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                        name.IndexOf("Cheat", StringComparison.OrdinalIgnoreCase) >= 0
+                        name.Contains("Ez", StringComparison.OrdinalIgnoreCase) ||
+                        name.Contains("Hack", StringComparison.OrdinalIgnoreCase) ||
+                        name.Contains("Cheat", StringComparison.OrdinalIgnoreCase)
                         // 游戏名字屏蔽词
                         )
                     {
@@ -138,8 +138,8 @@ internal class AntiCheatForAll
                         text.Contains("台湾") ||
                         text.Contains("台独") ||
                         text.Contains("共产党") || // 游戏名字屏蔽词
-                        text.IndexOf("EzHacked", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                        text.IndexOf("Ez Hacked", StringComparison.OrdinalIgnoreCase) >= 0
+                        text.Contains("EzHacked", StringComparison.OrdinalIgnoreCase) ||
+                        text.Contains("Ez Hacked", StringComparison.OrdinalIgnoreCase)
                     )
                     {
                         Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】发送非法消息，已驳回", "ACFA");
@@ -149,7 +149,7 @@ internal class AntiCheatForAll
 
                 case RpcCalls.StartMeeting:
                     MeetingTimes++;
-                    if (GetPlayer.IsLobby || GetPlayer.isHideNSeek)
+                    if (GetPlayer.IsLobby || GetPlayer.IsHideNSeek)
                     {
                         Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法召集会议：【null】，已驳回", "ACFA");
                         return true;
@@ -165,12 +165,13 @@ internal class AntiCheatForAll
                         return true;
                     }
 
-                    if (p1 != null && GetPlayer.isHideNSeek)
+                    if (p1 != null && GetPlayer.IsHideNSeek)
                     {
                         Warn(
                             $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】在躲猫猫报告尸体：【{p1?.GetRealName() ?? "null"}】，已驳回", "ACFA");
                         return true;
                     }
+
                     if (p1 != null && !p1.Data.IsDead)
                     {
                         Warn(
@@ -292,7 +293,7 @@ internal class AntiCheatForAll
 
                 case 11:
                     MeetingTimes++;
-                    if (GetPlayer.IsLobby || GetPlayer.isHideNSeek)
+                    if (GetPlayer.IsLobby || GetPlayer.IsHideNSeek)
                     {
                         Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法召集会议：【null】，已驳回", "ACFA");
                         return true;
@@ -455,7 +456,7 @@ internal class AntiCheatForAll
         var Mapid = GetPlayer.GetActiveMapId();
         Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "ACFA");
         // if (!AmongUsClient.Instance.AmHost) return false;
-        Info("触发飞船事件！" + player.GetRealName() + $"是{player.GetPlayerRoleTeam().ToString()}阵营！", "ACFA");
+        Info("触发飞船事件！" + player.GetRealName() + $"是{player.GetPlayerRoleTeam()}阵营！", "ACFA");
         if (player == null) return false;
 
         if (systemType == SystemTypes.Sabotage) //使用正常的破坏按钮
@@ -539,7 +540,7 @@ internal class AntiCheatForAll
         var Mapid = GetPlayer.GetActiveMapId();
         Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "ACFA");
         // if (!AmongUsClient.Instance.AmHost) return false;
-        Info("触发飞船事件！" + player.GetRealName() + $"是{player.GetPlayerRoleTeam().ToString()}阵营！", "ACFA");
+        Info("触发飞船事件！" + player.GetRealName() + $"是{player.GetPlayerRoleTeam()}阵营！", "ACFA");
         if (player == null) return false;
 
         if (systemType == SystemTypes.Sabotage || systemType == SystemTypes.LifeSupp || systemType == SystemTypes.Comms || systemType == SystemTypes.Electrical || systemType == SystemTypes.Laboratory || systemType == SystemTypes.Reactor || systemType == SystemTypes.HeliSabotage || systemType == SystemTypes.MushroomMixupSabotage) //使用破坏

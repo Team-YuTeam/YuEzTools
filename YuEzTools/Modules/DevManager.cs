@@ -1,37 +1,25 @@
 namespace YuEzTools.Modules;
 
-public class DevUser
+public class DevUser(string code = "", string color = "null", string tag = "null", bool isUp = false, bool isDev = false, bool isSpo = false, bool deBug = false, string upName = "未认证用户", string jobs = "NotJob", string name = "null")
 {
-    public string Code { get; set; }
-    public string Color { get; set; }
-    public string Tag { get; set; }
-    public bool IsUp { get; set; }
-    public bool IsSpo { get; set; }
-    public bool IsDev { get; set; }
-    public bool DeBug { get; set; }
-    public string UpName { get; set; }
-    public string Jobs { get; set; }
-    public string Name { get; set; }
-    public DevUser(string code = "", string color = "null", string tag = "null", bool isUp = false, bool isDev = false, bool isSpo = false, bool deBug = false, string upName = "未认证用户", string jobs = "NotJob",string name = "null")
-    {
-        Code = code;
-        Color = color;
-        Tag = tag;
-        IsUp = isUp;
-        IsDev = isDev;
-        IsSpo = isSpo;
-        DeBug = deBug;
-        UpName = upName;
-        Jobs = jobs;
-        Name = name;
-    }
+    public string Code { get; set; } = code;
+    public string Color { get; set; } = color;
+    public string Tag { get; set; } = tag;
+    public bool IsUp { get; set; } = isUp;
+    public bool IsSpo { get; set; } = isSpo;
+    public bool IsDev { get; set; } = isDev;
+    public bool DeBug { get; set; } = deBug;
+    public string UpName { get; set; } = upName;
+    public string Jobs { get; set; } = jobs;
+    public string Name { get; set; } = name;
+
     public string GetTag() => Color == "null" ? $"<size=1.7>{Tag}</size>\r\n" : $"<color={Color}><size=1.7>{Tag}</size></color>\r\n";
 }
 
 public static class DevManager
 {
     public static DevUser DefaultDevUser = new();
-    public static List<DevUser> DevUserList = new();
+    public static List<DevUser> DevUserList = [];
     public static void Init()
     {
         // Dev

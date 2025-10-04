@@ -70,7 +70,7 @@ public class FunctionPatch
         file.CopyTo(@filename);
         SendInGamePatch.SendInGame($"{GetString("FunctionPatch.DumpLog")} YuET - v{Main.PluginVersion}-{t}.log");
         ProcessStartInfo psi = new ProcessStartInfo("Explorer.exe")
-            { Arguments = "/e,/select," + @filename.Replace("/", "\\") };
+        { Arguments = "/e,/select," + @filename.Replace("/", "\\") };
         Process.Start(psi);
     }
     public static void OpenDirectory(string path)

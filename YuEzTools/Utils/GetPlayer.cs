@@ -4,19 +4,15 @@ using InnerNet;
 
 namespace YuEzTools.Utils;
 
-public class PlayerState
+public class PlayerState()
 {
-    public bool IsDead { get; set; }
+    public bool IsDead { get; set; } = false;
 
-    public PlayerState(int clientid)
-    {
-        IsDead = false;
-    }
     public void SetDead()
     {
         IsDead = true;
     }
-    private static Dictionary<byte, PlayerState> allPlayerStates = new(15);
+    private static readonly Dictionary<byte, PlayerState> allPlayerStates = new(15);
     public static IReadOnlyDictionary<byte, PlayerState> AllPlayerStates => allPlayerStates;
     public static PlayerState GetByPlayerId(byte playerId) => AllPlayerStates.TryGetValue(playerId, out var state) ? state : null;
 }
@@ -64,7 +60,6 @@ static class GetPlayer
     {
         return player.GetRealName() + "(" + player.Data.Role.NiceName + ")";
     }
-    public static bool IsHideNSeek => GameOptionsManager.Instance.CurrentGameOptions.GameMode is GameModes.HideNSeek or GameModes.SeekFools;
     public static byte GetActiveMapId() => GameOptionsManager.Instance.CurrentGameOptions.MapId;
     public static bool IsExilling => ExileController.Instance != null && !(AirshipIsActive && SpawnInMinigame.Instance.isActiveAndEnabled);
     private static Dictionary<byte, PlayerState> allPlayerStates = new(15);
@@ -98,15 +93,15 @@ static class GetPlayer
     public static bool IsOnlineGame => AmongUsClient.Instance.NetworkMode == NetworkModes.OnlineGame;
     public static bool IsLocalGame => AmongUsClient.Instance.NetworkMode == NetworkModes.LocalGame;
     public static bool IsFreePlay => AmongUsClient.Instance.NetworkMode == NetworkModes.FreePlay;
-    public static bool isPlayer => PlayerControl.LocalPlayer != null;
+    public static bool IsPlayer => PlayerControl.LocalPlayer != null;
     public static bool IsHost = AmongUsClient.Instance.AmHost;
-    public static bool IsInGame => AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Started && isPlayer;
-    public static bool isMeeting => MeetingHud.Instance;
-    public static bool isMeetingVoting => isMeeting && MeetingHud.Instance.state is MeetingHud.VoteStates.Voted or MeetingHud.VoteStates.NotVoted;
-    public static bool isMeetingProceeding => isMeeting && MeetingHud.Instance.state is MeetingHud.VoteStates.Proceeding;
-    public static bool isExiling => ExileController.Instance != null && !(AirshipIsActive && SpawnInMinigame.Instance.isActiveAndEnabled);
-    public static bool isNormalGame => GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.Normal;
-    public static bool isHideNSeek => GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.HideNSeek;
+    public static bool IsInGame => AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Started && IsPlayer;
+    public static bool IsMeeting => IsInGame && MeetingHud.Instance;
+    public static bool IsMeetingVoting => IsMeeting && MeetingHud.Instance.state is MeetingHud.VoteStates.Voted or MeetingHud.VoteStates.NotVoted;
+    public static bool IsMeetingProceeding => IsMeeting && MeetingHud.Instance.state is MeetingHud.VoteStates.Proceeding;
+    public static bool IsExiling => ExileController.Instance != null && !(AirshipIsActive && Minigame.Instance.isActiveAndEnabled);
+    public static bool IsNormalGame => GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.Normal;
+    public static bool IsHideNSeek => GameOptionsManager.Instance.CurrentGameOptions.GameMode is GameModes.HideNSeek or GameModes.SeekFools;
     public static bool SkeldIsActive => (MapNames)GameOptionsManager.Instance.CurrentGameOptions.MapId == MapNames.Skeld;
     public static bool MiraHQIsActive => (MapNames)GameOptionsManager.Instance.CurrentGameOptions.MapId == MapNames.MiraHQ;
     public static bool PolusIsActive => (MapNames)GameOptionsManager.Instance.CurrentGameOptions.MapId == MapNames.Polus;
@@ -118,7 +113,6 @@ static class GetPlayer
     {
         return Main.AllPlayerControls.Where(pc => pc.PlayerId == PlayerId).FirstOrDefault();
     }
-    public static bool IsMeeting => IsInGame && MeetingHud.Instance;
     public static bool IsCountDown => GameStartManager.InstanceExists && GameStartManager.Instance.startState == GameStartManager.StartingStates.Countdown;
     public static string GetRealName(this PlayerControl player, bool isMeeting = false)
     {
@@ -132,5 +126,4 @@ static class GetPlayer
     }
     public static int numImpostors = 0;
     public static int numCrewmates = 0;
-
 }

@@ -26,10 +26,10 @@ internal class ShowDisconnectPopupPatch
 
                 void SetText(string text)
                 {
-                    Info(__instance._textArea.text,"DisconnectPatch");
+                    Info(__instance._textArea.text, "DisconnectPatch");
                     if (__instance?._textArea?.text != null)
                         __instance._textArea.text = text;
-                    Info(text,"DisconnectPatch");
+                    Info(text, "DisconnectPatch");
                 }
 
                 if (!string.IsNullOrEmpty(ReasonByHost))
