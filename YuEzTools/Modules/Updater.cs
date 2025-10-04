@@ -30,7 +30,7 @@ public class ModUpdater
         $"file:///{Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "info.json")}",
 #else
         "https://raw.githubusercontent.com/Team-YuTeam/YuEzTools/main/YuEzTools/info.json",
-        "https://gitee.com/xigua_ya/YuEzTools/raw/main/YuEzTools/info.json",
+        // "https://gitee.com/xigua_ya/YuEzTools/raw/main/YuEzTools/info.json",
         //"https://gitlab.com/yu9522124/YuEzTools/-/raw/main/YuEzTools/info.json?ref_type=heads",
         "https://raw.kkgithub.com/Team-YuTeam/YuEzTools/main/YuEzTools/info.json",
         //"https://raw.gitcode.com/YuQZ/YuEzTools/raw/main/YuEzTools/info.json",
@@ -65,7 +65,7 @@ public class ModUpdater
     public static string announcement_en = "";
     public static string downloadUrl_github = "";
     public static string downloadUrl_kkgithub = "";
-    public static string downloadUrl_gitee = "";
+    // public static string downloadUrl_gitee = "";
     private static int retried = 0;
     private static bool firstLaunch = true;
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.Start)), HarmonyPostfix, HarmonyPriority(Priority.LowerThanNormal)]
@@ -157,7 +157,7 @@ public class ModUpdater
             Logger.Info("Creation: " + creation.ToString(), "CheckRelease");
             Logger.Info("Force Update: " + forceUpdate, "CheckRelease");
             Logger.Info("Github Url: " + downloadUrl_github, "CheckRelease");
-            Logger.Info("Gitee Url: " + downloadUrl_gitee, "CheckRelease");
+            // Logger.Info("Gitee Url: " + downloadUrl_gitee, "CheckRelease");
             Logger.Info("kkGithub Url: " + downloadUrl_kkgithub, "CheckRelease");
             Logger.Info("Announcement (English): " + announcement_en, "CheckRelease");
             Logger.Info("Announcement (SChinese): " + announcement_zh, "CheckRelease");
@@ -170,7 +170,7 @@ public class ModUpdater
                 CustomPopup.Show(Translator.GetString(StringNames.AnnouncementLabel), Translator.GetString("Updater.NowFileMD5Fail"), new()
                 {
                     (Translator.GetString("updateSource.Github"), () => StartUpdate(downloadUrl_github)),
-                    (Translator.GetString("updateSource.Gitee"), () => StartUpdate(downloadUrl_gitee)),
+                    // (Translator.GetString("updateSource.Gitee"), () => StartUpdate(downloadUrl_gitee)),
                     (Translator.GetString("updateSource.kkGithub"), () => StartUpdate(downloadUrl_kkgithub)),
                     (Translator.GetString(StringNames.ExitGame), Application.Quit)
                 });
@@ -222,7 +222,7 @@ public class ModUpdater
             Logger.Info("Force Update: " + forceUpdate, "CheckRelease");
             Logger.Info("File MD5: " + md5, "CheckRelease");
             Logger.Info("Github Url: " + downloadUrl_github, "CheckRelease");
-            Logger.Info("Gitee Url: " + downloadUrl_gitee, "CheckRelease");
+            // Logger.Info("Gitee Url: " + downloadUrl_gitee, "CheckRelease");
             Logger.Info("kkGithub Url: " + downloadUrl_kkgithub, "CheckRelease");
             Logger.Info("Announcement (English): " + announcement_en, "CheckRelease");
             Logger.Info("Announcement (SChinese): " + announcement_zh, "CheckRelease");
@@ -293,7 +293,7 @@ public class ModUpdater
 
             JObject downloadUrl = data["url"].Cast<JObject>();
             downloadUrl_github = downloadUrl["github"]?.ToString();
-            downloadUrl_gitee = downloadUrl["gitee"]?.ToString().Replace("{{showVer}}", $"v{showVer}");
+            // downloadUrl_gitee = downloadUrl["gitee"]?.ToString().Replace("{{showVer}}", $"v{showVer}");
             downloadUrl_kkgithub = downloadUrl["kkgithub"]?.ToString();
 
             hasUpdate = Main.version < latestVersion;
@@ -317,7 +317,7 @@ public class ModUpdater
             CustomPopup.Show(Translator.GetString("updatePopupTitle"), Translator.GetString("updateChoseSource"), new()
             {
                 (Translator.GetString("updateSource.Github"), () => StartUpdate(downloadUrl_github)),
-                (Translator.GetString("updateSource.Gitee"), () => StartUpdate(downloadUrl_gitee)),
+                // (Translator.GetString("updateSource.Gitee"), () => StartUpdate(downloadUrl_gitee)),
                 (Translator.GetString("updateSource.kkGithub"), () => StartUpdate(downloadUrl_kkgithub)),
                 (Translator.GetString(StringNames.Cancel), SetUpdateButtonStatus)
             });

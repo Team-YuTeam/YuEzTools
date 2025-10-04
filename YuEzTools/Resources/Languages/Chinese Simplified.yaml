@@ -219,7 +219,7 @@ WebsiteButton: "网站"
 BiliBiliButton: "B站赞助"
 AfdianButton: "爱发电"
 DevsButton: "开发人员"
-ProjectButton: "Gitee" # If Not Chinese, write Github
+ProjectButton: "kkGitHub" # If Not Chinese, write Github
 
 # Name
 Hacker: "外挂"

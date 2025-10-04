@@ -153,6 +153,7 @@ public class Main : BasePlugin
         
         DevManager.Init();
         Toggles.WinTextSize = WinTextSize.Value;
+        
         //模组加载好了标语
         YuEzTools.Logger.Msg("========= YuET loaded! =========", "YuET Plugin Load");
     }
