@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using InnerNet;
 using Sentry.Internal.Extensions;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace YuEzTools.Get;
 
@@ -101,9 +102,6 @@ static class GetPlayer
         {
             return null;
         }
-    }
-    public static RoleBehaviour getBehaviourByRoleType(RoleTypes roleType) {
-        return RoleManager.Instance.AllRoles.First(r => r.Role == roleType);
     }
     
     public static ReferenceDataManager referenceDataManager = DestroyableSingleton<ReferenceDataManager>.Instance;
