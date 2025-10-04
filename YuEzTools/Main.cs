@@ -107,7 +107,7 @@ public class Main : BasePlugin
         PluginModuleInitializerAttribute.InitializeAll();
 
         Logger = BepInEx.Logging.Logger.CreateLogSource("YuEzTools"); //输出前缀 设置！
-        YuEzTools.Logger.Enable();
+        Enable();
 
         menuKeybind = Config.Bind("YuET.GUI",
             "Keybind",
@@ -143,7 +143,7 @@ public class Main : BasePlugin
         Toggles.WinTextSize = WinTextSize.Value;
 
         //模组加载好了标语
-        YuEzTools.Logger.Msg("========= YuET loaded! =========", "YuET Plugin Load");
+        Msg("========= YuET loaded! =========", "YuET Plugin Load");
     }
 }
 

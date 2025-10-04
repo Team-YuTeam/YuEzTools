@@ -14,18 +14,18 @@ class OnPlayerJoinedPatch
     {
         if (client == null)
         {
-            Logger.Info(
+            Info(
                 $"空加入,Client == null", "OnPlayerJoined");
             if (AmongUsClient.Instance.AmHost)
             {
                 AmongUsClient.Instance.KickPlayer(client.Id, true);
-                Logger.Info(
+                Info(
                     $"空加入,Client == null,已尝试ban", "OnPlayerJoined");
             }
             return;
         }
-        Main.Logger.LogInfo(
-            $"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/ProductUserId:{client.ProductUserId}) 加入房间");
+        Info(
+            $"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/ProductUserId:{client.ProductUserId}) 加入房间", "OnPlayerJoined");
         GetPlayer.numImpostors = 0;
         GetPlayer.numCrewmates = 0;
         if (client.FriendCode.IsDevUser())
@@ -40,7 +40,7 @@ class OnPlayerJoinedPatch
         {
             // 你知道的 Login是这样的
             AmongUsClient.Instance.KickPlayer(client.Id, true);
-            Logger.Info($"{client?.PlayerName}未登录 已踢出", "Kick");
+            Info($"{client?.PlayerName}未登录 已踢出", "Kick");
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
             SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
             return;
@@ -54,7 +54,7 @@ class OnPlayerJoinedPatch
         if (Utils.Utils.CheckBanList(client.FriendCode, client?.ProductUserId) || Utils.Utils.CheckBanner(client.FriendCode, client?.ProductUserId) || Utils.Utils.CheckFirstBanList(client.FriendCode))
         {
             if (AmongUsClient.Instance.AmHost) AmongUsClient.Instance.KickPlayer(client.Id, true);
-            Logger.Info($"{client?.PlayerName}黑名单 已揭示/踢出", "OnPlayerJoined");
+            Info($"{client?.PlayerName}黑名单 已揭示/踢出", "OnPlayerJoined");
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
             SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
         }
@@ -83,8 +83,8 @@ class OnPlayerLeftPatch
             // Main.JoinedPlayer.Remove(client.Character);
         }
         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("LeftRoom")}</color>");
-        Main.Logger.LogInfo(
-            $"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/ProductUserId:{client.ProductUserId}) 退出房间");
+        Info(
+            $"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/ProductUserId:{client.ProductUserId}) 退出房间", "OnPlayerJoined");
     }
 }
 
@@ -114,15 +114,15 @@ class IntroCutscenePatch
         {
 
             PlayerControl.LocalPlayer.RpcTeleport(Utils.Utils.GetBlackRoomPS());
-            Logger.Info("尝试TP玩家", "GM");
+            Info("尝试TP玩家", "GM");
             //PlayerControl.LocalPlayer.RpcExile();
             Ifkill = true;
             MurderHacker.murderHacker(PlayerControl.LocalPlayer, MurderResultFlags.Succeeded);
-            Logger.Info("尝试击杀玩家", "GM");
+            Info("尝试击杀玩家", "GM");
             // PlayerState.GetByPlayerId(PlayerControl.LocalPlayer.PlayerId).SetDead();
             if (AmongUsClient.Instance.AmHost && Main.HasHacker)
             {
-                Logger.Info("Host Try end game with room " +
+                Info("Host Try end game with room " +
                             GameStartManager.Instance.GameRoomNameCode.text, "StartPatch");
                 try
                 {
@@ -130,7 +130,7 @@ class IntroCutscenePatch
                 }
                 catch (System.Exception e)
                 {
-                    Logger.Error(e.ToString(), "StartPatch");
+                    Error(e.ToString(), "StartPatch");
                 }
                 Main.HasHacker = false;
             }
@@ -145,7 +145,7 @@ class DisconnectInternalPatch
         ShowDisconnectPopupPatch.Reason = reason;
         ShowDisconnectPopupPatch.StringReason = stringReason;
 
-        Logger.Info($"断开连接(理由:{reason}:{stringReason}，Ping:{__instance.Ping})", "Session");
+        Info($"断开连接(理由:{reason}:{stringReason}，Ping:{__instance.Ping})", "Session");
         if (AmongUsClient.Instance.AmHost && GetPlayer.IsInGame)
         {
             try
@@ -155,7 +155,7 @@ class DisconnectInternalPatch
             }
             catch (System.Exception e)
             {
-                Logger.Error(e.ToString(), "Session");
+                Error(e.ToString(), "Session");
             }
         }
     }
@@ -182,7 +182,7 @@ class InnerNetClientSpawnPatch
             // else TemplateManager.SendTemplate("welcome", client.Character.PlayerId, true);
         }, 3f, "Welcome Message");
 
-        Logger.Msg($"Spawn player data: ID {ownerId}: {client.PlayerName}", "InnerNetClientSpawn");
+        Msg($"Spawn player data: ID {ownerId}: {client.PlayerName}", "InnerNetClientSpawn");
         if (GetPlayer.IsOnlineGame)
         {
             _ = new LateTask(() =>

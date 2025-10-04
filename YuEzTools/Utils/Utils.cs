@@ -35,7 +35,7 @@ public static class Utils
         }
         catch
         {
-            Logger.Error($"Failed to read Texture： {path}", "LoadSprite");
+            Error($"Failed to read Texture： {path}", "LoadSprite");
         }
         return null;
     }
@@ -52,7 +52,7 @@ public static class Utils
         }
         catch
         {
-            Logger.Error($"Failed to read Texture： {path}", "LoadTextureFromResources");
+            Error($"Failed to read Texture： {path}", "LoadTextureFromResources");
         }
         return null;
     }
@@ -401,18 +401,18 @@ public static class Utils
     public static bool LocationLocked = false;
     public static void RpcTeleport(this PlayerControl player, Vector2 location)
     {
-        Logger.Info($" {GetPlayer.GetNameRole(player)} => {location}", "RpcTeleport");
-        Logger.Info($" Player Id: {player.PlayerId}", "RpcTeleport");
+        Info($" {GetPlayer.GetNameRole(player)} => {location}", "RpcTeleport");
+        Info($" Player Id: {player.PlayerId}", "RpcTeleport");
         if (player.inVent
             || player.MyPhysics.Animations.IsPlayingEnterVentAnimation())
         {
-            Logger.Info($"Target: ({GetPlayer.GetNameRole(player)}) in vent", "RpcTeleport");
+            Info($"Target: ({GetPlayer.GetNameRole(player)}) in vent", "RpcTeleport");
             player.MyPhysics.RpcBootFromVent(0);
         }
         if (player.onLadder
             || player.MyPhysics.Animations.IsPlayingAnyLadderAnimation())
         {
-            Logger.Warn($"Teleporting canceled - Target: ({GetPlayer.GetNameRole(player)}) is in on Ladder", "RpcTeleport");
+            Warn($"Teleporting canceled - Target: ({GetPlayer.GetNameRole(player)}) is in on Ladder", "RpcTeleport");
             return;
         }
         var net = player.NetTransform;
@@ -577,7 +577,7 @@ public static class Utils
         }
         catch (Exception ex)
         {
-            Logger.Exception(ex, "CheckBanList");
+            Exception(ex, "CheckBanList");
         }
         return false;
     }
@@ -608,7 +608,7 @@ public static class Utils
         }
         catch (Exception ex)
         {
-            Logger.Exception(ex, "CheckBanList");
+            Exception(ex, "CheckBanList");
         }
         return false;
     }
@@ -645,7 +645,7 @@ public static class Utils
         }
         catch (Exception ex)
         {
-            Logger.Exception(ex, "CheckBanList");
+            Exception(ex, "CheckBanList");
         }
         return false;
     }

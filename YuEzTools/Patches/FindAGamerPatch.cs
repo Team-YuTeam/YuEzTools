@@ -26,7 +26,7 @@ public static class FindAGameManagerUpdatePatch
 [HarmonyPatch(typeof(MatchMakerGameButton), nameof(MatchMakerGameButton.SetGame))]
 public static class MatchMakerGameButtonSetGamePatch
 {
-    public static void Prefix(MatchMakerGameButton __instance, [HarmonyArgument(0)]  GameListing game)
+    public static void Prefix(MatchMakerGameButton __instance, [HarmonyArgument(0)] GameListing game)
     {
         var nameList = TranslationController.Instance.currentLanguage.languageID is SupportedLangs.SChinese or SupportedLangs.TChinese ? Main.TName_Snacks_CN : Main.TName_Snacks_EN;
 
@@ -67,21 +67,21 @@ public static class MatchMakerGameButtonSetGamePatch
             Platforms.Unknown or
             _ => GetString("Platforms.Unknown")
         };
-        Logger.Info(game.IPString+":"+game.Port, "FAG");
+        Info(game.IPString + ":" + game.Port, "FAG");
         string str = Math.Abs(game.GameId).ToString();
 
-            int id = Math.Min(Math.Max(int.Parse(str.Substring(str.Length - 2, 2)), 1) * nameList.Count / 100, nameList.Count);
-            game.HostName = $"" +
-                $"<size=80%>" +
-                $"<color={color}>" +
-                $"{nameList[id]}" +
-                $"</size>"+
-                $"<size=60%>" +
-                $"({platforms})" +
-                $"</color>" +
-                $"</size>";
+        int id = Math.Min(Math.Max(int.Parse(str.Substring(str.Length - 2, 2)), 1) * nameList.Count / 100, nameList.Count);
+        game.HostName = $"" +
+            $"<size=80%>" +
+            $"<color={color}>" +
+            $"{nameList[id]}" +
+            $"</size>" +
+            $"<size=60%>" +
+            $"({platforms})" +
+            $"</color>" +
+            $"</size>";
         game.HostName += $"<size=40%> ({GetString("ToCloseThisRoom")}{Math.Max(0, 100 - game.Age / 100)}%)</size>";
-        End:
-        Logger.Info("--------This room end.--------", "FindAGamerPatch");
+    End:
+        Info("--------This room end.--------", "FindAGamerPatch");
     }
 }

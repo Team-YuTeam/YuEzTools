@@ -16,7 +16,7 @@ public static class ShipStatus_FixedUpdate
         if (AntiCheatForAll.RpcUpdateSystemCheck(player, systemType, amount) || (GetPlayer.IsHideNSeek && AntiCheatForAll.RpcUpdateSystemCheckFHS(player, systemType, amount)))
         {
             if (!Main.HackerList.Contains(player)) Main.HackerList.Add(player);
-            Logger.Info("AC 破坏 RPC", "MessageReaderUpdateSystemPatch");
+            Info("AC 破坏 RPC", "MessageReaderUpdateSystemPatch");
             Main.Logger.LogInfo("Hacker " + player.GetRealName() + $"{"好友编号：" + player.GetClient().FriendCode + "/名字：" + player.GetRealName() + "/ProductUserId：" + player.GetClient().ProductUserId}");
             //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;
             SendChat.Prefix(player);
@@ -37,7 +37,7 @@ public static class ShipStatus_FixedUpdate
                     }
                     catch (System.Exception e)
                     {
-                        Logger.Error(e.ToString(), "Session");
+                        Error(e.ToString(), "Session");
                     }
                     Main.HasHacker = false;
                 }
@@ -59,7 +59,7 @@ class RepairSystemPatch
         [HarmonyArgument(1)] PlayerControl __instance,
         [HarmonyArgument(2)] byte amount)
     {
-        Logger.Msg(
+        Msg(
             "SystemType: " + systemType.ToString() + ", PlayerName: " + __instance.GetRealName() +
             ", amount: " + amount, "RepairSystem");
         return true;

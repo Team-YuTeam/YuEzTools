@@ -69,11 +69,11 @@ public class ModNewsHistory
         }
         mn.Lang = langId;
         mn.Text = text;
-        Logger.Info($"Number:{mn.Number}", "ModNews");
-        Logger.Info($"Title:{mn.Title}", "ModNews");
-        Logger.Info($"SubTitle:{mn.SubTitle}", "ModNews");
-        Logger.Info($"ShortTitle:{mn.ShortTitle}", "ModNews");
-        Logger.Info($"Date:{mn.Date}", "ModNews");
+        Info($"Number:{mn.Number}", "ModNews");
+        Info($"Title:{mn.Title}", "ModNews");
+        Info($"SubTitle:{mn.SubTitle}", "ModNews");
+        Info($"ShortTitle:{mn.ShortTitle}", "ModNews");
+        Info($"Date:{mn.Date}", "ModNews");
         return mn;
     }
 

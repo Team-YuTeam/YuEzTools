@@ -1,6 +1,7 @@
 using Hazel;
 using YuEzTools.AntiCheat;
 using YuEzTools.Modules;
+using YuEzTools.Send;
 using YuEzTools.UI;
 using YuEzTools.Utils;
 
@@ -30,7 +31,7 @@ internal class RPCHandlerPatch
                 }
                 if (!Main.HackerList.Contains(__instance)) Main.HackerList.Add(__instance);
                 Main.HasHacker = true;
-                Logger.Fatal("Hacker " + __instance.GetRealName() + $"{"好友编号：" + __instance.GetClient().FriendCode + "/名字：" + __instance.GetRealName() + "/ProductUserId：" + __instance.GetClient().ProductUserId}", "RPCHandle");
+                Fatal("Hacker " + __instance.GetRealName() + $"{"好友编号：" + __instance.GetClient().FriendCode + "/名字：" + __instance.GetRealName() + "/ProductUserId：" + __instance.GetClient().ProductUserId}", "RPCHandle");
                 //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;
                 SendChat.Prefix(__instance);
                 if (!Toggles.SafeMode && !AmongUsClient.Instance.AmHost && GameStartManagerPatch.roomMode == RoomMode.Plus25)
@@ -56,7 +57,7 @@ internal class RPCHandlerPatch
                         }
                         catch (System.Exception e)
                         {
-                            Logger.Error(e.ToString(), "Session");
+                            Error(e.ToString(), "Session");
                         }
                         Main.HasHacker = false;
                     }

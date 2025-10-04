@@ -6,6 +6,7 @@ using YuEzTools.Modules;
 using UnityEngine;
 using YuEzTools.Attributes;
 using YuEzTools.Utils;
+using YuEzTools.UI;
 
 namespace YuEzTools.Patches;
 
@@ -42,7 +43,7 @@ class StartPatch
         GetPlayer.numImpostors = 0;
         GetPlayer.numCrewmates = 0;
         int c = 0;
-        Logger.Info("== 游戏开始 ==", "StartPatch");
+        Info("== 游戏开始 ==", "StartPatch");
         foreach (var pc1 in Main.AllPlayerControls)
         {
             //Logger.Info("添加玩家进入CPCOS："+pc1.GetRealName(),"StartPatch");
@@ -83,8 +84,8 @@ class EndGamePatch
     public static string WinTeam = "";
     public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ref EndGameResult endGameResult)
     {
-        Logger.Info("== 游戏结束 ==", "EndGamePatch");
-        Logger.Info("结束原因：" + endGameResult.GameOverReason.ToString(), "EndGamePatch");
+        Info("== 游戏结束 ==", "EndGamePatch");
+        Info("结束原因：" + endGameResult.GameOverReason.ToString(), "EndGamePatch");
         SummaryText = new();
         foreach (var id in ModPlayerData.AllPlayerDataForMod.Keys)
             SummaryText[id] = Utils.Utils.SummaryTexts(id);
@@ -217,7 +218,7 @@ class SetEverythingUpPatch
             $"<size=50%>{GetString(EndGamePatch.WinReason)}\n<size=30%>{GetString(EndGamePatch.WinTeam)}</size>";
         if (EndGamePatch.WinTeam == "NobodyWin")
         {
-            Logger.Info("进入NobodyWin", "SetEverythingUpPatch");
+            Info("进入NobodyWin", "SetEverythingUpPatch");
             BackgroundLayer.SetActive(false);
         }
         var ModDisplay = new GameObject("ModDisplay");

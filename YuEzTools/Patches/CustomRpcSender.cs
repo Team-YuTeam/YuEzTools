@@ -21,7 +21,7 @@ public class CustomRpcSender
         set
         {
             if (isUnsafe) currentState = value;
-            else Logger.Warn("CurrentStateはisUnsafeがtrueの時のみ上書きできます", "CustomRpcSender");
+            else Warn("CurrentStateはisUnsafeがtrueの時のみ上書きできます", "CustomRpcSender");
         }
     }
     private State currentState = State.BeforeInit;
@@ -40,10 +40,10 @@ public class CustomRpcSender
         this.sendOption = sendOption;
         this.isUnsafe = isUnsafe;
         this.currentRpcTarget = -2;
-        onSendDelegate = () => Logger.Info($"{this.name}'s onSendDelegate =>", "CustomRpcSender");
+        onSendDelegate = () => Info($"{this.name}'s onSendDelegate =>", "CustomRpcSender");
 
         currentState = State.Ready;
-        Logger.Info($"\"{name}\" is ready", "CustomRpcSender");
+        Info($"\"{name}\" is ready", "CustomRpcSender");
     }
     public static CustomRpcSender Create(string name = "No Name Sender", SendOption sendOption = SendOption.None, bool isUnsafe = false)
     {
@@ -58,7 +58,7 @@ public class CustomRpcSender
             string errorMsg = $"Messageを開始しようとしましたが、StateがReadyではありません (in: \"{name}\")";
             if (isUnsafe)
             {
-                Logger.Warn(errorMsg, "CustomRpcSender.Warn");
+                Warn(errorMsg, "CustomRpcSender.Warn");
             }
             else
             {
@@ -91,7 +91,7 @@ public class CustomRpcSender
             string errorMsg = $"Messageを終了しようとしましたが、StateがInRootMessageではありません (in: \"{name}\")";
             if (isUnsafe)
             {
-                Logger.Warn(errorMsg, "CustomRpcSender.Warn");
+                Warn(errorMsg, "CustomRpcSender.Warn");
             }
             else
             {
@@ -117,7 +117,7 @@ public class CustomRpcSender
             string errorMsg = $"RPCを開始しようとしましたが、StateがInRootMessageではありません (in: \"{name}\")";
             if (isUnsafe)
             {
-                Logger.Warn(errorMsg, "CustomRpcSender.Warn");
+                Warn(errorMsg, "CustomRpcSender.Warn");
             }
             else
             {
@@ -139,7 +139,7 @@ public class CustomRpcSender
             string errorMsg = $"RPCを終了しようとしましたが、StateがInRpcではありません (in: \"{name}\")";
             if (isUnsafe)
             {
-                Logger.Warn(errorMsg, "CustomRpcSender.Warn");
+                Warn(errorMsg, "CustomRpcSender.Warn");
             }
             else
             {
@@ -163,7 +163,7 @@ public class CustomRpcSender
             string errorMsg = $"RPCを自動で開始しようとしましたが、StateがReadyまたはInRootMessageではありません (in: \"{name}\")";
             if (isUnsafe)
             {
-                Logger.Warn(errorMsg, "CustomRpcSender.Warn");
+                Warn(errorMsg, "CustomRpcSender.Warn");
             }
             else
             {
@@ -188,7 +188,7 @@ public class CustomRpcSender
             string errorMsg = $"RPCを送信しようとしましたが、StateがReadyではありません (in: \"{name}\")";
             if (isUnsafe)
             {
-                Logger.Warn(errorMsg, "CustomRpcSender.Warn");
+                Warn(errorMsg, "CustomRpcSender.Warn");
             }
             else
             {
@@ -199,7 +199,7 @@ public class CustomRpcSender
         AmongUsClient.Instance.SendOrDisconnect(stream);
         onSendDelegate();
         currentState = State.Finished;
-        Logger.Info($"\"{name}\" is finished", "CustomRpcSender");
+        Info($"\"{name}\" is finished", "CustomRpcSender");
         stream.Recycle();
     }
 
@@ -229,7 +229,7 @@ public class CustomRpcSender
             string errorMsg = $"RPCを書き込もうとしましたが、StateがWrite(書き込み中)ではありません (in: \"{name}\")";
             if (isUnsafe)
             {
-                Logger.Warn(errorMsg, "CustomRpcSender.Warn");
+                Warn(errorMsg, "CustomRpcSender.Warn");
             }
             else
             {

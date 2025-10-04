@@ -13,9 +13,9 @@ public static class ChatBubblePatch
     public static void SetText_Prefix(ChatBubble __instance, ref string chatText)
     {
         var sr = __instance.transform.FindChild("Background").GetComponent<SpriteRenderer>();
-        if(Toggles.DarkMode) sr.color = new Color(0, 0, 0,255);// : new Color(1, 1, 1);
-        if (Main.isChatCommand && !Toggles.DarkMode) sr.color = new Color(0, 0, 0,255);
-        else if(Main.isChatCommand && Toggles.DarkMode)sr.color = new Color(255, 255, 255,255);
+        if (Toggles.DarkMode) sr.color = new Color(0, 0, 0, 255);// : new Color(1, 1, 1);
+        if (Main.isChatCommand && !Toggles.DarkMode) sr.color = new Color(0, 0, 0, 255);
+        else if (Main.isChatCommand && Toggles.DarkMode) sr.color = new Color(255, 255, 255, 255);
         //if (modded)
         //{
         if (chatText.Contains("░") ||
@@ -34,21 +34,21 @@ public static class ChatBubblePatch
             chatText.Contains("台独") ||
             chatText.Contains("共产党")) // 游戏名字屏蔽词)
         {
-            if(Toggles.DarkMode) chatText = $"<color=#FF0000>[{GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
+            if (Toggles.DarkMode) chatText = $"<color=#FF0000>[{GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
             else chatText = $"<color=#FF0000>[{GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
         }
         else if (Main.isChatCommand)
         {
-            if(Toggles.DarkMode) chatText = $"<color=#1E90FF>[{GetString("MessgaeFromYuET")}]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
+            if (Toggles.DarkMode) chatText = $"<color=#1E90FF>[{GetString("MessgaeFromYuET")}]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
             else chatText = $"<color=#008B8B>[{GetString("MessgaeFromYuET")}]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
             Main.isChatCommand = false;
         }
         else
         {
-            if(Toggles.DarkMode) chatText = ColorString(Color.white, chatText.TrimEnd('\0'));
+            if (Toggles.DarkMode) chatText = ColorString(Color.white, chatText.TrimEnd('\0'));
             else chatText = ColorString(Color.black, chatText.TrimEnd('\0'));
         }
-        Logger.Msg($"来自 {__instance.playerInfo.PlayerName} 的信息 {chatText}","ChatBubble");
+        Msg($"来自 {__instance.playerInfo.PlayerName} 的信息 {chatText}", "ChatBubble");
         //  __instance.SetLeft();  //如果需要靠左
         //}
     }
