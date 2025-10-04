@@ -35,7 +35,7 @@ public class Main : BasePlugin
     public static readonly string MainMenuText = "I am so sad..."; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuEzTools"; //咱们模组的Guid
     public const string PluginVersion = "1.3.6.3"; //咱们模组的版本号
-    public const string CanUseInAmongUsVer = "2025.4.15"; //智齿的AU版本
+    public const string CanUseInAmongUsVer = "2025.9.9"; //智齿的AU版本
     public const int PluginCreation = 1;
 
     public static string QQUrl = "https://qm.qq.com/q/uGuWqBkYUi";
@@ -43,8 +43,8 @@ public class Main : BasePlugin
 
     public static bool HasHacker = false;
     
-    public static NormalGameOptionsV10 NormalOptions => GameOptionsManager.Instance.currentNormalGameOptions;
-    public static HideNSeekGameOptionsV10 HideNSeekOptions => GameOptionsManager.Instance.currentHideNSeekGameOptions;
+    public static NormalGameOptionsV08 NormalOptions => GameOptionsManager.Instance.currentNormalGameOptions;
+    public static HideNSeekGameOptionsV08 HideNSeekOptions => GameOptionsManager.Instance.currentHideNSeekGameOptions;
     
     public static ConfigEntry<string> menuKeybind;
     public static ConfigEntry<string> menuHtmlColor;

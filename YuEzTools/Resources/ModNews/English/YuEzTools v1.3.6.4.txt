@@ -7,7 +7,7 @@
 I came back
 
 ## Corresponding to Among Us Version
-- Based on AmongUs v17.0.0
+- Based on AmongUs v17.0.0(2025.9.9)
 
 ## Update Summary
 - 1 Fixed
