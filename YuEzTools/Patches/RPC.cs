@@ -1,4 +1,3 @@
-using AmongUs.GameOptions;
 using Hazel;
 using HarmonyLib;
 using YuEzTools.Get;

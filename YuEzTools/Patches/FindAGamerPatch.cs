@@ -1,9 +1,6 @@
-using System.Net;
 using HarmonyLib;
 using Il2CppSystem;
-using Il2CppSystem.Collections.Generic;
 using InnerNet;
-using Il2CppSystem.Linq;
 using UnityEngine;
 
 namespace YuEzTools;

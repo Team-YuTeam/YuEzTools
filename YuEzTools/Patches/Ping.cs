@@ -1,13 +1,7 @@
 using HarmonyLib;
 using UnityEngine;
-using UnityEngine.UI;
-using System.Diagnostics;
 using System.Text;
-using Il2CppSystem;
-using Rewired.UI.ControlMapper;
 using TMPro;
-using YuEzTools;
-using YuEzTools.Utils;
 using YuEzTools.Get;
 using YuEzTools.Patches;
 using YuEzTools.UI;

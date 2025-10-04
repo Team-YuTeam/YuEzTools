@@ -2,8 +2,6 @@ using HarmonyLib;
 using TMPro;
 using UnityEngine;
 
-using YuEzTools;
-
 namespace YuEzTools;
 
 [HarmonyPatch(typeof(AccountTab), nameof(AccountTab.Awake))]

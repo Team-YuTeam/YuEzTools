@@ -1,17 +1,10 @@
 using HarmonyLib;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using AmongUs.GameOptions;
-using BepInEx.Unity.IL2CPP.Utils.Collections;
 // using Il2CppSystem.Collections;
-using Il2CppSystem.Web.Util;
 using TMPro;
 using YuEzTools.Modules;
-using YuEzTools.Patches;
-using YuEzTools.UI;
 using UnityEngine;
 using YuEzTools.Attributes;
 using static YuEzTools.Translator;

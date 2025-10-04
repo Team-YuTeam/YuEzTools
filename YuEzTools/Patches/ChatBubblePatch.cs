@@ -1,7 +1,5 @@
-using AmongUs.QuickChat;
 using HarmonyLib;
 using UnityEngine;
-using YuEzTools.UI;
 
 namespace YuEzTools.Patches;
 

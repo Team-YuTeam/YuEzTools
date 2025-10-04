@@ -1,20 +1,12 @@
-using AmongUs.Data;
-using AmongUs.GameOptions;
 using HarmonyLib;
 using InnerNet;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using YuEzTools.Modules;
 using UnityEngine;
 using static YuEzTools.Translator;
 using Object = UnityEngine.Object;
-using AmongUs.GameOptions;
-using Epic.OnlineServices.Presence;
 using YuEzTools.Get;
 using static YuEzTools.Logger;
-using Log = UnityEngine.ProBuilder.Log;
 
 namespace YuEzTools.Patches;
 

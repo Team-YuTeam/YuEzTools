@@ -1,10 +1,5 @@
-using System;
-using System.Linq;
 using HarmonyLib;
-using InnerNet;
 using UnityEngine;
-using YuEzTools.Get;
-using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;
 

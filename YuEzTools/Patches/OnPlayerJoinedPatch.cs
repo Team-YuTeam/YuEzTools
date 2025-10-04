@@ -1,16 +1,11 @@
 using Hazel;
 using HarmonyLib;
-using Il2CppSystem;
 using InnerNet;
 using YuEzTools.Get;
 using YuEzTools.Patches;
 using YuEzTools.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using YuEzTools.Modules;
 using static YuEzTools.Translator;
-using Exception = Il2CppSystem.Exception;
 
 namespace YuEzTools;
 

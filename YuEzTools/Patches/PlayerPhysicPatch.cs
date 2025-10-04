@@ -1,6 +1,5 @@
 using AmongUs.GameOptions;
 using HarmonyLib;
-using UnityEngine;
 using YuEzTools.Get;
 using static YuEzTools.Translator;
 using static YuEzTools.Logger;

@@ -1,19 +1,7 @@
-using System.Text;
 using HarmonyLib;
 using TMPro;
 using UnityEngine;
-using YuEzTools.Modules;
-using AmongUs.GameOptions;
-using Hazel.Dtls;
-using LibCpp2IL.Elf;
-using System.Linq;
-using TMPro;
-using System;
-using System.Collections.Generic;
-using YuEzTools.Get;
 using static YuEzTools.Translator;
-using YuEzTools.Modules;
-using YuEzTools.Utils;
 
 namespace YuEzTools.UI;
 

@@ -2,21 +2,10 @@ using AmongUs.GameOptions;
 using Hazel;
 using System;
 using System.Linq;
-using HarmonyLib;
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using InnerNet;
-using UnityEngine;
-using YuEzTools;
-using YuEzTools.Keys;
 using YuEzTools.Get;
 using YuEzTools.Modules;
 using static YuEzTools.Translator;
-
 
 namespace YuEzTools;
 
@@ -24,7 +13,6 @@ internal class AntiCheatForAll
 {
     public static int MeetingTimes = 0;
     public static int DeNum = 0;
-    
     public static bool ReceiveRpc(PlayerControl pc, byte callId, MessageReader reader)
     {
         if (pc == null || reader == null) return false;

@@ -1,11 +1,8 @@
 using HarmonyLib;
 using System.Collections.Generic;
 using System.Linq;
-using System;
-using System.IO;
 using YuEzTools.Attributes;
 using UnityEngine;
-using Il2CppSystem.IO;
 
 namespace YuEzTools.Patches;
 

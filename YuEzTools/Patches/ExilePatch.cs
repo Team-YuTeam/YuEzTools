@@ -1,12 +1,5 @@
 using HarmonyLib;
-using LibCpp2IL.MachO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YuEzTools.Modules;
-using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;
 

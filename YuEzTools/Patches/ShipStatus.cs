@@ -1,13 +1,6 @@
 using HarmonyLib;
-using HarmonyLib;
 using Hazel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 using YuEzTools.Get;
-using YuEzTools.Modules;
-using static YuEzTools.Translator;
 
 namespace YuEzTools.Patches;
 

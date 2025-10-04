@@ -1,18 +1,9 @@
 using HarmonyLib;
 using System;
-using HarmonyLib;
 using System.Collections.Generic;
-using System.Text;
 using TMPro;
-using YuEzTools;
 using UnityEngine;
-using System.IO;
-using System.Reflection;
 using YuEzTools.Updater;
-using TMPro;
-using System.IO;
-using UnityEngine;
-using UnityEngine.UI;
 using Object = UnityEngine.Object;
 using static YuEzTools.Translator;
 

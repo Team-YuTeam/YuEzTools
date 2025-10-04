@@ -1,6 +1,5 @@
 using HarmonyLib;
 using Newtonsoft.Json.Linq;
-using Sentry.Unity.NativeUtils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,10 +10,8 @@ using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Il2CppSystem.Globalization;
 using TMPro;
 using UnityEngine;
-using YuEzTools;
 using YuEzTools.Modules;
 using YuEzTools.UI;
 

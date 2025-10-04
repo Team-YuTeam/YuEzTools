@@ -1,13 +1,4 @@
-using AmongUs.GameOptions;
 using HarmonyLib;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using UnityEngine;
-using Hazel;
-using System.IO;
-using System.Reflection;
-using System.Runtime.InteropServices;
 using static YuEzTools.Translator;
 using YuEzTools.Modules;
 

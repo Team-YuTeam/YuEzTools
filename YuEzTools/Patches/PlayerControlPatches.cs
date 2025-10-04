@@ -4,7 +4,6 @@ using TMPro;
 using YuEzTools.Get;
 using YuEzTools.Modules;
 using static YuEzTools.Translator;
-using YuEzTools.Get;
 using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;

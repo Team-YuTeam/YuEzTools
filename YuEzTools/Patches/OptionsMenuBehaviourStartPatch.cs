@@ -1,6 +1,4 @@
 using HarmonyLib;
-using InnerNet;
-using UnityEngine;
 using YuEzTools.Get;
 using static YuEzTools.Translator;
 

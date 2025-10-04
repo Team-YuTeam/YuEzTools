@@ -1,18 +1,8 @@
 using AmongUs.GameOptions;
-using Hazel;
 using System;
 using System.Linq;
-using HarmonyLib;
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using InnerNet;
-using Sentry.Internal.Extensions;
-using UnityEngine;
-using System.Collections.Generic;
 
 namespace YuEzTools.Get;
 

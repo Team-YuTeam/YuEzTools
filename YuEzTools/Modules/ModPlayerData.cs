@@ -1,13 +1,9 @@
 using AmongUs.GameOptions;
 using YuEzTools.Attributes;
-using HarmonyLib;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-using YuEzTools;
 using YuEzTools.Get;
-using YuEzTools.Patches;
 
 namespace YuEzTools.Modules;
 
