@@ -1,5 +1,3 @@
-using HarmonyLib;
-using System.Linq;
 using System.Text;
 using YuEzTools.Modules;
 using YuEzTools.Utils;

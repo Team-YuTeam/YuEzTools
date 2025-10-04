@@ -1,7 +1,5 @@
 using AmongUs.GameOptions;
 using YuEzTools.Attributes;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using YuEzTools.Helpers;
 

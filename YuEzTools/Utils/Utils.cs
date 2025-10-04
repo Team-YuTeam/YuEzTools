@@ -3,7 +3,6 @@ using InnerNet;
 using Il2CppSystem.Collections.Generic;
 using System.IO;
 using Hazel;
-using System.Reflection;
 using AmongUs.GameOptions;
 using System;
 using System.Security.Cryptography;

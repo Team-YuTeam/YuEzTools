@@ -1,9 +1,9 @@
 using AmongUs.GameOptions;
 using Hazel;
 using System;
-using System.Linq;
-using System.Collections.Generic;
 using YuEzTools.Modules;
+using YuEzTools.Patches;
+using YuEzTools.Utils;
 
 namespace YuEzTools.AntiCheat;
 

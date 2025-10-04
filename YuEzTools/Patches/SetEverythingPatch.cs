@@ -1,6 +1,4 @@
-using HarmonyLib;
 using System;
-using System.Collections.Generic;
 using AmongUs.GameOptions;
 // using Il2CppSystem.Collections;
 using TMPro;

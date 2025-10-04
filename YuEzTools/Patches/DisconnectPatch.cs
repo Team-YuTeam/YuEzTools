@@ -1,5 +1,3 @@
-using HarmonyLib;
-
 namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnDisconnected))]

@@ -1,5 +1,3 @@
-using HarmonyLib;
-
 namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(HatManager), nameof(HatManager.Initialize))]

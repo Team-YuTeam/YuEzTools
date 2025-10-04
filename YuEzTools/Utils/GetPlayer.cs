@@ -1,7 +1,5 @@
 using AmongUs.GameOptions;
 using System;
-using System.Linq;
-using System.Collections.Generic;
 using InnerNet;
 
 namespace YuEzTools.Utils;

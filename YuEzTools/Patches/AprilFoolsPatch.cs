@@ -1,4 +1,3 @@
-using HarmonyLib;
 using Il2CppSystem;
 using static CosmeticsLayer;
 
