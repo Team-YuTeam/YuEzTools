@@ -2,7 +2,7 @@ using HarmonyLib;
 using System.IO;
 using System.Reflection;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 public class OnlyYuEzTools
 {

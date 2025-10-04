@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace YuEzTools;
+namespace YuEzTools.UI;
 
 public class SimpleButton
 {

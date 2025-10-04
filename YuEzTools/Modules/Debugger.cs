@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using YuEzTools.Modules;
 using LogLevel = BepInEx.Logging.LogLevel;
 
-namespace YuEzTools;
+namespace YuEzTools.Modules;
 
 class Logger
 {

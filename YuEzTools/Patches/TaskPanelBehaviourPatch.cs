@@ -6,7 +6,7 @@ using static YuEzTools.Translator;
 using YuEzTools.Modules;
 using YuEzTools.Utils;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(TaskPanelBehaviour), nameof(TaskPanelBehaviour.SetTaskText))]
 class TaskPanelBehaviourPatch

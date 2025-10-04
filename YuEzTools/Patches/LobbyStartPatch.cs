@@ -2,7 +2,7 @@ using HarmonyLib;
 using UnityEngine;
 using YuEzTools.UI;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(LobbyBehaviour), nameof(LobbyBehaviour.Start))]
 public class LobbyStartPatch

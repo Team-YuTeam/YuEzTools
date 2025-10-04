@@ -1,6 +1,6 @@
 using System;
 
-namespace YuEzTools;
+namespace YuEzTools.Helpers;
 
 public static class EnumHelper
 {

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace YuEzTools;
+namespace YuEzTools.UI;
 
 public sealed class TMPTemplate
 {

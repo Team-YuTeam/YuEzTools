@@ -3,7 +3,7 @@ using Il2CppSystem;
 using InnerNet;
 using UnityEngine;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(FindAGameManager), nameof(FindAGameManager.Update))]
 public static class FindAGameManagerUpdatePatch

@@ -1,6 +1,6 @@
 using YuEzTools.Get;
 
-namespace YuEzTools;
+namespace YuEzTools.AntiCheat;
 
 public class SMCheat
 {

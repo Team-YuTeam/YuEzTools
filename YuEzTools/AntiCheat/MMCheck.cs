@@ -4,7 +4,7 @@ using BepInEx.Unity.IL2CPP;
 using System.IO;
 using System.Reflection;
 
-namespace YuEzTools;
+namespace YuEzTools.AntiCheat;
 
 [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.Start))]
 public class MMCheck

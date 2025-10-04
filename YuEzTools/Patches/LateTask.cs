@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 class LateTask
 {

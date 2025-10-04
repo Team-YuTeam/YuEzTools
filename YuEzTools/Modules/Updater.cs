@@ -15,7 +15,7 @@ using UnityEngine;
 using YuEzTools.Modules;
 using YuEzTools.UI;
 
-namespace YuEzTools.Updater;
+namespace YuEzTools.Modules;
 
 [HarmonyPatch]
 public class ModUpdater

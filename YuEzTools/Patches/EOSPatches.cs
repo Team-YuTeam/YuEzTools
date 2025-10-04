@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 // Some of the below patches are from https://github.com/scp222thj/MalumMenu/blob/main/src/Passive/UnlockFeaturesPatch.cs
 // Unlock freechat

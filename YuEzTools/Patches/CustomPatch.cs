@@ -1,4 +1,4 @@
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 public enum CustomRPC
 {

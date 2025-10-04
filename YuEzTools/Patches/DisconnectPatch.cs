@@ -1,7 +1,7 @@
 using HarmonyLib;
 using static YuEzTools.Translator;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnDisconnected))]
 internal class OnDisconnectedPatch

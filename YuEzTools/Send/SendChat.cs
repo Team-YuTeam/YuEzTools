@@ -1,6 +1,6 @@
 using YuEzTools.Get;
 
-namespace YuEzTools;
+namespace YuEzTools.Send;
 
 public class SendChat
 {

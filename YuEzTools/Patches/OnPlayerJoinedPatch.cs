@@ -7,7 +7,7 @@ using YuEzTools.Utils;
 using YuEzTools.Modules;
 using static YuEzTools.Translator;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnPlayerJoined))]
 class OnPlayerJoinedPatch

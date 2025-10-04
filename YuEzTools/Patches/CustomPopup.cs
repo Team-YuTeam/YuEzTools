@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 #nullable enable
 public static class CustomPopup

@@ -59,7 +59,7 @@ public static class Utils
         }
         return null;
     }
-    
+
     public static string GetDeadText(PlayerControl pc)
     {
         string color = "#ffffff";
@@ -68,7 +68,7 @@ public static class Utils
         switch (pc.GetPlayerData().DeadReason)
         {
             case DeadReasonData.Kill:
-                text = string.Format(GetString("ByKilled"),pc.GetPlayerData().Killer.Name);
+                text = string.Format(GetString("ByKilled"), pc.GetPlayerData().Killer.Name);
                 color = "#FF4949";
                 break;
             case DeadReasonData.Exile:
@@ -99,7 +99,7 @@ public static class Utils
 
 
         var pos = Math.Min(((float)longestNameByteCount / 2) + 1.5f, 11.5f);
-        
+
         builder.Append(ColorString(thisdata.Color, thisdata.Name));
 
         builder.AppendFormat("<pos={0}em>", pos).Append(GetDeadText(thisdata.pc)).Append("</pos>");
@@ -131,7 +131,7 @@ public static class Utils
         Main.isChatCommand = true;
         Main.MessagesToSend.Add((removeTags ? text.RemoveHtmlTags() : text, sendTo, title + '\0'));
     }
-    
+
     public static Color ShadeColor(this Color color, float Darkness = 0)
     {
         bool IsDarker = Darkness >= 0; //黒と混ぜる
@@ -150,51 +150,51 @@ public static class Utils
         {
             /*=== 船员 === */
             case RoleTypes.Crewmate:
-                c = new Color(30,144,255); // 船员 => 道奇蓝
+                c = new Color(30, 144, 255); // 船员 => 道奇蓝
                 break;
-            
+
             case RoleTypes.Noisemaker:
-                c = new Color(0,191,255); // 大嗓门 => 深天蓝
+                c = new Color(0, 191, 255); // 大嗓门 => 深天蓝
                 break;
-            
+
             case RoleTypes.Scientist:
-                c = new Color(0,255,255); // 科学家 => 青色
+                c = new Color(0, 255, 255); // 科学家 => 青色
                 break;
-            
+
             case RoleTypes.Engineer:
-                c = new Color(127,255,170); // 工程师 => 绿玉
+                c = new Color(127, 255, 170); // 工程师 => 绿玉
                 break;
-            
+
             case RoleTypes.Tracker:
-                c = new Color(0,128,128); // 追踪 => 水鸭色
+                c = new Color(0, 128, 128); // 追踪 => 水鸭色
                 break;
-            
+
             /*=== 内鬼 === */
             case RoleTypes.Impostor:
-                c = new Color(255,0,0); // 内鬼 => 纯红
+                c = new Color(255, 0, 0); // 内鬼 => 纯红
                 break;
-            
+
             case RoleTypes.Shapeshifter:
-                c = new Color(255,69,0); // 变形 => 橙红
+                c = new Color(255, 69, 0); // 变形 => 橙红
                 break;
-            
+
             case RoleTypes.Phantom:
-                c = new Color(250,128,114); // 隐身 => 鲜肉
+                c = new Color(250, 128, 114); // 隐身 => 鲜肉
                 break;
-            
+
             /*=== 灵魂 === */
             case RoleTypes.CrewmateGhost:
-                c = new Color(220,220,220); // 船员灵魂 => 亮灰色
+                c = new Color(220, 220, 220); // 船员灵魂 => 亮灰色
                 break;
-            
+
             case RoleTypes.GuardianAngel:
-                c = new Color(240,128,128); // 天使 => 淡珊瑚
+                c = new Color(240, 128, 128); // 天使 => 淡珊瑚
                 break;
-            
+
             case RoleTypes.ImpostorGhost:
-                c = new Color(255,228,225); // 内鬼灵魂 => 薄雾玫瑰
+                c = new Color(255, 228, 225); // 内鬼灵魂 => 薄雾玫瑰
                 break;
-            
+
         }
 
         return c;
@@ -206,51 +206,51 @@ public static class Utils
         {
             /*=== 船员 === */
             case RoleTypes.Crewmate:
-                c = new Color32(30,144,255,byte.MaxValue); // 船员 => 道奇蓝
+                c = new Color32(30, 144, 255, byte.MaxValue); // 船员 => 道奇蓝
                 break;
-            
+
             case RoleTypes.Noisemaker:
-                c = new Color32(0,191,255,byte.MaxValue); // 大嗓门 => 深天蓝
+                c = new Color32(0, 191, 255, byte.MaxValue); // 大嗓门 => 深天蓝
                 break;
-            
+
             case RoleTypes.Scientist:
-                c = new Color32(0,255,255,byte.MaxValue); // 科学家 => 青色
+                c = new Color32(0, 255, 255, byte.MaxValue); // 科学家 => 青色
                 break;
-            
+
             case RoleTypes.Engineer:
-                c = new Color32(127,255,170,byte.MaxValue); // 工程师 => 绿玉
+                c = new Color32(127, 255, 170, byte.MaxValue); // 工程师 => 绿玉
                 break;
-            
+
             case RoleTypes.Tracker:
-                c = new Color32(0,128,128,byte.MaxValue); // 追踪 => 水鸭色
+                c = new Color32(0, 128, 128, byte.MaxValue); // 追踪 => 水鸭色
                 break;
-            
+
             /*=== 内鬼 === */
             case RoleTypes.Impostor:
-                c = new Color32(255,0,0,byte.MaxValue); // 内鬼 => 纯红
+                c = new Color32(255, 0, 0, byte.MaxValue); // 内鬼 => 纯红
                 break;
-            
+
             case RoleTypes.Shapeshifter:
-                c = new Color32(255,69,0,byte.MaxValue); // 变形 => 橙红
+                c = new Color32(255, 69, 0, byte.MaxValue); // 变形 => 橙红
                 break;
-            
+
             case RoleTypes.Phantom:
-                c = new Color32(250,128,114,byte.MaxValue); // 隐身 => 鲜肉
+                c = new Color32(250, 128, 114, byte.MaxValue); // 隐身 => 鲜肉
                 break;
-            
+
             /*=== 灵魂 === */
             case RoleTypes.CrewmateGhost:
-                c = new Color32(220,220,220,byte.MaxValue); // 船员灵魂 => 亮灰色
+                c = new Color32(220, 220, 220, byte.MaxValue); // 船员灵魂 => 亮灰色
                 break;
-            
+
             case RoleTypes.GuardianAngel:
-                c = new Color32(240,128,128,byte.MaxValue); // 天使 => 淡珊瑚
+                c = new Color32(240, 128, 128, byte.MaxValue); // 天使 => 淡珊瑚
                 break;
-            
+
             case RoleTypes.ImpostorGhost:
-                c = new Color32(255,228,225,byte.MaxValue); // 内鬼灵魂 => 薄雾玫瑰
+                c = new Color32(255, 228, 225, byte.MaxValue); // 内鬼灵魂 => 薄雾玫瑰
                 break;
-            
+
         }
 
         return c;
@@ -264,49 +264,49 @@ public static class Utils
             case RoleTypes.Crewmate:
                 c = "#1E90FF"; // 船员 => 道奇蓝
                 break;
-            
+
             case RoleTypes.Noisemaker:
                 c = "#00BFFF"; // 大嗓门 => 深天蓝
                 break;
-            
+
             case RoleTypes.Scientist:
                 c = "#00FFFF"; // 科学家 => 青色
                 break;
-            
+
             case RoleTypes.Engineer:
                 c = "#7FFFAA"; // 工程师 => 绿玉
                 break;
-            
+
             case RoleTypes.Tracker:
                 c = "#008080"; // 追踪 => 水鸭色
                 break;
-            
+
             /*=== 内鬼 === */
             case RoleTypes.Impostor:
                 c = "#FF0000"; // 内鬼 => 纯红
                 break;
-            
+
             case RoleTypes.Shapeshifter:
                 c = "#FF4500"; // 变形 => 橙红
                 break;
-            
+
             case RoleTypes.Phantom:
                 c = "#FA8072"; // 隐身 => 鲜肉
                 break;
-            
+
             /*=== 灵魂 === */
             case RoleTypes.CrewmateGhost:
                 c = "#DCDCDC"; // 船员灵魂 => 亮灰色
                 break;
-            
+
             case RoleTypes.GuardianAngel:
                 c = "#F08080"; // 天使 => 淡珊瑚
                 break;
-            
+
             case RoleTypes.ImpostorGhost:
                 c = "#FFE4E1"; // 内鬼灵魂 => 薄雾玫瑰
                 break;
-            
+
         }
 
         return c;
@@ -323,14 +323,14 @@ public static class Utils
             _ => throw new System.NotImplementedException(),
         };
     }
-    
+
     // Thanks TOHEN
     public static string GetHashedPuid(this ClientData player)
     {
         if (player == null) return "";
         string puid = player.ProductUserId;
         using SHA256 sha256 = SHA256.Create();
-        
+
         // get sha-256 hash
         byte[] sha256Bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(puid));
         string sha256Hash = BitConverter.ToString(sha256Bytes).Replace("-", "").ToLower();
@@ -365,7 +365,7 @@ public static class Utils
             Platforms.StandaloneWin10 => "Windows",
             Platforms.StandaloneEpicPC => "Epic",
             Platforms.StandaloneSteamPC => "Steam",
-            
+
             Platforms.Xbox => "Xbox",
             Platforms.Switch => "Switch",
             Platforms.Playstation => "PS",
@@ -453,7 +453,7 @@ public static class Utils
         if (PlayerControl.LocalPlayer == player)
             LocalPlayerLastTp = location;
     }
-    
+
     public static void SendMessageAsPlayerImmediately(PlayerControl player, string text, bool hostCanSee = true, bool sendToModded = true)
     {
         Main.isChatCommand = true;
@@ -481,18 +481,24 @@ public static class Utils
             AmongUsClient.Instance.KickPlayer(playerId, ban);
         }, Math.Max(AmongUsClient.Instance.Ping / 500f, 1f), "Kick Player");
     }
-    
-    public static string getColoredPingText(int ping){
 
-        if (ping <= 100){ // Green for ping < 100
+    public static string getColoredPingText(int ping)
+    {
+
+        if (ping <= 100)
+        { // Green for ping < 100
 
             return $"<color=#00ff00ff>{ping}";//</color>";
 
-        } else if (ping < 400){ // Yellow for 100 < ping < 400
+        }
+        else if (ping < 400)
+        { // Yellow for 100 < ping < 400
 
             return $"<color=#ffff00ff>{ping}";//</color>";
 
-        } else{ // Red for ping > 400
+        }
+        else
+        { // Red for ping > 400
 
             return $"<color=#ff0000ff>{ping}";//</color>";
         }
@@ -502,32 +508,41 @@ public static class Utils
     public static string getColoredFPSText(float fps)
     {
         string a = "";
-        if (fps >= 100){ // Green for fps > 100
+        if (fps >= 100)
+        { // Green for fps > 100
 
             return a + $"<color=#00ff00ff>{fps}";//</color>";
 
-        } else if (fps < 100 & fps > 50){ // Yellow for 100 > fps > 50
+        }
+        else if (fps < 100 & fps > 50)
+        { // Yellow for 100 > fps > 50
 
             return a + $"<color=#ffff00ff>{fps}";//</color>";
 
-        } else{ // Red for fps < 50
+        }
+        else
+        { // Red for fps < 50
 
             return a + $"<color=#ff0000ff>{fps}";//</color>";
         }
     }
-    public static KeyCode stringToKeycode(string keyCodeStr){
+    public static KeyCode stringToKeycode(string keyCodeStr)
+    {
 
-        if(!string.IsNullOrEmpty(keyCodeStr)){ // Empty strings are automatically invalid
+        if (!string.IsNullOrEmpty(keyCodeStr))
+        { // Empty strings are automatically invalid
 
-            try{
-                
+            try
+            {
+
                 // Case-insensitive parse of UnityEngine.KeyCode to check if string is validssss
                 KeyCode keyCode = (KeyCode)System.Enum.Parse(typeof(KeyCode), keyCodeStr, true);
-                
+
                 return keyCode;
 
-            }catch{}
-        
+            }
+            catch { }
+
         }
 
         return KeyCode.Delete; // If string is invalid, return Delete as the default key

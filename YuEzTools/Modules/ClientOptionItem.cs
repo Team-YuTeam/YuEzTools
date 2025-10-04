@@ -2,9 +2,8 @@ using BepInEx.Configuration;
 using System;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using static YuEzTools.Translator;
 
-namespace YuEzTools;
+namespace YuEzTools.Modules;
 
 //来源：https://github.com/tukasa0001/TownOfHost/pull/1265
 public class ClientOptionItem

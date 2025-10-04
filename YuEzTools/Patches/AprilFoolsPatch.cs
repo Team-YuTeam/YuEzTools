@@ -2,7 +2,7 @@ using HarmonyLib;
 using Il2CppSystem;
 using static CosmeticsLayer;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 // 来源：https://github.com/ykundesu/SuperNewRoles/blob/master/SuperNewRoles/Patches/HorseModePatch.cs
 [HarmonyPatch(typeof(AprilFoolsMode), nameof(AprilFoolsMode.ShouldLongAround))]

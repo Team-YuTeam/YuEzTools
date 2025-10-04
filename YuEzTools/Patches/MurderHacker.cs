@@ -1,7 +1,7 @@
 using InnerNet;
 using Hazel;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 public static class MurderHacker
 {

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using UnityEngine;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 public class FunctionPatch
 {

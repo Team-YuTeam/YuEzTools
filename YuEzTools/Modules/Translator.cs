@@ -8,8 +8,9 @@ using System.Reflection;
 using System.Text;
 using YamlDotNet.RepresentationModel;
 using YuEzTools.Attributes;
+using YuEzTools.Helpers;
 
-namespace YuEzTools;
+namespace YuEzTools.Modules;
 
 public static class Translator
 {

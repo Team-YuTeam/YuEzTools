@@ -7,7 +7,7 @@ using YuEzTools.Get;
 using YuEzTools.Modules;
 using static YuEzTools.Translator;
 
-namespace YuEzTools;
+namespace YuEzTools.AntiCheat;
 
 internal class AntiCheatForAll
 {

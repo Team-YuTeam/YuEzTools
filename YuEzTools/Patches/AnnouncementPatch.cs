@@ -10,7 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 // 参考：https://github.com/Yumenopai/TownOfHost_Y
 public class ModNews

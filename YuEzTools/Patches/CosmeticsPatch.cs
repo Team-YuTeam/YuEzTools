@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(HatManager), nameof(HatManager.Initialize))]
 public static class UnlockCosmetics

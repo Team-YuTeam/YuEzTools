@@ -2,7 +2,7 @@ using Microsoft.Win32;
 using System;
 using System.IO;
 
-namespace YuEzTools;
+namespace YuEzTools.Modules;
 
 # pragma warning disable CA1416
 public static class RegistryManager

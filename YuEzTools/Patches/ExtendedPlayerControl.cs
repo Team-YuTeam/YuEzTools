@@ -1,6 +1,6 @@
 using InnerNet;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 static class ExtendedPlayerControl
 {

@@ -7,7 +7,7 @@ using YuEzTools.Patches;
 using YuEzTools.UI;
 using static YuEzTools.Translator;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(PingTracker), nameof(PingTracker.Update))]
 internal class PingTrackerUpdatePatch

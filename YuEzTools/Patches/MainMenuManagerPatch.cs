@@ -7,7 +7,7 @@ using YuEzTools.Updater;
 using Object = UnityEngine.Object;
 using static YuEzTools.Translator;
 
-namespace YuEzTools.UI;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch]
 public class MainMenuManagerPatch

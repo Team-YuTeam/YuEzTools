@@ -4,7 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using InnerNet;
 
-namespace YuEzTools.Get;
+namespace YuEzTools.Utils;
 
 public class PlayerState
 {
@@ -58,7 +58,7 @@ static class GetPlayer
     {
         return "<color=" + Utils.Utils.GetRoleHtmlColor(pc.Data.RoleType) + ">" + pc.Data.Role.NiceName + "</color>";
     }
-    public static string GetRColorName(PlayerControl pc,string name)
+    public static string GetRColorName(PlayerControl pc, string name)
     {
         return "<color=" + Utils.Utils.GetRoleHtmlColor(pc.Data.RoleType) + ">" + name + "</color>";
     }
@@ -93,7 +93,7 @@ static class GetPlayer
             return null;
         }
     }
-    
+
     public static ReferenceDataManager referenceDataManager = DestroyableSingleton<ReferenceDataManager>.Instance;
     public static bool IsShip => ShipStatus.Instance != null;
     public static bool IsLobby => AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Joined;
@@ -134,5 +134,5 @@ static class GetPlayer
     }
     public static int numImpostors = 0;
     public static int numCrewmates = 0;
-    
+
 }

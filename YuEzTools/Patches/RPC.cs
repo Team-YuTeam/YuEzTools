@@ -4,7 +4,7 @@ using YuEzTools.Get;
 using YuEzTools.Modules;
 using YuEzTools.Patches;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.HandleRpc))]
 internal class RPCHandlerPatch

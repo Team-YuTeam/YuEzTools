@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace YuEzTools;
+namespace YuEzTools.Helpers;
 
 public static class StringHelper
 {

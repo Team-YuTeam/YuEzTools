@@ -2,7 +2,7 @@ using HarmonyLib;
 using TMPro;
 using UnityEngine;
 
-namespace YuEzTools;
+namespace YuEzTools.UI;
 
 [HarmonyPatch(typeof(AccountTab), nameof(AccountTab.Awake))]
 public static class UpdateFriendCodeUIPatch

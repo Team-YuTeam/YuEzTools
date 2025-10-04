@@ -4,7 +4,7 @@ using YuEzTools.Get;
 using static YuEzTools.Translator;
 using static YuEzTools.Logger;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(PlayerPhysics), nameof(PlayerPhysics.LateUpdate))]
 public class PlayerPhysicPatch
