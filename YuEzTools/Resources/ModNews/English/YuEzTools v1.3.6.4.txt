@@ -1,0 +1,24 @@
+#Number:100022
+#Title:YuEzTools v1.3.6.4
+#SubTitle:★★★★New Version For Normal★★★★★
+#ShortTitle:★YuET v1.3.6.4
+#Date:2025-10-05T00:00:00Z
+#-----------------------------
+I came back
+
+## Corresponding to Among Us Version
+- Based on AmongUs v17.0.0
+
+## Update Summary
+- 1 Fixed
+- 1 Optimized
+- 1 Deleted
+
+## Fixed
+- The bug in GM mode was killed by its own anti-cheat.
+
+## Optimized
+- Reduced useless code and tried to decrease the DLL size
+
+## Deleted
+- Two useless buttons
