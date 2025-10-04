@@ -101,15 +101,7 @@ public class MainMenuManagerPatch
             aspectPosition.anchorPoint = new Vector2(col == 1 ? 0.415f : 0.583f, 0.5f - 0.08f * row);
             return button;
         }
-        // __instance.creditsButton.transform.localPosition += new Vector3(0, 0.7f, 0);
-        // __instance.quitButton.transform.localPosition += new Vector3(0, 0.7f, 0);
 
-        void CreateButton(GameObject button, string text, Action action, bool active, string name)
-        {
-            if (button == null) button = CreatButton(text, action);
-            InviteButton.gameObject.SetActive(active);
-            button.name = name;
-        }
         var minorActiveSprite = __instance.quitButton.activeSprites.GetComponent<SpriteRenderer>().sprite;
         Color shade = new(0f, 0f, 0f, 0f);
 

@@ -15,7 +15,7 @@ public static class StringHelper
 
     public static bool Has(this string s,string h)
     {
-         return s.IndexOf(h, StringComparison.OrdinalIgnoreCase) >= 0;
+         return s.Contains(h, StringComparison.OrdinalIgnoreCase);
     }
 }
 public class ColorGradient
@@ -63,9 +63,9 @@ public class ColorGradient
     public class Component
     {
         public float? SizePercentage { get; set; }
-        public string? Text { get; set; }
+        public string Text { get; set; }
         public Color32? TextColor { get; set; }
-        public ColorGradient? Gradient { get; set; }
+        public ColorGradient Gradient { get; set; }
         public bool Spaced { get; set; } = true;
         public string Generate(bool applySpace = true, bool applySize = true)
         {

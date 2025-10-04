@@ -112,8 +112,6 @@ public static class DetailDialog
     static PassiveButton saveButton;
     static SpriteRenderer renderer;
 
-    static Sprite saveButtonSprite;
-
     static public void Initialize(EndGameManager endGameManager, ControllerDisconnectHandler handler, TMP_Text textTemplate, string[] detail)
     {
         DetailDialog.endGameManager = endGameManager;
@@ -126,6 +124,7 @@ public static class DetailDialog
         dialog = handler.gameObject;
         renderer = dialog.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         button = dialog.transform.GetChild(2).gameObject.GetComponent<PassiveButton>();
+        saveButton = dialog.transform.GetChild(2).gameObject.GetComponent<PassiveButton>();
         saveText = dialog.transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
 
         renderer.transform.localScale = new Vector3(1.6f, 0.85f, 1.0f);
@@ -206,7 +205,6 @@ public static class DetailDialog
 [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.SetEverythingUp))]
 class SetEverythingUpPatch
 {
-    private static TextMeshPro roleSummary;
     public static string s = "";
     public static void Postfix(EndGameManager __instance)
     {

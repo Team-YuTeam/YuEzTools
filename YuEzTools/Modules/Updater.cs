@@ -353,7 +353,6 @@ public class ModUpdater
     }
     public static async Task<(bool, string)> DownloadDLL(string url)
     {
-    Retry:
         File.Delete(DownloadFileTempPath);
         File.Create(DownloadFileTempPath).Close();
 
