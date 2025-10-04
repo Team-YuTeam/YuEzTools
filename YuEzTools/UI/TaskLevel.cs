@@ -8,7 +8,7 @@ namespace YuEzTools.UI;
 [HarmonyPatch(typeof(ProgressTracker))]
 public static class TaskLevel
 {
-    
+
     [HarmonyPatch(nameof(ProgressTracker.FixedUpdate))]
     public static void Postfix()
     {
@@ -36,7 +36,7 @@ public static class TaskLevel
                     disconnectedCount++;
             }
             num -= disconnectedCount;
-            
+
             double num2 = (float)instance.CompletedTasks / (float)instance.TotalTasks * 100;
 
             switch (GameManager.Instance.LogicOptions.GetTaskBarMode())
@@ -47,7 +47,7 @@ public static class TaskLevel
                     titleText_TMP.text = GetString("TasksProgress") + $"{num2}%";
                     break;
                 case TaskBarMode.MeetingOnly:
-                    Logger.Info("2","ProgressTracker");
+                    Logger.Info("2", "ProgressTracker");
 
                     if (MeetingHud.Instance)
                     {
@@ -55,12 +55,12 @@ public static class TaskLevel
                     }
                     break;
                 case TaskBarMode.Invisible:
-                    Logger.Info("3","ProgressTracker");
+                    Logger.Info("3", "ProgressTracker");
 
                     titleText_TMP.text = GetString("TaskBarMode.Invisible");
                     break;
                 default:
-                    Logger.Info("4","ProgressTracker");
+                    Logger.Info("4", "ProgressTracker");
 
                     titleText_TMP.text = GetString("TaskBarMode.Default");
                     break;

@@ -40,24 +40,24 @@ internal class CoStartGamePatch
 
 [HarmonyPatch(typeof(IntroCutscene))]//    [HarmonyPatch(nameof(IntroCutscene.CoBegin)), HarmonyPrefix]
 class StartPatch
-{    
+{
     [HarmonyPatch(nameof(IntroCutscene.CoBegin)), HarmonyPrefix]
     public static void Prefix()
     {
         GetPlayer.numImpostors = 0;
         GetPlayer.numCrewmates = 0;
         int c = 0;
-        Logger.Info("== 游戏开始 ==","StartPatch");
+        Logger.Info("== 游戏开始 ==", "StartPatch");
         foreach (var pc1 in Main.AllPlayerControls)
         {
             //Logger.Info("添加玩家进入CPCOS："+pc1.GetRealName(),"StartPatch");
-            if(!Main.ClonePlayerControlsOnStart.Contains(pc1)) Main.ClonePlayerControlsOnStart.Add(pc1);
-            
-            Info("成员检验"+Main.ClonePlayerControlsOnStart[c].GetRealName(),"StartPatch");
-            
+            if (!Main.ClonePlayerControlsOnStart.Contains(pc1)) Main.ClonePlayerControlsOnStart.Add(pc1);
+
+            Info("成员检验" + Main.ClonePlayerControlsOnStart[c].GetRealName(), "StartPatch");
+
             //结算格式："\n" +$"{Utils.Utils.ColorString(pc1.Data.Color,pc1.GetRealName())}" +" - "+ GetPlayer.GetColorRole(pc1);
-            
-            
+
+
             if (pc1.Data.Role.IsImpostor)
             {
                 GetPlayer.numImpostors++;
@@ -66,17 +66,17 @@ class StartPatch
             {
                 GetPlayer.numCrewmates++;
             }
-            
+
             //Info(s,"StartPatch");
             c++;
         }
         Main.isFirstSendEnd = true;
-        Info("设置isFirstSendEnd为"+Main.isFirstSendEnd.ToString(),"StartPatch");
+        Info("设置isFirstSendEnd为" + Main.isFirstSendEnd.ToString(), "StartPatch");
     }
     [HarmonyPatch(nameof(IntroCutscene.CoBegin)), HarmonyPostfix]
     public static void Postfix()
     {
-        
+
     }
 }
 
@@ -88,7 +88,7 @@ class EndGamePatch
     public static string WinTeam = "";
     public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ref EndGameResult endGameResult)
     {
-        Logger.Info("== 游戏结束 ==","EndGamePatch");
+        Logger.Info("== 游戏结束 ==", "EndGamePatch");
         Logger.Info("结束原因：" + endGameResult.GameOverReason.ToString(), "EndGamePatch");
         SummaryText = new();
         foreach (var id in ModPlayerData.AllPlayerDataForMod.Keys)
@@ -147,7 +147,7 @@ public static class DetailDialog
         saveText.fontSizeMax = 1.25f;
         saveText.fontSize = 1.25f;
         saveText.text = "";
-        
+
 
         text = new TMPro.TMP_Text[detail.Length];
         float width = 0.0f;
@@ -198,7 +198,7 @@ public static class DetailDialog
 
     static public void Close()
     {
-        endGameManager.StartCoroutine(Effects.Lerp(0.12f, 
+        endGameManager.StartCoroutine(Effects.Lerp(0.12f,
             new Action<float>((p) =>
             {
                 dialog.transform.localScale = new Vector3(1.0f - p, 1.0f - p, 1.0f);
@@ -206,7 +206,7 @@ public static class DetailDialog
             }
             )));
     }
-    
+
 }
 [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.SetEverythingUp))]
 class SetEverythingUpPatch
@@ -217,12 +217,12 @@ class SetEverythingUpPatch
     {
         s = "";
         var BackgroundLayer = GameObject.Find("PoolablePlayer(Clone)");
-        __instance.WinText.text = Toggles.WinTextSize ? 
-            $"<size=50%>{GetString(EndGamePatch.WinTeam)}\n<size=30%>{GetString(EndGamePatch.WinReason)}</size>" : 
+        __instance.WinText.text = Toggles.WinTextSize ?
+            $"<size=50%>{GetString(EndGamePatch.WinTeam)}\n<size=30%>{GetString(EndGamePatch.WinReason)}</size>" :
             $"<size=50%>{GetString(EndGamePatch.WinReason)}\n<size=30%>{GetString(EndGamePatch.WinTeam)}</size>";
         if (EndGamePatch.WinTeam == "NobodyWin")
         {
-            Logger.Info("进入NobodyWin","SetEverythingUpPatch");
+            Logger.Info("进入NobodyWin", "SetEverythingUpPatch");
             BackgroundLayer.SetActive(false);
         }
         var ModDisplay = new GameObject("ModDisplay");
@@ -245,7 +245,7 @@ class SetEverythingUpPatch
             roleSummaryText[i].fontSizeMax = 1.25f;
             roleSummaryText[i].fontSize = 1.25f;
         }
-                
+
         foreach (var kvp in ModPlayerData.AllPlayerDataForMod)
         {
             var id = kvp.Key;
@@ -263,13 +263,13 @@ class SetEverythingUpPatch
         TMPro.TMP_Text detailButtonText = detailButton.transform.GetChild(0).gameObject.GetComponent<TMPro.TMP_Text>();
         detailButtonText.text = GetString("game.endScreen.detail");
         detailButtonText.gameObject.GetComponent<TextTranslatorTMP>().enabled = false;
-        
+
         //结算界面
         var detailDialog = GameObject.Instantiate(GameObject.FindObjectOfType<ControllerDisconnectHandler>(), null);
         DetailDialog.Initialize(__instance, detailDialog, __instance.WinText, new string[] {
             GetString("EndMessage")+
             s
         });
-        Info(s,"EndSummary");
+        Info(s, "EndSummary");
     }
 }

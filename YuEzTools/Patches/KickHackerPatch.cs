@@ -6,7 +6,6 @@ public class KickHackerPatch
 {
     public static void KickPlayer(PlayerControl pc)
     {
-        
         var HostData = AmongUsClient.Instance.GetHost();
         if (HostData != null)
         {

@@ -16,8 +16,7 @@ public class AUMCheat
                 Main.Logger.LogWarning($"有AmongUsMenu玩家，{"好友编号："+pc.GetClient().FriendCode+"/名字："+pc.GetRealName()+"/ProductUserId："+pc.GetClient().ProductUserId}");
                 //Main.PlayerStates[pc.GetClient().Id].IsAUM = true;
                 return true;
-            
-            
+
             case unchecked((byte)42069):
                 Main.Logger.LogWarning($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】AUMRPC/Chat，内容：{AUMChat}");
                 Main.Logger.LogWarning($"有AmongUsMenu玩家，{"好友编号："+pc.GetClient().FriendCode+"/名字："+pc.GetRealName()+"/ProductUserId："+pc.GetClient().ProductUserId}");

@@ -7,7 +7,7 @@ using UnityEngine;
 namespace YuEzTools;
 
 public class FunctionPatch
-{        
+{
     public static float exitTimer = -1f;
     public static bool kickGameActive;
     public static void DumpLogKey()
@@ -26,7 +26,7 @@ public class FunctionPatch
     {
         AmongUsClient.Instance.ExitGame(DisconnectReasons.ExitGame);
     }
-    
+
     public static void RealBan()
     {
         var HostData = AmongUsClient.Instance.GetHost();
@@ -41,27 +41,25 @@ public class FunctionPatch
             }
         }
     }
-    
-    
 
     public static void OpenGameDic()
     {
         OpenDirectory(Environment.CurrentDirectory);
     }
-    
+
     public static void ChangeDownTimerTo(int c)
     {
         Main.Logger.LogInfo("倒计时修改为" + c);
         GameStartManager.Instance.countDownTimer = c;
     }
-    
+
     public static void AbolishDownTimer()
     {
         Main.Logger.LogInfo("重置倒计时");
         GameStartManager.Instance.ResetStartState();
         SendInGamePatch.SendInGame(Translator.GetString("FunctionPatch.AbolishDownTimer"));
     }
-    
+
     public static void DumpLog()
     {
         string f = $"{Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)}/YuET-logs/";

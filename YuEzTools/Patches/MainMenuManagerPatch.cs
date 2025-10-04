@@ -39,8 +39,6 @@ public class MainMenuManagerPatch
         AccountManager.Instance?.transform?.FindChild("AccountTab/AccountWindow")?.gameObject?.SetActive(false);
     }
 
-
-
     public static void ShowRightPanelImmediately()
     {
         ShowingPanel = true;
@@ -51,10 +49,10 @@ public class MainMenuManagerPatch
     private static bool isOnline = false;
     public static bool ShowedBak = false;
     private static bool ShowingPanel = false;
-    
+
     [HarmonyPatch(typeof(SignInStatusComponent), nameof(SignInStatusComponent.SetOnline)), HarmonyPostfix]
     public static void SetOnline_Postfix() { _ = new LateTask(() => { isOnline = true; }, 0.1f, "Set Online Status"); }
-    
+
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.LateUpdate)), HarmonyPostfix]
     public static void MainMenuManager_LateUpdate()
     {
@@ -104,34 +102,31 @@ public class MainMenuManagerPatch
             aspectPosition.anchorPoint = new Vector2(col == 1 ? 0.415f : 0.583f, 0.5f - 0.08f * row);
             return button;
         }
-        
         // __instance.creditsButton.transform.localPosition += new Vector3(0, 0.7f, 0);
         // __instance.quitButton.transform.localPosition += new Vector3(0, 0.7f, 0);
 
-    void CreateButton(GameObject button,string text, Action action,bool active,string name)
-    {
-        if (button == null) button = CreatButton(text, action);
-        InviteButton.gameObject.SetActive(active);
-        button.name = name;
-    }
-    var minorActiveSprite = __instance.quitButton.activeSprites.GetComponent<SpriteRenderer>().sprite;
-    Color shade = new(0f, 0f, 0f, 0f);
-    
-    void FormatButtonColor(PassiveButton button, Sprite borderType, Color inActiveColor, Color activeColor, Color inActiveTextColor, Color activeTextColor)
-    {
-        button.activeSprites.transform.FindChild("Shine")?.gameObject?.SetActive(false);
-        button.inactiveSprites.transform.FindChild("Shine")?.gameObject?.SetActive(false);
-        var activeRenderer = button.activeSprites.GetComponent<SpriteRenderer>();
-        var inActiveRenderer = button.inactiveSprites.GetComponent<SpriteRenderer>();
-        activeRenderer.sprite = minorActiveSprite;
-        inActiveRenderer.sprite = minorActiveSprite;
-        activeRenderer.color = activeColor.a == 0f ? new Color(inActiveColor.r, inActiveColor.g, inActiveColor.b, 1f) : activeColor;
-        inActiveRenderer.color = inActiveColor;
-        button.activeTextColor = activeTextColor;
-        button.inactiveTextColor = inActiveTextColor;
-    }
-    
+        void CreateButton(GameObject button, string text, Action action, bool active, string name)
+        {
+            if (button == null) button = CreatButton(text, action);
+            InviteButton.gameObject.SetActive(active);
+            button.name = name;
+        }
+        var minorActiveSprite = __instance.quitButton.activeSprites.GetComponent<SpriteRenderer>().sprite;
+        Color shade = new(0f, 0f, 0f, 0f);
 
+        void FormatButtonColor(PassiveButton button, Sprite borderType, Color inActiveColor, Color activeColor, Color inActiveTextColor, Color activeTextColor)
+        {
+            button.activeSprites.transform.FindChild("Shine")?.gameObject?.SetActive(false);
+            button.inactiveSprites.transform.FindChild("Shine")?.gameObject?.SetActive(false);
+            var activeRenderer = button.activeSprites.GetComponent<SpriteRenderer>();
+            var inActiveRenderer = button.inactiveSprites.GetComponent<SpriteRenderer>();
+            activeRenderer.sprite = minorActiveSprite;
+            inActiveRenderer.sprite = minorActiveSprite;
+            activeRenderer.color = activeColor.a == 0f ? new Color(inActiveColor.r, inActiveColor.g, inActiveColor.b, 1f) : activeColor;
+            inActiveRenderer.color = inActiveColor;
+            button.activeTextColor = activeTextColor;
+            button.inactiveTextColor = inActiveTextColor;
+        }
 
         var extraLinkName = "";
         var extraLinkUrl = "";
@@ -143,14 +138,13 @@ public class MainMenuManagerPatch
         if (InviteButton == null) InviteButton = CreatButton(extraLinkName, () => { Application.OpenURL(extraLinkUrl); });
         InviteButton.gameObject.SetActive(extraLinkEnabled);
         InviteButton.name = "YuET Extra Link Button";
-        
 
         if (WebsiteButton == null) WebsiteButton = CreatButton("WebsiteButton", () => Application.OpenURL("https://night-gua.github.io/"));
         WebsiteButton.gameObject.SetActive(true);
         WebsiteButton.name = "YuET Website Button";
 
         var ProjectLink = IsChineseLanguageUser
-            // ? "https://gitee.com/xigua_ya/YuEzTools/"
+             // ? "https://gitee.com/xigua_ya/YuEzTools/"
              ? "https://kkgithub.com/Team-YuTeam/YuEzTools/"
             : "https://github.com/Team-YuTeam/YuEzTools/";
         if (ProjectButton == null) ProjectButton = CreatButton("ProjectButton", () => Application.OpenURL(ProjectLink));
@@ -172,22 +166,22 @@ public class MainMenuManagerPatch
                     (GetString(StringNames.Okay), null)
                 });
         });
-        DevsButton.gameObject.SetActive(true); 
+        DevsButton.gameObject.SetActive(true);
         DevsButton.name = "YuET Devs Button";
 
-        
+
         if (AfdianButton == null) AfdianButton = CreatButton("AfdianButton", () => Application.OpenURL("https://afdian.com/a/yuqianzhi"));
         AfdianButton.gameObject.SetActive(true);
         AfdianButton.name = "YuET Afdian Button";
-        
+
         if (BilibiliButton == null) BilibiliButton = CreatButton("BiliBiliButton", () => Application.OpenURL("https://space.bilibili.com/1638639993"));
-        BilibiliButton.gameObject.SetActive(true); 
+        BilibiliButton.gameObject.SetActive(true);
         BilibiliButton.name = "YuET BiliBili Button";
-        
+
         PlayButton = __instance.playButton.gameObject;
         if (UpdateButton == null)
         {
-            
+
             UpdateButton = Object.Instantiate(PlayButton, PlayButton.transform.parent);
             UpdateButton.name = "YuET Update Button";
             UpdateButton.transform.localPosition = PlayButton.transform.localPosition - new Vector3(0f, 0f, 3f);
@@ -216,16 +210,16 @@ public class MainMenuManagerPatch
             }));
             UpdateButton.transform.transform.FindChild("FontPlacer").GetChild(0).gameObject.DestroyTranslator();
         }
-        
+
         Dictionary<List<PassiveButton>, (Sprite, Color, Color, Color, Color)> customButtons = new()
         {
             {new List<PassiveButton>() {InviteButton.GetComponent<PassiveButton>(),WebsiteButton.GetComponent<PassiveButton>(),ProjectButton.GetComponent<PassiveButton>(),AfdianButton.GetComponent<PassiveButton>(),BilibiliButton.GetComponent<PassiveButton>(),DevsButton.GetComponent<PassiveButton>()},
                 (minorActiveSprite, new(0.65f, 1f, 0.247f, 0.8f), shade, Color.white, Color.white) },
         };
-        
+
         foreach (var kvp in customButtons)
             kvp.Key.Do(button => FormatButtonColor(button, kvp.Value.Item1, kvp.Value.Item2, kvp.Value.Item3, kvp.Value.Item4, kvp.Value.Item5));
-        
+
         // GameObject.Destroy(__instance.creditsButton.gameObject);
         // GameObject.Destroy(__instance.quitButton.gameObject);
         // var BottomButtonBounds = GameObject.Find("BottomButtonBounds");

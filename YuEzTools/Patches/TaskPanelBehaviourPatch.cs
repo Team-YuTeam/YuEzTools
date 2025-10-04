@@ -15,17 +15,17 @@ class TaskPanelBehaviourPatch
     public static void Postfix(TaskPanelBehaviour __instance)
     {
         if (!GetPlayer.IsInGame) return;
-        
+
         PlayerControl player = PlayerControl.LocalPlayer;
 
         var taskText = __instance.taskText.text;
         if (taskText == "None") return;
-        
+
         var RoleWithInfo = $"{player.Data.Role.NiceName}:\r\n";
         RoleWithInfo += player.Data.RoleType.GetRoleLInfoForVanilla();
-        
+
         var AllText = Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(player.Data.RoleType), RoleWithInfo);
-        
+
         var lines = taskText.Split("\r\n</color>\n")[0].Split("\r\n\n")[0].Split("\r\n");
         StringBuilder sb = new();
         foreach (var eachLine in lines)
@@ -43,9 +43,9 @@ class TaskPanelBehaviourPatch
         }
 
         AllText += "\n\n<size=60%>" + GetString("PressF3ToShowYourRoleInfo") + "</size>";
-        
+
         __instance.taskText.text = AllText;
-        
+
         // RepairSenderの表示
         if (RepairSender.enabled && AmongUsClient.Instance.NetworkMode != NetworkModes.OnlineGame)
             __instance.taskText.text = RepairSender.GetText();

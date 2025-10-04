@@ -45,7 +45,7 @@ public static class ServerAddManager
             "FangKuai" => new(105, 105, 193, 255),
             "Nikocat233(CN)" => new(255, 255, 0, 255),
             "Nikocat233(US)" => new(255, 255, 0, 255),
-            "XiaoLu" => new(255,151,255,255),
+            "XiaoLu" => new(255, 151, 255, 255),
 
             _ => new(255, 255, 255, 255),
         };

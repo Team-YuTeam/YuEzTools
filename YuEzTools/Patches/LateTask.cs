@@ -28,7 +28,7 @@ class LateTask
         if (name != "")
             Main.Logger.LogInfo("\"" + name + "\" is created");
     }
-    
+
     public static void Update(float deltaTime)
     {
         var TasksToRemove = new List<LateTask>();

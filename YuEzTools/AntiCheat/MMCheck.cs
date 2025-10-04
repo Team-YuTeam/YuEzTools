@@ -15,7 +15,6 @@ public class MMCheck
         var loadedPlugins = IL2CPPChainloader.Instance.Plugins.Values;
         // 检查是否有目标插件
         var targetPlugin = loadedPlugins.FirstOrDefault(plugin => plugin.Metadata.Name == "MalumMenu" || plugin.Metadata.Name == "MalumMenu-Yu" || plugin.Metadata.Name == "MalumMenuYu");
-        
 
         if (targetPlugin != null)
         {
@@ -32,5 +31,4 @@ public class MMCheck
             }
         }
     }
-    
 }

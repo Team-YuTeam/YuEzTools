@@ -29,7 +29,7 @@ public static class MatchMakerGameButtonSetGamePatch
     public static void Prefix(MatchMakerGameButton __instance, [HarmonyArgument(0)]  GameListing game)
     {
         var nameList = TranslationController.Instance.currentLanguage.languageID is SupportedLangs.SChinese or SupportedLangs.TChinese ? Main.TName_Snacks_CN : Main.TName_Snacks_EN;
-    
+
         if (game.Language.ToString().Length > 9) goto End;
         var color = game.Platform switch
         {
@@ -55,7 +55,7 @@ public static class MatchMakerGameButtonSetGamePatch
             Platforms.StandaloneWin10 => "Windows",
             Platforms.StandaloneEpicPC => "Epic",
             Platforms.StandaloneSteamPC => "Steam",
-            
+
             Platforms.Xbox => "Xbox",
             Platforms.Switch => "Switch",
             Platforms.Playstation => "PS",
@@ -69,7 +69,7 @@ public static class MatchMakerGameButtonSetGamePatch
         };
         Logger.Info(game.IPString+":"+game.Port, "FAG");
         string str = Math.Abs(game.GameId).ToString();
-        
+
             int id = Math.Min(Math.Max(int.Parse(str.Substring(str.Length - 2, 2)), 1) * nameList.Count / 100, nameList.Count);
             game.HostName = $"" +
                 $"<size=80%>" +
@@ -79,8 +79,7 @@ public static class MatchMakerGameButtonSetGamePatch
                 $"<size=60%>" +
                 $"({platforms})" +
                 $"</color>" +
-                $"</size>"
-                ; 
+                $"</size>";
         game.HostName += $"<size=40%> ({Translator.GetString("ToCloseThisRoom")}{Math.Max(0, 100 - game.Age / 100)}%)</size>";
         End:
         Logger.Info("--------This room end.--------", "FindAGamerPatch");

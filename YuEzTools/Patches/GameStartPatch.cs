@@ -74,7 +74,6 @@ public class GameStartManagerPatch
                     }
                 }
             }
-
         }
 
         public static void Postfix(GameStartManager __instance)
@@ -112,7 +111,6 @@ public class GameStartManagerPatch
                     warningText.gameObject.SetActive(true);
                 }
 
-
                 // Lobby timer
                 if (
                     !AmongUsClient.Instance.AmHost ||
@@ -127,7 +125,7 @@ public class GameStartManagerPatch
                 int seconds = (int)timer % 60;
                 countDown = $"{minutes:00}:{seconds:00}";
                 if (timer <= 60) countDown = Utils.Utils.ColorString(Color.red, countDown);
-                
+
                 if (timer <= 120 && Toggles.AutoStartGame && GetPlayer.IsLobby && !GetPlayer.IsCountDown)
                 {
                     GameStartManager.Instance.startState = GameStartManager.StartingStates.Countdown;
@@ -159,14 +157,14 @@ public class GameStartManagerPatch
         public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
         {
             Logger.Msg($"创建玩家Data: ClientID {client.Id}: {client.PlayerName}", "CreatePlayer");
-            
+
             if (client.Id == AmongUsClient.Instance.ClientId)
             {
                 roomMode = Toggles.ServerAllHostOrNoHost ? RoomMode.Plus25 : RoomMode.Normal;
                 EnableAC = Toggles.EnableAntiCheat;
                 Info($"玩家被创建了，当前房间模式 {roomMode.ToString()}","CreatePlayer");
             }
-            
+
             if (GetPlayer.isNormalGame)
             {
                 _ = new LateTask(() =>

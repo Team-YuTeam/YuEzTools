@@ -3,6 +3,7 @@ using Hazel;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using InnerNet;
 using System;
+
 namespace YuEzTools;
 
 public class CustomRpcSender
@@ -239,7 +240,6 @@ public class CustomRpcSender
 
         return this;
     }
-    
 
     public enum State
     {

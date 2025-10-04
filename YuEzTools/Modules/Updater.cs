@@ -57,7 +57,7 @@ public class ModUpdater
     public static int creation = 0;
     public static string md5 = "";
     public static int visit = 0;
-    
+
     public static string announcement_zh = "";
     public static string announcement_en = "";
     public static string downloadUrl_github = "";
@@ -74,7 +74,7 @@ public class ModUpdater
         CheckForUpdate();
         SetUpdateButtonStatus();
         AddVisit();
-                
+
         firstStart = false;
     }
     private static readonly string URL_2018k = "http://api.2018k.cn";
@@ -90,7 +90,7 @@ public class ModUpdater
         {
             string[] data = Get(url).Split("|");
             visit = int.TryParse(data[0], out int x) ? x : 0;
-            
+
             Logger.Info("Visit: " + data[0], "2018k");
         }
         catch (Exception ex)
@@ -271,14 +271,13 @@ public class ModUpdater
 
             DebugVer = new(data["DebugVer"]?.ToString());
 
-            
             CanUpdate = bool.Parse(new(data["CanUpdate"]?.ToString()));
-            
+
             md5 = data["md5"]?.ToString();
             latestVersion = new(data["version"]?.ToString());
-            
+
             showVer = $"{latestVersion}";
-            
+
             var minVer = data["minVer"]?.ToString();
             minimumVersion = minVer.ToLower() == "latest" ? latestVersion : new(minVer);
             creation = int.Parse(data["creation"]?.ToString());
@@ -299,7 +298,6 @@ public class ModUpdater
             DebugUnused = Main.version < DebugVer;
             hasUpdate = forceUpdate = DebugUnused;
 #endif
-
             return true;
         }
         catch

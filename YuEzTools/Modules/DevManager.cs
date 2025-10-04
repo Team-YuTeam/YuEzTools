@@ -40,10 +40,9 @@ public static class DevManager
         // Dev
         DevUserList.Add(new(code: "storeroan#0331", color: "#49FFA5", tag: "Yu #Dev", isUp: true, isDev: true, isSpo: false , deBug: true, upName: "烟Yu中" , jobs: "MainDev", name: "Yu"));
         DevUserList.Add(new(code: "coltposh#9009", color: "#0090f4", tag: "Mousse #Dev", isUp: false, isDev: true, isSpo: false, deBug: true, upName: "null", jobs: "Developer", name: "Mousse"));
-        // Trans 
+        // Trans
         DevUserList.Add(new(code: "morechoice#4224", color: "#FF6666", tag: "redphantom1000 #Trans", isUp: false, isDev: false, isSpo: false, deBug: false, upName: "null", jobs: "EnTranslator", name: "redphantom1000"));
         DevUserList.Add(new(code: "hoppypuree#2528", color: "#00FFFF", tag: "神金驾到 #Trans", isUp: false, isDev: false, isSpo: false, deBug: false, upName: "null", jobs: "JpTranslator", name: "Miaoice"));
-        
         // Helper
         DevUserList.Add(new(code: "actorour#0029", color: "#ffc0cb", tag: "#Dev", isUp: true, isDev: false, isSpo: false , deBug: true, upName: "KARPED1EM", jobs: "NotJob", name:"KARPED1EM"));
     }

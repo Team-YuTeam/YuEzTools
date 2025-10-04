@@ -24,7 +24,7 @@ internal class MMOnlineManagerStartPatch
         {
             HostGameButton?.SetActive(true);
         }
-        
+
         var JoinGameButton = GameObject.Find("JoinGameButton");
         if (JoinGameButton && Toggles.EnableAntiCheat && Toggles.ServerAllHostOrNoHost)
         {

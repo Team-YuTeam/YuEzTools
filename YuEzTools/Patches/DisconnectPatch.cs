@@ -28,7 +28,7 @@ internal class ShowDisconnectPopupPatch
             {
 
                 void SetText(string text)
-                { 
+                {
                     Logger.Info(__instance._textArea.text,"DisconnectPatch");
                     if (__instance?._textArea?.text != null)
                         __instance._textArea.text = text;

@@ -21,7 +21,7 @@ public class IntroPatch
             __instance.RoleText.SetOutlineThickness(0.17f);
             __instance.RoleBlurbText.color = Utils.Utils.GetRoleColor32(roleType);
             __instance.RoleBlurbText.text = roleType.GetRoleInfoForVanilla();
-            
+
         }, 0.0001f, "Override Role Text");
         return;
     }
@@ -42,7 +42,7 @@ public class IntroPatch
 
         __instance.TeamTitle.text = GetString("TeamImpostor");
         __instance.ImpostorText.text = $"{string.Format(GetString("ImpostorNumImp"), GameOptionsManager.Instance.currentNormalGameOptions.NumImpostors)}";
-        
+
         __instance.ImpostorText.text += "\n" + string.Format(GetString("ImpostorIntroText"),Utils.Utils.GetRoleHtmlColor(PlayerControl.LocalPlayer.Data.RoleType));
         __instance.TeamTitle.color = __instance.BackgroundBar.material.color = Utils.Utils.GetRoleColor32(PlayerControl.LocalPlayer.Data.RoleType);
     }

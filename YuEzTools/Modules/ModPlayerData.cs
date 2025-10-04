@@ -13,7 +13,7 @@ public class ModPlayerData
     public static Dictionary<byte, ModPlayerData> AllPlayerDataForMod;
     // 当前玩家MPD的PC获取
     public PlayerControl pc { get; private set; }
-    
+
     // 基本信息
     public string Name { get; private set; }
     public int ColorId { get; private set; }
@@ -21,7 +21,7 @@ public class ModPlayerData
     public RoleTypes role { get; private set; }
     public RoleTypes? RoleAfterDeath { get; private set; }
     public bool RoleHas { get; private set; }
-    
+
     // 其他
     public bool IsDead { get; private set; }
     public DeadReasonData DeadReason  { get; private set; }
@@ -43,7 +43,7 @@ public class ModPlayerData
         DeadReason = DeadReasonData.Alive;
         PUID = pc.GetClient().ProductUserId;
     }
-    
+
     [GameModuleInitializer]
     public static void Init()
     {
@@ -61,12 +61,11 @@ public class ModPlayerData
             AllPlayerDataForMod[id] = data;
         }
     }
-    
-    
+
     // 到后面，便是获取了
     public static ModPlayerData GetModPlayerDataById(byte id) => AllPlayerDataForMod[id] ?? null;
     public static string GetModPlayerDataName(byte id) => GetModPlayerDataById(id).Name;
-    
+
     // 功能
     public void SetDead() => IsDead = true;
     public void SetExiled() => IsExiled = true;
@@ -76,12 +75,12 @@ public class ModPlayerData
             DeadReason = deathReason;
     }
     public void SetDisconnected()
-    { 
+    {
         IsDisconnected = true;
         SetDead();
         SetDeadReason(DeadReasonData.Disconnect);
     }
-    public void SetRole(RoleTypes Role)  
+    public void SetRole(RoleTypes Role)
     {
         if (!RoleHas)
             role = Role;
@@ -99,7 +98,6 @@ public class ModPlayerData
     public static int GetLongestNameByteCount() => AllPlayerDataForMod.Values.Select(data => data.Name.GetByteCount()).OrderByDescending(byteCount => byteCount).FirstOrDefault();
 }
 
-
 static class PlayerControlData
 {
     public static ModPlayerData GetPlayerData(this PlayerControl pc) =>
@@ -113,7 +111,6 @@ static class PlayerControlData
     public static void SetRole(this PlayerControl pc, RoleTypes role) => pc.GetPlayerData().SetRole(role);
     public static bool IsImpostor(this PlayerControl pc) => pc.GetPlayerRoleTeam() == RoleTeam.Impostor;
 }
-
 // 死亡原因
 public enum DeadReasonData
 {

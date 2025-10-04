@@ -2,7 +2,6 @@ using HarmonyLib;
 
 namespace YuEzTools;
 
-
 [HarmonyPatch(typeof(HatManager), nameof(HatManager.Initialize))]
 public static class UnlockCosmetics
 {
@@ -11,7 +10,7 @@ public static class UnlockCosmetics
     public static void Postfix(HatManager __instance)
     {
         if (Main.PatchCosmetics.Value)
-        { 
+        {
             foreach (var bundle in __instance.allBundles)
             { bundle.Free = true; }
 

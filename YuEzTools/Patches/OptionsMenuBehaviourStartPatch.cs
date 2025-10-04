@@ -9,13 +9,13 @@ namespace YuEzTools;
 public static class OptionsMenuBehaviourStartPatch
 {
     private static ClientOptionItem SwitchVanilla;
-    
+
 
     public static void Postfix(OptionsMenuBehaviour __instance)
     {
         if (__instance.DisableMouseMovement == null) return;
         Main.SwitchVanilla.Value = false;
-        
+
         if (SwitchVanilla == null || SwitchVanilla.ToggleButton == null)
         {
             SwitchVanilla = ClientOptionItem.Create(GetString("SwitchVanilla"), Main.SwitchVanilla, __instance, SwitchVanillaButtonToggle);

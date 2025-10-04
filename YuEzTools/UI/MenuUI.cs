@@ -4,6 +4,7 @@ using YuEzTools.Get;
 using YuEzTools.Patches;
 
 namespace YuEzTools.UI;
+
 public class MenuUI : MonoBehaviour
 {
 
@@ -19,8 +20,9 @@ public class MenuUI : MonoBehaviour
     {
         //
     }
-    
-    private void Update(){
+
+    private void Update()
+    {
 
         if (Input.GetKeyDown(Utils.Utils.stringToKeycode(Main.menuKeybind.Value)))
         {
@@ -39,9 +41,9 @@ public class MenuUI : MonoBehaviour
         }
 
         Main.WinTextSize.Value = Toggles.WinTextSize;
-        
+
         if (isGUIActive) firstoOpenMenuUI = false;
-        if(!isGUIActive)
+        if (!isGUIActive)
         {
             groups.Clear();
             groups.Add(new GroupInfo(Translator.GetString("MenuUI.AntiCheat"), false, new List<ToggleInfo>()
@@ -115,7 +117,7 @@ public class MenuUI : MonoBehaviour
                             x => Toggles.reShowRoleT = x),
                     new ToggleInfo(Translator.GetString("MenuUI.ShowInfoInLobby"), () => Toggles.ShowInfoInLobby,
                             x => Toggles.ShowInfoInLobby = x),
-                    
+
                 }, new List<SubmenuInfo>
                 {
                     new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.Left"), false, new List<ToggleInfo>()

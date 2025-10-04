@@ -84,11 +84,11 @@ public static class Translator
                 str = str.Replace(rd.Key, rd.Value);
         return str;
     }
-    
+
     public static string GetString(string str, SupportedLangs langId)
     {
         var res = $"<NOT FOUND:{str}>";
-        
+
         try
         {
             // 在当前语言中寻找翻译

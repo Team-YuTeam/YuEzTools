@@ -18,12 +18,12 @@ class OnPlayerJoinedPatch
         if (client == null)
         {
             Logger.Info(
-                $"空加入,Client == null","OnPlayerJoined");
+                $"空加入,Client == null", "OnPlayerJoined");
             if (AmongUsClient.Instance.AmHost)
             {
-                AmongUsClient.Instance.KickPlayer(client.Id,true);
+                AmongUsClient.Instance.KickPlayer(client.Id, true);
                 Logger.Info(
-                    $"空加入,Client == null,已尝试ban","OnPlayerJoined");
+                    $"空加入,Client == null,已尝试ban", "OnPlayerJoined");
             }
             return;
         }
@@ -48,15 +48,15 @@ class OnPlayerJoinedPatch
             SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("NotLogin")}</color>");
             return;
         }
-        else if(client.FriendCode == "")
+        else if (client.FriendCode == "")
         {
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("unKickNotLogin")}</color>");
             SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("unKickNotLogin")}</color>");
         }
 
-        if (Utils.Utils.CheckBanList(client.FriendCode,client?.ProductUserId) || Utils.Utils.CheckBanner(client.FriendCode,client?.ProductUserId) || Utils.Utils.CheckFirstBanList(client.FriendCode))
+        if (Utils.Utils.CheckBanList(client.FriendCode, client?.ProductUserId) || Utils.Utils.CheckBanner(client.FriendCode, client?.ProductUserId) || Utils.Utils.CheckFirstBanList(client.FriendCode))
         {
-            if(AmongUsClient.Instance.AmHost) AmongUsClient.Instance.KickPlayer(client.Id, true);
+            if (AmongUsClient.Instance.AmHost) AmongUsClient.Instance.KickPlayer(client.Id, true);
             Logger.Info($"{client?.PlayerName}黑名单 已揭示/踢出", "OnPlayerJoined");
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
             SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("BlackList")}</color>");
@@ -72,9 +72,11 @@ class OnPlayerJoinedPatch
         }
     }
 }
-[HarmonyPatch(typeof(AmongUsClient),nameof(AmongUsClient.OnPlayerLeft))]
-class OnPlayerLeftPatch{
-    public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client){
+[HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnPlayerLeft))]
+class OnPlayerLeftPatch
+{
+    public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
+    {
         if (GetPlayer.IsInGame)
         {
             client.Character.SetDisconnected();
@@ -113,18 +115,18 @@ class IntroCutscenePatch
     {
         if (Toggles.AutoStartGame && AmongUsClient.Instance.AmHost)
         {
-            
+
             PlayerControl.LocalPlayer.RpcTeleport(Utils.Utils.GetBlackRoomPS());
-            Logger.Info("尝试TP玩家","GM");
+            Logger.Info("尝试TP玩家", "GM");
             //PlayerControl.LocalPlayer.RpcExile();
             Ifkill = true;
-            MurderHacker.murderHacker(PlayerControl.LocalPlayer,MurderResultFlags.Succeeded);
-            Logger.Info("尝试击杀玩家","GM");
+            MurderHacker.murderHacker(PlayerControl.LocalPlayer, MurderResultFlags.Succeeded);
+            Logger.Info("尝试击杀玩家", "GM");
             // PlayerState.GetByPlayerId(PlayerControl.LocalPlayer.PlayerId).SetDead();
             if (AmongUsClient.Instance.AmHost && Main.HasHacker)
             {
                 Logger.Info("Host Try end game with room " +
-                            GameStartManager.Instance.GameRoomNameCode.text,"StartPatch");
+                            GameStartManager.Instance.GameRoomNameCode.text, "StartPatch");
                 try
                 {
                     GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
@@ -145,7 +147,7 @@ class DisconnectInternalPatch
     {
         ShowDisconnectPopupPatch.Reason = reason;
         ShowDisconnectPopupPatch.StringReason = stringReason;
-        
+
         Logger.Info($"断开连接(理由:{reason}:{stringReason}，Ping:{__instance.Ping})", "Session");
         if (AmongUsClient.Instance.AmHost && GetPlayer.IsInGame)
         {
@@ -168,27 +170,27 @@ class InnerNetClientSpawnPatch
     public static string serverName = "";
     public static void Postfix([HarmonyArgument(1)] int ownerId, [HarmonyArgument(2)] SpawnFlags flags)
     {
-        
+
         ClientData client = GetPlayer.GetClientById(ownerId);
-        
-        if(flags != SpawnFlags.IsClientCharacter) return;
-        
-        if(ServerUpdatePatch.re == 50605450 || GameStartManagerPatch.roomMode != RoomMode.Plus25) return;
-        
+
+        if (flags != SpawnFlags.IsClientCharacter) return;
+
+        if (ServerUpdatePatch.re == 50605450 || GameStartManagerPatch.roomMode != RoomMode.Plus25) return;
+
         _ = new LateTask(() =>
         {
             if (client.Character == null) return;
             //if (Main.OverrideWelcomeMsg != "")
-            Utils.Utils.SendMessage(string.Format(GetString("Message.Welcome"),(GetPlayer.IsOnlineGame ? serverName : "Local") , GameStartManager.Instance.GameRoomNameCode.text), client.Character.PlayerId);
+            Utils.Utils.SendMessage(string.Format(GetString("Message.Welcome"), (GetPlayer.IsOnlineGame ? serverName : "Local"), GameStartManager.Instance.GameRoomNameCode.text), client.Character.PlayerId);
             // else TemplateManager.SendTemplate("welcome", client.Character.PlayerId, true);
         }, 3f, "Welcome Message");
-        
+
         Logger.Msg($"Spawn player data: ID {ownerId}: {client.PlayerName}", "InnerNetClientSpawn");
         if (GetPlayer.IsOnlineGame)
         {
             _ = new LateTask(() =>
             {
-                if (GetPlayer.IsLobby && client.Character != null && LobbyBehaviour.Instance != null )//&& GetPlayer.IsVanillaServer)
+                if (GetPlayer.IsLobby && client.Character != null && LobbyBehaviour.Instance != null)//&& GetPlayer.IsVanillaServer)
                 {
                     // Only for vanilla
                     if (!client.Character.OwnedByHost())
@@ -229,9 +231,9 @@ public class LobbyBehaviourPatch
             SoundManager.Instance.CrossFadeSound("MapTheme", __instance.MapTheme, 0.5f);
         }
     }
-    [HarmonyPatch(nameof(LobbyBehaviour.Start)),HarmonyPostfix]
+    [HarmonyPatch(nameof(LobbyBehaviour.Start)), HarmonyPostfix]
     public static void Start_Postfix(LobbyBehaviour __instance)
     {
-        
+
     }
 }
