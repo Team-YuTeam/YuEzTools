@@ -1,5 +1,8 @@
 using Hazel;
+using YuEzTools.AntiCheat;
 using YuEzTools.Modules;
+using YuEzTools.UI;
+using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;
 

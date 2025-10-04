@@ -1,4 +1,5 @@
 using Il2CppSystem;
+using YuEzTools.UI;
 using static CosmeticsLayer;
 
 namespace YuEzTools.Patches;

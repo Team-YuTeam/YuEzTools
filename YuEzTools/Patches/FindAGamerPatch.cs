@@ -1,6 +1,7 @@
 using Il2CppSystem;
 using InnerNet;
 using UnityEngine;
+using YuEzTools.Modules;
 
 namespace YuEzTools.Patches;
 
@@ -60,11 +61,11 @@ public static class MatchMakerGameButtonSetGamePatch
             Platforms.Playstation => "PS",
 
             Platforms.StandaloneMac => "Mac",
-            Platforms.IPhone => Translator.GetString("iPhone"),
-            Platforms.Android => Translator.GetString("Android"),
+            Platforms.IPhone => GetString("iPhone"),
+            Platforms.Android => GetString("Android"),
 
             Platforms.Unknown or
-            _ => Translator.GetString("Platforms.Unknown")
+            _ => GetString("Platforms.Unknown")
         };
         Logger.Info(game.IPString+":"+game.Port, "FAG");
         string str = Math.Abs(game.GameId).ToString();
@@ -79,7 +80,7 @@ public static class MatchMakerGameButtonSetGamePatch
                 $"({platforms})" +
                 $"</color>" +
                 $"</size>";
-        game.HostName += $"<size=40%> ({Translator.GetString("ToCloseThisRoom")}{Math.Max(0, 100 - game.Age / 100)}%)</size>";
+        game.HostName += $"<size=40%> ({GetString("ToCloseThisRoom")}{Math.Max(0, 100 - game.Age / 100)}%)</size>";
         End:
         Logger.Info("--------This room end.--------", "FindAGamerPatch");
     }

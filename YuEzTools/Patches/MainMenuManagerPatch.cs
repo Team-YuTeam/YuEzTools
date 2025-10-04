@@ -1,6 +1,9 @@
 using System;
 using TMPro;
 using UnityEngine;
+using YuEzTools.Helpers;
+using YuEzTools.Modules;
+using YuEzTools.UI;
 using Object = UnityEngine.Object;
 
 namespace YuEzTools.Patches;
@@ -197,9 +200,9 @@ public class MainMenuManagerPatch
                     }
                     else
                     {
-                        CustomPopup.Show(Translator.GetString("UpdateBySelfTitle"), Translator.GetString("UpdateBySelfText"), new()
+                        CustomPopup.Show(GetString("UpdateBySelfTitle"), GetString("UpdateBySelfText"), new()
                         {
-                            (Translator.GetString(StringNames.Okay), null)
+                            (GetString(StringNames.Okay), null)
                         });
                     }
                 }

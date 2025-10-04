@@ -1,4 +1,5 @@
 using Hazel;
+using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;
 

@@ -1,6 +1,7 @@
 using AmongUs.GameOptions;
 using TMPro;
 using YuEzTools.Modules;
+using YuEzTools.UI;
 using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;

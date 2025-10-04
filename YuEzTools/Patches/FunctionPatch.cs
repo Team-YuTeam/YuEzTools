@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using UnityEngine;
+using YuEzTools.Modules;
 
 namespace YuEzTools.Patches;
 
@@ -57,7 +58,7 @@ public class FunctionPatch
     {
         Main.Logger.LogInfo("重置倒计时");
         GameStartManager.Instance.ResetStartState();
-        SendInGamePatch.SendInGame(Translator.GetString("FunctionPatch.AbolishDownTimer"));
+        SendInGamePatch.SendInGame(GetString("FunctionPatch.AbolishDownTimer"));
     }
 
     public static void DumpLog()
@@ -68,7 +69,7 @@ public class FunctionPatch
         if (!Directory.Exists(f)) Directory.CreateDirectory(f);
         FileInfo file = new(@$"{Environment.CurrentDirectory}/BepInEx/LogOutput.log");
         file.CopyTo(@filename);
-        SendInGamePatch.SendInGame($"{Translator.GetString("FunctionPatch.DumpLog")} YuET - v{Main.PluginVersion}-{t}.log");
+        SendInGamePatch.SendInGame($"{GetString("FunctionPatch.DumpLog")} YuET - v{Main.PluginVersion}-{t}.log");
         ProcessStartInfo psi = new ProcessStartInfo("Explorer.exe")
             { Arguments = "/e,/select," + @filename.Replace("/", "\\") };
         Process.Start(psi);

@@ -2,6 +2,8 @@ using InnerNet;
 using System;
 using TMPro;
 using UnityEngine;
+using YuEzTools.UI;
+using YuEzTools.Utils;
 using Object = UnityEngine.Object;
 
 namespace YuEzTools.Patches;

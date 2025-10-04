@@ -54,11 +54,11 @@ static class GetPlayer
     }
     public static string GetColorRole(PlayerControl pc)
     {
-        return "<color=" + Utils.Utils.GetRoleHtmlColor(pc.Data.RoleType) + ">" + pc.Data.Role.NiceName + "</color>";
+        return "<color=" + Utils.GetRoleHtmlColor(pc.Data.RoleType) + ">" + pc.Data.Role.NiceName + "</color>";
     }
     public static string GetRColorName(PlayerControl pc, string name)
     {
-        return "<color=" + Utils.Utils.GetRoleHtmlColor(pc.Data.RoleType) + ">" + name + "</color>";
+        return "<color=" + Utils.GetRoleHtmlColor(pc.Data.RoleType) + ">" + name + "</color>";
     }
     public static string GetNameRole(PlayerControl player)
     {

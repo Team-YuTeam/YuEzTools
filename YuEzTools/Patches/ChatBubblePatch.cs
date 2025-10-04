@@ -1,4 +1,6 @@
 using UnityEngine;
+using YuEzTools.Modules;
+using YuEzTools.UI;
 
 namespace YuEzTools.Patches;
 
@@ -32,13 +34,13 @@ public static class ChatBubblePatch
             chatText.Contains("台独") ||
             chatText.Contains("共产党")) // 游戏名字屏蔽词)
         {
-            if(Toggles.DarkMode) chatText = $"<color=#FF0000>[{Translator.GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
-            else chatText = $"<color=#FF0000>[{Translator.GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
+            if(Toggles.DarkMode) chatText = $"<color=#FF0000>[{GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
+            else chatText = $"<color=#FF0000>[{GetString("SuspectedViolationMessage")}]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
         }
         else if (Main.isChatCommand)
         {
-            if(Toggles.DarkMode) chatText = $"<color=#1E90FF>[{Translator.GetString("MessgaeFromYuET")}]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
-            else chatText = $"<color=#008B8B>[{Translator.GetString("MessgaeFromYuET")}]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
+            if(Toggles.DarkMode) chatText = $"<color=#1E90FF>[{GetString("MessgaeFromYuET")}]</color>\n" + ColorString(Color.black, chatText.TrimEnd('\0'));
+            else chatText = $"<color=#008B8B>[{GetString("MessgaeFromYuET")}]</color>\n" + ColorString(Color.white, chatText.TrimEnd('\0'));
             Main.isChatCommand = false;
         }
         else

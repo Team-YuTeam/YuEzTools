@@ -2,6 +2,7 @@ using Hazel;
 using InnerNet;
 using YuEzTools.Utils;
 using YuEzTools.Modules;
+using YuEzTools.UI;
 
 namespace YuEzTools.Patches;
 

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Text;
 using TMPro;
 using YuEzTools.UI;
+using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;
 
@@ -109,7 +110,7 @@ internal class PingTrackerUpdatePatch
         if ((Toggles.ShowFPS || Toggles.ShowPing) && Toggles.ShowServer)
             __instance.text.text += "  " + (GetPlayer.IsOnlineGame ? ServerName : "<color=#D3D3D3>Local</color>");
         else if (Toggles.ShowServer)
-            __instance.text.text = (GetPlayer.IsOnlineGame ? ServerName : "<color=#D3D3D3>Local</color>");
+            __instance.text.text = GetPlayer.IsOnlineGame ? ServerName : "<color=#D3D3D3>Local</color>";
 
 
         if (!Toggles.ShowPing && !Toggles.ShowServer && !Toggles.ShowFPS) __instance.text.text = "";

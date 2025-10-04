@@ -4,19 +4,20 @@ using BepInEx.Configuration;
 using BepInEx.Unity.IL2CPP;
 using UnityEngine;
 using YuEzTools.Attributes;
+using YuEzTools.Modules;
 using YuEzTools.UI;
 using YuEzTools.Utils;
 
 [assembly: AssemblyFileVersion(YuEzTools.Main.PluginVersion)]
 [assembly: AssemblyInformationalVersion(YuEzTools.Main.PluginVersion)]
 [assembly: AssemblyVersion(YuEzTools.Main.PluginVersion)]
+
 namespace YuEzTools;
 
 [BepInPlugin(PluginGuid, "YuEzTools", PluginVersion)]
 [BepInProcess("Among Us.exe")]
 public class Main : BasePlugin
 {
-
     public static readonly string ModName = "YuEzTools"; // 咱们的模组名字
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
     public static readonly string MainMenuText = "I am so sad..."; // 咱们模组的首页标语

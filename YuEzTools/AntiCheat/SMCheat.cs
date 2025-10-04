@@ -1,3 +1,5 @@
+using YuEzTools.Utils;
+
 namespace YuEzTools.AntiCheat;
 
 public class SMCheat

@@ -1,6 +1,5 @@
 using UnityEngine;
 using InnerNet;
-using Il2CppSystem.Collections.Generic;
 using System.IO;
 using Hazel;
 using AmongUs.GameOptions;
@@ -9,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using YuEzTools.Modules;
+using YuEzTools.Patches;
 
 namespace YuEzTools.Utils;
 
@@ -22,7 +22,7 @@ public static class Utils
         }
     }
 
-    public static Dictionary<string, Sprite> CachedSprites = new Dictionary<string, Sprite>();
+    public static Il2CppSystem.Collections.Generic.Dictionary<string, Sprite> CachedSprites = new Il2CppSystem.Collections.Generic.Dictionary<string, Sprite>();
     public static Sprite LoadSprite(string path, float pixelsPerUnit = 1f)
     {
         try

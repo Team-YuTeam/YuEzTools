@@ -2,6 +2,7 @@ using AmongUs.GameOptions;
 using YuEzTools.Attributes;
 using UnityEngine;
 using YuEzTools.Helpers;
+using YuEzTools.Utils;
 
 namespace YuEzTools.Modules;
 

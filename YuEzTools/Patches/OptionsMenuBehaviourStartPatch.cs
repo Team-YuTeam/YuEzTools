@@ -1,3 +1,6 @@
+using YuEzTools.Modules;
+using YuEzTools.Utils;
+
 namespace YuEzTools.Patches;
 
 //��Դ��https://github.com/tukasa0001/TownOfHost/pull/1265
