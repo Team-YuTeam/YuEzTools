@@ -3,9 +3,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using YuEzTools.Updater;
 using Object = UnityEngine.Object;
-using static YuEzTools.Translator;
 
 namespace YuEzTools.Patches;
 

@@ -3,10 +3,7 @@ using InnerNet;
 using System;
 using TMPro;
 using UnityEngine;
-using static YuEzTools.Translator;
 using Object = UnityEngine.Object;
-using YuEzTools.Get;
-using static YuEzTools.Logger;
 
 namespace YuEzTools.Patches;
 

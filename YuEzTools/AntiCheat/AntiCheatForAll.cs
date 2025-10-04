@@ -3,9 +3,7 @@ using Hazel;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using YuEzTools.Get;
 using YuEzTools.Modules;
-using static YuEzTools.Translator;
 
 namespace YuEzTools.AntiCheat;
 

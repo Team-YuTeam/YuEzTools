@@ -1,11 +1,8 @@
 using Hazel;
 using HarmonyLib;
 using InnerNet;
-using YuEzTools.Get;
-using YuEzTools.Patches;
 using YuEzTools.Utils;
 using YuEzTools.Modules;
-using static YuEzTools.Translator;
 
 namespace YuEzTools.Patches;
 

@@ -1,6 +1,4 @@
 using HarmonyLib;
-using YuEzTools.Get;
-using static YuEzTools.Translator;
 
 namespace YuEzTools.Patches;
 

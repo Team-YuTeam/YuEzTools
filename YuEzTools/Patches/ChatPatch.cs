@@ -1,7 +1,6 @@
 using HarmonyLib;
 using Hazel;
 using System.Linq;
-using YuEzTools.Get;
 
 namespace YuEzTools.Patches;
 

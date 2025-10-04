@@ -1,8 +1,6 @@
 using Hazel;
 using HarmonyLib;
-using YuEzTools.Get;
 using YuEzTools.Modules;
-using YuEzTools.Patches;
 
 namespace YuEzTools.Patches;
 

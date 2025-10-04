@@ -12,8 +12,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
-using YuEzTools.Modules;
-using YuEzTools.UI;
 
 namespace YuEzTools.Modules;
 

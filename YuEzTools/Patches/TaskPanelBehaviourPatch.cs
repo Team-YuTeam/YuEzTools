@@ -1,8 +1,6 @@
 using HarmonyLib;
 using System.Linq;
 using System.Text;
-using YuEzTools.Get;
-using static YuEzTools.Translator;
 using YuEzTools.Modules;
 using YuEzTools.Utils;
 

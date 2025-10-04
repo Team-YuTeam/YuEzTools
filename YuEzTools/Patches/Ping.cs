@@ -2,10 +2,7 @@ using HarmonyLib;
 using UnityEngine;
 using System.Text;
 using TMPro;
-using YuEzTools.Get;
-using YuEzTools.Patches;
 using YuEzTools.UI;
-using static YuEzTools.Translator;
 
 namespace YuEzTools.Patches;
 

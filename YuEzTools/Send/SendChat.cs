@@ -1,5 +1,3 @@
-using YuEzTools.Get;
-
 namespace YuEzTools.Send;
 
 public class SendChat

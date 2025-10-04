@@ -1,7 +1,6 @@
 using HarmonyLib;
 using TMPro;
 using UnityEngine;
-using static YuEzTools.Translator;
 
 namespace YuEzTools.UI;
 

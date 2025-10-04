@@ -7,10 +7,7 @@ using TMPro;
 using YuEzTools.Modules;
 using UnityEngine;
 using YuEzTools.Attributes;
-using static YuEzTools.Translator;
-using YuEzTools.Get;
 using YuEzTools.Utils;
-using static YuEzTools.Logger;
 
 namespace YuEzTools.Patches;
 

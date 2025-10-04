@@ -1,5 +1,4 @@
 using AmongUs.GameOptions;
-using static YuEzTools.Translator;
 
 namespace YuEzTools.Modules;
 

@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using YuEzTools.Get;
 using YuEzTools.Patches;
 
 namespace YuEzTools.UI;

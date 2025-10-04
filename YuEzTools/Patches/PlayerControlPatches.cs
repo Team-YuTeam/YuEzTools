@@ -1,9 +1,7 @@
 using AmongUs.GameOptions;
 using HarmonyLib;
 using TMPro;
-using YuEzTools.Get;
 using YuEzTools.Modules;
-using static YuEzTools.Translator;
 using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;

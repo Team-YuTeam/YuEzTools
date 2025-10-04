@@ -2,7 +2,6 @@ using HarmonyLib;
 using System.Data;
 using System.Linq;
 using UnityEngine;
-using YuEzTools.Get;
 using YuEzTools.UI;
 
 namespace YuEzTools.Keys;

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Reflection;
-using YuEzTools.Updater;
 
 namespace YuEzTools.UI;
 

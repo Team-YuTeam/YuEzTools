@@ -1,5 +1,4 @@
 using Hazel;
-using YuEzTools.Get;
 
 namespace YuEzTools.AntiCheat;
 

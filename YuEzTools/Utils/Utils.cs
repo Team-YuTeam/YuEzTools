@@ -5,12 +5,10 @@ using System.IO;
 using Hazel;
 using System.Reflection;
 using AmongUs.GameOptions;
-using static YuEzTools.Translator;
 using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using YuEzTools.Get;
 using YuEzTools.Modules;
 
 namespace YuEzTools.Utils;

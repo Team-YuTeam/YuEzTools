@@ -1,7 +1,6 @@
 using HarmonyLib;
 using Hazel;
 using YuEzTools.AntiCheat;
-using YuEzTools.Get;
 
 namespace YuEzTools.Patches;
 

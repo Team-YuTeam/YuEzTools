@@ -1,6 +1,5 @@
 using HarmonyLib;
 using UnityEngine;
-using static YuEzTools.Translator;
 
 namespace YuEzTools.Patches;
 
