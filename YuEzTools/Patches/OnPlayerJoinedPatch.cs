@@ -10,7 +10,7 @@ namespace YuEzTools.Patches;
 class OnPlayerJoinedPatch
 {
     //private static int CID;
-    public static void Prefix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
+    public static void Prefix([HarmonyArgument(0)] ClientData client)
     {
         if (client == null)
         {
@@ -60,7 +60,7 @@ class OnPlayerJoinedPatch
         }
     }
 
-    public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
+    public static void Postfix()
     {
         if (AmongUsClient.Instance.AmHost)
         {
@@ -72,7 +72,7 @@ class OnPlayerJoinedPatch
 [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnPlayerLeft))]
 class OnPlayerLeftPatch
 {
-    public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
+    public static void Postfix([HarmonyArgument(0)] ClientData client)
     {
         if (GetPlayer.IsInGame)
         {
@@ -97,7 +97,7 @@ class OnGameJoined
     //     if (AmongUsClient.Instance.AmHost && Toggles.AutoStartGame)
     //         MurderHacker.murderHacker(PlayerControl.LocalPlayer, MurderResultFlags.Succeeded);
     // }
-    public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
+    public static void Postfix()
     {
         ShowDisconnectPopupPatch.ReasonByHost = string.Empty;
     }
@@ -137,6 +137,7 @@ class IntroCutscenePatch
         }
     }
 }
+
 [HarmonyPatch(typeof(InnerNetClient), nameof(InnerNetClient.DisconnectInternal))]
 class DisconnectInternalPatch
 {
@@ -178,7 +179,7 @@ class InnerNetClientSpawnPatch
         {
             if (client.Character == null) return;
             //if (Main.OverrideWelcomeMsg != "")
-            Utils.Utils.SendMessage(string.Format(GetString("Message.Welcome"), (GetPlayer.IsOnlineGame ? serverName : "Local"), GameStartManager.Instance.GameRoomNameCode.text), client.Character.PlayerId);
+            Utils.Utils.SendMessage(string.Format(GetString("Message.Welcome"), GetPlayer.IsOnlineGame ? serverName : "Local", GameStartManager.Instance.GameRoomNameCode.text), client.Character.PlayerId);
             // else TemplateManager.SendTemplate("welcome", client.Character.PlayerId, true);
         }, 3f, "Welcome Message");
 
@@ -227,10 +228,5 @@ public class LobbyBehaviourPatch
             if (MapThemeSound != null) return;
             SoundManager.Instance.CrossFadeSound("MapTheme", __instance.MapTheme, 0.5f);
         }
-    }
-    [HarmonyPatch(nameof(LobbyBehaviour.Start)), HarmonyPostfix]
-    public static void Start_Postfix(LobbyBehaviour __instance)
-    {
-
     }
 }

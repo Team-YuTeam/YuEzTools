@@ -3,9 +3,8 @@ namespace YuEzTools.Patches;
 [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnDisconnected))]
 internal class OnDisconnectedPatch
 {
-    public static void Postfix(AmongUsClient __instance)
+    public static void Postfix()
     {
-
         Main.VisibleTasksCount = false;
     }
 }

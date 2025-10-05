@@ -8,14 +8,13 @@
 		<Authors>Yu</Authors>
 		<langVersion>preview</langVersion>
 		<Configurations>Debug;Release;Canary</Configurations>
-		
 	</PropertyGroup>
 
 	<PropertyGroup>
 		<DebugSymbols>true</DebugSymbols>
 		<DebugType>embedded</DebugType>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
 		<EmbeddedResource Include=".\Resources\**" />
 	</ItemGroup>

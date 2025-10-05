@@ -17,11 +17,11 @@ public static class ChatBubblePatch
         else if (Main.isChatCommand && Toggles.DarkMode) sr.color = new Color(255, 255, 255, 255);
         //if (modded)
         //{
-        if (chatText.Contains("░") ||
-            chatText.Contains("▄") ||
-            chatText.Contains("█") ||
-            chatText.Contains("▌") ||
-            chatText.Contains("▒") ||
+        if (chatText.Contains('░') ||
+            chatText.Contains('▄') ||
+            chatText.Contains('█') ||
+            chatText.Contains('▌') ||
+            chatText.Contains('▒') ||
             chatText.Contains("习近平") ||
             chatText.Contains("毛泽东") ||
             chatText.Contains("周恩来") ||

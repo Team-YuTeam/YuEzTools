@@ -33,7 +33,7 @@ internal class CoStartGamePatch
     }
 }
 
-[HarmonyPatch(typeof(IntroCutscene))]//    [HarmonyPatch(nameof(IntroCutscene.CoBegin)), HarmonyPrefix]
+[HarmonyPatch(typeof(IntroCutscene))]
 class StartPatch
 {
     [HarmonyPatch(nameof(IntroCutscene.CoBegin)), HarmonyPrefix]
@@ -51,8 +51,6 @@ class StartPatch
             Info("成员检验" + Main.ClonePlayerControlsOnStart[c].GetRealName(), "StartPatch");
 
             //结算格式："\n" +$"{Utils.Utils.ColorString(pc1.Data.Color,pc1.GetRealName())}" +" - "+ GetPlayer.GetColorRole(pc1);
-
-
             if (pc1.Data.Role.IsImpostor)
             {
                 GetPlayer.numImpostors++;
@@ -68,11 +66,6 @@ class StartPatch
         Main.isFirstSendEnd = true;
         Info("设置isFirstSendEnd为" + Main.isFirstSendEnd.ToString(), "StartPatch");
     }
-    [HarmonyPatch(nameof(IntroCutscene.CoBegin)), HarmonyPostfix]
-    public static void Postfix()
-    {
-
-    }
 }
 
 [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnGameEnd))]
@@ -81,11 +74,11 @@ class EndGamePatch
     public static Dictionary<byte, string> SummaryText = new();
     public static string WinReason = "";
     public static string WinTeam = "";
-    public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ref EndGameResult endGameResult)
+    public static void Postfix([HarmonyArgument(0)] ref EndGameResult endGameResult)
     {
         Info("== 游戏结束 ==", "EndGamePatch");
         Info("结束原因：" + endGameResult.GameOverReason.ToString(), "EndGamePatch");
-        SummaryText = new();
+        SummaryText = [];
         foreach (var id in ModPlayerData.AllPlayerDataForMod.Keys)
             SummaryText[id] = Utils.Utils.SummaryTexts(id);
         WinReason = endGameResult.GameOverReason.ToString();
@@ -93,6 +86,7 @@ class EndGamePatch
         Main.isFirstSendEnd = true;
     }
 }
+
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CoSetRole))]
 class CoSetRolePatch
 {
@@ -101,6 +95,7 @@ class CoSetRolePatch
         __instance.SetRole(roleTypes);
     }
 }
+
 // Thanks Nebula on the Ship
 public static class DetailDialog
 {
@@ -142,7 +137,6 @@ public static class DetailDialog
         saveText.fontSize = 1.25f;
         saveText.text = "";
 
-
         text = new TMP_Text[detail.Length];
         float width = 0.0f;
         for (int i = 0; i < detail.Length; i++)
@@ -182,26 +176,22 @@ public static class DetailDialog
     {
         dialog.SetActive(true);
         dialog.transform.localScale = new Vector3(0.0f, 0.0f, 1.0f);
-        endGameManager.StartCoroutine(Effects.Lerp(0.12f,
-            new Action<float>((p) =>
-            {
-                dialog.transform.localScale = new Vector3(p, p, 1.0f);
-            })
-            ));
+        endGameManager.StartCoroutine(Effects.Lerp(0.12f, new Action<float>((p) =>
+        {
+            dialog.transform.localScale = new Vector3(p, p, 1.0f);
+        })));
     }
 
     static public void Close()
     {
-        endGameManager.StartCoroutine(Effects.Lerp(0.12f,
-            new Action<float>((p) =>
-            {
-                dialog.transform.localScale = new Vector3(1.0f - p, 1.0f - p, 1.0f);
-                if (p == 1f) dialog.SetActive(false);
-            }
-            )));
+        endGameManager.StartCoroutine(Effects.Lerp(0.12f, new Action<float>((p) =>
+        {
+            dialog.transform.localScale = new Vector3(1.0f - p, 1.0f - p, 1.0f);
+            if (p == 1f) dialog.SetActive(false);
+        })));
     }
-
 }
+
 [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.SetEverythingUp))]
 class SetEverythingUpPatch
 {

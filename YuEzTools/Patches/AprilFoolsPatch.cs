@@ -15,7 +15,6 @@ public static class AprilFoolsModePatch
     }
 }
 
-
 #region GameManager Patches
 [HarmonyPatch(typeof(NormalGameManager), nameof(NormalGameManager.GetBodyType))]
 public static class GetNormalBodyType_Patch
@@ -165,4 +164,3 @@ public static class LongBoiPatches
     }
 }
 #endregion
-

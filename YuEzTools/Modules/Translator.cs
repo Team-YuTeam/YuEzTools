@@ -117,6 +117,7 @@ public static class Translator
         }
         return res;
     }
+
     public static string GetString(StringNames stringName)
         => DestroyableSingleton<TranslationController>.Instance.GetString(stringName, new Il2CppReferenceArray<Il2CppSystem.Object>(0));
     public static string GetRoleString(string str, bool forUser = true)
@@ -126,6 +127,7 @@ public static class Translator
 
         return GetString(str, lang);
     }
+
     public static SupportedLangs GetUserLangByRegion()
     {
         try
@@ -139,6 +141,7 @@ public static class Translator
             return SupportedLangs.English;
         }
     }
+
     public static bool IsChineseUser => GetUserLangByRegion() == SupportedLangs.SChinese;
     public static bool IsChineseLanguageUser => GetUserLangByRegion() is SupportedLangs.SChinese or SupportedLangs.TChinese;
     public static void LoadCustomTranslation(string filename, SupportedLangs lang)
@@ -178,6 +181,7 @@ public static class Translator
         foreach (var title in translateMaps) sb.Append($"{title.Key}:\n");
         File.WriteAllText(@$"./{LANGUAGE_FOLDER_NAME}/template.dat", sb.ToString());
     }
+
     public static void ExportCustomTranslation()
     {
         LoadLangs();

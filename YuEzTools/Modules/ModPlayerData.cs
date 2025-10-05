@@ -23,14 +23,14 @@ public class ModPlayerData
 
     // 其他
     public bool IsDead { get; private set; }
-    public DeadReasonData DeadReason  { get; private set; }
-    public ModPlayerData Killer  { get; private set; }
+    public DeadReasonData DeadReason { get; private set; }
+    public ModPlayerData Killer { get; private set; }
     public bool IsDisconnected { get; private set; }
     public bool IsExiled { get; private set; }
     public bool IsByKilled { get; private set; }
     public string PUID { get; private set; }
 
-    public ModPlayerData(PlayerControl Player, string name, int colorid,Color color)
+    public ModPlayerData(PlayerControl Player, string name, int colorid, Color color)
     {
         pc = Player;
         Name = name;

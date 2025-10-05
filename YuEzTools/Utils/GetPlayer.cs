@@ -61,8 +61,8 @@ static class GetPlayer
         return player.GetRealName() + "(" + player.Data.Role.NiceName + ")";
     }
     public static byte GetActiveMapId() => GameOptionsManager.Instance.CurrentGameOptions.MapId;
-    public static bool IsExilling => ExileController.Instance != null && !(AirshipIsActive && SpawnInMinigame.Instance.isActiveAndEnabled);
-    private static Dictionary<byte, PlayerState> allPlayerStates = new(15);
+    public static bool IsExilling => ExileController.Instance != null && !(AirshipIsActive && Minigame.Instance.isActiveAndEnabled);
+    private static readonly Dictionary<byte, PlayerState> allPlayerStates = new(15);
     public static IReadOnlyDictionary<byte, PlayerState> AllPlayerStates => allPlayerStates;
     public static RoleTeam GetPlayerRoleTeam(this PlayerControl pc)
     {

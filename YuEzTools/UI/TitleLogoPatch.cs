@@ -128,7 +128,6 @@ internal class TitleLogoPatch
         if (!(BottomButtonBounds = GameObject.Find("BottomButtonBounds"))) return;
         BottomButtonBounds.transform.localPosition -= new Vector3(0f, 0.1f, 0f);
 
-
         CloseRightButton = new GameObject("CloseRightPanelButton");
         CloseRightButton.transform.SetParent(RightPanel.transform);
         CloseRightButton.transform.localPosition = new Vector3(-4.78f, 1.3f, 1f);
@@ -163,7 +162,7 @@ internal class TitleLogoPatch
 
     }
 
-    public static Dictionary<string, Sprite> CachedSprites = new();
+    public static Dictionary<string, Sprite> CachedSprites = [];
     public static Sprite LoadSprite(string path, float pixelsPerUnit = 1f)
     {
         try

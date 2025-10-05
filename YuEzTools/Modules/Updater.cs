@@ -16,8 +16,8 @@ namespace YuEzTools.Modules;
 public class ModUpdater
 {
     public static string DownloadFileTempPath = Assembly.GetExecutingAssembly().Location + ".temp";
-    private static IReadOnlyList<string> URLs => new List<string>
-    {
+    private static IReadOnlyList<string> URLs =>
+    [
 #if DEBUG
         $"file:///{Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "info.json")}",
 #else
@@ -27,7 +27,7 @@ public class ModUpdater
         "https://raw.kkgithub.com/Team-YuTeam/YuEzTools/main/YuEzTools/info.json",
         //"https://raw.gitcode.com/YuQZ/YuEzTools/raw/main/YuEzTools/info.json",
 #endif
-    };
+    ];
     private static IReadOnlyList<string> GetInfoFileUrlList()
     {
         var list = URLs.ToList();
@@ -36,7 +36,6 @@ public class ModUpdater
     }
 
     public static bool firstStart = true;
-
     public static bool hasUpdate = false;
     public static bool forceUpdate = false;
     public static bool isBroken = false;
@@ -94,6 +93,7 @@ public class ModUpdater
             return;
         }
     }
+
     public static bool CheckNowFileMD5()
     {
         if (md5 == "DEBUGVERSION")
@@ -109,6 +109,7 @@ public class ModUpdater
         Info("MD5 TRUE", "CheckNowFileMD5");
         return false;
     }
+
     public static void SetUpdateButtonStatus()
     {
         MainMenuManagerPatch.UpdateButton.gameObject.SetActive(isChecked && hasUpdate);
@@ -118,12 +119,14 @@ public class ModUpdater
         buttonText.text = $"{(CanUpdate ? GetString("updateButton") : GetString("updateNotice"))}\nv{showVer}";
         Info(showVer, "ver");
     }
+
     public static void Retry()
     {
         retried++;
         CustomPopup.Show(GetString("updateCheckPopupTitle"), GetString("PleaseWait"), null);
         _ = new LateTask(CheckForUpdate, 0.3f, "Retry Check Update");
     }
+
     public static void CheckForUpdate()
     {
         isChecked = false;
@@ -183,12 +186,13 @@ public class ModUpdater
         }
         else
         {
-            if (retried >= 2) CustomPopup.Show(GetString("updateCheckPopupTitle"), GetString("updateCheckFailedExit"), new() { (GetString(StringNames.Okay), null) });
-            else CustomPopup.Show(GetString("updateCheckPopupTitle"), GetString("updateCheckFailedRetry"), new() { (GetString("Retry"), Retry) });
+            if (retried >= 2) CustomPopup.Show(GetString("updateCheckPopupTitle"), GetString("updateCheckFailedExit"), [(GetString(StringNames.Okay), null)]);
+            else CustomPopup.Show(GetString("updateCheckPopupTitle"), GetString("updateCheckFailedRetry"), [(GetString("Retry"), Retry)]);
         }
 
         SetUpdateButtonStatus();
     }
+
     public static void BeforeCheck()
     {
         isChecked = false;
@@ -220,10 +224,11 @@ public class ModUpdater
             Info("Announcement (SChinese): " + announcement_zh, "CheckRelease");
         }
     }
+
     public static string Get(string url)
     {
         string result = string.Empty;
-        HttpClient req = new HttpClient();
+        HttpClient req = new();
         var res = req.GetAsync(url).Result;
         Stream stream = res.Content.ReadAsStreamAsync().Result;
         try
@@ -300,21 +305,22 @@ public class ModUpdater
             return false;
         }
     }
+
     public static void StartUpdate(string url = "waitToSelect")
     {
         if (url == "waitToSelect")
         {
-            CustomPopup.Show(GetString("updatePopupTitle"), GetString("updateChoseSource"), new()
-            {
+            CustomPopup.Show(GetString("updatePopupTitle"), GetString("updateChoseSource"),
+            [
                 (GetString("updateSource.Github"), () => StartUpdate(downloadUrl_github)),
                 // (Translator.GetString("updateSource.Gitee"), () => StartUpdate(downloadUrl_gitee)),
                 (GetString("updateSource.kkGithub"), () => StartUpdate(downloadUrl_kkgithub)),
                 (GetString(StringNames.Cancel), SetUpdateButtonStatus)
-            });
+            ]);
             return;
         }
 
-        Regex r = new Regex(@"^(http|https|ftp)\://([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&%\$\-]+)*@)?((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.[a-zA-Z]{2,4})(\:[0-9]+)?(/[^/][a-zA-Z0-9\.\,\?\'\\/\+&%\$#\=~_\-@]*)*$");
+        Regex r = new(@"^(http|https|ftp)\://([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&%\$\-]+)*@)?((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.[a-zA-Z]{2,4})(\:[0-9]+)?(/[^/][a-zA-Z0-9\.\,\?\'\\/\+&%\$#\=~_\-@]*)*$");
         if (!r.IsMatch(url))
         {
             CustomPopup.ShowLater(GetString("updatePopupTitleFialed"), string.Format(GetString("updatePingFialed"), "404 Not Found"), new() { (GetString(StringNames.Okay), SetUpdateButtonStatus) });
@@ -333,6 +339,7 @@ public class ModUpdater
             SetUpdateButtonStatus();
         });
     }
+
     public static void DeleteOldFiles()
     {
         try
@@ -351,6 +358,7 @@ public class ModUpdater
         }
         return;
     }
+
     public static async Task<(bool, string)> DownloadDLL(string url)
     {
         File.Delete(DownloadFileTempPath);
@@ -386,12 +394,14 @@ public class ModUpdater
             return (false, GetString("downloadFailed"));
         }
     }
+
     private static void OnDownloadProgressChanged(long? totalFileSize, long totalBytesDownloaded, double? progressPercentage)
     {
         string msg = $"{GetString("updateInProgress")}\n{totalFileSize / 1000}KB / {totalBytesDownloaded / 1000}KB  -  {(int)progressPercentage}%";
         Info(msg, "DownloadDLL");
         CustomPopup.UpdateTextLater(msg);
     }
+
     public static string GetMD5HashFromFile(string fileName)
     {
         try

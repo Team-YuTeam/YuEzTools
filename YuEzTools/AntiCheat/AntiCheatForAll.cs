@@ -47,11 +47,11 @@ internal class AntiCheatForAll
                         Warn($"在游戏内非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回", "ACFA");
                         return true;
                     }
-                    if (name.Contains("░") ||
-                        name.Contains("▄") ||
-                        name.Contains("█") ||
-                        name.Contains("▌") ||
-                        name.Contains("▒") ||
+                    if (name.Contains('░') ||
+                        name.Contains('▄') ||
+                        name.Contains('█') ||
+                        name.Contains('▌') ||
+                        name.Contains('▒') ||
                         name.Contains("习近平") ||
                         name.Contains("毛泽东") ||
                         name.Contains("周恩来") ||
@@ -64,9 +64,8 @@ internal class AntiCheatForAll
                         name.Contains("共产党") ||
                         name.Contains("Ez", StringComparison.OrdinalIgnoreCase) ||
                         name.Contains("Hack", StringComparison.OrdinalIgnoreCase) ||
-                        name.Contains("Cheat", StringComparison.OrdinalIgnoreCase)
+                        name.Contains("Cheat", StringComparison.OrdinalIgnoreCase))
                         // 游戏名字屏蔽词
-                        )
                     {
                         Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称包含*屏蔽词*，已驳回", "ACFA");
                         return true;
@@ -122,12 +121,11 @@ internal class AntiCheatForAll
                         Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法聊天，已驳回", "ACFA");
                         return true;
                     }
-                    if (
-                        text.Contains("░") ||
-                        text.Contains("▄") ||
-                        text.Contains("█") ||
-                        text.Contains("▌") ||
-                        text.Contains("▒") ||
+                    if (text.Contains('░') ||
+                        text.Contains('▄') ||
+                        text.Contains('█') ||
+                        text.Contains('▌') ||
+                        text.Contains('▒') ||
                         text.Contains("习近平") ||
                         text.Contains("毛泽东") ||
                         text.Contains("周恩来") ||
@@ -139,8 +137,7 @@ internal class AntiCheatForAll
                         text.Contains("台独") ||
                         text.Contains("共产党") || // 游戏名字屏蔽词
                         text.Contains("EzHacked", StringComparison.OrdinalIgnoreCase) ||
-                        text.Contains("Ez Hacked", StringComparison.OrdinalIgnoreCase)
-                    )
+                        text.Contains("Ez Hacked", StringComparison.OrdinalIgnoreCase))
                     {
                         Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】发送非法消息，已驳回", "ACFA");
                         return true;
@@ -459,14 +456,15 @@ internal class AntiCheatForAll
         Info("触发飞船事件！" + player.GetRealName() + $"是{player.GetPlayerRoleTeam()}阵营！", "ACFA");
         if (player == null) return false;
 
-        if (systemType == SystemTypes.Sabotage) //使用正常的破坏按钮
+        /*if (systemType == SystemTypes.Sabotage) //使用正常的破坏按钮
         {
-            // if (GetPlayer.GetPlayerRoleTeam(player) != RoleTeam.Impostor)
-            // {
-            // Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏A，已驳回", "AntiCheatForAll");
-            // return true;
-            // }
-        } //外挂直接发送 128 个系统型 rpc
+            if (GetPlayer.GetPlayerRoleTeam(player) != RoleTeam.Impostor)
+            {
+            Logger.Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏A，已驳回", "AntiCheatForAll");
+            return true;
+            }
+        }*/
+        //外挂直接发送 128 个系统型 rpc
         else if (systemType == SystemTypes.LifeSupp)
         {
             if (Mapid != 0 && Mapid != 1 && Mapid != 3) goto YesCheat;
@@ -537,7 +535,7 @@ internal class AntiCheatForAll
     public static bool RpcUpdateSystemCheckFHS(PlayerControl player, SystemTypes systemType, byte amount)
     {
         // 更新系统 rpc 无法被 playercontrol.handlerpc 接收
-        var Mapid = GetPlayer.GetActiveMapId();
+        _ = GetPlayer.GetActiveMapId();
         Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "ACFA");
         // if (!AmongUsClient.Instance.AmHost) return false;
         Info("触发飞船事件！" + player.GetRealName() + $"是{player.GetPlayerRoleTeam()}阵营！", "ACFA");

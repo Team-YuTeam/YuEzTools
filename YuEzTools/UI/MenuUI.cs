@@ -6,7 +6,6 @@ namespace YuEzTools.UI;
 
 public class MenuUI : MonoBehaviour
 {
-
     public List<GroupInfo> groups = [];
     private bool isDragging = false;
     private Rect windowRect = new(10, 10, 500, 500);
@@ -305,7 +304,6 @@ public class MenuUI : MonoBehaviour
                 }
             }
         }
-
         return totalHeight;
     }
     // Closes all expanded groups other than indexToKeepOpen

@@ -24,8 +24,6 @@ class FixedUpdatePatch
     public static void Postfix(PlayerControl __instance)
     {
         if (__instance == null) return;
-
-        var color = "#ffffff";
         var name = __instance.GetRealName();
 
         if (GetPlayer.IsLobby)
@@ -42,7 +40,7 @@ class FixedUpdatePatch
 
         if (GetPlayer.IsInGame)
         {
-            color = Utils.Utils.GetRoleHtmlColor(__instance.Data.RoleType);
+            _ = Utils.Utils.GetRoleHtmlColor(__instance.Data.RoleType);
             if (__instance == PlayerControl.LocalPlayer || (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead))
                 name = Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(__instance.Data.RoleType), __instance.GetRoleName() + "\n" + name);
             if (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead)

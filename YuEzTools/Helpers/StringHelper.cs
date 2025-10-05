@@ -13,9 +13,9 @@ public static class StringHelper
     /// </summary>
     public static int GetByteCount(this string self) => shiftJIS.GetByteCount(self);
 
-    public static bool Has(this string s,string h)
+    public static bool Has(this string s, string h)
     {
-         return s.Contains(h, StringComparison.OrdinalIgnoreCase);
+        return s.Contains(h, StringComparison.OrdinalIgnoreCase);
     }
 }
 public class ColorGradient

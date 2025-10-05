@@ -160,7 +160,6 @@ public class MainMenuManagerPatch
         DevsButton.gameObject.SetActive(true);
         DevsButton.name = "YuET Devs Button";
 
-
         if (AfdianButton == null) AfdianButton = CreatButton("AfdianButton", () => Application.OpenURL("https://afdian.com/a/yuqianzhi"));
         AfdianButton.gameObject.SetActive(true);
         AfdianButton.name = "YuET Afdian Button";
@@ -215,6 +214,5 @@ public class MainMenuManagerPatch
         // GameObject.Destroy(__instance.quitButton.gameObject);
         // var BottomButtonBounds = GameObject.Find("BottomButtonBounds");
         // BottomButtonBounds.transform.localPosition += new Vector3(0, 0.8f, 0);
-
     }
 }

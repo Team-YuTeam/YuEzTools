@@ -40,7 +40,7 @@ public class ModNews
 [HarmonyPatch]
 public class ModNewsHistory
 {
-    public static List<ModNews> AllModNews = new();
+    public static List<ModNews> AllModNews = [];
     public static ModNews GetContentFromRes(string path)
     {
         ModNews mn = new();
@@ -78,7 +78,7 @@ public class ModNewsHistory
     }
 
     [HarmonyPatch(typeof(PlayerAnnouncementData), nameof(PlayerAnnouncementData.SetAnnouncements)), HarmonyPrefix]
-    public static bool SetModAnnouncements(PlayerAnnouncementData __instance, [HarmonyArgument(0)] ref Il2CppReferenceArray<Announcement> aRange)
+    public static bool SetModAnnouncements([HarmonyArgument(0)] ref Il2CppReferenceArray<Announcement> aRange)
     {
         if (AllModNews.Count < 1)
         {
@@ -93,7 +93,7 @@ public class ModNewsHistory
             AllModNews.Sort((a1, a2) => { return DateTime.Compare(DateTime.Parse(a2.Date), DateTime.Parse(a1.Date)); });
         }
 
-        List<Announcement> FinalAllNews = new();
+        List<Announcement> FinalAllNews = [];
         AllModNews.Do(n => FinalAllNews.Add(n.ToAnnouncement()));
         foreach (var news in aRange)
         {

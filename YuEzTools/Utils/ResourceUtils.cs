@@ -52,10 +52,7 @@ public static class ResourceUtils
                 return texture;
             }
         }
-        catch
-        {
-            // Log error if needed
-        }
+        catch { }
         return null;
     }
 

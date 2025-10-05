@@ -40,7 +40,6 @@ public static class TaskLevel
             {
                 case TaskBarMode.Normal:
                     // Info("1","ProgressTracker");
-
                     titleText_TMP.text = GetString("TasksProgress") + $"{num2}%";
                     break;
                 case TaskBarMode.MeetingOnly:

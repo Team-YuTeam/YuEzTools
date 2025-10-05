@@ -45,7 +45,6 @@ public static class InGameRoleInfoMenu
         MainInfo.GetComponent<RectTransform>().sizeDelta = new(4.5f, 10f);
         MainInfoTMP.alignment = TextAlignmentOptions.Left;
         MainInfoTMP.fontSize = 2f;
-
     }
 
     public static void SetRoleInfoRef(PlayerControl player)

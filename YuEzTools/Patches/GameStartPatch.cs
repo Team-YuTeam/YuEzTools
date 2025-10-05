@@ -138,7 +138,7 @@ public class GameStartManagerPatch
                     GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
 
                 }
-                catch (System.Exception e)
+                catch (Exception e)
                 {
                     Error(e.ToString(), "Session");
                 }

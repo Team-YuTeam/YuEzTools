@@ -93,7 +93,7 @@ public class ClientOptionItem
             passiveButton.OnClick = new();
             passiveButton.OnClick.AddListener(new Action(() =>
             {
-                if (config != null) config.Value = !config.Value;
+                config?.Value = !config.Value;
                 UpdateToggle();
                 additionalOnClickAction?.Invoke();
             }));

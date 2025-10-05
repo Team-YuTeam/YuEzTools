@@ -39,6 +39,7 @@ public static class Utils
         }
         return null;
     }
+
     public static Texture2D LoadTextureFromResources(string path)
     {
         try
@@ -61,7 +62,6 @@ public static class Utils
     {
         string color = "#ffffff";
         string text = "";
-        string alltext = "";
         switch (pc.GetPlayerData().DeadReason)
         {
             case DeadReasonData.Kill:
@@ -82,18 +82,16 @@ public static class Utils
                 break;
         }
 
-        alltext = $"<color={color}>{text}</color>";
+        string alltext = $"<color={color}>{text}</color>";
         return alltext;
     }
     //感谢FSX
     public static string SummaryTexts(byte id)
     {
-
         var thisdata = ModPlayerData.GetModPlayerDataById(id);
 
         var builder = new StringBuilder();
         var longestNameByteCount = ModPlayerData.GetLongestNameByteCount();
-
 
         var pos = Math.Min(((float)longestNameByteCount / 2) + 1.5f, 11.5f);
 
@@ -116,11 +114,13 @@ public static class Utils
 
         return builder.ToString();
     }
+
     public static bool HasTasks(this PlayerControl p)
     {
         if (p.GetPlayerRoleTeam() != RoleTeam.Impostor) return true;
         return false;
     }
+
     public static void SendMessage(string text, byte sendTo = byte.MaxValue, string title = "<Default>", bool removeTags = false)
     {
         if (!AmongUsClient.Instance.AmHost) return;
@@ -191,7 +191,6 @@ public static class Utils
             case RoleTypes.ImpostorGhost:
                 c = new Color(255, 228, 225); // 内鬼灵魂 => 薄雾玫瑰
                 break;
-
         }
 
         return c;
@@ -247,7 +246,6 @@ public static class Utils
             case RoleTypes.ImpostorGhost:
                 c = new Color32(255, 228, 225, byte.MaxValue); // 内鬼灵魂 => 薄雾玫瑰
                 break;
-
         }
 
         return c;
@@ -303,7 +301,6 @@ public static class Utils
             case RoleTypes.ImpostorGhost:
                 c = "#FFE4E1"; // 内鬼灵魂 => 薄雾玫瑰
                 break;
-
         }
 
         return c;
@@ -379,23 +376,13 @@ public static class Utils
 
     public static string GetWinTeam(this GameOverReason gameOverReason)
     {
-        switch (gameOverReason)
+        return gameOverReason switch
         {
-            case GameOverReason.CrewmatesByTask:
-            case GameOverReason.CrewmatesByVote:
-            case GameOverReason.HideAndSeek_CrewmatesByTimer:
-                return "CrewmateWin";
-            case GameOverReason.ImpostorsByKill:
-            case GameOverReason.ImpostorsBySabotage:
-            case GameOverReason.HideAndSeek_ImpostorsByKills:
-            case GameOverReason.ImpostorsByVote:
-                return "ImpostorsWin";
-            case GameOverReason.CrewmateDisconnect:
-            case GameOverReason.ImpostorDisconnect:
-                return "NobodyWin";
-        }
-
-        return "ErrorWin";
+            GameOverReason.CrewmatesByTask or GameOverReason.CrewmatesByVote or GameOverReason.HideAndSeek_CrewmatesByTimer => "CrewmateWin",
+            GameOverReason.ImpostorsByKill or GameOverReason.ImpostorsBySabotage or GameOverReason.HideAndSeek_ImpostorsByKills or GameOverReason.ImpostorsByVote => "ImpostorsWin",
+            GameOverReason.CrewmateDisconnect or GameOverReason.ImpostorDisconnect => "NobodyWin",
+            _ => "ErrorWin",
+        };
     }
     public static Vector2 LocalPlayerLastTp;
     public static bool LocationLocked = false;
@@ -465,6 +452,7 @@ public static class Utils
         writer.EndMessage();
         writer.SendMessage();
     }
+
     //public static string ColorString(Color32 color, string str) => $"<color=#{color.r:x2}{color.g:x2}{color.b:x2}{color.a:x2}>{str}</color>";
     public static string RemoveHtmlTags(this string str) => Regex.Replace(str, "<[^>]*?>", string.Empty);
     public static void KickPlayer(int playerId, bool ban, string reason)
@@ -484,19 +472,16 @@ public static class Utils
 
         if (ping <= 100)
         { // Green for ping < 100
-
             return $"<color=#00ff00ff>{ping}";//</color>";
 
         }
         else if (ping < 400)
         { // Yellow for 100 < ping < 400
-
             return $"<color=#ffff00ff>{ping}";//</color>";
 
         }
         else
         { // Red for ping > 400
-
             return $"<color=#ff0000ff>{ping}";//</color>";
         }
     }
@@ -507,37 +492,29 @@ public static class Utils
         string a = "";
         if (fps >= 100)
         { // Green for fps > 100
-
             return a + $"<color=#00ff00ff>{fps}";//</color>";
-
         }
         else if (fps < 100 & fps > 50)
         { // Yellow for 100 > fps > 50
-
             return a + $"<color=#ffff00ff>{fps}";//</color>";
-
         }
         else
         { // Red for fps < 50
-
             return a + $"<color=#ff0000ff>{fps}";//</color>";
         }
     }
     public static KeyCode stringToKeycode(string keyCodeStr)
     {
-
         if (!string.IsNullOrEmpty(keyCodeStr))
         { // Empty strings are automatically invalid
 
             try
             {
-
                 // Case-insensitive parse of UnityEngine.KeyCode to check if string is validssss
                 KeyCode keyCode = (KeyCode)Enum.Parse(typeof(KeyCode), keyCodeStr, true);
                 return keyCode;
             }
             catch { }
-
         }
 
         return KeyCode.Delete; // If string is invalid, return Delete as the default key
@@ -577,8 +554,10 @@ public static class Utils
         {
             Exception(ex, "CheckBanList");
         }
+
         return false;
     }
+
     public static bool CheckFirstBanList(string code)
     {
         if (code == "") return false;
@@ -608,6 +587,7 @@ public static class Utils
         {
             Exception(ex, "CheckBanList");
         }
+
         return false;
     }
     private static readonly string BAN_LIST_PATH = @"./YuET_Data/BanList.txt";
@@ -645,6 +625,7 @@ public static class Utils
         {
             Exception(ex, "CheckBanList");
         }
+
         return false;
     }
 }
