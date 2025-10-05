@@ -1,10 +1,9 @@
 using AmongUs.GameOptions;
 using TMPro;
 using YuEzTools.Modules;
-using static YuEzTools.Translator;
-using YuEzTools.Get;
 using YuEzTools.Helper;
 using YuEzTools.Utils;
+using YuEzTools.UI;
 
 namespace YuEzTools.Patches;
 
@@ -42,9 +41,9 @@ class FixedUpdatePatch
 
         if (GetPlayer.IsInGame)
         {
-            color = RoleColorHelper.GetRoleColorHex(__instance.Data.RoleType);
-            if(__instance == PlayerControl.LocalPlayer || (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead))
-                name = Utils.Utils.ColorString(RoleColorHelper.GetRoleColor32(__instance.Data.RoleType), __instance.GetRoleName()  + "\n" + name);
+            _ = RoleColorHelper.GetRoleColorHex(__instance.Data.RoleType);
+            if (__instance == PlayerControl.LocalPlayer || (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead))
+                name = Utils.Utils.ColorString(RoleColorHelper.GetRoleColor32(__instance.Data.RoleType), __instance.GetRoleName() + "\n" + name);
             if (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead)
                 name += $"({Utils.Utils.GetDeadText(__instance)})";
             if (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.RoleType == RoleTypes.Impostor)

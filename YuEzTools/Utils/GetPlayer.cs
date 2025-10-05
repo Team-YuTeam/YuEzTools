@@ -1,9 +1,6 @@
 using AmongUs.GameOptions;
 using System;
 using InnerNet;
-using Sentry.Internal.Extensions;
-using UnityEngine;
-using System.Collections.Generic;
 using YuEzTools.Helper;
 
 namespace YuEzTools.Utils;
