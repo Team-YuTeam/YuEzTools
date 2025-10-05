@@ -202,6 +202,7 @@ TaskBarMode.Default: "预设错误"
 # RoomList
 iPhone: "苹果"
 Android: "安卓"
+Microsoft: "微软"
 Platforms.Unknown: "未知"
 ToCloseThisRoom: "距离强制关闭这个房间还剩："
 

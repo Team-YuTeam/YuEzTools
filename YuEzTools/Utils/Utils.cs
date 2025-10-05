@@ -359,7 +359,7 @@ public static class Utils
         var platforms = platform switch
         {
             Platforms.StandaloneItch => "Itch",
-            Platforms.StandaloneWin10 => "Windows",
+            Platforms.StandaloneWin10 => GetString("Microsoft"),
             Platforms.StandaloneEpicPC => "Epic",
             Platforms.StandaloneSteamPC => "Steam",
 

@@ -51,7 +51,7 @@ public static class MatchMakerGameButtonSetGamePatch
         var platforms = game.Platform switch
         {
             Platforms.StandaloneItch => "Itch",
-            Platforms.StandaloneWin10 => "Windows",
+            Platforms.StandaloneWin10 => GetString("Microsoft"),
             Platforms.StandaloneEpicPC => "Epic",
             Platforms.StandaloneSteamPC => "Steam",
 
