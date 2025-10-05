@@ -1,7 +1,3 @@
-using AmongUs.Data;
-using HarmonyLib;
-using System;
-using TMPro;
 using UnityEngine;
 
 namespace YuEzTools.Modules;
@@ -25,10 +21,10 @@ public class Chat
             if (!__instance.freeChatField.textArea.hasFocus) return;
             if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyDown(KeyCode.C))
                 ClipboardHelper.PutClipboardString(__instance.freeChatField.textArea.text);
-            
+
             if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyDown(KeyCode.V))
                 __instance.freeChatField.textArea.SetText(__instance.freeChatField.textArea.text + GUIUtility.systemCopyBuffer);
-            
+
             if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyDown(KeyCode.X))
             {
                 ClipboardHelper.PutClipboardString(__instance.freeChatField.textArea.text);
@@ -44,7 +40,7 @@ public static class ChatJailbreak_ChatController_Update_Postfix
     public static void Postfix(ChatController __instance)
     {
         if (Main.PatchChat.Value)
-        { 
+        {
             if (!__instance.freeChatField.textArea.hasFocus) return;
             //__instance.freeChatField.textArea.AllowPaste = true;
             //__instance.freeChatField.textArea.AllowSymbols = true;
@@ -52,9 +48,6 @@ public static class ChatJailbreak_ChatController_Update_Postfix
         }
     }
 }
-
-
-
 // Allow special characters
 [HarmonyPatch(typeof(TextBoxTMP), nameof(TextBoxTMP.IsCharAllowed))]
 public static class AllowAllCharacters_TextBoxTMP_IsCharAllowed_Prefix
@@ -75,8 +68,8 @@ public static class AllowAllCharacters_TextBoxTMP_IsCharAllowed_Prefix
         {
             //__instance.allowAllCharacters = true; // not used by game's code, but I include it anyway
             __instance.AllowEmail = true;
-           // __instance.AllowPaste = true;
-           // __instance.AllowSymbols = true;
+            // __instance.AllowPaste = true;
+            // __instance.AllowSymbols = true;
         }
     }
 }

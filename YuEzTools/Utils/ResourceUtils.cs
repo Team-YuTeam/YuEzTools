@@ -1,6 +1,5 @@
-using System.Collections.Generic;
+#nullable enable
 using System.IO;
-using System.Reflection;
 using UnityEngine;
 
 namespace YuEzTools.Utils;
@@ -22,8 +21,14 @@ public static class ResourceUtils
         {
             if (CachedSprites.TryGetValue(path + pixelsPerUnit, out var sprite)) return sprite;
             var texture = LoadTextureFromResources(path);
-            sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f),
-                pixelsPerUnit);
+            if (texture == null) return null;
+
+            sprite = Sprite.Create(
+                texture,
+                new Rect(0, 0, texture.width, texture.height),
+                new Vector2(0.5f, 0.5f),
+                pixelsPerUnit
+            );
             sprite.hideFlags |= HideFlags.HideAndDontSave | HideFlags.DontSaveInEditor;
             return CachedSprites[path + pixelsPerUnit] = sprite;
         }
@@ -47,11 +52,7 @@ public static class ResourceUtils
                 return texture;
             }
         }
-        catch
-        {
-            return null;
-        }
-
+        catch { }
         return null;
     }
 
@@ -61,8 +62,14 @@ public static class ResourceUtils
         {
             if (CachedSprites.TryGetValue(path + pixelsPerUnit, out var sprite)) return sprite;
             var texture = LoadTextureFromResources(path);
-            sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f),
-                pixelsPerUnit);
+            if (texture == null) return null;
+
+            sprite = Sprite.Create(
+                texture,
+                new Rect(0, 0, texture.width, texture.height),
+                new Vector2(0.5f, 0.5f),
+                pixelsPerUnit
+            );
             sprite.hideFlags |= HideFlags.HideAndDontSave | HideFlags.DontSaveInEditor;
             return CachedSprites[path + pixelsPerUnit] = sprite;
         }
@@ -72,12 +79,14 @@ public static class ResourceUtils
         }
     }
 
-    public static Texture2D LoadTextureFromResources(string path)
+    public static Texture2D? LoadTextureFromResources(string path)
     {
         var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path);
+        if (stream == null) return null;
+
         var texture = new Texture2D(1, 1, TextureFormat.ARGB32, false);
-        using MemoryStream ms = new();
-        stream?.CopyTo(ms);
+        using var ms = new MemoryStream();
+        stream.CopyTo(ms);
         ImageConversion.LoadImage(texture, ms.ToArray(), false);
         return texture;
     }

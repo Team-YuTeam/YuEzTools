@@ -1,16 +1,8 @@
 using UnityEngine;
 using InnerNet;
-using System.Linq;
-using Il2CppSystem.Collections.Generic;
 using System.IO;
 using Hazel;
-using System.Reflection;
 using AmongUs.GameOptions;
-using Sentry.Internal.Extensions;
-using HarmonyLib;
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
-using UnityEngine;
-using static YuEzTools.Translator;
 using System;
 using System.Security.Cryptography;
 using System.Text;
@@ -18,12 +10,13 @@ using System.Text.RegularExpressions;
 using YuEzTools.Get;
 using YuEzTools.Helper;
 using YuEzTools.Modules;
+using YuEzTools.Patches;
 
 namespace YuEzTools.Utils;
 
 public static class Utils
 {
-    public static void ForEach<T>(this System.Collections.Generic.IList<T> self, Action<T> todo)
+    public static void ForEach<T>(this IList<T> self, Action<T> todo)
     {
         for (int i = 0; i < self.Count; i++)
         {
@@ -31,7 +24,7 @@ public static class Utils
         }
     }
 
-    public static Dictionary<string, Sprite> CachedSprites = new Dictionary<string, Sprite>();
+    public static Il2CppSystem.Collections.Generic.Dictionary<string, Sprite> CachedSprites = new();
     public static Sprite LoadSprite(string path, float pixelsPerUnit = 1f)
     {
         try
@@ -44,10 +37,11 @@ public static class Utils
         }
         catch
         {
-            Logger.Error($"Failed to read Texture： {path}", "LoadSprite");
+            Error($"Failed to read Texture： {path}", "LoadSprite");
         }
         return null;
     }
+
     public static Texture2D LoadTextureFromResources(string path)
     {
         try
@@ -61,20 +55,19 @@ public static class Utils
         }
         catch
         {
-            Logger.Error($"Failed to read Texture： {path}", "LoadTextureFromResources");
+            Error($"Failed to read Texture： {path}", "LoadTextureFromResources");
         }
         return null;
     }
-    
+
     public static string GetDeadText(PlayerControl pc)
     {
         string color = "#ffffff";
         string text = "";
-        string alltext = "";
         switch (pc.GetPlayerData().DeadReason)
         {
             case DeadReasonData.Kill:
-                text = string.Format(GetString("ByKilled"),pc.GetPlayerData().Killer.Name);
+                text = string.Format(GetString("ByKilled"), pc.GetPlayerData().Killer.Name);
                 color = "#FF4949";
                 break;
             case DeadReasonData.Exile:
@@ -91,21 +84,19 @@ public static class Utils
                 break;
         }
 
-        alltext = $"<color={color}>{text}</color>";
+        string alltext = $"<color={color}>{text}</color>";
         return alltext;
     }
     //感谢FSX
     public static string SummaryTexts(byte id)
     {
-
         var thisdata = ModPlayerData.GetModPlayerDataById(id);
 
         var builder = new StringBuilder();
         var longestNameByteCount = ModPlayerData.GetLongestNameByteCount();
 
-
         var pos = Math.Min(((float)longestNameByteCount / 2) + 1.5f, 11.5f);
-        
+
         builder.Append(ColorString(thisdata.Color, thisdata.Name));
 
         builder.AppendFormat("<pos={0}em>", pos).Append(GetDeadText(thisdata.pc)).Append("</pos>");
@@ -125,11 +116,13 @@ public static class Utils
 
         return builder.ToString();
     }
+
     public static bool HasTasks(this PlayerControl p)
     {
         if (p.GetPlayerRoleTeam() != RoleTeam.Impostor) return true;
         return false;
     }
+
     public static void SendMessage(string text, byte sendTo = byte.MaxValue, string title = "<Default>", bool removeTags = false)
     {
         if (!AmongUsClient.Instance.AmHost) return;
@@ -137,7 +130,7 @@ public static class Utils
         Main.isChatCommand = true;
         Main.MessagesToSend.Add((removeTags ? text.RemoveHtmlTags() : text, sendTo, title + '\0'));
     }
-    
+
     public static Color ShadeColor(this Color color, float Darkness = 0)
     {
         bool IsDarker = Darkness >= 0; //黒と混ぜる
@@ -158,17 +151,17 @@ public static class Utils
             2 => new(42.6f, -19.9f), // Polus
             4 => new(-16.8f, -6.2f), // Airship
             5 => new(9.4f, 17.9f), // The Fungle
-            _ => throw new System.NotImplementedException(),
+            _ => throw new NotImplementedException(),
         };
     }
-    
+
     // Thanks TOHEN
     public static string GetHashedPuid(this ClientData player)
     {
         if (player == null) return "";
         string puid = player.ProductUserId;
         using SHA256 sha256 = SHA256.Create();
-        
+
         // get sha-256 hash
         byte[] sha256Bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(puid));
         string sha256Hash = BitConverter.ToString(sha256Bytes).Replace("-", "").ToLower();
@@ -200,60 +193,50 @@ public static class Utils
         var platforms = platform switch
         {
             Platforms.StandaloneItch => "Itch",
-            Platforms.StandaloneWin10 => "Windows",
+            Platforms.StandaloneWin10 => GetString("Microsoft"),
             Platforms.StandaloneEpicPC => "Epic",
             Platforms.StandaloneSteamPC => "Steam",
-            
+
             Platforms.Xbox => "Xbox",
             Platforms.Switch => "Switch",
             Platforms.Playstation => "PS",
 
             Platforms.StandaloneMac => "Mac",
-            Platforms.IPhone => Translator.GetString("iPhone"),
-            Platforms.Android => Translator.GetString("Android"),
+            Platforms.IPhone => GetString("iPhone"),
+            Platforms.Android => GetString("Android"),
 
             Platforms.Unknown or
-                _ => Translator.GetString("Platforms.Unknown")
+                _ => GetString("Platforms.Unknown")
         };
         return $"<color={color}>{platforms}</color>";
     }
 
     public static string GetWinTeam(this GameOverReason gameOverReason)
     {
-        switch (gameOverReason)
+        return gameOverReason switch
         {
-            case GameOverReason.CrewmatesByTask:
-            case GameOverReason.CrewmatesByVote:
-            case GameOverReason.HideAndSeek_CrewmatesByTimer:
-                return "CrewmateWin";
-            case GameOverReason.ImpostorsByKill:
-            case GameOverReason.ImpostorsBySabotage:
-            case GameOverReason.HideAndSeek_ImpostorsByKills:
-            case GameOverReason.ImpostorsByVote:
-                return "ImpostorsWin";
-            case GameOverReason.CrewmateDisconnect:
-            case GameOverReason.ImpostorDisconnect:
-                return "NobodyWin";
-        }
-
-        return "ErrorWin";
+            GameOverReason.CrewmatesByTask or GameOverReason.CrewmatesByVote or GameOverReason.HideAndSeek_CrewmatesByTimer => "CrewmateWin",
+            GameOverReason.ImpostorsByKill or GameOverReason.ImpostorsBySabotage or GameOverReason.HideAndSeek_ImpostorsByKills or GameOverReason.ImpostorsByVote => "ImpostorsWin",
+            GameOverReason.CrewmateDisconnect or GameOverReason.ImpostorDisconnect => "NobodyWin",
+            _ => "ErrorWin",
+        };
     }
     public static Vector2 LocalPlayerLastTp;
     public static bool LocationLocked = false;
     public static void RpcTeleport(this PlayerControl player, Vector2 location)
     {
-        Logger.Info($" {GetPlayer.GetNameRole(player)} => {location}", "RpcTeleport");
-        Logger.Info($" Player Id: {player.PlayerId}", "RpcTeleport");
+        Info($" {GetPlayer.GetNameRole(player)} => {location}", "RpcTeleport");
+        Info($" Player Id: {player.PlayerId}", "RpcTeleport");
         if (player.inVent
             || player.MyPhysics.Animations.IsPlayingEnterVentAnimation())
         {
-            Logger.Info($"Target: ({GetPlayer.GetNameRole(player)}) in vent", "RpcTeleport");
+            Info($"Target: ({GetPlayer.GetNameRole(player)}) in vent", "RpcTeleport");
             player.MyPhysics.RpcBootFromVent(0);
         }
         if (player.onLadder
             || player.MyPhysics.Animations.IsPlayingAnyLadderAnimation())
         {
-            Logger.Warn($"Teleporting canceled - Target: ({GetPlayer.GetNameRole(player)}) is in on Ladder", "RpcTeleport");
+            Warn($"Teleporting canceled - Target: ({GetPlayer.GetNameRole(player)}) is in on Ladder", "RpcTeleport");
             return;
         }
         var net = player.NetTransform;
@@ -291,7 +274,7 @@ public static class Utils
         if (PlayerControl.LocalPlayer == player)
             LocalPlayerLastTp = location;
     }
-    
+
     public static void SendMessageAsPlayerImmediately(PlayerControl player, string text, bool hostCanSee = true, bool sendToModded = true)
     {
         Main.isChatCommand = true;
@@ -306,6 +289,7 @@ public static class Utils
         writer.EndMessage();
         writer.SendMessage();
     }
+
     //public static string ColorString(Color32 color, string str) => $"<color=#{color.r:x2}{color.g:x2}{color.b:x2}{color.a:x2}>{str}</color>";
     public static string RemoveHtmlTags(this string str) => Regex.Replace(str, "<[^>]*?>", string.Empty);
     public static void KickPlayer(int playerId, bool ban, string reason)
@@ -319,19 +303,22 @@ public static class Utils
             AmongUsClient.Instance.KickPlayer(playerId, ban);
         }, Math.Max(AmongUsClient.Instance.Ping / 500f, 1f), "Kick Player");
     }
-    
-    public static string getColoredPingText(int ping){
 
-        if (ping <= 100){ // Green for ping < 100
+    public static string getColoredPingText(int ping)
+    {
 
+        if (ping <= 100)
+        { // Green for ping < 100
             return $"<color=#00ff00ff>{ping}";//</color>";
 
-        } else if (ping < 400){ // Yellow for 100 < ping < 400
-
+        }
+        else if (ping < 400)
+        { // Yellow for 100 < ping < 400
             return $"<color=#ffff00ff>{ping}";//</color>";
 
-        } else{ // Red for ping > 400
-
+        }
+        else
+        { // Red for ping > 400
             return $"<color=#ff0000ff>{ping}";//</color>";
         }
     }
@@ -340,32 +327,31 @@ public static class Utils
     public static string getColoredFPSText(float fps)
     {
         string a = "";
-        if (fps >= 100){ // Green for fps > 100
-
+        if (fps >= 100)
+        { // Green for fps > 100
             return a + $"<color=#00ff00ff>{fps}";//</color>";
-
-        } else if (fps < 100 & fps > 50){ // Yellow for 100 > fps > 50
-
+        }
+        else if (fps < 100 & fps > 50)
+        { // Yellow for 100 > fps > 50
             return a + $"<color=#ffff00ff>{fps}";//</color>";
-
-        } else{ // Red for fps < 50
-
+        }
+        else
+        { // Red for fps < 50
             return a + $"<color=#ff0000ff>{fps}";//</color>";
         }
     }
-    public static KeyCode stringToKeycode(string keyCodeStr){
+    public static KeyCode stringToKeycode(string keyCodeStr)
+    {
+        if (!string.IsNullOrEmpty(keyCodeStr))
+        { // Empty strings are automatically invalid
 
-        if(!string.IsNullOrEmpty(keyCodeStr)){ // Empty strings are automatically invalid
-
-            try{
-                
+            try
+            {
                 // Case-insensitive parse of UnityEngine.KeyCode to check if string is validssss
-                KeyCode keyCode = (KeyCode)System.Enum.Parse(typeof(KeyCode), keyCodeStr, true);
-                
+                KeyCode keyCode = (KeyCode)Enum.Parse(typeof(KeyCode), keyCodeStr, true);
                 return keyCode;
-
-            }catch{}
-        
+            }
+            catch { }
         }
 
         return KeyCode.Delete; // If string is invalid, return Delete as the default key
@@ -403,10 +389,12 @@ public static class Utils
         }
         catch (Exception ex)
         {
-            Logger.Exception(ex, "CheckBanList");
+            Exception(ex, "CheckBanList");
         }
+
         return false;
     }
+
     public static bool CheckFirstBanList(string code)
     {
         if (code == "") return false;
@@ -428,14 +416,15 @@ public static class Utils
             while ((line = sr.ReadLine()) != null)
             {
                 if (line == "") continue;
-                if (line.IndexOf(noDiscrim) >= 0) return true;
-                if (noDiscrim.IndexOf(line) >= 0) return true;
+                if (line.Contains(noDiscrim, StringComparison.CurrentCulture)) return true;
+                if (noDiscrim.Contains(line, StringComparison.CurrentCulture)) return true;
             }
         }
         catch (Exception ex)
         {
-            Logger.Exception(ex, "CheckBanList");
+            Exception(ex, "CheckBanList");
         }
+
         return false;
     }
     private static readonly string BAN_LIST_PATH = @"./YuET_Data/BanList.txt";
@@ -471,8 +460,9 @@ public static class Utils
         }
         catch (Exception ex)
         {
-            Logger.Exception(ex, "CheckBanList");
+            Exception(ex, "CheckBanList");
         }
+
         return false;
     }
 }

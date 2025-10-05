@@ -1,16 +1,12 @@
 using AmongUs.Data;
 using AmongUs.Data.Player;
 using Assets.InnerNet;
-using HarmonyLib;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Text;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 // 参考：https://github.com/Yumenopai/TownOfHost_Y
 public class ModNews
@@ -44,7 +40,7 @@ public class ModNews
 [HarmonyPatch]
 public class ModNewsHistory
 {
-    public static List<ModNews> AllModNews = new();
+    public static List<ModNews> AllModNews = [];
     public static ModNews GetContentFromRes(string path)
     {
         ModNews mn = new();
@@ -73,16 +69,16 @@ public class ModNewsHistory
         }
         mn.Lang = langId;
         mn.Text = text;
-        Logger.Info($"Number:{mn.Number}", "ModNews");
-        Logger.Info($"Title:{mn.Title}", "ModNews");
-        Logger.Info($"SubTitle:{mn.SubTitle}", "ModNews");
-        Logger.Info($"ShortTitle:{mn.ShortTitle}", "ModNews");
-        Logger.Info($"Date:{mn.Date}", "ModNews");
+        Info($"Number:{mn.Number}", "ModNews");
+        Info($"Title:{mn.Title}", "ModNews");
+        Info($"SubTitle:{mn.SubTitle}", "ModNews");
+        Info($"ShortTitle:{mn.ShortTitle}", "ModNews");
+        Info($"Date:{mn.Date}", "ModNews");
         return mn;
     }
 
     [HarmonyPatch(typeof(PlayerAnnouncementData), nameof(PlayerAnnouncementData.SetAnnouncements)), HarmonyPrefix]
-    public static bool SetModAnnouncements(PlayerAnnouncementData __instance, [HarmonyArgument(0)] ref Il2CppReferenceArray<Announcement> aRange)
+    public static bool SetModAnnouncements([HarmonyArgument(0)] ref Il2CppReferenceArray<Announcement> aRange)
     {
         if (AllModNews.Count < 1)
         {
@@ -97,7 +93,7 @@ public class ModNewsHistory
             AllModNews.Sort((a1, a2) => { return DateTime.Compare(DateTime.Parse(a2.Date), DateTime.Parse(a1.Date)); });
         }
 
-        List<Announcement> FinalAllNews = new();
+        List<Announcement> FinalAllNews = [];
         AllModNews.Do(n => FinalAllNews.Add(n.ToAnnouncement()));
         foreach (var news in aRange)
         {

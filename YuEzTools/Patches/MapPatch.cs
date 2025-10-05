@@ -1,10 +1,4 @@
-using System;
-using System.Linq;
-using HarmonyLib;
-using InnerNet;
 using UnityEngine;
-using YuEzTools.Get;
-using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;
 
@@ -58,7 +52,7 @@ class CreateOptionsPickerPatch
                 mapPickerTransform.localScale = new Vector3(0.86f, 0.85f, 1f);
                 mapPickerTransform.transform.localPosition = new Vector3(mapPickerTransform.transform.localPosition.x + 0.05f, mapPickerTransform.transform.localPosition.y + 0.03f, mapPickerTransform.transform.localPosition.z);
             }
-            
+
             SwapIconOrButtomsPositions(fungleIconInMenu, airhipIconInMenu);
 
             // set flipped dleks map Icon/button

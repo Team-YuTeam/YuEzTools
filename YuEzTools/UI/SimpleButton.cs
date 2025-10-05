@@ -1,9 +1,10 @@
 using System;
 using TMPro;
 using UnityEngine;
+using YuEzTools.Helpers;
 using Object = UnityEngine.Object;
 
-namespace YuEzTools;
+namespace YuEzTools.UI;
 
 public class SimpleButton
 {

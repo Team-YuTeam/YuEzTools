@@ -1,11 +1,11 @@
-using AmongUs.GameOptions;
 using Hazel;
-using HarmonyLib;
-using YuEzTools.Get;
+using YuEzTools.AntiCheat;
 using YuEzTools.Modules;
-using YuEzTools.Patches;
+using YuEzTools.Send;
+using YuEzTools.UI;
+using YuEzTools.Utils;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.HandleRpc))]
 internal class RPCHandlerPatch
@@ -13,11 +13,11 @@ internal class RPCHandlerPatch
     public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] byte callId,
         [HarmonyArgument(1)] MessageReader reader)
     {
-        Main.Logger.LogMessage("From " +__instance.GetRealName() + "'s RPC:" + callId);
+        Main.Logger.LogMessage("From " + __instance.GetRealName() + "'s RPC:" + callId);
         if (!Toggles.EnableAntiCheat) return true;
         try
         {
-            if (AntiCheatForAll.ReceiveRpc(__instance, callId, reader) || AUMCheat.ReceiveInvalidRpc(__instance, callId,reader) ||
+            if (AntiCheatForAll.ReceiveRpc(__instance, callId, reader) || AUMCheat.ReceiveInvalidRpc(__instance, callId, reader) ||
                 SMCheat.ReceiveInvalidRpc(__instance, callId))
             {
                 if (Toggles.AutoStartGame && AmongUsClient.Instance.AmHost &&
@@ -29,16 +29,16 @@ internal class RPCHandlerPatch
                     Main.Logger.LogInfo("Just host automode, normal");
                     return true;
                 }
-                if(!Main.HackerList.Contains(__instance)) Main.HackerList.Add(__instance);
+                if (!Main.HackerList.Contains(__instance)) Main.HackerList.Add(__instance);
                 Main.HasHacker = true;
-                Logger.Fatal("Hacker " + __instance.GetRealName() + $"{"好友编号："+__instance.GetClient().FriendCode+"/名字："+__instance.GetRealName()+"/ProductUserId："+__instance.GetClient().ProductUserId}","RPCHandle");
+                Fatal("Hacker " + __instance.GetRealName() + $"{"好友编号：" + __instance.GetClient().FriendCode + "/名字：" + __instance.GetRealName() + "/ProductUserId：" + __instance.GetClient().ProductUserId}", "RPCHandle");
                 //Main.PlayerStates[__instance.GetClient().Id].IsHacker = true;
                 SendChat.Prefix(__instance);
-                if(!Toggles.SafeMode && !AmongUsClient.Instance.AmHost && GameStartManagerPatch.roomMode == RoomMode.Plus25)
+                if (!Toggles.SafeMode && !AmongUsClient.Instance.AmHost && GameStartManagerPatch.roomMode == RoomMode.Plus25)
                 {
                     Main.Logger.LogInfo("Try Kick" + __instance.GetRealName());
                     KickHackerPatch.KickPlayer(__instance);
-     
+
                     return false;
                 }
                 //PlayerControl Host = AmongUsClient.Instance.GetHost();
@@ -46,7 +46,7 @@ internal class RPCHandlerPatch
                 {
                     Main.Logger.LogInfo("Host Try ban " + __instance.GetRealName());
                     AmongUsClient.Instance.KickPlayer(__instance.GetClientId(), true);
-                    if(GetPlayer.IsInGame)
+                    if (GetPlayer.IsInGame)
                     {
                         Main.Logger.LogInfo("Host Try end game with room " +
                                             GameStartManager.Instance.GameRoomNameCode.text);
@@ -57,7 +57,7 @@ internal class RPCHandlerPatch
                         }
                         catch (System.Exception e)
                         {
-                            Logger.Error(e.ToString(), "Session");
+                            Error(e.ToString(), "Session");
                         }
                         Main.HasHacker = false;
                     }

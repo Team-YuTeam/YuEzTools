@@ -1,33 +1,31 @@
 using System;
-using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace YuEzTools;
+namespace YuEzTools.Helpers;
 
 public static class StringHelper
 {
     public static readonly Encoding shiftJIS = CodePagesEncodingProvider.Instance.GetEncoding("Shift_JIS");
-    
+
     /// <summary>
     /// 计算使用SJIS编码时的字节数
     /// </summary>
     public static int GetByteCount(this string self) => shiftJIS.GetByteCount(self);
 
-    public static bool Has(this string s,string h)
+    public static bool Has(this string s, string h)
     {
-         return s.IndexOf(h, StringComparison.OrdinalIgnoreCase) >= 0;
+        return s.Contains(h, StringComparison.OrdinalIgnoreCase);
     }
 }
 public class ColorGradient
 {
     // thanks tonx & tonex
     public List<Color> Colors { get; private set; }
-    private float Spacing;
+    private readonly float Spacing;
     public ColorGradient(params Color[] colors)
     {
-        Colors = new();
-        Colors.AddRange(colors);
+        Colors = [.. colors];
         Spacing = 1f / (Colors.Count - 1);
     }
     public bool IsValid => Colors.Count >= 2;
@@ -65,9 +63,9 @@ public class ColorGradient
     public class Component
     {
         public float? SizePercentage { get; set; }
-        public string? Text { get; set; }
+        public string Text { get; set; }
         public Color32? TextColor { get; set; }
-        public ColorGradient? Gradient { get; set; }
+        public ColorGradient Gradient { get; set; }
         public bool Spaced { get; set; } = true;
         public string Generate(bool applySpace = true, bool applySize = true)
         {

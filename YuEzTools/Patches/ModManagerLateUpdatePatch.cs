@@ -1,9 +1,6 @@
-using HarmonyLib;
-using System.Text;
-using TMPro;
 using UnityEngine;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(ModManager), nameof(ModManager.LateUpdate))]
 internal class ModManagerLateUpdatePatch

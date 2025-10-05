@@ -1,12 +1,8 @@
-using System.Net;
-using HarmonyLib;
 using Il2CppSystem;
-using Il2CppSystem.Collections.Generic;
 using InnerNet;
-using Il2CppSystem.Linq;
 using UnityEngine;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(FindAGameManager), nameof(FindAGameManager.Update))]
 public static class FindAGameManagerUpdatePatch
@@ -29,10 +25,10 @@ public static class FindAGameManagerUpdatePatch
 [HarmonyPatch(typeof(MatchMakerGameButton), nameof(MatchMakerGameButton.SetGame))]
 public static class MatchMakerGameButtonSetGamePatch
 {
-    public static void Prefix(MatchMakerGameButton __instance, [HarmonyArgument(0)]  GameListing game)
+    public static void Prefix(MatchMakerGameButton __instance, [HarmonyArgument(0)] GameListing game)
     {
         var nameList = TranslationController.Instance.currentLanguage.languageID is SupportedLangs.SChinese or SupportedLangs.TChinese ? Main.TName_Snacks_CN : Main.TName_Snacks_EN;
-    
+
         if (game.Language.ToString().Length > 9) goto End;
         var color = game.Platform switch
         {
@@ -55,37 +51,36 @@ public static class MatchMakerGameButtonSetGamePatch
         var platforms = game.Platform switch
         {
             Platforms.StandaloneItch => "Itch",
-            Platforms.StandaloneWin10 => "Windows",
+            Platforms.StandaloneWin10 => GetString("Microsoft"),
             Platforms.StandaloneEpicPC => "Epic",
             Platforms.StandaloneSteamPC => "Steam",
-            
+
             Platforms.Xbox => "Xbox",
             Platforms.Switch => "Switch",
             Platforms.Playstation => "PS",
 
             Platforms.StandaloneMac => "Mac",
-            Platforms.IPhone => Translator.GetString("iPhone"),
-            Platforms.Android => Translator.GetString("Android"),
+            Platforms.IPhone => GetString("iPhone"),
+            Platforms.Android => GetString("Android"),
 
             Platforms.Unknown or
-            _ => Translator.GetString("Platforms.Unknown")
+            _ => GetString("Platforms.Unknown")
         };
-        Logger.Info(game.IPString+":"+game.Port, "FAG");
+        Info(game.IPString + ":" + game.Port, "FAG");
         string str = Math.Abs(game.GameId).ToString();
-        
-            int id = Math.Min(Math.Max(int.Parse(str.Substring(str.Length - 2, 2)), 1) * nameList.Count / 100, nameList.Count);
-            game.HostName = $"" +
-                $"<size=80%>" +
-                $"<color={color}>" +
-                $"{nameList[id]}" +
-                $"</size>"+
-                $"<size=60%>" +
-                $"({platforms})" +
-                $"</color>" +
-                $"</size>"
-                ; 
-        game.HostName += $"<size=40%> ({Translator.GetString("ToCloseThisRoom")}{Math.Max(0, 100 - game.Age / 100)}%)</size>";
-        End:
-        Logger.Info("--------This room end.--------", "FindAGamerPatch");
+
+        int id = Math.Min(Math.Max(int.Parse(str.Substring(str.Length - 2, 2)), 1) * nameList.Count / 100, nameList.Count);
+        game.HostName = $"" +
+            $"<size=80%>" +
+            $"<color={color}>" +
+            $"{nameList[id]}" +
+            $"</size>" +
+            $"<size=60%>" +
+            $"({platforms})" +
+            $"</color>" +
+            $"</size>";
+        game.HostName += $"<size=40%> ({GetString("ToCloseThisRoom")}{Math.Max(0, 100 - game.Age / 100)}%)</size>";
+    End:
+        Info("--------This room end.--------", "FindAGamerPatch");
     }
 }

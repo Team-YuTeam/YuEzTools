@@ -1,20 +1,8 @@
-using AmongUs.GameOptions;
-using Hazel;
-using System;
-using System.Linq;
-using HarmonyLib;
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using InnerNet;
-using UnityEngine;
-using YuEzTools.Get;
-using YuEzTools;
+using YuEzTools.Patches;
+using YuEzTools.UI;
+using YuEzTools.Utils;
 
-namespace YuEzTools;
+namespace YuEzTools.Send;
 
 public class SendChat
 {
@@ -22,28 +10,27 @@ public class SendChat
     {
         if (Toggles.SafeMode && !AmongUsClient.Instance.AmHost)
         {
-            SendInGamePatch.SendInGame(string.Format(Translator.GetString("AmnotHostSafeSeeHacker"), __instance.GetRealName()));
+            SendInGamePatch.SendInGame(string.Format(GetString("AmnotHostSafeSeeHacker"), __instance.GetRealName()));
             Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }
-        else if(!Toggles.SafeMode && !AmongUsClient.Instance.AmHost)
+        else if (!Toggles.SafeMode && !AmongUsClient.Instance.AmHost)
         {
-            SendInGamePatch.SendInGame(string.Format(Translator.GetString("AmnotHostUnSafeSeeHacker"),__instance.GetRealName()));
+            SendInGamePatch.SendInGame(string.Format(GetString("AmnotHostUnSafeSeeHacker"), __instance.GetRealName()));
             Main.Logger.LogInfo($"已尝试封禁 {__instance.GetRealName()}");
             return;
         }
         else if (AmongUsClient.Instance.AmHost)
         {
-            SendInGamePatch.SendInGame(string.Format(Translator.GetString("AmHostSafeSeeHacker"),__instance.GetRealName()));
+            SendInGamePatch.SendInGame(string.Format(GetString("AmHostSafeSeeHacker"), __instance.GetRealName()));
             Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }
         else
         {
-            SendInGamePatch.SendInGame(string.Format(Translator.GetString("SeeHacker"),__instance.GetRealName()));
+            SendInGamePatch.SendInGame(string.Format(GetString("SeeHacker"), __instance.GetRealName()));
             Main.Logger.LogInfo($"已揭示 {__instance.GetRealName()}");
             return;
         }
-        return;
     }
 }

@@ -1,20 +1,10 @@
-using AmongUs.Data;
-using AmongUs.GameOptions;
-using HarmonyLib;
 using InnerNet;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using YuEzTools.Modules;
 using UnityEngine;
-using static YuEzTools.Translator;
+using YuEzTools.UI;
+using YuEzTools.Utils;
 using Object = UnityEngine.Object;
-using AmongUs.GameOptions;
-using Epic.OnlineServices.Presence;
-using YuEzTools.Get;
-using static YuEzTools.Logger;
-using Log = UnityEngine.ProBuilder.Log;
 
 namespace YuEzTools.Patches;
 
@@ -42,8 +32,7 @@ public class GameStartManagerPatch
             warningText.transform.localPosition = new(0f, 0f - __instance.transform.localPosition.y, -1f);
             warningText.gameObject.SetActive(false);
 
-            Logger.Info("WarningText instantiated and configured", "test");
-
+            Info("WarningText instantiated and configured", "test");
 
             cancelButton = Object.Instantiate(__instance.StartButton, __instance.transform);
             var cancelLabel = cancelButton.GetComponentInChildren<TextMeshPro>();
@@ -55,7 +44,7 @@ public class GameStartManagerPatch
             cancelButton.OnClick.AddListener((Action)(() => __instance.ResetStartState()));
             cancelButton.gameObject.SetActive(false);
 
-            Logger.Info("CancelButton instantiated and configured", "test");
+            Info("CancelButton instantiated and configured", "test");
 
             if (!AmongUsClient.Instance.AmHost) return;
         }
@@ -82,7 +71,6 @@ public class GameStartManagerPatch
                     }
                 }
             }
-
         }
 
         public static void Postfix(GameStartManager __instance)
@@ -120,7 +108,6 @@ public class GameStartManagerPatch
                     warningText.gameObject.SetActive(true);
                 }
 
-
                 // Lobby timer
                 if (
                     !AmongUsClient.Instance.AmHost ||
@@ -135,7 +122,7 @@ public class GameStartManagerPatch
                 int seconds = (int)timer % 60;
                 countDown = $"{minutes:00}:{seconds:00}";
                 if (timer <= 60) countDown = Utils.Utils.ColorString(Color.red, countDown);
-                
+
                 if (timer <= 120 && Toggles.AutoStartGame && GetPlayer.IsLobby && !GetPlayer.IsCountDown)
                 {
                     GameStartManager.Instance.startState = GameStartManager.StartingStates.Countdown;
@@ -145,15 +132,15 @@ public class GameStartManagerPatch
             }
             catch
             {
-                Logger.Error("触发防黑屏措施", "GameStartPatch");
+                Error("触发防黑屏措施", "GameStartPatch");
                 try
                 {
                     GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, false);
 
                 }
-                catch (System.Exception e)
+                catch (Exception e)
                 {
-                    Logger.Error(e.ToString(), "Session");
+                    Error(e.ToString(), "Session");
                 }
             }
         }
@@ -166,24 +153,24 @@ public class GameStartManagerPatch
     {
         public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ClientData client)
         {
-            Logger.Msg($"创建玩家Data: ClientID {client.Id}: {client.PlayerName}", "CreatePlayer");
-            
+            Msg($"创建玩家Data: ClientID {client.Id}: {client.PlayerName}", "CreatePlayer");
+
             if (client.Id == AmongUsClient.Instance.ClientId)
             {
                 roomMode = Toggles.ServerAllHostOrNoHost ? RoomMode.Plus25 : RoomMode.Normal;
                 EnableAC = Toggles.EnableAntiCheat;
-                Info($"玩家被创建了，当前房间模式 {roomMode.ToString()}","CreatePlayer");
+                Info($"玩家被创建了，当前房间模式 {roomMode.ToString()}", "CreatePlayer");
             }
-            
-            if (GetPlayer.isNormalGame)
+
+            if (GetPlayer.IsNormalGame)
             {
                 _ = new LateTask(() =>
                 {
-                    if (!AmongUsClient.Instance.IsGameStarted && client.Character != null &&  Main.isFirstSendEnd)
+                    if (!AmongUsClient.Instance.IsGameStarted && client.Character != null && Main.isFirstSendEnd)
                     {
                         Main.isChatCommand = true;
                         Info("发送：结算信息", "JoinPatch");
-                        DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, 
+                        DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                             GetString("EndMessage") + SetEverythingUpPatch.s);
                         Main.isChatCommand = false;
                         Main.isFirstSendEnd = false;

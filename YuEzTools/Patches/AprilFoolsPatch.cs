@@ -1,8 +1,8 @@
-using HarmonyLib;
 using Il2CppSystem;
+using YuEzTools.UI;
 using static CosmeticsLayer;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 // 来源：https://github.com/ykundesu/SuperNewRoles/blob/master/SuperNewRoles/Patches/HorseModePatch.cs
 [HarmonyPatch(typeof(AprilFoolsMode), nameof(AprilFoolsMode.ShouldLongAround))]
@@ -14,7 +14,6 @@ public static class AprilFoolsModePatch
         return false;
     }
 }
-
 
 #region GameManager Patches
 [HarmonyPatch(typeof(NormalGameManager), nameof(NormalGameManager.GetBodyType))]
@@ -165,4 +164,3 @@ public static class LongBoiPatches
     }
 }
 #endregion
-

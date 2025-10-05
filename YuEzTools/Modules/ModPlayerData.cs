@@ -1,13 +1,8 @@
 using AmongUs.GameOptions;
 using YuEzTools.Attributes;
-using HarmonyLib;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-using YuEzTools;
-using YuEzTools.Get;
-using YuEzTools.Patches;
+using YuEzTools.Helpers;
+using YuEzTools.Utils;
 
 namespace YuEzTools.Modules;
 
@@ -17,7 +12,7 @@ public class ModPlayerData
     public static Dictionary<byte, ModPlayerData> AllPlayerDataForMod;
     // 当前玩家MPD的PC获取
     public PlayerControl pc { get; private set; }
-    
+
     // 基本信息
     public string Name { get; private set; }
     public int ColorId { get; private set; }
@@ -25,17 +20,17 @@ public class ModPlayerData
     public RoleTypes role { get; private set; }
     public RoleTypes? RoleAfterDeath { get; private set; }
     public bool RoleHas { get; private set; }
-    
+
     // 其他
     public bool IsDead { get; private set; }
-    public DeadReasonData DeadReason  { get; private set; }
-    public ModPlayerData Killer  { get; private set; }
+    public DeadReasonData DeadReason { get; private set; }
+    public ModPlayerData Killer { get; private set; }
     public bool IsDisconnected { get; private set; }
     public bool IsExiled { get; private set; }
     public bool IsByKilled { get; private set; }
     public string PUID { get; private set; }
 
-    public ModPlayerData(PlayerControl Player, string name, int colorid,Color color)
+    public ModPlayerData(PlayerControl Player, string name, int colorid, Color color)
     {
         pc = Player;
         Name = name;
@@ -47,11 +42,11 @@ public class ModPlayerData
         DeadReason = DeadReasonData.Alive;
         PUID = pc.GetClient().ProductUserId;
     }
-    
+
     [GameModuleInitializer]
     public static void Init()
     {
-        AllPlayerDataForMod = new();
+        AllPlayerDataForMod = [];
         foreach (var player in PlayerControl.AllPlayerControls)
         {
             var colorId = player.Data.DefaultOutfit.ColorId;
@@ -65,12 +60,11 @@ public class ModPlayerData
             AllPlayerDataForMod[id] = data;
         }
     }
-    
-    
+
     // 到后面，便是获取了
     public static ModPlayerData GetModPlayerDataById(byte id) => AllPlayerDataForMod[id] ?? null;
     public static string GetModPlayerDataName(byte id) => GetModPlayerDataById(id).Name;
-    
+
     // 功能
     public void SetDead() => IsDead = true;
     public void SetExiled() => IsExiled = true;
@@ -80,12 +74,12 @@ public class ModPlayerData
             DeadReason = deathReason;
     }
     public void SetDisconnected()
-    { 
+    {
         IsDisconnected = true;
         SetDead();
         SetDeadReason(DeadReasonData.Disconnect);
     }
-    public void SetRole(RoleTypes Role)  
+    public void SetRole(RoleTypes Role)
     {
         if (!RoleHas)
             role = Role;
@@ -103,7 +97,6 @@ public class ModPlayerData
     public static int GetLongestNameByteCount() => AllPlayerDataForMod.Values.Select(data => data.Name.GetByteCount()).OrderByDescending(byteCount => byteCount).FirstOrDefault();
 }
 
-
 static class PlayerControlData
 {
     public static ModPlayerData GetPlayerData(this PlayerControl pc) =>
@@ -117,7 +110,6 @@ static class PlayerControlData
     public static void SetRole(this PlayerControl pc, RoleTypes role) => pc.GetPlayerData().SetRole(role);
     public static bool IsImpostor(this PlayerControl pc) => pc.GetPlayerRoleTeam() == RoleTeam.Impostor;
 }
-
 // 死亡原因
 public enum DeadReasonData
 {

@@ -1,7 +1,4 @@
-using HarmonyLib;
-
-namespace YuEzTools;
-
+namespace YuEzTools.Patches;
 
 // Some of the below patches are from https://github.com/scp222thj/MalumMenu/blob/main/src/Passive/UnlockFeaturesPatch.cs
 // Unlock freechat
@@ -10,14 +7,12 @@ public static class UnlockFreechat
 {
     public static void Postfix(ref bool __result)
     {
-        if (Main.PatchAccount.Value) 
+        if (Main.PatchAccount.Value)
         {
             __result = true;
         }
     }
 }
-
-
 // Unlock friend list
 [HarmonyPatch(typeof(EOSManager), nameof(EOSManager.IsFriendsListAllowed))]
 public static class UnlockFriendlist
@@ -30,8 +25,6 @@ public static class UnlockFriendlist
         }
     }
 }
-
-
 // Remove minor status
 [HarmonyPatch(typeof(EOSManager), nameof(EOSManager.IsMinorOrWaiting))]
 public static class RemoveMinorStatus
@@ -44,8 +37,6 @@ public static class RemoveMinorStatus
         }
     }
 }
-
-
 // Unlock online gameplay
 [HarmonyPatch(typeof(EOSManager), nameof(EOSManager.IsAllowedOnline))]
 public static class OnlineGameplay
@@ -58,8 +49,6 @@ public static class OnlineGameplay
         }
     }
 }
-
-
 [HarmonyPatch(typeof(AccountManager), nameof(AccountManager.CanPlayOnline))]
 public static class OnlineGameplay2
 {
@@ -68,11 +57,9 @@ public static class OnlineGameplay2
         if (Main.PatchAccount.Value)
         {
             __result = true;
-        } 
+        }
     }
 }
-
-
 // Change login status to "logged in" to allow joining public games
 [HarmonyPatch(typeof(InnerNet.InnerNetClient), nameof(InnerNet.InnerNetClient.JoinGame))]
 public static class CanJoinGame
@@ -85,8 +72,6 @@ public static class CanJoinGame
         }
     }
 }
-
-
 // Unlock custom name
 [HarmonyPatch(typeof(FullAccount), nameof(FullAccount.CanSetCustomName))]
 public static class CustomNameEnabled

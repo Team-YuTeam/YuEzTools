@@ -1,29 +1,25 @@
-using HarmonyLib;
-using InnerNet;
-using UnityEngine;
-using YuEzTools.Get;
-using static YuEzTools.Translator;
+using YuEzTools.Modules;
+using YuEzTools.Utils;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 //��Դ��https://github.com/tukasa0001/TownOfHost/pull/1265
 [HarmonyPatch(typeof(OptionsMenuBehaviour), nameof(OptionsMenuBehaviour.Start))]
 public static class OptionsMenuBehaviourStartPatch
 {
     private static ClientOptionItem SwitchVanilla;
-    
 
     public static void Postfix(OptionsMenuBehaviour __instance)
     {
         if (__instance.DisableMouseMovement == null) return;
         Main.SwitchVanilla.Value = false;
-        
+
         if (SwitchVanilla == null || SwitchVanilla.ToggleButton == null)
         {
             SwitchVanilla = ClientOptionItem.Create(GetString("SwitchVanilla"), Main.SwitchVanilla, __instance, SwitchVanillaButtonToggle);
             static void SwitchVanillaButtonToggle()
             {
-                if (GetPlayer.isPlayer)
+                if (GetPlayer.IsPlayer)
                 {
                     AmongUsClient.Instance.ExitGame(DisconnectReasons.ExitGame);
                 }

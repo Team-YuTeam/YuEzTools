@@ -1,7 +1,6 @@
-using HarmonyLib;
 using UnityEngine;
 
-namespace YuEzTools;
+namespace YuEzTools.Helpers;
 
 public static class ObjectHelper
 {

@@ -2,7 +2,7 @@
 using Hazel;
 using HarmonyLib;
 
-namespace YuEzTools;
+namespace YuEzTools.Send;
 
 [HarmonyPatch(typeof(PingTracker), nameof(PingTracker.Update))]
 public static class SentYuETRpc

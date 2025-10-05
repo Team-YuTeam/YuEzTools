@@ -31,7 +31,7 @@ public class IntroPatch
             __instance.RoleText.SetOutlineThickness(0.17f);
             __instance.RoleBlurbText.color = RoleColorHelper.GetRoleColor32(roleType);
             __instance.RoleBlurbText.text = roleType.GetRoleInfoForVanilla();
-            
+
         }, 0.0001f, "Override Role Text");
         return;
     }

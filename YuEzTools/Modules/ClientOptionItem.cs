@@ -2,9 +2,8 @@ using BepInEx.Configuration;
 using System;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using static YuEzTools.Translator;
 
-namespace YuEzTools;
+namespace YuEzTools.Modules;
 
 //来源：https://github.com/tukasa0001/TownOfHost/pull/1265
 public class ClientOptionItem
@@ -94,7 +93,7 @@ public class ClientOptionItem
             passiveButton.OnClick = new();
             passiveButton.OnClick.AddListener(new Action(() =>
             {
-                if (config != null) config.Value = !config.Value;
+                config?.Value = !config.Value;
                 UpdateToggle();
                 additionalOnClickAction?.Invoke();
             }));

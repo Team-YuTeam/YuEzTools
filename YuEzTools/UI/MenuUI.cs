@@ -1,28 +1,23 @@
 using UnityEngine;
-using System.Collections.Generic;
-using YuEzTools.Utils;
-using HarmonyLib;
-using YuEzTools.Get;
 using YuEzTools.Patches;
+using YuEzTools.Utils;
 
 namespace YuEzTools.UI;
+
 public class MenuUI : MonoBehaviour
 {
-
-    public List<GroupInfo> groups = new List<GroupInfo>();
+    public List<GroupInfo> groups = [];
     private bool isDragging = false;
-    private Rect windowRect = new Rect(10, 10, 500, 500);
+    private Rect windowRect = new(10, 10, 500, 500);
     private bool isGUIActive = false;
     private GUIStyle submenuButtonStyle;
     public static bool firstoOpenMenuUI = true;
 
     // Create all groups (buttons) and their toggles on start
-    private void Start()
+    private static void Start() { }
+
+    private void Update()
     {
-        //
-    }
-    
-    private void Update(){
 
         if (Input.GetKeyDown(Utils.Utils.stringToKeycode(Main.menuKeybind.Value)))
         {
@@ -34,129 +29,124 @@ public class MenuUI : MonoBehaviour
             windowRect.position = new Vector2(mousePosition.x, Screen.height - mousePosition.y);
         }
 
-        if (GetPlayer.isPlayer)
+        if (GetPlayer.IsPlayer)
         {
             Toggles.ServerAllHostOrNoHost = GameStartManagerPatch.roomMode == RoomMode.Normal ? false : true;
             Toggles.EnableAntiCheat = GameStartManagerPatch.EnableAC;
         }
 
         Main.WinTextSize.Value = Toggles.WinTextSize;
-        
+
         if (isGUIActive) firstoOpenMenuUI = false;
-        if(!isGUIActive)
+        if (!isGUIActive)
         {
             groups.Clear();
-            groups.Add(new GroupInfo(Translator.GetString("MenuUI.AntiCheat"), false, new List<ToggleInfo>()
-                {
-                    new ToggleInfo(Translator.GetString("MenuUI.EnableAntiCheat"), () => Toggles.EnableAntiCheat,
+            groups.Add(new GroupInfo(GetString("MenuUI.AntiCheat"), false,
+                [
+                    new(GetString("MenuUI.EnableAntiCheat"), () => Toggles.EnableAntiCheat,
                         x => Toggles.EnableAntiCheat = x),
-                    new ToggleInfo(Translator.GetString("MenuUI.AutoExit"), () => Toggles.AutoExit,
+                    new(GetString("MenuUI.AutoExit"), () => Toggles.AutoExit,
                         x => Toggles.AutoExit = x),
-                    new ToggleInfo(Translator.GetString("MenuUI.KickNotLogin"), () => Toggles.KickNotLogin,
+                    new(GetString("MenuUI.KickNotLogin"), () => Toggles.KickNotLogin,
                         x => Toggles.KickNotLogin = x),
-                }, new List<SubmenuInfo>
-                {
-                    new SubmenuInfo(Translator.GetString("MenuUI.AntiCheat.ModMode"), false, new List<ToggleInfo>()
-                        {
-                            new ToggleInfo(Translator.GetString("MenuUI.ServerAllHostOrNoHost"),
+                ],
+                [
+                    new(GetString("MenuUI.AntiCheat.ModMode"), false,
+                        [
+                            new(GetString("MenuUI.ServerAllHostOrNoHost"),
                                 () => Toggles.ServerAllHostOrNoHost, x => Toggles.ServerAllHostOrNoHost = x),
-                            new ToggleInfo(Translator.GetString("MenuUI.SafeMode"), () => Toggles.SafeMode,
+                            new(GetString("MenuUI.SafeMode"), () => Toggles.SafeMode,
                                 x => Toggles.SafeMode = x),
-                        }),
+                        ]),
 
-                }
+                ]
             ));
-            groups.Add(new GroupInfo(Translator.GetString("Interface"), false, new List<ToggleInfo>()
-                {
-                    new ToggleInfo(Translator.GetString("DarkUI"), () => Toggles.DarkMode, x => Toggles.DarkMode = x),
-                }, new List<SubmenuInfo>
-                {
-                    new SubmenuInfo(Translator.GetString("PingPart"), false, new List<ToggleInfo>()
-                    {
-                        new ToggleInfo(Translator.GetString("ShowCommit"), () => Toggles.ShowCommit,
+            groups.Add(new GroupInfo(GetString("Interface"), false,
+                [
+                    new(GetString("DarkUI"), () => Toggles.DarkMode, x => Toggles.DarkMode = x),
+                ],
+                [
+                    new(GetString("PingPart"), false,
+                    [
+                        new(GetString("ShowCommit"), () => Toggles.ShowCommit,
                             x => Toggles.ShowCommit = x),
-                        new ToggleInfo(Translator.GetString("ShowModText"), () => Toggles.ShowModText,
+                        new(GetString("ShowModText"), () => Toggles.ShowModText,
                             x => Toggles.ShowModText = x),
-                        new ToggleInfo(Translator.GetString("ShowIsSafe"), () => Toggles.ShowIsSafe,
+                        new(GetString("ShowIsSafe"), () => Toggles.ShowIsSafe,
                             x => Toggles.ShowIsSafe = x),
-                        new ToggleInfo(Translator.GetString("ShowIsDark"), () => Toggles.ShowIsDark,
+                        new(GetString("ShowIsDark"), () => Toggles.ShowIsDark,
                             x => Toggles.ShowIsDark = x),
-                        new ToggleInfo(Translator.GetString("ShowPing"), () => Toggles.ShowPing,
+                        new(GetString("ShowPing"), () => Toggles.ShowPing,
                             x => Toggles.ShowPing = x),
-                        new ToggleInfo(Translator.GetString("ShowFPS"), () => Toggles.ShowFPS,
+                        new(GetString("ShowFPS"), () => Toggles.ShowFPS,
                             x => Toggles.ShowFPS = x),
-                        new ToggleInfo(Translator.GetString("ShowServer"), () => Toggles.ShowServer,
+                        new(GetString("ShowServer"), () => Toggles.ShowServer,
                             x => Toggles.ShowServer = x),
-                        new ToggleInfo(Translator.GetString("ShowRoomTime"), () => Toggles.ShowRoomTime,
+                        new(GetString("ShowRoomTime"), () => Toggles.ShowRoomTime,
                             x => Toggles.ShowRoomTime = x),
-                        new ToggleInfo(Translator.GetString("ShowIsAutoExit"), () => Toggles.ShowIsAutoExit,
+                        new(GetString("ShowIsAutoExit"), () => Toggles.ShowIsAutoExit,
                             x => Toggles.ShowIsAutoExit = x),
                         // new ToggleInfo(Translator.GetString("ShowLocalNowTime"), () => Toggles.ShowLocalNowTime,
                         //     x => Toggles.ShowLocalNowTime = x),
                         // new ToggleInfo(Translator.GetString("ShowUTC"), () => Toggles.ShowUTC,
                         //     x => Toggles.ShowUTC = x),
-                        new ToggleInfo(Translator.GetString("ShowGM"), () => Toggles.ShowGM,
+                        new(GetString("ShowGM"), () => Toggles.ShowGM,
                             x => Toggles.ShowGM = x),
-                    }),
-                    new SubmenuInfo(Translator.GetString("EndPart"), false, new List<ToggleInfo>()
-                        {
-                            new ToggleInfo(Translator.GetString("WinTextSize"), () => Toggles.WinTextSize,
+                    ]),
+                    new(GetString("EndPart"), false,
+                        [
+                            new(GetString("WinTextSize"), () => Toggles.WinTextSize,
                                 x => Toggles.WinTextSize = x),
-                        }),
-                }
+                        ]),
+                ]
             ));
-            groups.Add(new GroupInfo(Translator.GetString("MenuUI.ShortcutButton"), false, new List<ToggleInfo>()
-                {
-                    new ToggleInfo(Translator.GetString("MenuUI.DumpLog"), () => Toggles.DumpLog,
+            groups.Add(new GroupInfo(GetString("MenuUI.ShortcutButton"), false,
+                [
+                    new(GetString("MenuUI.DumpLog"), () => Toggles.DumpLog,
                         x => Toggles.DumpLog = x),
-                    new ToggleInfo(Translator.GetString("MenuUI.OpenGameDic"), () => Toggles.OpenGameDic,
+                    new(GetString("MenuUI.OpenGameDic"), () => Toggles.OpenGameDic,
                         x => Toggles.OpenGameDic = x),
-                    new ToggleInfo(Translator.GetString("MenuUI.CloseMusicOfOr"), () => Toggles.CloseMusicOfOr,
+                    new(GetString("MenuUI.CloseMusicOfOr"), () => Toggles.CloseMusicOfOr,
                         x => Toggles.CloseMusicOfOr = x),
-                    new ToggleInfo(Translator.GetString("MenuUI.reShowRoleT"), () => Toggles.reShowRoleT,
+                    new(GetString("MenuUI.reShowRoleT"), () => Toggles.reShowRoleT,
                             x => Toggles.reShowRoleT = x),
-                    new ToggleInfo(Translator.GetString("MenuUI.ShowInfoInLobby"), () => Toggles.ShowInfoInLobby,
+                    new(GetString("MenuUI.ShowInfoInLobby"), () => Toggles.ShowInfoInLobby,
                             x => Toggles.ShowInfoInLobby = x),
-                    
-                }, new List<SubmenuInfo>
-                {
-                    new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.Left"), false, new List<ToggleInfo>()
-                    {
-                        new ToggleInfo(Translator.GetString("MenuUI.ExitGame"), () => Toggles.ExitGame,
+
+                ],
+                [
+                    new(GetString("MenuUI.ShortcutButton.Left"), false,
+                    [
+                        new(GetString("MenuUI.ExitGame"), () => Toggles.ExitGame,
                             x => Toggles.ExitGame = x),
-                        new ToggleInfo(Translator.GetString("MenuUI.RealBan"), () => Toggles.RealBan,
+                        new(GetString("MenuUI.RealBan"), () => Toggles.RealBan,
                             x => Toggles.RealBan = x),
-                    }),
-                    new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.PeopleMode"), false, new List<ToggleInfo>()
-                    {
-                        new ToggleInfo(Translator.GetString("MenuUI.HorseMode"), () => Toggles.HorseMode,
+                    ]),
+                    new(GetString("MenuUI.ShortcutButton.PeopleMode"), false,
+                    [
+                        new(GetString("MenuUI.HorseMode"), () => Toggles.HorseMode,
                             x => Toggles.HorseMode = x),
-                        new ToggleInfo(Translator.GetString("MenuUI.LongMode"), () => Toggles.LongMode,
+                        new(GetString("MenuUI.LongMode"), () => Toggles.LongMode,
                             x => Toggles.LongMode = x),
-                    }),
-                    new SubmenuInfo(Translator.GetString("MenuUI.ShortcutButton.OnlyHost"), false,
-                        new List<ToggleInfo>()
-                        {
-                            new ToggleInfo(Translator.GetString("MenuUI.ChangeDownTimerToZero"),
+                    ]),
+                    new(GetString("MenuUI.ShortcutButton.OnlyHost"), false,
+                        [
+                            new(GetString("MenuUI.ChangeDownTimerToZero"),
                                 () => Toggles.ChangeDownTimerToZero, x => Toggles.ChangeDownTimerToZero = x),
-                            new ToggleInfo(Translator.GetString("MenuUI.ChangeDownTimerTo114514"),
+                            new(GetString("MenuUI.ChangeDownTimerTo114514"),
                                 () => Toggles.ChangeDownTimerTo114514, x => Toggles.ChangeDownTimerTo114514 = x),
-                            new ToggleInfo(Translator.GetString("MenuUI.AutoStartGame"), () => Toggles.AutoStartGame,
+                            new(GetString("MenuUI.AutoStartGame"), () => Toggles.AutoStartGame,
                                 x => Toggles.AutoStartGame = x),
-                            new ToggleInfo(Translator.GetString("MenuUI.AbolishDownTimer"),
+                            new(GetString("MenuUI.AbolishDownTimer"),
                                 () => Toggles.AbolishDownTimer, x => Toggles.AbolishDownTimer = x),
-                        }),
-                }
+                        ]),
+                ]
             ));
-            groups.Add(new GroupInfo(Translator.GetString("MenuUI.Other"), false, new List<ToggleInfo>()
-                {
-                    new ToggleInfo(Translator.GetString("MenuUI.FPSPlus"), () => Toggles.FPSPlus,
+            groups.Add(new GroupInfo(GetString("MenuUI.Other"), false,
+                [
+                    new(GetString("MenuUI.FPSPlus"), () => Toggles.FPSPlus,
                         x => Toggles.FPSPlus = x),
-                }, new List<SubmenuInfo>
-                {
-
-
-                }
+                ], []
             ));
         }
     }
@@ -187,11 +177,9 @@ public class MenuUI : MonoBehaviour
             windowRect.height = windowHeight;
         }
 
-        Color uiColor;
-
         string configHtmlColor = Main.menuHtmlColor.Value;
 
-        if (!ColorUtility.TryParseHtmlString(configHtmlColor, out uiColor))
+        if (!ColorUtility.TryParseHtmlString(configHtmlColor, out Color uiColor))
         {
             if (!configHtmlColor.StartsWith("#"))
             {
@@ -288,8 +276,6 @@ public class MenuUI : MonoBehaviour
 
         GUI.DragWindow(); //Allows dragging the GUI window with mouse
     }
-
-
     // Dynamically calculate the window's height depending on
     // The number of toggles & group expansion
     private int CalculateWindowHeight()
@@ -318,11 +304,8 @@ public class MenuUI : MonoBehaviour
                 }
             }
         }
-
         return totalHeight;
     }
-
-
     // Closes all expanded groups other than indexToKeepOpen
     private void CloseAllGroupsExcept(int indexToKeepOpen)
     {
@@ -337,7 +320,7 @@ public class MenuUI : MonoBehaviour
         }
     }
 
-    private void CloseAllSubmenusExcept(GroupInfo group, int submenuIndexToKeepOpen)
+    private static void CloseAllSubmenusExcept(GroupInfo group, int submenuIndexToKeepOpen)
     {
         for (int i = 0; i < group.submenus.Count; i++)
         {
@@ -349,5 +332,4 @@ public class MenuUI : MonoBehaviour
             }
         }
     }
-
 }

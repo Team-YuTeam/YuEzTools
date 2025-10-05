@@ -45,7 +45,6 @@ public static class InGameRoleInfoMenu
         MainInfo.GetComponent<RectTransform>().sizeDelta = new(4.5f, 10f);
         MainInfoTMP.alignment = TextAlignmentOptions.Left;
         MainInfoTMP.fontSize = 2f;
-
     }
 
     public static void SetRoleInfoRef(PlayerControl player)
@@ -58,9 +57,9 @@ public static class InGameRoleInfoMenu
         var role = player.Data.Role.Role;
         builder.AppendFormat("<size={0}>{1}", FirstHeaderSize, Utils.Utils.ColorString(RoleColorHelper.GetRoleColor32(player.Data.RoleType), player.GetRoleName()));
         // 职业阵营 / 原版职业
-        var roleTeam = player.IsImpostor()? "Impostor":"Crewmate";
+        var roleTeam = player.IsImpostor() ? "Impostor" : "Crewmate";
         builder.AppendFormat("<size={0}> ({1})\n\n", BodySize, Translator.GetString($"Team{roleTeam}"));
-        builder.AppendFormat("<size={0}>{1}\n", BodySize, player.Data.RoleType.GetRoleLInfoForVanilla()); 
+        builder.AppendFormat("<size={0}>{1}\n", BodySize, player.Data.RoleType.GetRoleLInfoForVanilla());
         MainInfoTMP.text = builder.ToString();
     }
 

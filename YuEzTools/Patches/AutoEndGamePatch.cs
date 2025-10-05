@@ -1,4 +1,4 @@
-using HarmonyLib;
+using YuEzTools.UI;
 
 namespace YuEzTools.Patches;
 
@@ -9,7 +9,7 @@ public class EngGamePatch
     public static void ShowDefaultNavigation_Postfix(EndGameNavigation __instance)
     {
         if (!Toggles.AutoStartGame) return;
-        new LateTask(__instance.NextGame, 2f, "Auto End Game");
+        _ = new LateTask(__instance.NextGame, 2f, "Auto End Game");
         __instance.CoJoinGame();
     }
 }

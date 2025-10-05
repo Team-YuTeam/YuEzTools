@@ -1,7 +1,5 @@
 using AmongUs.GameOptions;
-using HarmonyLib;
 using TMPro;
-using YuEzTools.Get;
 using YuEzTools.Modules;
 using static YuEzTools.Translator;
 using YuEzTools.Get;
@@ -28,8 +26,6 @@ class FixedUpdatePatch
     public static void Postfix(PlayerControl __instance)
     {
         if (__instance == null) return;
-
-        var color ="#ffffff";
         var name = __instance.GetRealName();
 
         if (GetPlayer.IsLobby)
@@ -59,7 +55,7 @@ class FixedUpdatePatch
         {
             name += $"<color=#3FBAFF>[{GetString("Hacker")}]</color>";
         }
-        
+
         __instance.cosmetics.nameText.text = name + "\n";
         __instance.cosmetics.nameText.alignment = TextAlignmentOptions.Top;
     }

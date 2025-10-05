@@ -1,11 +1,5 @@
-using HarmonyLib;
-using System.Collections.Generic;
-using System.Linq;
-using System;
-using System.IO;
 using YuEzTools.Attributes;
 using UnityEngine;
-using Il2CppSystem.IO;
 
 namespace YuEzTools.Patches;
 
@@ -49,7 +43,7 @@ public static class ServerAddManager
             "FangKuai" => new(105, 105, 193, 255),
             "Nikocat233(CN)" => new(255, 255, 0, 255),
             "Nikocat233(US)" => new(255, 255, 0, 255),
-            "XiaoLu" => new(255,151,255,255),
+            "XiaoLu" => new(255, 151, 255, 255),
 
             _ => new(255, 255, 255, 255),
         };
@@ -60,8 +54,8 @@ public static class ServerAddManager
     public static IRegionInfo CreateHttp(string ip, string name, ushort port, bool ishttps)
     {
         string serverIp = (ishttps ? "https://" : "http://") + ip;
-        ServerInfo serverInfo = new ServerInfo(name, serverIp, port, false);
-        ServerInfo[] ServerInfo = new ServerInfo[] { serverInfo };
+        ServerInfo serverInfo = new(name, serverIp, port, false);
+        ServerInfo[] ServerInfo = [serverInfo];
         return new StaticHttpRegionInfo(name, (StringNames)1003, ip, ServerInfo).Cast<IRegionInfo>();
     }
 }

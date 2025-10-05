@@ -1,19 +1,10 @@
-using HarmonyLib;
 using UnityEngine;
-using UnityEngine.UI;
-using System.Diagnostics;
 using System.Text;
-using Il2CppSystem;
-using Rewired.UI.ControlMapper;
 using TMPro;
-using YuEzTools;
-using YuEzTools.Utils;
-using YuEzTools.Get;
-using YuEzTools.Patches;
 using YuEzTools.UI;
-using static YuEzTools.Translator;
+using YuEzTools.Utils;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(PingTracker), nameof(PingTracker.Update))]
 internal class PingTrackerUpdatePatch
@@ -29,9 +20,9 @@ internal class PingTrackerUpdatePatch
         // __instance.text.text = "";
         if (pingTrackerCredential == null)
         {
-            var uselessPingTracker = UnityEngine.Object.Instantiate(__instance, __instance.transform.parent);
+            var uselessPingTracker = Object.Instantiate(__instance, __instance.transform.parent);
             pingTrackerCredential = uselessPingTracker.GetComponent<TextMeshPro>();
-            UnityEngine.Object.Destroy(uselessPingTracker);
+            Object.Destroy(uselessPingTracker);
             pingTrackerCredential.alignment = TextAlignmentOptions.TopRight;
             pingTrackerCredential.color = new(1f, 1f, 1f, 0.7f);
             pingTrackerCredential.rectTransform.pivot = new(1f, 1f); // 中心を右上角に設定
@@ -53,8 +44,8 @@ internal class PingTrackerUpdatePatch
         //     __instance.transform.localPosition.y + 10, __instance.transform.localPosition.z);
 
         StringBuilder sb = new();
-        if(Main.ModMode == 0) sb.Append($"<color=#FFC0CB>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
-        else if(Main.ModMode == 1) sb.Append($"<color=#6A5ACD>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
+        if (Main.ModMode == 0) sb.Append($"<color=#FFC0CB>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
+        else if (Main.ModMode == 1) sb.Append($"<color=#6A5ACD>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
         else sb.Append($"<color={Main.ModColor}>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
         if (Toggles.ShowCommit) sb.Append($"<color=#00FFFF>({ThisAssembly.Git.Commit})</color>");
         if (Toggles.ShowModText) sb.Append($"\r\n").Append($"{Main.MainMenuText}");
@@ -63,7 +54,7 @@ internal class PingTrackerUpdatePatch
         else if (!Toggles.FPSPlus && Application.targetFrameRate != 60) Application.targetFrameRate = 60;
 
         sb.Append("<size=60%>");
-        
+
         if (Toggles.ShowIsSafe && Toggles.ServerAllHostOrNoHost)
         {
             if (Toggles.SafeMode)
@@ -83,12 +74,12 @@ internal class PingTrackerUpdatePatch
 
         if (Toggles.ShowIsAutoExit)
         {
-            if ((!Toggles.ShowIsSafe && !Toggles.ShowIsDark )|| (!Toggles.ShowIsDark && !Toggles.ServerAllHostOrNoHost)) sb.Append($"\r\n");
+            if ((!Toggles.ShowIsSafe && !Toggles.ShowIsDark) || (!Toggles.ShowIsDark && !Toggles.ServerAllHostOrNoHost)) sb.Append($"\r\n");
             sb.Append(Toggles.AutoExit
                 ? "<color=#1E90FF>[AutoExit]</color>"
                 : "<color=#DC143C>[UnAutoExit]</color>");
         }
-        
+
         if (AmongUsClient.Instance.AmHost && Toggles.ShowGM && Toggles.AutoStartGame)
         {
             if (!Toggles.ShowIsSafe && !Toggles.ShowIsDark && !Toggles.ShowIsAutoExit || (!Toggles.ShowIsAutoExit && !Toggles.ShowIsDark && !Toggles.ServerAllHostOrNoHost)) sb.Append($"\r\n");
@@ -99,31 +90,31 @@ internal class PingTrackerUpdatePatch
         {
             sb.Append($"\r\n").Append($"<color=#FF1493>{GetString("Ping.MenuText")}</color>");
         }
-        
+
         sb.Append("</size>");
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
         fps = Mathf.Ceil(1.0f / deltaTime);
         var ping = AmongUsClient.Instance.Ping;
-        
+
         // if (Toggles.ShowPing) sb.Append($"\r\n").Append(Utils.Utils.getColoredPingText(AmongUsClient.Instance.Ping) + "<size=60%>Ping</size></color>"); // 书写Ping
         // if (Toggles.ShowFPS) sb.Append(!Toggles.ShowPing ? $"\r\n" : " ").Append(Utils.Utils.getColoredFPSText(fps) + "<size=60%>FPS</size></color>"); // 书写FPS
         // if(Toggles.ShowServer) sb.Append((!Toggles.ShowFPS && !Toggles.ShowPing) ? $"\r\n" : " ").Append("  " + (GetPlayer.IsOnlineGame ? ServerName : GetString("Local")));
-        
+
         if (Toggles.ShowPing) __instance.text.text = Utils.Utils.getColoredPingText(AmongUsClient.Instance.Ping) +
                                                      "<size=60%>Ping</size></color>";
-        if (!Toggles.ShowPing&&Toggles.ShowFPS)
+        if (!Toggles.ShowPing && Toggles.ShowFPS)
             __instance.text.text = Utils.Utils.getColoredFPSText(fps) + "<size=60%>FPS</size></color>";
         else if (Toggles.ShowFPS)
             __instance.text.text += " " + Utils.Utils.getColoredFPSText(fps) + "<size=60%>FPS</size></color>";
-        
-        if ((Toggles.ShowFPS||Toggles.ShowPing) && Toggles.ShowServer)
+
+        if ((Toggles.ShowFPS || Toggles.ShowPing) && Toggles.ShowServer)
             __instance.text.text += "  " + (GetPlayer.IsOnlineGame ? ServerName : "<color=#D3D3D3>Local</color>");
-        else if(Toggles.ShowServer)
-            __instance.text.text = (GetPlayer.IsOnlineGame ? ServerName : "<color=#D3D3D3>Local</color>");
-        
-        
+        else if (Toggles.ShowServer)
+            __instance.text.text = GetPlayer.IsOnlineGame ? ServerName : "<color=#D3D3D3>Local</color>";
+
+
         if (!Toggles.ShowPing && !Toggles.ShowServer && !Toggles.ShowFPS) __instance.text.text = "";
-        
+
         // sb.Append($"\r\n")
         //     .Append(
         //         $"{Utils.Utils.getColoredPingText(ping)} <size=60%>Ping</size></color>  {Utils.Utils.getColoredFPSText(fps)} <size=60%>FPS</size></color>{"  " + (GetPlayer.IsOnlineGame ? ServerName : GetString("Local"))}");
@@ -139,7 +130,7 @@ internal class PingTrackerUpdatePatch
         if (Toggles.ShowRoomTime && GetPlayer.IsLobby && AmongUsClient.Instance.AmHost && GetPlayer.IsOnlineGame)
             sb.Append($"\r\n").Append($"<color=#FFD700>" + GameStartManagerPatch.countDown + "</color>");
         sb.Append($"\r\n").Append($"<color=#FFFF00>By</color> <color=#FF0000>Yu</color>");
-        
+
         pingTrackerCredential.gameObject.SetActive(__instance.gameObject.active);
         pingTrackerCredential.text = sb.ToString();
         if (GameSettingMenu.Instance?.gameObject?.active ?? false)

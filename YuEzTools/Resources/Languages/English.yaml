@@ -199,6 +199,7 @@ FakeTask: "Fake task is as follows:"
 # RoomList
 iPhone: "IOS"
 Android: "Android"
+Microsoft: "Microsoft"
 Platforms.Unknown: "Unknown"
 ToCloseThisRoom: "Timer to close this room："
 

@@ -1,12 +1,6 @@
-using AmongUs.GameOptions;
-using Hazel;
 using InnerNet;
-using System;
-using System.Text;
-using UnityEngine;
-using static YuEzTools.Translator;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 static class ExtendedPlayerControl
 {

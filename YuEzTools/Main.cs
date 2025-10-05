@@ -2,34 +2,22 @@
 using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Unity.IL2CPP;
-using HarmonyLib;
-using Il2CppInterop.Runtime.Injection;
-using Il2CppSystem;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime;
-using System.Globalization;
-using System.Reflection;
 using UnityEngine;
-using static CloudGenerator;
-using UnityEngine.Playables;
-using Il2CppSystem.IO;
-using YuEzTools.Get;
 using YuEzTools.Attributes;
+using YuEzTools.Modules;
 using YuEzTools.UI;
 using YuEzTools.Utils;
 
 [assembly: AssemblyFileVersion(YuEzTools.Main.PluginVersion)]
 [assembly: AssemblyInformationalVersion(YuEzTools.Main.PluginVersion)]
 [assembly: AssemblyVersion(YuEzTools.Main.PluginVersion)]
+
 namespace YuEzTools;
 
 [BepInPlugin(PluginGuid, "YuEzTools", PluginVersion)]
 [BepInProcess("Among Us.exe")]
 public class Main : BasePlugin
 {
-
     public static readonly string ModName = "YuEzTools"; // 咱们的模组名字
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
     public static readonly string MainMenuText = "I am so sad..."; // 咱们模组的首页标语
@@ -42,10 +30,10 @@ public class Main : BasePlugin
     public static string DcUrl = "https://discord.gg/42tyx9FyD7";
 
     public static bool HasHacker = false;
-    
+
     public static NormalGameOptionsV10 NormalOptions => GameOptionsManager.Instance.currentNormalGameOptions;
     public static HideNSeekGameOptionsV10 HideNSeekOptions => GameOptionsManager.Instance.currentHideNSeekGameOptions;
-    
+
     public static ConfigEntry<string> menuKeybind;
     public static ConfigEntry<string> menuHtmlColor;
     public static MenuUI menuUI;
@@ -61,68 +49,68 @@ public class Main : BasePlugin
     
     public static List<string> TName_Snacks_CN = new() { "冰激凌", "奶茶", "巧克力", "蛋糕", "甜甜圈", "可乐", "柠檬水", "冰糖葫芦", "果冻", "糖果", "牛奶", "抹茶", "烧仙草", "菠萝包", "布丁", "椰子冻", "曲奇", "红豆土司", "三彩团子", "艾草团子", "泡芙", "可丽饼", "桃酥", "麻薯", "鸡蛋仔", "马卡龙", "雪梅娘", "炒酸奶", "蛋挞", "松饼", "西米露", "奶冻", "奶酥", "可颂", "奶糖" ,"咔皮呆","Yu","Night瓜","慕斯Mousse","毒液","Slok7565","喜","乐崽"};
     public static List<string> TName_Snacks_EN = new() { "Ice cream", "Milk tea", "Chocolate", "Cake", "Donut", "Coke", "Lemonade", "Candied haws", "Jelly", "Candy", "Milk", "Matcha", "Burning Grass Jelly", "Pineapple Bun", "Pudding", "Coconut Jelly", "Cookies", "Red Bean Toast", "Three Color Dumplings", "Wormwood Dumplings", "Puffs", "Can be Crepe", "Peach Crisp", "Mochi", "Egg Waffle", "Macaron", "Snow Plum Niang", "Fried Yogurt", "Egg Tart", "Muffin", "Sago Dew", "panna cotta", "soufflé", "croissant", "toffee" ,"KARPED1EM","Yu","Night-GUA","Mousse","Farewell","Slok7565","Xi","LezaiYa"};
-    
+
     public static System.Version version = System.Version.Parse(PluginVersion);
-        
+
     public static int ModMode { get; private set; } =
 #if DEBUG
-0;
+        0;
 #elif CANARY
         1;
-    #else
-    2;
+#else
+        2;
 #endif
-    
+
     public static bool isChatCommand = false;
 
     // public static List<PlayerControl> JoinedPlayer = new();
-    
+
     public Harmony Harmony { get; } = new Harmony(PluginGuid);
 
     public static BepInEx.Logging.ManualLogSource Logger;
-    
+
     public static IEnumerable<PlayerControl> AllPlayerControls => PlayerControl.AllPlayerControls.ToArray().Where(p => p != null);
-    
-    public static List<PlayerControl> ClonePlayerControlsOnStart => AllPlayerControls.ToList();
-    
+
+    public static List<PlayerControl> ClonePlayerControlsOnStart => [.. AllPlayerControls];
+
     public static Main Instance; //设置Main实例
 
     public static bool isFirstSendEnd = false;
-    
-    public static bool IsChineseUser => Translator.GetUserLangByRegion() == SupportedLangs.SChinese;
-    
+
+    public static bool IsChineseUser => GetUserLangByRegion() == SupportedLangs.SChinese;
+
     public static bool VisibleTasksCount = false;
-    
+
     //public static bool safemode = true;//设置安全模式
     //public static bool ShowMode = true;//设置揭示模式
-    
-    public static List<(string, byte, string)> MessagesToSend = new();
-    public static List<PlayerControl> HackerList = new();
+
+    public static List<(string, byte, string)> MessagesToSend = [];
+    public static List<PlayerControl> HackerList = [];
 
     public static IEnumerable<PlayerControl> AllAlivePlayerControls =>
         //(PlayerControl.AllPlayerControls == null || PlayerControl.AllPlayerControls.Count == 0) && LoadEnd
         //? AllAlivePlayerControls :
         PlayerControl.AllPlayerControls.ToArray().Where(p => p != null);
-    
+
     //public static Dictionary<int, PlayerState> PlayerStates = new Dictionary<int, PlayerState>();
-    
+
     public static ConfigEntry<string> BetaBuildURL { get; private set; }
     public override void Load()//加载 启动！
     {
         Instance = this; //Main实例
-        
-            ResourceUtils.WriteToFileFromResource(
-                "BepInEx/core/YamlDotNet.dll",
-                "YuEzTools.Resources.InDLL.Depends.YamlDotNet.dll");
-            ResourceUtils.WriteToFileFromResource(
-                "BepInEx/core/YamlDotNet.xml",
-                "YuEzTools.Resources.InDLL.Depends.YamlDotNet.xml");
-        
+
+        ResourceUtils.WriteToFileFromResource(
+            "BepInEx/core/YamlDotNet.dll",
+            "YuEzTools.Resources.InDLL.Depends.YamlDotNet.dll");
+        ResourceUtils.WriteToFileFromResource(
+            "BepInEx/core/YamlDotNet.xml",
+            "YuEzTools.Resources.InDLL.Depends.YamlDotNet.xml");
+
         PluginModuleInitializerAttribute.InitializeAll();
-        
+
         Logger = BepInEx.Logging.Logger.CreateLogSource("YuEzTools"); //输出前缀 设置！
-        YuEzTools.Logger.Enable();
-        
+        Enable();
+
         menuKeybind = Config.Bind("YuET.GUI",
             "Keybind",
             "Delete",
@@ -138,11 +126,11 @@ public class Main : BasePlugin
         SwitchVanilla = Config.Bind("Client Options", "SwitchVanilla", false);
 
         menuUI = AddComponent<MenuUI>();
-        
+
         //Translator.Init();
-        
+
         BetaBuildURL = Config.Bind("Other", "BetaBuildURL", "");
-        
+
         if (Application.version == CanUseInAmongUsVer)
             Logger.LogInfo($"AmongUs Version: {Application.version}"); //牢底居然有智齿的版本？！
         else
@@ -152,12 +140,12 @@ public class Main : BasePlugin
         Harmony.PatchAll();
         if (ModMode != 0) ConsoleManager.DetachConsole();
         else ConsoleManager.CreateConsole();
-        
+
         DevManager.Init();
         Toggles.WinTextSize = WinTextSize.Value;
-        
+
         //模组加载好了标语
-        YuEzTools.Logger.Msg("========= YuET loaded! =========", "YuET Plugin Load");
+        Msg("========= YuET loaded! =========", "YuET Plugin Load");
     }
 }
 

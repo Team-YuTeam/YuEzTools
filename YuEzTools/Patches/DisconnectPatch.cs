@@ -1,14 +1,10 @@
-using HarmonyLib;
-using static YuEzTools.Translator;
-
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnDisconnected))]
 internal class OnDisconnectedPatch
 {
-    public static void Postfix(AmongUsClient __instance)
+    public static void Postfix()
     {
-
         Main.VisibleTasksCount = false;
     }
 }
@@ -28,11 +24,11 @@ internal class ShowDisconnectPopupPatch
             {
 
                 void SetText(string text)
-                { 
-                    Logger.Info(__instance._textArea.text,"DisconnectPatch");
+                {
+                    Info(__instance._textArea.text, "DisconnectPatch");
                     if (__instance?._textArea?.text != null)
                         __instance._textArea.text = text;
-                    Logger.Info(text,"DisconnectPatch");
+                    Info(text, "DisconnectPatch");
                 }
 
                 if (!string.IsNullOrEmpty(ReasonByHost))

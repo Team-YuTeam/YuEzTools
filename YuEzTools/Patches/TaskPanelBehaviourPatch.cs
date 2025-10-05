@@ -1,8 +1,3 @@
-using AmongUs.GameOptions;
-using HarmonyLib;
-using Hazel.Dtls;
-using LibCpp2IL.Elf;
-using System.Linq;
 using System.Text;
 using TMPro;
 using System;
@@ -14,7 +9,7 @@ using static YuEzTools.Translator;
 using YuEzTools.Modules;
 using YuEzTools.Utils;
 
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 [HarmonyPatch(typeof(TaskPanelBehaviour), nameof(TaskPanelBehaviour.SetTaskText))]
 class TaskPanelBehaviourPatch
@@ -23,12 +18,12 @@ class TaskPanelBehaviourPatch
     public static void Postfix(TaskPanelBehaviour __instance)
     {
         if (!GetPlayer.IsInGame) return;
-        
+
         PlayerControl player = PlayerControl.LocalPlayer;
 
         var taskText = __instance.taskText.text;
         if (taskText == "None") return;
-        
+
         var RoleWithInfo = $"{player.Data.Role.NiceName}:\r\n";
         RoleWithInfo += player.Data.RoleType.GetRoleLInfoForVanilla();
         
@@ -51,9 +46,9 @@ class TaskPanelBehaviourPatch
         }
 
         AllText += "\n\n<size=60%>" + GetString("PressF3ToShowYourRoleInfo") + "</size>";
-        
+
         __instance.taskText.text = AllText;
-        
+
         // RepairSenderの表示
         if (RepairSender.enabled && AmongUsClient.Instance.NetworkMode != NetworkModes.OnlineGame)
             __instance.taskText.text = RepairSender.GetText();

@@ -1,19 +1,16 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Net.Http;
 using System.Runtime.CompilerServices;
-using YuEzTools.Modules;
 using LogLevel = BepInEx.Logging.LogLevel;
 
-namespace YuEzTools;
+namespace YuEzTools.Modules;
 
 class Logger
 {
     public static bool isEnable;
-    public static List<string> disableList = new();
-    public static List<string> sendToGameList = new();
+    public static List<string> disableList = [];
+    public static List<string> sendToGameList = [];
     public static bool isDetail = false;
     public static bool isAlsoInGame = false;
     public static void Enable() => isEnable = true;
@@ -24,7 +21,10 @@ class Logger
         if (toGame && !sendToGameList.Contains(tag)) sendToGameList.Add(tag);
         else sendToGameList.Remove(tag);
     }
-    public static void Disable(string tag) { if (!disableList.Contains(tag)) disableList.Add(tag); }
+    public static void Disable(string tag)
+    {
+        if (!disableList.Contains(tag)) disableList.Add(tag);
+    }
     private static void SendToFile(string text, LogLevel level = LogLevel.Info, string tag = "", bool escapeCRLF = true, int lineNumber = 0, string fileName = "")
     {
         if (!isEnable || disableList.Contains(tag)) return;
@@ -84,7 +84,7 @@ class Logger
     public static void CurrentMethod([CallerLineNumber] int lineNumber = 0, [CallerFilePath] string fileName = "")
     {
         StackFrame stack = new(1);
-        Logger.Msg($"\"{stack.GetMethod().ReflectedType.Name}.{stack.GetMethod().Name}\" Called in \"{Path.GetFileName(fileName)}({lineNumber})\"", "Method");
+        Msg($"\"{stack.GetMethod().ReflectedType.Name}.{stack.GetMethod().Name}\" Called in \"{Path.GetFileName(fileName)}({lineNumber})\"", "Method");
     }
 
     public static LogHandler Handler(string tag)

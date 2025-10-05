@@ -1,10 +1,7 @@
-using HarmonyLib;
 using TMPro;
 using UnityEngine;
 
-using YuEzTools;
-
-namespace YuEzTools;
+namespace YuEzTools.UI;
 
 [HarmonyPatch(typeof(AccountTab), nameof(AccountTab.Awake))]
 public static class UpdateFriendCodeUIPatch
@@ -12,7 +9,6 @@ public static class UpdateFriendCodeUIPatch
     private static GameObject VersionShower;
     public static void Prefix(AccountTab __instance)
     {
-
         string credentialsText = "<color=#FFB6C1>YuTeam \u00a9 2025</color>";
         credentialsText += "\t\t\t";
         string versionText = $"<color={Main.ModColor}>{Main.ModName}</color> - <color=#ffff00>v{Main.PluginVersion}</color>";
@@ -53,7 +49,7 @@ public static class UpdateFriendCodeUIPatch
         BarSprite.SetActive(false);
         friendCode.SetActive(false);
         SignInStatus.SetActive(false);
-        GameObject.Destroy(Toggle_Friend_Code_Button);
+        Object.Destroy(Toggle_Friend_Code_Button);
         Toggle_Friend_Code_Button.SetActive(false);
         //Toggle_Friend_Code_Button.transform.localPosition = new Vector3(114514f, 1919810f, 1f);
     }

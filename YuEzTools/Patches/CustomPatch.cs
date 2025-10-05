@@ -1,15 +1,7 @@
-using AmongUs.GameOptions;
-using HarmonyLib;
-using Hazel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-namespace YuEzTools;
+namespace YuEzTools.Patches;
 
 public enum CustomRPC
 {
     SetKickReason,
-    
     SyncLobbyTimer,
 }
