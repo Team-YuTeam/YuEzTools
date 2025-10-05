@@ -68,6 +68,11 @@ public static class CustomPopup
                 }
 
                 button.OnClick = new UnityEngine.UI.Button.ButtonClickedEvent();
+                button.OnClick.AddListener((Action)(() =>
+                {
+                    InfoScreen?.SetActive(false);
+                    Fill?.SetActive(false);
+                }));
 
                 if (action != null)
                 {
@@ -198,4 +203,3 @@ public static class CustomPopup
         }
     }
 }
-#nullable disable
