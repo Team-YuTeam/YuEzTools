@@ -1,15 +1,4 @@
-using AmongUs.GameOptions;
-using HarmonyLib;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using UnityEngine;
-using Hazel;
-using System.IO;
-using System.Reflection;
-using System.Runtime.InteropServices;
 using YuEzTools.Helper;
-using static YuEzTools.Translator;
 using YuEzTools.Modules;
 
 namespace YuEzTools.Patches;
@@ -52,7 +41,7 @@ public class IntroPatch
 
         __instance.TeamTitle.text = GetString("TeamImpostor");
         __instance.ImpostorText.text = $"{string.Format(GetString("ImpostorNumImp"), GameOptionsManager.Instance.currentNormalGameOptions.NumImpostors)}";
-        
+
         __instance.ImpostorText.text += "\n" + string.Format(GetString("ImpostorIntroText"),RoleColorHelper.GetRoleColorHex(PlayerControl.LocalPlayer.Data.RoleType));
         __instance.TeamTitle.color = __instance.BackgroundBar.material.color = RoleColorHelper.GetRoleColor32(PlayerControl.LocalPlayer.Data.RoleType);
     }

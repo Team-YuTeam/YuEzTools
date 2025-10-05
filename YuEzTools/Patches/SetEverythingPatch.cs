@@ -235,9 +235,8 @@ class SetEverythingUpPatch
             var data = kvp.Value;
             s += $"\n" + EndGamePatch.SummaryText[id];
         }
-        
-        Logger.Info(s,"SetEverythingUpPatch");
-        
+
+        Info(s, "SetEverythingUpPatch");
         //唤出结算按钮
         var detailButton = UnityEngine.Object.Instantiate(__instance.Navigation.ContinueButton.transform.GetChild(0));
         detailButton.transform.SetParent(ModDisplay.transform);
@@ -252,10 +251,7 @@ class SetEverythingUpPatch
 
         //结算界面
         var detailDialog = UnityEngine.Object.Instantiate(UnityEngine.Object.FindObjectOfType<ControllerDisconnectHandler>(), null);
-        DetailDialog.Initialize(__instance, detailDialog, __instance.WinText, new string[] {
-            GetString("EndMessage")+
-            s
-        });
+        DetailDialog.Initialize(__instance, detailDialog, __instance.WinText, [GetString("EndMessage")+ s]);
         Info(s, "EndSummary");
     }
 }
