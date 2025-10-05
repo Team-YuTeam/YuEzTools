@@ -151,6 +151,7 @@ DCNotify.IncorrectVersion: "AU版本都不同，你认为你能进吗？傻瓜(�
 DCNotify.Description: "姐妹！你甚至能被踢？！\n搞笑(*^_^*)\n理由：{0}"
 
 # Role
+# 船员
 Crewmate: "船员"
 CrewmateShort: "你是一个普通的小~船员~啊~"
 CrewmateLong: "任务！快去做任务啊！！！\n做任务或投出内鬼以获得胜利"
@@ -166,6 +167,10 @@ EngineerLong: "使用跳管道的技能以快速移动\n要记住你的管道cd�
 Tracker: "侦察员"
 TrackerShort: "你个色批偷窥狂！"
 TrackerLong: "追踪别人...以发现线索\n但是我怎么找不到人啊！"
+Detective: "侦探"
+DetectiveShort: "透过迷雾 看破一切"
+DetectiveLong: "使用你的侦探小本子来找出凶手\n这几个选一个还能错？！"
+# 内鬼
 Impostor: "伪装者"
 ImpostorShort: "刀！刀！刀！热血！奋斗！"
 ImpostorLong: "小船员...好可爱\n击杀船员或破坏飞船以获得胜利！"
@@ -175,6 +180,10 @@ ShapeshifterLong: "好小的皮套 真不舒服！\n变形成其他人以伪造~
 Phantom: "幻象师"
 PhantomShort: "问我在哪？我也不知道呢~嘻嘻"
 PhantomLong: "看不见我 看不见我...\n隐身以逃离现场"
+Viper: "毒蛇"
+ViperShort: "你怎么在慢慢消失啊"
+ViperLong: "击杀船员后，其尸体会慢慢消失\n化作地面的一滩水吧~小船员们"
+# 灵魂
 CrewmateGhost: "船员灵魂"
 CrewmateGhostShort: "惨！怎么死了啊"
 CrewmateGhostLong: "啧啧~死了？\n做任务吧！"
@@ -256,3 +265,7 @@ ErrorWin: "异常结束"
 
 # 任务栏
 PressF3ToShowYourRoleInfo: "按下F3以显示职业介绍和设置"
+
+# 设置菜单
+YuETOptions: "YuET设置"
+SwitchVanilla: "切换原版"

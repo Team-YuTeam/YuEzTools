@@ -13,6 +13,7 @@ using InnerNet;
 using Sentry.Internal.Extensions;
 using UnityEngine;
 using System.Collections.Generic;
+using YuEzTools.Helper;
 
 namespace YuEzTools.Get;
 
@@ -66,11 +67,11 @@ static class GetPlayer
     }
     public static string GetColorRole(PlayerControl pc)
     {
-        return "<color=" + Utils.Utils.GetRoleHtmlColor(pc.Data.RoleType) + ">" + pc.Data.Role.NiceName + "</color>";
+        return "<color=" + RoleColorHelper.GetRoleColorHex(pc.Data.RoleType) + ">" + pc.Data.Role.NiceName + "</color>";
     }
     public static string GetRColorName(PlayerControl pc,string name)
     {
-        return "<color=" + Utils.Utils.GetRoleHtmlColor(pc.Data.RoleType) + ">" + name + "</color>";
+        return "<color=" + RoleColorHelper.GetRoleColorHex(pc.Data.RoleType) + ">" + name + "</color>";
     }
     public static string GetNameRole(PlayerControl player)
     {

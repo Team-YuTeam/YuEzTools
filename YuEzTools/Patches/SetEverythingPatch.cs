@@ -187,7 +187,7 @@ public static class DetailDialog
 
         renderer.gameObject.SetActive(true);
         button.gameObject.SetActive(true);
-        saveButton.gameObject.SetActive(true);
+        // saveButton.gameObject.SetActive(true);
         saveText.gameObject.SetActive(true);
     }
 
@@ -259,6 +259,9 @@ class SetEverythingUpPatch
             var data = kvp.Value;
             s += $"\n" + EndGamePatch.SummaryText[id];
         }
+        
+        Logger.Info(s,"SetEverythingUpPatch");
+        
         //唤出结算按钮
         var detailButton = GameObject.Instantiate(__instance.Navigation.ContinueButton.transform.GetChild(0));
         detailButton.transform.SetParent(ModDisplay.transform);

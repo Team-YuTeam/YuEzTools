@@ -5,6 +5,7 @@ using YuEzTools.Get;
 using YuEzTools.Modules;
 using static YuEzTools.Translator;
 using YuEzTools.Get;
+using YuEzTools.Helper;
 using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;
@@ -45,9 +46,9 @@ class FixedUpdatePatch
 
         if (GetPlayer.IsInGame)
         {
-            color = Utils.Utils.GetRoleHtmlColor(__instance.Data.RoleType);
+            color = RoleColorHelper.GetRoleColorHex(__instance.Data.RoleType);
             if(__instance == PlayerControl.LocalPlayer || (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead))
-                name = Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(__instance.Data.RoleType), __instance.GetRoleName()  + "\n" + name);
+                name = Utils.Utils.ColorString(RoleColorHelper.GetRoleColor32(__instance.Data.RoleType), __instance.GetRoleName()  + "\n" + name);
             if (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead)
                 name += $"({Utils.Utils.GetDeadText(__instance)})";
             if (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.RoleType == RoleTypes.Impostor)
