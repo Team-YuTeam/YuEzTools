@@ -1,4 +1,11 @@
 using System.Text;
+using TMPro;
+using System;
+using UnityEngine;
+using System.Collections.Generic;
+using YuEzTools.Get;
+using YuEzTools.Helper;
+using static YuEzTools.Translator;
 using YuEzTools.Modules;
 using YuEzTools.Utils;
 
@@ -19,9 +26,9 @@ class TaskPanelBehaviourPatch
 
         var RoleWithInfo = $"{player.Data.Role.NiceName}:\r\n";
         RoleWithInfo += player.Data.RoleType.GetRoleLInfoForVanilla();
-
-        var AllText = Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(player.Data.RoleType), RoleWithInfo);
-
+        
+        var AllText = Utils.Utils.ColorString(RoleColorHelper.GetRoleColor32(player.Data.RoleType), RoleWithInfo);
+        
         var lines = taskText.Split("\r\n</color>\n")[0].Split("\r\n\n")[0].Split("\r\n");
         StringBuilder sb = new();
         foreach (var eachLine in lines)
@@ -34,7 +41,7 @@ class TaskPanelBehaviourPatch
         {
             var text = sb.ToString().TrimEnd('\n').TrimEnd('\r');
             if (!player.HasTasks() && sb.ToString().Count(s => (s == '\n')) >= 2)
-                text = $"{Utils.Utils.ColorString(Utils.Utils.GetRoleColor32(player.Data.RoleType), GetString("FakeTask"))}\r\n{text}";
+                text = $"{Utils.Utils.ColorString(RoleColorHelper.GetRoleColor32(player.Data.RoleType), GetString("FakeTask"))}\r\n{text}";
             AllText += $"\r\n\r\n<size=85%>{text}</size>";
         }
 
