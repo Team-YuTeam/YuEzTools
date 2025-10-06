@@ -32,7 +32,7 @@ public static class ServerAddManager
             CreateHttp("aunpp.cn", "Hedianzhan(Shanghai)", 443, true),
             CreateHttp("nb.aunpp.cn", "Hedianzhan(Ningbo)", 443, true),
             CreateHttp("www.nebula-on-the-ship.com", "NebulaOnTheShip(Japan)", 443, true),
-            CreateHttp("player.amongusclub.cn", "Fangkuai(Suqian,NoS Only)", 443, true),
+            CreateHttp("player.amongusclub.cn", "Fangkuai(Suqian,NoS)", 443, true),
         ];
 
         var defaultRegion = serverManager.CurrentRegion;
