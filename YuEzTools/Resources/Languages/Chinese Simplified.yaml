@@ -271,3 +271,30 @@ PressF3ToShowYourRoleInfo: "按下F3以显示职业介绍和设置"
 YuETOptions: "YuET设置"
 SwitchVanilla: "切换原版"
 Options.Back: "关闭"
+
+# Servers
+## Niko
+Niko233(EU): "Niko233(欧洲)"
+Niko233(NA): "Niko233(北美)"
+Niko233(AS): "Niko233(亚洲)"
+## Modded
+Modded Asia (MAS): "Modded Asia (MAS)"
+Modded NA (MNA): "Modded NA (MNA)"
+Modded EU (MEU): "Modded EU (MEU)"
+## QingFeng
+QingFeng(Beijing): "清风(北京)"
+QingFeng(Shanghai): "清风(上海)"
+QingFeng(Ningbo): "清风(宁波)"
+QingFeng(Guangzhou): "清风(广州)"
+## Fanchuan
+Fanchuan(Guangzhou): "帆船(广州)"
+Fanchuan(Zaozhuang): "帆船(枣庄)"
+## Tianmeng
+Tianmeng(New): "天梦(新)"
+## Hedianzhan
+Hedianzhan(Shanghai): "核电站(上海)"
+Hedianzhan(Ningbo): "核电站(宁波)"
+## Fangkuai
+Fangkuai(Suqian,NoS): "方块(宿迁,星云舰)"
+## NoS
+NebulaOnTheShip(Japan): "星云舰(日本）"
