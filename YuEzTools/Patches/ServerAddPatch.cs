@@ -21,30 +21,30 @@ public static class ServerAddManager
         List<IRegionInfo> regionInfos =
         [
             // Niko
-            CreateHttp("au-eu.niko233.me", "Niko233(EU)", 443, true),
-            CreateHttp("au-us.niko233.me", "Niko233(NA)", 443, true),
-            CreateHttp("au-as.niko233.me", "Niko233(AS)", 443, true),
+            CreateHttp("au-eu.niko233.me", "Niko233(EU)", 443, true, new Color32(251, 200, 200,255)),
+            CreateHttp("au-us.niko233.me", "Niko233(NA)", 443, true, new Color32(251, 200, 200,255)),
+            CreateHttp("au-as.niko233.me", "Niko233(AS)", 443, true, new Color32(251, 200, 200,255)),
             // Modded
-            CreateHttp("au-as.duikbo.at", "Modded Asia (MAS)", 443, true),
-            CreateHttp("aumods.org", "Modded NA (MNA)", 443, true),
-            CreateHttp("au-eu.duikbo.at", "Modded EU (MEU)", 443, true),
+            CreateHttp("au-as.duikbo.at", "Modded Asia (MAS)", 443, true, new Color32(251, 226, 200,255)),
+            CreateHttp("aumods.org", "Modded NA (MNA)", 443, true, new Color32(251, 226, 200,255)),
+            CreateHttp("au-eu.duikbo.at", "Modded EU (MEU)", 443, true, new Color32(251, 226, 200,255)),
             // Qingfeng
-            CreateHttp("bj.server.qingfengawa.top", "QingFeng(Beijing)", 443, true),
-            CreateHttp("sh.server.qingfengawa.top", "QingFeng(Shanghai)", 443, true),
-            CreateHttp("nb.server.qingfengawa.top", "QingFeng(Ningbo)", 443, true),
-            CreateHttp("gz.server.qingfengawa.top", "QingFeng(Guangzhou)", 443, true),
+            CreateHttp("bj.server.qingfengawa.top", "QingFeng(Beijing)", 443, true, new Color32(249, 255, 170,255)),
+            CreateHttp("sh.server.qingfengawa.top", "QingFeng(Shanghai)", 443, true,new Color32(249, 255, 170,255)),
+            CreateHttp("nb.server.qingfengawa.top", "QingFeng(Ningbo)", 443, true, new Color32(249, 255, 170,255)),
+            CreateHttp("gz.server.qingfengawa.top", "QingFeng(Guangzhou)", 443, true, new Color32(249, 255, 170,255)),
             // Fanchuan
-            CreateHttp("gz.fcaugame.cn", "Fanchuan(Guangzhou)", 443, true),
-            CreateHttp("zxc.lcayun.cn", "Fanchuan(Zaozhuang)", 443, true),
+            CreateHttp("gz.fcaugame.cn", "Fanchuan(Guangzhou)", 443, true, new Color32(207, 255, 170,255)),
+            CreateHttp("zxc.lcayun.cn", "Fanchuan(Zaozhuang)", 443, true, new Color32(207, 255, 170,255)),
             // Tianmeng
             // CreateHttp("139.224.74.5", "Tianmeng(New)", 443, true),
             // Hedianzhan
-            CreateHttp("aunpp.cn", "Hedianzhan(Shanghai)", 443, true),
-            CreateHttp("nb.aunpp.cn", "Hedianzhan(Ningbo)", 443, true),
+            CreateHttp("aunpp.cn", "Hedianzhan(Shanghai)", 443, true, new Color32(170, 255, 186,255)),
+            CreateHttp("nb.aunpp.cn", "Hedianzhan(Ningbo)", 443, true, new Color32(170, 255, 186,255)),
             // Fangkuai
-            CreateHttp("player.amongusclub.cn", "Fangkuai(Suqian,NoS)", 443, true),
+            CreateHttp("player.amongusclub.cn", "Fangkuai(Suqian,NoS)", 443, true, new Color32(170, 255, 241,255)),
             // NoS
-            CreateHttp("www.nebula-on-the-ship.com", "NebulaOnTheShip(Japan)", 443, true),
+            CreateHttp("www.nebula-on-the-ship.com", "NebulaOnTheShip(Japan)", 443, true, new Color32(170, 220, 255,255)),
         ];
         
         var defaultRegion = serverManager.CurrentRegion;
@@ -57,8 +57,8 @@ public static class ServerAddManager
     {
         if (serverName == "") serverName = ServerManager.Instance.CurrentRegion.Name;
         var name = serverName;
-        
-        Color32 color32 = serverColor32Map[name];
+
+        Color32 color32 = GetServerColor32(name);
 
         // Color32 color = serverName switch
         // {
@@ -89,5 +89,16 @@ public static class ServerAddManager
         ServerInfo[] ServerInfo = [serverInfo];
         return new StaticHttpRegionInfo(name, (StringNames)1003, ip, ServerInfo).Cast<IRegionInfo>();
     }
+
+    private static readonly Color32 _defaultColor = new Color32(255, 255, 255, 255);
     
+    private static Color32 GetServerColor32(string name)
+    {
+        if (serverColor32Map.TryGetValue(name, out var colorData))
+        {
+            return colorData;
+        }
+        
+        return _defaultColor;
+    }
 }
