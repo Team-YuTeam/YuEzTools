@@ -16,8 +16,6 @@ public static class ServerAddManager
             CreateHttp("au-eu.niko233.me", "Niko233(EU)", 443, true),
             CreateHttp("au-us.niko233.me", "Niko233(NA)", 443, true),
             CreateHttp("au-as.niko233.me", "Niko233(AS)", 443, true),
-            // CreateHttp("newplayer.fangkuai.fun", "FangKuai", 443, true),
-            // CreateHttp("ah.rainplay.cn", "XiaoLu", 50751, false),
             CreateHttp("au-as.duikbo.at", "Modded Asia (MAS)", 443, true),
             CreateHttp("aumods.org", "Modded NA (MNA)", 443, true),
             CreateHttp("au-eu.duikbo.at", "Modded EU (MEU)", 443, true),
@@ -25,16 +23,18 @@ public static class ServerAddManager
             CreateHttp("sh.server.qingfengawa.top", "QingFeng(Shanghai)", 443, true),
             CreateHttp("nb.server.qingfengawa.top", "QingFeng(Ningbo)", 443, true),
             CreateHttp("gz.server.qingfengawa.top", "QingFeng(Guangzhou)", 443, true),
+            // CreateHttp("newplayer.fangkuai.fun", "FangKuai", 443, true),
+            // CreateHttp("ah.rainplay.cn", "XiaoLu", 50751, false),
             // CreateHttp("159.75.180.210", "Fanchuan(Guangzhou IP)", 443, true),
             CreateHttp("gz.fcaugame.cn", "Fanchuan(Guangzhou)", 443, true),
             CreateHttp("zxc.lcayun.cn", "Fanchuan(Zaozhuang)", 443, true),
             CreateHttp("139.224.74.5", "Tianmeng(New)", 443, true),
             CreateHttp("aunpp.cn", "Hedianzhan(Shanghai)", 443, true),
             CreateHttp("nb.aunpp.cn", "Hedianzhan(Ningbo)", 443, true),
-            CreateHttp("www.nebula-on-the-ship.com", "NebulaOnTheShip(Japan)", 443, true),
             CreateHttp("player.amongusclub.cn", "Fangkuai(Suqian,NoS)", 443, true),
+            CreateHttp("www.nebula-on-the-ship.com", "NebulaOnTheShip(Japan)", 443, true),
         ];
-
+        
         var defaultRegion = serverManager.CurrentRegion;
         regionInfos.Where(x => !serverManager.AvailableRegions.Contains(x)).Do(serverManager.AddOrUpdateRegion);
         serverManager.SetRegion(defaultRegion);
