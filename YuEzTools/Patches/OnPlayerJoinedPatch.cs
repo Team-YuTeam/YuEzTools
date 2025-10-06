@@ -30,8 +30,10 @@ class OnPlayerJoinedPatch
         GetPlayer.numCrewmates = 0;
         if (client.FriendCode.IsDevUser())
         {
-            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"[Mod Dev] <color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
-            SendInGamePatch.SendInGame($"[{client.FriendCode.GetDevJob()}] <color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
+            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
+                $"[Mod Dev] <color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
+            SendInGamePatch.SendInGame($"[{client.FriendCode.GetDevJob()}] <color=#1E90FF>{client.PlayerName}</color> " +
+                                       $"<color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
             return;
         }
         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"<color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
@@ -99,6 +101,7 @@ class OnGameJoined
     // }
     public static void Postfix()
     {
+        ServerAddManager.SetServerName();
         ShowDisconnectPopupPatch.ReasonByHost = string.Empty;
     }
 }
