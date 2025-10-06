@@ -92,7 +92,7 @@ public static class ServerAddManager
 
     private static readonly Color32 _defaultColor = new Color32(255, 255, 255, 255);
     
-    private static Color32 GetServerColor32(string name)
+    public static Color32 GetServerColor32(string name)
     {
         if (serverColor32Map.TryGetValue(name, out var colorData))
         {
