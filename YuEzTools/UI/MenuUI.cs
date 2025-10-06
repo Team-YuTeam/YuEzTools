@@ -14,11 +14,10 @@ public class MenuUI : MonoBehaviour
     public static bool firstoOpenMenuUI = true;
 
     // Create all groups (buttons) and their toggles on start
-    private static void Start() { }
+    private void Start() { }
 
     private void Update()
     {
-
         if (Input.GetKeyDown(Utils.Utils.stringToKeycode(Main.menuKeybind.Value)))
         {
             //Enable-disable GUI with DELETE key
@@ -32,7 +31,7 @@ public class MenuUI : MonoBehaviour
         if (GetPlayer.IsPlayer)
         {
             Toggles.ServerAllHostOrNoHost = GameStartManagerPatch.roomMode == RoomMode.Normal ? false : true;
-            Toggles.EnableAntiCheat = GameStartManagerPatch.EnableAC;
+            // Toggles.EnableAntiCheat = GameStartManagerPatch.EnableAC;
         }
 
         Main.WinTextSize.Value = Toggles.WinTextSize;
@@ -320,7 +319,7 @@ public class MenuUI : MonoBehaviour
         }
     }
 
-    private static void CloseAllSubmenusExcept(GroupInfo group, int submenuIndexToKeepOpen)
+    private void CloseAllSubmenusExcept(GroupInfo group, int submenuIndexToKeepOpen)
     {
         for (int i = 0; i < group.submenus.Count; i++)
         {
