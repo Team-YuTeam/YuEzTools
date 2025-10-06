@@ -273,6 +273,10 @@ SwitchVanilla: "切换原版"
 Options.Back: "关闭"
 
 # Servers
+## Official
+Asia: "亚洲"
+Europe: "欧洲"
+North America: "北美洲"
 ## Niko
 Niko233(EU): "Niko233(欧洲)"
 Niko233(NA): "Niko233(北美)"
