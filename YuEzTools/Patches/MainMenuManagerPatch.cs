@@ -22,6 +22,7 @@ public class MainMenuManagerPatch
     public static GameObject UpdateButton;
     public static GameObject PlayButton;
 
+
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.OpenGameModeMenu))]
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.OpenAccountMenu))]
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.OpenCredits))]
