@@ -7,6 +7,7 @@ namespace YuEzTools.Modules;
 # pragma warning disable CA1416
 public static class RegistryManager
 {
+    #if Windows // 实验性修改 如果有问题请删除 Main.cs也有此代码 请一并删除
     public static RegistryKey SoftwareKeys => Registry.CurrentUser.OpenSubKey("Software", true);
     public static RegistryKey Keys = SoftwareKeys.OpenSubKey("AU-YuET", true);
     public static Version LastVersion;
@@ -31,4 +32,5 @@ public static class RegistryManager
         Keys.SetValue("Last launched version", Main.version.ToString());
         Keys.SetValue("Path", Path.GetFullPath("./"));
     }
+#endif
 }

@@ -144,7 +144,9 @@ public class Main : BasePlugin
             Logger.LogInfo($"AmongUs Version: {Application.version}"); //牢底居然有智齿的版本？！
         else
             Logger.LogInfo($"游戏本体版本过低或过高,AmongUs Version: {Application.version}"); //牢底你的版本也不行啊
+        #if Windows
         RegistryManager.Init(); // 这是优先级最高的模块初始化方法，不能使用模块初始化属性
+#endif
         //各组件初始化
         Harmony.PatchAll();
         if (ModMode != 0) ConsoleManager.DetachConsole();
