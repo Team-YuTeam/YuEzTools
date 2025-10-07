@@ -52,6 +52,14 @@ public class MainMenuManagerPatch
     [HarmonyPatch(typeof(SignInStatusComponent), nameof(SignInStatusComponent.SetOnline)), HarmonyPostfix]
     public static void SetOnline_Postfix() { _ = new LateTask(() => { isOnline = true; }, 0.1f, "Set Online Status"); }
 
+    // [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.Start)), HarmonyPostfix]
+    // public static void MainMenuManager_Start()
+    // {
+    //     GameObject.Find("MainUI").transform.FindChild("ScreemMask").gameObject.SetActive(false);
+    //     // MainMenuManager.screenMask.gameObject.SetActive(false);
+    // }
+    
+    
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.LateUpdate)), HarmonyPostfix]
     public static void MainMenuManager_LateUpdate()
     {
@@ -61,12 +69,24 @@ public class MainMenuManagerPatch
 
         if (TitleLogoPatch.RightPanel != null)
         {
+            // var pos1 = TitleLogoPatch.RightPanel.transform.localPosition;
+            // Vector3 lerp1 = Vector3.Lerp(pos1, TitleLogoPatch.RightPanelOp + new Vector3((ShowingPanel ? 0f : 10f), 0f, 0f), Time.deltaTime * (ShowingPanel ? 3f : 2f));
+            // if (ShowingPanel
+            //     ? TitleLogoPatch.RightPanel.transform.localPosition.x > TitleLogoPatch.RightPanelOp.x + 0.03f
+            //     : TitleLogoPatch.RightPanel.transform.localPosition.x < TitleLogoPatch.RightPanelOp.x + 9f
+            //     ) TitleLogoPatch.RightPanel.transform.localPosition = lerp1;
+            
+            // thanks fs
             var pos1 = TitleLogoPatch.RightPanel.transform.localPosition;
-            Vector3 lerp1 = Vector3.Lerp(pos1, TitleLogoPatch.RightPanelOp + new Vector3((ShowingPanel ? 0f : 10f), 0f, 0f), Time.deltaTime * (ShowingPanel ? 3f : 2f));
+            var pos3 = new Vector3(
+                TitleLogoPatch.RightPanelOp.x * Utils.Utils.GetResolutionOffset(),
+                TitleLogoPatch.RightPanelOp.y, TitleLogoPatch.RightPanelOp.z);
+            var lerp1 = Vector3.Lerp(pos1, ShowingPanel ? pos3 : TitleLogoPatch.RightPanelOp + new Vector3(20f, 0f, 0f),
+                Time.deltaTime * (ShowingPanel ? 3f : 2f));
             if (ShowingPanel
-                ? TitleLogoPatch.RightPanel.transform.localPosition.x > TitleLogoPatch.RightPanelOp.x + 0.03f
-                : TitleLogoPatch.RightPanel.transform.localPosition.x < TitleLogoPatch.RightPanelOp.x + 9f
-                ) TitleLogoPatch.RightPanel.transform.localPosition = lerp1;
+                    ? TitleLogoPatch.RightPanel.transform.localPosition.x > pos3.x + 0.03f
+                    : TitleLogoPatch.RightPanel.transform.localPosition.x < TitleLogoPatch.RightPanelOp.x + 29f
+               ) TitleLogoPatch.RightPanel.transform.localPosition = lerp1;
         }
 
         if (ShowedBak || !isOnline) return;

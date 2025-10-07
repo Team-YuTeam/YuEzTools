@@ -462,6 +462,11 @@ public static class Utils
             Exception(ex, "CheckBanList");
         }
 
+        
         return false;
+    }
+    public static float GetResolutionOffset()
+    {
+        return (float)Screen.width / Screen.height / (16f / 9f);
     }
 }

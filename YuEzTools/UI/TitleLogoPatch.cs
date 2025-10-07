@@ -20,7 +20,9 @@ internal class TitleLogoPatch
     public static GameObject CloseRightButton;
     public static GameObject Tint;
 
-    public static Vector3 RightPanelOp;
+    // public static Vector3 RightPanelOp;
+    public static Vector3 RightPanelOp = new(2.8f, -0.4f, -5.0f);
+    
 
     public static void ShowPopup(string text)
     {
@@ -115,8 +117,8 @@ internal class TitleLogoPatch
         if (!(RightPanel = GameObject.Find("RightPanel"))) return;
         var rpap = RightPanel.GetComponent<AspectPosition>();
         if (rpap) Object.Destroy(rpap);
-        RightPanelOp = RightPanel.transform.localPosition;
-        RightPanel.transform.localPosition = RightPanelOp + new Vector3(10f, 0f, 0f);
+        // RightPanelOp = RightPanel.transform.localPosition;
+        RightPanel.transform.localPosition = RightPanelOp + new Vector3(20f, 0f, 0f);
         RightPanel.GetComponent<SpriteRenderer>().color = new(1f, 0.78f, 0.9f, 1f);
 
         if (!(Sizer = GameObject.Find("Sizer"))) return;
