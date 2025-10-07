@@ -8,7 +8,7 @@ namespace YuEzTools.Modules;
 //来源：https://github.com/tukasa0001/TownOfHost/pull/1265
 public class ClientToolsItem
 {
-    public ConfigEntry<bool> Config;
+    public bool Config;
     public ToggleButtonBehaviour ToggleButton;
 
     public static SpriteRenderer CustomBackground;
@@ -16,7 +16,7 @@ public class ClientToolsItem
 
     private ClientToolsItem(
         string name,
-        ConfigEntry<bool> config,
+        bool config,
         OptionsMenuBehaviour optionsMenuBehaviour,
         Action additionalOnClickAction = null)
     {
@@ -89,7 +89,7 @@ public class ClientToolsItem
             passiveButton.OnClick = new();
             passiveButton.OnClick.AddListener(new Action(() =>
             {
-                config?.Value = !config.Value;
+                config = !config;
                 UpdateToggle();
                 additionalOnClickAction?.Invoke();
             }));
@@ -100,7 +100,7 @@ public class ClientToolsItem
 
     public static ClientToolsItem Create(
         string name,
-        ConfigEntry<bool> config,
+        bool config,
         OptionsMenuBehaviour optionsMenuBehaviour,
         Action additionalOnClickAction = null)
     {
@@ -111,7 +111,7 @@ public class ClientToolsItem
     {
         if (ToggleButton == null) return;
 
-        var color = (Config != null && Config.Value) ? Main.ModColor32 : new Color32(77, 77, 77, byte.MaxValue);
+        var color = (Config != null && Config) ? Main.ModColor32 : new Color32(77, 77, 77, byte.MaxValue);
         ToggleButton.Background.color = color;
         ToggleButton.Rollover?.ChangeOutColor(color);
     }
