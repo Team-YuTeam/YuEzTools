@@ -12,13 +12,6 @@
         <AssemblyName>YuEzTools_$(Platform)</AssemblyName>
 	</PropertyGroup>
 
-    <!-- GitInfo 配置（确保能获取提交信息） -->
-    <PropertyGroup>
-        <GitInfoVersion>3.3.4</GitInfoVersion>
-        <GenerateGitRepositoryInfo>true</GenerateGitRepositoryInfo>
-        <GitCommitHashShort>8</GitCommitHashShort> <!-- 可选：限制哈希长度为8位 -->
-    </PropertyGroup>
-
 	<PropertyGroup>
 		<DebugSymbols>true</DebugSymbols>
 		<DebugType>embedded</DebugType>

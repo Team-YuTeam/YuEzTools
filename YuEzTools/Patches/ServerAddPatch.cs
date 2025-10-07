@@ -35,6 +35,8 @@ public static class ServerAddManager
             // Hedianzhan
             CreateHttp("aunpp.cn", "Hedianzhan(Shanghai)", 443, true, new Color32(170, 255, 186,255)),
             CreateHttp("nb.aunpp.cn", "Hedianzhan(Ningbo)", 443, true, new Color32(170, 255, 186,255)),
+            // Xiaohei
+            CreateHttp("zlxhimp.amongusclub.cn", "Xiaohei(Ningbo)", 443, true, new Color32(170, 255, 241,255)),
             // Fangkuai
             CreateHttp("player.amongusclub.cn", "Fangkuai(Suqian,NoS)", 443, true, new Color32(170, 255, 241,255)),
             // NoS
