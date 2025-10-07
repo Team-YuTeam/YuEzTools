@@ -106,11 +106,17 @@ class OnGameJoined
     }
 }
 
-[HarmonyPatch(typeof(IntroCutscene))]
+[HarmonyPatch]
 class IntroCutscenePatch
 {
     public static bool Ifkill = false;
-    [HarmonyPatch(nameof(IntroCutscene.OnDestroy)), HarmonyPostfix]
+#if Windows
+    [HarmonyPatch(typeof(IntroCutscene), nameof(IntroCutscene.OnDestroy))]
+#elif Android
+    [HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.StartSFX))]
+    [HarmonyPatch(typeof(FungleShipStatus), nameof(FungleShipStatus.StartSFX))]
+#endif
+    [HarmonyPostfix]
     public static void OnDestroy_Postfix(IntroCutscene __instance)
     {
         if (Toggles.AutoStartGame && AmongUsClient.Instance.AmHost)
