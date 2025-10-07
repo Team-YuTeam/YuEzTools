@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 namespace YuEzTools.Modules;
 
 //来源：https://github.com/tukasa0001/TownOfHost/pull/1265
-public class ClientOptionItem
+public class ClientToolsItem
 {
     public ConfigEntry<bool> Config;
     public ToggleButtonBehaviour ToggleButton;
@@ -14,7 +14,7 @@ public class ClientOptionItem
     public static SpriteRenderer CustomBackground;
     private static int numOptions = 0;
 
-    private ClientOptionItem(
+    private ClientToolsItem(
         string name,
         ConfigEntry<bool> config,
         OptionsMenuBehaviour optionsMenuBehaviour,
@@ -31,7 +31,7 @@ public class ClientOptionItem
             {
                 numOptions = 0;
                 CustomBackground = Object.Instantiate(optionsMenuBehaviour.Background, optionsMenuBehaviour.transform);
-                CustomBackground.name = "CustomBackground";
+                CustomBackground.name = "ToolsCustomBackground";
                 CustomBackground.transform.localScale = new(0.9f, 0.9f, 1f);
                 CustomBackground.transform.localPosition += Vector3.back * 8;
                 CustomBackground.gameObject.SetActive(false);
@@ -63,21 +63,17 @@ public class ClientOptionItem
                 var generalTab = mouseMoveToggle.transform.parent.parent.parent;
 
                 var modOptionsButton = Object.Instantiate(mouseMoveToggle, generalTab);
-                modOptionsButton.transform.localPosition = leaveButton != null ? new Vector3(-1.35f,leaveButton.transform.localPosition.y,leaveButton.transform.localPosition.z) : new(-1.35f, -2.4f, 1f);
-                modOptionsButton.name = "YuETOptions";
-                modOptionsButton.Text.text = GetString("YuETOptions");
-                modOptionsButton.Background.color = new Color32(104, 54, 255, byte.MaxValue);
+                modOptionsButton.transform.localPosition = leaveButton != null ? new Vector3(1.35f,-1.82f,leaveButton.transform.localPosition.z)  : new(1.35f, -2.4f, 1f);
+                modOptionsButton.name = "YuETToolsOptions";
+                modOptionsButton.Text.text = GetString("YuETToolsOptions");
+                modOptionsButton.Background.color = Main.ModColor32;
                 var modOptionsPassiveButton = modOptionsButton.GetComponent<PassiveButton>();
                 modOptionsPassiveButton.OnClick = new();
                 modOptionsPassiveButton.OnClick.AddListener(new Action(() =>
                 {
                     CustomBackground.gameObject.SetActive(true);
                 }));
-
-                if (leaveButton != null)
-                    leaveButton.transform.localPosition = new(-1.35f, -2.411f, -1f);
-                if (returnButton != null)
-                    returnButton.transform.localPosition = new(1.35f, -2.411f, -1f);
+                
             }
 
             // ボタン生成
@@ -102,7 +98,7 @@ public class ClientOptionItem
         finally { numOptions++; }
     }
 
-    public static ClientOptionItem Create(
+    public static ClientToolsItem Create(
         string name,
         ConfigEntry<bool> config,
         OptionsMenuBehaviour optionsMenuBehaviour,
@@ -115,7 +111,7 @@ public class ClientOptionItem
     {
         if (ToggleButton == null) return;
 
-        var color = (Config != null && Config.Value) ? new Color32(104, 54, 255, byte.MaxValue) : new Color32(77, 77, 77, byte.MaxValue);
+        var color = (Config != null && Config.Value) ? Main.ModColor32 : new Color32(77, 77, 77, byte.MaxValue);
         ToggleButton.Background.color = color;
         ToggleButton.Rollover?.ChangeOutColor(color);
     }

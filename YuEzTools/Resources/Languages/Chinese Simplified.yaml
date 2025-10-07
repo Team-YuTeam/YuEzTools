@@ -270,6 +270,7 @@ PressF3ToShowYourRoleInfo: "按下F3以显示职业介绍和设置"
 # 设置菜单
 YuETOptions: "YuET设置"
 SwitchVanilla: "切换原版"
+SwitchVanilla1: "OK"
 Options.Back: "关闭"
 
 # Servers / If Not Chinese, Write English name except Official. Of course, if you can translate them better than original English, you can do it.
