@@ -20,9 +20,9 @@ public class Main : BasePlugin
 {
     public static readonly string ModName = "YuEzTools"; // 咱们的模组名字
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
-    public static readonly string MainMenuText = "I am so sad..."; // 咱们模组的首页标语
+    public static readonly string MainMenuText = "Reviewing"; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuEzTools"; //咱们模组的Guid
-    public const string PluginVersion = "1.3.6.4"; //咱们模组的版本号
+    public const string PluginVersion = "1.3.6.5"; //咱们模组的版本号
     public const string CanUseInAmongUsVer = "2025.9.9"; //智齿的AU版本
     public const int PluginCreation = 1;
 
@@ -93,18 +93,27 @@ public class Main : BasePlugin
         PlayerControl.AllPlayerControls.ToArray().Where(p => p != null);
 
     //public static Dictionary<int, PlayerState> PlayerStates = new Dictionary<int, PlayerState>();
-
+    
     public static ConfigEntry<string> BetaBuildURL { get; private set; }
     public override void Load()//加载 启动！
     {
         Instance = this; //Main实例
 
+        #if Windows
         ResourceUtils.WriteToFileFromResource(
             "BepInEx/core/YamlDotNet.dll",
             "YuEzTools.Resources.InDLL.Depends.YamlDotNet.dll");
         ResourceUtils.WriteToFileFromResource(
             "BepInEx/core/YamlDotNet.xml",
             "YuEzTools.Resources.InDLL.Depends.YamlDotNet.xml");
+#elif Android   
+        ResourceUtils.WriteToFileFromResource(
+            "/data/data/dev.allofus.starlight/files/BepInEx/core/YamlDotNet.dll",
+            "YuEzTools.Resources.InDLL.Depends.YamlDotNet.dll");
+        ResourceUtils.WriteToFileFromResource(
+            "/data/data/dev.allofus.starlight/files/BepInEx/core/YamlDotNet.xml",
+            "YuEzTools.Resources.InDLL.Depends.YamlDotNet.xml");
+#endif
 
         PluginModuleInitializerAttribute.InitializeAll();
 

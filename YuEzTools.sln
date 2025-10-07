@@ -4,16 +4,25 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuEzTools", "YuEzTools\YuEz
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-		Canary|Any CPU = Canary|Any CPU
+		Debug|Windows = Debug|Windows
+		Release|Windows = Release|Windows
+		Canary|Windows = Canary|Windows
+        Debug|Android = Debug|Android
+        Release|Android = Release|Android
+        Canary|Android = Canary|Android
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
-		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Canary|Any CPU.Build.0 = Canary|Any CPU
+		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Debug|Windows.ActiveCfg = Debug|Windows
+		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Debug|Windows.Build.0 = Debug|Windows
+		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Release|Windows.ActiveCfg = Release|Windows
+		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Release|Windows.Build.0 = Release|Windows
+		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Canary|Windows.ActiveCfg = Canary|Windows
+		{33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Canary|Windows.Build.0 = Canary|Windows
+        {33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Debug|Android.ActiveCfg = Debug|Android
+        {33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Debug|Android.Build.0 = Debug|Android
+        {33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Release|Android.ActiveCfg = Release|Android
+        {33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Release|Android.Build.0 = Release|Android
+        {33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Canary|Android.ActiveCfg = Canary|Android
+        {33A85FD0-FA5F-49AB-B780-FF7BC07FF373}.Canary|Android.Build.0 = Canary|Android
 	EndGlobalSection
 EndGlobal

@@ -5,13 +5,18 @@ using System.Text;
 using YamlDotNet.RepresentationModel;
 using YuEzTools.Attributes;
 using YuEzTools.Helpers;
+using YuEzTools;
 
 namespace YuEzTools.Modules;
 
 public static class Translator
 {
     public static Dictionary<int, Dictionary<string, string>> translateMaps = new();
+    #if Windows
     public const string LANGUAGE_FOLDER_NAME = "Language";
+        #elif Android
+    public const string LANGUAGE_FOLDER_NAME = "/data/data/dev.allofus.starlight/files/BepInEx/" + "Language";
+    #endif
 
     [PluginModuleInitializer]
     public static void Init()

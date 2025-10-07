@@ -37,4 +37,13 @@
 		<Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(AmongUs)/BepInEx/plugins/" Condition="'$(Configuration)' == 'Canary'" />
 		<Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(AmongUs)/BepInEx/plugins/" Condition="'$(Configuration)' == 'Release'" />
 	</Target>
+
+
+    <PropertyGroup Condition="'$(Platform)' == 'Windows'">
+        <DefineConstants>Windows</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Platform)' == 'Android'">
+        <DefineConstants>Android</DefineConstants>
+    </PropertyGroup>
+    
 </Project>
