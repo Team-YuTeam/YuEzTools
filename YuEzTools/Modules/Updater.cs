@@ -288,9 +288,15 @@ public class ModUpdater
             announcement_zh = announcement["SChinese"]?.ToString();
 
             JObject downloadUrl = data["url"].Cast<JObject>();
-            downloadUrl_github = downloadUrl["github"]?.ToString();
+            #if Windows
+            downloadUrl_github = downloadUrl["github_win"]?.ToString();
             // downloadUrl_gitee = downloadUrl["gitee"]?.ToString().Replace("{{showVer}}", $"v{showVer}");
-            downloadUrl_kkgithub = downloadUrl["kkgithub"]?.ToString();
+            downloadUrl_kkgithub = downloadUrl["kkgithub_win"]?.ToString();
+            #elif Android
+            downloadUrl_github = downloadUrl["github_android"]?.ToString();
+            // downloadUrl_gitee = downloadUrl["gitee"]?.ToString().Replace("{{showVer}}", $"v{showVer}");
+            downloadUrl_kkgithub = downloadUrl["kkgithub_android"]?.ToString();
+            #endif
 
             hasUpdate = Main.version < latestVersion;
             forceUpdate = Main.version < minimumVersion || creation > Main.PluginCreation;
@@ -347,7 +353,7 @@ public class ModUpdater
             foreach (var path in Directory.EnumerateFiles(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "*.*"))
             {
                 if (path.EndsWith(Path.GetFileName(Assembly.GetExecutingAssembly().Location))) continue;
-                if (path.EndsWith("YuEzTools.dll") || path.EndsWith("Downloader.dll")) continue;
+                if ((path.StartsWith("YuEzTools") && path.EndsWith(".dll")) || path.EndsWith("Downloader.dll")) continue;
                 Info($"{Path.GetFileName(path)} Deleted", "DeleteOldFiles");
                 File.Delete(path);
             }

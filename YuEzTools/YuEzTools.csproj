@@ -8,7 +8,16 @@
 		<Authors>Yu</Authors>
 		<langVersion>preview</langVersion>
 		<Configurations>Debug;Release;Canary</Configurations>
+        <Platforms>Windows;Android</Platforms>
+        <AssemblyName>YuEzTools_$(Platform)</AssemblyName>
 	</PropertyGroup>
+
+    <!-- GitInfo 配置（确保能获取提交信息） -->
+    <PropertyGroup>
+        <GitInfoVersion>3.3.4</GitInfoVersion>
+        <GenerateGitRepositoryInfo>true</GenerateGitRepositoryInfo>
+        <GitCommitHashShort>8</GitCommitHashShort> <!-- 可选：限制哈希长度为8位 -->
+    </PropertyGroup>
 
 	<PropertyGroup>
 		<DebugSymbols>true</DebugSymbols>
@@ -32,12 +41,24 @@
 		<PackageReference Include="YamlDotNet" Version="15.1.2" />
 	</ItemGroup>
 
-	<Target Name="Copy" AfterTargets="Build" Condition="'$(AmongUs)' != ''">
+    <Target Name="DeleteOldPlugins" AfterTargets="Build" Condition="'$(AmongUs)' != '' AND '$(Platform)' == 'Windows'">
+        <!-- 匹配目标目录中所有以 YuEzTools 开头的 DLL 文件 -->
+        <ItemGroup>
+            <FilesToDelete Include="$(AmongUs)/BepInEx/plugins/YuEzTools*.dll" />
+        </ItemGroup>
+
+        <!-- 删除匹配的文件 -->
+        <Delete Files="@(FilesToDelete)" />
+
+        <!-- 可选：输出删除日志 -->
+        <Message Text="已删除旧插件文件: @(FilesToDelete)" Importance="high" />
+    </Target>
+    
+	<Target Name="Copy" AfterTargets="Build" Condition="'$(AmongUs)' != '' and '$(Platform)' == 'Windows'">
 		<Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(AmongUs)/BepInEx/plugins/" Condition="'$(Configuration)' == 'Debug'" />
 		<Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(AmongUs)/BepInEx/plugins/" Condition="'$(Configuration)' == 'Canary'" />
 		<Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(AmongUs)/BepInEx/plugins/" Condition="'$(Configuration)' == 'Release'" />
 	</Target>
-
 
     <PropertyGroup Condition="'$(Platform)' == 'Windows'">
         <DefineConstants>Windows</DefineConstants>
