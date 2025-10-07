@@ -5,14 +5,8 @@ namespace YuEzTools.Patches;
 
 public static class ServerAddManager
 {
+    #if Windows
     private static ServerManager serverManager = DestroyableSingleton<ServerManager>.Instance;
-
-    private static Dictionary<string, Color32> serverColor32Map = new Dictionary<string, Color32>
-    {
-        {"Asia", new Color32(58, 166, 117, 255)},
-        {"Europe", new Color32(58, 166, 117, 255)},
-        {"North America", new Color32(58, 166, 117, 255)},
-    };
     
     [PluginModuleInitializer]
     public static void Init()
@@ -53,6 +47,15 @@ public static class ServerAddManager
 
         SetServerName(defaultRegion.Name);
     }
+#endif
+    
+    private static Dictionary<string, Color32> serverColor32Map = new Dictionary<string, Color32>
+    {
+        {"Asia", new Color32(58, 166, 117, 255)},
+        {"Europe", new Color32(58, 166, 117, 255)},
+        {"North America", new Color32(58, 166, 117, 255)},
+    };
+    
     public static void SetServerName(string serverName = "")
     {
         if (serverName == "") serverName = ServerManager.Instance.CurrentRegion.Name;

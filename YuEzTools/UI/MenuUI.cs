@@ -18,6 +18,7 @@ public class MenuUI : MonoBehaviour
 
     private void Update()
     {
+        #if Windows
         if (Input.GetKeyDown(Utils.Utils.stringToKeycode(Main.menuKeybind.Value)))
         {
             //Enable-disable GUI with DELETE key
@@ -148,6 +149,7 @@ public class MenuUI : MonoBehaviour
                 ], []
             ));
         }
+#endif
     }
 
     public void OnGUI()

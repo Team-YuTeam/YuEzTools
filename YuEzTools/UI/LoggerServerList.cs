@@ -59,7 +59,15 @@ public static class ServerDropDownPatch
             serverListButton.transform.localScale = Vector3.one;
 
             // 设置按钮
+            #if Windows
             serverListButton.Text.text =Utils.Utils.ColorString(ServerAddManager.GetServerColor32(regionInfo.Name), GetString(regionInfo.Name));
+#elif Android
+            serverListButton.Text.text =Utils.Utils.ColorString(ServerAddManager.GetServerColor32(regionInfo.Name),
+                DestroyableSingleton<TranslationController>.Instance.GetStringWithDefault(
+                    regionInfo.TranslateName,
+                    regionInfo.Name, 
+                    new Il2CppReferenceArray<Object>(0)));
+            #endif
             
             serverListButton.Text.ForceMeshUpdate();
             serverListButton.Button.OnClick.RemoveAllListeners();
