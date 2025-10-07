@@ -20,6 +20,7 @@ public class Main : BasePlugin
 {
     public static readonly string ModName = "YuEzTools"; // 咱们的模组名字
     public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
+    public static readonly Color32 ModColor32 = new(160, 228, 255,255); // 咱们的模组Color32
     public static readonly string MainMenuText = "Reviewing"; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuEzTools"; //咱们模组的Guid
     public const string PluginVersion = "1.3.6.5"; //咱们模组的版本号
