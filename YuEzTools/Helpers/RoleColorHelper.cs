@@ -71,14 +71,7 @@ public static class RoleColorHelper
     /// </summary>
     private static RoleColorData GetRoleColorData(RoleTypes rt)
     {
-        if (_roleColorMap.TryGetValue(rt, out var colorData))
-        {
-            return colorData;
-        }
-        
-        // 可以在这里添加日志，提示有未定义的角色类型
-        // Logger.LogWarning($"未定义角色 {rt} 的颜色信息，使用默认颜色");
-        return _defaultColor;
+        return _roleColorMap.GetValueOrDefault(rt, _defaultColor);
     }
 
     /// <summary>
