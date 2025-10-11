@@ -1,10 +1,7 @@
 using AmongUs.GameOptions;
 using UnityEngine;
 
-namespace YuEzTools.Helper;
-
-using System;
-using System.Collections.Generic;
+namespace YuEzTools.Helpers;
 
 public static class RoleColorHelper
 {

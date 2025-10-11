@@ -7,7 +7,7 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using YuEzTools.Helper;
+using YuEzTools.Helpers;
 using YuEzTools.Modules;
 using YuEzTools.Patches;
 

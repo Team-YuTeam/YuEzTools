@@ -1,4 +1,4 @@
-using YuEzTools.Helper;
+using YuEzTools.Helpers;
 using YuEzTools.Modules;
 
 namespace YuEzTools.Patches;

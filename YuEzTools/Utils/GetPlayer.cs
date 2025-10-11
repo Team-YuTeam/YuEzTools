@@ -1,7 +1,7 @@
 using AmongUs.GameOptions;
 using System;
 using InnerNet;
-using YuEzTools.Helper;
+using YuEzTools.Helpers;
 
 namespace YuEzTools.Utils;
 
