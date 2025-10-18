@@ -18,7 +18,7 @@ public static class FindAGameManagerUpdatePatch
             InputDisplayGlyph.transform.localPosition = new Vector3(100f, 100f, 100f);
 
         buffer--; if (buffer > 0) return; buffer = 80;
-        __instance.RefreshList();
+        // __instance.RefreshList();
     }
 }//*/
 
