@@ -130,7 +130,7 @@ internal class TitleLogoPatch
         logoRenderer.sprite = LoadSprite("YuEzTools.Resources.YuET-Logo-tm.png", 100f);//Yu的Logo
 
         if (!(BottomButtonBounds = GameObject.Find("BottomButtonBounds"))) return;
-        BottomButtonBounds.transform.localPosition -= new Vector3(0f, 0.1f, 0f);
+        BottomButtonBounds.transform.localPosition += new Vector3(0f, 0.6f, 0f);
 
         CloseRightButton = new GameObject("CloseRightPanelButton");
         CloseRightButton.transform.SetParent(RightPanel.transform);
