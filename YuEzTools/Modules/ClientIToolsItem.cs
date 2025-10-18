@@ -217,7 +217,7 @@ public class ClientToolsItem
             {
                 // 关键：当前页的按钮，按“页内索引”重新算位置（回到顶部）
                 int pageInnerIndex = i - startIndex; // 页内索引（0~17）
-                button.ToggleButton.transform.localPosition = new Vector3(
+                button?.ToggleButton?.transform?.localPosition = new Vector3(
                     pageInnerIndex % 2 == 0 ? -1.3f : 1.3f,
                     2.2f - (0.5f * (pageInnerIndex / 2)),
                     -6f);
@@ -255,6 +255,41 @@ public class ClientToolsItem
         ToggleButton.Background.color = color;
         ToggleButton.Rollover?.ChangeOutColor(color);
     }
+    
+    public static void RefreshToggle(bool btnvalue, string btnstr)
+    {
+        foreach (var button in allButtons)
+        {
+            Info(btnstr, "btn");
+            if (button == null ||  button.ToggleButton.name != GetString("MenuUI."+btnstr)) continue;
+            // 原逻辑"Config != null"多余（因为Config是bool值，不可能为null），直接判断Config即可
+            var color = btnvalue ? Main.ModColor32 : new Color32(77, 77, 77, byte.MaxValue);
+            button.ToggleButton.Background.color = color;
+            button.ToggleButton.Rollover?.ChangeOutColor(color);
+            button.Config = btnvalue; // 直接设置目标按钮的实例Config
+            
+            // Config = !Config; // 修正原逻辑：原代码修改的是局部变量，这里改为修改实例的Config
+        }
+    
+    }
+    //
+    // // 修正：更新目标按钮的实例Config，而非静态Config
+    // public static void RefreshToggle(bool btnValue, string btnName)
+    // {
+    //     foreach (var button in allButtons)
+    //     {
+            // Info(btnstr, "btn");
+    
+    //         // 跳过空实例，或名称不匹配的按钮
+    //         if (button == null || button.ToggleButton.name != btnName) continue;
+    //
+    //         // 只更新目标按钮的状态
+    //         button.Config = btnValue; // 直接设置目标按钮的实例Config
+    //         // 更新按钮颜色（复用UpdateToggle方法，避免重复代码）
+    //         button.UpdateToggle(); 
+    //         break; // 找到后退出循环即可，无需return（避免提前终止循环）
+    //     }
+    // }
 
     // 静态创建方法（保持原有调用方式不变）
     public static ClientToolsItem Create(

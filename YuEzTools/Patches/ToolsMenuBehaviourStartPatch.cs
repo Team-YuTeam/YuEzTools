@@ -1,6 +1,7 @@
 using HarmonyLib;
 using System;
 using System.Reflection;
+using YuEzTools.Helpers;
 using YuEzTools.Modules;
 using YuEzTools.UI;
 
@@ -9,49 +10,31 @@ namespace YuEzTools.Patches;
 [HarmonyPatch(typeof(OptionsMenuBehaviour), nameof(OptionsMenuBehaviour.Start))]
 public static class ToolsMenuBehaviourStartPatch
 {
-    // 存储所有生成的按钮实例
-    private static ClientToolsItem[] toggleButtons;
-
     public static void Postfix(OptionsMenuBehaviour __instance)
     {
         if (__instance.DisableMouseMovement == null) return;
-
-        // 获取Toggles类中所有公开的静态bool字段
-        var toggleFields = typeof(Toggles).GetFields(BindingFlags.Public | BindingFlags.Static)
-            .Where(f => f.FieldType == typeof(bool))
-            .OrderBy(f => f.Name) // 按名称排序，保证按钮顺序固定
-            .ToArray();
-
-        toggleButtons = new ClientToolsItem[toggleFields.Length];
-
-        // 遍历所有字段，批量生成按钮
-        for (int i = 0; i < toggleFields.Length; i++)
+        
+        GenerateClientToolsButtons(__instance);
+    }
+    
+    
+    private static void GenerateClientToolsButtons(OptionsMenuBehaviour optionsMenu)
+    {
+        foreach (var config in ToggleHelperManager.AllButtons)
         {
-            var field = toggleFields[i];
-            var fieldName = field.Name;
-
-            // 生成按钮
-            toggleButtons[i] = ClientToolsItem.Create(
-                GetString(fieldName),  // 按钮显示文本
-                (bool)field.GetValue(null), 
-                __instance, 
-                CreateToggleAction(field)  // 通用的切换动作
+            // 调用 ClientToolsItem.Create 生成按钮，绑定配置的逻辑
+            ClientToolsItem.Create(
+                name: GetString("MenuUI."+config.NameKey), // 按钮文本（本地化）
+                config: config.GetState(),       // 初始状态（从 Toggles 读取）
+                optionsMenuBehaviour: optionsMenu,
+                additionalOnClickAction: () =>   // 点击逻辑（同步 Toggles + 额外操作）
+                {
+                    var newState = !config.GetState(); // 翻转状态
+                    config.SetState(newState);         // 更新 Toggles 字段
+                    config.AdditionalAction?.Invoke(); // 触发额外逻辑
+                }
             );
         }
-    }
-
-    // 创建通用的切换动作：仅修改对应bool字段的值
-    private static Action CreateToggleAction(FieldInfo field)
-    {
-        return () =>
-        {
-            // 获取当前值并取反
-            bool currentValue = (bool)field.GetValue(null);
-            bool newValue = !currentValue;
-            
-            // 设置新值到Toggles类的静态字段
-            field.SetValue(null, newValue);
-        };
     }
 }
 

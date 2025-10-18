@@ -1,4 +1,6 @@
 using UnityEngine;
+using YuEzTools.Helpers;
+using YuEzTools.Modules;
 using YuEzTools.Patches;
 using YuEzTools.Utils;
 
@@ -18,13 +20,11 @@ public class MenuUI : MonoBehaviour
 
     private void Update()
     {
-        #if Windows
+#if Windows
+        // 原有快捷键逻辑保留
         if (Input.GetKeyDown(Utils.Utils.stringToKeycode(Main.menuKeybind.Value)))
         {
-            //Enable-disable GUI with DELETE key
             isGUIActive = !isGUIActive;
-
-            //Also teleport the window to the mouse for immediate use
             Vector2 mousePosition = Input.mousePosition;
             windowRect.position = new Vector2(mousePosition.x, Screen.height - mousePosition.y);
         }
@@ -32,125 +32,83 @@ public class MenuUI : MonoBehaviour
         if (GetPlayer.IsPlayer)
         {
             Toggles.ServerAllHostOrNoHost = GameStartManagerPatch.roomMode == RoomMode.Normal ? false : true;
-            // Toggles.EnableAntiCheat = GameStartManagerPatch.EnableAC;
         }
-
         Main.WinTextSize.Value = Toggles.WinTextSize;
 
-        if (isGUIActive) firstoOpenMenuUI = false;
+        // -------------------------- 关键修改：从统一配置生成 MenuUI 分组 --------------------------
         if (!isGUIActive)
         {
-            groups.Clear();
-            groups.Add(new GroupInfo(GetString("MenuUI.AntiCheat"), false,
-                [
-                    new(GetString("MenuUI.EnableAntiCheat"), () => Toggles.EnableAntiCheat,
-                        x => Toggles.EnableAntiCheat = x),
-                    new(GetString("MenuUI.AutoExit"), () => Toggles.AutoExit,
-                        x => Toggles.AutoExit = x),
-                    new(GetString("MenuUI.KickNotLogin"), () => Toggles.KickNotLogin,
-                        x => Toggles.KickNotLogin = x),
-                ],
-                [
-                    new(GetString("MenuUI.AntiCheat.ModMode"), false,
-                        [
-                            new(GetString("MenuUI.ServerAllHostOrNoHost"),
-                                () => Toggles.ServerAllHostOrNoHost, x => Toggles.ServerAllHostOrNoHost = x),
-                            new(GetString("MenuUI.SafeMode"), () => Toggles.SafeMode,
-                                x => Toggles.SafeMode = x),
-                        ]),
-
-                ]
-            ));
-            groups.Add(new GroupInfo(GetString("Interface"), false,
-                [
-                    new(GetString("DarkUI"), () => Toggles.DarkMode, x => Toggles.DarkMode = x),
-                ],
-                [
-                    new(GetString("PingPart"), false,
-                    [
-                        new(GetString("ShowCommit"), () => Toggles.ShowCommit,
-                            x => Toggles.ShowCommit = x),
-                        new(GetString("ShowModText"), () => Toggles.ShowModText,
-                            x => Toggles.ShowModText = x),
-                        new(GetString("ShowIsSafe"), () => Toggles.ShowIsSafe,
-                            x => Toggles.ShowIsSafe = x),
-                        new(GetString("ShowIsDark"), () => Toggles.ShowIsDark,
-                            x => Toggles.ShowIsDark = x),
-                        new(GetString("ShowPing"), () => Toggles.ShowPing,
-                            x => Toggles.ShowPing = x),
-                        new(GetString("ShowFPS"), () => Toggles.ShowFPS,
-                            x => Toggles.ShowFPS = x),
-                        new(GetString("ShowServer"), () => Toggles.ShowServer,
-                            x => Toggles.ShowServer = x),
-                        new(GetString("ShowRoomTime"), () => Toggles.ShowRoomTime,
-                            x => Toggles.ShowRoomTime = x),
-                        new(GetString("ShowIsAutoExit"), () => Toggles.ShowIsAutoExit,
-                            x => Toggles.ShowIsAutoExit = x),
-                        // new ToggleInfo(Translator.GetString("ShowLocalNowTime"), () => Toggles.ShowLocalNowTime,
-                        //     x => Toggles.ShowLocalNowTime = x),
-                        // new ToggleInfo(Translator.GetString("ShowUTC"), () => Toggles.ShowUTC,
-                        //     x => Toggles.ShowUTC = x),
-                        new(GetString("ShowGM"), () => Toggles.ShowGM,
-                            x => Toggles.ShowGM = x),
-                    ]),
-                    new(GetString("EndPart"), false,
-                        [
-                            new(GetString("WinTextSize"), () => Toggles.WinTextSize,
-                                x => Toggles.WinTextSize = x),
-                        ]),
-                ]
-            ));
-            groups.Add(new GroupInfo(GetString("MenuUI.ShortcutButton"), false,
-                [
-                    new(GetString("MenuUI.DumpLog"), () => Toggles.DumpLog,
-                        x => Toggles.DumpLog = x),
-                    new(GetString("MenuUI.OpenGameDic"), () => Toggles.OpenGameDic,
-                        x => Toggles.OpenGameDic = x),
-                    new(GetString("MenuUI.CloseMusicOfOr"), () => Toggles.CloseMusicOfOr,
-                        x => Toggles.CloseMusicOfOr = x),
-                    new(GetString("MenuUI.reShowRoleT"), () => Toggles.reShowRoleT,
-                            x => Toggles.reShowRoleT = x),
-                    new(GetString("MenuUI.ShowInfoInLobby"), () => Toggles.ShowInfoInLobby,
-                            x => Toggles.ShowInfoInLobby = x),
-
-                ],
-                [
-                    new(GetString("MenuUI.ShortcutButton.Left"), false,
-                    [
-                        new(GetString("MenuUI.ExitGame"), () => Toggles.ExitGame,
-                            x => Toggles.ExitGame = x),
-                        new(GetString("MenuUI.RealBan"), () => Toggles.RealBan,
-                            x => Toggles.RealBan = x),
-                    ]),
-                    new(GetString("MenuUI.ShortcutButton.PeopleMode"), false,
-                    [
-                        new(GetString("MenuUI.HorseMode"), () => Toggles.HorseMode,
-                            x => Toggles.HorseMode = x),
-                        new(GetString("MenuUI.LongMode"), () => Toggles.LongMode,
-                            x => Toggles.LongMode = x),
-                    ]),
-                    new(GetString("MenuUI.ShortcutButton.OnlyHost"), false,
-                        [
-                            new(GetString("MenuUI.ChangeDownTimerToZero"),
-                                () => Toggles.ChangeDownTimerToZero, x => Toggles.ChangeDownTimerToZero = x),
-                            new(GetString("MenuUI.ChangeDownTimerTo114514"),
-                                () => Toggles.ChangeDownTimerTo114514, x => Toggles.ChangeDownTimerTo114514 = x),
-                            new(GetString("MenuUI.AutoStartGame"), () => Toggles.AutoStartGame,
-                                x => Toggles.AutoStartGame = x),
-                            new(GetString("MenuUI.AbolishDownTimer"),
-                                () => Toggles.AbolishDownTimer, x => Toggles.AbolishDownTimer = x),
-                        ]),
-                ]
-            ));
-            groups.Add(new GroupInfo(GetString("MenuUI.Other"), false,
-                [
-                    new(GetString("MenuUI.FPSPlus"), () => Toggles.FPSPlus,
-                        x => Toggles.FPSPlus = x),
-                ], []
-            ));
+            groups = GenerateGroupsFromConfig(); // 自动生成分组，无需硬编码
         }
 #endif
     }
+    
+    private List<GroupInfo> GenerateGroupsFromConfig()
+{
+    var groups = new List<GroupInfo>();
+    var allConfigs = ToggleHelperManager.AllButtons;
+
+    // 1. 按“组Key”分组（先获取所有不重复的组）
+    var groupKeys = allConfigs.Select(c => c.GroupKey).Distinct().ToList();
+    foreach (var groupKey in groupKeys)
+    {
+        // 当前组的所有按钮配置
+        var groupConfigs = allConfigs.Where(c => c.GroupKey == groupKey).ToList();
+        var groupName = GetString("MenuUI."+groupKey); // 组的本地化名称
+
+        // 2. 拆分“直接在组下的按钮”和“子菜单下的按钮”
+        var directToggles = new List<ToggleInfo>(); // 无 submenu 的按钮
+        var submenus = new List<SubmenuInfo>();    // 有 submenu 的按钮
+
+        // 处理“直接在组下的按钮”
+        foreach (var config in groupConfigs.Where(c => string.IsNullOrEmpty(c.SubmenuKey)))
+        {
+            directToggles.Add(new ToggleInfo(
+                label: GetString("MenuUI."+config.NameKey),
+                getState: config.GetState,
+                setState: val =>
+                {
+                    config.SetState(val);       // 更新 Toggles 字段
+                    ClientToolsItem.RefreshToggle(val,config.NameKey);
+                    config.AdditionalAction?.Invoke(); // 触发额外逻辑
+                }
+            ));
+        }
+
+        // 处理“子菜单下的按钮”（先按 submenuKey 分组）
+        var submenuKeys = groupConfigs.Where(c => !string.IsNullOrEmpty(c.SubmenuKey))
+                                     .Select(c => c.SubmenuKey)
+                                     .Distinct()
+                                     .ToList();
+        foreach (var submenuKey in submenuKeys)
+        {
+            var submenuConfigs = groupConfigs.Where(c => c.SubmenuKey == submenuKey).ToList();
+            var submenuName = GetString("MenuUI." + groupKey + "." + submenuKey); // 子菜单的本地化名称
+            var submenuToggles = new List<ToggleInfo>();
+
+            foreach (var config in submenuConfigs)
+            {
+                submenuToggles.Add(new ToggleInfo(
+                    label: GetString("MenuUI." + config.NameKey),
+                    getState: config.GetState,
+                    setState: val => 
+                    {
+                        config.SetState(val);
+                        ClientToolsItem.RefreshToggle(val,config.NameKey);
+                        config.AdditionalAction?.Invoke();
+                    }
+                ));
+            }
+
+            submenus.Add(new SubmenuInfo(submenuName, isExpanded: false, submenuToggles));
+        }
+
+        // 3. 添加当前组到列表
+        groups.Add(new GroupInfo(groupName, isExpanded: false, directToggles, submenus));
+    }
+
+    return groups;
+}
 
     public void OnGUI()
     {
