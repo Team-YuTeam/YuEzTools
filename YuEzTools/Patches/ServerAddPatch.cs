@@ -23,10 +23,10 @@ public static class ServerAddManager
             CreateHttp("aumods.org", "Modded NA (MNA)", 443, true, new Color32(251, 226, 200,255)),
             CreateHttp("au-eu.duikbo.at", "Modded EU (MEU)", 443, true, new Color32(251, 226, 200,255)),
             // Qingfeng
-            CreateHttp("bj.server.qingfengawa.top", "QingFeng(Beijing)", 443, true, new Color32(249, 255, 170,255)),
-            CreateHttp("sh.server.qingfengawa.top", "QingFeng(Shanghai)", 443, true,new Color32(249, 255, 170,255)),
+            // CreateHttp("bj.server.qingfengawa.top", "QingFeng(Beijing)", 443, true, new Color32(249, 255, 170,255)),
+            // CreateHttp("sh.server.qingfengawa.top", "QingFeng(Shanghai)", 443, true,new Color32(249, 255, 170,255)),
             CreateHttp("nb.server.qingfengawa.top", "QingFeng(Ningbo)", 443, true, new Color32(249, 255, 170,255)),
-            CreateHttp("gz.server.qingfengawa.top", "QingFeng(Guangzhou)", 443, true, new Color32(249, 255, 170,255)),
+            // CreateHttp("gz.server.qingfengawa.top", "QingFeng(Guangzhou)", 443, true, new Color32(249, 255, 170,255)),
             // Fanchuan
             CreateHttp("gz.fcaugame.cn", "Fanchuan(Guangzhou)", 443, true, new Color32(207, 255, 170,255)),
             CreateHttp("zxc.lcayun.cn", "Fanchuan(Zaozhuang)", 443, true, new Color32(207, 255, 170,255)),
@@ -37,6 +37,7 @@ public static class ServerAddManager
             CreateHttp("nb.aunpp.cn", "Hedianzhan(Ningbo)", 443, true, new Color32(170, 255, 186,255)),
             // Xiaohei
             CreateHttp("zlxhimp.amongusclub.cn", "Xiaohei(Ningbo)", 443, true, new Color32(170, 255, 241,255)),
+            CreateHttp("https://hk.zlxh.top", "Xiaohei(HongKong)", 443, true, new Color32(170, 255, 241,255)),
             // Fangkuai
             CreateHttp("player.amongusclub.cn", "Fangkuai(Suqian,NoS)", 443, true, new Color32(170, 255, 241,255)),
             // NoS
