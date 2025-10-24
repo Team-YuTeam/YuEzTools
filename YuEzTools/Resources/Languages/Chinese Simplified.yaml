@@ -305,3 +305,6 @@ Xiaohei(HongKong): "小黑(香港)"
 Fangkuai(Suqian,NoS): "方块(宿迁,星云舰)"
 ## NoS
 NebulaOnTheShip(Japan): "星云舰(日本）"
+
+# 愚人节模式
+BothHorseAndLongModeErrorText: "注意！您同时选择了长模式和马模式\n无法正常运行！已恢复默认，请二选一！"
