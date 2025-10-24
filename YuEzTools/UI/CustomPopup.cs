@@ -4,7 +4,7 @@ using UnityEngine;
 using YuEzTools.Helpers;
 using Object = UnityEngine.Object;
 
-namespace YuEzTools.Patches;
+namespace YuEzTools.UI;
 
 #nullable enable
 public static class CustomPopup

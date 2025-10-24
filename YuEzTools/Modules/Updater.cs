@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using YuEzTools.Patches;
+using YuEzTools.UI;
 
 namespace YuEzTools.Modules;
 
