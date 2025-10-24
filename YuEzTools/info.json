@@ -16,6 +16,9 @@
   },
 
   "url": {
+    "github": "https://github.com/Team-YuTeam/YuEzTools/releases/latest/download/YuEzTools_Windows.dll",
+    "gitee": "https://gitee.com/xigua_ya/YuEzTools/releases/download/{{showVer}}/YuEzTools_Windows.dll",
+    "kkgithub": "https://kkgithub.com/Team-YuTeam/YuEzTools/releases/latest/download/YuEzTools_Windows.dll",
     "github_win": "https://github.com/Team-YuTeam/YuEzTools/releases/latest/download/YuEzTools_Windows.dll",
     "gitee_win": "https://gitee.com/xigua_ya/YuEzTools/releases/download/{{showVer}}/YuEzTools_Windows.dll",
     "kkgithub_win": "https://kkgithub.com/Team-YuTeam/YuEzTools/releases/latest/download/YuEzTools_Windows.dll",

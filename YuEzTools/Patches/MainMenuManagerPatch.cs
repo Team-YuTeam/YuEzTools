@@ -194,7 +194,7 @@ public class MainMenuManagerPatch
 
             UpdateButton = Object.Instantiate(PlayButton, PlayButton.transform.parent);
             UpdateButton.name = "YuET Update Button";
-            UpdateButton.transform.localPosition = PlayButton.transform.localPosition - new Vector3(0f, 0f, 3f);
+            UpdateButton.transform.localPosition = PlayButton.transform.localPosition;
             var passiveButton = UpdateButton.GetComponent<PassiveButton>();
             passiveButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0.49f, 0.34f, 0.62f, 0.8f);
             passiveButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(0.49f, 0.34f, 0.62f, 1f);
