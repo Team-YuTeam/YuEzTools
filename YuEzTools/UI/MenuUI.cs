@@ -83,7 +83,7 @@ public class MenuUI : MonoBehaviour
         foreach (var submenuKey in submenuKeys)
         {
             var submenuConfigs = groupConfigs.Where(c => c.SubmenuKey == submenuKey).ToList();
-            var submenuName = GetString("MenuUI." + groupKey + "." + submenuKey); // 子菜单的本地化名称
+            var submenuName = GetString("MenuUI." + submenuKey); // 子菜单的本地化名称
             var submenuToggles = new List<ToggleInfo>();
 
             foreach (var config in submenuConfigs)

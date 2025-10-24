@@ -99,27 +99,25 @@ MenuUI.SafeMode: "安全模式"
 MenuUI.AutoExit: "防止炸端"
 MenuUI.KickNotLogin: "封禁未登录"
 MenuUI.EnableAntiCheat: "启用反作弊"
-MenuUI.AntiCheat.ModMode: "+25（模组模式）"
+MenuUI.ModMode: "+25（模组模式）"
 MenuUI.ServerAllHostOrNoHost: "+25(房主全权模式)"
 
 # MenuUI.ShortcutButton
 MenuUI.ShortcutButton: "快捷按钮"
 MenuUI.DumpLog: "输出日志"
 MenuUI.OpenGameDic: "打开游戏运行目录"
-MenuUI.ShortcutButton.OnlyHost: "仅房主"
+MenuUI.OnlyHost: "仅房主"
 MenuUI.ChangeDownTimerToZero: "倒计时更改成0"
 MenuUI.ChangeDownTimerTo114514: "恶搞倒计时"
 MenuUI.AutoStartGame: "托管模式"
 MenuUI.AbolishDownTimer: "取消倒计时"
 MenuUI.CloseMusicOfOr: "大厅音乐"
-MenuUI.ShortcutButton.PeopleMode: "太空人模式"
+MenuUI.PeopleMode: "太空人模式"
 MenuUI.HorseMode: "马模式"
 MenuUI.LongMode: "长颈鹿模式"
 MenuUI.reShowRoleT: "重新展示职业"
 MenuUI.ShowInfoInLobby: "在大厅显示玩家的基本信息"
-
-# MenuUI.ShortcutButton.Left
-MenuUI.ShortcutButton.Left: "退出游戏选项卡"
+MenuUI.Left: "退出游戏选项卡"
 MenuUI.ExitGame: "退出游戏"
 MenuUI.RealBan: "封禁自己(真封禁！)"
 
@@ -272,6 +270,7 @@ YuETOptions: "YuET设置"
 SwitchVanilla: "切换原版"
 SwitchVanilla1: "OK"
 Options.Back: "关闭"
+YuETToolsOptions: "YuET工具箱"
 
 # Servers / If Not Chinese, Write English name except Official. Of course, if you can translate them better than original English, you can do it.
 ## Official
