@@ -20,7 +20,7 @@ public static class ServerDropDownPatch
     {
         if (SceneManager.GetActiveScene().name == "FindAGame") return true;
         const int maxPerColumn = 6; // 每列最大按钮数
-        const float columnWidth = 4.15f; // 列宽度
+        const float columnWidth = 3.93f; // 列宽度
         const float buttonSpacing = 0.5f; // 按钮间距
 
 
@@ -101,7 +101,7 @@ public static class ServerDropDownPatch
         if (SceneManager.GetActiveScene().name != "FindAGame") return;
 
         const float buttonSpacing = 0.6f;
-        const float columnSpacing = 7.2f;
+        const float columnSpacing = 3.5f;
 
         // 按钮按Y轴排序
         List<ServerListButton> allButtons =
