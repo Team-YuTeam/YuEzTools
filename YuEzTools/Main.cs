@@ -19,7 +19,7 @@ namespace YuEzTools;
 public class Main : BasePlugin
 {
     public static readonly string ModName = "YuEzTools"; // 咱们的模组名字
-    public static readonly string ModColor = "#fffcbe"; // 咱们的模组颜色
+    public static readonly string ModColor = "#A0E4FF"; // 咱们的模组颜色
     public static readonly Color32 ModColor32 = new(160, 228, 255,255); // 咱们的模组Color32
     public static readonly string MainMenuText = "Reviewing"; // 咱们模组的首页标语
     public const string PluginGuid = "com.Yu.YuEzTools"; //咱们模组的Guid
@@ -38,6 +38,7 @@ public class Main : BasePlugin
     public static ConfigEntry<string> menuKeybind;
     public static ConfigEntry<string> menuHtmlColor;
     public static MenuUI menuUI;
+    public static CustomTips CustomTips;
     public static ConfigEntry<bool> PatchAccount;
     public static ConfigEntry<bool> PatchChat;
     public static ConfigEntry<bool> PatchCosmetics;
@@ -136,6 +137,7 @@ public class Main : BasePlugin
         SwitchVanilla = Config.Bind("Client Options", "SwitchVanilla", false);
 
         menuUI = AddComponent<MenuUI>();
+        CustomTips = AddComponent<CustomTips>();
 
         //Translator.Init();
 
@@ -173,4 +175,14 @@ public enum RoomMode
     Normal,
     Plus25,
     Error
+}
+
+public enum TipsCode
+{
+    Info,
+    Warn,
+    Error,
+    Custom,
+    ModLogo,
+    AntiCheat
 }

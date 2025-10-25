@@ -16,7 +16,8 @@ public static class GetNormalBodyTypePatch
         if (Toggles.HorseMode && Toggles.LongMode)
         {
             __result = PlayerBodyTypes.Normal;
-            SendInGamePatch.SendInGame(GetString("BothHorseAndLongModeErrorText"));
+            CustomTips.Show(GetString("BothHorseAndLongModeErrorText"),TipsCode.Warn);
+            // SendInGamePatch.SendInGame(GetString("BothHorseAndLongModeErrorText"));
             Toggles.HorseMode = false;
             Toggles.LongMode = false;
         }
@@ -45,7 +46,8 @@ public static class GetHnsBodyTypePatch
             if (Toggles.HorseMode && Toggles.LongMode)
             {
                 __result = PlayerBodyTypes.Normal;
-                SendInGamePatch.SendInGame(GetString("BothHorseAndLongModeErrorText"));
+                CustomTips.Show(GetString("BothHorseAndLongModeErrorText"),TipsCode.Warn);
+                // SendInGamePatch.SendInGame(GetString("BothHorseAndLongModeErrorText"));
                 Toggles.HorseMode = false;
                 Toggles.LongMode = false;
             }
@@ -67,7 +69,8 @@ public static class GetHnsBodyTypePatch
             if (Toggles.HorseMode && Toggles.LongMode)
             {
                 __result = PlayerBodyTypes.Seeker;
-                SendInGamePatch.SendInGame(GetString("BothHorseAndLongModeErrorText"));
+                CustomTips.Show(GetString("BothHorseAndLongModeErrorText"),TipsCode.Warn);
+                // SendInGamePatch.SendInGame(GetString("BothHorseAndLongModeErrorText"));
                 Toggles.HorseMode = false;
                 Toggles.LongMode = false;
             }
@@ -89,7 +92,8 @@ public static class GetHnsBodyTypePatch
             if (Toggles.HorseMode && Toggles.LongMode)
             {
                 __result = PlayerBodyTypes.Normal;
-                SendInGamePatch.SendInGame(GetString("BothHorseAndLongModeErrorText"));
+                CustomTips.Show(GetString("BothHorseAndLongModeErrorText"),TipsCode.Warn);
+                // SendInGamePatch.SendInGame(GetString("BothHorseAndLongModeErrorText"));
                 Toggles.HorseMode = false;
                 Toggles.LongMode = false;
             }

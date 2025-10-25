@@ -22,7 +22,7 @@ public class MenuUI : MonoBehaviour
     {
 #if Windows
         // 原有快捷键逻辑保留
-        if (Input.GetKeyDown(Utils.Utils.stringToKeycode(Main.menuKeybind.Value)))
+        if (Input.GetKeyDown(stringToKeycode(Main.menuKeybind.Value)))
         {
             isGUIActive = !isGUIActive;
             Vector2 mousePosition = Input.mousePosition;

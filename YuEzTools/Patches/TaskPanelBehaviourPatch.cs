@@ -21,7 +21,7 @@ class TaskPanelBehaviourPatch
         var RoleWithInfo = $"{player.Data.Role.NiceName}:\r\n";
         RoleWithInfo += player.Data.RoleType.GetRoleLInfoForVanilla();
 
-        var AllText = Utils.Utils.ColorString(RoleColorHelper.GetRoleColor32(player.Data.RoleType), RoleWithInfo);
+        var AllText = ColorString(RoleColorHelper.GetRoleColor32(player.Data.RoleType), RoleWithInfo);
 
         var lines = taskText.Split("\r\n</color>\n")[0].Split("\r\n\n")[0].Split("\r\n");
         StringBuilder sb = new();
@@ -35,7 +35,7 @@ class TaskPanelBehaviourPatch
         {
             var text = sb.ToString().TrimEnd('\n').TrimEnd('\r');
             if (!player.HasTasks() && sb.ToString().Count(s => (s == '\n')) >= 2)
-                text = $"{Utils.Utils.ColorString(RoleColorHelper.GetRoleColor32(player.Data.RoleType), GetString("FakeTask"))}\r\n{text}";
+                text = $"{ColorString(RoleColorHelper.GetRoleColor32(player.Data.RoleType), GetString("FakeTask"))}\r\n{text}";
             AllText += $"\r\n\r\n<size=85%>{text}</size>";
         }
 

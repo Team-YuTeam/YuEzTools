@@ -26,14 +26,15 @@ internal class AntiCheatForAll
             // else if(!Main.JoinedPlayer.Contains(pc) && AmongUsClient.Instance.AmHost)
             // {
             //     SendInGamePatch.SendInGame(string.Format(GetString("notJoinedSendRPC"), callId, pc.GetRealName()));
-            //     Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】未进入但发送RPC，无效！！！，已驳回", "ACFA");
+            //     Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】未进入但发送RPC，无效！！！，已驳回", "AntiCheatForAll");
             //     return true;
             // }
 
             if (!Enum.IsDefined(typeof(RpcCalls), callId))
             {
-                SendInGamePatch.SendInGame(string.Format(GetString("notFindRPC"), callId));
-                Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】RPC无效！！！，已驳回", "ACFA");
+                CustomTips.Show(string.Format(GetString("notFindRPC"), callId),TipsCode.AntiCheat);
+                // SendInGamePatch.SendInGame(string.Format(GetString("notFindRPC"), callId));
+                Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】RPC无效！！！，已驳回", "AntiCheatForAll");
                 return true;
             }
             switch (rpc)
@@ -44,7 +45,7 @@ internal class AntiCheatForAll
                     if (sr.BytesRemaining > 0 && sr.ReadBoolean()) return false;
                     if (GetPlayer.IsInGame)
                     {
-                        Warn($"在游戏内非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回", "ACFA");
+                        Warn($"在游戏内非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     if (name.Contains('░') ||
@@ -67,7 +68,7 @@ internal class AntiCheatForAll
                         name.Contains("Cheat", StringComparison.OrdinalIgnoreCase))
                         // 游戏名字屏蔽词
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称包含*屏蔽词*，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称包含*屏蔽词*，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -75,7 +76,7 @@ internal class AntiCheatForAll
                 case RpcCalls.SetNamePlateStr:
                     if (GetPlayer.IsInGame)
                     {
-                        Warn($"非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回", "ACFA");
+                        Warn($"非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -83,7 +84,7 @@ internal class AntiCheatForAll
                 case RpcCalls.SendChatNote:
                     if (GetPlayer.IsLobby)
                     {
-                        Warn($"【{pc.GetClientId()}:{pc.GetRealName()}】非法发送投票信息，已驳回", "ACFA");
+                        Warn($"【{pc.GetClientId()}:{pc.GetRealName()}】非法发送投票信息，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -91,7 +92,7 @@ internal class AntiCheatForAll
                 case RpcCalls.SetScanner:
                     if (GetPlayer.IsLobby)
                     {
-                        Warn($"【{pc.GetClientId()}:{pc.GetRealName()}】非法扫描，已驳回", "ACFA");
+                        Warn($"【{pc.GetClientId()}:{pc.GetRealName()}】非法扫描，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -109,7 +110,7 @@ internal class AntiCheatForAll
                     var canOverrideRole = sr.ReadBoolean();
                     if (GetPlayer.IsLobby && (role is RoleTypes.CrewmateGhost or RoleTypes.ImpostorGhost))
                     {
-                        Warn($"非法设置玩家【{pc.GetClientId()}:{pc.GetRealName()}】的状态为幽灵，已驳回", "ACFA");
+                        Warn($"非法设置玩家【{pc.GetClientId()}:{pc.GetRealName()}】的状态为幽灵，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -118,7 +119,7 @@ internal class AntiCheatForAll
                     var text = sr.ReadString();
                     if (GetPlayer.IsInGame && !GetPlayer.IsMeeting && !pc.Data.IsDead)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法聊天，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法聊天，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     if (text.Contains('░') ||
@@ -139,7 +140,7 @@ internal class AntiCheatForAll
                         text.Contains("EzHacked", StringComparison.OrdinalIgnoreCase) ||
                         text.Contains("Ez Hacked", StringComparison.OrdinalIgnoreCase))
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】发送非法消息，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】发送非法消息，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -148,7 +149,7 @@ internal class AntiCheatForAll
                     MeetingTimes++;
                     if (GetPlayer.IsLobby || GetPlayer.IsHideNSeek)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法召集会议：【null】，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法召集会议：【null】，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -158,21 +159,21 @@ internal class AntiCheatForAll
                     if (p1 != null && GetPlayer.IsLobby)
                     {
                         Warn(
-                            $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】在大厅报告尸体：【{p1?.GetRealName() ?? "null"}】，已驳回", "ACFA");
+                            $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】在大厅报告尸体：【{p1?.GetRealName() ?? "null"}】，已驳回", "AntiCheatForAll");
                         return true;
                     }
 
                     if (p1 != null && GetPlayer.IsHideNSeek)
                     {
                         Warn(
-                            $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】在躲猫猫报告尸体：【{p1?.GetRealName() ?? "null"}】，已驳回", "ACFA");
+                            $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】在躲猫猫报告尸体：【{p1?.GetRealName() ?? "null"}】，已驳回", "AntiCheatForAll");
                         return true;
                     }
 
                     if (p1 != null && !p1.Data.IsDead)
                     {
                         Warn(
-                            $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】报告活人尸体：【{p1?.GetRealName() ?? "null"}】，已驳回", "ACFA");
+                            $"玩家【{pc.GetClientId()}:{pc.GetRealName()}】报告活人尸体：【{p1?.GetRealName() ?? "null"}】，已驳回", "AntiCheatForAll");
                         return true;
                     }
 
@@ -182,7 +183,7 @@ internal class AntiCheatForAll
                         // 我们都知道，一局游戏最大只有15人，而就算内鬼为1人，那也不可能达到14次尸体报告（一个人）
                         if (rtimes > 14)
                         {
-                            Fatal($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】报告尸体满14次，已驳回", "ACFA");
+                            Fatal($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】报告尸体满14次，已驳回", "AntiCheatForAll");
                             return true;
                         }
                     }
@@ -196,7 +197,7 @@ internal class AntiCheatForAll
                         (Main.AllPlayerControls.Where(x => x.Data.DefaultOutfit.ColorId == color).Count() >= 5
                     || !GetPlayer.IsLobby || color < 0 || color > 18))
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置颜色，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置颜色，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -210,9 +211,9 @@ internal class AntiCheatForAll
                         {
                             id.GetPlayerDataById().pc.Revive();
                             if (GetPlayer.IsLobby) GetPlayer.GetPlayerById(id).RpcSetRole(RoleTypes.Crewmate, true);
-                            Warn($"尝试复活{id.GetPlayerDataById().pc.GetRealName()}", "ACFA");
+                            Warn($"尝试复活{id.GetPlayerDataById().pc.GetRealName()}", "AntiCheatForAll");
                         }
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -220,7 +221,7 @@ internal class AntiCheatForAll
                 case RpcCalls.CheckShapeshift:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法变形请求，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法变形请求，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -228,7 +229,7 @@ internal class AntiCheatForAll
                 case RpcCalls.RejectShapeshift:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法取消变形，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法取消变形，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -237,7 +238,7 @@ internal class AntiCheatForAll
                 case RpcCalls.CheckVanish:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法隐身，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法隐身，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -246,7 +247,7 @@ internal class AntiCheatForAll
                 case RpcCalls.CheckAppear:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法显形，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法显形，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -254,7 +255,7 @@ internal class AntiCheatForAll
                 case RpcCalls.SetLevel:
                     if (GetPlayer.IsInGame)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置等级，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置等级，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -262,7 +263,7 @@ internal class AntiCheatForAll
                 case RpcCalls.EnterVent:
                     if (!(pc.Data.RoleType == RoleTypes.Engineer || pc.Data.RoleType == RoleTypes.Impostor || pc.Data.RoleType == RoleTypes.Shapeshifter || pc.Data.RoleType == RoleTypes.Phantom))
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法进入管道，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法进入管道，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -273,7 +274,7 @@ internal class AntiCheatForAll
                 case 13:
                     if (GetPlayer.IsInGame && !GetPlayer.IsMeeting && !pc.Data.IsDead)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法聊天，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法聊天，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -283,7 +284,7 @@ internal class AntiCheatForAll
                     if (!AmongUsClient.Instance.AmHost) break;
                     if (!GetPlayer.IsLobby)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置颜色，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置颜色，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -292,7 +293,7 @@ internal class AntiCheatForAll
                     MeetingTimes++;
                     if (GetPlayer.IsLobby || GetPlayer.IsHideNSeek)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法召集会议：【null】，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法召集会议：【null】，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -301,7 +302,7 @@ internal class AntiCheatForAll
                     string name = sr.ReadString();
                     if (GetPlayer.IsInGame)
                     {
-                        Warn($"非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回", "ACFA");
+                        Warn($"非法修改玩家【{pc.GetClientId()}:{pc.GetRealName()}】的游戏名称，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -315,9 +316,9 @@ internal class AntiCheatForAll
                         {
                             id.GetPlayerDataById().pc.Revive();
                             if (GetPlayer.IsLobby) GetPlayer.GetPlayerById(id).RpcSetRole(RoleTypes.Crewmate, true);
-                            Warn($"尝试复活{id.GetPlayerDataById().pc.GetRealName()}", "ACFA");
+                            Warn($"尝试复活{id.GetPlayerDataById().pc.GetRealName()}", "AntiCheatForAll");
                         }
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法击杀，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -329,7 +330,7 @@ internal class AntiCheatForAll
                 case 41:
                     if (GetPlayer.IsInGame)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置宠物，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置宠物，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -337,7 +338,7 @@ internal class AntiCheatForAll
                 case 40:
                     if (GetPlayer.IsInGame)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置皮肤，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置皮肤，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -345,7 +346,7 @@ internal class AntiCheatForAll
                 case 42:
                     if (GetPlayer.IsInGame)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置面部装扮，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置面部装扮，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -353,7 +354,7 @@ internal class AntiCheatForAll
                 case 39:
                     if (GetPlayer.IsInGame)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置帽子，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置帽子，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -362,7 +363,7 @@ internal class AntiCheatForAll
                     if (sr.BytesRemaining > 0 && sr.ReadBoolean()) return false;
                     if (GetPlayer.IsInGame)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置名称，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置名称，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -370,7 +371,7 @@ internal class AntiCheatForAll
                 case 38:
                     if (GetPlayer.IsInGame)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置等级，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法设置等级，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -378,7 +379,7 @@ internal class AntiCheatForAll
                 case 55:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法变形请求，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法变形请求，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -386,7 +387,7 @@ internal class AntiCheatForAll
                 case 56:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Shapeshifter)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法取消变形，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法取消变形，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -394,7 +395,7 @@ internal class AntiCheatForAll
                 case 62:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法隐身请求，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法隐身请求，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -402,7 +403,7 @@ internal class AntiCheatForAll
                 case 63:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法隐身，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法隐身，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -410,7 +411,7 @@ internal class AntiCheatForAll
                 case 64:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法显形请求，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法显形请求，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -418,7 +419,7 @@ internal class AntiCheatForAll
                 case 65:
                     if (GetPlayer.IsLobby || pc.Data.IsDead || pc.Data.RoleType != RoleTypes.Phantom)
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法显形，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法显形，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -426,7 +427,7 @@ internal class AntiCheatForAll
                 case 19:
                     if (!(pc.Data.RoleType == RoleTypes.Engineer || pc.Data.RoleType == RoleTypes.Impostor || pc.Data.RoleType == RoleTypes.Shapeshifter || pc.Data.RoleType == RoleTypes.Phantom))
                     {
-                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法进入管道，已驳回", "ACFA");
+                        Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】非法进入管道，已驳回", "AntiCheatForAll");
                         return true;
                     }
                     break;
@@ -451,9 +452,9 @@ internal class AntiCheatForAll
     {
         // 更新系统 rpc 无法被 playercontrol.handlerpc 接收
         var Mapid = GetPlayer.GetActiveMapId();
-        Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "ACFA");
+        Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "AntiCheatForAll");
         // if (!AmongUsClient.Instance.AmHost) return false;
-        Info("触发飞船事件！" + player.GetRealName() + $"是{player.GetPlayerRoleTeam()}阵营！", "ACFA");
+        Info("触发飞船事件！" + player.GetRealName() + $"是{player.GetPlayerRoleTeam()}阵营！", "AntiCheatForAll");
         if (player == null) return false;
 
         /*if (systemType == SystemTypes.Sabotage) //使用正常的破坏按钮
@@ -520,7 +521,7 @@ internal class AntiCheatForAll
 
         if (GetPlayer.IsMeeting && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating || GetPlayer.IsExilling)
         {
-            Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}非法破坏D，已驳回", "ACFA");
+            Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}非法破坏D，已驳回", "AntiCheatForAll");
             return true;
         }
         // 可能会出现这样的情况：玩家正在修复反应堆，而会议开始了，从而触发会议中的 AntiCheatForAll 检查
@@ -528,7 +529,7 @@ internal class AntiCheatForAll
 
     YesCheat:
         {
-            Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏C，已驳回", "ACFA");
+            Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】非法破坏C，已驳回", "AntiCheatForAll");
             return true;
         }
     }
@@ -536,9 +537,9 @@ internal class AntiCheatForAll
     {
         // 更新系统 rpc 无法被 playercontrol.handlerpc 接收
         _ = GetPlayer.GetActiveMapId();
-        Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "ACFA");
+        Info("Check sabotage RPC" + ", PlayerName: " + player.GetRealName() + ", SabotageType: " + systemType.ToString() + ", amount: " + amount.ToString(), "AntiCheatForAll");
         // if (!AmongUsClient.Instance.AmHost) return false;
-        Info("触发飞船事件！" + player.GetRealName() + $"是{player.GetPlayerRoleTeam()}阵营！", "ACFA");
+        Info("触发飞船事件！" + player.GetRealName() + $"是{player.GetPlayerRoleTeam()}阵营！", "AntiCheatForAll");
         if (player == null) return false;
 
         if (systemType == SystemTypes.Sabotage || systemType == SystemTypes.LifeSupp || systemType == SystemTypes.Comms || systemType == SystemTypes.Electrical || systemType == SystemTypes.Laboratory || systemType == SystemTypes.Reactor || systemType == SystemTypes.HeliSabotage || systemType == SystemTypes.MushroomMixupSabotage) //使用破坏
@@ -548,7 +549,7 @@ internal class AntiCheatForAll
 
         if (GetPlayer.IsMeeting && MeetingHud.Instance.state != MeetingHud.VoteStates.Animating || GetPlayer.IsExilling)
         {
-            Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}非法破坏D，已驳回", "ACFA");
+            Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}非法破坏D，已驳回", "AntiCheatForAll");
             return true;
         }
         // 可能会出现这样的情况：玩家正在修复反应堆，而会议开始了，从而触发会议中的 AntiCheatForAll 检查
@@ -556,7 +557,7 @@ internal class AntiCheatForAll
 
     YesCheat:
         {
-            Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】在躲猫猫非法破坏，已驳回", "ACFA");
+            Fatal($"玩家【{player.GetClientId()}:{player.GetRealName()}】在躲猫猫非法破坏，已驳回", "AntiCheatForAll");
             return true;
         }
     }

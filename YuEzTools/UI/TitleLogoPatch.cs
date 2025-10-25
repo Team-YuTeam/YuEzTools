@@ -206,6 +206,8 @@ public static class VersionShower_Start
 {
     public static void Postfix(VersionShower __instance)
     {
+        var lp = __instance.transform.localPosition;
+        __instance.transform.localPosition = new Vector3(lp.x - 3.3f, lp.y-0.9f, lp.z);
         __instance.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
         if (Main.ModMode == 1)
         {

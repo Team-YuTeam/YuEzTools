@@ -53,7 +53,7 @@ class OnPlayerJoinedPatch
             SendInGamePatch.SendInGame($"<color=#DC143C>{client.PlayerName}</color> <color=#EE82EE>{Translator.GetString("unKickNotLogin")}</color>");
         }
 
-        if (Utils.Utils.CheckBanList(client.FriendCode, client?.ProductUserId) || Utils.Utils.CheckBanner(client.FriendCode, client?.ProductUserId) || Utils.Utils.CheckFirstBanList(client.FriendCode))
+        if (CheckBanList(client.FriendCode, client?.ProductUserId) || CheckBanner(client.FriendCode, client?.ProductUserId) || CheckFirstBanList(client.FriendCode))
         {
             if (AmongUsClient.Instance.AmHost) AmongUsClient.Instance.KickPlayer(client.Id, true);
             Info($"{client?.PlayerName}黑名单 已揭示/踢出", "OnPlayerJoined");
@@ -122,7 +122,7 @@ class IntroCutscenePatch
         if (Toggles.AutoStartGame && AmongUsClient.Instance.AmHost)
         {
 
-            PlayerControl.LocalPlayer.RpcTeleport(Utils.Utils.GetBlackRoomPS());
+            PlayerControl.LocalPlayer.RpcTeleport(GetBlackRoomPS());
             Info("尝试TP玩家", "GM");
             //PlayerControl.LocalPlayer.RpcExile();
             Ifkill = true;
@@ -188,7 +188,7 @@ class InnerNetClientSpawnPatch
         {
             if (client.Character == null) return;
             //if (Main.OverrideWelcomeMsg != "")
-            Utils.Utils.SendMessage(string.Format(GetString("Message.Welcome"), GetPlayer.IsOnlineGame ? serverName : "Local", GameStartManager.Instance.GameRoomNameCode.text), client.Character.PlayerId);
+            SendMessage(string.Format(GetString("Message.Welcome"), GetPlayer.IsOnlineGame ? serverName : "Local", GameStartManager.Instance.GameRoomNameCode.text), client.Character.PlayerId);
             // else TemplateManager.SendTemplate("welcome", client.Character.PlayerId, true);
         }, 3f, "Welcome Message");
 

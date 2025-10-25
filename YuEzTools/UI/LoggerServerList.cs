@@ -60,9 +60,9 @@ public static class ServerDropDownPatch
 
             // 设置按钮
             #if Windows
-            serverListButton.Text.text =Utils.Utils.ColorString(ServerAddManager.GetServerColor32(regionInfo.Name), GetString(regionInfo.Name));
+            serverListButton.Text.text =ColorString(ServerAddManager.GetServerColor32(regionInfo.Name), GetString(regionInfo.Name));
 #elif Android
-            serverListButton.Text.text =Utils.Utils.ColorString(ServerAddManager.GetServerColor32(regionInfo.Name),
+            serverListButton.Text.text =ColorString(ServerAddManager.GetServerColor32(regionInfo.Name),
                 DestroyableSingleton<TranslationController>.Instance.GetStringWithDefault(
                     regionInfo.TranslateName,
                     regionInfo.Name, 

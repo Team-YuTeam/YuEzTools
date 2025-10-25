@@ -79,7 +79,7 @@ public class MainMenuManagerPatch
             // thanks fs
             var pos1 = TitleLogoPatch.RightPanel.transform.localPosition;
             var pos3 = new Vector3(
-                TitleLogoPatch.RightPanelOp.x * Utils.Utils.GetResolutionOffset(),
+                TitleLogoPatch.RightPanelOp.x * GetResolutionOffset(),
                 TitleLogoPatch.RightPanelOp.y, TitleLogoPatch.RightPanelOp.z);
             var lerp1 = Vector3.Lerp(pos1, ShowingPanel ? pos3 : TitleLogoPatch.RightPanelOp + new Vector3(20f, 0f, 0f),
                 Time.deltaTime * (ShowingPanel ? 3f : 2f));

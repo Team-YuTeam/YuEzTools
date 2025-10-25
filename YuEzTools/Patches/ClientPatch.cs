@@ -16,7 +16,7 @@ internal class MMOnlineManagerStartPatch
             var parentObj = HostGameButton.transform.parent.gameObject;
             textObj.transform.position = new Vector3(-0.7f, 1.53f ,0f);
             textObj.name = "CanNotHostGame";
-            var message = $"<size=2>{Utils.Utils.ColorString(Color.red, GetString("CanNotHostGame"))}</size>";
+            var message = $"<size=2>{ColorString(Color.red, GetString("CanNotHostGame"))}</size>";
             _ = new LateTask(() => { textObj.text = message; }, 0.01f, "CanNotHostGame");
         }
         else if (HostGameButton)
@@ -32,7 +32,7 @@ internal class MMOnlineManagerStartPatch
             var parentObj = JoinGameButton.transform.parent.gameObject;
             textObj1.transform.position = new Vector3(-0.7f, -1.53f ,0f);
             textObj1.name = "CanNotJoinGame";
-            var message = $"<size=2>{Utils.Utils.ColorString(Color.red, GetString("CanNotJoinGame"))}</size>";
+            var message = $"<size=2>{ColorString(Color.red, GetString("CanNotJoinGame"))}</size>";
             _ = new LateTask(() => { textObj1.text = message; }, 0.01f, "CanNotJoinGame");
         }
         else if (JoinGameButton)

@@ -81,7 +81,7 @@ public static class ServerAddManager
         //
         //     _ => new(255, 255, 255, 255),
         // };
-        PingTrackerUpdatePatch.ServerName = Utils.Utils.ColorString(color32, GetString(name));
+        PingTrackerUpdatePatch.ServerName = ColorString(color32, GetString(name));
         InnerNetClientSpawnPatch.serverName = name;
     }
 

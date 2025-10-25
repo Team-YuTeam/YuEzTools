@@ -96,16 +96,16 @@ internal class PingTrackerUpdatePatch
         fps = Mathf.Ceil(1.0f / deltaTime);
         var ping = AmongUsClient.Instance.Ping;
 
-        // if (Toggles.ShowPing) sb.Append($"\r\n").Append(Utils.Utils.getColoredPingText(AmongUsClient.Instance.Ping) + "<size=60%>Ping</size></color>"); // 书写Ping
-        // if (Toggles.ShowFPS) sb.Append(!Toggles.ShowPing ? $"\r\n" : " ").Append(Utils.Utils.getColoredFPSText(fps) + "<size=60%>FPS</size></color>"); // 书写FPS
+        // if (Toggles.ShowPing) sb.Append($"\r\n").Append(getColoredPingText(AmongUsClient.Instance.Ping) + "<size=60%>Ping</size></color>"); // 书写Ping
+        // if (Toggles.ShowFPS) sb.Append(!Toggles.ShowPing ? $"\r\n" : " ").Append(getColoredFPSText(fps) + "<size=60%>FPS</size></color>"); // 书写FPS
         // if(Toggles.ShowServer) sb.Append((!Toggles.ShowFPS && !Toggles.ShowPing) ? $"\r\n" : " ").Append("  " + (GetPlayer.IsOnlineGame ? ServerName : GetString("Local")));
 
-        if (Toggles.ShowPing) __instance.text.text = Utils.Utils.getColoredPingText(AmongUsClient.Instance.Ping) +
+        if (Toggles.ShowPing) __instance.text.text = getColoredPingText(AmongUsClient.Instance.Ping) +
                                                      "<size=60%>Ping</size></color>";
         if (!Toggles.ShowPing && Toggles.ShowFPS)
-            __instance.text.text = Utils.Utils.getColoredFPSText(fps) + "<size=60%>FPS</size></color>";
+            __instance.text.text = getColoredFPSText(fps) + "<size=60%>FPS</size></color>";
         else if (Toggles.ShowFPS)
-            __instance.text.text += " " + Utils.Utils.getColoredFPSText(fps) + "<size=60%>FPS</size></color>";
+            __instance.text.text += " " + getColoredFPSText(fps) + "<size=60%>FPS</size></color>";
 
         if ((Toggles.ShowFPS || Toggles.ShowPing) && Toggles.ShowServer)
             __instance.text.text += "  " + (GetPlayer.IsOnlineGame ? ServerName : "<color=#D3D3D3>Local</color>");
@@ -117,7 +117,7 @@ internal class PingTrackerUpdatePatch
 
         // sb.Append($"\r\n")
         //     .Append(
-        //         $"{Utils.Utils.getColoredPingText(ping)} <size=60%>Ping</size></color>  {Utils.Utils.getColoredFPSText(fps)} <size=60%>FPS</size></color>{"  " + (GetPlayer.IsOnlineGame ? ServerName : GetString("Local"))}");
+        //         $"{getColoredPingText(ping)} <size=60%>Ping</size></color>  {getColoredFPSText(fps)} <size=60%>FPS</size></color>{"  " + (GetPlayer.IsOnlineGame ? ServerName : GetString("Local"))}");
 
         // DateTime dt = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now, TimeZoneInfoOptions.None);
         // DateTime dt1 =

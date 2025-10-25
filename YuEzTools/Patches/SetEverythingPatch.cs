@@ -50,7 +50,7 @@ class StartPatch
 
             Info("成员检验" + Main.ClonePlayerControlsOnStart[c].GetRealName(), "StartPatch");
 
-            //结算格式："\n" +$"{Utils.Utils.ColorString(pc1.Data.Color,pc1.GetRealName())}" +" - "+ GetPlayer.GetColorRole(pc1);
+            //结算格式："\n" +$"{ColorString(pc1.Data.Color,pc1.GetRealName())}" +" - "+ GetPlayer.GetColorRole(pc1);
             if (pc1.Data.Role.IsImpostor)
             {
                 GetPlayer.numImpostors++;
@@ -80,7 +80,7 @@ class EndGamePatch
         Info("结束原因：" + endGameResult.GameOverReason.ToString(), "EndGamePatch");
         SummaryText = [];
         foreach (var id in ModPlayerData.AllPlayerDataForMod.Keys)
-            SummaryText[id] = Utils.Utils.SummaryTexts(id);
+            SummaryText[id] = SummaryTexts(id);
         WinReason = endGameResult.GameOverReason.ToString();
         WinTeam = endGameResult.GameOverReason.GetWinTeam();
         Main.isFirstSendEnd = true;

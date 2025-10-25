@@ -89,7 +89,7 @@ public class GameStartManagerPatch
                     }
 
                     if (exitTimer != 0)
-                        warningMessage = Utils.Utils.ColorString(Color.red,
+                        warningMessage = ColorString(Color.red,
                             string.Format(GetString("Warning.AutoExitAtMismatchedFPS"),
                                 PingTrackerUpdatePatch.fps, Math.Round(5 - exitTimer).ToString()));
                 }
@@ -121,7 +121,7 @@ public class GameStartManagerPatch
                 int minutes = (int)timer / 60;
                 int seconds = (int)timer % 60;
                 countDown = $"{minutes:00}:{seconds:00}";
-                if (timer <= 60) countDown = Utils.Utils.ColorString(Color.red, countDown);
+                if (timer <= 60) countDown = ColorString(Color.red, countDown);
 
                 if (timer <= 120 && Toggles.AutoStartGame && GetPlayer.IsLobby && !GetPlayer.IsCountDown)
                 {

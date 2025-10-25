@@ -32,14 +32,14 @@ public class ColorGradient
     public string Apply(string input)
     {
         if (input.Length == 0) return input;
-        if (input.Length == 1) return Utils.Utils.ColorString(Colors[0], input);
+        if (input.Length == 1) return ColorString(Colors[0], input);
         float step = 1f / (input.Length - 1);
         StringBuilder sb = new();
         for (int i = 0; i < input.Length; i++)
         {
             char c = input[i];
             var color = Evaluate(step * i);
-            sb.Append(Utils.Utils.ColorString(color, c.ToString()));
+            sb.Append(ColorString(color, c.ToString()));
         }
         return sb.ToString();
     }
@@ -72,7 +72,7 @@ public class ColorGradient
             if (Text == null) return "";
             var text = Text;
             if (Gradient != null && Gradient.IsValid) text = Gradient.Apply(text);
-            else if (TextColor != null) text = Utils.Utils.ColorString(TextColor.Value, text);
+            else if (TextColor != null) text = ColorString(TextColor.Value, text);
             if (Spaced && applySpace) text = " " + text + " ";
             if (SizePercentage != null && applySize) text = $"<size={SizePercentage}%>{text}</size>";
             return text;
