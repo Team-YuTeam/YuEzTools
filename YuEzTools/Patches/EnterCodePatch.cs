@@ -22,16 +22,21 @@ public class EnterCodePatch
             EnterCodeField.transform.localPosition += new Vector3(0f,0.2f,0f);
             FieldsContainer.transform.localPosition += new Vector3(0f,0.28f,0f);
             JoinGameButton.transform.localPosition -= new Vector3(0f,0.2f,0f);
+            
             MapShow = Object.Instantiate(Chat.gameObject,Chat.parent);
             MapShow.gameObject.name = "Map";
             MapShow.transform.localPosition -= new Vector3(0f,0.55f,0f);
+            
             var title = MapShow.transform.FindChild("Title");
             Object.Destroy(title.gameObject.GetComponent<TextTranslatorTMP>());
+            
             var titletmp = title.gameObject.GetComponent<TextMeshPro>();
             titletmp.text = GetString("EnterCodePatch.Map");
+            
             var text_tmp = MapShow.transform.FindChild("Text_TMP");
             var background = MapShow.transform.FindChild("Background");
             var sprite = Object.Instantiate(background.gameObject,background.parent);
+            
             sprite.transform.localPosition = text_tmp.localPosition;
             sprite.transform.localRotation = text_tmp.localRotation;
             sprite.transform.localScale = text_tmp.localScale;
@@ -40,7 +45,9 @@ public class EnterCodePatch
             sprite.name = "Sprite";
             sprite.GetComponent<SpriteRenderer>().sortingOrder = background.gameObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
             sprite.SetActive(false);
+            
             Object.Destroy(text_tmp.gameObject);
+            
             ifFirst = false;
         }
         
@@ -52,7 +59,7 @@ public class EnterCodePatch
     {
         MapNames currentMap = (MapNames)__instance.gameFound.MapId;
         string mapNameText = currentMap.ToString();
-        Info(mapNameText,"EnterCodePatch");
+        
         var Sprite = MapShow.transform.FindChild("Sprite");
         var Sprite_sprite = Sprite.gameObject.GetComponent<SpriteRenderer>();
         Sprite_sprite.sprite = LoadSprite($"YuEzTools.Resources.MapsImages.{mapNameText}.png", 300f);
