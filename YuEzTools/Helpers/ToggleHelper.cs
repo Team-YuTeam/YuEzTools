@@ -89,6 +89,13 @@ public static class ToggleHelperManager
             setState: val => Toggles.DarkMode = val
         ),
         new ToggleHelper(
+            nameKey: "ShowInfoInLobby",    // 按钮文本键（对应本地化）
+            groupKey: "Interface",          // 所属组
+            submenuKey: null,                      
+            getState: () => Toggles.ShowInfoInLobby, // 绑定 Toggles 字段
+            setState: val => Toggles.ShowInfoInLobby = val
+        ),
+        new ToggleHelper(
             nameKey: "ShowCommit",    // 按钮文本键（对应本地化）
             groupKey: "Interface",          // 所属组
             submenuKey: "PingPart",                      
@@ -202,13 +209,6 @@ public static class ToggleHelperManager
             submenuKey: null,                      
             getState: () => Toggles.reShowRoleT, // 绑定 Toggles 字段
             setState: val => Toggles.reShowRoleT = val
-        ),
-        new ToggleHelper(
-            nameKey: "ShowInfoInLobby",    // 按钮文本键（对应本地化）
-            groupKey: "ShortcutButton",          // 所属组
-            submenuKey: null,                      
-            getState: () => Toggles.ShowInfoInLobby, // 绑定 Toggles 字段
-            setState: val => Toggles.ShowInfoInLobby = val
         ),
         new ToggleHelper(
             nameKey: "ExitGame",    // 按钮文本键（对应本地化）
