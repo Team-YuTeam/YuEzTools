@@ -103,6 +103,8 @@ public class MainMenuManagerPatch
     {
         Instance = __instance;
 
+        EnterCodePatch.ifFirst = true;
+
         SimpleButton.SetBase(__instance.quitButton);
 
         int row = 1; int col = 0;
