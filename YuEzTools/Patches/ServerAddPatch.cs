@@ -58,6 +58,11 @@ public static class ServerAddManager
         {"Europe", new Color32(58, 166, 117, 255)},
         {"North America", new Color32(58, 166, 117, 255)},
     };
+
+    public static bool isInServerDictionary(this string sn)
+    {
+        return serverColor32Map.ContainsKey(sn);
+    }
     
     public static void SetServerName(string serverName = "")
     {
@@ -65,22 +70,7 @@ public static class ServerAddManager
         var name = serverName;
 
         Color32 color32 = GetServerColor32(name);
-
-        // Color32 color = serverName switch
-        // {
-        //     "Asia" => new(58, 166, 117, 255),
-        //     "Europe" => new(58, 166, 117, 255),
-        //     "North America" => new(58, 166, 117, 255),
-        //     "Modded Asia (MAS)" => new(255, 132, 0, 255),
-        //     "Modded NA (MNA)" => new(255, 132, 0, 255),
-        //     "Modded EU (MEU)" => new(255, 132, 0, 255),
-        //     "FangKuai" => new(105, 105, 193, 255),
-        //     "Nikocat233(CN)" => new(255, 255, 0, 255),
-        //     "Nikocat233(US)" => new(255, 255, 0, 255),
-        //     "XiaoLu" => new(255, 151, 255, 255),
-        //
-        //     _ => new(255, 255, 255, 255),
-        // };
+        
         PingTrackerUpdatePatch.ServerName = ColorString(color32, GetString(name));
         InnerNetClientSpawnPatch.serverName = name;
     }

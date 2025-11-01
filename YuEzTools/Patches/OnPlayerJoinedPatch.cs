@@ -101,7 +101,8 @@ class OnGameJoined
     // }
     public static void Postfix()
     {
-        ServerAddManager.SetServerName();
+        if(!EnterCodePatch.isJoin) ServerAddManager.SetServerName();
+        EnterCodePatch.isJoin = false;
         ShowDisconnectPopupPatch.ReasonByHost = string.Empty;
     }
 }

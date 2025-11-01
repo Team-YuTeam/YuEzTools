@@ -12,6 +12,7 @@ public class EnterCodePatch
     public static TextMeshPro Capacity_TMP;
     public static TextMeshPro Server_TMP;
     
+
     [HarmonyPatch(nameof(EnterCodeManager.OnEnable)), HarmonyPostfix]
     public static void OnEnable_Postfix(EnterCodeManager __instance)
     {
@@ -73,9 +74,11 @@ public class EnterCodePatch
         
 
     }
+
+    public static bool isJoin = false;
     
     [HarmonyPatch(nameof(EnterCodeManager.FindGameResult)), HarmonyPostfix]
-    public static void FindGameResult_Postfix(EnterCodeManager __instance)
+    public static void FindGameResult_Postfix(EnterCodeManager __instance, [HarmonyArgument(0)] HttpMatchmakerManager.FindGameByCodeResponse response)
     {
         var gameFound = __instance.gameFound;
         MapNames currentMap = (MapNames)gameFound.MapId;
@@ -86,8 +89,10 @@ public class EnterCodePatch
         Sprite_sprite.sprite = LoadSprite($"YuEzTools.Resources.MapsImages.{mapNameText}.png", 300f);
         Sprite.gameObject.SetActive(true);
         
+        ServerAddManager.SetServerName(response.UntranslatedRegion);
+        isJoin = true;
 
-        Server_TMP.text = ColorString(ServerAddManager.GetServerColor32(Server_TMP.text), GetString(Server_TMP.text));
+        Server_TMP.text = Server_TMP.text.isInServerDictionary() ? ColorString(ServerAddManager.GetServerColor32(Server_TMP.text), GetString(Server_TMP.text)) : Server_TMP.text;
         // Server_TMP.text += gameFound.Language.ToString();
         Host_TMP.text += $"-{gameFound.Platform.GetPlatformColorText()}";
         Capacity_TMP.text += $" <color=#FF0000>({gameFound.NumImpostors})</color>";
