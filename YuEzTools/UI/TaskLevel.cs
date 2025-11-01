@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -34,20 +35,21 @@ public static class TaskLevel
                     disconnectedCount++;
             }
 
-            double num2 = instance.CompletedTasks / (float)instance.TotalTasks * 100;
+            double num2 = Math.Round(instance.CompletedTasks / (float)instance.TotalTasks * 100, 2);
 
             switch (GameManager.Instance.LogicOptions.GetTaskBarMode())
             {
                 case TaskBarMode.Normal:
                     // Info("1","ProgressTracker");
-                    titleText_TMP.text = GetString("TasksProgress") + $"{num2}%";
+                    var comms = IsActive(SystemTypes.Comms);
+                    titleText_TMP.text = comms ? GetString("TaskBarMode.Comms") : GetString("TasksProgress") + $"{num2}%";
                     break;
                 case TaskBarMode.MeetingOnly:
                     Info("2", "ProgressTracker");
 
                     if (MeetingHud.Instance)
                     {
-                        titleText_TMP.text = GetString("TasksProgress") + $"{num2}%";
+                        titleText_TMP.text = GetString("TaskBarMode.Meeting") + $"{num2}%";
                     }
                     break;
                 case TaskBarMode.Invisible:

@@ -203,8 +203,10 @@ ImpostorIntroText: "<color={0}>邪恶将至...</color>"
 # TaskText
 FakeTask: "假任务如下："
 TasksProgress: "已完成任务进度:"
+TaskBarMode.Meeting: "上次会议开始时已完成任务进度:"
 TaskBarMode.Invisible: "始终不显示任务进度"
-TaskBarMode.Default: "预设错误"
+TaskBarMode.Default: "错误的任务进度显示预设"
+TaskBarMode.Comms: "通讯被破坏了！无法连接任务服务器！快去修理！"
 
 # RoomList
 iPhone: "苹果"

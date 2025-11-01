@@ -221,6 +221,66 @@ public static class Utils
 
         return $"<color={platform.GetPlatformColor()}>{platform.GetPlatformText()}</color>";
     }
+    
+    // thanks fs
+        public static bool IsActive(SystemTypes type)
+    {
+        if (!GetPlayer.IsInGame) return false;
+        if (!GetPlayer.IsNormalGame) return false;
+        if (!ShipStatus.Instance.Systems.ContainsKey(type)) return false;
+
+        int mapId = Main.NormalOptions.MapId;
+        switch (type)
+        {
+            case SystemTypes.Electrical:
+            {
+                var SwitchSystem = ShipStatus.Instance.Systems[type].Cast<SwitchSystem>();
+                return SwitchSystem is { IsActive: true };
+            }
+            case SystemTypes.Reactor:
+            {
+                if (mapId == 2) return false;
+                var ReactorSystemType = ShipStatus.Instance.Systems[type].Cast<ReactorSystemType>();
+                return ReactorSystemType is { IsActive: true };
+            }
+            case SystemTypes.Laboratory:
+            {
+                if (mapId != 2) return false;
+                var ReactorSystemType = ShipStatus.Instance.Systems[type].Cast<ReactorSystemType>();
+                return ReactorSystemType is { IsActive: true };
+            }
+            case SystemTypes.LifeSupp:
+            {
+                if (mapId is 2 or 4) return false;
+                var LifeSuppSystemType = ShipStatus.Instance.Systems[type].Cast<LifeSuppSystemType>();
+                return LifeSuppSystemType is { IsActive: true };
+            }
+            case SystemTypes.Comms:
+            {
+                if (mapId is 1 or 5)
+                {
+                    var HqHudSystemType = ShipStatus.Instance.Systems[type].Cast<HqHudSystemType>();
+                    return HqHudSystemType is { IsActive: true };
+                }
+
+                var HudOverrideSystemType = ShipStatus.Instance.Systems[type].Cast<HudOverrideSystemType>();
+                return HudOverrideSystemType is { IsActive: true };
+            }
+            case SystemTypes.HeliSabotage:
+            {
+                var HeliSabotageSystem = ShipStatus.Instance.Systems[type].Cast<HeliSabotageSystem>();
+                return HeliSabotageSystem && HeliSabotageSystem.IsActive;
+            }
+            case SystemTypes.MushroomMixupSabotage:
+            {
+                var mushroomMixupSabotageSystem =
+                    ShipStatus.Instance.Systems[type].TryCast<MushroomMixupSabotageSystem>();
+                return mushroomMixupSabotageSystem && mushroomMixupSabotageSystem.IsActive;
+            }
+            default:
+                return false;
+        }
+    }
 
     public static string GetWinTeam(this GameOverReason gameOverReason)
     {
