@@ -205,7 +205,8 @@ internal class AntiCheatForAll
                 case RpcCalls.MurderPlayer:
                 case RpcCalls.CheckMurder:
                     var id = sr.ReadByte();
-                    if (GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || 
+                        pc.IsImpostor())
                     {
                         if (AmongUsClient.Instance.AmHost && !Toggles.SafeMode)
                         {
@@ -309,7 +310,7 @@ internal class AntiCheatForAll
 
                 case 12:
                 case 47:
-                    if (GetPlayer.IsLobby || pc.Data.IsDead || (pc.Data.RoleType != RoleTypes.Impostor && pc.Data.RoleType != RoleTypes.Shapeshifter && pc.Data.RoleType != RoleTypes.Phantom))
+                    if (GetPlayer.IsLobby || pc.Data.IsDead || pc.IsImpostor())
                     {
                         var id = sr.ReadByte();
                         if (AmongUsClient.Instance.AmHost && !Toggles.SafeMode)

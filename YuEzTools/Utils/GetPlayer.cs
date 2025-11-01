@@ -67,6 +67,7 @@ static class GetPlayer
     public static IReadOnlyDictionary<byte, PlayerState> AllPlayerStates => allPlayerStates;
     public static RoleTeam GetPlayerRoleTeam(this PlayerControl pc)
     {
+        // pc.Data.Role.IsImpostor
         if (pc.Data.RoleType is RoleTypes.Crewmate or RoleTypes.Engineer or RoleTypes.CrewmateGhost
             or RoleTypes.Noisemaker or RoleTypes.GuardianAngel or RoleTypes.Scientist or RoleTypes.Tracker or RoleTypes.Detective)
             return RoleTeam.Crewmate;

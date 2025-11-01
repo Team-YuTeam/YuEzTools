@@ -259,6 +259,7 @@ HideAndSeek_CrewmatesByTimer: "倒计时结束"
 HideAndSeek_ImpostorsByKills: "所有躲藏者被抓"
 CrewmateWin: "船员获胜"
 ImpostorWin: "伪装者获胜"
+ImpostorsWin: "伪装者获胜"
 NobodyWin: "奖牌流失"
 ErrorWin: "异常结束"
 
