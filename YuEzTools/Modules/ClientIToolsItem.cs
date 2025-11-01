@@ -203,26 +203,36 @@ public class ClientToolsItem
     // 核心方法：显示当前页的按钮，隐藏其他页
     private void ShowCurrentPageButtons()
     {
+        // 先清理列表中已失效的按钮（ToggleButton 为 null 或已销毁）
+        allButtons.RemoveAll(btn => btn?.ToggleButton == null || btn.ToggleButton.gameObject == null);
+
         if (allButtons.Count == 0) return;
         int startIndex = currentPage * MAX_BUTTONS_PER_PAGE;
         int endIndex = Math.Min(startIndex + MAX_BUTTONS_PER_PAGE, allButtons.Count);
 
-        // 遍历所有按钮时，新增位置重置逻辑
         for (int i = 0; i < allButtons.Count; i++)
         {
             bool isInCurrentPage = i >= startIndex && i < endIndex;
             var button = allButtons[i];
         
+            // 跳过空按钮或已销毁的按钮
+            if (button == null || button.ToggleButton == null || button.ToggleButton.gameObject == null)
+                continue;
+
             if (isInCurrentPage)
             {
-                // 关键：当前页的按钮，按“页内索引”重新算位置（回到顶部）
-                int pageInnerIndex = i - startIndex; // 页内索引（0~17）
-                button?.ToggleButton?.transform?.localPosition = new Vector3(
-                    pageInnerIndex % 2 == 0 ? -1.3f : 1.3f,
-                    2.2f - (0.5f * (pageInnerIndex / 2)),
-                    -6f);
+                int pageInnerIndex = i - startIndex;
+                // 确保 transform 可用（再次空检查）
+                if (button.ToggleButton.transform != null)
+                {
+                    button.ToggleButton.transform.localPosition = new Vector3(
+                        pageInnerIndex % 2 == 0 ? -1.3f : 1.3f,
+                        2.2f - (0.5f * (pageInnerIndex / 2)),
+                        -6f);
+                }
             }
-        
+
+            // 安全设置激活状态
             button.ToggleButton.gameObject.SetActive(isInCurrentPage);
         }
 
