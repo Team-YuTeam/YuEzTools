@@ -92,7 +92,7 @@ MenuUI.ShowLocalNowTime: "显示现在时间"
 MenuUI.ShowUTC: "显示UTC"
 MenuUI.ShowGM: "显示是否托管模式"
 MenuUI.EndPart: "结算部分"
-MenuUI.WinTextSize: "获胜阵营显示的字体更大"
+MenuUI.WinTextSize: "获胜阵营的文本显示更大"
 
 # MenuUI.AntiCheat
 MenuUI.AntiCheat: "反作弊"
