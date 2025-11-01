@@ -311,3 +311,5 @@ BothHorseAndLongModeErrorText: "注意！您同时选择了长模式和马模式
 
 # 房间搜索界面
 EnterCodePatch.Map: "地图"
+EnterCodePatch.Host: "房主-游戏平台"
+EnterCodePatch.Capacity: "最大人数 (伪装者数)"
