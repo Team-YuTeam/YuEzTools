@@ -1,7 +1,10 @@
+using System.Collections;
 using UnityEngine;
 using System.IO;
 using YuEzTools.Modules;
 using YuEzTools.Patches;
+using Object = UnityEngine.Object;
+using BepInEx.Unity.IL2CPP.Utils;
 
 namespace YuEzTools.UI;
 
@@ -19,6 +22,13 @@ internal class TitleLogoPatch
     public static GameObject RightPanel;
     public static GameObject CloseRightButton;
     public static GameObject Tint;
+    
+    private static Sprite logoSprite1;
+    private static Sprite logoSprite2;
+    private static SpriteRenderer logoRenderer;
+    private static bool isShowingSprite1 = true;
+    public static float switchInterval = 4f;
+    public static float fadeDuration = 0.8f;
 
     // public static Vector3 RightPanelOp;
     public static Vector3 RightPanelOp = new(2.8f, -0.4f, -5.0f);
@@ -125,10 +135,15 @@ internal class TitleLogoPatch
         if (!(AULogo = GameObject.Find("LOGO-AU"))) return;
         Sizer.transform.localPosition += new Vector3(0f, 0.82f, 0f);
         AULogo.transform.localScale = new Vector3(0.66f, 0.67f, 1f);
-        AULogo.transform.position += new Vector3(0f, 0.1f, 0f);
-        var logoRenderer = AULogo.GetComponent<SpriteRenderer>();
-        logoRenderer.sprite = LoadSprite("YuEzTools.Resources.YuET-Logo-tm.png", 100f);//Yu的Logo
-
+        AULogo.transform.position -= new Vector3(0f, 0.65f, 0f);
+        logoSprite1 = LoadSprite("YuEzTools.Resources.YuET-Logo-tm.png", 100f);
+        logoSprite2 = LoadSprite("YuEzTools.Resources.AU-Logo-tm.png", 20f);
+        logoRenderer = AULogo.GetComponent<SpriteRenderer>();
+        logoRenderer.sprite = logoSprite1;
+        logoRenderer.color = Color.white;
+        
+        __instance.StartCoroutine(GradientSwitchCoroutine());
+        
         if (!(BottomButtonBounds = GameObject.Find("BottomButtonBounds"))) return;
         BottomButtonBounds.transform.localPosition += new Vector3(0f, 0.6f, 0f);
 
@@ -166,6 +181,35 @@ internal class TitleLogoPatch
 
     }
 
+    private static IEnumerator GradientSwitchCoroutine()
+    {
+        while (logoRenderer != null && AULogo != null)
+        {
+            yield return new WaitForSeconds(switchInterval - fadeDuration);
+
+            float fadeTimer = 0;
+            while (fadeTimer < fadeDuration)
+            {
+                fadeTimer += Time.deltaTime;
+                float alpha = 1 - (fadeTimer / fadeDuration);
+                logoRenderer.color = new Color(1, 1, 1, alpha);
+                yield return null;
+            }
+
+            isShowingSprite1 = !isShowingSprite1;
+            logoRenderer.sprite = isShowingSprite1 ? logoSprite1 : logoSprite2;
+
+            fadeTimer = 0;
+            while (fadeTimer < fadeDuration)
+            {
+                fadeTimer += Time.deltaTime;
+                float alpha = fadeTimer / fadeDuration;
+                logoRenderer.color = new Color(1, 1, 1, alpha);
+                yield return null;
+            }
+        }
+    }
+    
     public static Dictionary<string, Sprite> CachedSprites = [];
     public static Sprite LoadSprite(string path, float pixelsPerUnit = 1f)
     {
