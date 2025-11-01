@@ -207,19 +207,22 @@ public static class VersionShower_Start
     public static void Postfix(VersionShower __instance)
     {
         var lp = __instance.transform.localPosition;
-        __instance.transform.localPosition = new Vector3(lp.x - 3.3f, lp.y-0.9f, lp.z);
-        __instance.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+        if(__instance.GetComponent<AspectPosition>()) Object.Destroy(__instance.GetComponent<AspectPosition>());
+        __instance.transform.localPosition = new Vector3(lp.x - 0.1f, lp.y-0.6f, lp.z);
+        __instance.transform.localScale = new Vector3(1f, 1f, 1f);
         if (Main.ModMode == 1)
         {
+            __instance.text.text = string.Format(GetString("UsingVersion"), Main.ModColor, Main.ModName, "Canary");
             //__instance.text.text = TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#DC143C>您正在使用 v{Main.PluginVersion} Canary测试版！</color>)" : $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#DC143C>You are using  v{Main.PluginVersion} Canary Version</color>)";
-            if (IsChineseUser) __instance.text.text = string.Format(GetString("UsingVersion"), Main.ModColor, Main.ModName, "Canary") + string.Format(GetString("VerShow.Visit"), Main.ModColor, Main.ModName, ModUpdater.visit);
-            else __instance.text.text = string.Format(GetString("VerShow.HasNotUpdate"), Main.ModColor, Main.ModName);
+            if (IsChineseUser) __instance.text.text += string.Format(GetString("VerShow.Visit"), Main.ModColor, Main.ModName, ModUpdater.visit);
+            else __instance.text.text += string.Format(GetString("VerShow.HasNotUpdate"), Main.ModColor, Main.ModName);
         }
         else if (Main.ModMode == 0)
         {
+            __instance.text.text = string.Format(GetString("UsingVersion"), Main.ModColor, Main.ModName, "Debug");
             //__instance.text.text = TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#DC143C>您正在使用 v{Main.PluginVersion} Debug开发者版！</color>)" : $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#DC143C>You are using  v{Main.PluginVersion} Debug Version</color>)";
-            if (IsChineseUser) __instance.text.text = string.Format(GetString("UsingVersion"), Main.ModColor, Main.ModName, "Debug") + string.Format(GetString("VerShow.Visit"), Main.ModColor, Main.ModName, ModUpdater.visit);
-            else __instance.text.text = string.Format(GetString("VerShow.HasNotUpdate"), Main.ModColor, Main.ModName);
+            if (IsChineseUser) __instance.text.text += string.Format(GetString("VerShow.Visit"), Main.ModColor, Main.ModName, ModUpdater.visit);
+            else __instance.text.text += string.Format(GetString("VerShow.HasNotUpdate"), Main.ModColor, Main.ModName);
             //__instance.text.text += "\n" + string.Format(Translator.GetString("VerShow.Visit"),Main.ModColor,Main.ModName,ModUpdater.visit);
         }
         else

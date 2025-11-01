@@ -128,7 +128,7 @@ MenuUI.FPSPlus: "突破FPS上限"
 # VerShow
 VerShow.HasUpdate: "<color=#DC143C>YuET有v{2}更新!</color>"
 VerShow.HasNotUpdate: "<color={0}>{1}</color> (<color=#00FF00>您的YuET是最新的</color>)"
-VerShow.Visit: "<color={0}>{1}</color> <color=#FF00FF>已被使用 <color=#191970>{2}</color> 次啦~</color>"
+VerShow.Visit: "<color={0}>{1}</color> <color=#FF00FF>已被使用 <color=#62FFD4>{2}</color> 次啦~</color>"
 UsingVersion: "<color=#DC143C>[{2}]</color>"
 
 # FunctionPatch
