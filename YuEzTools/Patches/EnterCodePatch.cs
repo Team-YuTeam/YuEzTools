@@ -24,10 +24,11 @@ public class EnterCodePatch
         var Capacity = FieldsContainer.transform.Find("Capacity");
         var Server = FieldsContainer.transform.Find("Server");
         
+        FieldsContainer.transform.localPosition += new Vector3(0f,0.28f,0f);
+        
         if (ifFirst)
         {
             EnterCodeField.transform.localPosition += new Vector3(0f,0.2f,0f);
-            FieldsContainer.transform.localPosition += new Vector3(0f,0.28f,0f);
             JoinGameButton.transform.localPosition -= new Vector3(0f,0.2f,0f);
             
             // 房主
@@ -71,8 +72,6 @@ public class EnterCodePatch
             
             ifFirst = false;
         }
-        
-
     }
 
     public static bool isJoin = false;
