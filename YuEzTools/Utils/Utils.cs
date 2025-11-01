@@ -170,7 +170,7 @@ public static class Utils
         return string.Concat(sha256Hash.AsSpan(0, 5), sha256Hash.AsSpan(sha256Hash.Length - 4));
     }
 
-    public static string GetPlatformText(this Platforms platform)
+    public static string GetPlatformColor(this Platforms platform)
     {
         var color = platform switch
         {
@@ -190,6 +190,11 @@ public static class Utils
             Platforms.Unknown or
                 _ => "#ffffff"
         };
+        return color;
+    }
+    
+    public static string GetPlatformText(this Platforms platform)
+    {
         var platforms = platform switch
         {
             Platforms.StandaloneItch => "Itch",
@@ -208,7 +213,13 @@ public static class Utils
             Platforms.Unknown or
                 _ => GetString("Platforms.Unknown")
         };
-        return $"<color={color}>{platforms}</color>";
+        return platforms;
+    }
+
+    public static string GetPlatformColorText(this Platforms platform)
+    {
+
+        return $"<color={platform.GetPlatformColor()}>{platform.GetPlatformText()}</color>";
     }
 
     public static string GetWinTeam(this GameOverReason gameOverReason)

@@ -30,42 +30,8 @@ public static class MatchMakerGameButtonSetGamePatch
         var nameList = TranslationController.Instance.currentLanguage.languageID is SupportedLangs.SChinese or SupportedLangs.TChinese ? Main.TName_Snacks_CN : Main.TName_Snacks_EN;
 
         if (game.Language.ToString().Length > 9) goto End;
-        var color = game.Platform switch
-        {
-            Platforms.StandaloneItch => "#FF4300",
-            Platforms.StandaloneWin10 => "#FF7E32",
-            Platforms.StandaloneEpicPC => "#FFD432",
-            Platforms.StandaloneSteamPC => "#B8FF32",
-
-            Platforms.Xbox => "#60FF32",
-            Platforms.Switch => "#32FF69",
-            Platforms.Playstation => "#32FFC6",
-
-            Platforms.StandaloneMac => "#32E9FF",
-            Platforms.IPhone => "#32AEFF",
-            Platforms.Android => "#325AFF",
-
-            Platforms.Unknown or
-            _ => "#ffffff"
-        };
-        var platforms = game.Platform switch
-        {
-            Platforms.StandaloneItch => "Itch",
-            Platforms.StandaloneWin10 => GetString("Microsoft"),
-            Platforms.StandaloneEpicPC => "Epic",
-            Platforms.StandaloneSteamPC => "Steam",
-
-            Platforms.Xbox => "Xbox",
-            Platforms.Switch => "Switch",
-            Platforms.Playstation => "PS",
-
-            Platforms.StandaloneMac => "Mac",
-            Platforms.IPhone => GetString("iPhone"),
-            Platforms.Android => GetString("Android"),
-
-            Platforms.Unknown or
-            _ => GetString("Platforms.Unknown")
-        };
+        var color = game.Platform.GetPlatformColor();
+        var platforms = game.Platform.GetPlatformText();
         Info(game.IPString + ":" + game.Port, "FAG");
         string str = Math.Abs(game.GameId).ToString();
 

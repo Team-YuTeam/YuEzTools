@@ -33,7 +33,7 @@ class FixedUpdatePatch
                 name = __instance.FriendCode.GetDevUser().GetTag() + name;
             if (Toggles.ShowInfoInLobby)
             {
-                name = $"<size=70%><color=#33EEFF>Lv.{__instance.GetClient().PlayerLevel} {__instance.GetClient().PlatformData.Platform.GetPlatformText()} {__instance.GetClient().Id}</color></size>\n" +
+                name = $"<size=70%><color=#33EEFF>Lv.{__instance.GetClient().PlayerLevel} {__instance.GetClient().PlatformData.Platform.GetPlatformColorText()} {__instance.GetClient().Id}</color></size>\n" +
                         $"{name}\n" +
                         $"<size=65%><color=#33FF91>{__instance.PlayerId} {__instance.GetClient().FriendCode} {__instance.GetClient().GetHashedPuid()}</color></size>";
             }
