@@ -72,6 +72,9 @@ public class EnterCodePatch
             
             ifFirst = false;
         }
+        
+        var Sprite = MapShow.transform.FindChild("Sprite");
+        Sprite.gameObject.SetActive(false);
     }
 
     public static bool isJoin = false;
@@ -103,4 +106,12 @@ public class EnterCodePatch
         var Sprite = MapShow.transform.FindChild("Sprite");
         Sprite.gameObject.SetActive(false);
     }
+    
+    [HarmonyPatch(nameof(EnterCodeManager.LookForGame)), HarmonyPostfix]
+    public static void LookForGame_Postfix(EnterCodeManager __instance)
+    {
+        var Sprite = MapShow.transform.FindChild("Sprite");
+        Sprite.gameObject.SetActive(false);
+    }
+    
 }
