@@ -56,7 +56,6 @@ public static class SetupGameInfoPatch
         if (game.Language.ToString().Length > 9) goto End;
         var color = game.Platform.GetPlatformColor();
         var platforms = game.Platform.GetPlatformText();
-        Info(game.IPString + ":" + game.Port, "SetupGameInfoPatch");
         string str = Math.Abs(game.GameId).ToString();
 
         // int id = Math.Min(Math.Max(int.Parse(str.Substring(str.Length - 2, 2)), 1) * nameList.Count / 100, nameList.Count);
@@ -73,6 +72,6 @@ public static class SetupGameInfoPatch
         HNTMP.text += $"\n<size=18%><color={Main.ModColor}>{GameCode.IntToGameName(game.GameId)}</color>";
         // HNTMP.alignment = TextAlignmentOptions.MidlineLeft;
         End:
-        Info("--------This room end.--------", "SetupGameInfoPatch");
+        Info($"--------This room: {GameCode.IntToGameName(game.GameId)}({game.IPString + ":" + game.Port}) is already loaded.--------", "SetupGameInfoPatch");
     }
 }
