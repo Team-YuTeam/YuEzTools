@@ -75,3 +75,50 @@ public static class SetupGameInfoPatch
         Info($"--------This room: {GameCode.IntToGameName(game.GameId)}({game.IPString + ":" + game.Port}) is already loaded.--------", "SetupGameInfoPatch");
     }
 }
+
+[HarmonyPatch(typeof(FindGameMoreInfoPopup), nameof(FindGameMoreInfoPopup.SetupInfo))]
+public static class SetupFindGameMoreInfoPopupPatch
+{
+    public static GameObject HostName;
+
+    [HarmonyPostfix]
+    public static void Postfix(FindGameMoreInfoPopup __instance)
+    {
+        var game = __instance.gameListing;
+        
+        var mapLogo = __instance.mapLogo.transform;
+        var modeText = __instance.modeText.transform;
+        var modeText_TMP = modeText.GetComponent<TextMeshPro>();
+        var old = mapLogo.parent.FindChild("HostName")?.gameObject;
+        if (old)
+            Object.Destroy(old);
+        
+        HostName = new GameObject("HostName")
+        {
+            transform =
+            {
+                parent = __instance.mapLogo.transform.parent,
+                localPosition = new Vector3(mapLogo.localPosition.x, mapLogo.localPosition.y - 2.8f, mapLogo.localPosition.z),
+                localScale = new Vector3(0.14f, 0.14f, 1f),
+            },
+        };
+
+        mapLogo.localPosition -= new Vector3(0f, 0.1f, 0f);
+
+        // if (game.Language.ToString().Length > 9) goto End;
+        var color = game.Platform.GetPlatformColor();
+        var platforms = game.Platform.GetPlatformText();
+        string str = Math.Abs(game.GameId).ToString();
+
+        // int id = Math.Min(Math.Max(int.Parse(str.Substring(str.Length - 2, 2)), 1) * nameList.Count / 100, nameList.Count);
+        var HNTMP = HostName.AddComponent<TextMeshPro>();
+        HNTMP.text = $"" +
+                     $"<size=110%>" +
+                     $"<color={color}>" +
+                     $"{game.TrueHostName}" +
+                     $"</size>";
+        HNTMP.alignment = TextAlignmentOptions.Center;
+        
+        modeText_TMP.text += $"\n<color={Main.ModColor}>{GameCode.IntToGameName(game.GameId)}</color>";
+    }
+}
