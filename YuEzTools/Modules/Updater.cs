@@ -182,8 +182,8 @@ public class ModUpdater
                         CustomPopup.Show(GetString(StringNames.AnnouncementLabel), annos, new() { (GetString(StringNames.ExitGame), Application.Quit) });
                     else
                     {
-                        CustomPopup.Show(GetString(StringNames.AnnouncementLabel), annos + "\n" + 
-                            string.Format(GetString("AmongUsIsNotOK"),$"<color={Main.ModColor}>{Main.ModName}</color>"), 
+                        CustomPopup.Show(GetString(StringNames.AnnouncementLabel), annos + "\n<color=#FF0000>" + 
+                            string.Format(GetString("AmongUsIsNotOK"),$"<color={Main.ModColor}>{Main.ModName}</color>") + "</color>", 
                             new() { (GetString(StringNames.ExitGame), Application.Quit) });
                     }
                 }
@@ -200,8 +200,8 @@ public class ModUpdater
                     }
                     else
                     {
-                        CustomPopup.Show(GetString(StringNames.AnnouncementLabel), annos + "\n" + 
-                            string.Format(GetString("AmongUsIsNotOK"),$"<color={Main.ModColor}>{Main.ModName}</color>"), new()
+                        CustomPopup.Show(GetString(StringNames.AnnouncementLabel), annos + "\n<color=#FF0000>" + 
+                            string.Format(GetString("AmongUsIsNotOK"),$"<color={Main.ModColor}>{Main.ModName}</color>") + "</color>", new()
                         {
                             (GetString("updateSource.Afdian"), () => Application.OpenURL("https://afdian.com/a/yuqianzhi")),
                             (GetString("updateSource.BiliBili"), () => Application.OpenURL("https://www.bilibili.com/opus/898712994671755300")),

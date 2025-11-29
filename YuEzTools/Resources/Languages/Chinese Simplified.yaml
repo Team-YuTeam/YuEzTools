@@ -323,4 +323,4 @@ ShowRoomMoreInfo.RoomLink: "房间IP："
 ShowRoomMoreInfo.RoomMode: "游戏模式："
 
 # 首页面警告
-AmongUsIsNotOK: "您的AmongUs版本不符合{0}的要求，请注意检查{0}更新 或 检查AmongUs版本"
+AmongUsIsNotOK: "您的AmongUs版本不符合{0}的要求，请注意检查{0}更新 或 检查AmongUs版本\n一般来说，此问题对您正常使用{0}没有影响"
