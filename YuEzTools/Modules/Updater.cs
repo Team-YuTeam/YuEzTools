@@ -64,6 +64,7 @@ public class ModUpdater
     public static void StartPostfix()
     {
         CustomPopup.Init();
+        ShowRoomMoreInfo.Init();
 
         // if (!isChecked && firstStart)
         CheckForUpdate();
@@ -175,14 +176,40 @@ public class ModUpdater
             {
                 firstLaunch = false;
                 var annos = IsChineseUser ? announcement_zh : announcement_en;
-                if (isBroken) CustomPopup.Show(GetString(StringNames.AnnouncementLabel), annos, new() { (GetString(StringNames.ExitGame), Application.Quit) });
-                else CustomPopup.Show(GetString(StringNames.AnnouncementLabel), annos, new()
+                if (isBroken)
                 {
-                    (GetString("updateSource.Afdian"), () => Application.OpenURL("https://afdian.com/a/yuqianzhi")),
-                    (GetString("updateSource.BiliBili"), () => Application.OpenURL("https://www.bilibili.com/opus/898712994671755300")),
-                    (GetString(IsChineseLanguageUser ? "updateSource.QQ" : "updateSource.github"), () => Application.OpenURL(IsChineseLanguageUser ? Main.QQUrl : "https://github.com/Team-YuTeam/YuEzTools/issues/new/choose")),
-                    (GetString("updateSource.NextTime"), null)
-                });
+                    if(Main.isAmongUsVersionOK)
+                        CustomPopup.Show(GetString(StringNames.AnnouncementLabel), annos, new() { (GetString(StringNames.ExitGame), Application.Quit) });
+                    else
+                    {
+                        CustomPopup.Show(GetString(StringNames.AnnouncementLabel), annos + "\n" + 
+                            string.Format(GetString("AmongUsIsNotOK"),$"<color={Main.ModColor}>{Main.ModName}</color>"), 
+                            new() { (GetString(StringNames.ExitGame), Application.Quit) });
+                    }
+                }
+                else {
+                    if (Main.isAmongUsVersionOK)
+                    {
+                        CustomPopup.Show(GetString(StringNames.AnnouncementLabel), annos, new()
+                        {
+                            (GetString("updateSource.Afdian"), () => Application.OpenURL("https://afdian.com/a/yuqianzhi")),
+                            (GetString("updateSource.BiliBili"), () => Application.OpenURL("https://www.bilibili.com/opus/898712994671755300")),
+                            (GetString(IsChineseLanguageUser ? "updateSource.QQ" : "updateSource.github"), () => Application.OpenURL(IsChineseLanguageUser ? Main.QQUrl : "https://github.com/Team-YuTeam/YuEzTools/issues/new/choose")),
+                            (GetString("updateSource.NextTime"), null)
+                        });
+                    }
+                    else
+                    {
+                        CustomPopup.Show(GetString(StringNames.AnnouncementLabel), annos + "\n" + 
+                            string.Format(GetString("AmongUsIsNotOK"),$"<color={Main.ModColor}>{Main.ModName}</color>"), new()
+                        {
+                            (GetString("updateSource.Afdian"), () => Application.OpenURL("https://afdian.com/a/yuqianzhi")),
+                            (GetString("updateSource.BiliBili"), () => Application.OpenURL("https://www.bilibili.com/opus/898712994671755300")),
+                            (GetString(IsChineseLanguageUser ? "updateSource.QQ" : "updateSource.github"), () => Application.OpenURL(IsChineseLanguageUser ? Main.QQUrl : "https://github.com/Team-YuTeam/YuEzTools/issues/new/choose")),
+                            (GetString("updateSource.NextTime"), null)
+                        });
+                    }
+                }
             }
         }
         else

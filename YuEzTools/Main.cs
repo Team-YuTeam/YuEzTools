@@ -18,13 +18,13 @@ namespace YuEzTools;
 [BepInProcess("Among Us.exe")]
 public class Main : BasePlugin
 {
-    public static readonly string ModName = "YuEzTools"; // 咱们的模组名字
-    public static readonly string ModColor = "#A0E4FF"; // 咱们的模组颜色
-    public static readonly Color32 ModColor32 = new(160, 228, 255,255); // 咱们的模组Color32
-    public static readonly string MainMenuText = "Reviewing"; // 咱们模组的首页标语
-    public const string PluginGuid = "com.Yu.YuEzTools"; //咱们模组的Guid
-    public const string PluginVersion = "1.3.6.5"; //咱们模组的版本号
-    public const string CanUseInAmongUsVer = "2025.10.14"; //智齿的AU版本
+    public static readonly string ModName = "YuEzTools"; // 模组名
+    public static readonly string ModColor = "#A0E4FF"; // 模组颜色-Hex
+    public static readonly Color32 ModColor32 = new(160, 228, 255,255); // 模组颜色-Color32
+    public static readonly string MainMenuText = "Reviewing"; // 模组Ping部分标语
+    public const string PluginGuid = "com.Yu.YuEzTools"; //模组Guid
+    public const string PluginVersion = "1.3.6.5"; //模组版本号
+    public const string CanUseInAmongUsVer = "2025.11.18"; // 适配的AU版本
     public const int PluginCreation = 1;
 
     public static string QQUrl = "https://qm.qq.com/q/uGuWqBkYUi";
@@ -82,6 +82,8 @@ public class Main : BasePlugin
     public static bool IsChineseUser => GetUserLangByRegion() == SupportedLangs.SChinese;
 
     public static bool VisibleTasksCount = false;
+
+    public static bool isAmongUsVersionOK = true;
 
     //public static bool safemode = true;//设置安全模式
     //public static bool ShowMode = true;//设置揭示模式
@@ -144,9 +146,15 @@ public class Main : BasePlugin
         BetaBuildURL = Config.Bind("Other", "BetaBuildURL", "");
 
         if (Application.version == CanUseInAmongUsVer)
-            Logger.LogInfo($"AmongUs Version: {Application.version}"); //牢底居然有智齿的版本？！
+        {
+            Logger.LogInfo($"AmongUs Version: {Application.version}, is ok"); // AmongUs 版本支持
+            isAmongUsVersionOK = true;
+        }
         else
-            Logger.LogInfo($"游戏本体版本过低或过高,AmongUs Version: {Application.version}"); //牢底你的版本也不行啊
+        {
+            Logger.LogInfo($"游戏本体版本过低或过高,AmongUs Version: {Application.version}"); // AmongUs 版本不正确
+            isAmongUsVersionOK = false;
+        }
         #if Windows
         RegistryManager.Init(); // 这是优先级最高的模块初始化方法，不能使用模块初始化属性
 #endif

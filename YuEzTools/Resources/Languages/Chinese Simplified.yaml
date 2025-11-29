@@ -316,3 +316,11 @@ BothHorseAndLongModeErrorText: "注意！您同时选择了长模式和马模式
 EnterCodePatch.Map: "地图"
 EnterCodePatch.Host: "房主-游戏平台"
 EnterCodePatch.Capacity: "最大人数 (伪装者数)"
+
+# 查看房间更多信息
+ShowRoomMoreInfo.RoomCode: "房间代码："
+ShowRoomMoreInfo.RoomLink: "房间IP："
+ShowRoomMoreInfo.RoomMode: "游戏模式："
+
+# 首页面警告
+AmongUsIsNotOK: "您的AmongUs版本不符合{0}的要求，请注意检查{0}更新 或 检查AmongUs版本"
