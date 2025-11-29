@@ -36,12 +36,14 @@ public static class ServerAddManager
             CreateHttp("aunpp.cn", "Hedianzhan(Shanghai)", 443, true, new Color32(170, 255, 186,255)),
             CreateHttp("nb.aunpp.cn", "Hedianzhan(Ningbo)", 443, true, new Color32(170, 255, 186,255)),
             // Xiaohei
-            CreateHttp("zlxhimp.amongusclub.cn", "Xiaohei(Ningbo)", 443, true, new Color32(170, 255, 241,255)),
+            // CreateHttp("zlxhimp.amongusclub.cn", "Xiaohei(Ningbo)", 443, true, new Color32(170, 255, 241,255)),
             CreateHttp("hk.zlxh.top", "Xiaohei(HongKong)", 443, true, new Color32(170, 255, 241,255)),
             // Fangkuai
             CreateHttp("player.amongusclub.cn", "Fangkuai(Suqian,NoS)", 443, true, new Color32(170, 255, 241,255)),
             // NoS
             CreateHttp("www.nebula-on-the-ship.com", "NebulaOnTheShip(Japan)", 443, true, new Color32(170, 220, 255,255)),
+            // Xtreme
+            CreateHttp("imp.hayashiume.top","Xtreme(HongKong)",443,true,new Color32(205,255,253,255)),
         ];
         
         var defaultRegion = serverManager.CurrentRegion;
