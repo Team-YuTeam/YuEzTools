@@ -42,7 +42,7 @@ updateSource.discord: "Discord"
 SuspectedViolationMessage: "疑似违规信息"
 MessgaeFromYuET: "== 信息来自YuET模组 =="
 DefaultSystemMessageTitle: "[YuET消息]"
-Message.Welcome: "我使用了YuEzTools模组\n本房间是在{0}服务器运行的，房间号为{1}\n\n祝你游玩愉快，[YuET]持续保护中"
+Message.Welcome: "您好\n这里是YuEzTools模组\n本房间是在{0}服务器运行的，房间号为{1}\n\n祝你游玩愉快，[YuET]持续保护中"
 
 # 进入/退出房间
 JoinRoom: "加入房间"
@@ -203,7 +203,7 @@ ImpostorIntroText: "<color={0}>邪恶将至...</color>"
 # TaskText
 FakeTask: "假任务如下："
 TasksProgress: "已完成任务进度:"
-TaskBarMode.Meeting: "上次会议开始时已完成任务进度:"
+TaskBarMode.Meeting: "最近一次会议开始时已完成任务进度:"
 TaskBarMode.Invisible: "始终不显示任务进度"
 TaskBarMode.Default: "错误的任务进度显示预设"
 TaskBarMode.Comms: "通讯被破坏了！无法连接任务服务器！快去修理！"

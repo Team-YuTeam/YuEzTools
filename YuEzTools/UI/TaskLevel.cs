@@ -45,7 +45,7 @@ public static class TaskLevel
                     titleText_TMP.text = comms ? GetString("TaskBarMode.Comms") : GetString("TasksProgress") + $"{num2}%";
                     break;
                 case TaskBarMode.MeetingOnly:
-                    Info("2", "ProgressTracker");
+                    // Info("2", "ProgressTracker");
 
                     if (MeetingHud.Instance)
                     {
@@ -53,12 +53,12 @@ public static class TaskLevel
                     }
                     break;
                 case TaskBarMode.Invisible:
-                    Info("3", "ProgressTracker");
+                    // Info("3", "ProgressTracker");
 
                     titleText_TMP.text = GetString("TaskBarMode.Invisible");
                     break;
                 default:
-                    Info("4", "ProgressTracker");
+                    // Info("4", "ProgressTracker");
 
                     titleText_TMP.text = GetString("TaskBarMode.Default");
                     break;
