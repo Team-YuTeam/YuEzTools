@@ -192,9 +192,9 @@ public class ModUpdater
                     {
                         CustomPopup.Show(GetString(StringNames.AnnouncementLabel), annos, new()
                         {
-                            (GetString("updateSource.Afdian"), () => Application.OpenURL("https://afdian.com/a/yuqianzhi")),
-                            (GetString("updateSource.BiliBili"), () => Application.OpenURL("https://www.bilibili.com/opus/898712994671755300")),
-                            (GetString(IsChineseLanguageUser ? "updateSource.QQ" : "updateSource.github"), () => Application.OpenURL(IsChineseLanguageUser ? Main.QQUrl : "https://github.com/Team-YuTeam/YuEzTools/issues/new/choose")),
+                            (GetString("updateSource.Afdian"), () => OpenURL.OpenUrl("https://afdian.com/a/yuqianzhi")),
+                            (GetString("updateSource.BiliBili"), () => OpenURL.OpenUrl("https://www.bilibili.com/opus/898712994671755300")),
+                            (GetString(IsChineseLanguageUser ? "updateSource.QQ" : "updateSource.github"), () => OpenURL.OpenUrl(IsChineseLanguageUser ? Main.QQUrl : "https://github.com/Team-YuTeam/YuEzTools/issues/new/choose")),
                             (GetString("updateSource.NextTime"), null)
                         });
                     }
@@ -203,9 +203,9 @@ public class ModUpdater
                         CustomPopup.Show(GetString(StringNames.AnnouncementLabel), annos + "\n<color=#FF0000>" + 
                             string.Format(GetString("AmongUsIsNotOK"),$"<color={Main.ModColor}>{Main.ModName}</color>") + "</color>", new()
                         {
-                            (GetString("updateSource.Afdian"), () => Application.OpenURL("https://afdian.com/a/yuqianzhi")),
-                            (GetString("updateSource.BiliBili"), () => Application.OpenURL("https://www.bilibili.com/opus/898712994671755300")),
-                            (GetString(IsChineseLanguageUser ? "updateSource.QQ" : "updateSource.github"), () => Application.OpenURL(IsChineseLanguageUser ? Main.QQUrl : "https://github.com/Team-YuTeam/YuEzTools/issues/new/choose")),
+                            (GetString("updateSource.Afdian"), () => OpenURL.OpenUrl("https://afdian.com/a/yuqianzhi")),
+                            (GetString("updateSource.BiliBili"), () => OpenURL.OpenUrl("https://www.bilibili.com/opus/898712994671755300")),
+                            (GetString(IsChineseLanguageUser ? "updateSource.QQ" : "updateSource.github"), () => OpenURL.OpenUrl(IsChineseLanguageUser ? Main.QQUrl : "https://github.com/Team-YuTeam/YuEzTools/issues/new/choose")),
                             (GetString("updateSource.NextTime"), null)
                         });
                     }

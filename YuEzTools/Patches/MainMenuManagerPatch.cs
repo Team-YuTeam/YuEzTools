@@ -121,6 +121,17 @@ public class MainMenuManagerPatch
             passiveButton.OnClick.AddListener(action);
             AspectPosition aspectPosition = button.GetComponent<AspectPosition>();
             aspectPosition.anchorPoint = new Vector2(col == 1 ? 0.415f : 0.583f, 0.5f - 0.08f * row);
+            // from fs
+#if Android
+            var yPosition = col == 1 ? 0.5f - 0.08f * row : 0.5f - 0.08f * (row - 1);
+            if(col != 1) passiveButton.gameObject.SetActive(true);
+#else
+            var yPosition = 0.5f - 0.08f * row;
+#endif
+            aspectPosition.anchorPoint = new Vector2(
+                col == 1 ? 0.415f : 0.583f,
+                yPosition
+            );
             return button;
         }
 
@@ -148,11 +159,11 @@ public class MainMenuManagerPatch
         extraLinkUrl = TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? Main.QQUrl : Main.DcUrl;
         extraLinkEnabled = true;
 
-        if (InviteButton == null) InviteButton = CreatButton(extraLinkName, () => { Application.OpenURL(extraLinkUrl); });
+        if (InviteButton == null) InviteButton = CreatButton(extraLinkName, () => { OpenURL.OpenUrl(extraLinkUrl); });
         InviteButton.gameObject.SetActive(extraLinkEnabled);
         InviteButton.name = "YuET Extra Link Button";
 
-        if (WebsiteButton == null) WebsiteButton = CreatButton("WebsiteButton", () => Application.OpenURL("https://night-gua.github.io/"));
+        if (WebsiteButton == null) WebsiteButton = CreatButton("WebsiteButton", () => OpenURL.OpenUrl("https://night-gua.github.io/"));
         WebsiteButton.gameObject.SetActive(true);
         WebsiteButton.name = "YuET Website Button";
 
@@ -160,7 +171,7 @@ public class MainMenuManagerPatch
              // ? "https://gitee.com/xigua_ya/YuEzTools/"
              ? "https://kkgithub.com/Team-YuTeam/YuEzTools/"
             : "https://github.com/Team-YuTeam/YuEzTools/";
-        if (ProjectButton == null) ProjectButton = CreatButton("ProjectButton", () => Application.OpenURL(ProjectLink));
+        if (ProjectButton == null) ProjectButton = CreatButton("ProjectButton", () => OpenURL.OpenUrl(ProjectLink));
         ProjectButton.gameObject.SetActive(true);
         ProjectButton.name = "YuET Project Button";
 
@@ -182,11 +193,11 @@ public class MainMenuManagerPatch
         DevsButton.gameObject.SetActive(true);
         DevsButton.name = "YuET Devs Button";
 
-        if (AfdianButton == null) AfdianButton = CreatButton("AfdianButton", () => Application.OpenURL("https://afdian.com/a/yuqianzhi"));
+        if (AfdianButton == null) AfdianButton = CreatButton("AfdianButton", () => OpenURL.OpenUrl("https://afdian.com/a/yuqianzhi"));
         AfdianButton.gameObject.SetActive(true);
         AfdianButton.name = "YuET Afdian Button";
 
-        if (BilibiliButton == null) BilibiliButton = CreatButton("BiliBiliButton", () => Application.OpenURL("https://space.bilibili.com/1638639993"));
+        if (BilibiliButton == null) BilibiliButton = CreatButton("BiliBiliButton", () => OpenURL.OpenUrl("https://space.bilibili.com/1638639993"));
         BilibiliButton.gameObject.SetActive(true);
         BilibiliButton.name = "YuET BiliBili Button";
 
