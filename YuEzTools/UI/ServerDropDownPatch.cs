@@ -1,4 +1,5 @@
-using System.Linq;
+#if Windows
+
 using HarmonyLib;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
@@ -137,3 +138,4 @@ public static class ServerDropDownPatch
         __instance.background.transform.localPosition += new Vector3(4f, 0, 0);
     }
 }
+#endif
