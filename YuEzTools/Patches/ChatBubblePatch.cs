@@ -1,6 +1,7 @@
 using UnityEngine;
 using YuEzTools.Modules;
 using YuEzTools.UI;
+using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;
 
@@ -15,10 +16,15 @@ public static class ChatBubblePatch
         var sr = __instance.transform.FindChild("Background").GetComponent<SpriteRenderer>();
         if (Toggles.DarkMode)
         {
-            if(!__instance.playerInfo.PlayerId.GetPlayerDataById().IsDead)
-                sr.color = new Color(0, 0, 0, 255); // : new Color(1, 1, 1);
+            if(!GetPlayer.IsInGame) sr.color = new Color(0, 0, 0, 255); // : new Color(1, 1, 1);
             else
-                sr.color = new Color(116, 116, 116, 255); // : new Color(1, 1, 1);
+            {
+                if(!__instance.playerInfo.PlayerId.GetPlayerDataById().IsDead)
+                    sr.color = new Color(0, 0, 0, 255); // : new Color(1, 1, 1);
+                else
+                    sr.color = new Color(105,105,105, 255); // : new Color(1, 1, 1);
+            }
+
         }
         if (Main.isChatCommand && !Toggles.DarkMode) sr.color = new Color(0, 0, 0, 255);
         else if (Main.isChatCommand && Toggles.DarkMode) sr.color = new Color(255, 255, 255, 255);
