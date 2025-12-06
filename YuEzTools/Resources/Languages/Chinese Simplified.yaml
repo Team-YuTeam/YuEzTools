@@ -205,7 +205,7 @@ FakeTask: "假任务如下："
 TasksProgress: "已完成任务进度:"
 TaskBarMode.Meeting: "最近一次会议开始时已完成任务进度:"
 TaskBarMode.Invisible: "始终不显示任务进度"
-TaskBarMode.Default: "错误的任务进度显示预设"
+TaskBarMode.Default: "任务显示进度设置错误"
 TaskBarMode.Comms: "通讯被破坏了！无法连接任务服务器！快去修理！"
 
 # RoomList
