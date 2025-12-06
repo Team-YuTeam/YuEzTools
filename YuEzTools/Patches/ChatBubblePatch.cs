@@ -12,7 +12,7 @@ public static class ChatBubblePatch
 
     [HarmonyPatch(nameof(ChatBubble.SetText)), HarmonyPrefix]
     public static void SetText_Prefix(ChatBubble __instance, ref string chatText)
-    {
+    { 
         var sr = __instance.transform.FindChild("Background").GetComponent<SpriteRenderer>();
         if (Toggles.DarkMode)
         {
@@ -22,7 +22,7 @@ public static class ChatBubblePatch
                 if(!__instance.playerInfo.PlayerId.GetPlayerDataById().IsDead)
                     sr.color = new Color(0, 0, 0, 255); // : new Color(1, 1, 1);
                 else
-                    sr.color = new Color(105,105,105, 255); // : new Color(1, 1, 1);
+                    sr.color = new Color(0,0,0, 0.65f); // : new Color(1, 1, 1);
             }
 
         }
