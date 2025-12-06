@@ -68,12 +68,12 @@ public static class ServerDropdownPatch
         __instance.background.size = new Vector2(__instance.background.size.x, 1.2f + 0.6f * (ButtonsPerPage + 1));
 
         // 创建翻页按钮（原有逻辑）
-        CreateServerListButton(__instance, "PreviousPageButton", GetString("PreviousPage"), new Vector3(0f, __instance.y_posButton, -1f), () =>
+        CreateServerListButton(__instance, "PreviousPageButton", $"<color=#66CCFF>{GetString("PreviousPage")}</color>", new Vector3(0f, __instance.y_posButton, -1f), () =>
         {
             CurrentPage = CurrentPage > 1 ? CurrentPage - 1 : MaxPage;
             RefreshServerOptions(__instance);
         });
-        CreateServerListButton(__instance, "NextPageButton", GetString("NextPage"), new Vector3(0f, __instance.y_posButton + -0.55f * (ButtonsPerPage + 1), -1f), () =>
+        CreateServerListButton(__instance, "NextPageButton", $"<color=#66CCFF>{GetString("NextPage")}</color>", new Vector3(0f, __instance.y_posButton + -0.55f * (ButtonsPerPage + 1), -1f), () =>
         {
             CurrentPage = CurrentPage < MaxPage ? CurrentPage + 1 : 1;
             RefreshServerOptions(__instance);
