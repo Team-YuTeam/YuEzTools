@@ -39,7 +39,7 @@ class TaskPanelBehaviourPatch
             AllText += $"\r\n\r\n<size=85%>{text}</size>";
         }
 
-        AllText += "\n\n<size=60%>" + GetString("PressF3ToShowYourRoleInfo") + "</size>";
+        AllText += "\n\n<size=60%><color=#FFFFFF>" + GetString("PressF3ToShowYourRoleInfo") + "</color></size>";
 
         __instance.taskText.text = AllText;
 
