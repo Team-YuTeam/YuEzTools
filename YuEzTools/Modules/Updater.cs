@@ -64,7 +64,6 @@ public class ModUpdater
     public static void StartPostfix()
     {
         CustomPopup.Init();
-        ShowRoomMoreInfo.Init();
 
         // if (!isChecked && firstStart)
         CheckForUpdate();
