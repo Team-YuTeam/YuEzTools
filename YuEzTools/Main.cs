@@ -21,9 +21,9 @@ public class Main : BasePlugin
     public static readonly string ModName = "YuEzTools"; // 模组名
     public static readonly string ModColor = "#A0E4FF"; // 模组颜色-Hex
     public static readonly Color32 ModColor32 = new(160, 228, 255,255); // 模组颜色-Color32
-    public static readonly string MainMenuText = "Reviewing"; // 模组Ping部分标语
+    public static readonly string MainMenuText = "We will be a star on the sky!"; // 模组Ping部分标语
     public const string PluginGuid = "com.Yu.YuEzTools"; //模组Guid
-    public const string PluginVersion = "1.3.6.5"; //模组版本号
+    public const string PluginVersion = "2.0.0.0"; //模组版本号
     public const string CanUseInAmongUsVer = "2025.11.18"; // 适配的AU版本
     public const int PluginCreation = 1;
 
