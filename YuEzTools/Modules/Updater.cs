@@ -160,7 +160,7 @@ public class ModUpdater
             Info("File MD5: " + md5, "CheckRelease");
             Info(GetMD5HashFromFile(Assembly.GetExecutingAssembly().Location), "CheckRelease");
 
-            if (!hasUpdate && CheckNowFileMD5() && Main.ModMode == 2)
+            if (!hasUpdate && CheckNowFileMD5() && Main.ModMode == ModMode.Release)
             {
                 Info("MD5 FAIL", "CheckRelease");
                 CustomPopup.Show(GetString(StringNames.AnnouncementLabel), GetString("Updater.NowFileMD5Fail"), new()

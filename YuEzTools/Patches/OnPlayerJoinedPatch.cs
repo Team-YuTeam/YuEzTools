@@ -102,11 +102,12 @@ class OnGameJoined
     public static void Postfix()
     {
         if(!EnterCodePatch.isJoin) ServerAddManager.SetServerName();
-        if (ServerManager.Instance.CurrentRegion.Name == "Xtreme(HongKong)")
+        if (ServerManager.Instance.CurrentRegion.Name == "Xtreme(HongKong)" && Main.ModMode != ModMode.Debug)
         {
+            var msg = (Main.ModMode == ModMode.Canary ? "[Canary]" : "") + string.Format(GetString("Message.Xtreme"), Main.ModName, Main.version);
             _ = new LateTask(() =>
             {
-                SendMessage("/note YuEzTools 全新上线！更懂你的原版辅助模组！YuTeam团队旗舰之作！加入「Yu落林间」(874182839) QQ群，享受模组盛宴吧！");
+                SendMessage($"/note {msg}");
                 // SendMessage("/note 测试");
             }, 3f, "Test Message");
         }

@@ -54,13 +54,13 @@ public class Main : BasePlugin
 
     public static System.Version version = System.Version.Parse(PluginVersion);
 
-    public static int ModMode { get; private set; } =
+    public static ModMode ModMode { get; private set; } =
 #if DEBUG
-        0;
+        ModMode.Debug;
 #elif CANARY
-        1;
+        ModMode.Canary;
 #else
-        2;
+        ModMode.Release;
 #endif
 
     public static bool isChatCommand = false;
@@ -193,4 +193,12 @@ public enum TipsCode
     Custom,
     ModLogo,
     AntiCheat
+}
+
+public enum ModMode
+{
+    Debug = 0,
+    Canary = 1,
+    Release = 2,
+    Error = -1
 }

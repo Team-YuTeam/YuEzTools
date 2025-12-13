@@ -43,6 +43,7 @@ SuspectedViolationMessage: "疑似违规信息"
 MessgaeFromYuET: "== 信息来自YuET模组 =="
 DefaultSystemMessageTitle: "[YuET消息]"
 Message.Welcome: "您好\n这里是YuEzTools模组\n本房间是在{0}服务器运行的，房间号为{1}\n\n祝你游玩愉快，[YuET]持续保护中"
+Message.Xtreme: "{0} v{1} 全新上线！更懂你的原版辅助模组！YuTeam团队旗舰之作！加入「Yu落林间」(874182839) QQ群，享受奇妙冒险盛宴吧！"
 
 # 进入/退出房间
 JoinRoom: "加入房间"

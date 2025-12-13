@@ -44,8 +44,8 @@ internal class PingTrackerUpdatePatch
         //     __instance.transform.localPosition.y + 10, __instance.transform.localPosition.z);
 
         StringBuilder sb = new();
-        if (Main.ModMode == 0) sb.Append($"<color=#FFC0CB>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
-        else if (Main.ModMode == 1) sb.Append($"<color=#6A5ACD>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
+        if (Main.ModMode == ModMode.Debug) sb.Append($"<color=#FFC0CB>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
+        else if (Main.ModMode == ModMode.Canary) sb.Append($"<color=#6A5ACD>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
         else sb.Append($"<color={Main.ModColor}>{Main.ModName}</color><color=#00FFFF> v{Main.PluginVersion}</color>");
         if (Toggles.ShowCommit) sb.Append($"<color=#00FFFF>({ThisAssembly.Git.Commit})</color>");
         if (Toggles.ShowModText) sb.Append($"\r\n").Append($"{Main.MainMenuText}");
