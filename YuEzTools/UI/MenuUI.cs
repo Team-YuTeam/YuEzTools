@@ -94,7 +94,7 @@ public class MenuUI : MonoBehaviour
                     setState: val => 
                     {
                         config.SetState(val);
-                        ClientToolsItem.RefreshToggle(val,config.NameKey);
+                        // ClientToolsItem.RefreshToggle(val,config.NameKey); // ToDo 有报错
                         config.AdditionalAction?.Invoke();
                     }
                 ));

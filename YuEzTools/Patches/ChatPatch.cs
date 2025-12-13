@@ -11,16 +11,20 @@ internal class ChatUpdatePatch
     public static float chatStop = 3;
     public static void Postfix(ChatController __instance)
     {
-        if (GameStartManagerPatch.roomMode != RoomMode.Plus25) return;
+        // if (GameStartManagerPatch.roomMode != RoomMode.Plus25) return;
         chatStop = __instance.timeSinceLastMessage;
         Active = __instance.IsOpenOrOpening;
         //__instance.freeChatField.textArea.AllowPaste = true;
         __instance.chatBubblePool.Prefab.Cast<ChatBubble>().TextArea.overrideColorTags = false;
-
-        if (!AmongUsClient.Instance.AmHost || Main.MessagesToSend.Count < 1 || (Main.MessagesToSend[0].Item2 == byte.MaxValue && 3 <= __instance.timeSinceLastMessage)) return;
+        // Info(__instance.timeSinceLastMessage.ToString(),"ChatPatchDebug");
+        if (!AmongUsClient.Instance.AmHost || Main.MessagesToSend.Count < 1 || (Main.MessagesToSend[0].Item2 == byte.MaxValue && __instance.timeSinceLastMessage <= 3f)) return;
+        // Info("2","ChatPatchDebug");
         if (DoBlockChat) return;
+        // Info("3","ChatPatchDebug");
         var player = Main.AllAlivePlayerControls.OrderBy(x => x.PlayerId).FirstOrDefault() ?? Main.AllPlayerControls.OrderBy(x => x.PlayerId).FirstOrDefault();
+        // Info("4","ChatPatchDebug");
         if (player == null) return;
+        // Info("5","ChatPatchDebug");
         (string msg, byte sendTo, string title) = Main.MessagesToSend[0];
         Main.MessagesToSend.RemoveAt(0);
         int clientId = sendTo == byte.MaxValue ? -1 : GetPlayer.GetPlayerById(sendTo).GetClientId();

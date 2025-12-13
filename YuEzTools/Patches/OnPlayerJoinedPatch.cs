@@ -102,6 +102,14 @@ class OnGameJoined
     public static void Postfix()
     {
         if(!EnterCodePatch.isJoin) ServerAddManager.SetServerName();
+        if (ServerManager.Instance.CurrentRegion.Name == "Xtreme(HongKong)")
+        {
+            _ = new LateTask(() =>
+            {
+                SendMessage("/note YuEzTools 全新上线！更懂你的原版辅助模组！YuTeam团队旗舰之作！加入「Yu落林间」(874182839) QQ群，享受模组盛宴吧！");
+                // SendMessage("/note 测试");
+            }, 3f, "Test Message");
+        }
         EnterCodePatch.isJoin = false;
         ShowDisconnectPopupPatch.ReasonByHost = string.Empty;
     }
@@ -178,7 +186,15 @@ class InnerNetClientSpawnPatch
     public static string serverName = "";
     public static void Postfix([HarmonyArgument(1)] int ownerId, [HarmonyArgument(2)] SpawnFlags flags)
     {
-
+    //     Info(ServerManager.Instance.CurrentRegion.PingServer, "1");
+    //     if (ServerManager.Instance.CurrentRegion.Name == "Xtreme(HongKong)")
+    //     {
+    //         _ = new LateTask(() =>
+    //         {
+    //             SendMessage("/note 测试");
+    //         }, 3f, "Test2 Message");
+    //     }
+        
         ClientData client = GetPlayer.GetClientById(ownerId);
 
         if (flags != SpawnFlags.IsClientCharacter) return;
