@@ -1,4 +1,5 @@
-﻿using AmongUs.GameOptions;
+﻿using System.Globalization;
+using AmongUs.GameOptions;
 using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Unity.IL2CPP;
@@ -80,6 +81,19 @@ public class Main : BasePlugin
     public static bool isFirstSendEnd = false;
 
     public static bool IsChineseUser => GetUserLangByRegion() == SupportedLangs.SChinese;
+    public static bool isChineseBySystem()
+    {
+        try
+        {
+            var name = CultureInfo.CurrentUICulture.Name;
+            if (name.StartsWith("zh")) return true;
+            return false;
+        }
+        catch
+        {
+            return false;
+        }
+    }
 
     public static bool VisibleTasksCount = false;
 
