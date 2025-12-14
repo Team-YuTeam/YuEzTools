@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 namespace YuEzTools.Helpers;
@@ -18,4 +19,16 @@ public static class ObjectHelper
     /// オブジェクトの<see cref="TextTranslatorTMP"/>コンポーネントを破棄します
     /// </summary>
     public static void DestroyTranslatorL(this MonoBehaviour obj) => obj?.gameObject?.DestroyTranslator();
+    
+    /// <summary>
+    /// 加载一个文字TMP，来源FS
+    /// </summary>
+    public static TextMeshPro InstantiateTextComponent(TextMeshPro template, Vector3 position, Transform parent = null)
+    {
+        var text = Object.Instantiate(template, parent);
+        text.transform.localPosition = position;
+        text.fontStyle = FontStyles.Bold;
+        text.text = string.Empty;
+        return text;
+    }
 }
