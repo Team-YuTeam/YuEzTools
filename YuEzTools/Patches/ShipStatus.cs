@@ -1,7 +1,7 @@
 using Hazel;
 using YuEzTools.AntiCheat;
 using YuEzTools.Send;
-using YuEzTools.UI;
+using YuEzTools.Modules;
 using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;

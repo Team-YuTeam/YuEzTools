@@ -1,5 +1,5 @@
 using AmongUs.GameOptions;
-using YuEzTools.UI;
+using YuEzTools.Modules;
 using YuEzTools.Utils;
 
 namespace YuEzTools.Patches;

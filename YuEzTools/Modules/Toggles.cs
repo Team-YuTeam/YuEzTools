@@ -1,4 +1,4 @@
-namespace YuEzTools.UI;
+namespace YuEzTools.Modules;
 
 public class Toggles
 {

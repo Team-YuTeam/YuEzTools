@@ -1,5 +1,5 @@
 using YuEzTools.Patches;
-using YuEzTools.UI;
+using YuEzTools.Modules;
 using YuEzTools.Utils;
 
 namespace YuEzTools.Send;

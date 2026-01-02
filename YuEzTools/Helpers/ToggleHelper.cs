@@ -1,5 +1,5 @@
 using System;
-using YuEzTools.UI;
+using YuEzTools.Modules;
 using YuEzTools.Utils;
 
 namespace YuEzTools.Helpers;

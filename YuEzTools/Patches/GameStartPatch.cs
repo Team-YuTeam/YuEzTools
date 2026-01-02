@@ -2,7 +2,7 @@ using InnerNet;
 using System;
 using TMPro;
 using UnityEngine;
-using YuEzTools.UI;
+using YuEzTools.Modules;
 using YuEzTools.Utils;
 using Object = UnityEngine.Object;
 

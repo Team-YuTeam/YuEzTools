@@ -3,6 +3,7 @@ using System.Text;
 using TMPro;
 using YuEzTools.UI;
 using YuEzTools.Utils;
+using YuEzTools.Modules;
 
 namespace YuEzTools.Patches;
 
