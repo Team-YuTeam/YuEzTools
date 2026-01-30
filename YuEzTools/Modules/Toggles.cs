@@ -27,6 +27,7 @@ public class Toggles
     public static bool SafeMode = true;
     public static bool AutoExit = true;
     public static bool KickNotLogin = true;
+    public static bool AutoReportHacker;
 
     // 快捷按钮
     public static bool DumpLog;

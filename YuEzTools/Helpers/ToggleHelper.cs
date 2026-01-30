@@ -67,6 +67,13 @@ public static class ToggleHelperManager
             setState: val => Toggles.KickNotLogin = val
         ),
         new ToggleHelper(
+            nameKey: "AutoReportHacker",    // 按钮文本键（对应本地化）
+            groupKey: "AntiCheat",          // 所属组（反作弊）
+            submenuKey: null,                      // 无icesubmenu，直接在组下
+            getState: () => Toggles.AutoReportHacker, // 绑定 Toggles 字段
+            setState: val => Toggles.AutoReportHacker = val
+        ),
+        new ToggleHelper(
             nameKey: "ServerAllHostOrNoHost",    // 按钮文本键（对应本地化）
             groupKey: "AntiCheat",          // 所属组（反作弊）
             submenuKey: "ModMode",                      

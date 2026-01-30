@@ -1,6 +1,7 @@
 using AmongUs.GameOptions;
 using Hazel;
 using System;
+using InnerNet;
 using YuEzTools.Modules;
 using YuEzTools.Patches;
 using YuEzTools.UI;
@@ -14,6 +15,7 @@ internal class AntiCheatForAll
     public static int DeNum = 0;
     public static bool ReceiveRpc(PlayerControl pc, byte callId, MessageReader reader)
     {
+        bool checkRPC = false;
         if (pc == null || reader == null) return false;
         try
         {
@@ -29,8 +31,21 @@ internal class AntiCheatForAll
             //     Warn($"玩家【{pc.GetClientId()}:{pc.GetRealName()}】未进入但发送RPC，无效！！！，已驳回", "AntiCheatForAll");
             //     return true;
             // }
+            checkRPC = CheckRPC(pc, callId, sr, rpc);
+            if (checkRPC && Toggles.AutoReportHacker)
+            {
+                AmongUsClient.Instance.ReportPlayer(pc.GetClientId(),ReportReasons.Cheating_Hacking);
+                Info($"已尝试向Among Us官方举报【{pc.GetRealName()}-{pc.GetClient().ProductUserId}】","AntiCheatForAll");
+            }
+                
+        }
+        catch { }
+        return checkRPC;
+    }
 
-            if (!Enum.IsDefined(typeof(RpcCalls), callId))
+    public static bool CheckRPC(PlayerControl pc, byte callId, MessageReader sr,RpcCalls rpc)
+    {
+        if (!Enum.IsDefined(typeof(RpcCalls), callId))
             {
                 CustomTips.Show(string.Format(GetString("notFindRPC"), callId),TipsCode.AntiCheat);
                 // SendInGamePatch.SendInGame(string.Format(GetString("notFindRPC"), callId));
@@ -324,7 +339,7 @@ internal class AntiCheatForAll
                     break;
 
                 case 28:
-                    // 据说是以前的破坏rpc？还没想好怎么做！
+                    // 据说是以前的破坏rpc
                     break;
 
                 case 41:
@@ -432,9 +447,8 @@ internal class AntiCheatForAll
                     }
                     break;
             }
-        }
-        catch { }
-        return false;
+
+            return false;
     }
     public static Dictionary<byte, int> ReportTimes = [];
 

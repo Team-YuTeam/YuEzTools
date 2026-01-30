@@ -16,9 +16,9 @@ internal class RPCHandlerPatch
         Main.Logger.LogMessage("From " + __instance.GetRealName() + "'s RPC:" + callId);
         if (!Toggles.EnableAntiCheat) return true;
         try
+        
         {
-            if (AntiCheatForAll.ReceiveRpc(__instance, callId, reader) || AUMCheat.ReceiveInvalidRpc(__instance, callId, reader) ||
-                SMCheat.ReceiveInvalidRpc(__instance, callId))
+            if (AntiCheatForAll.ReceiveRpc(__instance, callId, reader) || AmongUsMenuAndAffiliatedCheatCheck.Check(__instance, callId, reader))
             {
                 if (Toggles.AutoStartGame && AmongUsClient.Instance.AmHost &&
                     __instance.GetPlayerData().PUID == AmongUsClient.Instance

@@ -103,6 +103,7 @@ MenuUI.KickNotLogin: "封禁未登录"
 MenuUI.EnableAntiCheat: "启用反作弊"
 MenuUI.ModMode: "+25（模组模式）"
 MenuUI.ServerAllHostOrNoHost: "+25(房主全权模式)"
+MenuUI.AutoReportHacker: "自动使用原版Among Us举报系统举报作弊者"
 
 # MenuUI.ShortcutButton
 MenuUI.ShortcutButton: "快捷按钮"
