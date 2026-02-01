@@ -6,7 +6,7 @@ namespace YuEzTools.UI;
 [HarmonyPatch(typeof(AccountTab), nameof(AccountTab.Awake))]
 public static class UpdateFriendCodeUIPatch
 {
-    private static GameObject VersionShower;
+    public static GameObject VersionShower;
     public static void Prefix(AccountTab __instance)
     {
         string credentialsText = "<color=#FFB6C1>YuTeam \u00a9 2025</color>";

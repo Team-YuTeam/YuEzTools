@@ -541,4 +541,5 @@ public static class Utils
     {
         return (float)Screen.width / Screen.height / (16f / 9f);
     }
+    public static float GetResolutionOffset(int width, int height) => (float)width / height / (16f / 9f);
 }

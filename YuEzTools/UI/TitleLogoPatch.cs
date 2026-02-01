@@ -286,3 +286,26 @@ public static class VersionShower_Start
         }
     }
 }
+// [HarmonyPatch(typeof(ResolutionManager))]
+// internal class ResolutionManagerPatch
+// {
+//     [HarmonyPatch(nameof(ResolutionManager.SetResolution))]
+//     public static void Postfix(int width, int height)
+//     {
+//         if (GameObject.Find("MainUI") == null) return;
+//         var offset = GetResolutionOffset(width, height);
+//         TitleLogoPatch.YuET_Background.transform.localScale = new Vector3(Mathf.Max(offset, 1), Mathf.Max(offset, 1), 1);
+//         TitleLogoPatch.CloseRightButton.transform.localPosition = new Vector3(-4.78f * offset, 1.3f, 1.0f);
+//         TitleLogoPatch.Tint.transform.localPosition = new Vector3(-0.0824f * offset, 0.0513f, TitleLogoPatch.Tint.transform.localPosition.z);
+//         TitleLogoPatch.Sizer.transform.localPosition = new Vector3(-4.0f * offset, 1.4f, -1.0f);
+//         var mainButtons = GameObject.Find("Main Buttons");
+//         mainButtons.transform.position = new Vector3(-3.4f * offset, mainButtons.transform.position.y, mainButtons.transform.position.z);
+//         MainMenuButtonHoverAnimation.RefreshButtons(mainButtons);
+// //         UpdateFriendCodeUIPatch.VersionShower.GetComponent<VersionShower>().GetComponent<AspectPosition>().DistanceFromEdge = 
+// // #if Android
+// //             new(2.2f * offset, 0.1f);
+// // #elif Windows
+// //             new(2.0f * offset, 0.1f);
+// // #endif
+//     }
+// }

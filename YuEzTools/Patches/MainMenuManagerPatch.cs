@@ -16,7 +16,7 @@ public class MainMenuManagerPatch
     public static GameObject InviteButton;
     public static GameObject WebsiteButton;
     public static GameObject ProjectButton;
-    public static GameObject DevsButton;
+    // public static GameObject DevsButton;
     public static GameObject AfdianButton;
     public static GameObject BilibiliButton;
     public static GameObject UpdateButton;
@@ -175,23 +175,23 @@ public class MainMenuManagerPatch
         ProjectButton.gameObject.SetActive(true);
         ProjectButton.name = "YuET Project Button";
 
-        var s = "";
-        if (DevsButton == null) DevsButton = CreatButton("DevsButton", () =>
-        {
-            s = "";
-            foreach (var dev in DevManager.DevUserList)
-            {
-                if (dev.Jobs != "NotJob")
-                    s += $"<color={dev.Color}>{dev.Name}</color> => <size=60%>{GetString(dev.Jobs)}</size>\n";
-            }
-            CustomPopup.Show(GetString("DevsTitle"), s
-                , new()
-                {
-                    (GetString(StringNames.Okay), null)
-                });
-        });
-        DevsButton.gameObject.SetActive(true);
-        DevsButton.name = "YuET Devs Button";
+        // var s = "";
+        // if (DevsButton == null) DevsButton = CreatButton("DevsButton", () =>
+        // {
+        //     s = "";
+        //     foreach (var dev in DevManager.DevUserList)
+        //     {
+        //         if (dev.Jobs != "NotJob")
+        //             s += $"<color={dev.Color}>{dev.Name}</color> => <size=60%>{GetString(dev.Jobs)}</size>\n";
+        //     }
+        //     CustomPopup.Show(GetString("DevsTitle"), s
+        //         , new()
+        //         {
+        //             (GetString(StringNames.Okay), null)
+        //         });
+        // });
+        // DevsButton.gameObject.SetActive(true);
+        // DevsButton.name = "YuET Devs Button";
 
         if (AfdianButton == null) AfdianButton = CreatButton("AfdianButton", () => OpenURL.OpenUrl("https://afdian.com/a/yuqianzhi"));
         AfdianButton.gameObject.SetActive(true);
@@ -236,7 +236,7 @@ public class MainMenuManagerPatch
 
         Dictionary<List<PassiveButton>, (Sprite, Color, Color, Color, Color)> customButtons = new()
         {
-            {new List<PassiveButton>() {InviteButton.GetComponent<PassiveButton>(),WebsiteButton.GetComponent<PassiveButton>(),ProjectButton.GetComponent<PassiveButton>(),AfdianButton.GetComponent<PassiveButton>(),BilibiliButton.GetComponent<PassiveButton>(),DevsButton.GetComponent<PassiveButton>()},
+            {new List<PassiveButton>() {InviteButton.GetComponent<PassiveButton>(),WebsiteButton.GetComponent<PassiveButton>(),ProjectButton.GetComponent<PassiveButton>(),AfdianButton.GetComponent<PassiveButton>(),BilibiliButton.GetComponent<PassiveButton>()},//,DevsButton.GetComponent<PassiveButton>()},
                 (minorActiveSprite, new(0.65f, 1f, 0.247f, 0.8f), shade, Color.white, Color.white) },
         };
 

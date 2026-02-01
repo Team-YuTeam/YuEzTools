@@ -32,7 +32,7 @@ class OnPlayerJoinedPatch
         {
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                 $"[Mod Dev] <color=#1E90FF>{client.PlayerName}</color> <color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
-            SendInGamePatch.SendInGame($"[{client.FriendCode.GetDevJob()}] <color=#1E90FF>{client.PlayerName}</color> " +
+            SendInGamePatch.SendInGame($"[{client.FriendCode.GetDevJobByCode()}] <color=#1E90FF>{client.PlayerName}</color> " +
                                        $"<color=#00FF7F>{Translator.GetString("JoinRoom")}</color>");
             return;
         }

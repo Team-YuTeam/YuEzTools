@@ -30,7 +30,7 @@ class FixedUpdatePatch
         if (GetPlayer.IsLobby)
         {
             if (__instance.FriendCode.IsDevUser())
-                name = __instance.FriendCode.GetDevUser().GetTag() + name;
+                name = __instance.FriendCode.GetDevUserByCode().GetTag() + name;
             if (Toggles.ShowInfoInLobby)
             {
                 name = $"<size=70%><color=#33EEFF>Lv.{__instance.GetClient().PlayerLevel} {__instance.GetClient().PlatformData.Platform.GetPlatformColorText()} {__instance.GetClient().Id}</color></size>\n" +
