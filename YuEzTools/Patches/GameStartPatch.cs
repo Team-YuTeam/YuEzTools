@@ -15,6 +15,7 @@ public class GameStartManagerPatch
     public static TextMeshPro GameCountdown;
     private static PassiveButton cancelButton;
     public static string countDown = "";
+    
 
     [HarmonyPatch(typeof(GameStartManager), nameof(GameStartManager.Start))]
     public class GameStartManagerStartPatch
@@ -41,7 +42,7 @@ public class GameStartManagerPatch
             cancelButton.transform.localPosition = new(0f, -0.37f, 0f);
 
             cancelButton.OnClick = new();
-            cancelButton.OnClick.AddListener((Action)(() => __instance.ResetStartState()));
+            cancelButton.OnClick.AddListener((Action)(() => FunctionPatch.AbolishDownTimer()));
             cancelButton.gameObject.SetActive(false);
 
             Info("CancelButton instantiated and configured", "test");
@@ -67,10 +68,14 @@ public class GameStartManagerPatch
                     if (GameData.Instance.PlayerCount >= 14 && !GetPlayer.IsCountDown)
                     {
                         GameStartManager.Instance.startState = GameStartManager.StartingStates.Countdown;
-                        GameStartManager.Instance.countDownTimer = 3;
+                        GameStartManager.Instance.countDownTimer = 8;
                     }
                 }
             }
+            
+            if (!AmongUsClient.Instance.AmHost) return;
+            cancelButton.gameObject.SetActive(__instance.startState == GameStartManager.StartingStates.Countdown);
+            __instance.StartButton.gameObject.SetActive(!cancelButton.gameObject.active);
         }
 
         public static void Postfix(GameStartManager __instance)
