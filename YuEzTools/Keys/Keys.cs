@@ -61,14 +61,12 @@ internal class Keys
         {
             FunctionPatch.ChangeDownTimerTo(0);
         }
-
+        
         //倒计时取消
         if (Input.GetKeyDown(KeyCode.C) && GetPlayer.IsCountDown)
         {
             FunctionPatch.AbolishDownTimer();
         }
-        
-
     }
 
     private static bool GetKeysDown(params KeyCode[] keys)

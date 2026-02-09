@@ -58,6 +58,7 @@ public class FunctionPatch
         Main.Logger.LogInfo("重置倒计时");
         GameStartManager.Instance.ResetStartState();
         SendInGamePatch.SendInGame(GetString("FunctionPatch.AbolishDownTimer"));
+        SoundManager.Instance.StopSound(GameStartManager.Instance.gameStartSound);
     }
 
     public static void DumpLog()
