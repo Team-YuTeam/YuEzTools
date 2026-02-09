@@ -57,6 +57,7 @@ public class CustomTips : MonoBehaviour
         icon.sprite = sr;
         tip.SetActive(true);
         timeOnScreen = 5f;
+        Info("Show Tips" + text,"CustomTips");
     }
     
     private void Update()
