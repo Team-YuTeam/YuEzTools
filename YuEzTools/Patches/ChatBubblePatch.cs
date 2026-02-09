@@ -1,4 +1,5 @@
 using UnityEngine;
+using YuEzTools.Helpers;
 using YuEzTools.Modules;
 using YuEzTools.UI;
 using YuEzTools.Utils;
@@ -28,6 +29,12 @@ public static class ChatBubblePatch
         }
         if (Main.isChatCommand && !Toggles.DarkMode) sr.color = new Color(0, 0, 0, 255);
         else if (Main.isChatCommand && Toggles.DarkMode) sr.color = new Color(255, 255, 255, 255);
+#if  DEBUG
+        string extractedContent = chatText.ExtractContentAfterGet("/get");
+        if (!string.IsNullOrWhiteSpace(extractedContent))
+            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
+                $"{extractedContent}：{GetString(extractedContent)}");
+#endif
         //if (modded)
         //{
         if (chatText.Contains('░') ||

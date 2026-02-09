@@ -26,13 +26,15 @@ internal class Keys
         // 显示职业介绍&预设
         if (GetPlayer.IsInGame && (GetPlayer.IsCanMove || GetPlayer.IsMeeting))
         {
-            if (Input.GetKey(KeyCode.F3))
+            if (Input.GetKeyDown(KeyCode.F3))
             {
-                if (!InGameRoleInfoMenu.Showing)
+                if (InGameRoleInfoMenu.Showing) InGameRoleInfoMenu.Hide();
+                else
+                {
                     InGameRoleInfoMenu.SetRoleInfoRef(PlayerControl.LocalPlayer);
-                InGameRoleInfoMenu.Show();
+                    InGameRoleInfoMenu.Show();
+                }
             }
-            else InGameRoleInfoMenu.Hide();
         }
         else InGameRoleInfoMenu.Hide();
 
@@ -50,6 +52,7 @@ internal class Keys
         
         // -- 下面是调试 -- //
 #if DEBUG
+
 
 #endif
 

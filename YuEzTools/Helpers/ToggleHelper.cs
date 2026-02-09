@@ -281,5 +281,14 @@ public static class ToggleHelperManager
             getState: () => Toggles.FPSPlus, // 绑定 Toggles 字段
             setState: val => Toggles.FPSPlus = val
         ),
+        #if DEBUG
+        new ToggleHelper(
+            nameKey: "NotEndGame",    // 按钮文本键（对应本地化）
+            groupKey: "Other",          // 所属组
+            submenuKey: "Debug",                      
+            getState: () => Toggles.NotEndGame, // 绑定 Toggles 字段
+            setState: val => Toggles.NotEndGame = val
+        ),
+        #endif
     };
 }

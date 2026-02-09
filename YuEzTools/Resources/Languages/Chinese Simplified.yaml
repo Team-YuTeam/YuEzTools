@@ -197,7 +197,7 @@ ImpostorGhostShort: "暴露了吧？"
 ImpostorGhostLong: "死后还是贤臣！\n破坏以辅助队友"
 
 # RoleTeam
-TeamCrewmate: "待宰的羔羊"
+TeamCrewmate: "船员"
 TeamImpostor: "内鬼"
 ImpostorNumCrew: "<color=#8cffff>在<color=#FFFF00>我们</color>之间，有<color=#ff1919>{0}</color>个坏蛋！</color>"
 ImpostorNumImp: "<color=#FF0000>在<color=#FFFF00>我们</color>团队，有<color=#ff1919>{0}</color>名成员！</color>"
@@ -278,7 +278,8 @@ ErrorWin: "异常结束"
 # 职业介绍和设置
 PressF3ToShowYourRoleInfo: "按下F3以显示职业介绍和设置"
 PressF3ToHideYourRoleInfo: "按下F3以隐藏职业介绍和设置"
-RoleOptions: "当前职业设置"
+RoleOptions: "{0} 职业设置"
+NormalOptions: "{0} 阵营设置"
 
 # 设置菜单
 YuETOptions: "YuET设置"
@@ -362,3 +363,16 @@ LanguageChange.text: "您正在进行<color=#ff0000>语言切换</color>操作�
 LanguageChange.Ortext: "您正在进行<color=#ff0000>语言切换</color>操作，您将从<color=#ff0000>{0}</color>切换至<color=##0C8FF>{1}</color>\n如您需要保留<color=#ff0000>{0}</color>的显示，请点击不切换按钮"
 LanguageChange.Refresh: "刷新所有文本"
 LanguageChange.Donot: "不切换"
+
+# 设置
+unit.second: "秒"
+unit.percent: "%"
+unit.people: "人"
+unit.multiplier: "倍"
+unit.time: "次"
+distance.short: "近"
+distance.mid: "中"
+distance.long: "远"
+default: "未知"
+yes: "是"
+no: "否"

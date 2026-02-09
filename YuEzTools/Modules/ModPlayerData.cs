@@ -1,3 +1,4 @@
+using System.Text;
 using AmongUs.GameOptions;
 using YuEzTools.Attributes;
 using UnityEngine;
@@ -94,6 +95,31 @@ public class ModPlayerData
         Killer = killer.GetPlayerData();
         SetDeadReason(DeadReasonData.Kill);
     }
+    public string GetRoleOfficialLongInfo(PlayerControl player)
+    {
+        string role = player.GetRole().ToString();
+        StringBuilder info = new StringBuilder();
+        int i = 1;
+        if (player.IsNormalRole())
+        {
+            while (true)
+            {
+                string roleSuffix = player.IsImpostor() ? "Imp" : "Crew";
+                string htp = GetString($"HowToPlayText{roleSuffix}" + i);
+                if (!htp.Contains($"<NOT FOUND:"))
+                {
+                    info.Append(htp);
+                    i++;
+                }
+                else break;
+            }
+        }
+        else
+        {
+            info.Append(GetString(role + "BlurbLong"));
+        }
+        return info.ToString();
+    }
     public static int GetLongestNameByteCount() => AllPlayerDataForMod.Values.Select(data => data.Name.GetByteCount()).OrderByDescending(byteCount => byteCount).FirstOrDefault();
 }
 
@@ -106,9 +132,11 @@ static class PlayerControlData
     public static string GetPlayerName(this PlayerControl pc) => ModPlayerData.GetModPlayerDataName(pc.PlayerId);
     public static RoleTypes GetRole(this PlayerControl pc) => pc.Data.RoleType;
     public static string GetRoleName(this PlayerControl pc) => pc.Data.Role.NiceName;
+    public static string GetRoleOfficialLongInfo(this PlayerControl pc) => pc.GetPlayerData().GetRoleOfficialLongInfo(pc);
     public static void SetDisconnected(this PlayerControl pc) => pc.GetPlayerData().SetDisconnected();
     public static void SetRole(this PlayerControl pc, RoleTypes role) => pc.GetPlayerData().SetRole(role);
     public static bool IsImpostor(this PlayerControl pc) => pc.GetPlayerRoleTeam() == RoleTeam.Impostor;
+    public static bool IsNormalRole(this PlayerControl pc) => pc.GetRole() == RoleTypes.Crewmate || pc.GetRole() == RoleTypes.Impostor || pc.GetRole() == RoleTypes.CrewmateGhost || pc.GetRole() == RoleTypes.ImpostorGhost;
 }
 // 死亡原因
 public enum DeadReasonData

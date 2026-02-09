@@ -17,6 +17,41 @@ public static class StringHelper
     {
         return s.Contains(h, StringComparison.OrdinalIgnoreCase);
     }
+    
+    /// <summary>
+    /// 检测文本是否以/get开头，并提取后面的内容
+    /// </summary>
+    /// <param name="inputText">输入文本</param>
+    /// <returns>提取的内容（无则返回空字符串）</returns>
+    public static string ExtractContentAfterGet(this string inputText, string prefix)
+    {
+        // 空值检查
+        if (string.IsNullOrWhiteSpace(inputText))
+        {
+            return string.Empty;
+        }
+        
+        // 检测是否以前缀开头
+        if (inputText.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) // 忽略大小写（可选）
+        {
+            // 计算需要截取的起始索引（前缀长度 + 空格，避免保留前缀后的空格）
+            int startIndex = prefix.Length;
+            
+            // 确保起始索引不超过字符串长度，且跳过前缀后的空格
+            if (startIndex < inputText.Length && inputText[startIndex] == ' ')
+            {
+                startIndex++;
+            }
+
+            // 截取并返回后面的内容（去除首尾空格，可选）
+            return startIndex < inputText.Length 
+                ? inputText.Substring(startIndex).Trim() 
+                : string.Empty;
+        }
+
+        // 不以/get开头，返回空字符串
+        return string.Empty;
+    }
 }
 public class ColorGradient
 {

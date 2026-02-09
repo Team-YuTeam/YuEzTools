@@ -51,6 +51,7 @@ public class FunctionPatch
     {
         Main.Logger.LogInfo("倒计时修改为" + c);
         GameStartManager.Instance.countDownTimer = c;
+        SoundManager.Instance.StopSound(GameStartManager.Instance.gameStartSound);
     }
 
     public static void AbolishDownTimer()

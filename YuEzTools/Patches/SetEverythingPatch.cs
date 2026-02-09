@@ -3,6 +3,7 @@ using AmongUs.GameOptions;
 using TMPro;
 using YuEzTools.Modules;
 using UnityEngine;
+using UnityEngine.UIElements;
 using YuEzTools.Attributes;
 using YuEzTools.Utils;
 using YuEzTools.UI;
@@ -64,6 +65,24 @@ class StartPatch
             c++;
         }
         Main.isFirstSendEnd = true;
+        Info($"本局游戏信息：\n" +
+             $"短/普通/长任务数量：{GetOptions.GetShortTaskNum()},{GetOptions.GetCommonTaskNum()},{GetOptions.GetLongTaskNum()}\n" +
+             $"移速/船员视野/内鬼视野：{GetOptions.GetPlayerSpeedMod()},{GetOptions.GetCrewLightMod()},{GetOptions.GetImpostorLightMod()}\n" +
+             $"击杀CD/距离：{GetOptions.GetKillCooldown()},{GetOptions.GetKillDistance()}\n" +
+             $"会议数/CD/讨论时间/投票时间：{GetOptions.GetNumEmergencyMeetings()},{GetOptions.GetEmergencyCooldown()},{GetOptions.GetDiscussionTime()},{GetOptions.GetVotingTime()}\n" +
+             $"放逐确认身份/可视任务/匿名投票/任务进度刷新/最大人数/最大内鬼/房间Tag：{GetOptions.GetConfirmImpostor()},{GetOptions.GetVisualTasks()},{GetOptions.GetAnonymousVotes()},{GetOptions.GetTaskBarMode()},{GetOptions.GetMaxPlayers()},{GetOptions.GetNumImpostors()},{GetOptions.GetTag()}\n" +
+             $"科学家CD/持续时间：{GetOptions.GetScientistCooldown()},{GetOptions.GetScientistBatteryCharge()}\n" +
+             $"工程师CD/持续时间：{GetOptions.GetEngineerCooldown()},{GetOptions.GetEngineerInVentMaxTime()}\n" +
+             $"大喇叭持续时间/内鬼可听：{GetOptions.GetNoisemakerAlertDuration()},{GetOptions.GetNoisemakerImpostorAlert()}\n" +
+             $"追踪CD/持续时间/延迟：{GetOptions.GetTrackerCooldown()},{GetOptions.GetTrackerDuration()},{GetOptions.GetTrackerDelay()}\n" +
+             $"侦探技能次数：{GetOptions.GetDetectiveSuspectLimit()}\n" +
+             $"毒蛇持续时间：{GetOptions.GetViperDissolveTime()}\n" +
+             $"变形CD/持续时间/让变形者离开？：{GetOptions.GetShapeshifterCooldown()},{GetOptions.GetShapeshifterDuration()},{GetOptions.GetShapeshifterLeaveSkin()}\n" +
+             $"幻影CD/持续时间：{GetOptions.GetPhantomCooldown()},{GetOptions.GetPhantomDuration()}\n" +
+             $"天使CD/持续时间/内鬼可见：{GetOptions.GetGuardianAngelCooldown()},{GetOptions.GetProtectionDurationSeconds()},{GetOptions.GetImpostorsCanSeeProtect()}\n" +
+             $"地图ID/规则预设：{GetOptions.GetMapId()},{GetOptions.GetRulesPreset()}"
+             
+            ,"StartPatch");
         Info("设置isFirstSendEnd为" + Main.isFirstSendEnd.ToString(), "StartPatch");
     }
 }
@@ -74,6 +93,7 @@ class EndGamePatch
     public static Dictionary<byte, string> SummaryText = new();
     public static string WinReason = "";
     public static string WinTeam = "";
+
     public static void Postfix([HarmonyArgument(0)] ref EndGameResult endGameResult)
     {
         Info("== 游戏结束 ==", "EndGamePatch");
@@ -85,6 +105,19 @@ class EndGamePatch
         WinTeam = endGameResult.GameOverReason.GetWinTeam();
         Main.isFirstSendEnd = true;
     }
+}
+
+[HarmonyPatch(typeof(LogicGameFlowNormal), nameof(LogicGameFlowNormal.CheckEndCriteria))]
+class GameEndChecker
+{
+#if DEBUG
+    public static bool Prefix()
+    {
+
+        if (Toggles.NotEndGame) return false;
+        return true;
+    }
+#endif
 }
 
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CoSetRole))]

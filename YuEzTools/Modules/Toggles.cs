@@ -52,4 +52,9 @@ public class Toggles
 
     // 其他
     public static bool FPSPlus;
+    
+    #if DEBUG
+    // Dev
+    public static bool NotEndGame;
+#endif
 }
