@@ -126,6 +126,8 @@ MenuUI.RealBan: "封禁自己(真封禁！)"
 # MenuUI.Other
 MenuUI.Other: "其他功能"
 MenuUI.FPSPlus: "突破FPS上限"
+MenuUI.Debug: "DEV 专用"
+MenuUI.NotEndGame: "请勿结束游戏"
 
 # VerShow
 VerShow.HasUpdate: "<color=#DC143C>YuET有v{2}更新!</color>"
@@ -273,8 +275,10 @@ ImpostorsWin: "<color=#FF0000>伪装者</color>获胜"
 NobodyWin: "奖牌流失"
 ErrorWin: "异常结束"
 
-# 任务栏
+# 职业介绍和设置
 PressF3ToShowYourRoleInfo: "按下F3以显示职业介绍和设置"
+PressF3ToHideYourRoleInfo: "按下F3以隐藏职业介绍和设置"
+RoleOptions: "当前职业设置"
 
 # 设置菜单
 YuETOptions: "YuET设置"
@@ -313,7 +317,7 @@ Hedianzhan(Ningbo): "核电站(宁波)"
 Xiaohei(Ningbo): "小黑(宁波)"
 Xiaohei(HongKong): "小黑(香港)"
 ## Fangkuai
-Fangkuai(Suqian,NoS): "方块(宿迁,星云舰)"
+Fangkuai(Suqian): "方块(宿迁)"
 ## NoS
 NebulaOnTheShip(Japan): "星云舰(日本）"
 ## Xtreme
