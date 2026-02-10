@@ -109,7 +109,7 @@ class OnGameJoined
             {
                 SendMessage($"/note {msg}");
                 // SendMessage("/note 测试");
-            }, 3f, "Test Message");
+            }, 3f, "Public Message for Xtreme");
         }
         EnterCodePatch.isJoin = false;
         ShowDisconnectPopupPatch.ReasonByHost = string.Empty;
