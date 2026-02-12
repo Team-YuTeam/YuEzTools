@@ -266,22 +266,22 @@ public class ClientToolsItem
         ToggleButton.Rollover?.ChangeOutColor(color);
     }
     
-    public static void RefreshToggle(bool btnvalue, string btnstr)
-    {
-        foreach (var button in allButtons)
-        {
-            Info(btnstr, "btn");
-            if (button == null ||  button.ToggleButton.name != GetString("MenuUI."+btnstr)) continue;
-            // 原逻辑"Config != null"多余（因为Config是bool值，不可能为null），直接判断Config即可
-            var color = btnvalue ? Main.ModColor32 : new Color32(77, 77, 77, byte.MaxValue);
-            button.ToggleButton.Background.color = color;
-            button.ToggleButton.Rollover?.ChangeOutColor(color);
-            button.Config = btnvalue; // 直接设置目标按钮的实例Config
-            
-            // Config = !Config; // 修正原逻辑：原代码修改的是局部变量，这里改为修改实例的Config
-        }
+    // public static void RefreshToggle(bool btnvalue, string btnstr)
+    // {
+    //     foreach (var button in allButtons)
+    //     {
+    //         Info(btnstr, "btn");
+    //         if (button == null ||  button.ToggleButton.name != GetString("MenuUI."+btnstr)) continue;
+    //         // 原逻辑"Config != null"多余（因为Config是bool值，不可能为null），直接判断Config即可
+    //         var color = btnvalue ? Main.ModColor32 : new Color32(77, 77, 77, byte.MaxValue);
+    //         button.ToggleButton.Background.color = color;
+    //         button.ToggleButton.Rollover?.ChangeOutColor(color);
+    //         button.Config = btnvalue; // 直接设置目标按钮的实例Config
+    //         
+    //         // Config = !Config; // 修正原逻辑：原代码修改的是局部变量，这里改为修改实例的Config
+    //     }
     
-    }
+    // }
     //
     // // 修正：更新目标按钮的实例Config，而非静态Config
     // public static void RefreshToggle(bool btnValue, string btnName)

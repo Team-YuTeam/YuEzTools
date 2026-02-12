@@ -66,8 +66,9 @@ class RepairSystemPatch
         [HarmonyArgument(2)] byte amount)
     {
         Msg(
-            "SystemType: " + systemType.ToString() + ", PlayerName: " + __instance.GetRealName() +
-            ", amount: " + amount, "RepairSystem");
+            $"SystemType: {systemType.ToString()}" + 
+            __instance.GetRealName() == null  ? "" : $", PlayerName: {__instance.GetRealName()}" + 
+            $", amount: {amount}", "RepairSystem");
         return true;
     }
 }

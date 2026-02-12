@@ -69,7 +69,7 @@ public class MenuUI : MonoBehaviour
                 setState: val =>
                 {
                     config.SetState(val);       // 更新 Toggles 字段
-                    ClientToolsItem.RefreshToggle(val,config.NameKey);
+                    // ClientToolsItem.RefreshToggle(val,config.NameKey);
                     config.AdditionalAction?.Invoke(); // 触发额外逻辑
                 }
             ));
