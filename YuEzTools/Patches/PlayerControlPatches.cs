@@ -51,9 +51,7 @@ class FixedUpdatePatch
             }
 
             if (Main.HackerList.Contains(__instance))
-            {
                 name += $"<color=#3FBAFF>[{GetString("Hacker")}]</color>";
-            }
 
             __instance.cosmetics.nameText.text = name + "\n";
             __instance.cosmetics.nameText.alignment = TextAlignmentOptions.Top;
