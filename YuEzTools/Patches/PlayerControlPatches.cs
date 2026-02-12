@@ -46,9 +46,7 @@ class FixedUpdatePatch
                 _ = RoleColorHelper.GetRoleColorHex(__instance.Data.RoleType);
                 if (__instance == PlayerControl.LocalPlayer || (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead))
                     name = ColorString(RoleColorHelper.GetRoleColor32(__instance.Data.RoleType), __instance.GetRoleName() + "\n" + name);
-                if (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead)
-                    name += $"({GetDeadText(__instance)})";
-                if (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.RoleType == RoleTypes.Impostor)
+                if (PlayerControl.LocalPlayer.Data.IsDead && (__instance.Data.IsDead || __instance.Data.RoleType == RoleTypes.Impostor))
                     name += $"({GetDeadText(__instance)})";
             }
 
