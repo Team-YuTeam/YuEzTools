@@ -207,7 +207,7 @@ public class GetOptions
         #region 侦探 Detective (枚举值12)
         [RoleTypes.Detective.ToConfigKey()] = new List<RoleConfigItem>()
         {
-            new() { ShowName = "DetectiveSuspectLimit", GetValue = () => GetDetectiveSuspectLimit(), Unit = "people" }
+            new() { ShowName = "DetectiveSuspectLimit", GetValue = () => GetDetectiveSuspectLimit(), Unit = "unit.people" }
         },
         #endregion
 

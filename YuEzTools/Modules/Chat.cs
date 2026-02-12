@@ -52,15 +52,14 @@ public static class ChatJailbreak_ChatController_Update_Postfix
 [HarmonyPatch(typeof(TextBoxTMP), nameof(TextBoxTMP.IsCharAllowed))]
 public static class AllowAllCharacters_TextBoxTMP_IsCharAllowed_Prefix
 {
-    public static bool Prefix(TextBoxTMP __instance, char i, ref bool __result)
-    {
-        if (Main.PatchChat.Value)
-        {
-            __result = !(i == '\b'); // Bugfix: '\b' messing with chat message
-            return false;
-        }
-        else return true;
-    }
+    // public static bool Prefix(TextBoxTMP __instance, char i, ref bool __result)
+    // {
+    //     if (Main.PatchChat.Value)
+    //     {
+    //         __result = (i != '\b'); // Bugfix: '\b' messing with chat message
+    //     }
+    //     return true;
+    // }
 
     public static void Postfix(TextBoxTMP __instance)
     {

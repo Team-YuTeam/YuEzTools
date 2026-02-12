@@ -34,6 +34,7 @@ public static class ChatBubblePatch
         if (!string.IsNullOrWhiteSpace(extractedContent))
             DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                 $"{extractedContent}：{GetString(extractedContent)}");
+        // Info(chatText.Length.ToString(), "debug");
 #endif
         //if (modded)
         //{
