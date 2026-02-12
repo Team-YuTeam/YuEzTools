@@ -12,7 +12,8 @@ internal class PingTrackerUpdatePatch
 {
     private static float deltaTime;
     public static string ServerName = "";
-    private static TextMeshPro pingTrackerCredential = null;
+    public static TextMeshPro pingTrackerCredential = null;
+    public static TextMeshPro chatWelcome = null;
     private static AspectPosition pingTrackerCredentialAspectPos = null;
     public static float fps;
 
@@ -136,5 +137,23 @@ internal class PingTrackerUpdatePatch
         pingTrackerCredential.text = sb.ToString();
         if (GameSettingMenu.Instance?.gameObject?.active ?? false)
             pingTrackerCredential.text = "";
+
+        if ((GetPlayer.IsInGame || GetPlayer.IsLobby) && GameObject.Find("ChatScreenRoot") != null)
+        {
+            var chatScreen = GameObject.Find("ChatScreenRoot");
+            pingTrackerCredential.gameObject.SetActive(!chatScreen.active);
+            if (chatWelcome == null)
+            {
+                var inputField = chatScreen.transform.Find("ChatScreenContainer")?.transform.Find("FreeChatInputField");
+                var counter = inputField?.Find("CharCounter (TMP)");
+                var ChatWelcome = Object.Instantiate(counter.gameObject, counter.transform.parent);
+                chatWelcome = ChatWelcome.GetComponent<TextMeshPro>();
+                ChatWelcome.name = "ChatWelcome";
+                ChatWelcome.transform.localPosition += new Vector3(0, 0.15f, 0);
+                chatWelcome.text =  string.Format(GetString("Chat.Welcome"),Main.ModColor,Main.ModName,Main.version) ;
+                chatWelcome.enableWordWrapping = false; // 关闭自动换行
+                chatWelcome.autoSizeTextContainer = true; // 自动调整容器尺寸
+            }
+        }
     }
 }
