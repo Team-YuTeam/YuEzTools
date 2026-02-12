@@ -109,10 +109,10 @@ internal class PingTrackerUpdatePatch
         else if (Toggles.ShowFPS)
             __instance.text.text += " " + getColoredFPSText(fps) + "<size=60%>FPS</size></color>";
 
-        if ((Toggles.ShowFPS || Toggles.ShowPing) && Toggles.ShowServer)
-            __instance.text.text += "  " + (GetPlayer.IsOnlineGame ? ServerName : "<color=#D3D3D3>Local</color>");
-        else if (Toggles.ShowServer)
-            __instance.text.text = GetPlayer.IsOnlineGame ? ServerName : "<color=#D3D3D3>Local</color>";
+        if ((Toggles.ShowFPS || Toggles.ShowPing) && Toggles.ShowServer && !GetPlayer.IsLobby)
+            __instance.text.text += "  " + (GetPlayer.IsOnlineGame ? ServerName : $"<color=#D3D3D3>{GetString("Local")}</color>");
+        else if (Toggles.ShowServer && !GetPlayer.IsLobby)
+            __instance.text.text = GetPlayer.IsOnlineGame ? ServerName : $"<color=#D3D3D3>{GetString("Local")}</color>";
 
 
         if (!Toggles.ShowPing && !Toggles.ShowServer && !Toggles.ShowFPS) __instance.text.text = "";

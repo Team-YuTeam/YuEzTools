@@ -290,6 +290,7 @@ Options.Back: "关闭"
 YuETToolsOptions: "YuET工具箱"
 
 # Servers / If Not Chinese, Write English name except Official. Of course, if you can translate them better than original English, you can do it.
+ServerLabel: "服务器"
 ## Official
 Asia: "亚洲"
 Europe: "欧洲"
