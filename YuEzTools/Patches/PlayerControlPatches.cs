@@ -1,6 +1,7 @@
 using System;
 using AmongUs.GameOptions;
 using TMPro;
+using UnityEngine;
 using YuEzTools.Modules;
 using YuEzTools.Helpers;
 using YuEzTools.Utils;
@@ -20,9 +21,10 @@ class MurderPlayerPatch
     }
 }
 
-[HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.FixedUpdate))]
+[HarmonyPatch(typeof(PlayerControl))]
 class FixedUpdatePatch
 {
+    [HarmonyPatch(nameof(PlayerControl.FixedUpdate)),HarmonyPostfix]
     public static void Postfix(PlayerControl __instance)
     {
         if (__instance == null || __instance.GetClient() == null) return;
@@ -55,6 +57,10 @@ class FixedUpdatePatch
 
             __instance.cosmetics.nameText.text = name + "\n";
             __instance.cosmetics.nameText.alignment = TextAlignmentOptions.Top;
+            
+            __instance.cosmetics.colorBlindText.gameObject.transform.localPosition = new Vector3(0, -1.35f, 0);
+            var colorId = __instance.Data.DefaultOutfit.ColorId;
+            __instance.cosmetics.colorBlindText.color = Palette.PlayerColors[colorId];
         }
         catch (Exception e)
         {
