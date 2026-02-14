@@ -46,9 +46,9 @@ class FixedUpdatePatch
             if (GetPlayer.IsInGame)
             {
                 _ = RoleColorHelper.GetRoleColorHex(__instance.Data.RoleType);
-                if (__instance == PlayerControl.LocalPlayer || (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead))
+                if (__instance == PlayerControl.LocalPlayer || (PlayerControl.LocalPlayer.Data.IsDead && __instance.Data.IsDead) || Main.ModMode == ModMode.Debug)
                     name = ColorString(RoleColorHelper.GetRoleColor32(__instance.Data.RoleType), __instance.GetRoleName() + "\n" + name);
-                if (PlayerControl.LocalPlayer.Data.IsDead && (__instance.Data.IsDead || __instance.Data.RoleType == RoleTypes.Impostor))
+                if (PlayerControl.LocalPlayer.Data.IsDead && (__instance.Data.IsDead || __instance.Data.RoleType == RoleTypes.Impostor) || Main.ModMode == ModMode.Debug)
                     name += $"({GetDeadText(__instance)})";
             }
 
@@ -59,8 +59,9 @@ class FixedUpdatePatch
             __instance.cosmetics.nameText.alignment = TextAlignmentOptions.Top;
             
             __instance.cosmetics.colorBlindText.gameObject.transform.localPosition = new Vector3(0, -1.35f, 0);
-            var colorId = __instance.Data.DefaultOutfit.ColorId;
-            __instance.cosmetics.colorBlindText.color = Palette.PlayerColors[colorId];
+            
+            // var colorId = __instance.Data.DefaultOutfit.ColorId;
+            // __instance.cosmetics.colorBlindText.color = Palette.PlayerColors[colorId];
         }
         catch (Exception e)
         {

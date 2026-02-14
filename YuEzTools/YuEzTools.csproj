@@ -37,7 +37,7 @@
 		<PackageReference Include="System.Windows.Extensions" Version="8.0.0" />
 		<PackageReference Include="YamlDotNet" Version="16.3.0" />
 	</ItemGroup>
-
+	
     <Target Name="DeleteOldPlugins" AfterTargets="Build" Condition="'$(AmongUs)' != '' AND '$(Platform)' == 'Windows'">
         <!-- 匹配目标目录中所有以 YuEzTools 开头的 DLL 文件 -->
         <ItemGroup>
