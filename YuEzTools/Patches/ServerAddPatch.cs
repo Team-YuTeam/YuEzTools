@@ -1,3 +1,4 @@
+using System;
 using YuEzTools.Attributes;
 using UnityEngine;
 
@@ -8,60 +9,75 @@ public static class ServerAddManager
     #if Windows
     private static ServerManager serverManager = DestroyableSingleton<ServerManager>.Instance;
     
-    [PluginModuleInitializer]
-    public static void Init()
-    {
-        serverManager.AvailableRegions = ServerManager.DefaultRegions;
-        List<IRegionInfo> regionInfos =
-        [
-            // Niko
-            CreateHttp("au-eu.niko233.me", "Niko233(EU)", 443, true, new Color32(251, 200, 200,255)),
-            CreateHttp("au-us.niko233.me", "Niko233(NA)", 443, true, new Color32(251, 200, 200,255)),
-            CreateHttp("au-as.niko233.me", "Niko233(AS)", 443, true, new Color32(251, 200, 200,255)),
-            // Modded
-            CreateHttp("au-as.duikbo.at", "Modded Asia (MAS)", 443, true, new Color32(251, 226, 200,255)),
-            CreateHttp("aumods.org", "Modded NA (MNA)", 443, true, new Color32(251, 226, 200,255)),
-            CreateHttp("au-eu.duikbo.at", "Modded EU (MEU)", 443, true, new Color32(251, 226, 200,255)),
-            // Qingfeng
-            // CreateHttp("bj.server.qingfengawa.top", "QingFeng(Beijing)", 443, true, new Color32(249, 255, 170,255)),
-            // CreateHttp("sh.server.qingfengawa.top", "QingFeng(Shanghai)", 443, true,new Color32(249, 255, 170,255)),
-            CreateHttp("nb.server.qingfengawa.top", "QingFeng(Ningbo)", 443, true, new Color32(249, 255, 170,255)),
-            // CreateHttp("gz.server.qingfengawa.top", "QingFeng(Guangzhou)", 443, true, new Color32(249, 255, 170,255)),
-            // Fanchuan
-            CreateHttp("gz.fcaugame.cn", "Fanchuan(Guangzhou)", 443, true, new Color32(207, 255, 170,255)),
-            CreateHttp("zxc.lcayun.cn", "Fanchuan(Zaozhuang)", 443, true, new Color32(207, 255, 170,255)),
-            // Tianmeng
-            // CreateHttp("139.224.74.5", "Tianmeng(New)", 443, true),
-            // Hedianzhan
-            CreateHttp("aunpp.cn", "Hedianzhan(Shanghai)", 443, true, new Color32(170, 255, 186,255)),
-            CreateHttp("nb.aunpp.cn", "Hedianzhan(Ningbo)", 443, true, new Color32(170, 255, 186,255)),
-            // Xiaohei
-            // CreateHttp("zlxhimp.amongusclub.cn", "Xiaohei(Ningbo)", 443, true, new Color32(170, 255, 241,255)),
-            CreateHttp("hk.zlxh.top", "Xiaohei(HongKong)", 443, true, new Color32(170, 255, 241,255)),
-            // Fangkuai
-            CreateHttp("player.amongusclub.cn", "Fangkuai(Suqian)", 443, true, new Color32(170, 255, 241,255)),
-            // NoS
-            CreateHttp("www.nebula-on-the-ship.com", "NebulaOnTheShip(Japan)", 443, true, new Color32(170, 220, 255,255)),
-            // Xtreme
-            CreateHttp("imp.xtreme.net.cn","Xtreme(HongKong)",443,true,new Color32(205,255,253,255)),
-            CreateHttp("suqian.xtreme.net.cn","Xtreme(Suqian)",22028,true,new Color32(205,255,253,255)),
-        ];
-        
-        var defaultRegion = serverManager.CurrentRegion;
-        regionInfos.Where(x => !serverManager.AvailableRegions.Contains(x)).Do(serverManager.AddOrUpdateRegion);
-        serverManager.SetRegion(defaultRegion);
-
-        SetServerName(defaultRegion.Name);
-    }
-#endif
-    
     private static Dictionary<string, Color32> serverColor32Map = new Dictionary<string, Color32>
     {
         {"Asia", new Color32(58, 166, 117, 255)},
         {"Europe", new Color32(58, 166, 117, 255)},
         {"North America", new Color32(58, 166, 117, 255)},
     };
+    
+    private static List<IRegionInfo> regionInfos =
+    [
+        // Niko
+        CreateHttp("au-eu.niko233.me", "Niko233(EU)", 443, true, new Color32(251, 200, 200,255)),
+        CreateHttp("au-us.niko233.me", "Niko233(NA)", 443, true, new Color32(251, 200, 200,255)),
+        CreateHttp("au-as.niko233.me", "Niko233(AS)", 443, true, new Color32(251, 200, 200,255)),
+        // Modded
+        CreateHttp("au-as.duikbo.at", "Modded Asia (MAS)", 443, true, new Color32(251, 226, 200,255)),
+        CreateHttp("aumods.org", "Modded NA (MNA)", 443, true, new Color32(251, 226, 200,255)),
+        CreateHttp("au-eu.duikbo.at", "Modded EU (MEU)", 443, true, new Color32(251, 226, 200,255)),
+        // Qingfeng
+        // CreateHttp("bj.server.qingfengawa.top", "QingFeng(Beijing)", 443, true, new Color32(249, 255, 170,255)),
+        // CreateHttp("sh.server.qingfengawa.top", "QingFeng(Shanghai)", 443, true,new Color32(249, 255, 170,255)),
+        CreateHttp("nb.server.qingfengawa.top", "QingFeng(Ningbo)", 443, true, new Color32(249, 255, 170,255)),
+        // CreateHttp("gz.server.qingfengawa.top", "QingFeng(Guangzhou)", 443, true, new Color32(249, 255, 170,255)),
+        // Fanchuan
+        CreateHttp("gz.fcaugame.cn", "Fanchuan(Guangzhou)", 443, true, new Color32(207, 255, 170,255)),
+        CreateHttp("zxc.lcayun.cn", "Fanchuan(Zaozhuang)", 443, true, new Color32(207, 255, 170,255)),
+        // Tianmeng
+        // CreateHttp("139.224.74.5", "Tianmeng(New)", 443, true),
+        // Hedianzhan
+        CreateHttp("aunpp.cn", "Hedianzhan(Shanghai)", 443, true, new Color32(170, 255, 186,255)),
+        CreateHttp("nb.aunpp.cn", "Hedianzhan(Ningbo)", 443, true, new Color32(170, 255, 186,255)),
+        // Xiaohei
+        // CreateHttp("zlxhimp.amongusclub.cn", "Xiaohei(Ningbo)", 443, true, new Color32(170, 255, 241,255)),
+        CreateHttp("hk.zlxh.top", "Xiaohei(HongKong)", 443, true, new Color32(170, 255, 241,255)),
+        // Fangkuai
+        CreateHttp("player.amongusclub.cn", "Fangkuai(Suqian)", 443, true, new Color32(170, 255, 241,255)),
+        // NoS
+        CreateHttp("www.nebula-on-the-ship.com", "NebulaOnTheShip(Japan)", 443, true, new Color32(170, 220, 255,255)),
+        // Xtreme
+        CreateHttp("imp.xtreme.net.cn","Xtreme(HongKong)",443,true,new Color32(205,255,253,255)),
+        CreateHttp("suqian.xtreme.net.cn","Xtreme(Suqian)",22028,true,new Color32(205,255,253,255)),
+    ];
+    
+    [PluginModuleInitializer]
+    public static void Init()
+    {
+        if (!Main.AutoInstallServers.Value) return;
+        InstallCustomServers();
+    }
+    
+    public static void InstallCustomServers()
+    {
+        try{
+            if (serverManager == null) return;
+            
+            serverManager.AvailableRegions = ServerManager.DefaultRegions;
+            var defaultRegion = serverManager.CurrentRegion;
+            regionInfos.Where(x => !serverManager.AvailableRegions.Contains(x)).Do(serverManager.AddOrUpdateRegion);
+            serverManager.SetRegion(defaultRegion);
+            SetServerName(defaultRegion.Name);
+        }
+        catch (Exception e)
+        {
+            Error($"添加服务器时出现错误：{e}","ServerAddPatch");
+            InstallCustomServers();
+        }
 
+
+    }
+    
     public static bool isInServerDictionary(this string sn)
     {
         return serverColor32Map.ContainsKey(sn);
@@ -100,4 +116,5 @@ public static class ServerAddManager
         
         return _defaultColor;
     }
+    #endif
 }

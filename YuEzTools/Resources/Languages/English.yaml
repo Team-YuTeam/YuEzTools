@@ -277,3 +277,9 @@ LanguageChange.text: "You are performing a <color=#ff0000>language switch</color
 LanguageChange.Ortext: "You are performing a <color=#ff0000>language switch</color> operation, changing from <color=#ff0000>{0}</color> to <color=##0C8FF>{1}</color>\nIf you wish to keep the display in <color=#ff0000>{0}</color>, please click the 'Do Not Switch' button."
 LanguageChange.Refresh: "Refresh all text"
 LanguageChange.Donot: "Do not switch"
+
+# Settings Menu
+YuETOptions: "YuET Settings"
+SwitchVanilla: "Switch to Vanilla"
+AutoInstallServers: "Auto Install Custom Servers"
+Options.Back: "Close"

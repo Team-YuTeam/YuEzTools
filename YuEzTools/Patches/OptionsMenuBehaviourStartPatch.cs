@@ -8,6 +8,7 @@ namespace YuEzTools.Patches;
 public static class OptionsMenuBehaviourStartPatch
 {
     private static ClientOptionItem SwitchVanilla;
+    private static ClientOptionItem AutoInstallServersOption;
 
     public static void Postfix(OptionsMenuBehaviour __instance)
     {
@@ -25,6 +26,18 @@ public static class OptionsMenuBehaviourStartPatch
                 }
                 Harmony.UnpatchAll();
                 Main.Instance.Unload();
+            }
+        }
+
+        if (AutoInstallServersOption == null || AutoInstallServersOption.ToggleButton == null)
+        {
+            AutoInstallServersOption = ClientOptionItem.Create(GetString("AutoInstallServers"), Main.AutoInstallServers, __instance, AutoInstallServersToggle);
+            static void AutoInstallServersToggle()
+            {
+                if (Main.AutoInstallServers.Value)
+                {
+                    ServerAddManager.InstallCustomServers();
+                }
             }
         }
     }
