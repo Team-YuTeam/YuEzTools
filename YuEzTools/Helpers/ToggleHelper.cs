@@ -96,6 +96,13 @@ public static class ToggleHelperManager
             setState: val => Toggles.DarkMode = val
         ),
         new ToggleHelper(
+            nameKey: "ShowPlayTimes",
+            groupKey: "Interface",
+            submenuKey: null,
+            getState: () => Toggles.ShowPlayTimes,
+            setState: val => Toggles.ShowPlayTimes = val
+        ),
+        new ToggleHelper(
             nameKey: "ShowInfoInLobby",    // 按钮文本键（对应本地化）
             groupKey: "Interface",          // 所属组
             submenuKey: null,                      

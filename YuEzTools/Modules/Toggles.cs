@@ -4,6 +4,7 @@ public class Toggles
 {
     // 界面
     public static bool DarkMode = true;
+    public static bool ShowPlayTimes = Main.ShowPlayTimes.Value;
 
     // Ping部分
     public static bool ShowCommit;

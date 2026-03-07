@@ -45,7 +45,6 @@ public class Main : BasePlugin
     public static ConfigEntry<bool> PatchCosmetics;
     public static ConfigEntry<bool> WinTextSize;
     public static ConfigEntry<bool> SwitchVanilla;
-    // ToDo: 自由选择是否开启游玩次数
     public static ConfigEntry<bool> ShowPlayTimes;
     // ToDo: 是否自动安装私服
     public static ConfigEntry<bool> AutoInstallServers;
@@ -151,6 +150,7 @@ public class Main : BasePlugin
         PatchCosmetics = Config.Bind("Patches", "CosmeticPatches", true, "Enable cosmetic-related patches");
         WinTextSize = Config.Bind("WinText", "WinTextSize", false, "The Winner big(true) or the reason big(false)");
         SwitchVanilla = Config.Bind("Client Options", "SwitchVanilla", false);
+        ShowPlayTimes = Config.Bind("Interface", "ShowPlayTimes", true, "Show play times on main menu");
 
         menuUI = AddComponent<MenuUI>();
         CustomTips = AddComponent<CustomTips>();
@@ -179,6 +179,7 @@ public class Main : BasePlugin
 
         DevManager.Init();
         Toggles.WinTextSize = WinTextSize.Value;
+        Toggles.ShowPlayTimes = ShowPlayTimes.Value;
 
         //模组加载好了标语
         Msg("========= YuET loaded! =========", "YuET Plugin Load");

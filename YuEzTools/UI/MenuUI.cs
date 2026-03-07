@@ -34,6 +34,7 @@ public class MenuUI : MonoBehaviour
             Toggles.ServerAllHostOrNoHost = GameStartManagerPatch.roomMode == RoomMode.Normal ? false : true;
         }
         Main.WinTextSize.Value = Toggles.WinTextSize;
+        Main.ShowPlayTimes.Value = Toggles.ShowPlayTimes;
 
         // -------------------------- 关键修改：从统一配置生成 MenuUI 分组 --------------------------
         if (!isGUIActive)

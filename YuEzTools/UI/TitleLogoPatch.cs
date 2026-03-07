@@ -261,14 +261,14 @@ public static class VersionShower_Start
         {
             __instance.text.text = string.Format(GetString("UsingVersion"), Main.ModColor, Main.ModName, "Canary");
             //__instance.text.text = TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#DC143C>您正在使用 v{Main.PluginVersion} Canary测试版！</color>)" : $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#DC143C>You are using  v{Main.PluginVersion} Canary Version</color>)";
-            if (IsChineseUser) __instance.text.text += string.Format(GetString("VerShow.Visit"), Main.ModColor, Main.ModName, ModUpdater.visit);
+            if (IsChineseUser && Toggles.ShowPlayTimes) __instance.text.text += string.Format(GetString("VerShow.Visit"), Main.ModColor, Main.ModName, ModUpdater.visit);
             else __instance.text.text += string.Format(GetString("VerShow.HasNotUpdate"), Main.ModColor, Main.ModName);
         }
         else if (Main.ModMode == ModMode.Debug)
         {
             __instance.text.text = string.Format(GetString("UsingVersion"), Main.ModColor, Main.ModName, "Debug");
             //__instance.text.text = TranslationController.Instance.currentLanguage.languageID == SupportedLangs.SChinese || TranslationController.Instance.currentLanguage.languageID == SupportedLangs.TChinese ? $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#DC143C>您正在使用 v{Main.PluginVersion} Debug开发者版！</color>)" : $"<color={Main.ModColor}>{Main.ModName}</color> (<color=#DC143C>You are using  v{Main.PluginVersion} Debug Version</color>)";
-            if (IsChineseUser) __instance.text.text += string.Format(GetString("VerShow.Visit"), Main.ModColor, Main.ModName, ModUpdater.visit);
+            if (IsChineseUser && Toggles.ShowPlayTimes) __instance.text.text += string.Format(GetString("VerShow.Visit"), Main.ModColor, Main.ModName, ModUpdater.visit);
             else __instance.text.text += string.Format(GetString("VerShow.HasNotUpdate"), Main.ModColor, Main.ModName);
             //__instance.text.text += "\n" + string.Format(Translator.GetString("VerShow.Visit"),Main.ModColor,Main.ModName,ModUpdater.visit);
         }
@@ -282,7 +282,7 @@ public static class VersionShower_Start
             }
             else
             {
-                if (IsChineseUser) __instance.text.text = string.Format(GetString("VerShow.Visit"), Main.ModColor, Main.ModName, ModUpdater.visit);
+                if (IsChineseUser && Toggles.ShowPlayTimes) __instance.text.text = string.Format(GetString("VerShow.Visit"), Main.ModColor, Main.ModName, ModUpdater.visit);
                 else __instance.text.text = string.Format(GetString("VerShow.HasNotUpdate"), Main.ModColor, Main.ModName);
                 //__instance.text.text += "\n" + string.Format(Translator.GetString("VerShow.Visit"),Main.ModColor,Main.ModName,ModUpdater.visit);
             }
