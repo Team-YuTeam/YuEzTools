@@ -48,7 +48,7 @@ public static class ServerAddManager
         CreateHttp("www.nebula-on-the-ship.com", "NebulaOnTheShip(Japan)", 443, true, new Color32(170, 220, 255,255)),
         // Xtreme
         CreateHttp("imp.xtreme.net.cn","Xtreme(HongKong)",443,true,new Color32(205,255,253,255)),
-        CreateHttp("suqian.xtreme.net.cn","Xtreme(Suqian)",22028,true,new Color32(205,255,253,255)),
+        // CreateHttp("suqian.xtreme.net.cn","Xtreme(Suqian)",22028,true,new Color32(205,255,253,255)),
     ];
     
     [PluginModuleInitializer]
