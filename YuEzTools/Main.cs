@@ -1,4 +1,4 @@
-﻿﻿using System.Globalization;
+﻿﻿﻿﻿using System.Globalization;
 using AmongUs.GameOptions;
 using BepInEx;
 using BepInEx.Configuration;

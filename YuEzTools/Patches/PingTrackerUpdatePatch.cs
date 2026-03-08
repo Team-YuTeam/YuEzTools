@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Text;
 using TMPro;
@@ -22,9 +23,9 @@ internal class PingTrackerUpdatePatch
         // __instance.text.text = "";
         if (pingTrackerCredential == null)
         {
-            var uselessPingTracker = Object.Instantiate(__instance, __instance.transform.parent);
+            var uselessPingTracker = UnityEngine.Object.Instantiate(__instance, __instance.transform.parent);
             pingTrackerCredential = uselessPingTracker.GetComponent<TextMeshPro>();
-            Object.Destroy(uselessPingTracker);
+            UnityEngine.Object.Destroy(uselessPingTracker);
             pingTrackerCredential.alignment = TextAlignmentOptions.TopRight;
             pingTrackerCredential.color = new(1f, 1f, 1f, 0.7f);
             pingTrackerCredential.rectTransform.pivot = new(1f, 1f); // 中心を右上角に設定
@@ -121,12 +122,37 @@ internal class PingTrackerUpdatePatch
         //     .Append(
         //         $"{getColoredPingText(ping)} <size=60%>Ping</size></color>  {getColoredFPSText(fps)} <size=60%>FPS</size></color>{"  " + (GetPlayer.IsOnlineGame ? ServerName : GetString("Local"))}");
 
-        // DateTime dt = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now, TimeZoneInfoOptions.None);
-        // DateTime dt1 =
-        //     TimeZoneInfo.ConvertTimeFromUtc(dt,
-        //         TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time")); //参数对应国家或者时区   ***对于有夏令时冬令时的区域，程序会自动调整***
-        // if (Toggles.ShowLocalNowTime) sb.Append($"\r\n").Append(DateTime.Now.ToString());
-        // if (Toggles.ShowUTC) sb.Append($"\r\n").Append("UTC: " + dt.ToString());
+        DateTime dt = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now);
+        DateTime dt1 =
+            TimeZoneInfo.ConvertTimeFromUtc(dt,
+                TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time")); //参数对应国家或者时区   ***对于有夏令时冬令时的区域，程序会自动调整***
+        bool isUtcTimeZone = false;
+        if (Toggles.ShowLocalNowTime)
+        {
+            var localTimeZone = TimeZoneInfo.Local;
+            var offset = localTimeZone.GetUtcOffset(DateTime.Now);
+            var offsetHours = (int)offset.TotalHours;
+            var displayName = localTimeZone.Id;
+            if (displayName == "China Standard Time" || displayName == "Taipei Standard Time") displayName = "Beijing";
+            else if (displayName == "Tokyo Standard Time") displayName = "Tokyo";
+            else if (displayName == "Pacific Standard Time") displayName = "Los Angeles";
+            else if (displayName == "Eastern Standard Time") displayName = "New York";
+            else if (displayName == "Central European Standard Time") displayName = "Paris";
+            else if (displayName == "GMT Standard Time") displayName = "London";
+            else if (displayName == "Korea Standard Time") displayName = "Seoul";
+            else if (displayName == "Singapore Standard Time") displayName = "Singapore";
+            if (offsetHours == 0)
+            {
+                sb.Append($"\r\n").Append($"{displayName}(UTC): {DateTime.Now.ToString()}");
+                isUtcTimeZone = true;
+            }
+            else
+            {
+                var offsetStr = offsetHours >= 0 ? $"+{offsetHours}" : offsetHours.ToString();
+                sb.Append($"\r\n").Append($"{displayName}(UTC{offsetStr}): {DateTime.Now.ToString()}");
+            }
+        }
+        if (Toggles.ShowUTC && !isUtcTimeZone) sb.Append($"\r\n").Append("UTC: " + dt.ToString());
 
 
         if (Toggles.ShowRoomTime && GetPlayer.IsLobby && AmongUsClient.Instance.AmHost && GetPlayer.IsOnlineGame)
@@ -146,7 +172,7 @@ internal class PingTrackerUpdatePatch
             {
                 var inputField = chatScreen.transform.Find("ChatScreenContainer")?.transform.Find("FreeChatInputField");
                 var counter = inputField?.Find("CharCounter (TMP)");
-                var ChatWelcome = Object.Instantiate(counter.gameObject, counter.transform.parent);
+                var ChatWelcome = UnityEngine.Object.Instantiate(counter.gameObject, counter.transform.parent);
                 chatWelcome = ChatWelcome.GetComponent<TextMeshPro>();
                 ChatWelcome.name = "ChatWelcome";
                 ChatWelcome.transform.localPosition += new Vector3(0, 0.15f, 0);

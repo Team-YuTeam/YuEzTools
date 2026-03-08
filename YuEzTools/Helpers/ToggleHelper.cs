@@ -179,7 +179,6 @@ public static class ToggleHelperManager
             getState: () => Toggles.WinTextSize, // 绑定 Toggles 字段
             setState: val => Toggles.WinTextSize = val
         ),
-        /*
          new ToggleHelper(
             nameKey: "ShowLocalNowTime",    // 按钮文本键（对应本地化）
             groupKey: "Interface",          // 所属组
@@ -194,7 +193,6 @@ public static class ToggleHelperManager
             getState: () => Toggles.ShowUTC, // 绑定 Toggles 字段
             setState: val => Toggles.ShowUTC = val
         ),
-        */
         // -------------------------- 快捷按钮 --------------------------
         new ToggleHelper(
             nameKey: "DumpLog",    // 按钮文本键（对应本地化）
