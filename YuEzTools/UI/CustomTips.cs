@@ -5,9 +5,9 @@ namespace YuEzTools.UI;
 
 public class CustomTips : MonoBehaviour
 {
-    public static CustomTips Instance; // 单例
-    private GameObject tip; // 改为实例变量
-    private float timeOnScreen; // 改为实例变量
+    public static CustomTips Instance;
+    private GameObject currentTip;
+    private float timeOnScreen;
     
     private void Awake()
     {
@@ -15,7 +15,7 @@ public class CustomTips : MonoBehaviour
         else Destroy(gameObject);
     }
     
-    public static void Show(string tx,TipsCode tc = TipsCode.ModLogo,Sprite sr = null)
+    public static void Show(string tx, TipsCode tc = TipsCode.ModLogo, Sprite sr = null)
     {
         if (sr == null) sr = LoadSprite("YuEzTools.Resources.Yu-Logo-tm.png", 200f);
         switch (tc)
@@ -33,41 +33,45 @@ public class CustomTips : MonoBehaviour
                 sr = LoadSprite("YuEzTools.Resources.AntiCheatLogo.png", 200f);
                 break;
         }
-        // 通过单例调用实例方法
         Instance.ShowTip(tx, sr);
     }
     
     private void ShowTip(string tx, Sprite sr)
     {
-        // var popup = FriendsListManager.Instance.transform.Find("FriendListConfirmScreen");
-        // var tmp = popup.Find("Dialogue_TMP").GetComponent<TextMeshPro>();
-        // tmp.text = "卧槽";
-        // popup.gameObject.SetActive(true);
+        if (currentTip != null)
+        {
+            Destroy(currentTip);
+            currentTip = null;
+        }
 
         var origingoj = FriendsListManager.Instance.transform.Find("FriendListNotification").gameObject;
         
-        tip = Object.Instantiate(origingoj);
-        tip.gameObject.name = "YuETCustomTip";
-        Destroy(tip.transform.GetComponent<FriendListNotification>()); 
+        currentTip = Instantiate(origingoj);
+        currentTip.name = "YuETCustomTip";
+        Destroy(currentTip.transform.GetComponent<FriendListNotification>());
         
-        var text = tip.transform.Find("Text").GetComponent<TextMeshPro>();
+        var text = currentTip.transform.Find("Text").GetComponent<TextMeshPro>();
         text.text = tx;
         
-        var icon = tip.transform.Find("IconHolder").Find("Icon").GetComponent<SpriteRenderer>();
+        var icon = currentTip.transform.Find("IconHolder").Find("Icon").GetComponent<SpriteRenderer>();
         icon.sprite = sr;
-        tip.SetActive(true);
+        currentTip.SetActive(true);
         timeOnScreen = 5f;
-        Info("Show Tips" + text,"CustomTips");
+        Info("Show Tips: " + tx, "CustomTips");
     }
     
     private void Update()
     {
-        if (timeOnScreen <= 0f) return;
+        if (currentTip == null || timeOnScreen <= 0f) return;
         
         timeOnScreen -= Time.deltaTime;
         if (timeOnScreen <= 0f)
         {
-            tip?.SetActive(false);
+            if (currentTip != null)
+            {
+                Destroy(currentTip);
+                currentTip = null;
+            }
         }
     }
 }
