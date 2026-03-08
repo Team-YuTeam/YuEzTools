@@ -1,5 +1,7 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using BepInEx.Unity.IL2CPP.Utils;
 
 namespace YuEzTools.UI;
 
@@ -8,6 +10,8 @@ public class CustomTips : MonoBehaviour
     public static CustomTips Instance;
     private GameObject currentTip;
     private float timeOnScreen;
+    private Vector3 targetPosition;
+    private Coroutine currentCoroutine;
     
     private void Awake()
     {
@@ -38,6 +42,11 @@ public class CustomTips : MonoBehaviour
     
     private void ShowTip(string tx, Sprite sr)
     {
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+            currentCoroutine = null;
+        }
         if (currentTip != null)
         {
             Destroy(currentTip);
@@ -56,22 +65,57 @@ public class CustomTips : MonoBehaviour
         var icon = currentTip.transform.Find("IconHolder").Find("Icon").GetComponent<SpriteRenderer>();
         icon.sprite = sr;
         currentTip.SetActive(true);
+        
+        targetPosition = currentTip.transform.localPosition;
+        var startPos = targetPosition + new Vector3(0f, 2f, 0f);
+        currentTip.transform.localPosition = startPos;
+        
         timeOnScreen = 5f;
+        currentCoroutine = this.StartCoroutine(AnimateTip());
         Info("Show Tips: " + tx, "CustomTips");
     }
     
-    private void Update()
+    private IEnumerator AnimateTip()
     {
-        if (currentTip == null || timeOnScreen <= 0f) return;
+        float duration = 0.3f;
+        float elapsed = 0f;
+        var startPos = currentTip.transform.localPosition;
         
-        timeOnScreen -= Time.deltaTime;
-        if (timeOnScreen <= 0f)
+        while (elapsed < duration)
         {
-            if (currentTip != null)
-            {
-                Destroy(currentTip);
-                currentTip = null;
-            }
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            t = 1f - (1f - t) * (1f - t) * (1f - t);
+            currentTip.transform.localPosition = Vector3.Lerp(startPos, targetPosition, t);
+            yield return null;
         }
+        currentTip.transform.localPosition = targetPosition;
+        
+        while (timeOnScreen > 0f)
+        {
+            timeOnScreen -= Time.deltaTime;
+            yield return null;
+        }
+        
+        if (currentTip != null)
+        {
+            elapsed = 0f;
+            startPos = currentTip.transform.localPosition;
+            var endPos = startPos + new Vector3(0f, 2f, 0f);
+            
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / duration);
+                t = t * t * t;
+                currentTip.transform.localPosition = Vector3.Lerp(startPos, endPos, t);
+                yield return null;
+            }
+            
+            Destroy(currentTip);
+            currentTip = null;
+        }
+        
+        currentCoroutine = null;
     }
 }
