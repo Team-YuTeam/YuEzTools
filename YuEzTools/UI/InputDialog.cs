@@ -120,6 +120,12 @@ public class InputDialog
         inputText.transform.localPosition = new Vector3(0f, size.y / 2 - 0.2f, 0);
         inputText.enableWordWrapping = true;
         inputText.rectTransform.sizeDelta = size;
+
+            textBox.OnChange = new ButtonClickedEvent();
+            textBox.OnChange.AddListener((Action)(() =>
+            {
+                inputText.transform.localPosition = new Vector3(0f, size.y / 2 - 0.2f * inputText.textInfo.lineCount, 0);
+            }));
         
         var labelTemplate = DialogObject.transform.Find("GuardianEmailTitle_TMP");
         if (labelTemplate != null)
