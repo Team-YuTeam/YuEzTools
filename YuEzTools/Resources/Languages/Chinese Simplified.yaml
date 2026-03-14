@@ -240,6 +240,13 @@ InviteButton: "QQ群" # If Not Chinese, write Discord
 WebsiteButton: "网站"
 BiliBiliButton: "B站赞助"
 AfdianButton: "爱发电"
+BugButton: "Bug反馈"
+BugReport.Title: "BUG反馈"
+BugReport.Info: "如果您在游戏中遇到任何问题您都可以在下方反馈"
+BugReport.TimeLabel: "请在下方输入遇到问题的时间/问题总结"
+BugReport.DescLabel: "请在下方详细描述你遇到的问题"
+BugReport.SuccessTitle: "已反馈"
+BugReport.SuccessInfo: "请等待反馈结果"
 DevsButton: "开发人员"
 ProjectButton: "kkGitHub" # If Not Chinese, write Github
 
