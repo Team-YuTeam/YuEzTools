@@ -116,7 +116,9 @@ public class InputDialog
         var textBox = fieldObj.GetComponent<TextBoxTMP>();
         
         var inputText = fieldObj.transform.GetChild(1).GetComponent<TextMeshPro>();
-        inputText.transform.localPosition = new Vector3(-size.x / 2 + 0.3f, size.y / 2 - 0.2f, 0);
+        inputText.transform.localPosition = new Vector3(0f, size.y / 2 - 0.2f, 0);
+        inputText.enableWordWrapping = true;
+        inputText.rectTransform.sizeDelta = size;
         
         var labelTemplate = DialogObject.transform.Find("GuardianEmailTitle_TMP");
         if (labelTemplate != null)
