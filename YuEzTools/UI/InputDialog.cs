@@ -114,6 +114,7 @@ public class InputDialog
         if (collider != null) collider.size = size;
         
         var textBox = fieldObj.GetComponent<TextBoxTMP>();
+        textBox.characterLimit = -1;
         
         var inputText = fieldObj.transform.GetChild(1).GetComponent<TextMeshPro>();
         inputText.transform.localPosition = new Vector3(0f, size.y / 2 - 0.2f, 0);
