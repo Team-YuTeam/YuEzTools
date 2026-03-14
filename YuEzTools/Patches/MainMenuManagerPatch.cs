@@ -287,78 +287,33 @@ public class MainMenuManagerPatch
 
         if (_bugButtonClickCount == 1)
         {
-            GameObject sliderTemplate = Object.Instantiate(template.gameObject, AccountManager.Instance.transform);
-            sliderTemplate.name = "BUGSCREEN";
-            sliderTemplate.SetActive(true);
-
-            sliderTemplate.transform.Find("TitleText_TMP").GetComponent<TextMeshPro>().text = GetString("BugReport.Title");
-            Object.Destroy(sliderTemplate.transform.Find("TitleText_TMP").GetComponent<TextTranslatorTMP>());
-
-            sliderTemplate.transform.Find("InfoText_TMP").GetComponent<TextMeshPro>().text = GetString("BugReport.Info");
-            Object.Destroy(sliderTemplate.transform.Find("InfoText_TMP").GetComponent<TextTranslatorTMP>());
-
-            sliderTemplate.transform.Find("GuardianEmailTitle_TMP").GetComponent<TextMeshPro>().text = GetString("BugReport.TimeLabel");
-            Object.Destroy(sliderTemplate.transform.Find("GuardianEmailTitle_TMP").GetComponent<TextTranslatorTMP>());
-            sliderTemplate.transform.Find("GuardianEmailTitle_TMP").localPosition = new Vector3(-2.3f, 1.3f, 0f);
-
-            sliderTemplate.transform.Find("GuardianEmailConfirm").localPosition = new Vector3(0f, 0.67f, 0f);
-            Object.Destroy(sliderTemplate.transform.Find("GuardianEmailConfirm").GetComponent<EmailTextBehaviour>());
-
-            sliderTemplate.transform.Find("GuardianEmailConfirmTitle_TMP").GetComponent<TextMeshPro>().text = GetString("BugReport.DescLabel");
-            Object.Destroy(sliderTemplate.transform.Find("GuardianEmailConfirmTitle_TMP").GetComponent<TextTranslatorTMP>());
-            sliderTemplate.transform.Find("GuardianEmailConfirmTitle_TMP").localPosition = new Vector3(-2.3f, 0f, 0f);
-
-            var emailInput = sliderTemplate.transform.Find("GuardianEmail");
-            emailInput.GetChild(0).GetComponent<SpriteRenderer>().size = new Vector2(6.8f, 1.35f);
-            Object.Destroy(emailInput.GetComponent<EmailTextBehaviour>());
-            emailInput.localPosition = new Vector3(0f, -0.98f, 0f);
-            emailInput.GetComponent<BoxCollider2D>().size = new Vector2(6.8f, 1.35f);
-            emailInput.GetChild(1).localPosition = new Vector3(-3.3f, 0.45f, 0f);
-
-            sliderTemplate.transform.GetChild(9).gameObject.SetActive(false);
-
-            var submitBtn = sliderTemplate.transform.Find("SubmitButton").GetComponent<PassiveButton>();
-            submitBtn.OnClick = new ButtonClickedEvent();
-            submitBtn.OnClick.AddListener((Action)(() =>
+            var dialog = InputDialog.Create(GetString("BugReport.Title"), GetString("BugReport.Info"));
+            if (dialog == null) return;
+            
+            dialog.DialogObject.name = "BUGSCREEN";
+            
+            var titleField = dialog.AddInputField(GetString("BugReport.TimeLabel"), new Vector2(0f, 0.67f), new Vector2(6.8f, 0.5f), 100);
+            var descField = dialog.AddInputField(GetString("BugReport.DescLabel"), new Vector2(0f, -0.98f), new Vector2(6.8f, 1.8f), 0);
+            
+            dialog.SetSubmitAction((values) =>
             {
-                var bugText = emailInput.GetChild(1).GetComponent<TextMeshPro>();
-                var timeText = sliderTemplate.transform.Find("GuardianEmailConfirm").GetChild(1).GetComponent<TextMeshPro>();
-                var timeBg = emailInput.GetChild(0).GetComponent<SpriteRenderer>();
-                var bugBg = sliderTemplate.transform.Find("GuardianEmailConfirm").GetChild(0).GetComponent<SpriteRenderer>();
-
-                bool timeEmpty = string.IsNullOrWhiteSpace(timeText.text);
-                bool bugEmpty = string.IsNullOrWhiteSpace(bugText.text);
-
-                if (timeEmpty || bugEmpty)
-                {
-                    if (timeEmpty) timeBg.color = Color.red;
-                    if (bugEmpty) bugBg.color = Color.red;
-                    return;
-                }
-
                 string username = DataManager.Player.Customization.Name;
                 string friendcode = DestroyableSingleton<EOSManager>.Instance.FriendCode;
-                string issueTitle = timeText.text;
-                string issueLong = bugText.text;
+                string issueTitle = values[0];
+                string issueLong = values[1];
                 DumpLogCache();
                 string logPath = Path.Combine(Environment.CurrentDirectory, "YuET_Data", "LogCache", "LogOutput.log");
 
-                SubmitBugReport(username, friendcode, issueTitle, issueLong, logPath, sliderTemplate, template);
-            }));
-
-            var closeButton = Object.Instantiate(submitBtn, submitBtn.transform.parent);
-            closeButton.gameObject.name = "CloseButton";
-            closeButton.transform.Find("Text_TMP").GetComponent<TextMeshPro>().text = "";
-            Object.Destroy(closeButton.transform.Find("Text_TMP").GetComponent<TextTranslatorTMP>());
-            closeButton.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = LoadSprite("YuEzTools.Resources.Close.png", 100f);
-            closeButton.transform.localPosition = new Vector3(-3.7f, 2.4f, 0);
-            closeButton.transform.localScale = new Vector3(0.3f, 1.2f, 0);
-            closeButton.OnClick = new ButtonClickedEvent();
-            closeButton.OnClick.AddListener((Action)(() =>
-            {
-                Object.Destroy(sliderTemplate.gameObject);
+                SubmitBugReport(username, friendcode, issueTitle, issueLong, logPath, dialog.DialogObject, template);
                 _bugButtonClickCount = 0;
-            }));
+            });
+            
+            dialog.SetCloseAction(() =>
+            {
+                _bugButtonClickCount = 0;
+            });
+            
+            dialog.Show();
         }
         else
         {
@@ -373,51 +328,62 @@ public class MainMenuManagerPatch
 
     private static void SubmitBugReport(string username, string friendcode, string issueTitle, string issueLong, string logPath, GameObject sliderTemplate, Transform template)
     {
-        try
-        {
-            var fileData = UploadLogFile(logPath);
-            if (fileData == null)
-            {
-                Error("Failed to upload log file", "BugReport");
-                return;
-            }
-
-            var recordId = CreateVikaRecord(username, friendcode, fileData, issueTitle, issueLong);
-            if (!string.IsNullOrEmpty(recordId))
-            {
-                Info($"Bug report submitted successfully! RecordId: {recordId}, Title: {issueTitle}", "BugReport");
-            }
-            else
-            {
-                Error("Failed to create Vika record", "BugReport");
-            }
-        }
-        catch (Exception ex)
-        {
-            Error($"Bug report error: {ex.Message}", "BugReport");
-        }
-        finally
-        {
-            try
-            {
-                if (File.Exists(logPath))
-                {
-                    File.Delete(logPath);
-                }
-            }
-            catch { }
-        }
-
-        Object.Destroy(sliderTemplate);
-        ShowBugReportSuccessUI(template);
+        CustomTips.Show(GetString("BugReport.Submitting"), TipsCode.Info);
+        HudManager.Instance.StartCoroutine(SubmitBugReportAsync(username, friendcode, issueTitle, issueLong, logPath, sliderTemplate, template));
     }
 
-    private static VikaFileData UploadLogFile(string logPath)
+    private static IEnumerator SubmitBugReportAsync(string username, string friendcode, string issueTitle, string issueLong, string logPath, GameObject sliderTemplate, Transform template)
+    {
+        VikaFileData fileData = null;
+        string recordId = null;
+        bool success = false;
+
+        yield return UploadLogFileAsync(logPath, (data) => fileData = data);
+
+        if (fileData == null)
+        {
+            Error("Failed to upload log file", "BugReport");
+            CustomTips.Show(GetString("BugReport.Failed"), TipsCode.Error);
+            yield break;
+        }
+
+        yield return CreateVikaRecordAsync(username, friendcode, fileData, issueTitle, issueLong, (id) => recordId = id);
+
+        if (!string.IsNullOrEmpty(recordId))
+        {
+            Info($"Bug report submitted successfully! RecordId: {recordId}, Title: {issueTitle}", "BugReport");
+            CustomTips.Show(GetString("BugReport.Success"), TipsCode.Info);
+            success = true;
+        }
+        else
+        {
+            Error("Failed to create Vika record", "BugReport");
+            CustomTips.Show(GetString("BugReport.Failed"), TipsCode.Error);
+        }
+
+        try
+        {
+            if (File.Exists(logPath))
+            {
+                File.Delete(logPath);
+            }
+        }
+        catch { }
+
+        Object.Destroy(sliderTemplate);
+        if (success)
+        {
+            ShowBugReportSuccessUI(template);
+        }
+    }
+
+    private static IEnumerator UploadLogFileAsync(string logPath, Action<VikaFileData> onComplete)
     {
         if (!File.Exists(logPath))
         {
             Warn($"Log file not found: {logPath}", "BugReport");
-            return null;
+            onComplete?.Invoke(null);
+            yield break;
         }
 
         var boundary = "----WebKitFormBoundary" + DateTime.Now.Ticks.ToString("x");
@@ -437,17 +403,17 @@ public class MainMenuManagerPatch
         request.SetRequestHeader("Authorization", $"Bearer {VikaApiToken}");
         request.SetRequestHeader("Content-Type", $"multipart/form-data; boundary={boundary}");
 
-        var operation = request.SendWebRequest();
-        while (!operation.isDone) { }
+        yield return request.SendWebRequest();
 
         string response = request.downloadHandler.text;
-        
+
         if (request.result != UnityWebRequest.Result.Success)
         {
             Error($"Upload failed: {request.error}", "BugReport");
             Error($"Response: {response}", "BugReport");
             request.Dispose();
-            return null;
+            onComplete?.Invoke(null);
+            yield break;
         }
 
         request.Dispose();
@@ -458,7 +424,7 @@ public class MainMenuManagerPatch
             if ((bool)jsonNode["success"])
             {
                 var data = jsonNode["data"];
-                return new VikaFileData
+                var fileData = new VikaFileData
                 {
                     id = data["id"] != null ? (string)data["id"] : "",
                     name = (string)data["name"],
@@ -469,6 +435,8 @@ public class MainMenuManagerPatch
                     height = data["height"] != null ? (int)data["height"] : 0,
                     url = (string)data["url"]
                 };
+                onComplete?.Invoke(fileData);
+                yield break;
             }
             else
             {
@@ -481,10 +449,10 @@ public class MainMenuManagerPatch
             Error($"Response: {response}", "BugReport");
         }
 
-        return null;
+        onComplete?.Invoke(null);
     }
 
-    private static string CreateVikaRecord(string username, string friendcode, VikaFileData fileData, string issueTitle, string issueLong)
+    private static IEnumerator CreateVikaRecordAsync(string username, string friendcode, VikaFileData fileData, string issueTitle, string issueLong, Action<string> onComplete)
     {
         string json = $@"{{
     ""records"": [
@@ -516,14 +484,14 @@ public class MainMenuManagerPatch
         request.SetRequestHeader("Authorization", $"Bearer {VikaApiToken}");
         request.SetRequestHeader("Content-Type", "application/json");
 
-        var operation = request.SendWebRequest();
-        while (!operation.isDone) { }
+        yield return request.SendWebRequest();
 
         if (request.result != UnityWebRequest.Result.Success)
         {
             Error($"Create record failed: {request.error}", "BugReport");
             request.Dispose();
-            return null;
+            onComplete?.Invoke(null);
+            yield break;
         }
 
         string response = request.downloadHandler.text;
@@ -534,7 +502,8 @@ public class MainMenuManagerPatch
             var jsonNode = JObject.Parse(response);
             if ((bool)jsonNode["success"])
             {
-                return (string)jsonNode["data"]["records"][0]["recordId"];
+                onComplete?.Invoke((string)jsonNode["data"]["records"][0]["recordId"]);
+                yield break;
             }
         }
         catch (Exception ex)
@@ -542,7 +511,7 @@ public class MainMenuManagerPatch
             Error($"Parse record response failed: {ex.Message}", "BugReport");
         }
 
-        return null;
+        onComplete?.Invoke(null);
     }
 
     private static string EscapeJsonString(string s)

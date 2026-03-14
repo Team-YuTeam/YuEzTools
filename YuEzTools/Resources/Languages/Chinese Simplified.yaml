@@ -247,6 +247,9 @@ BugReport.TimeLabel: "请在下方输入遇到问题的时间/问题总结"
 BugReport.DescLabel: "请在下方详细描述你遇到的问题"
 BugReport.SuccessTitle: "已反馈"
 BugReport.SuccessInfo: "请等待反馈结果"
+BugReport.Submitting: "正在提交..."
+BugReport.Success: "提交成功！"
+BugReport.Failed: "提交失败，请重试"
 DevsButton: "开发人员"
 ProjectButton: "kkGitHub" # If Not Chinese, write Github
 
