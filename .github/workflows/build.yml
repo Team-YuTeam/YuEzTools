@@ -15,6 +15,9 @@ on:
           - Release
           - Canary
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # 使用 Node.js 24
+
 jobs:
   build:
     runs-on: windows-latest
@@ -45,21 +48,31 @@ jobs:
 
       # 构建 Windows 版本
       - name: 构建 Windows 版本
-        run: dotnet build -c ${{ steps.config.outputs.config }} -p:Platform=Windows -o build/Windows
+        run: dotnet build YuEzTools\YuEzTools.csproj -c ${{ steps.config.outputs.config }} -p:Platform=Windows
 
       # 构建 Android 版本
       - name: 构建 Android 版本
-        run: dotnet build -c ${{ steps.config.outputs.config }} -p:Platform=Android -o build/Android
+        run: dotnet build YuEzTools\YuEzTools.csproj -c ${{ steps.config.outputs.config }} -p:Platform=Android
 
-      # 打包输出
-      - name: 打包所有版本
+      # 查找并收集 dll 文件
+      - name: 收集构建产物
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path output
-          Compress-Archive -Path build/Windows/* -DestinationPath output/YuEzTools_Windows.zip -Force
-          Compress-Archive -Path build/Android/* -DestinationPath output/YuEzTools_Android.zip -Force
+          
+          # 查找 Windows dll
+          $windowsDll = Get-ChildItem -Path YuEzTools -Recurse -Filter "YuEzTools_Windows.dll" -ErrorAction SilentlyContinue | Select-Object -First 1
+          if ($windowsDll) {
+            Copy-Item $windowsDll.FullName -Destination "output\YuEzTools_Windows.dll"
+          }
+          
+          # 查找 Android dll
+          $androidDll = Get-ChildItem -Path YuEzTools -Recurse -Filter "YuEzTools_Android.dll" -ErrorAction SilentlyContinue | Select-Object -First 1
+          if ($androidDll) {
+            Copy-Item $androidDll.FullName -Destination "output\YuEzTools_Android.dll"
+          }
 
-      # 上传构建产物
+      # 上传构建产物（直接传 dll）
       - name: 上传构建文件
         uses: actions/upload-artifact@v4
         with:
