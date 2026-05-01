@@ -114,6 +114,7 @@ public class MainMenuManagerPatch
         Vector3 lerp2 = Vector3.Lerp(pos2, new Vector3(pos2.x, 7.1f, pos2.z), Time.deltaTime * 1.4f);
         bak.transform.position = lerp2;
         if (pos2.y > 7f) ShowedBak = true;
+        
     }
 
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.Start)), HarmonyPostfix]
@@ -269,6 +270,9 @@ public class MainMenuManagerPatch
         // GameObject.Destroy(__instance.quitButton.gameObject);
         // var BottomButtonBounds = GameObject.Find("BottomButtonBounds");
         // BottomButtonBounds.transform.localPosition += new Vector3(0, 0.8f, 0);
+        
+        GameObject EjectButton = GameObject.Find("MainMenuManager").transform.Find("MainUI").transform.Find("AspectScaler").transform.Find("EjectButtonMenu").gameObject;
+        Object.Destroy(EjectButton);
     }
 
     private static int _bugButtonClickCount = 0;

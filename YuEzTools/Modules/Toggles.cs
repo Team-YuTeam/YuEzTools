@@ -7,7 +7,6 @@ public class Toggles
     public static bool ShowPlayTimes = Main.ShowPlayTimes.Value;
     
     // 主界面
-    public static bool ShowEjectButton = false;
 
     // Ping部分
     public static bool ShowCommit;

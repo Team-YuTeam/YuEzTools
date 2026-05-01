@@ -110,13 +110,6 @@ public static class ToggleHelperManager
             setState: val => Toggles.ShowInfoInLobby = val
         ),
         new ToggleHelper(
-            nameKey: "ShowEjectButton",    // 按钮文本键（对应本地化）
-            groupKey: "Interface",          // 所属组
-            submenuKey: "MainMenu",                      
-            getState: () => Toggles.ShowEjectButton, // 绑定 Toggles 字段
-            setState: val => Toggles.ShowEjectButton = val
-        ),
-        new ToggleHelper(
             nameKey: "ShowCommit",    // 按钮文本键（对应本地化）
             groupKey: "Interface",          // 所属组
             submenuKey: "PingPart",                      
