@@ -53,10 +53,11 @@ jobs:
 
       # 打包输出
       - name: 打包所有版本
+        shell: pwsh
         run: |
-          mkdir -p output
-          Compress-Archive -Path build/Windows/* -DestinationPath output/YuEzTools_Windows.zip
-          Compress-Archive -Path build/Android/* -DestinationPath output/YuEzTools_Android.zip
+          New-Item -ItemType Directory -Force -Path output
+          Compress-Archive -Path build/Windows/* -DestinationPath output/YuEzTools_Windows.zip -Force
+          Compress-Archive -Path build/Android/* -DestinationPath output/YuEzTools_Android.zip -Force
 
       # 上传构建产物
       - name: 上传构建文件
