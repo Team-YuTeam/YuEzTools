@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using System.Globalization;
+﻿﻿using System.Globalization;
 using AmongUs.GameOptions;
 using BepInEx;
 using BepInEx.Configuration;
@@ -47,6 +47,43 @@ public class Main : BasePlugin
     public static ConfigEntry<bool> SwitchVanilla;
     public static ConfigEntry<bool> ShowPlayTimes;
     public static ConfigEntry<bool> AutoInstallServers;
+    
+    public static ConfigEntry<bool> DarkModeConfig;
+    public static ConfigEntry<bool> ShowCommitConfig;
+    public static ConfigEntry<bool> ShowModTextConfig;
+    public static ConfigEntry<bool> ShowIsSafeConfig;
+    public static ConfigEntry<bool> ShowIsDarkConfig;
+    public static ConfigEntry<bool> ShowPingConfig;
+    public static ConfigEntry<bool> ShowFPSConfig;
+    public static ConfigEntry<bool> ShowServerConfig;
+    public static ConfigEntry<bool> ShowIsAutoExitConfig;
+    public static ConfigEntry<bool> ShowRoomTimeConfig;
+    public static ConfigEntry<bool> ShowUTCConfig;
+    public static ConfigEntry<bool> ShowLocalNowTimeConfig;
+    public static ConfigEntry<bool> ShowGMConfig;
+    public static ConfigEntry<bool> EnableAntiCheatConfig;
+    public static ConfigEntry<bool> SafeModeConfig;
+    public static ConfigEntry<bool> AutoExitConfig;
+    public static ConfigEntry<bool> KickNotLoginConfig;
+    public static ConfigEntry<bool> AutoReportHackerConfig;
+    public static ConfigEntry<bool> DumpLogConfig;
+    public static ConfigEntry<bool> OpenGameDicConfig;
+    public static ConfigEntry<bool> CloseMusicOfOrConfig;
+    public static ConfigEntry<bool> reShowRoleTConfig;
+    public static ConfigEntry<bool> ShowInfoInLobbyConfig;
+    public static ConfigEntry<bool> ExitGameConfig;
+    public static ConfigEntry<bool> RealBanConfig;
+    public static ConfigEntry<bool> HorseModeConfig;
+    public static ConfigEntry<bool> LongModeConfig;
+    public static ConfigEntry<bool> ChangeDownTimerToZeroConfig;
+    public static ConfigEntry<bool> AbolishDownTimerConfig;
+    public static ConfigEntry<bool> AutoStartGameConfig;
+    public static ConfigEntry<bool> ServerAllHostOrNoHostConfig;
+    public static ConfigEntry<bool> ChangeDownTimerTo114514Config;
+    public static ConfigEntry<bool> FPSPlusConfig;
+#if DEBUG
+    public static ConfigEntry<bool> NotEndGameConfig;
+#endif
 
     // public static List<string> TName_Snacks_CN = new() { "冰激凌", "奶茶", "巧克力", "蛋糕", "甜甜圈", "可乐", "柠檬水", "冰糖葫芦", "果冻", "糖果", "牛奶", "抹茶", "烧仙草", "菠萝包", "布丁", "椰子冻", "曲奇", "红豆土司", "三彩团子", "艾草团子", "泡芙", "可丽饼", "桃酥", "麻薯", "鸡蛋仔", "马卡龙", "雪梅娘", "炒酸奶", "蛋挞", "松饼", "西米露", "奶冻", "奶酥", "可颂", "奶糖" ,"咔皮呆","Yu","Night瓜","慕斯Mousse","毒液","Slok7565","喜","乐崽"};
     // public static List<string> TName_Snacks_EN = new() { "Ice cream", "Milk tea", "Chocolate", "Cake", "Donut", "Coke", "Lemonade", "Candied haws", "Jelly", "Candy", "Milk", "Matcha", "Burning Grass Jelly", "Pineapple Bun", "Pudding", "Coconut Jelly", "Cookies", "Red Bean Toast", "Three Color Dumplings", "Wormwood Dumplings", "Puffs", "Can be Crepe", "Peach Crisp", "Mochi", "Egg Waffle", "Macaron", "Snow Plum Niang", "Fried Yogurt", "Egg Tart", "Muffin", "Sago Dew", "panna cotta", "soufflé", "croissant", "toffee" ,"KARPED1EM","Yu","Night-GUA","Mousse","Farewell","Slok7565","Xi","LezaiYa"};
@@ -152,6 +189,46 @@ public class Main : BasePlugin
         WinTextSize = Config.Bind("WinText", "WinTextSize", false, "The Winner big(true) or the reason big(false)");
         SwitchVanilla = Config.Bind("Client Options", "SwitchVanilla", false);
         ShowPlayTimes = Config.Bind("Interface", "ShowPlayTimes", true, "Show play times on main menu");
+        
+        DarkModeConfig = Config.Bind("Interface", "DarkMode", true);
+        ShowCommitConfig = Config.Bind("Interface", "ShowCommit", false);
+        ShowModTextConfig = Config.Bind("Interface", "ShowModText", true);
+        ShowIsSafeConfig = Config.Bind("Interface", "ShowIsSafe", true);
+        ShowIsDarkConfig = Config.Bind("Interface", "ShowIsDark", true);
+        ShowPingConfig = Config.Bind("Interface", "ShowPing", true);
+        ShowFPSConfig = Config.Bind("Interface", "ShowFPS", true);
+        ShowServerConfig = Config.Bind("Interface", "ShowServer", true);
+        ShowIsAutoExitConfig = Config.Bind("Interface", "ShowIsAutoExit", true);
+        ShowRoomTimeConfig = Config.Bind("Interface", "ShowRoomTime", true);
+        ShowUTCConfig = Config.Bind("Interface", "ShowUTC", false);
+        ShowLocalNowTimeConfig = Config.Bind("Interface", "ShowLocalNowTime", false);
+        ShowGMConfig = Config.Bind("Interface", "ShowGM", true);
+        ShowInfoInLobbyConfig = Config.Bind("Interface", "ShowInfoInLobby", false);
+        
+        EnableAntiCheatConfig = Config.Bind("AntiCheat", "EnableAntiCheat", true);
+        SafeModeConfig = Config.Bind("AntiCheat", "SafeMode", true);
+        AutoExitConfig = Config.Bind("AntiCheat", "AutoExit", true);
+        KickNotLoginConfig = Config.Bind("AntiCheat", "KickNotLogin", true);
+        AutoReportHackerConfig = Config.Bind("AntiCheat", "AutoReportHacker", false);
+        ServerAllHostOrNoHostConfig = Config.Bind("AntiCheat", "ServerAllHostOrNoHost", false);
+        
+        DumpLogConfig = Config.Bind("ShortcutButton", "DumpLog", false);
+        OpenGameDicConfig = Config.Bind("ShortcutButton", "OpenGameDic", false);
+        CloseMusicOfOrConfig = Config.Bind("ShortcutButton", "CloseMusicOfOr", false);
+        reShowRoleTConfig = Config.Bind("ShortcutButton", "reShowRoleT", false);
+        ExitGameConfig = Config.Bind("ShortcutButton", "ExitGame", false);
+        RealBanConfig = Config.Bind("ShortcutButton", "RealBan", false);
+        HorseModeConfig = Config.Bind("ShortcutButton", "HorseMode", false);
+        LongModeConfig = Config.Bind("ShortcutButton", "LongMode", false);
+        ChangeDownTimerToZeroConfig = Config.Bind("ShortcutButton", "ChangeDownTimerToZero", false);
+        AbolishDownTimerConfig = Config.Bind("ShortcutButton", "AbolishDownTimer", false);
+        AutoStartGameConfig = Config.Bind("ShortcutButton", "AutoStartGame", false);
+        ChangeDownTimerTo114514Config = Config.Bind("ShortcutButton", "ChangeDownTimerTo114514", false);
+        
+        FPSPlusConfig = Config.Bind("Other", "FPSPlus", false);
+#if DEBUG
+        NotEndGameConfig = Config.Bind("Other", "NotEndGame", false);
+#endif
 
         menuUI = AddComponent<MenuUI>();
         CustomTips = AddComponent<CustomTips>();
@@ -179,8 +256,6 @@ public class Main : BasePlugin
         else ConsoleManager.CreateConsole();
 
         DevManager.Init();
-        Toggles.WinTextSize = WinTextSize.Value;
-        Toggles.ShowPlayTimes = ShowPlayTimes.Value;
 
         //模组加载好了标语
         Msg("========= YuET loaded! =========", "YuET Plugin Load");

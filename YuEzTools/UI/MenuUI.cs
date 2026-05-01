@@ -33,14 +33,14 @@ public class MenuUI : MonoBehaviour
         {
             Toggles.ServerAllHostOrNoHost = GameStartManagerPatch.roomMode == RoomMode.Normal ? false : true;
         }
-        Main.WinTextSize.Value = Toggles.WinTextSize;
-        Main.ShowPlayTimes.Value = Toggles.ShowPlayTimes;
 
         // -------------------------- 关键修改：从统一配置生成 MenuUI 分组 --------------------------
         if (!isGUIActive)
         {
             groups = GenerateGroupsFromConfig(); // 自动生成分组，无需硬编码
         }
+        
+        ClientToolsItem.RefreshAll();
 #endif
     }
     
@@ -69,9 +69,8 @@ public class MenuUI : MonoBehaviour
                 getState: config.GetState,
                 setState: val =>
                 {
-                    config.SetState(val);       // 更新 Toggles 字段
-                    // ClientToolsItem.RefreshToggle(val,config.NameKey);
-                    config.AdditionalAction?.Invoke(); // 触发额外逻辑
+                    config.SetState(val);
+                    config.AdditionalAction?.Invoke();
                 }
             ));
         }
@@ -95,7 +94,6 @@ public class MenuUI : MonoBehaviour
                     setState: val => 
                     {
                         config.SetState(val);
-                        // ClientToolsItem.RefreshToggle(val,config.NameKey); // ToDo 有报错
                         config.AdditionalAction?.Invoke();
                     }
                 ));

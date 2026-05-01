@@ -272,7 +272,8 @@ public class MainMenuManagerPatch
         // BottomButtonBounds.transform.localPosition += new Vector3(0, 0.8f, 0);
         
         GameObject EjectButton = GameObject.Find("MainMenuManager").transform.Find("MainUI").transform.Find("AspectScaler").transform.Find("EjectButtonMenu").gameObject;
-        Object.Destroy(EjectButton);
+        EjectButton.SetActive(false);
+        // Object.Destroy(EjectButton);
     }
 
     private static int _bugButtonClickCount = 0;
