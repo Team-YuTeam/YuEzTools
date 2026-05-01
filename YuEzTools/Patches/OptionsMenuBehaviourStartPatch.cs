@@ -29,17 +29,20 @@ public static class OptionsMenuBehaviourStartPatch
             }
         }
 
+#if Windows
         if (AutoInstallServersOption == null || AutoInstallServersOption.ToggleButton == null)
         {
             AutoInstallServersOption = ClientOptionItem.Create(GetString("AutoInstallServers"), Main.AutoInstallServers, __instance, AutoInstallServersToggle);
             static void AutoInstallServersToggle()
             {
+
                 if (Main.AutoInstallServers.Value)
                 {
                     ServerAddManager.InstallCustomServers();
                 }
-            }
+           }
         }
+#endif  
     }
 }
 

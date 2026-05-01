@@ -5,6 +5,9 @@ public class Toggles
     // 界面
     public static bool DarkMode = true;
     public static bool ShowPlayTimes = Main.ShowPlayTimes.Value;
+    
+    // 主界面
+    public static bool ShowEjectButton = false;
 
     // Ping部分
     public static bool ShowCommit;

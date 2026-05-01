@@ -101,7 +101,9 @@ class OnGameJoined
     // }
     public static void Postfix()
     {
+        #if Windows
         if(!EnterCodePatch.isJoin) ServerAddManager.SetServerName();
+#endif
         if (ServerManager.Instance.CurrentRegion.Name.Contains("Xtreme") && Main.ModMode != ModMode.Debug)
         {
             var msg = (Main.ModMode == ModMode.Canary ? "[Canary]" : "") + string.Format(GetString("Message.Xtreme"), Main.ModName, Main.version);

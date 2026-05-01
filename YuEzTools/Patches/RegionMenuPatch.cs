@@ -5,6 +5,7 @@ namespace YuEzTools.Patches;
 [HarmonyPatch(typeof(RegionMenu))]
 public class RegionMenuPatch
 {
+#if Windows
     public static Scroller Scroller;
 
     [HarmonyPatch(nameof(RegionMenu.Awake)), HarmonyPostfix]
@@ -27,4 +28,5 @@ public class RegionMenuPatch
     [HarmonyPatch(nameof(RegionMenu.ChooseOption)), HarmonyPostfix]
     public static void ChooseOption_Postfix()
         => ServerAddManager.SetServerName();
+#endif
 }

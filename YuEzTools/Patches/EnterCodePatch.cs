@@ -91,11 +91,13 @@ public class EnterCodePatch
         Sprite_sprite.sprite = LoadSprite($"YuEzTools.Resources.MapsImages.{mapNameText}.png", 300f);
         Sprite.gameObject.SetActive(true);
         
+        #if Windows
         ServerAddManager.SetServerName(response.UntranslatedRegion);
         isJoin = true;
 
         Server_TMP.text = Server_TMP.text.isInServerDictionary() ? ColorString(ServerAddManager.GetServerColor32(Server_TMP.text), GetString(Server_TMP.text)) : Server_TMP.text;
         // Server_TMP.text += gameFound.Language.ToString();
+#endif
         Host_TMP.text += $"-{gameFound.Platform.GetPlatformColorText()}";
         Capacity_TMP.text += $" <color=#FF0000>({gameFound.NumImpostors})</color>";
     }

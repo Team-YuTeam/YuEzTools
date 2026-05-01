@@ -18,7 +18,7 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    name: 构建 Windows 版本
+    name: 构建 Windows + Android 版本
     steps:
       - name: 拉取代码
         uses: actions/checkout@v4
@@ -47,12 +47,17 @@ jobs:
       - name: 构建 Windows 版本
         run: dotnet build -c ${{ steps.config.outputs.config }} -p:Platform=Windows -o build/Windows
 
+      # 构建 Android 版本
+      - name: 构建 Android 版本
+        run: dotnet build -c ${{ steps.config.outputs.config }} -p:Platform=Android -o build/Android
+
       # 打包输出
-      - name: 打包 Windows 版本
+      - name: 打包所有版本
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path output
           Compress-Archive -Path build/Windows/* -DestinationPath output/YuEzTools_Windows.zip -Force
+          Compress-Archive -Path build/Android/* -DestinationPath output/YuEzTools_Android.zip -Force
 
       # 上传构建产物
       - name: 上传构建文件
