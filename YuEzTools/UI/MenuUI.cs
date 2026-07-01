@@ -24,9 +24,7 @@ public class MenuUI : MonoBehaviour
         // 原有快捷键逻辑保留
         if (Input.GetKeyDown(stringToKeycode(Main.menuKeybind.Value)))
         {
-            isGUIActive = !isGUIActive;
-            Vector2 mousePosition = Input.mousePosition;
-            windowRect.position = new Vector2(mousePosition.x, Screen.height - mousePosition.y);
+            ToggleMenu();
         }
 
         if (GetPlayer.IsPlayer)
@@ -42,6 +40,25 @@ public class MenuUI : MonoBehaviour
         
         ClientToolsItem.RefreshAll();
 #endif
+    }
+
+    public void ToggleMenu(bool centerWindow = false)
+    {
+        isGUIActive = !isGUIActive;
+        if (isGUIActive)
+        {
+            if (centerWindow)
+            {
+                windowRect.position = new Vector2(
+                    (Screen.width - windowRect.width) / 2f,
+                    (Screen.height - windowRect.height) / 2f);
+            }
+            else
+            {
+                Vector2 mousePosition = Input.mousePosition;
+                windowRect.position = new Vector2(mousePosition.x, Screen.height - mousePosition.y);
+            }
+        }
     }
     
     private List<GroupInfo> GenerateGroupsFromConfig()
