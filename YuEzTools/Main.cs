@@ -1,4 +1,4 @@
-﻿﻿using System.Globalization;
+﻿using System.Globalization;
 using AmongUs.GameOptions;
 using BepInEx;
 using BepInEx.Configuration;
@@ -39,6 +39,7 @@ public class Main : BasePlugin
     public static ConfigEntry<string> menuKeybind;
     public static ConfigEntry<string> menuHtmlColor;
     public static MenuUI menuUI;
+    public static FloatingButton floatingButton;
     public static CustomTips CustomTips;
     public static ConfigEntry<bool> PatchAccount;
     public static ConfigEntry<bool> PatchChat;
@@ -232,6 +233,7 @@ public class Main : BasePlugin
 
         menuUI = AddComponent<MenuUI>();
         CustomTips = AddComponent<CustomTips>();
+        floatingButton = AddComponent<FloatingButton>();
 
         //Translator.Init();
 
@@ -292,4 +294,10 @@ public enum ModMode
     Canary = 1,
     Release = 2,
     Error = -1
+}
+
+// 需配合 QQHelper.cs 的DeleteReason使用
+public static class DisconnectReasonEx
+{
+    public const int CloseGame = 13;
 }

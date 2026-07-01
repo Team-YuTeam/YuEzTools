@@ -351,9 +351,11 @@ EnterCodePatch.Capacity: "最大人数 (伪装者数)"
 # 首页面警告
 AmongUsIsNotOK: "您的AmongUs版本不符合{0}的要求，请注意检查{0}更新 或 检查AmongUs版本\n一般来说，此问题对您正常使用{0}没有影响"
 
-# 换页
+# 常用
 PreviousPage: "上一页"
 NextPage: "下一页"
+Hide: "隐藏"
+Show: "显示"
 
 # 提示
 Tips: "提示"
@@ -392,3 +394,9 @@ distance.long: "远"
 default: "未知"
 yes: "是"
 no: "否"
+
+# 大厅
+Lobby.WarningTips: "<b>请等待 {0} 分钟后再发送!</b>"
+Lobby.SendingTips: "<b>已将房间代码发至QQ!</b>"
+Lobby.RoomFilled: "<b>房间已满员，不支持发送</b>"
+Lobby.NotCorrect: "<b>[{0}]请寻求开发者帮助</b>"
