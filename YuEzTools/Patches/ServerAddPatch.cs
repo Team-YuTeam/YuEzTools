@@ -19,9 +19,9 @@ public static class ServerAddManager
     private static List<IRegionInfo> regionInfos =
     [
         // Niko
-        CreateHttp("au-eu.niko233.me", "Niko233(EU)", 443, true, new Color32(251, 200, 200,255)),
-        CreateHttp("au-us.niko233.me", "Niko233(NA)", 443, true, new Color32(251, 200, 200,255)),
-        CreateHttp("au-as.niko233.me", "Niko233(AS)", 443, true, new Color32(251, 200, 200,255)),
+        CreateHttp("au-eu.niko233.top", "Niko233(EU)", 443, true, new Color32(251, 200, 200,255)),
+        CreateHttp("au-us.niko233.top", "Niko233(NA)", 443, true, new Color32(251, 200, 200,255)),
+        CreateHttp("au-as.niko233.top", "Niko233(AS)", 443, true, new Color32(251, 200, 200,255)),
         // Modded
         CreateHttp("au-as.duikbo.at", "Modded Asia (MAS)", 443, true, new Color32(251, 226, 200,255)),
         CreateHttp("aumods.org", "Modded NA (MNA)", 443, true, new Color32(251, 226, 200,255)),
