@@ -1,7 +1,9 @@
 using HarmonyLib;
 using UnityEngine;
+using Unity;
 using TMPro;
 using System;
+using System.Threading;
 using AmongUs.Data;
 using AmongUs.GameOptions;
 using InnerNet;
@@ -28,6 +30,9 @@ public static class InGameInfoPane
     private static GameObject warningTips;
     private const float SendCooldown = 120f;
     private static float lastSendTime = -999f;
+    
+    private static int _shareResult = -1;
+    private static float _shareResultTime = -1;
 
     private static void HideTip()
     {
@@ -40,6 +45,48 @@ public static class InGameInfoPane
 
     public static void Postfix(GameStartManager __instance)
     {
+        
+        if (tipHideTime > 0 && Time.time >= tipHideTime)
+            HideTip();
+
+        // 处理线程返回的结果
+        if (_shareResultTime > 0 && Time.time >= _shareResultTime)
+        {
+            int res = _shareResult;
+            _shareResultTime = -1;
+
+            if (res == 200)
+            {
+                if (LobbyInfoPane.Instance?.CopyCodeSound != null)
+                    SoundManager.Instance.PlaySoundImmediate(LobbyInfoPane.Instance.CopyCodeSound, false, 1f);
+
+                shareRoomTips.transform.GetChild(1).GetComponent<TextMeshPro>().text = GetString("Lobby.SendingTips");
+                shareRoomTips.SetActive(true);
+                warningTips.SetActive(false);
+            }
+            else if (res == 201)
+            {
+                warningTips.transform.GetChild(1).GetComponent<TextMeshPro>().text = GetString("Lobby.RoomFilled");
+                warningTips.SetActive(true);
+                shareRoomTips.SetActive(false);
+            }
+            else if (res == 429)
+            {
+                float leftSec = SendCooldown - (Time.time - lastSendTime);
+                int leftMin = (int)MathF.Ceiling(leftSec / 60f);
+                warningTips.transform.GetChild(1).GetComponent<TextMeshPro>().text = string.Format(GetString("Lobby.WarningTips"), leftMin);
+                warningTips.SetActive(true);
+                shareRoomTips.SetActive(false);
+            }
+            else
+            {
+                warningTips.transform.GetChild(1).GetComponent<TextMeshPro>().text = string.Format(GetString("Lobby.NotCorrect"), res);
+                warningTips.SetActive(true);
+                shareRoomTips.SetActive(false);
+            }
+            
+            tipHideTime = Time.time + 2f;
+        }
 
         if (Input.GetKeyDown(KeyCode.H))
         {
@@ -80,72 +127,76 @@ public static class InGameInfoPane
         btn.OnClick = new Button.ButtonClickedEvent();
         btn.OnClick.AddListener((Action)(() =>
         {
-            if (shareRoomTips == null || warningTips == null) return;
-
             float now = Time.time;
-            float passTime = now - lastSendTime;
-            int res = QQHelper.AddRoom(GameStartManager.Instance.GameRoomNameCode.text,GameData.Instance.PlayerCount,(Main.NormalOptions.TryGetInt(Int32OptionNames.MaxPlayers, out var a) ? a : 0),ServerManager.Instance.CurrentRegion.Name,DataManager.player.customization.name,GameData.Instance.GetHost().PlayerName,GetPlayer.GetImpNums,"YuEZ");
-            Info(
-                $"Res:{res}\n" +
-                $"Resq:{GameStartManager.Instance.GameRoomNameCode.text},{GameData.Instance.PlayerCount},{a},{ServerManager.Instance.CurrentRegion.Name},{DataManager.player.customization.name},{GameData.Instance.GetHost().PlayerName},{GetPlayer.GetImpNums},YuEZ",
-                "InGameInfoPane");
-            if (passTime < SendCooldown || res == 429)
+            if (now - lastSendTime < SendCooldown)
             {
-                float leftSec = SendCooldown - passTime;
-                int leftMin = Mathf.CeilToInt(leftSec / 60f);
-
-                TextMeshPro warnText = warningTips.transform.GetChild(1).GetComponent<TextMeshPro>();
-                if (warnText != null)
-                    warnText.text = string.Format(GetString("Lobby.WarningTips"), leftMin);
-
+                // 冷却直接走主线程提示，不进网络
+                float leftSec = SendCooldown - (now - lastSendTime);
+                int leftMin = (int)MathF.Ceiling(leftSec / 60f);
+                warningTips.transform.GetChild(1).GetComponent<TextMeshPro>().text = string.Format(GetString("Lobby.WarningTips"), leftMin);
                 warningTips.SetActive(true);
                 shareRoomTips.SetActive(false);
                 tipHideTime = now + 2f;
                 return;
             }
-            else if (res == 200)
-            {
-                var lobbyInfoPane = LobbyInfoPane.Instance;
-                if (lobbyInfoPane != null && lobbyInfoPane.CopyCodeSound != null)
-                {
-                    SoundManager.Instance.PlaySoundImmediate(lobbyInfoPane.CopyCodeSound, false, 1f, 1f, null);
-                }
             
-                lastSendTime = now;
-                shareRoomTips.SetActive(true);
-                warningTips.SetActive(false);
-                tipHideTime = now + 2f;
-            }
-            else if (res == 201)
-            {
-                float leftSec = SendCooldown - passTime;
-                int leftMin = Mathf.CeilToInt(leftSec / 60f);
+            // btn.enabled = false;
+            
+            shareRoomTips.SetActive(true);
+            warningTips.SetActive(false);
+            tipHideTime = -1;
+            shareRoomTips.transform.GetChild(1).GetComponent<TextMeshPro>().text = GetString("Lobby.Requesting");
+            
+            int maxPlayers = Main.NormalOptions.TryGetInt(Int32OptionNames.MaxPlayers, out var a) ? a : 0;
+            
+            new Thread(() =>
+                {
+                    try
+                    {
+                        int res = QQHelper.AddRoom(
+                            GameStartManager.Instance.GameRoomNameCode.text,
+                            GameData.Instance.PlayerCount,
+                            maxPlayers,
+                            ServerManager.Instance.CurrentRegion.Name,
+                            DataManager.player.customization.name,
+                            GameData.Instance.GetHost()?.PlayerName ?? "Unknown",
+                            GetPlayer.GetImpNums,
+                            "YuET"
+                        );
 
-                TextMeshPro warnText = warningTips.transform.GetChild(1).GetComponent<TextMeshPro>();
-                if (warnText != null)
-                    warnText.text = GetString("Lobby.RoomFilled");
+                        // 只存结果，不操作UI
+                        _shareResult = res;
+                        _shareResultTime = Time.time;
+                        lastSendTime = Time.time;
+                        
+                        Info(
+                            $"Res:{res}\n" +
+                            $"Resq:{GameStartManager.Instance.GameRoomNameCode.text},{GameData.Instance.PlayerCount},{maxPlayers},{ServerManager.Instance.CurrentRegion.Name},{DataManager.player.customization.name},{GameData.Instance.GetHost().PlayerName},{GetPlayer.GetImpNums},YuET",
+                            "InGameInfoPane");
+                    }
+                    catch
+                    {
+                        _shareResult = -1;
+                        _shareResultTime = Time.time;
+                    }
+                })
+                { IsBackground = true }.Start();
 
-                warningTips.SetActive(true);
-                shareRoomTips.SetActive(false);
-                tipHideTime = now + 2f;
-                return;
-            }else
-            {
-                float leftSec = SendCooldown - passTime;
-                int leftMin = Mathf.CeilToInt(leftSec / 60f);
-
-                TextMeshPro warnText = warningTips.transform.GetChild(1).GetComponent<TextMeshPro>();
-                if (warnText != null)
-                    warnText.text = string.Format(GetString("Lobby.NotCorrect"), res);
-
-                warningTips.SetActive(true);
-                shareRoomTips.SetActive(false);
-                tipHideTime = now + 2f;
-                return;
-            }
         }));
 
         shareRoomBtnCache = shareRoomBtn;
+        
+        if (shareRoomBtnCache != null)
+        {
+            float now = Time.time;
+            bool canClick = now - lastSendTime >= SendCooldown;
+
+            var sprite = shareRoomBtnCache.transform.GetChild(0).GetComponent<SpriteRenderer>();
+            if (sprite != null)
+            {
+                sprite.color = canClick ? Color.white : Color.gray;
+            }
+        }
 
         if (sendtips == null) return;
         GameObject template = sendtips.gameObject;
@@ -179,6 +230,7 @@ public static class InGameInfoPane
             startButtonCache.OnClick.AddListener((Action)(() => ToggleAspectSizeVisibility()));
             isEventBound = true;
         }
+
     }
     private static void InitCaches(GameStartManager __instance)
     {
