@@ -22,30 +22,37 @@ namespace YuEzTools.Helpers
             string roomSender,
             string roomHost,
             int maxImpostor,
-            string modFrom)
+            string modFrom,
+            string modVersion,
+            string amongUsVersion
+        )
         {
             try
             {
-                string url = baseUrl.TrimEnd('/') + "/v1";
+                // 直接用匿名对象 + 序列化，永远不会拼错JSON
+                var payload = new
+                {
+                    RoomCode = roomCode,
+                    roomNumberNow,
+                    roomMaxNum,
+                    roomRegion,
+                    roomSender,
+                    roomHost,
+                    MaxImpostor = maxImpostor,
+                    ModFrom = modFrom,
+                    ModVersion = modVersion,
+                    AmongUsVersion = amongUsVersion
+                };
 
+                string json = JsonSerializer.Serialize(payload);
+                byte[] data = Encoding.UTF8.GetBytes(json);
+
+                string url = baseUrl.TrimEnd('/') + "/v1";
                 HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
                 req.Method = "POST";
                 req.ContentType = "application/json";
                 req.Timeout = 30 * 1000;
                 req.ReadWriteTimeout = 60 * 1000;
-
-                string json = $"{{" +
-                    $"\"RoomCode\":\"{roomCode}\"," +
-                    $"\"roomNumberNow\":{roomNumberNow}," +
-                    $"\"roomMaxNum\":{roomMaxNum}," +
-                    $"\"roomRegion\":\"{roomRegion}\"," +
-                    $"\"roomSender\":\"{roomSender}\"," +
-                    $"\"roomHost\":\"{roomHost}\"," +
-                    $"\"MaxImpostor\":{maxImpostor}," +
-                    $"\"ModFrom\":\"{modFrom}\"" +
-                $"}}";
-
-                byte[] data = Encoding.UTF8.GetBytes(json);
                 req.ContentLength = data.Length;
 
                 using (Stream s = req.GetRequestStream())
@@ -61,9 +68,7 @@ namespace YuEzTools.Helpers
             catch (WebException ex)
             {
                 if (ex.Response is HttpWebResponse resp)
-                {
                     return (int)resp.StatusCode;
-                }
                 Error(ex.ToString(), "QQHelper.AddRoom");
                 return -1;
             }

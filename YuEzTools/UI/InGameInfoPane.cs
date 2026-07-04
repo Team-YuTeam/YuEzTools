@@ -161,7 +161,9 @@ public static class InGameInfoPane
                             DataManager.player.customization.name,
                             GameData.Instance.GetHost()?.PlayerName ?? "Unknown",
                             GetPlayer.GetImpNums,
-                            "YuET"
+                            "YuET",
+                            Main.PluginVersion,
+                            Application.version
                         );
 
                         // 只存结果，不操作UI

@@ -25,7 +25,7 @@ public class Main : BasePlugin
     public static readonly string MainMenuText = "We will be a star on the sky!\n<color=#ff0000>Happy 2026 New Year!</color>"; // 模组Ping部分标语
     public const string PluginGuid = "com.Yu.YuEzTools"; //模组Guid
     public const string PluginVersion = "2.0.0.0"; //模组版本号
-    public const string CanUseInAmongUsVer = "2025.11.18"; // 适配的AU版本
+    public const string CanUseInAmongUsVer = "2026.6.5"; // 适配的AU版本
     public const int PluginCreation = 1;
 
     public static string QQUrl = "https://qm.qq.com/q/uGuWqBkYUi";
